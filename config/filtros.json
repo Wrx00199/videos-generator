@@ -1,0 +1,11 @@
+{
+ "_leia": "Look de acabamento por s\u00e9rie/conta (ffmpeg, um passe). ligado=false desliga. vf = cadeia ffmpeg.",
+ "tiao": {
+  "ligado": true,
+  "vf": "eq=contrast=1.06:saturation=1.10:gamma=0.98,unsharp=5:5:0.35:5:5:0.0"
+ },
+ "gta6": {
+  "ligado": true,
+  "vf": "eq=contrast=1.08:saturation=1.06,unsharp=5:5:0.4:5:5:0.0"
+ }
+}
