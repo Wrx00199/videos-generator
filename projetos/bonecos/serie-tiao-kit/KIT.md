@@ -275,3 +275,12 @@ Ver `FICHA_MODELAGEM.md` e `DIAGNOSTICO_REF_vs_TIAO_20-11.md`. Sem FICHA complet
 - Boneco ≥35% da altura do quadro no plano médio; plano aberto só 1 a cada 6.
 - FICHA e story.js devem bater beat a beat (cenário e câmera).
 - Legenda: "Noite/Dia/Hora N" nunca separa rótulo e número (legenda.py corrigido).
+
+## Regras novas ep.39 (20/11, revisor 6,57)
+- Prop da virada nasce DESLIGADO no cenário (spoiler: agulha visível antes da virada reprovou).
+- Não pode haver 3 planos seguidos com mesmo cenário e mesma luz.
+- Sentado/apoiado: calcular y pelo rig e conferir contato com a superfície (perna atravessando tampa/flutuando reprova).
+- Brilho/halo não cobre o próprio prop da virada (brilhoMax ≤0,25).
+- Noite: fill quente no rosto e chapéu; boneco não pode ficar inteiro azul.
+- Portão mecânico lê `plano_beats.json` (1 registro por beat) além de `plano.json` (1 por plano); FICHA com colunas 'Câmera REF' e 'Fala PT-BR' e fala completa; PORTAO_BEATS.fala = falas.json.
+- Voz abaixo de 2,5 pal/s: acelerar o final 1.04x (setpts+atempo); manter final_1x.mp4.

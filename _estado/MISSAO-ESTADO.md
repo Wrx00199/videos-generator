@@ -6,7 +6,7 @@ Criado 20/11/2026 ~04:55 BRT. Uso ao criar: 5h=3%, semanal=27%.
 - [x] Fase 1c (PARCIAL): Blender bloqueado→pendência; fallback = motor3d; registro de uso de cenários feito (catalogo/USO_CENARIOS.md)
 - [x] Fase 1d: olheiro de bonecos (pendentes de aprovação)
 - [x] Fase 1b2 (PRIORIDADE, antes de mais episódios): skill `estudio-revisor-shorts` + calibração + atualizar revisor
-- [~] Fase 1e: ep.38 FEITO (para-aprovar; rev2 7,75, ordens aplicadas, sem 3ª revisão). FALTA ep.39+ (ver PRÓXIMOS PASSOS abaixo)
+- [~] Fase 1e: ep.39 FEITO (PARA-APROVAR local, rev 6,57→ordens 1–7 aplicadas, portão ok, não subiu ao Drive). ep.38 FEITO (para-aprovar; rev2 7,75, ordens aplicadas, sem 3ª revisão). FALTA ep.39+ (ver PRÓXIMOS PASSOS abaixo)
 - [~] Fase 2 (refs escolhidas em referencias/GTA6_GRINGOS_20-11.md; falta modelar/produzir 1–2 + gate de impacto do clipador): modelar 1–2 vídeos gringos de GTA 6 + gate de impacto
 - [ ] Fase 3: painel multi-conta + visual preto/dourado/branco + 3 logos WR
 - [ ] Fase 4: nichos, assets, README final, revisão de skills
@@ -35,5 +35,5 @@ Dicas operacionais: render_leve.sh exige TOTAL numérico → passar intervalo '0
 - S1 parou ~06:20
 
 ## PONTO DE RETOMADA (sobrescrever)
-20/11 ~12:25: ep.39 RENDERIZADO (2m06 render) + montado (mix -14 LUFS, final.mp4 acelerado 1.04x p/ ritmo 2.54 pal/s; original em final_1x.mp4) e PORTÃO FINAL PASSOU (portao.py da kit agora = docs/tiao/portao.py com mecânicas; plano_beats.json por beat). Falta: revisor-bonecos (1 passada) → ordens ao produtor → rclone Drive1 + cópia em prontos/3D/Aventuras do Tião/ → docs/TEMPO_EPISODIO.md → commit/push. Depois Fase 2/3/5.
-Lições p/ KIT: portao mecânico lê plano_beats.json; FICHA com colunas 'Câmera REF'/'Fala PT-BR' e fala completa; PORTAO_BEATS.fala = falas.json; voz 2.45 pal/s → acelerar 1.04x no final.
+20/11 ~12:40: ep.39 ENTREGUE (PARA-APROVAR): prontos/3D/Aventuras do Tião/39 - Prédio Mais Alto (PARA-APROVAR).mp4 (NÃO subiu ao Drive: sem revisor ok ≥8, igual ep.38; subi por engano e removi). Rev 6,57 → ordens aplicadas → portão final PASSOU, sem 3ª revisão. Tempo ~2h15 em docs/TEMPO_EPISODIO.md. Uso 5h≈50% sem≈45%.
+PRÓXIMO (melhoria contínua): (a) automatizar portão de plano antes do render (3 planos seguidos mesmo cenário+luz, contato do senta) e ordem 'prop da virada desligado'; (b) Fase 2 GTA gringo (Lugan3d 'Los Santos before GTA VI' modelável); (c) Fase 3 painel (logo marca/propostas-logo/logo-b4-preto.svg); (d) ep.40 só se semanal <60% e com revisor calibrado. Blender aguarda OK do Filippe.

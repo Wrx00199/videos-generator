@@ -5,13 +5,16 @@
 // porque luz('noite') é a noite genérica do kit). Piso útil y=0; câmera geral = camCen(id,'geral'); bonecos em x≈±0,7, z≈0,4..0,9.
 // Opções (todas opcionais; nada é alocado por quadro, texto só é redesenhado quando muda):
 //   obra_azul     { andares: 87 (número na régua/placa), gancho: 0..1 (viga pendurada sobe), bandeiras: 1|0 }
+//   obra_azul/obra_vermelha também: nuvens: 1|0 (0 = sem nuvens de dia, p/ luz de noite)
 //   obra_vermelha { andares: 86, telhado: 0..1 (telhado vermelho fecha de trás pra frente), mastro: 0..1 (mastro + bandeira sobem; com telhado>=0,5 sai da cumeeira — ver pela câmera 'mastro', de fora), gancho, bandeiras }
-//   escritorio    { maquete: { azul: 0..1, vermelho: 0..1 } (altura dos prédios da maquete), luminaria: 1|0, noite: 0|1 (janelão vira noite) }
-//   skyline       { hAzul: 24, hVermelho: 22 (andares, 0..70; topo = -60 + 3,2·andares m), regua: 1|0 (régua gigante com setas azul/vermelha) }
+//   escritorio    { maquete: { azul: 0..1, vermelho: 0..1 } (altura dos prédios da maquete), luminaria: 1|0, noite: 0|1 (janelão vira noite), coroaAgulha: 0|1 (agulha do azul na janela e na maquete; PADRÃO 0 = sem spoiler) }
+//   skyline       { hAzul: 24, hVermelho: 22 (andares, 0..70; topo = -60 + 3,2·andares m), regua: 1|0 (régua gigante com setas azul/vermelha),
+//                 coroaAgulha: 0..N (agulha de prata grossa sobe da coroa do azul sem o prédio crescer; 1 ≈ 60 m; PADRÃO 0 = sem spoiler), nuvens: 1|0 }
 //   rua           { multidao: 0..1 (pessoinhas na calçada e na rua do fundo), hora: 10.1 (ponteiros do relógio de rua, horas decimais) }
 //   redacao       { manchete: 'ACABOU!' (texto curto, ajusta o tamanho), luminaria: 1|0 }
 //   noite         { tampa: 0..1 (tampa de ferro redonda abre), agulha: 0..N (topo da agulha = 2·N m acima do teto; >3 sai do quadro geral),
-//                   brilho: 0..1 (padrão: liga junto com a agulha), holofote: 1|0 }  (alias: S.topo_noite)
+//                   brilho: 0..1 (padrão: min(0,25, agulha·1,5)), brilhoMax, holofote: 1|0,
+//                   agulhaGrossa: 1 (raio x N), plataforma: 0|1 (disco r 0,25 na ponta; topo = 2·agulha + 0,07) }  (alias: S.topo_noite)
 // Câmeras extras (CAMS5, mescladas em CAMS): noite.agulha (baixo, olhando a agulha subir), skyline.predios (os dois prédios inteiros).
 export const PREDIOS = ['obra_azul', 'obra_vermelha', 'escritorio', 'skyline', 'rua', 'redacao', 'noite'];
 export const CAMS5 = {
@@ -52,8 +55,8 @@ export function construirPredios(X) {
   const vigaI = (g, eixo, c, L, mat, s = 1) => { const G = new THREE.Group(); G.position.set(c[0], c[1], c[2]); g.add(G);
     const alma = add(tbox(0.07 * s, L, 0.34 * s, 0.6), mat, 0, 0, 0, G); for (const k of [-1, 1]) add(tbox(0.3 * s, L, 0.06 * s, 0.6), mat, 0, 0, k * 0.17 * s, G);
     if (eixo === 'x') G.rotation.z = PI / 2; else if (eixo === 'z') G.rotation.x = PI / 2; return G; };
-  const nuvens = (g, lista_, cor = '#ffffff', op = 1) => { const m = bas({ color: cor, transparent: op < 1, opacity: op }); for (const [x, y, z, s] of lista_) for (let k = 0; k < 3; k++) {
-    const n = add(new THREE.SphereGeometry(1, 14, 10), m, x + (k - 1) * s * 1.1, y + (k === 1 ? s * 0.35 : 0), z, g, { cast: false }); n.scale.set(s * 1.3, s * 0.55, s * 0.7); semTinta(n); } };
+  const nuvens = (g, lista_, cor = '#ffffff', op = 1) => { const m = bas({ color: cor, transparent: op < 1, opacity: op }), ms = []; for (const [x, y, z, s] of lista_) for (let k = 0; k < 3; k++) {
+    const n = add(new THREE.SphereGeometry(1, 14, 10), m, x + (k - 1) * s * 1.1, y + (k === 1 ? s * 0.35 : 0), z, g, { cast: false }); n.scale.set(s * 1.3, s * 0.55, s * 0.7); semTinta(n); ms.push(n); } return ms; };
   const bandeirinhas = (g, a, b, n, cores, sag = 0.35) => { const pa = V(a), pb = V(b), meio = pa.clone().add(pb).multiplyScalar(0.5); meio.y -= sag;
     const cur = new THREE.QuadraticBezierCurve3(pa, meio, pb); add(new THREE.TubeGeometry(cur, 16, 0.012, 5), mc('#3a3a3a'), 0, 0, 0, g, { cast: false });
     const sh = new THREE.Shape(); sh.moveTo(-0.15, 0); sh.lineTo(0.15, 0); sh.lineTo(0, -0.38); sh.closePath(); const geo = new THREE.ShapeGeometry(sh), out = [];
@@ -139,8 +142,9 @@ export function construirPredios(X) {
     for (let i = 0; i < FX; i++) for (const s of [-1, 1]) { const f = add(new THREE.BoxGeometry(2.75, 0.06, 7.4 / FX), telM, s * 1.25, 5.25, -4.3 + (i + 0.5) * 7.4 / FX, tel); f.rotation.z = -s * 0.5; f.userData.i = i; faixas.push(f); }
     const cume = add(new THREE.CylinderGeometry(0.09, 0.09, 7.4, 12), mc('#8a2a20'), 0, 5.9, -0.6, tel); cume.rotation.x = PI / 2; tel.visible = false;
     // cidade abaixo + nuvens
-    cidade(g, -95, id.length * 13 + 5, pal.cidade); nuvens(g, [[-30, 22, -120, 7], [25, 30, -160, 9], [60, 18, -110, 6], [-70, 35, -200, 10]], pal.nuvem || '#ffffff');
+    cidade(g, -95, id.length * 13 + 5, pal.cidade); const nuv = nuvens(g, [[-30, 22, -120, 7], [25, 30, -160, 9], [60, 18, -110, 6], [-70, 35, -200, 10]], pal.nuvem || '#ffffff');
     lista[id] = { g, chao: () => 0, state(S, f) { const B = S[id] || {}, t = f / 30;
+      const nv = (B.nuvens ?? 1) !== 0; nuv.forEach((m) => { m.visible = nv; });
       const n = Math.round(B.andares ?? pal.andares); if (n !== ultAnd) pintaRegua(n);
       pend.position.set(0.9, 3.55 + (B.gancho ?? 0) * 1.2, -2.7); pend.rotation.y = 0.25 + 0.04 * Math.sin(t * 0.9);
       const bv = B.bandeiras ?? 1; band.forEach((b, i) => { b.visible = !!bv; b.rotation.y = 0.25 * Math.sin(t * 2.2 + i); }); flag.scale.x = 1 + 0.05 * Math.sin(t * 3);
@@ -174,14 +178,14 @@ export function construirPredios(X) {
   { const parede = texto(256, 256, (a) => { a.fillStyle = '#2f6d6a'; a.fillRect(0, 0, 256, 256); a.fillStyle = '#2a625f'; for (let x = 0; x < 256; x += 32) a.fillRect(x, 0, 14, 256); });
     const g = interior('escritorio', { parede, piso: tabuas('#c08a4e', '#6a4424', 21), rodape: '#e8dcc4', lambri: '#7a4a2a', luzCor: '#ffd29a', luzI: 2.0 });
     // janelão com skyline (dia/poente) — dois prédios: azul e vermelho
-    const pintaJanela = (noite) => texto(512, 512, (a, w, h) => { const gr = a.createLinearGradient(0, 0, 0, h); if (noite) { gr.addColorStop(0, '#0a1036'); gr.addColorStop(1, '#2a3a7a'); } else { gr.addColorStop(0, '#6a8fe0'); gr.addColorStop(0.6, '#ffc690'); gr.addColorStop(1, '#ff9a6a'); } a.fillStyle = gr; a.fillRect(0, 0, w, h);
+    const pintaJanela = (noite, comAgulha = false) => texto(512, 512, (a, w, h) => { const gr = a.createLinearGradient(0, 0, 0, h); if (noite) { gr.addColorStop(0, '#0a1036'); gr.addColorStop(1, '#2a3a7a'); } else { gr.addColorStop(0, '#6a8fe0'); gr.addColorStop(0.6, '#ffc690'); gr.addColorStop(1, '#ff9a6a'); } a.fillStyle = gr; a.fillRect(0, 0, w, h);
       if (!noite) { a.fillStyle = '#fff2c0'; a.beginPath(); a.arc(380, 300, 34, 0, 7); a.fill(); } else { a.fillStyle = '#fff'; const r = P.rng(4); for (let i = 0; i < 40; i++) a.fillRect(r() * w, r() * 260, 2, 2); }
       const r = P.rng(9); for (let x = 0; x < w;) { const bw = 30 + r() * 40, bh = 60 + r() * 120; a.fillStyle = noite ? '#1c2452' : '#b07a8a'; a.fillRect(x, h - bh, bw, bh); a.fillStyle = noite ? '#ffd76a' : 'rgba(255,240,220,.5)'; for (let yy = h - bh + 8; yy < h - 6; yy += 14) for (let xx = x + 5; xx < x + bw - 6; xx += 10) if (r() < 0.45) a.fillRect(xx, yy, 4, 7); x += bw + 2; }
       const torre = (x, bw, bh, cor, topo) => { a.fillStyle = cor; a.fillRect(x, h - bh, bw, bh); a.fillStyle = noite ? '#ffd76a' : 'rgba(255,255,255,.55)'; for (let yy = h - bh + 10; yy < h; yy += 16) for (let xx = x + 6; xx < x + bw - 6; xx += 12) a.fillRect(xx, yy, 6, 9);
-        a.fillStyle = cor; if (topo === 'agulha') { a.fillRect(x + bw * 0.2, h - bh - 30, bw * 0.6, 30); a.beginPath(); a.moveTo(x + bw / 2 - 5, h - bh - 30); a.lineTo(x + bw / 2, h - bh - 110); a.lineTo(x + bw / 2 + 5, h - bh - 30); a.fill(); }
+        a.fillStyle = cor; if (topo === 'agulha') { a.fillRect(x + bw * 0.2, h - bh - 30, bw * 0.6, 30); if (comAgulha) { a.fillStyle = '#d6dce6'; a.beginPath(); a.moveTo(x + bw / 2 - 9, h - bh - 30); a.lineTo(x + bw / 2, h - bh - 130); a.lineTo(x + bw / 2 + 9, h - bh - 30); a.fill(); } }
         else { a.beginPath(); a.moveTo(x - 4, h - bh); a.lineTo(x + bw / 2, h - bh - 40); a.lineTo(x + bw + 4, h - bh); a.fill(); a.fillRect(x + bw / 2 - 2, h - bh - 80, 4, 42); a.fillStyle = '#e03a2a'; a.fillRect(x + bw / 2 + 2, h - bh - 80, 26, 16); } };
       torre(110, 70, 330, '#3f6fd0', 'agulha'); torre(320, 76, 300, '#d0423a', 'telhado'); });
-    const jan = plano(g, 4.6, 3.6, bas({ map: T(pintaJanela(false)) }), 0, 2.85, -3.44); jan.userData.ndSkip = true; jan.userData.tD = jan.material.map; jan.userData.tN = T(pintaJanela(true));
+    const jan = plano(g, 4.6, 3.6, bas({ map: T(pintaJanela(false)) }), 0, 2.85, -3.44); jan.userData.ndSkip = true; jan.userData.tD = jan.material.map; jan.userData.tN = T(pintaJanela(true)); jan.userData.tDA = T(pintaJanela(false, true)); jan.userData.tNA = T(pintaJanela(true, true));
     for (const x of [-2.35, -0.78, 0.78, 2.35]) caixa(g, 0.1, 3.8, 0.1, '#e8dcc4', x, 0.95, -3.4); for (const y of [0.95, 2.85, 4.7]) caixa(g, 4.8, 0.1, 0.1, '#e8dcc4', 0, y - 0.05, -3.4); caixa(g, 5.0, 0.12, 0.3, '#e8dcc4', 0, 0.86, -3.3);
     relogioParede(g, 0, 5.45, -3.47, 0.36); const plq = plano(g, 2.6, 0.5, toon({ map: T(texto(512, 96, (a, w, h) => { a.fillStyle = '#7a4a2a'; a.fillRect(0, 0, w, h); a.fillStyle = '#f2c66a'; a.fillRect(6, 6, w - 12, h - 12); escreve(a, 'CONSTRUTORA', w / 2, h / 2 + 2, w - 40, 64, '#5a3418'); })) }), 0, 6.4, -3.45);
     // prancheta de desenho com planta (esquerda)
@@ -196,7 +200,7 @@ export function construirPredios(X) {
     // mesa da maquete (direita): dois prédios em escala + binóculo + caneca
     const mq = mesa(g, 1.7, -2.3, 1.5, 0.9, 0.8, '#8a5a30', '#5b3a22'); caixa(mq, 1.3, 0.04, 0.75, '#6ab04a', 0, 0.8, 0); for (const z of [-0.2, 0.2]) caixa(mq, 1.2, 0.005, 0.06, '#9a9a9a', 0, 0.84, z);
     const torreM = (x, cor, topo) => { const T0 = new THREE.Group(); T0.position.set(x, 0.84, -0.05); mq.add(T0); const and = []; for (let i = 0; i < 10; i++) { const b = caixa(T0, 0.24, 0.07, 0.24, i % 2 ? cor : new THREE.Color(cor).multiplyScalar(0.85).getStyle(), 0, i * 0.072, 0); and.push(b); }
-      const top = new THREE.Group(); T0.add(top); if (topo) cil(top, 0.003, 0.05, 0.35, '#d8dde5', 0, 0, 0); else { const tt = add(new THREE.ConeGeometry(0.2, 0.14, 4), mc('#a8281e'), 0, 0.07, 0, top); tt.rotation.y = PI / 4; cil(top, 0.006, 0.006, 0.22, '#eee', 0, 0.1, 0); } return { and, top }; };
+      const top = new THREE.Group(); T0.add(top); if (topo) { const ag = new THREE.Group(); top.add(ag); cil(ag, 0.003, 0.05, 0.35, '#d8dde5', 0, 0, 0); top.userData.ag = ag; ag.visible = false; } else { const tt = add(new THREE.ConeGeometry(0.2, 0.14, 4), mc('#a8281e'), 0, 0.07, 0, top); tt.rotation.y = PI / 4; cil(top, 0.006, 0.006, 0.22, '#eee', 0, 0.1, 0); } return { and, top }; };
     const mA = torreM(-0.3, '#3f6fd0', true), mV = torreM(0.3, '#d0423a', false);
     binoculo(mq, -0.45, 0.82, 0.3, 0.4, 1.3); cil(mq, 0.05, 0.045, 0.12, '#f2f2f2', 0.55, 0.82, 0.3); const alca = add(new THREE.TorusGeometry(0.035, 0.012, 6, 12), mc('#f2f2f2'), 0.61, 0.88, 0.3, mq);
     // estante/arquivo + globo, rolos de planta, cesto com papel, planta, cabideiro com chapéu, tapete
@@ -209,7 +213,8 @@ export function construirPredios(X) {
     add(new THREE.BoxGeometry(3.2, 0.02, 2.2), mc('#8c2f2f'), 0, 0.01, 0.4, g); add(new THREE.BoxGeometry(2.7, 0.025, 1.7), mc('#e8c070'), 0, 0.015, 0.4, g);
     lista.escritorio = { g, chao: () => 0, state(S) { const B = S.escritorio || {}, M = B.maquete || {};
       for (const [k, T0] of [[M.azul ?? 1, mA], [M.vermelho ?? 0.8, mV]]) { const n = Math.max(1, Math.round(Math.min(1, k) * 10)); T0.and.forEach((b, i) => { b.visible = i < n; }); T0.top.position.y = n * 0.072; }
-      const on = B.luminaria ?? 1; luzL.intensity = on ? 1.5 : 0; halo.visible = !!on; const tx = B.noite ? jan.userData.tN : jan.userData.tD; if (jan.material.map !== tx) { jan.material.map = tx; jan.material.needsUpdate = true; } } };
+      const ca = (B.coroaAgulha ?? 0) > 0; mA.top.userData.ag.visible = ca;   // agulha = payoff: desligada por padrão (sem spoiler)
+      const on = B.luminaria ?? 1; luzL.intensity = on ? 1.5 : 0; halo.visible = !!on; const tx = B.noite ? (ca ? jan.userData.tNA : jan.userData.tN) : (ca ? jan.userData.tDA : jan.userData.tD); if (jan.material.map !== tx) { jan.material.map = tx; jan.material.needsUpdate = true; } } };
   }
 
   // ---------- SKYLINE (pôr do sol): terraço + cidade + DOIS prédios (azul e vermelho) com altura controlável ----------
@@ -238,7 +243,12 @@ export function construirPredios(X) {
     // os dois prédios: corpo com UV repetida por andar (janelas não esticam), coroa sobe junto
     const torre = (x, cor, vidro, tipo) => { const G = new THREE.Group(); G.position.set(x, -60, -78); g.add(G); const tx = T(facTex(cor, vidro, 5, 1, x > 0 ? 3 : 5)), m = toon({ map: tx }), topo = mc(new THREE.Color(cor).multiplyScalar(0.8).getStyle());
       const corpo = add(new THREE.BoxGeometry(12, 1, 12), [m, m, topo, topo, m, m], 0, 0.5, 0, G, { cast: false }); const coroa = new THREE.Group(); G.add(coroa);
-      if (tipo === 'agulha') { caixa(coroa, 9, 3, 9, cor, 0, 0, 0, 0, { cast: false }); caixa(coroa, 6, 3, 6, cor, 0, 3, 0, 0, { cast: false }); cil(coroa, 2.2, 3, 4, '#c8d0dc', 0, 6, 0, { cast: false }); cil(coroa, 0.05, 1.2, 14, '#e4e8f0', 0, 10, 0, { cast: false }); }
+      if (tipo === 'agulha') { caixa(coroa, 9, 3, 9, cor, 0, 0, 0, 0, { cast: false }); caixa(coroa, 6, 3, 6, cor, 0, 3, 0, 0, { cast: false });
+        // agulha de prata = PAYOFF: desligada por padrão (coroaAgulha 0); sobe da coroa sem o prédio crescer. Grossa p/ ler a 150 px (~85 m da câmera)
+        const ag = new THREE.Group(); ag.position.y = 6; ag.visible = false; coroa.add(ag); cil(ag, 2.6, 2.9, 1.2, '#8a94a6', 0, 0, 0, { cast: false }, 24);
+        const haste = add(new THREE.CylinderGeometry(1.1, 1.9, 1, 24), mc('#cfd6e2'), 0, 0.5, 0, ag, { cast: false }); const ponta = new THREE.Group(); ag.add(ponta);
+        add(new THREE.ConeGeometry(1.1, 7, 24), mc('#e4e8f0'), 0, 3.5, 0, ponta, { cast: false }); esf(ponta, 1.4, '#f2f4f8', 0, 7.4, 0, { cast: false });
+        coroa.userData.ag = { ag, haste, ponta }; }
       else { const tt = add(new THREE.ConeGeometry(9, 6, 4), mc('#a8281e'), 0, 3, 0, coroa, { cast: false }); tt.rotation.y = PI / 4; caixa(coroa, 3, 4, 3, cor, 0, 3, 0, 0, { cast: false }); const tc = add(new THREE.ConeGeometry(2.4, 3, 4), mc('#a8281e'), 0, 8.5, 0, coroa, { cast: false }); tc.rotation.y = PI / 4;
         cil(coroa, 0.12, 0.12, 8, '#eee', 0, 10, 0, { cast: false }); const fb = plano(coroa, 3.4, 2, toon({ color: '#e03a2a', side: THREE.DoubleSide }), 1.8, 17, 0); coroa.userData.flag = fb; }
       return { G, corpo, coroa, tx }; };
@@ -248,9 +258,11 @@ export function construirPredios(X) {
     add(new THREE.BoxGeometry(2.4, 224, 0.3), [mc('#ddd'), mc('#ddd'), mc('#ddd'), mc('#ddd'), toon({ map: T(rtx) }), mc('#ddd')], 0, 112, 0, rg, { cast: false });
     const setaS = new THREE.Shape(); setaS.moveTo(0, 0); setaS.lineTo(3.2, 1.4); setaS.lineTo(3.2, -1.4); setaS.closePath(); const sg = new THREE.ShapeGeometry(setaS);
     const sA = new THREE.Mesh(sg, toon({ color: '#3f8cff', side: THREE.DoubleSide })); sA.rotation.y = PI; rg.add(sA); const sV = new THREE.Mesh(sg, toon({ color: '#ff4a3a', side: THREE.DoubleSide })); rg.add(sV);
-    nuvens(g, [[-40, 40, -220, 12], [35, 55, -260, 14], [80, 30, -200, 9], [-90, 60, -300, 16]], '#ffc8a8');
+    const nuvS = nuvens(g, [[-40, 40, -220, 12], [35, 55, -260, 14], [80, 30, -200, 9], [-90, 60, -300, 16]], '#ffc8a8');
     lista.skyline = { g, chao: () => 0, state(S, f) { const B = S.skyline || {}, t = f / 30;
       for (const [h, T0] of [[B.hAzul ?? 24, tA], [B.hVermelho ?? 22, tV]]) { const n = Math.max(1, Math.min(70, h)), H = n * 3.2; T0.corpo.scale.y = H; T0.corpo.position.y = H / 2; T0.tx.repeat.set(1, n); T0.coroa.position.y = H; if (T0.coroa.userData.flag) T0.coroa.userData.flag.rotation.y = 0.2 * Math.sin(t * 2); }
+      { const A = tA.coroa.userData.ag, k = Math.max(0, B.coroaAgulha ?? 0), L = 4 + 56 * k; A.ag.visible = k > 0.001; if (A.ag.visible) { A.haste.scale.y = L; A.haste.position.y = L / 2; A.ponta.position.y = L; } }
+      { const nv = (B.nuvens ?? 1) !== 0; nuvS.forEach((m) => { m.visible = nv; }); }
       rg.visible = (B.regua ?? 1) !== 0; sA.position.set(-1.2, Math.min(70, B.hAzul ?? 24) * 3.2, 0.3); sV.position.set(1.2, Math.min(70, B.hVermelho ?? 22) * 3.2, 0.3);
       pombos.forEach((p, i) => { p.rotation.y = 0.6 * Math.sin(t * 0.8 + i * 2); }); } };
   }
@@ -365,8 +377,11 @@ export function construirPredios(X) {
     for (let k = 0; k < 14; k++) { const an = k / 14 * PI * 2; esf(tampa, 0.035, '#b8c0cc', Math.cos(an) * (HR - 0.08), 0.1, Math.sin(an) * (HR - 0.08), { cast: false }); }
     const pega = add(new THREE.TorusGeometry(0.16, 0.03, 8, 20, PI), mc('#b8c0cc'), 0, 0.09, 0.2, tampa); pega.rotation.y = PI / 2; for (const s of [-1, 1]) caixa(g, 0.18, 0.12, 0.12, '#3a3e48', s * 0.35, 0, HZ - HR - 0.04);
     // agulha de prata (topo em 2·agulha m), brilho no topo
-    const AG = 30, ag = new THREE.Group(); g.add(ag); add(new THREE.CylinderGeometry(0.02, 0.32, AG, 24), toon({ color: '#dfe6f0', emissive: '#3a4a6a' }), 0, -AG / 2, 0, ag, { cast: false });
-    for (let k = 1; k < 9; k++) add(new THREE.TorusGeometry(0.02 + 0.3 * (k * 2.4) / AG + 0.02, 0.025, 8, 24), mc('#9aa8bc'), 0, -k * 2.4, 0, ag, { cast: false }).rotation.x = PI / 2;
+    const AG = 30, ag = new THREE.Group(); g.add(ag); const hast = new THREE.Group(); ag.add(hast); add(new THREE.CylinderGeometry(0.02, 0.32, AG, 24), toon({ color: '#dfe6f0', emissive: '#3a4a6a' }), 0, -AG / 2, 0, hast, { cast: false });
+    for (let k = 1; k < 9; k++) add(new THREE.TorusGeometry(0.02 + 0.3 * (k * 2.4) / AG + 0.02, 0.025, 8, 24), mc('#9aa8bc'), 0, -k * 2.4, 0, hast, { cast: false }).rotation.x = PI / 2;
+    // plataforma redonda na ponta (opção plataforma: 1) — assento com contato p/ boneco sentado no topo; topo da plataforma = ponta + 0,07
+    const plat = new THREE.Group(); ag.add(plat); cil(plat, 0.25, 0.25, 0.07, '#c8d0dc', 0, 0, 0, { cast: false }, 32); const pAro = add(new THREE.TorusGeometry(0.25, 0.018, 8, 32), mc('#5a6478'), 0, 0.07, 0, plat, { cast: false }); pAro.rotation.x = PI / 2;
+    cil(plat, 0.06, 0.1, 0.12, '#9aa8bc', 0, -0.12, 0, { cast: false }); plat.visible = false;
     const hal = []; for (const [r0, op] of [[0.2, 0.9], [0.45, 0.35], [0.9, 0.12]]) { const h = semTinta(add(new THREE.SphereGeometry(r0, 18, 12), brilho('#d8ecff', op), 0, 0, 0, ag, { cast: false })); hal.push(h); }
     const raioAg = semTinta(add(new THREE.CylinderGeometry(0.4, 0.4, AG, 20, 1, true), brilho('#a8d0ff', 0.12), 0, -AG / 2, 0, ag, { cast: false }));
     const luzAg = new THREE.PointLight('#cfe6ff', 0, 9, 1.4); ag.add(luzAg);
@@ -397,7 +412,8 @@ export function construirPredios(X) {
     lista.noite = { g, chao: () => 0, state(S, f) { const B = S.noite || S.topo_noite || {}, t = f / 30;
       const tp = Math.min(1, Math.max(0, B.tampa ?? 0)); piv.rotation.x = -tp * 1.95;
       const a = Math.max(0, B.agulha ?? 0), topo = a * 2; ag.visible = a > 0.001; ag.position.set(0, topo, HZ);
-      const br = B.brilho ?? Math.min(1, a * 1.5); hal.forEach((h, i) => { h.visible = br > 0.02; h.scale.setScalar((0.6 + 0.4 * br) * (1 + 0.06 * Math.sin(t * 6 + i))); }); raioAg.visible = br > 0.02; raioAg.material.opacity = 0.12 * br; luzAg.intensity = 2.5 * br;
+      const gx = Math.max(0.2, B.agulhaGrossa ?? 1); hast.scale.set(gx, 1, gx); plat.visible = !!B.plataforma;   // agulhaGrossa: raio x N (3 = legível a 150 px)
+      const br = Math.min(B.brilhoMax ?? 1, B.brilho ?? Math.min(0.25, a * 1.5));   // halo nunca maior que o prop: padrão <= 0,25 hal.forEach((h, i) => { h.visible = br > 0.02; h.scale.setScalar(Math.min(1, 0.15 + 0.85 * br) * (1 + 0.06 * Math.sin(t * 6 + i))); }); raioAg.visible = br > 0.3;   // halo encolhe com o brilho (não cobre a agulha) raioAg.material.opacity = 0.12 * br; luzAg.intensity = 2.5 * br;
       const hon = B.holofote ?? 1; feixe.visible = lente.visible = !!hon; lata.rotation.z = 0.3 + 0.2 * Math.sin(t * 0.5); feixe2.rotation.z = 0.35 + 0.15 * Math.sin(t * 0.3);
       const pisca = (Math.floor(t * 1.5) % 2) === 0; ant.visible = antH.visible = pisca; } };
   }
