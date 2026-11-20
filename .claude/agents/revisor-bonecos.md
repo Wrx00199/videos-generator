@@ -57,3 +57,6 @@ Rode `python3 projetos/bonecos/serie-tiao-kit/portao.py <proj> final` e leia a s
 - Ressalvas que não reprovam.
 - **Erros NOVOS** (fora do checklist/catálogo): 1 linha cada + a regra geral que evitaria o tipo de erro. Isso vira padrão no KIT e no Second Brain.
 Responda no chat só: veredito, média, as ordens (1 linha cada) e as regras novas.
+
+## Portão da FICHA DE MODELAGEM (20/11)
+Antes da nota: ler `FICHA.md` do episódio e `serie-tiao-kit/FICHA_MODELAGEM.md`. REPROVE se: ficha ausente/incompleta; algum plano com cenário, paleta, props ou câmera mais pobre que a referência (cite plano e correção); ambientes distintos < 80% da referência ou < 3 paletas em 60 s; HUD fixo o vídeo todo sem a ref ter. Nota máxima 6 enquanto reprovado.
