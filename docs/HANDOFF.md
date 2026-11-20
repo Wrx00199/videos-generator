@@ -24,3 +24,10 @@ Ver `_estado/MISSAO-ESTADO.md` (PONTO DE RETOMADA), `docs/tiao/` (FICHA_MODELAGE
 
 ## BUSCA DIRETA (regra do Filippe, 20/11) — economia
 Nunca varrer pasta inteira nem ler arquivo grande para achar algo. Ordem: (1) `rg -l "<palavra-chave>" <pasta>` ou `fd`/`ls -1` de 1 nível; (2) abrir só o arquivo achado e só o trecho (`rg -n -C3`, `sed -n 'a,bp'`); (3) índice/README/CLAUDE.md da pasta antes de explorar; (4) para pasta antiga grande (ex. `/media/wr/HDD/Gon`, 8,5 GB): `rg -l -i "clon|modelag|beat|roteiro"` limitado a `*.md *.py *.mjs *.json`, ler no máx. 2 arquivos; (5) subagente haiku só se a busca ainda ficar ampla. Resultado de busca vira nota curta no HANDOFF/Second Brain para não repetir.
+
+## ATUALIZAÇÃO 20/11 ~19h (chat Sonnet "extração") — feito
+- `regras.md` (raiz) + KIT ajustado (modelar; subagentes sonnet/haiku; ler regras.md). Hooks em `.claude/hooks/` (1 render por vez; subagente só haiku/sonnet) + `.claude/settings.json`. Skills hyperframes desligadas (`.claude/_skills_off/`, reversível). Auditoria: `docs/ECONOMIA_AUDITORIA.md`.
+- `ferramentas/extrair_ref.py <url>` (yt-dlp+ffmpeg+whisper fallback; 31–133 s/vídeo, 0 token) e `ferramentas/tweets_ref.py` (fxtwitter, sem login). Base em `referencias/base/` (`<id>.json`, `<id>_folha.jpg`, `<id>_resumo.json` haiku, `tweets.json` com 12 tweets, `_indice.json`).
+- Descoberta: dos 7 links YouTube, TODOS são tutoriais (como fazer shorts 3D com Claude), não vídeos para modelar. Modelo de vídeo final = shorts do ricksclips (`VS1Z_Q-Klt8` já na base). Tweets longos (até 21k chars) ainda NÃO lidos: contêm prompts.
+- Semanal 51% (sem mudança medível); este chat parou em 15% de contexto.
+- Próximo: ler os tweets/prompts mais relevantes por `rg`, extrair mais shorts do ricksclips com `extrair_ref.py`, escolher 1 para modelar e só então escrever o episódio.
