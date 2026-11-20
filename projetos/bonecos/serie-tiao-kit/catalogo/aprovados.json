@@ -336,6 +336,22 @@
   "navioberm": {
    "ok": true,
    "falhas": []
+  },
+  "sala": {
+   "ok": true,
+   "falhas": []
+  },
+  "cozinha": {
+   "ok": true,
+   "falhas": []
+  },
+  "quarto": {
+   "ok": true,
+   "falhas": []
+  },
+  "fachada": {
+   "ok": true,
+   "falhas": []
   }
  }
 }

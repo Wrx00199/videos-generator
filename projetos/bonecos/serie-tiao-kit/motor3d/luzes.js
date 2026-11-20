@@ -70,3 +70,5 @@ export const relampago = (f, quadros = []) => { let v = 0; for (const q of quadr
 export const luz = (nome, mods = {}) => ({ ...LIGHTS[nome], ...mods });
 // mar por CLIMA do vídeo (independe da batalha): worldAt -> { mar: MAR.tensao }. Sem 'mar', vale o 'ondas' da luz.
 export const MAR = { liso: 0.08, calmo: 0.22, brisa: 0.4, tensao: 0.7, agitado: 1.0, tempestade: 1.3 };
+// aliases do pacote casa (o auditor do catálogo chama luz(<id do cenário>))
+LIGHTS.sala = LIGHTS.casa_dia; LIGHTS.quarto = LIGHTS.casa_quarto; LIGHTS.fachada = LIGHTS.casa_dia;
