@@ -27,23 +27,18 @@ def ts(s):  # 00:00:01.500 -> seg
     h, m, x = s.split(":"); return int(h) * 3600 + int(m) * 60 + float(x)
 
 def ler_vtt(p):
-    """VTT (auto-legenda do YouTube repete linhas): devolve [{ini,fim,texto}] sem duplicatas."""
+    """VTT auto-legenda do YouTube é rolante (cada cue repete a linha anterior): usa só a ÚLTIMA linha de cada cue e remove repetição."""
     out, ult = [], ""
     for bloco in re.split(r"\n\n+", p.read_text(encoding="utf-8", errors="ignore")):
         m = re.search(r"(\d+:\d+:\d+\.\d+) --> (\d+:\d+:\d+\.\d+)", bloco)
         if not m: continue
         linhas = [re.sub(r"<[^>]+>", "", l).strip() for l in bloco.splitlines()[1:] if "-->" not in l]
-        txt = " ".join(l for l in linhas if l).strip()
-        if txt and txt != ult:
+        linhas = [l for l in linhas if l]
+        if not linhas: continue
+        txt = linhas[-1].replace("&gt;", ">").replace("&amp;", "&")
+        if txt != ult:
             out.append({"ini": round(ts(m[1]), 2), "fim": round(ts(m[2]), 2), "texto": txt}); ult = txt
-    # auto-legenda: cada cue repete o fim do anterior; remove prefixo repetido
-    lim, prev = [], ""
-    for c in out:
-        t = c["texto"]
-        if prev and t.startswith(prev): t = t[len(prev):].strip()
-        prev = c["texto"]
-        if t: lim.append({**c, "texto": t})
-    return lim
+    return out
 
 def main():
     ap = argparse.ArgumentParser()
