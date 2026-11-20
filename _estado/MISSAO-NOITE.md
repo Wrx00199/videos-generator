@@ -126,7 +126,7 @@ Revisar/diagnosticar SOMENTE o ÚLTIMO episódio pronto (e o que estiver em prod
 ## PONTO DE RETOMADA E CONTEXTO (Filippe, 20/11) — obrigatório
 - Mantenha em `_estado/MISSAO-ESTADO.md` a seção **"PONTO DE RETOMADA"** (sobrescrever, não acumular): fase e item, episódio/projeto em andamento, **etapa exata** (ex.: "ep.38: falas ok, voz ok, FALTA render → comando `...`"), artefatos já prontos (não refazer), próximo comando e riscos. Atualize ao fim de CADA etapa e ANTES de qualquer render longo, comando demorado ou subagente.
 - Ao retomar (sessão nova ou vigia): leia o PONTO DE RETOMADA primeiro e continue dali; confira os artefatos no disco (falas.json, voz, legenda, plano, mp4) e NÃO refaça o que existe e passou no portão.
-- **Contexto:** não deixe a sessão inchar. Quando o contexto passar de ~55–60% (confira `get_usage` com `session: self`) e uma etapa acabar: grave o PONTO DE RETOMADA, faça commit/push, apague o lock, abra uma sessão NOVA (`start_session`, fresh, mesmo brief: "leia `_estado/MISSAO-NOITE.md` e continue do PONTO DE RETOMADA") e encerre a atual. A sessão nova cria o lock. Nunca duas ativas.
+- **Contexto:** não deixe a sessão inchar. Quando o contexto passar de ~30% (confira `get_usage` com `session: self`) e uma etapa acabar: grave o PONTO DE RETOMADA, faça commit/push, apague o lock, abra uma sessão NOVA (`start_session`, fresh, mesmo brief: "leia `_estado/MISSAO-NOITE.md` e continue do PONTO DE RETOMADA") e encerre a atual. A sessão nova cria o lock. Nunca duas ativas.
 - Ao parar por limite (95% de 5h / 75% semanal): grave o PONTO DE RETOMADA com a etapa exata, commit/push, apague o lock, atualize RELATORIO-MANHA e encerre. O vigia (a cada 2 h, minuto 10) abre a próxima sessão após o reset.
 
 ## LIMITE SEMANAL = 75% (Filippe, 20/11) e NÃO PARAR
@@ -149,7 +149,7 @@ Prioridade máxima junto com a qualidade: NÃO estourar o semanal (corte 75%). M
 - Delegue trabalho MECÂNICO ao Codex (`codex exec "<pedido>"`, CLI em ~/.local/bin): scripts, refatoração isolada, testes, docs, geração de imagem/asset. Brief curto, confira o resultado (teste/trecho) antes de dar como feito. Codex gasta outro limite, não o do Claude.
 - Use skill/script curto quando repetir 2+ vezes o mesmo procedimento (retomada, olheiro, acabamento, portão): menos contexto reaprendido por sessão.
 - Meça `get_usage` ao início e ao fim de cada etapa e registre o custo em % por etapa no estado; etapa que gastar muito, simplifique antes de repetir.
-- Sessão nova quando o contexto passar de ~55%; evite reler arquivos grandes; imagem só em recorte; sem subagente para o que cabe em poucas chamadas.
+- Sessão nova quando o contexto passar de ~30%; evite reler arquivos grandes; imagem só em recorte; sem subagente para o que cabe em poucas chamadas.
 - Se o semanal passar de ~65%, entre em modo econômico: só etapas de alto valor (episódio do Tião, revisor), sem exploração nova, sem subagente opus.
 
 ## ARRUMAR OS BOTS EXISTENTES (Filippe, 20/11)
@@ -172,3 +172,6 @@ O Filippe acordou e cobrou: em ~9 h saíram 2 episódios (ep.38 e 39) ambos REPR
 4. Tempo: cronometrar e cortar o que mais pesa (storyboard em código + correção); meta realista de curto prazo ≤ 30 min por episódio, descendo.
 5. Semanal já em ~47% (corte 75%): ao passar de 60% só modo econômico.
 6. Relatório da manhã deve listar o que foi ENTREGUE (vídeos no Drive, painel, bots), não só processos.
+
+## CONTEXTO (Filippe, 20/11 15:05) — SUBSTITUI 55–60%
+Sessão nova quando o contexto passar de ~30% (contexto grande = cada turno custa mais limite). Ao fim de cada etapa: `get_usage` session self; se > 30%, gravar PONTO DE RETOMADA, commit/push, apagar lock, abrir sessão NOVA e encerrar a atual. Nunca passar de 30% de contexto sem trocar.
