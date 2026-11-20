@@ -266,3 +266,11 @@ HUD de saldo: barra INTEIRA de uma cor só, uniforme e destacada (nunca meio/mei
 
 ## REGRA 20/11 — Modelagem plano a plano (ficha obrigatória)
 Ver `FICHA_MODELAGEM.md` e `DIAGNOSTICO_REF_vs_TIAO_20-11.md`. Sem FICHA completa não há storyboard; revisor reprova cenário/paleta/props mais pobres que a referência. Um cenário único para o vídeo todo reprova.
+
+## Erros NOVOS do ep.38 (revisor 20/11) → regras
+- Luz "noite" com janela de céu diurno e sala clara: janela segue a luz (noite = céu escuro + lua; sala ≤40%).
+- Cobertura "citado→aparece" passou com prop minúsculo: prop citado ocupa ≥15% da área do quadro (pedido: checagem no portão).
+- Árvore/objeto de cenário em 1º plano tapando ≥25% do quadro: mudar ângulo/alvo.
+- Boneco ≥35% da altura do quadro no plano médio; plano aberto só 1 a cada 6.
+- FICHA e story.js devem bater beat a beat (cenário e câmera).
+- Legenda: "Noite/Dia/Hora N" nunca separa rótulo e número (legenda.py corrigido).

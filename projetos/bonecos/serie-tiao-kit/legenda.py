@@ -7,6 +7,7 @@ Uso:
   python3 legenda.py <palavras.json> <saida.ass> [--cor-destaque FFFF00] [--font-size 64]
 """
 
+import re
 import json
 import sys
 import argparse
@@ -41,7 +42,10 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     BLOCO_MAX = 4
     i = 0
     while i < len(palavras):
-        bloco = palavras[i : i + BLOCO_MAX]
+        n_bloco = BLOCO_MAX
+        while n_bloco > 1 and re.match(r'^(hora|dia|noite|problema|passo|semana)$', palavras[min(i + n_bloco, len(palavras)) - 1]["w"].strip().strip('.,!?').lower()) and i + n_bloco < len(palavras):
+            n_bloco -= 1   # nao deixa 'Noite' sozinha no fim do bloco (rótulo + número juntos)
+        bloco = palavras[i : i + n_bloco]
         # Duração total do bloco
         b_ini = bloco[0]["ini"]
         b_fim = bloco[-1]["fim"]
@@ -70,7 +74,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
             t_end = format_ass_time(p_fim)
             events.append(f"Dialogue: 0,{t_start},{t_end},Default,,0,0,0,,{texto_formatado}")
         
-        i += BLOCO_MAX
+        i += n_bloco
 
     with open(saida_ass, "w", encoding="utf-8") as f:
         f.write(header + "\n".join(events) + "\n")
