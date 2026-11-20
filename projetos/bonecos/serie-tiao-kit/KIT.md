@@ -9,6 +9,7 @@ Só regras e catálogo. O FLUXO (passos, comandos, tempos) está na skill `.clau
 ## Universo
 > **Conceito (Filippe, 15/11 noite): tipo Rick and Morty — o Tião vai pra aventuras loucas e diferentes a cada vídeo** (planeta, época, jogo…), com personagens e cenários novos. O navio e o elenco abaixo continuam valendo (pode ter vídeo no barco, tripulação junto), mas não limitam a série.
 > **Regra fixa:** o Tião SEMPRE usa o chapéu de cozinheiro (em qualquer aventura/roupa). Os outros personagens podem trocar de roupa conforme a aventura.
+> **Exceção de disfarce (20/11, ep.38):** o Tião pode trocar a ROUPA (ladrão listrado `tiaoL`, terno `tiaoT`, SPEC no story.js sem `base:'tiao'`), mas o chapéu de chef fica; touca/cartola nunca substituem o chapéu.
 
 - Navio pirata (casco vermelho, faixa branca, escotilhas amarelas, amurada verde-água, velas listradas vermelho/branco, bandeira vermelha). Comparar todo plano com `referencia/FOLHA_MODELO.jpg`.
 - Elenco fixo, mesmo desenho sempre (cabeça redonda branca, contorno grosso, membros de palito):

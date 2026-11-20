@@ -29,10 +29,17 @@ export function construirCasa(X) {
     caixa(g, w + 0.12, h + 0.12, 0.05, '#5b3a22', x, y, z); const [c, a] = cv(128, 128); a.fillStyle = cor; a.fillRect(0, 0, 128, 128); a.fillStyle = arte; a.beginPath(); a.arc(64, 70, 34, 0, 7); a.fill(); a.fillRect(0, 100, 128, 28);
     const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), toon({ map: T(c) })); m.position.set(x, y + h / 2, z + 0.03); g.add(m);
   };
+  // NOITE (20/11, revisão ep.38): toda janela tem textura de dia e de noite (céu azul-escuro + lua + estrelas). Troca por B.noite (0|1) ou, sem B.noite, pela luz (L.noite).
+  // B.breu=1 apaga a luz de teto (cena "no escuro"); B.tetoNoite (padrão 0,2) = fração da luz de teto à noite.
+  let ATUAL = null; const JAN = {}, LUZC = {};
+  const ceuNoite = (seed) => { const [c, a] = cv(256, 256), r = P.rng(seed), gr = a.createLinearGradient(0, 0, 0, 256); gr.addColorStop(0, '#03071c'); gr.addColorStop(1, '#16205a'); a.fillStyle = gr; a.fillRect(0, 0, 256, 256);
+    a.fillStyle = '#ffffff'; for (let i = 0; i < 26; i++) { a.globalAlpha = 0.4 + r() * 0.6; a.fillRect(r() * 256, r() * 200, 2 + (r() < 0.2 ? 1 : 0), 2); } a.globalAlpha = 1;
+    a.fillStyle = '#fff3b0'; a.beginPath(); a.arc(184, 66, 30, 0, 7); a.fill(); a.fillStyle = '#16205a'; a.beginPath(); a.arc(198, 56, 26, 0, 7); a.fill(); return c; };
   const janela = (g, x, y, z, w, h, ceu, cort) => {
     const [c, a] = cv(256, 256), gr = a.createLinearGradient(0, 0, 0, 256); gr.addColorStop(0, ceu[0]); gr.addColorStop(1, ceu[1]); a.fillStyle = gr; a.fillRect(0, 0, 256, 256);
     a.fillStyle = ceu[2] || '#fff'; for (const [cx, cy, r] of [[60, 70, 22], [90, 64, 28], [180, 110, 20]]) { a.beginPath(); a.arc(cx, cy, r, 0, 7); a.fill(); }
     const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ map: T(c), fog: false })); m.position.set(x, y + h / 2, z + 0.02); m.userData.ndSkip = true; g.add(m);
+    m.userData.tD = m.material.map; m.userData.tN = T(ceuNoite(Math.round(x * 10 + 50))); if (ATUAL) (JAN[ATUAL] ||= []).push(m);
     for (const [fx, fy, fw, fh] of [[0, h / 2, w + 0.2, 0.1], [0, -0.05, w + 0.3, 0.12], [-w / 2, h / 2, 0.1, h], [w / 2, h / 2, 0.1, h], [0, h / 2, 0.06, h]]) caixa(g, fw, fh, 0.08, '#f4efe6', x + fx, y + fy - fh / 2, z + 0.04);
     for (const s of [-1, 1]) { const cu = caixa(g, 0.55, h + 0.25, 0.12, cort, x + s * (w / 2 + 0.38), y - 0.1, z + 0.12); cu.rotation.z = s * 0.03; }
     caixa(g, w + 1.5, 0.08, 0.1, '#7a5a3a', x, y + h + 0.2, z + 0.15);
@@ -54,7 +61,7 @@ export function construirCasa(X) {
 
   // montagem de um cômodo interior: paredes, piso, rodapé, luz de teto; devolve {g, M (móveis móveis)}
   const comodo = (id, cfg) => {
-    const g = novo(id), M = {};
+    const g = novo(id), M = {}; ATUAL = id;
     const pw = new THREE.Mesh(new THREE.PlaneGeometry(7, 3.2), toon({ map: T(pintaPapel(id, cfg.p1, cfg.p2, cfg.tipo), 3, 1.6) })); pw.position.set(0, 1.6, -3.5); pw.receiveShadow = true; g.add(pw);
     for (const s of [-1, 1]) { const w = new THREE.Mesh(new THREE.PlaneGeometry(14, 3.2), toon({ map: T(pintaPapel(id + 'l', cfg.p1, cfg.p2, cfg.tipo), 6, 1.6), side: THREE.DoubleSide })); w.rotation.y = -s * PI / 2; w.position.set(s * 3.5, 1.6, 3.5); g.add(w); }
     const fl = new THREE.Mesh(new THREE.PlaneGeometry(7, 14), toon({ map: T(piso(cfg.piso, cfg.f1, cfg.f2), cfg.piso === 'xadrez' ? 4 : 2, cfg.piso === 'xadrez' ? 8 : 4) })); fl.rotation.x = -PI / 2; fl.position.set(0, 0, 3.5); fl.receiveShadow = true; g.add(fl);
@@ -62,9 +69,12 @@ export function construirCasa(X) {
     caixa(g, 7, 0.16, 0.06, cfg.rodape || '#f4efe6', 0, 0, -3.47);
     for (const s of [-1, 1]) caixa(g, 0.06, 0.16, 14, cfg.rodape || '#f4efe6', s * 3.47, 0, 3.5);
     const luzC = new THREE.PointLight(cfg.luzCor || '#ffe2b0', cfg.luzI ?? 2.0, 14, 1.3); luzC.position.set(0, 2.8, 0.5); g.add(luzC);
+    luzC.userData.i0 = cfg.luzI ?? 2.0; LUZC[id] = luzC;
     return { g, M, luzC };
   };
-  const registra = (id, g, M, estado, extras = {}) => { lista[id] = { g, chao: () => 0, state(S, f, L) { const B = S[id] || {}; for (const k in M) { const o = M[k]; o.position.x = o.userData.x0 + ((B.moveis || {})[k] || 0); } estado(B, S, f); } , ...extras }; };
+  const registra = (id, g, M, estado, extras = {}) => { lista[id] = { g, chao: () => 0, state(S, f, L) { const B = S[id] || {}; for (const k in M) { const o = M[k]; o.position.x = o.userData.x0 + ((B.moveis || {})[k] || 0); } const LC = LUZC[id]; if (LC) LC.intensity = LC.userData.i0; estado(B, S, f);
+    const nt = B.noite ?? (L && L.noite ? 1 : 0); for (const j of JAN[id] || []) { const tx = nt ? j.userData.tN : j.userData.tD; if (j.material.map !== tx) { j.material.map = tx; j.material.needsUpdate = true; } }
+    if (LC && nt) LC.intensity *= B.breu ? 0 : (B.tetoNoite ?? 0.2); } , ...extras }; };
   const movel = (M, k, obj) => { obj.userData.x0 = obj.position.x; M[k] = obj; return obj; };
 
   // ---------- SALA ----------

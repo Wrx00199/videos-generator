@@ -61,8 +61,13 @@ export const LIGHTS = {
   floresta: { ondas: .2, az: 120, el: 52, sky: '#cfeccf', ground: '#2a4a2a', hemi: 1.2, sun: '#fff4c8', sunI: 2.3, fog: '#b8dcb0', fogNear: 25, fogFar: 190, skyTop: '#8ac8c0', skyHor: '#cfeccf', sat: 1.12, waterDeep: '#05678f', waterShal: '#1194b6', glint: '#effaff', vig: .3, shadowExt: 16, tint: '#f6ffe8' },
   // PACOTE CASA (20/11): luzes de interior. Paletas bem diferentes entre si (referência troca de paleta por cômodo).
   casa_dia: { ondas: 0.2, az: 120, el: 55, sky: '#fff0c8', ground: '#c9a46a', hemi: 1.5, sun: '#fff0d0', sunI: 1.2, fog: '#fff0cf', fogNear: 30, fogFar: 200, skyTop: '#9fd0ff', skyHor: '#fff0cf', sat: 1.18, gain: '#fff4e0', vig: 0.28, shadowExt: 10, tint: '#fff2dc' },
-  casa_noite: { ondas: 0.2, az: 200, el: 40, sky: '#4a5fb8', ground: '#1a1f4a', hemi: 0.9, sun: '#b8c8ff', sunI: 0.8, fog: '#1b2250', fogNear: 14, fogFar: 60, skyTop: '#0a0f38', skyHor: '#1b2250', sat: 1.1, gain: '#dfe6ff', lift: '#05061a', vig: 0.55, shadowExt: 10, tint: '#c4d0ff' },
-  casa_quarto: { ondas: 0.2, az: 160, el: 50, sky: '#6a58c8', ground: '#2a1f55', hemi: 0.95, sun: '#a8a0ff', sunI: 0.6, fog: '#2a2262', fogNear: 14, fogFar: 60, skyTop: '#120a40', skyHor: '#2a2262', sat: 1.15, gain: '#ece6ff', lift: '#0a0620', vig: 0.5, shadowExt: 10, tint: '#d8d0ff' },
+  // noite:1 (20/11) = janelas do PACOTE CASA viram céu escuro + lua; ambiente <= 40%, abajur é a fonte quente
+  casa_noite: { ondas: 0.2, az: 200, el: 40, sky: '#33449a', ground: '#12163a', hemi: 0.5, sun: '#9fb0ff', sunI: 0.35, fog: '#141a42', fogNear: 14, fogFar: 60, skyTop: '#060a2a', skyHor: '#141a42', sat: 1.1, gain: '#a4b0e4', lift: '#03041a', vig: 0.6, shadowExt: 10, tint: '#9eacdc', noite: 1 },
+  // rua_noite (20/11): exterior da fachada à noite, mais aberto que casa_noite (bonecos legíveis no celular)
+  rua_noite: { ondas: 0.2, az: 200, el: 40, sky: '#3a4ca8', ground: '#1a2050', hemi: 0.85, sun: '#b0c0ff', sunI: 0.6, fog: '#1a2250', fogNear: 18, fogFar: 80, skyTop: '#070c30', skyHor: '#1e2a66', sat: 1.12, gain: '#c8d0f4', lift: '#04061c', vig: 0.5, shadowExt: 10, tint: '#b8c4ee', noite: 1 },
+  // casa_breu (20/11): sala quase preta, só abajur/feixe de lanterna (usar com B.breu=1 e abajur 0)
+  casa_breu: { ondas: 0.2, az: 200, el: 40, sky: '#1a2050', ground: '#05061a', hemi: 0.16, sun: '#8090d0', sunI: 0.08, fog: '#05071a', fogNear: 10, fogFar: 40, skyTop: '#02030f', skyHor: '#05071a', sat: 1.05, gain: '#6a76a8', lift: '#010210', vig: 0.72, shadowExt: 10, tint: '#6a78b0', noite: 1 },
+  casa_quarto: { ondas: 0.2, az: 160, el: 50, sky: '#5446a8', ground: '#1c1540', hemi: 0.55, sun: '#a8a0ff', sunI: 0.35, fog: '#1e1850', fogNear: 14, fogFar: 60, skyTop: '#0c0730', skyHor: '#1e1850', sat: 1.15, gain: '#b4ace8', lift: '#070418', vig: 0.55, shadowExt: 10, tint: '#b4aae4', noite: 1 },
   casa_tarde: { ondas: 0.2, az: 80, el: 22, sky: '#ffc08a', ground: '#8a5a3a', hemi: 1.2, sun: '#ffb070', sunI: 2.2, fog: '#ffc79a', fogNear: 25, fogFar: 160, skyTop: '#ff9a62', skyHor: '#ffd2a0', sat: 1.2, gain: '#fff0dc', lift: '#150a04', vig: 0.34, shadowExt: 12, tint: '#ffe0c0' },
 };
 // relâmpago na tempestade: retorna o flash (0..1) do quadro f; somar em C.flash do story
@@ -70,3 +75,5 @@ export const relampago = (f, quadros = []) => { let v = 0; for (const q of quadr
 export const luz = (nome, mods = {}) => ({ ...LIGHTS[nome], ...mods });
 // mar por CLIMA do vídeo (independe da batalha): worldAt -> { mar: MAR.tensao }. Sem 'mar', vale o 'ondas' da luz.
 export const MAR = { liso: 0.08, calmo: 0.22, brisa: 0.4, tensao: 0.7, agitado: 1.0, tempestade: 1.3 };
+// aliases do pacote casa (o auditor do catálogo chama luz(<id do cenário>))
+LIGHTS.sala = LIGHTS.casa_dia; LIGHTS.quarto = LIGHTS.casa_quarto; LIGHTS.fachada = LIGHTS.casa_dia;
