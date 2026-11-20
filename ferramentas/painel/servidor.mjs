@@ -244,7 +244,7 @@ function listaProcessos() {
 }
 const REGEX_ROBO = /render\.mjs|hyperframes.*render|ao_vivo\.py|vod\.py|clipador\.py|achar\.py|ferramentas[\/]lives|whisper|streamlink|ffmpeg.*(seg_|\.ts|1080x1920|libx264)/;
 async function processos() {
-  const l = (await listaProcessos()).filter((p) => REGEX_ROBO.test(p.args) && !/ps -eo|servidor\.mjs|Get-CimInstance/.test(p.args));
+  const l = (await listaProcessos()).filter((p) => REGEX_ROBO.test(p.args) && !/ps -eo|servidor\.mjs|Get-CimInstance|^\/?(usr\/)?(bin\/)?(ba|z)?sh -c /.test(p.args));
   return l.slice(0, 14).map((p) => { const a = p.args; const tipo = /render\.mjs|hyperframes.*render/.test(a) ? 'render' : /ao_vivo/.test(a) ? 'gravando+clipando' : /vod\.py/.test(a) ? 'cortando vídeo offline' : /clipador/.test(a) ? 'clipando' : /achar/.test(a) ? 'achando picos' : /whisper/.test(a) ? 'transcrevendo' : /ffmpeg/.test(a) ? 'ffmpeg' : 'outro';
     return { pid: p.pid, seg: p.seg, cpu: p.cpu, tipo, cmd: a.slice(0, 110).replace(/https?:\/\/\S+/g, (u) => u.slice(0, 40)) }; });
 }
