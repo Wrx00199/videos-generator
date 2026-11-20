@@ -60,3 +60,6 @@ Responda no chat só: veredito, média, as ordens (1 linha cada) e as regras nov
 
 ## Portão da FICHA DE MODELAGEM (20/11)
 Antes da nota: ler `FICHA.md` do episódio e `serie-tiao-kit/FICHA_MODELAGEM.md`. REPROVE se: ficha ausente/incompleta; algum plano com cenário, paleta, props ou câmera mais pobre que a referência (cite plano e correção); ambientes distintos < 80% da referência ou < 3 paletas em 60 s; HUD fixo o vídeo todo sem a ref ter. Nota máxima 6 enquanto reprovado.
+
+## Rubrica obrigatória (20/11)
+Use a skill `estudio-revisor-shorts` (14 aspectos 0–10; APROVA só média ≥8 e nenhum <7; ordens específicas com plano+tempo). Continua uma passada, imagem só em recorte. Vale junto com o portão da ficha acima.

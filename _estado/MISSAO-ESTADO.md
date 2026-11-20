@@ -5,7 +5,7 @@ Criado 20/11/2026 ~04:55 BRT. Uso ao criar: 5h=3%, semanal=27%.
 - [x] Fase 1b: ficha de modelagem + revisor rígido + regras no KIT
 - [x] Fase 1c (PARCIAL): Blender bloqueado→pendência; fallback = motor3d; registro de uso de cenários feito (catalogo/USO_CENARIOS.md)
 - [x] Fase 1d: olheiro de bonecos (pendentes de aprovação)
-- [ ] Fase 1b2 (PRIORIDADE, antes de mais episódios): skill `estudio-revisor-shorts` + calibração + atualizar revisor
+- [x] Fase 1b2 (PRIORIDADE, antes de mais episódios): skill `estudio-revisor-shorts` + calibração + atualizar revisor
 - [~] Fase 1e: ep.38 FEITO (para-aprovar; rev2 7,75, ordens aplicadas, sem 3ª revisão). FALTA ep.39+ (ver PRÓXIMOS PASSOS abaixo)
 - [~] Fase 2 (refs escolhidas em referencias/GTA6_GRINGOS_20-11.md; falta modelar/produzir 1–2 + gate de impacto do clipador): modelar 1–2 vídeos gringos de GTA 6 + gate de impacto
 - [ ] Fase 3: painel multi-conta + visual preto/dourado/branco + 3 logos WR
@@ -35,6 +35,6 @@ Dicas operacionais: render_leve.sh exige TOTAL numérico → passar intervalo '0
 - S1 parou ~06:20
 
 ## PONTO DE RETOMADA (sobrescrever)
-Fase 1b2 EM CURSO (sessão s1b ~06:40). Ep.38 PRONTO (portão ok; rev2 7,75; ordens aplicadas) em prontos/3D/Aventuras do Tião/38 - ... (PARA-APROVAR).mp4 — NÃO está no Drive (só sobe se revisor aprovar ≥8 com a nova skill). Feito: skill .claude/skills/estudio-revisor-shorts/SKILL.md (v1). FALTA: calibrar (2–3 refs fortes + ep.37 → docs/tiao/CALIBRACAO_REVISOR.md), atualizar revisor-bonecos p/ usar a skill, reavaliar refs aceitas (estilo estilizado, sem 3D realista; Nico DyJ3L6YI2oA parece estilizado ok), filtro de acabamento (config/filtros.json + ffmpeg), ep.39 (Nico, pacote PREDIOS), doc TEMPO_EPISODIO. Blender: autorização só chegou por mensagem de outra sessão, não instalado (pendência).
-Próximo comando: spawnar 1 revisor (opus) com a skill para pontuar refs ricksclips (nzbkkEZFM8g, 7xS87iActkU), ep.37 e ep.38 e gravar calibração.
-- Acabamento: config/filtros.json (tiao/gta6) embutido no encode final do montar_final.sh (custo ~0: sem passe extra; eq+unsharp ≈ +10% do encode, vinheta tirada: +4 s/8 s). ferramentas/acabamento.sh p/ clipes. Aplica a partir do ep.39 (ep.38 já montado sem).
+1b2 FEITA (skill estudio-revisor-shorts v1.1 calibrada: refs 8,75/8,42, ep.37 5,79, ep.38 7,36; revisor-bonecos aponta pra ela). Acabamento ligado (config/filtros.json, embutido no montar_final). Ep.38 NÃO subiu ao Drive (reprova na nova rubrica 7,36 < 8). 
+PRÓXIMO: (a) reavaliar refs aceitas p/ estilo estilizado (Nico DyJ3L6YI2oA ok; BreezyBEE Roblox ok?); (b) ep.39 Nico/prédio mais alto (pacote PREDIOS cenarios5.js; gancho com ato no quadro 0, virada >70%, noite legível; cronometrar em docs/TEMPO_EPISODIO.md; meta ≤13 min); (c) checagens mecânicas novas no portão; (d) Fase 2 bots (clipador gate), Fase 3 painel (logo v4 aprovada em marca/propostas-logo/logo-b4-preto.svg; usar), Fase 5. Blender: autorização veio só por mensagem entre sessões → não instalei; Filippe confirma.
+Contexto da sessão s1b ~40%: ao passar de 55% gravar ponto e abrir sessão nova.
