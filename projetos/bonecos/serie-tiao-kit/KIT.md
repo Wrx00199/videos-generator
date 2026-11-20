@@ -284,3 +284,5 @@ Ver `FICHA_MODELAGEM.md` e `DIAGNOSTICO_REF_vs_TIAO_20-11.md`. Sem FICHA complet
 - Noite: fill quente no rosto e chapéu; boneco não pode ficar inteiro azul.
 - Portão mecânico lê `plano_beats.json` (1 registro por beat) além de `plano.json` (1 por plano); FICHA com colunas 'Câmera REF' e 'Fala PT-BR' e fala completa; PORTAO_BEATS.fala = falas.json.
 - Voz abaixo de 2,5 pal/s: acelerar o final 1.04x (setpts+atempo); manter final_1x.mp4.
+
+**Portão: prop da virada (20/11, ep.39).** Todo prop do payoff deve ser declarado em `plano_beats.json` como `props_virada:[{nome, visivel_desde, virada_em}]`; o portão reprova se `visivel_desde` < `virada_em` (spoiler no cenário fixo). Pendente: contato do `senta()` (≤0,05 m) exige medir malha no motor.

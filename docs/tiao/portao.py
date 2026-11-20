@@ -357,6 +357,26 @@ def checar_variedade_proj(proj):
         return Resultado('variedade', False, 'plano.json ilegivel', '-', 'plano.json nao e lista de planos valida')
 
 
+# --- prop da virada desligado ate a virada (ep.39: spoiler do payoff no cenario fixo) ---
+def checar_prop_virada(proj):
+    """plano_beats.json pode declarar props_virada=[{nome, visivel_desde, virada_em}] (segundos).
+    Reprova se o prop aparece antes da virada. Sem declaracao = passa (regra: declare todo prop da virada)."""
+    p = os.path.join(proj, 'plano_beats.json')
+    lim = 'prop da virada visivel_desde >= virada_em'
+    if not os.path.isfile(p):
+        return Resultado('prop_virada', True, 'sem plano_beats.json', lim, '')
+    try:
+        beats = json.load(open(p, encoding='utf-8'))
+        decl = [(b.get('beat'), x) for b in beats if isinstance(b, dict) for x in (b.get('props_virada') or [])]
+        falhas = []
+        for beat, x in decl:
+            if float(x['visivel_desde']) < float(x['virada_em']) - 0.05:
+                falhas.append(f"beat {beat}: '{x.get('nome')}' visivel em {x['visivel_desde']}s, antes da virada ({x['virada_em']}s)")
+    except (ValueError, KeyError, TypeError, AttributeError):
+        return Resultado('prop_virada', False, 'plano_beats.json ilegivel', lim, 'props_virada precisa de nome/visivel_desde/virada_em')
+    return Resultado('prop_virada', not falhas, f'{len(decl)} prop(s) declarado(s)', lim, '; '.join(falhas))
+
+
 # --- olhos / elenco -----------------------------------------------------------
 # eye() do rig so desenha dot|wide|happy|shut|smug|x. Qualquer outro valor em story.js
 # (ex.: 'look', usado 159x nos eps 14-28) = boneco SEM OLHO. Auditoria 18/11.
@@ -638,7 +658,7 @@ def etapa_final(proj):
     seg = duracao_video(mp4)
     cortes = [float(c[0]) for c in cenas]
     return [checar_duracao(seg), checar_ritmo(pal, seg), checar_planos(cortes, seg),
-            checar_formato(mp4), checar_audio(medir_audio(mp4)), checar_hud(proj), checar_olhos(proj), checar_elenco_proj(proj), checar_variedade_proj(proj), checar_ficha(proj), checar_cobertura(proj)]
+            checar_formato(mp4), checar_audio(medir_audio(mp4)), checar_hud(proj), checar_olhos(proj), checar_elenco_proj(proj), checar_variedade_proj(proj), checar_prop_virada(proj), checar_ficha(proj), checar_cobertura(proj)]
 
 
 def checar_cobertura(proj):

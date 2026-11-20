@@ -1,3 +1,4 @@
+import json
 """Casos sinteticos contra docs/tiao/portao.py (o kit tem uma copia propria)."""
 import copy, importlib.util, json, pathlib, tempfile, unittest
 
@@ -156,6 +157,22 @@ class TestTresPlanosIguais(unittest.TestCase):
         trio = [('a', 'x'), ('a', 'x'), ('a', 'y'), ('b', 'y'), ('c', 'z'), ('d', 'w')]
         r = portao.checar_variedade(self._planos(trio))
         self.assertNotIn('3 planos seguidos', str(r))
+
+class TestPropVirada(unittest.TestCase):
+    def _proj(self, beats):
+        import tempfile, pathlib
+        d = pathlib.Path(tempfile.mkdtemp())
+        (d / 'plano_beats.json').write_text(json.dumps(beats))
+        return str(d)
+
+    def test_prop_antes_da_virada_reprova(self):
+        r = portao.checar_prop_virada(self._proj([{'beat': '4', 'props_virada': [{'nome': 'agulha', 'visivel_desde': 10, 'virada_em': 60}]}]))
+        self.assertFalse(r.ok)
+        self.assertIn('agulha', r.msg if hasattr(r, 'msg') else str(r))
+
+    def test_prop_na_virada_ou_sem_declaracao_passa(self):
+        self.assertTrue(portao.checar_prop_virada(self._proj([{'beat': '4', 'props_virada': [{'nome': 'a', 'visivel_desde': 60, 'virada_em': 60}]}])).ok)
+        self.assertTrue(portao.checar_prop_virada(self._proj([{'beat': '1'}])).ok)
 
 if __name__ == '__main__':
     unittest.main()

@@ -35,7 +35,7 @@ Dicas operacionais: render_leve.sh exige TOTAL numérico → passar intervalo '0
 - S1 parou ~06:20
 
 ## PONTO DE RETOMADA (sobrescrever)
-20/11 ~12:35 (vigia, sessão curta; sessão anterior parou sem lock ~12:00, causa provável: fim de contexto/limite). Uso 5h=56% sem=44%.
-FEITO agora: portão ganhou checagem "3 planos seguidos com mesmo cenário+luz" (portao.py kit + docs/tiao, teste novo, 14 testes ok).
-ep.39 ENTREGUE (PARA-APROVAR) em prontos/3D/Aventuras do Tião/. Nada em produção.
-PRÓXIMO: (a) portão: contato do senta + ordem 'prop da virada desligado'; (b) Fase 2 GTA gringo (Lugan3d 'Los Santos before GTA VI'); (c) Fase 3 painel (logo-b4-preto.svg); (d) ep.40 só se semanal <60% e revisor calibrado. Blender aguarda OK do Filippe.
+20/11 ~14:30 (vigia retomou; lock era inexistente, sessão anterior parou ~12:35). Uso ao começar 5h=58% sem=44%.
+FEITO: portão ganhou `checar_prop_virada` (props_virada em plano_beats.json) + 2 testes, 47 testes ok; KIT atualizado.
+ep.39 ENTREGUE (PARA-APROVAR, local, não subiu ao Drive: só 1 revisão 6,57 + ordens aplicadas sem 2ª passada). Nada em produção.
+PRÓXIMO: (a) portão: contato do senta (precisa malha no motor); (b) Fase 2 GTA gringo (Lugan3d 'Los Santos before GTA VI'); (c) Fase 3 painel (logo-b4-preto.svg); (d) ep.40 só se semanal <60% e revisor calibrado. Blender aguarda OK do Filippe.
