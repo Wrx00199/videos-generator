@@ -43,3 +43,6 @@ Antes de criar vídeo: ler este arquivo inteiro. Regra nova só entra se evitar 
 ## Regras aprendidas (acrescentar abaixo, mais nova primeiro)
 - 20/11 — ep.38 (7,4) e ep.39 (6,6) caíram por roteiro "slide". Regra: modelar um vídeo de referência e exigir impacto em ação em cada beat.
 - 20/11 — Molde de estrutura/câmera/legenda do estilo ricksclips (gancho→setup→zombador→método→"you see"→payoff; câmera sempre em movimento; número falado vira objeto): ver `referencias/base/MOLDE_RICKSCLIPS.md`. Roteiro e storyboard seguem essa tabela de tempos.
+- 20/11 — Bike/objeto que a ficha cita e o motor não tinha: conferir `rg -l` no motor ANTES de aprovar a ficha; faltou `bicicleta` (criada no pacote trem). Ficha lista cenário + personagem + OBJETO.
+- 20/11 — Render de teste de cenário: 1 processo só, vários quadros na mesma chamada (`portao_trem.sh "1,2,3"`), contact sheet reduzida (`ffmpeg xstack` a 270 px) em vez de ler stills grandes.
+- 20/11 — Story de teste precisa exportar `shotAt`, `LIGHTS`, `lightFor` (main.js importa); copiar o modelo de `story_cenarios.js`.

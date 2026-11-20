@@ -101,6 +101,8 @@ function capaceteFrente(S) { ctx.beginPath(); ctx.ellipse(0, 2, 112, 104, 0, 0, 
 
 // ---------- ELENCO EXTRA (16/11): catálogo de personagens de aventura (nomes nossos, nada de obra/pessoa real) ----------
 const NOVOS = {
+  // 20/11 pacote TREM: apostador bigodudo de casaco xadrez (listras largas) e chapéu marrom
+  apostador: { body: '#8a5a30', hat: 'chapelao', hatCol: ['#6b4a2a', '#3a2414', '#6b4a2a'], s: 1.1, stache: 1, stripes: '#4a2f1a', coat: 1 },
   // super-heróis (anatomia de herói: ombro largo, cintura fina, luvas e botas)
   heroi:   { s: 1.12, hat: null, capa: '#ffd21f', mascara: '#2b62d9', emblema: ['raio', '#ffd21f'], an: { t: 'v', cab: 'queixo', cabS: .95, pele: '#f0b88c', roupa: '#e0392d', manga: '#e0392d', luva: '#ffd21f', bota: '#ffd21f', calca: '#2b62d9', br: [36, 30], pr: [36, 30], mao: 24, pe: 36, cabelo: '#2a1a12', deco: ['peitoral', 'cinto'] } },                  // Capitão Pamonha
   lucia:   { s: 1.05, hat: null, capa: '#7c3aed', mascara: '#ffe44f', emblema: ['estrela', '#ffe44f'], hair: '#ffe44f', makeup: '#ff4d8d', an: { t: 'v', w: .78, cab: 'queixo', cabS: .86, cabelo: '#ffe44f', franja: 30, pele: '#f6c4a2', roupa: '#3b82f6', manga: '#3b82f6', luva: '#7c3aed', bota: '#7c3aed', calca: '#3b82f6', br: [24, 20], pr: [28, 24], mao: 18, pe: 30, deco: ['cinto'] } }, // Relâmpago Lúcia
