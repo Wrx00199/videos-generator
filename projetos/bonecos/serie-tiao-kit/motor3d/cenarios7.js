@@ -11,7 +11,7 @@
 //   fim_tarde       { sol: 0..1 (altura do sol; padrão 0,35), ponto: 0..1 (trem vira um pontinho a x=-60 → 0..1 anda pro horizonte; padrão 0,6) }
 export const TREM = ['pradaria_trilho', 'estacao_trem', 'nevasca', 'cabine_locomotiva', 'fim_tarde'];
 export const CAMS7 = {
-  pradaria_trilho: { traseira: { pos: [-2.2, 1.7, 3.6], look: [0.6, 1.2, 0], fov: 50 }, caixa: { pos: [-0.5, 1.15, 2.4], look: [0.15, 0.9, 0], fov: 40 }, mostrador: { pos: [-1.0, 1.5, 2.4], look: [-1.6, 1.3, 0.75], fov: 36 }, bike: { pos: [0.1, 1.4, 5.6], look: [0.1, 0.9, 0], fov: 58 }, trem: { pos: [5, 2.0, 9], look: [6, 1.4, 0], fov: 52 } },
+  pradaria_trilho: { traseira: { pos: [-2.2, 1.7, 3.6], look: [0.6, 1.2, 0], fov: 50 }, caixa: { pos: [-0.5, 1.15, 2.4], look: [0.15, 0.9, 0], fov: 40 }, mostrador: { pos: [-1.0, 1.5, 3.0], look: [-1.6, 1.3, 0.75], fov: 46 }, bike: { pos: [0.1, 1.4, 5.6], look: [0.1, 0.9, 0], fov: 58 }, trem: { pos: [5, 2.0, 9], look: [6, 1.4, 0], fov: 52 } },
   estacao_trem: { cartaz: { pos: [3.3, 2.1, 2.4], look: [3.7, 2.05, -1.5], fov: 42 } },
   cabine_locomotiva: { janela: { pos: [0.0, 1.5, 1.7], look: [0, 1.6, -2.3], fov: 46 } },
   fim_tarde: { horizonte: { pos: [0.2, 1.3, 4.6], look: [0, 1.5, -40], fov: 40 } },
@@ -49,7 +49,7 @@ export function construirTrem(X) {
     if (comCaixa) { const c = new THREE.Group(); c.position.set(-0.45, 0, 0); V.add(c); caixa(c, 0.8, 0.62, 0.76, '#b98a4e', 0, 0.58, 0, {});   // caixa de madeira (plataforma traseira)
       caixa(c, 0.86, 0.06, 0.82, '#8a5e30', 0, 1.2, 0, {}); for (const dy of [0.7, 1.0]) caixa(c, 0.84, 0.05, 0.8, '#8a5e30', 0, dy, 0, { cast: false });
       for (const [bx, by] of [[-0.3, 0.7], [0.3, 0.7], [-0.3, 1.05], [0.3, 1.05]]) { const p = cil(c, 0.035, 0.035, 0.04, '#d8d8e0', bx, by, 0.39, { cast: false }, 10); p.rotation.x = PI / 2; }
-      caixa(c, 1.0, 0.05, 0.9, '#5a3a22', 0.1, 0.42, 0, {}); decal(c, 0, 0.62, 0.385, 0.62, 0.3); }                                // plataforma sob a caixa
+      caixa(c, 1.0, 0.05, 0.9, '#5a3a22', 0.1, 0.42, 0, {}); decal(c, 0, 0.9, 0.415, 0.62, 0.26); }                                // plataforma sob a caixa
     return V; };
   const locomotiva = (g, x0) => { const L = new THREE.Group(); L.position.set(x0, 0, 0); g.add(L);
     caixa(L, 4.2, 0.2, 1.15, '#2a2a30', 2.1, 0.4, 0, {});
