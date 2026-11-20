@@ -175,3 +175,6 @@ O Filippe acordou e cobrou: em ~9 h saíram 2 episódios (ep.38 e 39) ambos REPR
 
 ## CONTEXTO (Filippe, 20/11 15:05) — SUBSTITUI 55–60%
 Sessão nova quando o contexto passar de ~30% (contexto grande = cada turno custa mais limite). Ao fim de cada etapa: `get_usage` session self; se > 30%, gravar PONTO DE RETOMADA, commit/push, apagar lock, abrir sessão NOVA e encerrar a atual. Nunca passar de 30% de contexto sem trocar.
+
+## NÃO PARE POR ESCOLHA (Filippe, 20/11 16:50)
+As sessões do vigia estavam encerrando após UMA etapa pequena ("o resto é trabalho grande"), gastando abertura de sessão à toa e deixando o Filippe esperando. Regra: cada sessão encadeia VÁRIAS etapas e só termina por contexto > 30%, limite (95% 5h / 75% semanal) ou `ativo:false`. Entregar resultado visível.
