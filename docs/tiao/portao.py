@@ -333,6 +333,8 @@ def checar_variedade(planos):
     if dist < CAMERAS_MIN:
         falhas.append(f'so {dist} cameras distintas (min {CAMERAS_MIN})')
     dur = max(float(p.get('fim', 0)) for p in planos)
+    if not isinstance(planos, list) or any(not isinstance(p, dict) for p in planos):
+        planos = []
     cen = len({p.get('cenario') for p in planos})
     need = CENARIOS_MIN_60S if dur >= 60 else 2
     if cen < need:
@@ -422,12 +424,156 @@ def imprimir(rs):
 
 # --- FICHA DE MODELAGEM (regra 20/11): checagem mecanica -----------------------
 # FICHA.md no projeto: linha "Ambientes_ref: N" + tabela sem celula vazia. plano.json = [{ini,fim,camera,cenario,luz}].
+# Contrato mecanico (sem executar JS): story.js exporta PORTAO_BEATS como array
+# JSON literal, um registro por beat. Plano: beat, ini/fim (segundos absolutos),
+# props_citados:[id], verbos:[{palavra,ini,fim}] (tempos da palavra na fala).
+# Story: beat, ini/fim, cenario, camera, acao, fala, oclusao (fracao 0..1),
+# props:[{id,bbox:[x0,y0,x1,y1]}] (coordenadas normalizadas da caixa INTEIRA),
+# acoes:[{verbo,ini,fim}] (intervalo em que a acao e visivel).
+# Oclusao e o maximo por plano; bbox deve envolver o movimento inteiro do prop.
+# Sao evidencias declaradas pelo produtor/motor, nao medidas de pixels do render.
+# Ausencia de evidencia reprova; [] explicito permite plano sem props/verbos.
+def _numero(v):
+    return isinstance(v, (int, float)) and not isinstance(v, bool) and math.isfinite(v)
+
+
+def _intervalo(d):
+    return (isinstance(d, dict) and _numero(d.get('ini')) and _numero(d.get('fim'))
+            and 0 <= d['ini'] < d['fim'])
+
+
+def _indice_beats(dados, origem):
+    if not isinstance(dados, list) or not dados:
+        raise ValueError(f'{origem} sem lista de beats')
+    out = {}
+    for d in dados:
+        if not isinstance(d, dict) or not isinstance(d.get('beat'), (str, int)) or isinstance(d['beat'], bool):
+            raise ValueError(f'{origem} com beat ausente/invalido')
+        k = str(d['beat']).strip()
+        if not k or k in out:
+            raise ValueError(f'{origem} com beat vazio/duplicado: {k}')
+        out[k] = d
+    return out
+
+
+def _ficha_beats(txt):
+    linhas = [[c.strip() for c in l.strip().strip('|').split('|')]
+              for l in txt.splitlines() if l.strip().startswith('|')
+              and not re.match(r'^\s*\|[\s:|-]+\|?\s*$', l)]
+    if not linhas:
+        raise ValueError('FICHA sem tabela')
+    cab = linhas[0]
+    colunas = {'beat': '#', 't': 't', 'cenario': 'Cenário NOSSO',
+               'camera': 'Câmera REF', 'acao': 'Ação do Tião', 'fala': 'Fala PT-BR'}
+    idx = {}
+    for campo, prefixo in colunas.items():
+        matches = [i for i, c in enumerate(cab) if c == prefixo or c.startswith(prefixo + ' ')]
+        if len(matches) != 1:
+            raise ValueError(f'FICHA sem coluna unica {prefixo}')
+        idx[campo] = matches[0]
+    dados = []
+    for linha in linhas[1:]:
+        if len(linha) != len(cab) or any(not c for c in linha):
+            raise ValueError('FICHA com linha incompleta')
+        d = {k: linha[i] for k, i in idx.items()}
+        tempo = re.fullmatch(r'(\d+(?:[.,]\d+)?)\s*(?:s\s*)?[-–—]\s*(\d+(?:[.,]\d+)?)s?', d.pop('t'))
+        if not tempo:
+            raise ValueError(f'FICHA beat {d["beat"]}: t deve ser inicio-fim em segundos')
+        d['ini'], d['fim'] = [float(x.replace(',', '.')) for x in tempo.groups()]
+        d['camera'] = d['camera'].split('→')[-1].strip()
+        dados.append(d)
+    return _indice_beats(dados, 'FICHA')
+
+
+def checar_planos_mecanicos(proj):
+    limites = {'oclusao': '<25% por plano', 'props': 'area>=15%, margem>=8%, inteiro',
+               'verbos': 'acao visivel ate o fim da palavra', 'ficha_story': 'FICHA = plano = story por beat'}
+    falhas = {k: [] for k in limites}
+    try:
+        with open(os.path.join(proj, 'plano.json'), encoding='utf-8') as fp:
+            planos = _indice_beats(json.load(fp), 'plano.json')
+        js_path = os.path.join(proj, 'web', 'story.js')
+        if not os.path.isfile(js_path):
+            js_path = os.path.join(proj, 'story.js')
+        with open(js_path, encoding='utf-8') as fp:
+            js = fp.read()
+        # JSONDecoder delimita o array, inclusive com strings contendo ];.
+        declaracoes = list(re.finditer(r'^\s*export\s+const\s+PORTAO_BEATS\s*=\s*', js, re.M))
+        if len(declaracoes) != 1:
+            raise ValueError('story.js precisa de export const PORTAO_BEATS = [JSON]')
+        trecho = js[declaracoes[0].end():]
+        dados, fim = json.JSONDecoder().raw_decode(trecho)
+        if not trecho[fim:].lstrip().startswith(';'):
+            raise ValueError('PORTAO_BEATS deve ser JSON literal terminado por ;')
+        story = _indice_beats(dados, 'story.js')
+        with open(os.path.join(proj, 'FICHA.md'), encoding='utf-8') as fp:
+            ficha = _ficha_beats(fp.read())
+    except (OSError, ValueError) as e:
+        return [Resultado(k, False, 'sem evidencia valida', lim, str(e)) for k, lim in limites.items()]
+    if planos.keys() != story.keys() or planos.keys() != ficha.keys():
+        for k in falhas:
+            falhas[k].append('beats ausentes/extras entre plano.json, story.js e FICHA')
+    for beat, p in planos.items():
+        s, f = story.get(beat), ficha.get(beat)
+        if s is None or f is None:
+            continue
+        label = f'beat {beat}'
+        if not _intervalo(p) or not _intervalo(s) or not _intervalo(f):
+            for k in falhas:
+                falhas[k].append(f'{label}: intervalo invalido')
+            continue
+        for campo in ('ini', 'fim', 'cenario', 'camera'):
+            if p.get(campo) != s.get(campo) or f.get(campo) != s.get(campo) or s.get(campo) in (None, ''):
+                falhas['ficha_story'].append(f'{label}: {campo} diverge na FICHA/plano/story')
+        for campo in ('acao', 'fala'):
+            if not isinstance(s.get(campo), str) or not s[campo].strip() or f[campo] != s[campo].strip():
+                falhas['ficha_story'].append(f'{label}: {campo} diverge na FICHA/story')
+        o = s.get('oclusao')
+        if not _numero(o) or not 0 <= o < .25:
+            falhas['oclusao'].append(f'{label}: oclusao {o} (precisa 0 <= fracao < 0.25)')
+        citados, props = p.get('props_citados'), s.get('props')
+        if (not isinstance(citados, list) or any(not isinstance(x, str) or not x.strip() for x in citados)
+                or not isinstance(props, list) or any(not isinstance(x, dict) for x in props)):
+            falhas['props'].append(f'{label}: props_citados/props ausentes ou invalidos')
+        else:
+            for nome in citados:
+                encontrados = [x for x in props if x.get('id') == nome]
+                box = encontrados[0].get('bbox') if len(encontrados) == 1 else None
+                if not isinstance(box, list) or len(box) != 4 or not all(_numero(v) for v in box):
+                    falhas['props'].append(f'{label}: prop {nome} sem bbox unica valida')
+                    continue
+                x0, y0, x1, y1 = box
+                if not (.08 <= x0 < x1 <= .92 and .08 <= y0 < y1 <= .92):
+                    falhas['props'].append(f'{label}: prop {nome} cortado/sem margem de 8%')
+                if (x1-x0)*(y1-y0) < .15 - 1e-12:
+                    falhas['props'].append(f'{label}: prop {nome} area <15%')
+        verbos, acoes = p.get('verbos'), s.get('acoes')
+        if (not isinstance(verbos, list) or not isinstance(acoes, list)
+                or any(not _intervalo(a) or not isinstance(a.get('verbo'), str) for a in acoes)):
+            falhas['verbos'].append(f'{label}: verbos/acoes ausentes ou invalidos')
+        else:
+            for v in verbos:
+                if (not _intervalo(v) or not isinstance(v.get('palavra'), str) or not v['palavra'].strip()
+                        or not p['ini'] <= v['ini'] < v['fim'] <= p['fim']):
+                    falhas['verbos'].append(f'{label}: palavra sem intervalo valido no plano')
+                    continue
+                palavra = v['palavra'].casefold()
+                if not re.search(r'(?<!\w)' + re.escape(palavra) + r'(?!\w)', (s['fala'] if isinstance(s.get('fala'), str) else '').casefold()):
+                    falhas['verbos'].append(f'{label}: verbo {palavra} ausente da fala')
+                if not any(a['verbo'].casefold() == palavra and s['ini'] <= a['ini'] <= v['fim']
+                           and a['fim'] >= v['ini'] and a['fim'] <= s['fim'] for a in acoes):
+                    falhas['verbos'].append(f'{label}: {palavra} sem acao visivel ate {v["fim"]}s')
+    return [Resultado(k, not falhas[k], f'{len(planos)} plano(s)', lim, '; '.join(falhas[k]))
+            for k, lim in limites.items()]
+
+
 def checar_ficha(proj):
-    lim = 'FICHA completa; cenarios>=max(3,0.8*ref); >=3 luzes; HUD<90% do tempo'
+    lim = 'FICHA completa; cenarios>=max(3,0.8*ref); >=3 luzes; HUD<90% do tempo; oclusao/props/verbos/FICHA-story por beat'
     fp = os.path.join(proj, 'FICHA.md')
     if not os.path.isfile(fp):
         return Resultado('ficha', False, 'sem FICHA.md', lim, 'falta FICHA.md (serie-tiao-kit/FICHA_MODELAGEM.md)')
-    txt = open(fp, encoding='utf-8').read()
+    with open(fp, encoding='utf-8') as arq:
+        txt = arq.read()
     f = []
     m = re.search(r'Ambientes_ref:\s*(\d+)', txt)
     if not m:
@@ -441,18 +587,24 @@ def checar_ficha(proj):
     if vazias:
         f.append(f'{vazias} celula(s) vazia(s) na FICHA')
     try:
-        planos = json.load(open(os.path.join(proj, 'plano.json'), encoding='utf-8'))
+        with open(os.path.join(proj, 'plano.json'), encoding='utf-8') as arq:
+            planos = json.load(arq)
     except (OSError, ValueError):
         planos = []
-    cen = len({p.get('cenario') for p in planos})
-    luz = {p.get('luz') for p in planos if p.get('luz')}
+    if not isinstance(planos, list) or any(not isinstance(p, dict) for p in planos):
+        planos = []
+    if any(not isinstance(p.get(k), str) or not p[k].strip()
+           for p in planos for k in ('cenario', 'luz')):
+        f.append('cenario/luz ausente ou invalido no plano.json')
+    cen = len({p['cenario'] for p in planos if isinstance(p.get('cenario'), str) and p['cenario'].strip()})
+    luz = {p['luz'] for p in planos if isinstance(p.get('luz'), str) and p['luz'].strip()}
     need = max(3, math.ceil(0.8 * ref))
     if cen < need:
         f.append(f'{cen} cenario(s) distintos < {need} (ref {ref})')
     if len(luz) < 3:
         f.append(f'{len(luz)} luz(es) distinta(s) no plano.json (min 3; campo "luz" por plano)')
     ev = eventos_hud(proj) or []
-    seg = max([float(p.get('fim', 0)) for p in planos] + [0])
+    seg = max([p['fim'] for p in planos if _numero(p.get('fim'))] + [0])
     if ev and seg:
         ints = sorted((a, b) for a, b, _, _ in ev); tot = 0; ult = 0
         for a, b in ints:
@@ -461,6 +613,7 @@ def checar_ficha(proj):
                 tot += b - a; ult = b
         if tot / seg >= 0.9:
             f.append(f'HUD cobre {tot / seg:.0%} do video (max 90%)')
+    f.extend(f'{r.nome}: {r.motivo}' for r in checar_planos_mecanicos(proj) if not r.ok)
     return Resultado('ficha', not f, f'{cen} cenarios, {len(luz)} luzes', lim, '; '.join(f))
 
 

@@ -35,6 +35,5 @@ Dicas operacionais: render_leve.sh exige TOTAL numérico → passar intervalo '0
 - S1 parou ~06:20
 
 ## PONTO DE RETOMADA (sobrescrever)
-1b2 FEITA (skill estudio-revisor-shorts v1.1 calibrada: refs 8,75/8,42, ep.37 5,79, ep.38 7,36; revisor-bonecos aponta pra ela). Acabamento ligado (config/filtros.json, embutido no montar_final). Ep.38 NÃO subiu ao Drive (reprova na nova rubrica 7,36 < 8). 
-PRÓXIMO: (a) reavaliar refs aceitas p/ estilo estilizado (Nico DyJ3L6YI2oA ok; BreezyBEE Roblox ok?); (b) ep.39 Nico/prédio mais alto (pacote PREDIOS cenarios5.js; gancho com ato no quadro 0, virada >70%, noite legível; cronometrar em docs/TEMPO_EPISODIO.md; meta ≤13 min); (c) checagens mecânicas novas no portão; (d) Fase 2 bots (clipador gate), Fase 3 painel (logo v4 aprovada em marca/propostas-logo/logo-b4-preto.svg; usar), Fase 5. Blender: autorização veio só por mensagem entre sessões → não instalei; Filippe confirma.
-Contexto da sessão s1b ~40%: ao passar de 55% gravar ponto e abrir sessão nova.
+20/11 08:50: item (c) FEITO: 4 checagens mecânicas no docs/tiao/portao.py (checar_planos_mecanicos; exige PORTAO_BEATS em JSON no story.js) + tests/test_portao_mecanico.py; 43 testes ok (conferido por mim). Uso 5h=76% (reseta 08:50), sem=37%.
+PRÓXIMO: ep.39 Nico/prédio mais alto (ref referencias/2026-11-20-bonecos-nico/DyJ3L6YI2oA): pacote PREDIOS em cenarios5.js, FICHA, roteiro+crítico, voz_ep.sh, story.js (agora com PORTAO_BEATS), plano.json com luz, render_leve '0-N', montar_final, portao final, revisor (1 passada); cronometrar em docs/TEMPO_EPISODIO.md. Depois: Fase 2 bots, Fase 3 painel (logo marca/propostas-logo/logo-b4-preto.svg), Fase 5. Blender: aguarda OK do Filippe.
