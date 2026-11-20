@@ -8,18 +8,13 @@ Dono: Filippe. pt-BR, respostas curtas. Autônomo, SEM perguntar. Estado vivo: `
 - Entrega: Tião NUNCA posta; vídeo final vai ao `Drive1:Estudio de Video/3D/Aventuras do Tião/` (nota no nome se < 8). Clipes bons (passam no gate de impacto) podem ir ao IG/FB @six_starsbr (≤3/dia, nunca senha) senão `Drive1:.../Gta 6/`.
 - Detalhes quando precisar (grep no MISSAO-NOITE.md): "FILTRO RÍGIDO DO OLHEIRO", "ESTILO ACEITO", "ENTREGA FINAL", "REGRAS DE SUBAGENTES", "FILTRO DE ACABAMENTO", "REVISOR ESPECIALISTA".
 
-## FILA (nesta ordem; marque [x] no estado só com entrega visível)
-1. PAINEL: abrir no navegador embutido e testar de verdade (seletor/trocar conta, Revisão por conta, legenda editável salvando, fila, placar, engrenagem/chaves/saúde/GPU, status por bot, acesso celular com senha); consertar; visual preto/dourado/branco com emblema. Pronto: tudo funciona e foi visto.
-2. TIÃO: episódio novo usando `sala_blender` (cenários6.js) + mais 1–2 cenários Blender; modelar a referência plano a plano; revisor `estudio-revisor-shorts` (1 passada, +1 após ordens); meta nota ≥ 8, ≤ 30 min de relógio (descendo p/ 13); acabamento ligado; Drive.
-3. CLIPES/LIVES: bot (calibrar nota mínima com aprova/recusa da Revisão, gate de áudio, deduplicação, custo) + produzir 3 clipes impactantes; teste real curto.
-4. GTA 6 GRINGO: modelar 1 vídeo (refs em `referencias/GTA6_GRINGOS_20-11.md`), sem trailer/pessoa real.
-5. OLHEIRO ANIMADO: 1 rodada leve por dia (2D/3D estilizado, viral, modelável, quadros conferidos); atualizar `referencias/ACEITOS_BONECOS_20-11.md`.
-6. GARIMPO `/media/wr/HDD/Gon` (só leitura, subagente haiku) → `docs/GARIMPO_GON.md`.
-7. PASTAS: `docs/PASTAS.md` + `docs/MOVIMENTOS.log`; organizar poucos níveis, nunca apagar; saída por conta/série (Drive).
-8. IDEIAS: `docs/IDEIAS.md`; implementar banco de ganchos, sinal de retorno (views coladas), episódio em série, carrossel/meme.
-9. NICHOS: só estrutura (cadastro de nicho/conta no painel; molde "como se fala X em alemão"), sem produzir.
-10. REVIEW GERAL + economia (tokens, PC, segredos) → `docs/REVIEW_GERAL.md`.
-Depois: melhoria contínua (mais episódios/clipes bons, otimizar).
+## FILA (REORDENADA pelo Filippe 20/11 17:15 — TIÃO É O ÚNICO FOCO AGORA; GTA e painel ficam PARADOS)
+**1. TIÃO — consertar o ROTEIRO/ESTRUTURA (é aí que está ruim; cenário bonito não salva).** Defeito apontado pelo Filippe: o vídeo vira "slide": só narra "próxima hora/noite: acontece X" e mostra X, sem suspense nem cena impactante. Na referência, cada beat PREPARA a seguinte (pergunta aberta/ameaça), CORTA antes de revelar e depois MOSTRA a consequência em ação (impacto visível). Regras novas, valem já:
+ - Todo beat tem 3 partes: (a) gancho/tensão (algo vai dar errado/uma pergunta), (b) corte/espera curta (suspense, pista), (c) CENA DE IMPACTO em ação (algo acontece COM o Tião, não só texto/contador). Proibido beat que só informa ("próxima hora: X"). Proibido repetir a mesma estrutura de beat 3 vezes seguidas sem escalar.
+ - Modelar UMA referência forte LITERALMENTE beat a beat (transcrição + quadros já salvos em `referencias/2026-11-16-ricksclips3000/` e `lote2/`): copiar o que acontece em cada beat, a ordem, as viradas e o ritmo; mudar só fala, nomes e o protagonista (Tião). O roteirista e o crítico recebem a transcrição da referência e a lista de beats dela.
+ - Revisor: reprova beat "slide" (informativo sem ação) e exige impacto por beat. Atualizar a rubrica em 2 linhas, sem criar novos portões.
+ - Entregar ep.40 assim, com o cenário Blender (`sala_blender`) onde couber, no menor tempo (sem polimento infinito). Se o Filippe mandar mais links de referência/tutorial, use.
+**2.** (depois) clipes/lives, GTA gringo, painel, olheiro, garimpo, pastas, ideias, nichos, review geral — só quando o Tião ep.40 estiver pronto e o Filippe aprovar a direção.
 
 ## Já FEITO (não refazer)
 Repo privado; ficha de modelagem e portão; skill revisor (calibrada); acabamento (filtros.json); cenários CASA, PREDIOS e sala Blender; ep.38 (7,4) e ep.39 (6,6) no Drive; painel multi-conta (24 testes); emblema WR no painel; vigia (`ferramentas/vigia.py`); lista de referências aceitas; Blender medido (EEVEE 7 s/quadro).
