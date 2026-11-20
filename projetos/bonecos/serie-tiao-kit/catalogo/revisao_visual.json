@@ -1,0 +1,36 @@
+{
+ "personagens": {
+  "abobora": {
+   "aceita": [
+    "olhos nao detectados"
+   ],
+   "nota": "olhos sao entalhes fixos da abobora (visiveis no render); falso positivo do teste wide/shut"
+  },
+  "sombra": {
+   "aceita": [
+    "pernas/pes nao detectados"
+   ],
+   "nota": "sem pernas por design (vulto)"
+  },
+  "gosma": {
+   "aceita": [
+    "pernas/pes nao detectados"
+   ],
+   "nota": "sem pernas por design (gosma)"
+  },
+  "magrelo": {
+   "aceita": [
+    "olhos nao detectados"
+   ],
+   "nota": "sem rosto de proposito (tipo 'homem sem face'): nao faz expressao, so serve de vilao mudo"
+  },
+  "lucia": {
+   "nota": "V4: cabelo no topo + franja (an.cabelo/an.franja) consertados 18/11"
+  }
+ },
+ "cenarios": {
+  "apocalipse": {
+   "nota": "na camera geral a placa do portao tapa os bonecos: no worldAt do episodio SEMPRE usar apocalipse:{grade:false}"
+  }
+ }
+}

@@ -1,0 +1,341 @@
+{
+ "personagens": {
+  "tiao": {
+   "ok": true,
+   "falhas": [],
+   "escala": 0.86
+  },
+  "cap": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.04
+  },
+  "mar1": {
+   "ok": true,
+   "falhas": [],
+   "escala": 0.95
+  },
+  "mar2": {
+   "ok": true,
+   "falhas": [],
+   "escala": 0.97
+  },
+  "tiao4k": {
+   "ok": true,
+   "falhas": [],
+   "escala": 0.86
+  },
+  "ruiva": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1
+  },
+  "riv1": {
+   "ok": true,
+   "falhas": [],
+   "escala": 0.96
+  },
+  "riv2": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.06
+  },
+  "barbacoral": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.2
+  },
+  "coral1": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.24
+  },
+  "coral2": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.3
+  },
+  "tonho": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.12
+  },
+  "dede": {
+   "ok": true,
+   "falhas": [],
+   "escala": 0.88
+  },
+  "chiquinha": {
+   "ok": true,
+   "falhas": [],
+   "escala": 0.94
+  },
+  "heroi": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.12
+  },
+  "lucia": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.05,
+   "nota": "V4: cabelo no topo + franja (an.cabelo/an.franja) consertados 18/11"
+  },
+  "zegelo": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.12
+  },
+  "tiaosuper": {
+   "ok": true,
+   "falhas": [],
+   "escala": 0.86
+  },
+  "barao": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.18
+  },
+  "drgambi": {
+   "ok": true,
+   "falhas": [],
+   "escala": 0.98
+  },
+  "bruxa": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1
+  },
+  "glorp": {
+   "ok": true,
+   "falhas": [],
+   "escala": 0.9
+  },
+  "zorbina": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.1
+  },
+  "astro": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.05
+  },
+  "gigante": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.85
+  },
+  "rei": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.85
+  },
+  "mutante": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.15
+  },
+  "monstro": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.6
+  },
+  "robo": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.05
+  },
+  "palhaco": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.28
+  },
+  "esqueleto": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.15
+  },
+  "zumbi": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.12
+  },
+  "vampiro": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.2
+  },
+  "abobora": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.15,
+   "nota": "olhos sao entalhes fixos da abobora (visiveis no render); falso positivo do teste wide/shut"
+  },
+  "sombra": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.4,
+   "nota": "sem pernas por design (vulto)"
+  },
+  "magrelo": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.6,
+   "nota": "sem rosto de proposito (tipo 'homem sem face'): nao faz expressao, so serve de vilao mudo"
+  },
+  "lobisomem": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.5
+  },
+  "molengo": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.15
+  },
+  "olhao": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.25
+  },
+  "gosma": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.3,
+   "nota": "sem pernas por design (gosma)"
+  },
+  "gnomo": {
+   "ok": true,
+   "falhas": [],
+   "escala": 0.74
+  },
+  "mariposa": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.15
+  },
+  "peixeman": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.12
+  },
+  "sapao": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.35
+  },
+  "panda": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.3
+  },
+  "tigresa": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.15
+  },
+  "coelho": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1
+  },
+  "tartaruga": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1
+  },
+  "jacare": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.4
+  },
+  "gorila": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.3
+  },
+  "raposa": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.05
+  },
+  "galo": {
+   "ok": true,
+   "falhas": [],
+   "escala": 0.95
+  },
+  "curupira": {
+   "ok": true,
+   "falhas": [],
+   "escala": 0.9
+  }
+ },
+ "cenarios": {
+  "espaco": {
+   "ok": true,
+   "falhas": []
+  },
+  "brinquedo": {
+   "ok": true,
+   "falhas": []
+  },
+  "cidade": {
+   "ok": true,
+   "falhas": []
+  },
+  "bermudas": {
+   "ok": true,
+   "falhas": []
+  },
+  "maia": {
+   "ok": true,
+   "falhas": []
+  },
+  "amazonia": {
+   "ok": true,
+   "falhas": []
+  },
+  "cyberpunk": {
+   "ok": true,
+   "falhas": []
+  },
+  "apocalipse": {
+   "ok": true,
+   "falhas": [],
+   "nota": "na camera geral a placa do portao tapa os bonecos: no worldAt do episodio SEMPRE usar apocalipse:{grade:false}"
+  },
+  "cemiterio": {
+   "ok": true,
+   "falhas": []
+  },
+  "parque": {
+   "ok": true,
+   "falhas": []
+  },
+  "dojo": {
+   "ok": true,
+   "falhas": []
+  },
+  "fundomar": {
+   "ok": true,
+   "falhas": []
+  },
+  "nuvens": {
+   "ok": true,
+   "falhas": []
+  },
+  "arena": {
+   "ok": true,
+   "falhas": []
+  },
+  "floresta": {
+   "ok": true,
+   "falhas": []
+  },
+  "navioberm": {
+   "ok": true,
+   "falhas": []
+  }
+ }
+}

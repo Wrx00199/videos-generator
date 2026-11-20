@@ -1,0 +1,94 @@
+{
+  "molde": "v5",
+  "formato": "cena",
+  "cenario": "bermudas",
+  "personagens": [
+    "tiao",
+    "mar1",
+    "mar2",
+    "cap"
+  ],
+  "pista": 1,
+  "pista_palavra": "sopa",
+  "virada": 9,
+  "falas": [
+    {
+      "quem": "narrador",
+      "texto": "Toda hora some 1 marinheiro do navio do Tião, e o próximo da fila é ele.",
+      "tom": "misterioso",
+      "pausa": 0.04
+    },
+    {
+      "quem": "narrador",
+      "texto": "O navio entrou no Triângulo das Bermudas. A neblina fecha, o mar fica preto, e o único calor sai da sopa do Tião.",
+      "tom": "rápido, empolgado",
+      "pausa": 0.04
+    },
+    {
+      "quem": "narrador",
+      "texto": "Hora 1. O Beto vai buscar um balde e não volta. Só sobra o balde, e a sopa subiu um dedo.",
+      "tom": "rápido, empolgado",
+      "pausa": 0.04
+    },
+    {
+      "quem": "narrador",
+      "texto": "Hora 2. O Zeca some da rede, que ainda está quente. O Capitão grita: é o navio fantasma!",
+      "tom": "rápido, empolgado",
+      "pausa": 0.04
+    },
+    {
+      "quem": "narrador",
+      "texto": "Hora 3. O Tião amarra o Capitão numa cadeira. Ele sai da corda sem desatar o nó, e a sopa sobe mais um dedo.",
+      "tom": "rápido, empolgado",
+      "pausa": 0.04
+    },
+    {
+      "quem": "narrador",
+      "texto": "Hora 4. Sozinho, o Tião escuta colheres batendo e risadinhas, e não acha de onde vêm.",
+      "tom": "rápido, empolgado",
+      "pausa": 0.04
+    },
+    {
+      "quem": "narrador",
+      "texto": "Hora 5. Ele segue o barulho, com a neblina lambendo os pés. Só um lugar tem calor: o panelão.",
+      "tom": "rápido, empolgado",
+      "pausa": 0.04
+    },
+    {
+      "quem": "narrador",
+      "texto": "Ele encosta a mão na tampa. Está morna, e treme como se algo respirasse.",
+      "tom": "rápido, empolgado",
+      "pausa": 0.04
+    },
+    {
+      "quem": "narrador",
+      "texto": "Hora 6. Ele levanta a tampa.",
+      "tom": "rápido, empolgado",
+      "pausa": 0.04
+    },
+    {
+      "quem": "narrador",
+      "texto": "Dentro do panelão: o Beto, o Zeca e o Capitão, dormindo juntinhos na sopa morna, de touca e pijama.",
+      "tom": "rápido, empolgado",
+      "pausa": 0.04
+    },
+    {
+      "quem": "narrador",
+      "texto": "O Capitão abre um olho: aqui dentro é o único lugar quente das Bermudas, Tião. Entra e lava a colher.",
+      "tom": "rápido, empolgado",
+      "pausa": 0.04
+    },
+    {
+      "quem": "narrador",
+      "texto": "O Tião entra. A sopa sobe um dedo, e o navio fantasma passa direto, com inveja.",
+      "tom": "rápido, empolgado",
+      "pausa": 0.04
+    },
+    {
+      "quem": "narrador",
+      "texto": "Você ficava de vigia no frio, ou entrava na sopa com a tripulação? Comenta A ou B.",
+      "tom": "rápido, empolgado",
+      "pausa": 0.04
+    }
+  ]
+}

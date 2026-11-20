@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# montar_final.sh <projeto> [overlay.mov y]  (HUD_OFF="ini:fim" esconde o overlay nesse intervalo, ex. flashback)  — quadros + mix -> sem_legenda.mp4 -> final.mp4 (HUD em overlay opcional + legenda.ass).
+set -e; P="${1:?projeto}"; OV="${2:-}"; Y="${3:-0}"; K="$(dirname "$0")"
+bash "$K/motor3d/finish.sh" "$P/frames" "$P/som/mix.wav" "$P/sem_legenda.mp4" | tee "$P/montar.log"
+FC="[0:v]subtitles=$P/legenda.ass[v]"; IN=(-i "$P/sem_legenda.mp4")
+if [ -n "$OV" ]; then IN+=(-i "$P/$OV"); EN=""; [ -n "${HUD_OFF:-}" ] && EN=":enable='not(between(t,${HUD_OFF%%:*},${HUD_OFF##*:}))'"
+  FC="[0:v][1:v]overlay=0:$Y:shortest=1$EN,subtitles=$P/legenda.ass[v]"; fi
+ffmpeg -v error -y "${IN[@]}" -filter_complex "$FC" -map "[v]" -map 0:a -c:v libx264 -preset veryfast -crf 20 -pix_fmt yuv420p -c:a copy -movflags +faststart "$P/final.mp4"
+ffprobe -v error -show_entries format=duration -show_entries stream=width,height -of compact "$P/final.mp4"; echo MONTADO | tee -a "$P/montar.log"

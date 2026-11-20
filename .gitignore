@@ -18,6 +18,11 @@
 !tests/
 !testes-painel/
 !_estado/
+!projetos/
+projetos/*
+!projetos/bonecos/
+projetos/bonecos/*
+!projetos/bonecos/serie-tiao-kit/
 # Segredos e temporários
 .env
 .env.*
@@ -40,8 +45,19 @@ ferramentas/lives/pw/
 *.wav
 *.mp3
 *.bak_*
-marca/*.png
 .venv/
 __pycache__/
 *.pyc
 ferramentas/lives/skill-clips/
+*.bak*
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
+*.ogg
+*.m4a
+*.glb
+*.zip
+projetos/bonecos/serie-tiao-kit/perfil/
+projetos/bonecos/serie-tiao-kit/banner/

@@ -1,0 +1,93 @@
+{
+  "molde": "v5",
+  "formato": "se_voce",
+  "cenario": "cidade",
+  "personagens": [
+    "tiao",
+    "tartaruga",
+    "mar1"
+  ],
+  "pista": 2,
+  "pista_palavra": "abraço",
+  "virada": 9,
+  "falas": [
+    {
+      "quem": "narrador",
+      "texto": "Você acordou com a força de mil homens. Se alguém descobrir antes da meia-noite, o poder some.",
+      "tom": "urgente",
+      "pausa": 0.04
+    },
+    {
+      "quem": "narrador",
+      "texto": "Hora 1. Você aperta a escova e ela vira pó. Abre a porta e ela sai inteira na sua mão.",
+      "tom": "rápido, empolgado",
+      "pausa": 0.04
+    },
+    {
+      "quem": "narrador",
+      "texto": "Hora 3. Sua vó abre os braços pra um abraço. Você abraça com dois dedos, com medo de quebrar ela.",
+      "tom": "rápido, empolgado",
+      "pausa": 0.04
+    },
+    {
+      "quem": "narrador",
+      "texto": "Hora 6. No ônibus você se apoia num poste, e o poste entorta.",
+      "tom": "rápido, empolgado",
+      "pausa": 0.04
+    },
+    {
+      "quem": "narrador",
+      "texto": "Hora 9. Você carrega o sofá do vizinho com uma mão. Ele pergunta como. Você responde: costume.",
+      "tom": "rápido, empolgado",
+      "pausa": 0.04
+    },
+    {
+      "quem": "narrador",
+      "texto": "Hora 12. O vizinho postou o sofá voando. Já tem 3 milhões de views, e ninguém sabe que é você. Ainda.",
+      "tom": "rápido, empolgado",
+      "pausa": 0.04
+    },
+    {
+      "quem": "narrador",
+      "texto": "Hora 15. O vizinho bate na sua porta, de celular na mão: eu sei que foi você. A maçaneta vira pó.",
+      "tom": "rápido, empolgado",
+      "pausa": 0.04
+    },
+    {
+      "quem": "narrador",
+      "texto": "Hora 18. Você corre pra casa da sua vó, e ele te segue. Cada passo seu rachando a calçada.",
+      "tom": "rápido, empolgado",
+      "pausa": 0.04
+    },
+    {
+      "quem": "narrador",
+      "texto": "Hora 22. Sua vó te serve chá. Atrás da cerca, o vizinho filma.",
+      "tom": "rápido, empolgado",
+      "pausa": 0.04
+    },
+    {
+      "quem": "narrador",
+      "texto": "Hora 23. O teto da cozinha racha. A viga desce bem em cima da sua vó, no mesmo lugar onde ela te deu aquele abraço.",
+      "tom": "rápido, empolgado",
+      "pausa": 0.04
+    },
+    {
+      "quem": "narrador",
+      "texto": "Faltam 4 minutos. Se você levantar a viga, o mundo descobre e o poder some.",
+      "tom": "rápido, empolgado",
+      "pausa": 0.04
+    },
+    {
+      "quem": "narrador",
+      "texto": "Se não levantar, o abraço de hoje de manhã vai ser o último.",
+      "tom": "rápido, empolgado",
+      "pausa": 0.04
+    },
+    {
+      "quem": "narrador",
+      "texto": "Você levanta a viga e perde o poder, ou deixa cair? Comenta A ou B. A mais votada decide.",
+      "tom": "rápido, empolgado",
+      "pausa": 0.04
+    }
+  ]
+}

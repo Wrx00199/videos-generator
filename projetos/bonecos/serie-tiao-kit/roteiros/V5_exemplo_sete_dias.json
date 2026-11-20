@@ -1,0 +1,111 @@
+{
+  "molde": "v5",
+  "formato": "cena",
+  "cenario": "floresta",
+  "personagens": [
+    "tiao",
+    "tiao4k",
+    "cap"
+  ],
+  "pista": 3,
+  "pista_palavra": "reflexo",
+  "virada": 13,
+  "falas": [
+    {
+      "quem": "narrador",
+      "texto": "O Tião não dorme há seis dias, e tem outro Tião sentado do lado dele.",
+      "tom": "misterioso",
+      "pausa": 0.04
+    },
+    {
+      "quem": "narrador",
+      "texto": "Tudo começou numa aposta: ninguém aguenta sete dias acordado, e quem dormir primeiro lava o acampamento com escova de dente.",
+      "tom": "rápido, empolgado",
+      "pausa": 0.04
+    },
+    {
+      "quem": "tiao",
+      "texto": "Sete dias? Eu cozinho até dormindo! Capitão, vai pegando a escova.",
+      "tom": "confiante",
+      "pausa": 0.04
+    },
+    {
+      "quem": "narrador",
+      "texto": "Dia 1. Vinte panquecas, uma dança com a panela, e no fundo do panelão o reflexo do Tião sorri um segundo atrasado.",
+      "tom": "rápido, empolgado",
+      "pausa": 0.04
+    },
+    {
+      "quem": "narrador",
+      "texto": "Dia 3. Ele põe sal no café, conversa com uma cebola, e o Capitão anota tudo.",
+      "tom": "tenso",
+      "pausa": 0.04
+    },
+    {
+      "quem": "tiao",
+      "texto": "A cebola piscou pra mim! Eu vi!",
+      "tom": "assustado",
+      "pausa": 0.04
+    },
+    {
+      "quem": "narrador",
+      "texto": "Dia 5. O reflexo sai do panelão, senta do lado dele e mexe a sopa melhor que ele.",
+      "tom": "misterioso",
+      "pausa": 0.04
+    },
+    {
+      "quem": "tiao",
+      "texto": "Finalmente alguém que entende o meu tempero!",
+      "tom": "alegre",
+      "pausa": 0.04
+    },
+    {
+      "quem": "narrador",
+      "texto": "Dia 6. O outro Tião cochicha: dorme um pouquinho, que eu seguro a barra por você.",
+      "tom": "sombrio",
+      "pausa": 0.04
+    },
+    {
+      "quem": "narrador",
+      "texto": "O Tião quase deita. O Capitão só vê ele conversando com uma panela.",
+      "tom": "tenso",
+      "pausa": 0.04
+    },
+    {
+      "quem": "tiao",
+      "texto": "Eu não vou dormir. Nem hoje, nem nunca!",
+      "tom": "aflito",
+      "pausa": 0.04
+    },
+    {
+      "quem": "narrador",
+      "texto": "Dia 7. Faltam três minutos. O Tião treme, e o outro Tião boceja.",
+      "tom": "tenso",
+      "pausa": 0.04
+    },
+    {
+      "quem": "narrador",
+      "texto": "No último segundo o outro desaba de cara na sopa e ronca. O Tião grita: ganhei!",
+      "tom": "rápido, empolgado",
+      "pausa": 0.04
+    },
+    {
+      "quem": "narrador",
+      "texto": "Só que o reflexo sempre copiou o Tião um segundo atrasado. Então quem dormiu primeiro foi o Tião, de cara no pão.",
+      "tom": "misterioso",
+      "pausa": 0.3
+    },
+    {
+      "quem": "narrador",
+      "texto": "Ele lavou o acampamento inteiro de escova de dente, e o reflexo ajudou a esfregar.",
+      "tom": "rápido, empolgado",
+      "pausa": 0.04
+    },
+    {
+      "quem": "narrador",
+      "texto": "Se o seu reflexo oferecesse dormir por você, você aceitava? Comenta A ou B.",
+      "tom": "rápido, empolgado",
+      "pausa": 0.04
+    }
+  ]
+}
