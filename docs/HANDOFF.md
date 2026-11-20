@@ -31,3 +31,12 @@ Nunca varrer pasta inteira nem ler arquivo grande para achar algo. Ordem: (1) `r
 - Descoberta: dos 7 links YouTube, TODOS são tutoriais (como fazer shorts 3D com Claude), não vídeos para modelar. Modelo de vídeo final = shorts do ricksclips (`VS1Z_Q-Klt8` já na base). Tweets longos (até 21k chars) ainda NÃO lidos: contêm prompts.
 - Semanal 51% (sem mudança medível); este chat parou em 15% de contexto.
 - Próximo: ler os tweets/prompts mais relevantes por `rg`, extrair mais shorts do ricksclips com `extrair_ref.py`, escolher 1 para modelar e só então escrever o episódio.
+
+## ATUALIZAÇÃO 20/11 ~20h — PRÓXIMO CHAT (ordem do Filippe: seguir até ~25-30% de contexto, fazer bastante, testar, melhorar, corrigir erros dos agentes)
+Estado: FICHA APROVADA (Filippe mandou seguir) = `referencias/base/FICHA_trem-bike_BDhG_VplvzA.md` (ref Wobbly Tales, "Tião contra o trem"). Molde: `referencias/base/MOLDE_RICKSCLIPS.md`. Ler `regras.md` primeiro. Busca direta (rg -l, nunca varrer pasta).
+Fazer, em ordem, uma coisa por vez:
+1. Tarefas de cenário no motor (`projetos/bonecos/serie-tiao-kit/motor3d/`, catálogo `catalogo/CENARIOS.md`): `pradaria_trilho`, `estacao_trem`, `nevasca` (efeito neve existe em efeitos.js), `cabine_locomotiva`, +1 ambiente de fim de tarde (≥5 distintos); personagem `apostador`; objetos `velocimetro`, `bolha_de_ar`, caixa de madeira. Cada um: still de teste (1 render por vez, hook guarda), conferir recorte/zoom, corrigir antes do próximo.
+2. Só depois: storyboard (ficha completa), diretor-retencao/crítico/revisor com haiku/sonnet (1 por vez), voz PT-BR, render, checagens por comando (black/silence/freezedetect), revisor final.
+3. Cada erro encontrado → regra curta em `regras.md` (formato Morgs) e KIT.md.
+Limites: PC 8 GB, Firefox pesado (travou ontem): cautela, 1 render por vez, nada de concorrência; sem render pesado se swap/RAM livre < 1 GB (`free -m`). Limite semanal 51% (parar em 75%); medir `get_usage` antes/depois de cada etapa e relatar. Nunca postar. Sem segredos no git. Codex (`codex exec`) para o mecânico.
+Pendências menores: reprocessar os 8 vídeos antigos com o extrator corrigido (legenda rolante); ler tweets restantes só se pedir; conectores MCP a desligar nas sessões de produção (lista em docs/ECONOMIA_AUDITORIA.md).
