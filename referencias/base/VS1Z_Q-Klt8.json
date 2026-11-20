@@ -1,0 +1,111 @@
+{
+ "id": "VS1Z_Q-Klt8",
+ "url": "https://www.youtube.com/watch?v=VS1Z_Q-Klt8",
+ "titulo": "The Ancient Jar That Warned an Empire",
+ "canal": "Ricks Clips",
+ "views": 35227604,
+ "data": "20261019",
+ "duracao_s": 64.9,
+ "idioma_fala": "en",
+ "fonte_fala": "whisper",
+ "n_cortes": 2,
+ "cortes_por_min": 1.8,
+ "palavras_por_s": 3.61,
+ "cortes_s": [
+  3.07,
+  5.37
+ ],
+ "beats": [
+  {
+   "n": 1,
+   "ini": 0.0,
+   "fim": 3.07,
+   "dur": 3.07,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "He put a bronze ball in a dragon's mouth and told the Emperor if this ever falls out, run!"
+  },
+  {
+   "n": 2,
+   "ini": 3.07,
+   "fim": 10.0,
+   "dur": 6.93,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "The whole court burst out laughing. You see, there were eight dragons coiled around a giant"
+  },
+  {
+   "n": 3,
+   "ini": 10.0,
+   "fim": 20.16,
+   "dur": 10.16,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "bronze jar, each holding a ball over a frog's open mouth. But the Emperor had the biggest army in the world, and he wasn't about to run from a jar. Weeks later, a ball fell, but nothing happened."
+  },
+  {
+   "n": 4,
+   "ini": 20.16,
+   "fim": 30.58,
+   "dur": 10.42,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Not even a ripple in the Emperor's wine. Now they laughed even harder. The Emperor called it the world's most expensive toy and threw the inventor out of the city, Jar and all. So he dragged it up a"
+  },
+  {
+   "n": 5,
+   "ini": 30.58,
+   "fim": 35.24,
+   "dur": 4.66,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "hill outside the walls and lived there alone. Then one night, a ball dropped. Then another."
+  },
+  {
+   "n": 6,
+   "ini": 35.24,
+   "fim": 41.4,
+   "dur": 6.16,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Then all ate it once. He ran to the city gates, screaming for everyone to get out. Hey, it's the toy"
+  },
+  {
+   "n": 7,
+   "ini": 41.4,
+   "fim": 51.66,
+   "dur": 10.26,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "guy. Did your frogs get hungry again? The guards laughed him all the way back up the hill. The next morning, the palace was a pile of rubble. Inside the jar hung a heavy pendulum with a rod pointing at"
+  },
+  {
+   "n": 8,
+   "ini": 51.66,
+   "fim": 62.06,
+   "dur": 10.4,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "each dragon. The slightest nudge and the pendulum swung into a rod, the rod snapped the dragons jump and the ball dropped. One ball meant a nudge from far away. All eight meant the biggest earthquake"
+  },
+  {
+   "n": 9,
+   "ini": 62.06,
+   "fim": 64.9,
+   "dur": 2.84,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "the Empire had ever seen was right underneath them."
+  }
+ ],
+ "folha": "VS1Z_Q-Klt8_folha.jpg",
+ "descricao": "The Ancient Jar That Warned an Empire",
+ "tempos_s": {
+  "metadados": 4.7,
+  "download": 14.5,
+  "cortes": 1.0,
+  "folha": 1.0,
+  "fala": 18.1,
+  "total": 39.3
+ }
+}
