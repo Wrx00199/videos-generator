@@ -4,14 +4,14 @@
 // Opções (todas opcionais; nada alocado por quadro):
 //   pradaria_trilho { trem: 1|0 (padrão 1), tremX: 0.6 (x da traseira do último vagão; locomotiva fica à direita), longe: 0|1 (trem pequeno ao fundo, z -22),
 //                     fumaca: 0..1, vento: 0..1 (linhas de vento na frente do trem), bolha: 0..1 (bolha de ar atrás da caixa), vel: 0..1 (ponteiro do velocímetro, 0=0 / 1=100 km/h; velocimetro: 1|0 liga o objeto, padrão 0),
-//                     bone: 0..1 (boné vermelho voa em arco; some em 0 e 1), sapato: 0..1 (idem), tabuas: 1|0 (pista de tábua entre os trilhos, padrão 1), bike: 0|1 (bicicleta do Tião atrás da caixa, x = tremX-1,25), nuvens: 1|0 }
+//                     pedal: radianos do pedivela (a história passa a mesma fase do Tião), bone: 0..1 (boné vermelho voa em arco; some em 0 e 1), sapato: 0..1 (idem), tabuas: 1|0 (pista de tábua entre os trilhos, padrão 1), bike: 0|1 (bicicleta do Tião atrás da caixa, x = tremX-1,25), nuvens: 1|0 }
 //   estacao_trem    { hora: 10.1 (ponteiros), cartaz: 'APOSTA R$ 1.000' (linha 2 da placa; linha 1 fixa '100 KM/H'), apito: 0..1 (vapor sobe da locomotiva ao fundo), caixa: 1|0 (caixa de madeira na plataforma) }
 //   nevasca         { vento: 0..1 (cachecol/placa balança; pinheiros inclinam), (a neve caindo = worldAt.fx.chuva tipo 'neve') }
 //   cabine_locomotiva { cron: 58 (segundos no cronômetro, 00:SS), vel: 0..1 (paisagem passa na janela), alavanca: 0..1 (alavanca de freio sobe/desce), pressao: 0..1 (ponteiro do manômetro), fogo: 0..1 (brilho da fornalha) }
 //   fim_tarde       { sol: 0..1 (altura do sol; padrão 0,35), ponto: 0..1 (trem vira um pontinho a x=-60 → 0..1 anda pro horizonte; padrão 0,6) }
 export const TREM = ['pradaria_trilho', 'estacao_trem', 'nevasca', 'cabine_locomotiva', 'fim_tarde'];
 export const CAMS7 = {
-  pradaria_trilho: { traseira: { pos: [-2.2, 1.7, 3.6], look: [0.6, 1.2, 0], fov: 50 }, caixa: { pos: [-0.5, 1.15, 2.4], look: [0.15, 0.9, 0], fov: 40 }, mostrador: { pos: [-1.0, 1.5, 3.0], look: [-1.6, 1.3, 0.75], fov: 46 }, bike: { pos: [-0.45, 1.4, 5.6], look: [-0.45, 0.9, 0], fov: 58 }, trem: { pos: [5, 2.0, 9], look: [6, 1.4, 0], fov: 52 } },
+  pradaria_trilho: { traseira: { pos: [-2.2, 1.7, 3.6], look: [0.6, 1.2, 0], fov: 50 }, caixa: { pos: [-0.5, 1.15, 2.4], look: [0.15, 0.9, 0], fov: 40 }, mostrador: { pos: [-1.0, 1.5, 3.0], look: [-1.6, 1.3, 0.75], fov: 46 }, bike: { pos: [-0.68, 1.4, 5.6], look: [-0.68, 0.9, 0], fov: 58 }, trem: { pos: [5, 2.0, 9], look: [6, 1.4, 0], fov: 52 } },
   estacao_trem: { cartaz: { pos: [3.3, 2.1, 2.4], look: [3.7, 2.05, -1.5], fov: 42 } },
   cabine_locomotiva: { janela: { pos: [0.0, 1.5, 1.7], look: [0, 1.6, -2.3], fov: 46 } },
   fim_tarde: { horizonte: { pos: [0.2, 1.3, 4.6], look: [0, 1.5, -40], fov: 40 } },
@@ -80,6 +80,8 @@ export function construirTrem(X) {
     const tubo = (ax, ay, bx, by, r = 0.028) => { const dx = bx - ax, dy = by - ay, L = Math.hypot(dx, dy), m = add(new THREE.CylinderGeometry(r, r, L, 10), mc(cor), (ax + bx) / 2, (ay + by) / 2, 0, B); m.rotation.z = Math.atan2(dx, -dy) + PI; };
     tubo(-0.55, 0.36, -0.1, 0.38); tubo(-0.1, 0.38, 0.4, 0.74); tubo(-0.55, 0.36, -0.12, 0.78); tubo(-0.12, 0.78, 0.4, 0.74); tubo(-0.1, 0.38, -0.12, 0.78); tubo(0.4, 0.74, 0.55, 0.36); tubo(0.4, 0.74, 0.34, 0.9);
     caixa(B, 0.3, 0.05, 0.12, '#2a2a30', -0.14, 0.78, 0, {}); caixa(B, 0.05, 0.05, 0.4, '#2a2a30', 0.34, 0.9, 0, {}); cil(B, 0.05, 0.05, 0.1, '#2a2a30', -0.1, 0.34, 0, {}, 12).rotation.z = PI / 2;
+    const cr = new THREE.Group(); cr.position.set(-0.1, 0.34, 0); B.add(cr); for (const sg of [1, -1]) { add(new THREE.BoxGeometry(0.03, 0.26, 0.02), mc('#2a2a30'), 0, sg * 0.0, 0.06 * sg, cr, { cast: false }).position.y = sg * 0.0; const ped = add(new THREE.BoxGeometry(0.14, 0.03, 0.09), mc('#2a2a30'), 0, sg * 0.13, 0.1 * sg, cr, { cast: false }); }
+    B.userData.crank = cr;
     return B; };
   // bolha de ar: casca translúcida (esfera achatada) + 3 anéis de vento; centro na origem do grupo
   const bolha = (g) => { const G = new THREE.Group(); g.add(G);
@@ -111,9 +113,10 @@ export function construirTrem(X) {
     const bone = new THREE.Group(); g.add(bone); { const c = add(new THREE.SphereGeometry(0.16, 16, 10, 0, PI * 2, 0, PI / 2), mc('#d8302a'), 0, 0, 0, bone, { cast: false }); add(new THREE.CylinderGeometry(0.17, 0.17, 0.02, 16), mc('#a82420'), 0, 0, 0, bone, { cast: false }); const vz = add(new THREE.BoxGeometry(0.2, 0.02, 0.14), mc('#a82420'), 0.2, 0, 0, bone, { cast: false }); vz.rotation.z = 0.15; }
     const sapato = new THREE.Group(); g.add(sapato); { add(new THREE.BoxGeometry(0.34, 0.1, 0.14), mc('#6b3a1e'), 0, 0.06, 0, sapato, { cast: false }); add(new THREE.BoxGeometry(0.14, 0.16, 0.13), mc('#6b3a1e'), -0.1, 0.13, 0, sapato, { cast: false }); add(new THREE.BoxGeometry(0.36, 0.03, 0.15), mc('#241726'), 0, 0.0, 0, sapato, { cast: false }); }
     const bk = bicicleta(g), bh = bolha(g), vm = velocimetro(g); vm.position.set(-1.9, 0, 0.75); vm.scale.setScalar(0.9);
-    bk.userData.rodas = []; bk.traverse((o) => { if (o.userData.roda) bk.userData.rodas.push(o); });
+    bk.userData.rodas = []; bk.userData.crank.rotation.z = 0; bk.traverse((o) => { if (o.userData.roda) bk.userData.rodas.push(o); });
     lista.pradaria_trilho = { g, chao: () => 0, state(S, f) { const B = S.pradaria_trilho || {}, t = f / 30, x0 = B.tremX ?? 0.6, longe = !!B.longe;
         trem.visible = (B.trem ?? 1) > 0; trem.position.set(longe ? -4 + x0 : x0, 0, longe ? -22 : 0); trem.scale.setScalar(longe ? 0.8 : 1);
+        bk.userData.crank.rotation.z = -(B.pedal ?? 0);
         tab.visible = (B.tabuas ?? 1) > 0; bk.visible = !!B.bike; bk.position.set(x0 - 2.0, 0.22, 0.0); bk.userData.rodas.forEach((r) => { r.rotation.z = -x0 * 1.2 - t * 6 * (B.bike ? 1 : 0); });
         nv.forEach((n, i) => { n.position.x += 0; n.visible = (B.nuvens ?? 1) > 0; });
         const fk = B.fumaca ?? 0.7; fumo.forEach((m, i) => { const u = ((t * 0.5 + i / 8) % 1), cx = trem.position.x + 5.6 + 3.7, cz = trem.position.z; m.visible = fk > 0.02 && trem.visible; m.scale.setScalar((0.25 + u * 0.9) * (0.4 + fk)); m.position.set(cx - u * 4.2 * (longe ? 1 : 1.3), 2.3 * trem.scale.y + u * 1.6, cz); m.material.opacity = 0.7 * (1 - u) * Math.min(1, fk + 0.3); });
