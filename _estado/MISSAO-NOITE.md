@@ -151,3 +151,8 @@ Prioridade máxima junto com a qualidade: NÃO estourar o semanal (corte 75%). M
 - Meça `get_usage` ao início e ao fim de cada etapa e registre o custo em % por etapa no estado; etapa que gastar muito, simplifique antes de repetir.
 - Sessão nova quando o contexto passar de ~55%; evite reler arquivos grandes; imagem só em recorte; sem subagente para o que cabe em poucas chamadas.
 - Se o semanal passar de ~65%, entre em modo econômico: só etapas de alto valor (episódio do Tião, revisor), sem exploração nova, sem subagente opus.
+
+## ARRUMAR OS BOTS EXISTENTES (Filippe, 20/11)
+- **Bot de lives/clipes (radar + clipador + ao_vivo)**: na Fase 2, depois do gate de impacto, revisar e consertar: calibrar a nota mínima de relevância com as decisões aprova/recusa da Revisão (hoje nenhum trecho passa), gate de pico de áudio antes da análise pesada (medir em ~6 segmentos de nota conhecida), lacunas entre segmentos, lives em inglês, deduplicação, custo de CPU/RAM (um por vez). Rodar teste real em live ao vivo curta e medir. Resultado: clipes mais impactantes e menos genéricos, PC leve.
+- **Bot de referência do Tião (olheiro)**: já na Fase 1d (filtro rígido, estilizado, viral, modelável, quadros conferidos); consertar o que falhar (coleta frouxa, Instagram/TikTok não coletados, falso positivo de rosto) e rodar leve a cada sessão.
+- Cada bot: teste, medição de tempo/RAM, registro em `docs/` e no KIT.
