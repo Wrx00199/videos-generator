@@ -1,0 +1,2 @@
+- [Humor sem repetição](feedback-humor-nao-repetir.md) — base de humor variada, nunca repetir frases entre vídeos
+- [Não parar esperando](feedback-nao-parar-esperando.md) — seguir sozinho com caminho razoável; respostas curtas (celular)

@@ -1,0 +1,15 @@
+{
+  "nome": "superpoderes",
+  "descricao": "E se você tivesse um superpoder? Curiosidade/ciência explicada em short animado.",
+  "termos": ["what if you had superpowers #shorts", "e se você tivesse superpoderes", "superpower explained"],
+  "hashtags": ["superpowers", "superpoderes"],
+  "canais": [],
+  "janela": "mes",
+  "duracao_max_s": 90,
+  "min_views": 50000,
+  "max_dias": 120,
+  "excluir_canais": [],
+  "excluir_titulo": ["trailer"],
+  "por_termo": 20,
+  "max_detalhar": 40
+}

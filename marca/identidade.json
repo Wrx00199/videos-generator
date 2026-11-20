@@ -1,0 +1,15 @@
+{
+  "nick": "six_starsbr",
+  "confirmado": true,
+  "cor_texto": "#FFFFFF",
+  "cor_b": "#FFFF00",
+  "cor_r": "#00FF00",
+  "logo": "marca/sixstars_br_redondo.png",
+  "capa": "marca/capa-jason.png",
+  "capa_separada": true,
+  "resolucao": [
+    720,
+    1280
+  ],
+  "fps": 30
+}

@@ -1,0 +1,59 @@
+{
+  "versao": 1,
+  "descricao": "Moldes de timeline pré-validados para clone.py. Posições dentro da safe zone x:[0.15,0.78] y:[0.25,0.70], alinhadas à grade 30fps. Usar como base: copiar o molde do layout desejado e preencher texto_tela, fala, fonte e tempos.",
+  "safe_zone": {
+    "card_pos": {"x_min": 0.15, "x_max": 0.78, "y_min": 0.25, "y_max": 0.70},
+    "legenda_pos": {"x_min": 0.15, "x_max": 0.78, "y_min": 0.25, "y_max": 0.70}
+  },
+  "layouts": {
+    "cheio": {
+      "descricao": "Tela inteira com vídeo/gameplay, card centralizado no terço superior, legenda no terço inferior",
+      "layout": "cheio",
+      "crop": [0, 0, 1, 1],
+      "card_pos": [0.5, 0.30],
+      "legenda_pos": [0.5, 0.65],
+      "area_visual": null,
+      "notas": "Layout padrão para pagamento/revelação. Card e legenda usam pos fixo; sem area_visual."
+    },
+    "janela": {
+      "descricao": "Vídeo em janela centralizada sobre fundo escuro, card acima da janela, legenda abaixo",
+      "layout": "janela",
+      "crop": [0, 0, 1, 1],
+      "area_visual": [0, 0.30, 1, 0.40],
+      "card_pos": [0.5, 0.30],
+      "legenda_pos": [0.5, 0.65],
+      "notas": "Janela ocupa 40% vertical centrada. Bom para comparar ou mostrar detalhe."
+    },
+    "tres_faixas": {
+      "descricao": "Faixa superior (card), faixa central (vídeo com blur), faixa inferior (legenda/CTA)",
+      "layout": "tres_faixas",
+      "crop": [0, 0, 1, 1],
+      "area_visual": [0, 0.30, 1, 0.40],
+      "card_pos": [0.5, 0.30],
+      "legenda_pos": [0.5, 0.65],
+      "notas": "Vídeo na faixa central com blur nas laterais. Setup/hook clássico de shorts virais."
+    }
+  },
+  "beat_template": {
+    "id": "NOME_UNICO",
+    "ini": 0.0,
+    "fim": "MULTIPLO_DE_1/30 (ex: 3.3333333333333335 = 100/30)",
+    "funcao": "setup | pagamento | virada | cta",
+    "funcao_original": "MESMO_VALOR_DE_funcao",
+    "texto_tela": "TEXTO DO CARD (max 100 chars)",
+    "fala": "texto falado sem pontuacao extra; deve bater com STT palavra por palavra",
+    "fonte": "visual/NOME_DO_ARQUIVO.mp4",
+    "tipo_fonte": "gameplay_verificado | broll_aprovado | motion | infografico | imagem_oficial",
+    "inicio_fonte_s": 0.0,
+    "layout": "cheio | janela | tres_faixas",
+    "crop": [0, 0, 1, 1],
+    "area_visual": "ver layout escolhido acima",
+    "card_pos": "ver layout escolhido acima",
+    "legenda_pos": "ver layout escolhido acima"
+  },
+  "regras_grid_30fps": {
+    "formula": "abs(valor * 30 - round(valor * 30)) <= 0.001",
+    "exemplos_validos": [0.0, 0.03333333333333333, 1.0, 3.3333333333333335, 9.866666666666667, 16.4],
+    "dica": "use N/30 onde N é inteiro. Ex: 100/30 = 3.333..., 296/30 = 9.866..."
+  }
+}

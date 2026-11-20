@@ -1,0 +1,47 @@
+# Allowlist: ignora tudo, libera só código/docs
+/*
+!.gitignore
+!README.md
+!CLAUDE.md
+!AGENTS.md
+!PROMPT-INICIAL.md
+!package.json
+!package-lock.json
+!.claude/
+!ferramentas/
+!config/
+!docs/
+!docs-painel/
+!estilos/
+!nichos/
+!marca/
+!tests/
+!testes-painel/
+!_estado/
+# Segredos e temporários
+.env
+.env.*
+*.key
+_tmp*/
+.netlify
+node_modules/
+_estado/missao.lock
+_estado/chrome-*/
+_estado/historico-viewers.json
+# Vendored/pesado/mídia
+ferramentas/earshot/
+ferramentas/rea-video/
+ferramentas/pixelfx/
+ferramentas/remotion-skills/
+ferramentas/painel/netlify-deploy/
+ferramentas/lives/pw/
+*.mp4
+*.mov
+*.wav
+*.mp3
+*.bak_*
+marca/*.png
+.venv/
+__pycache__/
+*.pyc
+ferramentas/lives/skill-clips/

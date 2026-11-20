@@ -1,0 +1,88 @@
+{
+  "nome": "gta6",
+  "descricao": "GTA 6: notícias, curiosidades, gameplay, lives de streamers. Lançamento 19/11/2026.",
+  "termos": [
+    "gta 6 #shorts",
+    "gta 6 curiosidades",
+    "gta 6 detalhes",
+    "gta 6 easter egg",
+    "gta 6 secret",
+    "gta 6 details you missed",
+    "gta 6 vice city map",
+    "gta vi",
+    "gta 6 explained",
+    "gta 6 vs gta 5",
+    "gta 6 map size",
+    "gta 6 leak",
+    "gta 6 things you missed",
+    "gta 6 comparison"
+  ],
+  "janela": "semana",
+  "duracao_max_s": 90,
+  "min_views": 20000,
+  "excluir_canais": [
+    "Rockstar Games",
+    "Rockstar Games Brasil",
+    "PlayStation",
+    "Xbox",
+    "IGN",
+    "IGN Brasil",
+    "GTA6-罪恶都市",
+    "GTA-正义审判",
+    "GTA666",
+    "GTA6",
+    "DREAM NIGHT",
+    "GTA - 传奇露西亚",
+    "KuroMation",
+    "Hook Challenge",
+    "Bindass 29",
+    "Nyvex",
+    "Sou Erick",
+    "Nosso Save Game - GTA VI",
+    "Augusto no Assunto",
+    "NabilPlayZ",
+    "DiegoVice",
+    "Fala Léo!"
+  ],
+  "excluir_titulo": [
+    "official trailer",
+    "trailer oficial",
+    "pre-load",
+    "pré-carregue",
+    "unboxing",
+    "roblox",
+    "minecraft",
+    "fortnite"
+  ],
+  "por_termo": 25,
+  "max_detalhar": 40,
+  "hashtags": [
+    "gta6",
+    "gtavi",
+    "gta6brasil",
+    "gta6news",
+    "gta6map",
+    "gta6trailer"
+  ],
+  "canais": [],
+  "max_dias": 60,
+  "tiktok_buscas": [
+    "gta 6 curiosidades",
+    "gta 6 detalhes"
+  ],
+  "instagram_tags": [
+    "gta6",
+    "gtavi",
+    "gta6brasil"
+  ],
+  "rapido": {
+    "tiktok": [
+      "tag:gta6",
+      "busca:gta 6 curiosidades"
+    ],
+    "instagram": [
+      "gta6",
+      "gta6brasil"
+    ]
+  }
+}

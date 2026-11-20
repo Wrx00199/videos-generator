@@ -1,0 +1,28 @@
+{
+  "nome": "slug-do-nicho",
+  "descricao": "1 linha: do que é o canal e que tipo de vídeo queremos clonar",
+  "termos": [
+    "termo de busca 1 #shorts",
+    "termo 2 em inglês",
+    "termo 3 em português"
+  ],
+  "janela": "semana",
+  "duracao_max_s": 90,
+  "min_views": 20000,
+  "excluir_canais": [
+    "canais oficiais/marcas que não dá para clonar"
+  ],
+  "excluir_titulo": [
+    "palavras que indicam vídeo não clonável"
+  ],
+  "por_termo": 25,
+  "max_detalhar": 60,
+  "hashtags": [
+    "hashtag-sem-#"
+  ],
+  "canais": [
+    "https://www.youtube.com/@canal-que-voce-acompanha"
+  ],
+  "max_dias": 30,
+  "permitir_rosto": false
+}

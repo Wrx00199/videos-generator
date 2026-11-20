@@ -1,0 +1,4 @@
+netlify-deploy/public/v/
+netlify-deploy/public/revisao.json
+netlify-deploy/.netlify/
+node_modules/

@@ -1,0 +1,19 @@
+{
+  "name": "estudio-de-video",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "python3 -m unittest discover -s tests -p \"test_*.py\" && node --test tests/test_*.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "playwright": "^1.65.1"
+  }
+}
