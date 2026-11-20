@@ -21,3 +21,6 @@ Tião nunca posta (Filippe posta); vídeo final no Drive `Drive1:Estudio de Vide
 Rápido, de pouco em pouco, uma coisa por vez, entregar algo visível e melhorar depois; ~2 h para: base de dados + regras + economia + já melhorar o gerador. Ele acompanha e critica ao vivo. Não é para esperar perfeição; é para parar de ficar em horas sem resultado. Estimativas honestas sempre.
 ## Estado do código
 Ver `_estado/MISSAO-ESTADO.md` (PONTO DE RETOMADA), `docs/tiao/` (FICHA_MODELAGEM, CALIBRACAO_REVISOR), skill `estudio-revisor-shorts`, `projetos/bonecos/serie-tiao-kit/KIT.md`, cenário Blender `sala_blender` (cenarios6.js; EEVEE ~7 s/quadro), painel multi-conta em `ferramentas/painel` (porta 7777), `ferramentas/vigia.py`.
+
+## BUSCA DIRETA (regra do Filippe, 20/11) — economia
+Nunca varrer pasta inteira nem ler arquivo grande para achar algo. Ordem: (1) `rg -l "<palavra-chave>" <pasta>` ou `fd`/`ls -1` de 1 nível; (2) abrir só o arquivo achado e só o trecho (`rg -n -C3`, `sed -n 'a,bp'`); (3) índice/README/CLAUDE.md da pasta antes de explorar; (4) para pasta antiga grande (ex. `/media/wr/HDD/Gon`, 8,5 GB): `rg -l -i "clon|modelag|beat|roteiro"` limitado a `*.md *.py *.mjs *.json`, ler no máx. 2 arquivos; (5) subagente haiku só se a busca ainda ficar ampla. Resultado de busca vira nota curta no HANDOFF/Second Brain para não repetir.
