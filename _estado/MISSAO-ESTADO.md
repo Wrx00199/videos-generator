@@ -35,5 +35,5 @@ Dicas operacionais: render_leve.sh exige TOTAL numérico → passar intervalo '0
 - S1 parou ~06:20
 
 ## PONTO DE RETOMADA (sobrescrever)
-20/11 ~11:25: ep.39: cenários PREDIOS prontos (cenarios5.js, ok). Subagente opus fazendo story.js+plano+som+folha (sem render). Voz e FICHA prontas. PRÓXIMO: conferir folha, render_leve 0-N, montar_final, portão final, revisor, rclone, TEMPO_EPISODIO.
-PRÓXIMO: quando cenários prontos → story.js (subagente opus; PORTAO_BEATS; usar tempos_ft.js; modelo ep.38 web/story.js) + plano.json com luz + som → render_leve.sh '0-N' → montar_final → portao final → revisor 1 passada → rclone Drive1 → docs/TEMPO_EPISODIO.md. Depois Fase 2/3/5. Uso 5h≈4%, sem≈38%.
+20/11 ~12:25: ep.39 RENDERIZADO (2m06 render) + montado (mix -14 LUFS, final.mp4 acelerado 1.04x p/ ritmo 2.54 pal/s; original em final_1x.mp4) e PORTÃO FINAL PASSOU (portao.py da kit agora = docs/tiao/portao.py com mecânicas; plano_beats.json por beat). Falta: revisor-bonecos (1 passada) → ordens ao produtor → rclone Drive1 + cópia em prontos/3D/Aventuras do Tião/ → docs/TEMPO_EPISODIO.md → commit/push. Depois Fase 2/3/5.
+Lições p/ KIT: portao mecânico lê plano_beats.json; FICHA com colunas 'Câmera REF'/'Fala PT-BR' e fala completa; PORTAO_BEATS.fala = falas.json; voz 2.45 pal/s → acelerar 1.04x no final.

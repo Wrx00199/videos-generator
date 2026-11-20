@@ -490,8 +490,9 @@ def checar_planos_mecanicos(proj):
                'verbos': 'acao visivel ate o fim da palavra', 'ficha_story': 'FICHA = plano = story por beat'}
     falhas = {k: [] for k in limites}
     try:
-        with open(os.path.join(proj, 'plano.json'), encoding='utf-8') as fp:
-            planos = _indice_beats(json.load(fp), 'plano.json')
+        pb = os.path.join(proj, 'plano_beats.json')  # 1 registro por beat (plano.json fica 1 por plano p/ variedade)
+        with open(pb if os.path.isfile(pb) else os.path.join(proj, 'plano.json'), encoding='utf-8') as fp:
+            planos = _indice_beats(json.load(fp), 'plano_beats.json' if os.path.isfile(pb) else 'plano.json')
         js_path = os.path.join(proj, 'web', 'story.js')
         if not os.path.isfile(js_path):
             js_path = os.path.join(proj, 'story.js')
@@ -640,7 +641,7 @@ def checar_cobertura(proj):
     js = os.path.join(proj, 'web', 'story.js')
     if not os.path.exists(js) or not re.search(r"\n\s*T\(\d+,", open(js, encoding='utf-8').read()):
         return Resultado('cobertura', True, 'n/a (formato sem T(n,...))', 'citado => aparece')
-    r = subprocess.run([sys.executable, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'cobertura.py'), proj], capture_output=True, text=True)
+    r = subprocess.run([sys.executable, next((c for c in (os.path.join(os.path.dirname(os.path.abspath(__file__)), 'cobertura.py'), os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'projetos', 'bonecos', 'serie-tiao-kit', 'cobertura.py')) if os.path.exists(c)), 'cobertura.py'), proj], capture_output=True, text=True)
     ok = r.returncode == 0
     return Resultado('cobertura', ok, 'ok' if ok else r.stdout.strip().splitlines()[0][:90], 'citado => aparece', '' if ok else r.stdout.strip())
 
