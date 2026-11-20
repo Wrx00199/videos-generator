@@ -352,6 +352,34 @@
   "fachada": {
    "ok": true,
    "falhas": []
+  },
+  "obra_azul": {
+   "ok": true,
+   "falhas": []
+  },
+  "obra_vermelha": {
+   "ok": true,
+   "falhas": []
+  },
+  "escritorio": {
+   "ok": true,
+   "falhas": []
+  },
+  "skyline": {
+   "ok": true,
+   "falhas": []
+  },
+  "rua": {
+   "ok": true,
+   "falhas": []
+  },
+  "redacao": {
+   "ok": true,
+   "falhas": []
+  },
+  "noite": {
+   "ok": true,
+   "falhas": []
   }
  }
 }

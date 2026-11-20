@@ -35,5 +35,5 @@ Dicas operacionais: render_leve.sh exige TOTAL numérico → passar intervalo '0
 - S1 parou ~06:20
 
 ## PONTO DE RETOMADA (sobrescrever)
-20/11 08:50: item (c) FEITO: 4 checagens mecânicas no docs/tiao/portao.py (checar_planos_mecanicos; exige PORTAO_BEATS em JSON no story.js) + tests/test_portao_mecanico.py; 43 testes ok (conferido por mim). Uso 5h=76% (reseta 08:50), sem=37%.
-PRÓXIMO: ep.39 Nico/prédio mais alto (ref referencias/2026-11-20-bonecos-nico/DyJ3L6YI2oA): pacote PREDIOS em cenarios5.js, FICHA, roteiro+crítico, voz_ep.sh, story.js (agora com PORTAO_BEATS), plano.json com luz, render_leve '0-N', montar_final, portao final, revisor (1 passada); cronometrar em docs/TEMPO_EPISODIO.md. Depois: Fase 2 bots, Fase 3 painel (logo marca/propostas-logo/logo-b4-preto.svg), Fase 5. Blender: aguarda OK do Filippe.
+20/11 ~11:25: ep.39: cenários PREDIOS prontos (cenarios5.js, ok). Subagente opus fazendo story.js+plano+som+folha (sem render). Voz e FICHA prontas. PRÓXIMO: conferir folha, render_leve 0-N, montar_final, portão final, revisor, rclone, TEMPO_EPISODIO.
+PRÓXIMO: quando cenários prontos → story.js (subagente opus; PORTAO_BEATS; usar tempos_ft.js; modelo ep.38 web/story.js) + plano.json com luz + som → render_leve.sh '0-N' → montar_final → portao final → revisor 1 passada → rclone Drive1 → docs/TEMPO_EPISODIO.md. Depois Fase 2/3/5. Uso 5h≈4%, sem≈38%.
