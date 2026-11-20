@@ -156,3 +156,10 @@ Prioridade máxima junto com a qualidade: NÃO estourar o semanal (corte 75%). M
 - **Bot de lives/clipes (radar + clipador + ao_vivo)**: na Fase 2, depois do gate de impacto, revisar e consertar: calibrar a nota mínima de relevância com as decisões aprova/recusa da Revisão (hoje nenhum trecho passa), gate de pico de áudio antes da análise pesada (medir em ~6 segmentos de nota conhecida), lacunas entre segmentos, lives em inglês, deduplicação, custo de CPU/RAM (um por vez). Rodar teste real em live ao vivo curta e medir. Resultado: clipes mais impactantes e menos genéricos, PC leve.
 - **Bot de referência do Tião (olheiro)**: já na Fase 1d (filtro rígido, estilizado, viral, modelável, quadros conferidos); consertar o que falhar (coleta frouxa, Instagram/TikTok não coletados, falso positivo de rosto) e rodar leve a cada sessão.
 - Cada bot: teste, medição de tempo/RAM, registro em `docs/` e no KIT.
+
+## IDEIAS APROVADAS PELO FILIPPE (20/11) — implementar nesta ordem de custo×retorno, depois das fases essenciais; registrar em docs/IDEIAS.md
+1. **Status por bot no painel** (bolinha verde/vermelha: rodou na última hora? travou?), legível no celular. Barato: lê lock/log/mtime, sem IA.
+2. **Banco de ganchos** que funcionaram (catalogar gancho+padrão de cada referência forte e de cada episódio bem avaliado; o roteirista consulta antes de escrever). Arquivo JSON/MD, sem IA pesada.
+3. **Sinal de retorno**: campo no painel para o Filippe colar views/likes por vídeo e conta; o olheiro e o banco de ganchos usam isso para aprender o que o público dele gosta.
+4. **Episódio em série**: final aberto para "parte 2" quando o roteiro permitir; marcar no estado/painel quais episódios têm continuação.
+5. **Memes e carrossel** (cheats, listas, curiosidades) com texto+imagem da marca, checando saturação antes de postar; só depois do Tião e dos clipes.
