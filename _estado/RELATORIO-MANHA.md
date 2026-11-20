@@ -16,3 +16,5 @@
 **Uso**: 5h ~75% ao parar, semanal ~38%. Tempo ep.38 ≈ 2 h (meta 25 min não batida: gargalo é storyboard em código + correção).
 
 **Atualização ~07:00**: skill `estudio-revisor-shorts` criada e calibrada (refs ricksclips 8,75/8,42; ep.37 5,79; ep.38 7,36 → ep.38 NÃO subiu ao Drive, reprova na régua nova). Acabamento de cor ligado (config/filtros.json). Blender: não instalei (autorização veio só entre sessões; confirme). Uso ao parar: 5h ~73%, semanal ~36%. Próximo: ep.39 (Nico/prédios) com gancho de ação no quadro 0 e noite legível.
+
+- 20/11 08:50 (vigia): portão ganhou 4 checagens mecânicas (43 testes ok). Ep.38 segue PARA-APROVAR (7,36 < 8, não subiu ao Drive). Próximo: ep.39 Nico. Uso 5h=76%, sem=37%.
