@@ -1,5 +1,7 @@
 # Kit da série "Tião, o cozinheiro do navio" — REGRAS
 
+> **LER `regras.md` (raiz do repo) ANTES de qualquer vídeo.** Método: MODELAR uma referência (gancho, beats, viradas, câmera, ritmo), mudando só a fala PT-BR e o protagonista Tião. Não criar do zero.
+
 Só regras e catálogo. O FLUXO (passos, comandos, tempos) está na skill `.claude/skills/estudio-bonecos/SKILL.md`.
 **Roteiro e ritmo: molde v3** (seção "Roteiro e ritmo" abaixo; diagnóstico e evidência em `MOLDE_V3.md`; histórico em `GANCHO.md`). Pontos fortes/fracos e tempos: `RETRO.md`. Andamento: `ESTADO.md`.
 **Catálogo (15/11):** elenco + vozes `catalogo/PERSONAGENS.md` e `catalogo/vozes.json`; cenários e pacotes `catalogo/CENARIOS.md`; estilos, formato de fala, durações e fila de roteiros `catalogo/HISTORIAS.md`.
@@ -7,7 +9,7 @@ Só regras e catálogo. O FLUXO (passos, comandos, tempos) está na skill `.clau
 **Cenários de aventura (16/11):** `motor3d/cenarios.js` + `catalogo/CENARIOS.md` (seção "CATÁLOGO DE CENÁRIOS DE AVENTURA"). Prontos: `espaco`, `brinquedo`, `cidade`, `bermudas`, `maia`, `amazonia`; efeitos em `motor3d/efeitos.js` (tornado, furacão, chuva, terremoto, tsunami, meteoro, raios); elenco de aventura em `catalogo/PERSONAGENS.md` (15 personagens novos: heróis, vilões, alienígenas, gigante, mutante, monstro, robô, folclore) (cada um com câmeras e lista "NÃO fazer"; stills em `catalogo/cenarios/`). O vídeo só escolhe (`worldAt: cenario:'<id>'`), não reconstrói.
 
 ## Universo
-> **Conceito (Filippe, 15/11 noite): tipo Rick and Morty — o Tião vai pra aventuras loucas e diferentes a cada vídeo** (planeta, época, jogo…), com personagens e cenários novos. O navio e o elenco abaixo continuam valendo (pode ter vídeo no barco, tripulação junto), mas não limitam a série.
+> **Conceito (Filippe, 15/11 noite): tipo Rick and Morty — o Tião vai pra aventuras loucas e diferentes a cada vídeo** (planeta, época, jogo…), modelando uma referência; personagens/cenários do catálogo, novos só se a referência exigir. O navio e o elenco abaixo continuam valendo (pode ter vídeo no barco, tripulação junto), mas não limitam a série.
 > **Regra fixa:** o Tião SEMPRE usa o chapéu de cozinheiro (em qualquer aventura/roupa). Os outros personagens podem trocar de roupa conforme a aventura.
 > **Exceção de disfarce (20/11, ep.38):** o Tião pode trocar a ROUPA (ladrão listrado `tiaoL`, terno `tiaoT`, SPEC no story.js sem `base:'tiao'`), mas o chapéu de chef fica; touca/cartola nunca substituem o chapéu.
 
@@ -52,7 +54,7 @@ Fonte da evidência: `MOLDE_V3.md` (~25 shorts de 9 canais). Roteirista, crític
 - Nunca produzir episódio sozinho: cada etapa abaixo é feita pelo agente dela (`.claude/agents/`), não pelo agente principal.
 - Ordem fixa: `roteirista-bonecos` (falas.json + NOTAS.md + MAPA_DOPAMINA.md) → `critico-roteiro` (critica.md) → `diretor-retencao` (retencao.md, LIBERA/DEVOLVE) → só então voz e render → `revisor-bonecos` (veredito).
 - Voz/Gemini e render só depois do LIBERA do diretor-retencao. Sem LIBERA, nada gasta cota.
-- Todo subagente é chamado com modelo explícito na chamada (roteirista, crítico, diretor-retencao e revisor: `opus`).
+- Todo subagente é chamado com modelo explícito na chamada: `haiku` (crítico, busca, resumo) ou `sonnet` (roteirista, diretor-retencao, revisor). `opus` só com ordem do Filippe. 1 subagente por vez.
 
 ## Checklist do revisor (erros que o Filippe já pegou)
 1. Deitado DENTRO da rede/cama; nenhum membro atravessando tecido/objeto.
@@ -177,7 +179,7 @@ Ponta solta = algo que o espectador estranharia no mundo do desenho. **Portão a
 - Isso NÃO é publicação em rede social: TikTok/IG/FB continuam só com OK dele.
 
 ## Melhoria contínua (ordem do Filippe, 19/11)
-- Cada episódio tem de ser melhor que o anterior: raciocinar antes (roteiro, retenção, beleza/harmonia), buscar referências/ideias novas, criar personagens e cenários ANTES do episódio que os usa. Autenticidade: algo que a maioria dos canais não faria. Anotar 1 aprendizado por episódio no Second Brain.
+- Cada episódio tem de ser melhor que o anterior: raciocinar antes (roteiro, retenção, beleza/harmonia), buscar referências/ideias novas, criar personagens e cenários ANTES do episódio que os usa. Autenticidade = PT-BR + Tião sempre presente; o resto se MODELA de uma referência (não criar do zero). Anotar 1 aprendizado por episódio no Second Brain.
 - Publicação: só com OK dele; vídeos do Tião saem antes dos clipes (clipes mais tarde).
 
 ## Postagem e Codex (ordem do Filippe, 19/11 11:40) — substitui "só com OK"
