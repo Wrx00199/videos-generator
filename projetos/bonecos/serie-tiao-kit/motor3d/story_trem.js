@@ -11,7 +11,7 @@ export const SHOTS = [
   { a: 3, cen: 'estacao_trem', cam: 'geral', opt: { apito: 1 }, a2: 'apostador' },
   { a: 4, cen: 'estacao_trem', cam: 'cartaz', opt: {}, solo: 1 },
   { a: 5, cen: 'nevasca', cam: 'geral', opt: {}, a2: 'gigante' },
-  { a: 6, cen: 'cabine_locomotiva', cam: 'geral', opt: { vel: 0.7 }, a2: 'cap' },
+  { a: 6, cen: 'cabine_locomotiva', cam: 'janela', opt: { vel: 0.7, cron: 58 }, solo: 1 },
   { a: 7, cen: 'fim_tarde', cam: 'geral', opt: {}, a2: 'cap' },
   { a: 8, cen: 'pradaria_trilho', cam: 'caixa', opt: { tremX: 0.6, bike: 1 }, solo: 1 },
   { a: 9, cen: 'fim_tarde', cam: 'horizonte', opt: { ponto: 0.9 }, solo: 1 },

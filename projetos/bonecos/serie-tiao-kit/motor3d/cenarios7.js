@@ -3,11 +3,11 @@
 // Liga: worldAt -> { cenario: '<id>', <id>: { opções } } + luz('<id>'). Piso y=0; câmera geral = camCen(id,'geral'); bonecos em x≈±0,7, z≈0,4..0,9. Trilho corre no eixo X (visto de lado), eixo da via em z=0.
 // Opções (todas opcionais; nada alocado por quadro):
 //   pradaria_trilho { trem: 1|0 (padrão 1), tremX: 0.6 (x da traseira do último vagão; locomotiva fica à direita), longe: 0|1 (trem pequeno ao fundo, z -22),
-//                     fumaca: 0..1, vento: 0..1 (linhas de vento na frente do trem), bolha: 0..1 (bolha de ar atrás da caixa), vel: 0..1 (ponteiro do velocímetro, 0=0 / 1=70 mph; velocimetro: 1|0 liga o objeto, padrão 0),
+//                     fumaca: 0..1, vento: 0..1 (linhas de vento na frente do trem), bolha: 0..1 (bolha de ar atrás da caixa), vel: 0..1 (ponteiro do velocímetro, 0=0 / 1=100 km/h; velocimetro: 1|0 liga o objeto, padrão 0),
 //                     tabuas: 1|0 (pista de tábua entre os trilhos, padrão 1), bike: 0|1 (bicicleta do Tião atrás da caixa, x = tremX-1,25), nuvens: 1|0 }
 //   estacao_trem    { hora: 10.1 (ponteiros), cartaz: 'APOSTA R$ 1.000' (linha 2 da placa; linha 1 fixa '100 KM/H'), apito: 0..1 (vapor sobe da locomotiva ao fundo), caixa: 1|0 (caixa de madeira na plataforma) }
 //   nevasca         { vento: 0..1 (cachecol/placa balança; pinheiros inclinam), (a neve caindo = worldAt.fx.chuva tipo 'neve') }
-//   cabine_locomotiva { vel: 0..1 (paisagem passa na janela), alavanca: 0..1 (alavanca de freio sobe/desce), pressao: 0..1 (ponteiro do manômetro), fogo: 0..1 (brilho da fornalha) }
+//   cabine_locomotiva { cron: 58 (segundos no cronômetro, 00:SS), vel: 0..1 (paisagem passa na janela), alavanca: 0..1 (alavanca de freio sobe/desce), pressao: 0..1 (ponteiro do manômetro), fogo: 0..1 (brilho da fornalha) }
 //   fim_tarde       { sol: 0..1 (altura do sol; padrão 0,35), ponto: 0..1 (trem vira um pontinho a x=-60 → 0..1 anda pro horizonte; padrão 0,6) }
 export const TREM = ['pradaria_trilho', 'estacao_trem', 'nevasca', 'cabine_locomotiva', 'fim_tarde'];
 export const CAMS7 = {
@@ -39,6 +39,8 @@ export function construirTrem(X) {
 
   // ===== objetos reutilizáveis =====
   // vagão de carga com caixa de madeira parafusada atrás; o grupo fica com a traseira em x=0 e corre para +x; eixo da via z=0.
+  // decalque 'NÃO É BOMBA' (tinta vermelha na caixa; lado +z, onde fica a câmera)
+  const decal = (G, x, y, z, w, h) => { const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), bas({ map: T(texto(512, 256, (a) => { escreve(a, 'NÃO É', 256, 85, 440, 100, '#b8301f'); escreve(a, 'BOMBA', 256, 185, 440, 100, '#b8301f'); })), transparent: true })); m.position.set(x, y, z + 0.005); semTinta(m); G.add(m); return m; };
   const vagao = (g, x0, comp = 2.6, comCaixa = true) => { const V = new THREE.Group(); V.position.set(x0, 0, 0); g.add(V);
     caixa(V, comp, 0.18, 1.1, '#3a3a40', comp / 2, 0.38, 0, {});                       // chassi
     caixa(V, comp - 0.1, 1.15, 1.0, '#8c3a2a', comp / 2, 0.55, 0, {});                  // corpo vermelho-tijolo
@@ -47,7 +49,7 @@ export function construirTrem(X) {
     if (comCaixa) { const c = new THREE.Group(); c.position.set(-0.45, 0, 0); V.add(c); caixa(c, 0.8, 0.62, 0.76, '#b98a4e', 0, 0.58, 0, {});   // caixa de madeira (plataforma traseira)
       caixa(c, 0.86, 0.06, 0.82, '#8a5e30', 0, 1.2, 0, {}); for (const dy of [0.7, 1.0]) caixa(c, 0.84, 0.05, 0.8, '#8a5e30', 0, dy, 0, { cast: false });
       for (const [bx, by] of [[-0.3, 0.7], [0.3, 0.7], [-0.3, 1.05], [0.3, 1.05]]) { const p = cil(c, 0.035, 0.035, 0.04, '#d8d8e0', bx, by, 0.39, { cast: false }, 10); p.rotation.x = PI / 2; }
-      caixa(c, 1.0, 0.05, 0.9, '#5a3a22', 0.1, 0.42, 0, {}); }                                // plataforma sob a caixa
+      caixa(c, 1.0, 0.05, 0.9, '#5a3a22', 0.1, 0.42, 0, {}); decal(c, 0, 0.62, 0.385, 0.62, 0.3); }                                // plataforma sob a caixa
     return V; };
   const locomotiva = (g, x0) => { const L = new THREE.Group(); L.position.set(x0, 0, 0); g.add(L);
     caixa(L, 4.2, 0.2, 1.15, '#2a2a30', 2.1, 0.4, 0, {});
@@ -63,9 +65,9 @@ export function construirTrem(X) {
   // velocímetro (mostrador de ponteiro 0–70 mph, ~0,95 m, base e suporte; voltado para +z)
   const velocimetro = (g) => { const G = new THREE.Group(); g.add(G);
     const face = texto(512, 512, (a) => { a.fillStyle = '#f5ecd2'; a.beginPath(); a.arc(256, 256, 250, 0, 7); a.fill(); a.strokeStyle = '#3a2a1a'; a.lineWidth = 8; a.stroke(); a.fillStyle = '#2a1a10'; a.strokeStyle = '#2a1a10';
-      for (let i = 0; i <= 14; i++) { const ang = PI * 0.75 + (i / 14) * PI * 1.5, big = i % 2 === 0, r0 = big ? 190 : 205; a.lineWidth = big ? 8 : 4; a.beginPath(); a.moveTo(256 + Math.cos(ang) * r0, 256 + Math.sin(ang) * r0); a.lineTo(256 + Math.cos(ang) * 232, 256 + Math.sin(ang) * 232); a.stroke();
+      for (let i = 0; i <= 20; i++) { const ang = PI * 0.75 + (i / 20) * PI * 1.5, big = i % 4 === 0, r0 = big ? 190 : 205; a.lineWidth = big ? 8 : 4; a.beginPath(); a.moveTo(256 + Math.cos(ang) * r0, 256 + Math.sin(ang) * r0); a.lineTo(256 + Math.cos(ang) * 232, 256 + Math.sin(ang) * 232); a.stroke();
         if (big) { a.font = 'bold 40px sans-serif'; a.textAlign = 'center'; a.textBaseline = 'middle'; a.fillText(String(i * 5), 256 + Math.cos(ang) * 160, 256 + Math.sin(ang) * 160); } }
-      a.fillStyle = '#b8483a'; a.beginPath(); a.arc(256, 256, 20, 0, 7); a.fill(); escreve(a, 'MPH', 256, 330, 140, 38, '#6b4a2a'); });
+      a.fillStyle = '#b8483a'; a.beginPath(); a.arc(256, 256, 20, 0, 7); a.fill(); escreve(a, 'KM/H', 256, 330, 160, 38, '#6b4a2a'); });
     cil(G, 0.05, 0.08, 0.9, '#6b4a2a', 0, 0, 0, {}, 10);
     const aro = add(new THREE.CylinderGeometry(0.5, 0.5, 0.09, 36), mc('#d8b04a'), 0, 1.35, 0, G); aro.rotation.x = PI / 2;
     const fc = new THREE.Mesh(new THREE.CircleGeometry(0.46, 36), bas({ map: T(face) })); fc.position.set(0, 1.35, 0.052); semTinta(fc); G.add(fc);
@@ -83,6 +85,7 @@ export function construirTrem(X) {
   const bolha = (g) => { const G = new THREE.Group(); g.add(G);
     const s = new THREE.Mesh(new THREE.SphereGeometry(1, 28, 18), bas({ color: '#bfe8ff', transparent: true, opacity: 0.22, depthWrite: false, side: THREE.DoubleSide })); s.scale.set(1.5, 1.05, 0.9); semTinta(s); G.add(s);
     const borda = new THREE.Mesh(new THREE.TorusGeometry(1, 0.012, 8, 56), bas({ color: '#e6f7ff', transparent: true, opacity: 0.7 })); borda.scale.set(1.5, 1.05, 1); semTinta(borda); G.add(borda);
+    const vip = new THREE.Mesh(new THREE.PlaneGeometry(0.9, 0.34), bas({ map: T(texto(256, 96, (a, w, h) => { a.fillStyle = '#ffd24a'; a.fillRect(0, 0, w, h); a.strokeStyle = '#241726'; a.lineWidth = 8; a.strokeRect(4, 4, w - 8, h - 8); escreve(a, 'VIP', 128, 50, 200, 76, '#241726'); })) })); vip.position.set(0, 1.25, 0.1); semTinta(vip); G.add(vip);
     G.userData.set = (k, t) => { G.visible = k > 0.01; G.scale.setScalar(Math.max(0.01, k) * (1 + 0.02 * Math.sin(t * 7))); };
     return G; };
 
@@ -142,14 +145,14 @@ export function construirTrem(X) {
     for (const h of [hH, hM]) { const p = new THREE.Group(); p.position.copy(h.position); h.position.set(0, h.position.y, 0); rel.add(p); p.add(h); h.parent = p; if (h === hH) rel.userData.pH = p; else rel.userData.pM = p; }
     // placa-cartaz (objeto real; só 2 linhas curtas) em poste à direita
     const cart = { c: null, t: null }; const [cc, ca] = cv(512, 320); const ct = T(cc, 1, 1);
-    cart.pintar = (linha2) => { ca.fillStyle = '#f2e2a8'; ca.fillRect(0, 0, 512, 320); ca.strokeStyle = '#5a3a22'; ca.lineWidth = 14; ca.strokeRect(7, 7, 498, 306); escreve(ca, '100 KM/H', 256, 105, 440, 110, '#b8301f'); escreve(ca, linha2, 256, 225, 440, 74, '#3a2a1a'); ct.needsUpdate = true; };
+    cart.pintar = (linha2) => { ca.fillStyle = '#f2e2a8'; ca.fillRect(0, 0, 512, 320); ca.strokeStyle = '#5a3a22'; ca.lineWidth = 14; ca.strokeRect(7, 7, 498, 306); escreve(ca, '1 MILHA · 100 KM/H', 256, 95, 400, 64, '#b8301f'); escreve(ca, linha2, 256, 225, 440, 74, '#3a2a1a'); ct.needsUpdate = true; };
     cart.pintar('APOSTA R$ 1.000'); cart.t = 'APOSTA R$ 1.000';
     cil(g, 0.06, 0.06, 2.5, '#5a3a22', 2.9, 0, -1.5, {}, 10); cil(g, 0.06, 0.06, 2.5, '#5a3a22', 4.5, 0, -1.5, {}, 10);
     const pl = add(new THREE.BoxGeometry(1.9, 1.2, 0.08), mc('#6b4a2a'), 3.7, 2.05, -1.5, g); const pm = new THREE.Mesh(new THREE.PlaneGeometry(1.7, 1.06), bas({ map: ct })); pm.position.set(0, 0, 0.05); semTinta(pm); pl.add(pm);
     // banco e malas
     caixa(g, 1.5, 0.1, 0.45, '#8a5a30', -3.2, 0.45, -3.4, {}); caixa(g, 1.5, 0.5, 0.06, '#8a5a30', -3.2, 0.5, -3.62, {}); for (const dx of [-0.65, 0.65]) caixa(g, 0.08, 0.45, 0.4, '#3a3a40', -3.2 + dx, 0, -3.4, { cast: false });
     caixa(g, 0.55, 0.38, 0.32, '#7a4a28', -1.8, 0, -3.3, {}); caixa(g, 0.4, 0.3, 0.28, '#a04a30', -1.3, 0, -3.3, {});
-    const cx = new THREE.Group(); cx.position.set(1.6, 0, -2.6); g.add(cx); caixa(cx, 0.8, 0.62, 0.76, '#b98a4e', 0, 0, 0, {}); caixa(cx, 0.86, 0.06, 0.82, '#8a5e30', 0, 0.62, 0, {});
+    const cx = new THREE.Group(); cx.position.set(1.6, 0, -2.6); g.add(cx); caixa(cx, 0.8, 0.62, 0.76, '#b98a4e', 0, 0, 0, {}); caixa(cx, 0.86, 0.06, 0.82, '#8a5e30', 0, 0.62, 0, {}); decal(cx, 0, 0.31, 0.38, 0.62, 0.3);
     // via e locomotiva ao fundo (z -8), com vapor
     for (const z of [-7.6, -8.4]) caixa(g, 300, 0.1, 0.07, '#7a7a86', 0, 0.12, z, { cast: false });
     for (let x = -40; x < 40; x += 0.8) caixa(g, 0.22, 0.1, 1.8, '#4a3220', x, 0, -8, { cast: false });
@@ -205,7 +208,7 @@ export function construirTrem(X) {
       for (let x = 0; x < 1024; x += 64) { a.fillStyle = 'rgba(255,255,255,.35)'; a.fillRect(x, 180, 40, 3); a.fillRect(x + 20, 210, 30, 3); } });
     const pt = T(pc, 1, 1); pt.wrapS = THREE.RepeatWrapping; const pais = new THREE.Mesh(new THREE.PlaneGeometry(14, 3.5), bas({ map: pt })); pais.position.set(0, 1.85, zf - 1.5); semTinta(pais); g.add(pais);
     // caldeira (parede frontal baixa à frente) com manômetros e porta da fornalha
-    const cald = cil(g, 0.9, 0.9, 2.2, '#3a3a40', 0, 0.9, -3.3, {}, 32); cald.rotation.x = PI / 2; cald.position.set(0, 1.0, -3.4);
+    const cald = cil(g, 0.55, 0.55, 2.2, '#3a3a40', 0, 0.9, -3.3, {}, 32); cald.rotation.x = PI / 2; cald.position.set(0, 0.7, -3.4);
     const fornalha = caixa(g, 1.0, 0.9, 0.12, '#1a1a1e', 0, 0.2, -2.35, {}); const brasa = new THREE.Mesh(new THREE.PlaneGeometry(0.62, 0.48), bas({ color: '#ff8a2a', transparent: true, opacity: 0.9 })); brasa.position.set(0, 0.65, -2.28); semTinta(brasa); g.add(brasa);
     const brilho = new THREE.Mesh(new THREE.CircleGeometry(1.8, 24), bas({ color: '#ff9a40', transparent: true, opacity: 0.0, blending: THREE.AdditiveBlending, depthWrite: false })); brilho.position.set(0, 0.7, -2.2); semTinta(brilho); g.add(brilho);
     const mano = (x, y) => { const G = new THREE.Group(); G.position.set(x, y, -2.25); g.add(G); add(new THREE.CylinderGeometry(0.24, 0.24, 0.1, 28), mc('#d8b04a'), 0, 0, 0, G).rotation.x = PI / 2;
@@ -215,10 +218,13 @@ export function construirTrem(X) {
     const ponteiros = [mano(-0.55, 1.75), mano(0.55, 1.75)];
     // alavancas (freio e acelerador)
     const alav = (x, cor) => { const G = new THREE.Group(); G.position.set(x, 0.1, -2.1); g.add(G); caixa(G, 0.3, 0.14, 0.2, '#2a2a30', 0, 0, 0, {}); const h = new THREE.Group(); h.position.y = 0.14; G.add(h); cil(h, 0.03, 0.03, 1.1, '#cfd0d8', 0, 0, 0, {}, 10); add(new THREE.SphereGeometry(0.08, 14, 10), mc(cor), 0, 1.15, 0, h); return h; };
+    const [kc, ka] = cv(256, 128), kt = T(kc); let kUlt = '';
+    const cron = new THREE.Mesh(new THREE.PlaneGeometry(0.9, 0.45), bas({ map: kt })); cron.position.set(0, 3.05, zf + 0.14); semTinta(cron); g.add(cron);
+    const pintaCron = (sg) => { const txt = '00:' + String(Math.max(0, Math.min(99, sg))).padStart(2, '0'); if (txt === kUlt) return; kUlt = txt; ka.fillStyle = '#1a1a1e'; ka.fillRect(0, 0, 256, 128); ka.strokeStyle = '#d8b04a'; ka.lineWidth = 10; ka.strokeRect(5, 5, 246, 118); escreve(ka, txt, 128, 66, 220, 92, '#ff4a3a'); kt.needsUpdate = true; };
     const aFreio = alav(-1.5, '#b8301f'), aAcel = alav(1.5, '#2a8a3c');
     for (const x of [-1.2, 1.2]) cil(g, 0.04, 0.04, 2.0, '#d8b04a', x, 1.4, -3.9, { cast: false }, 10);                           // canos de latão
     lista.cabine_locomotiva = { g, chao: () => 0, state(S, f) { const B = S.cabine_locomotiva || {}, t = f / 30, v = B.vel ?? 0.5;
-        pt.offset.x = -(t * v * 0.35) % 1; ponteiros.forEach((p, i) => { p.rotation.z = PI * 0.75 - (i ? 0.5 + 0.3 * v : (B.pressao ?? 0.6)) * PI * 1.5 + 0.02 * Math.sin(t * 9 + i); });
+        pt.offset.x = -(t * v * 0.35) % 1; pintaCron(B.cron ?? 58); ponteiros.forEach((p, i) => { p.rotation.z = PI * 0.75 - (i ? 0.5 + 0.3 * v : (B.pressao ?? 0.6)) * PI * 1.5 + 0.02 * Math.sin(t * 9 + i); });
         aFreio.rotation.z = (B.alavanca ?? 0) * -0.6 + 0.3; aAcel.rotation.z = -0.1 - v * 0.5; brasa.material.opacity = 0.7 + 0.2 * Math.sin(t * 12); brilho.material.opacity = (B.fogo ?? 0.35) * (0.8 + 0.2 * Math.sin(t * 11)); } };
   }
 
