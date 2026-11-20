@@ -163,3 +163,12 @@ Prioridade máxima junto com a qualidade: NÃO estourar o semanal (corte 75%). M
 3. **Sinal de retorno**: campo no painel para o Filippe colar views/likes por vídeo e conta; o olheiro e o banco de ganchos usam isso para aprender o que o público dele gosta.
 4. **Episódio em série**: final aberto para "parte 2" quando o roteiro permitir; marcar no estado/painel quais episódios têm continuação.
 5. **Memes e carrossel** (cheats, listas, curiosidades) com texto+imagem da marca, checando saturação antes de postar; só depois do Tião e dos clipes.
+
+## REPRIORIZAÇÃO URGENTE (Filippe, 20/11 14:45) — VALE SOBRE A ORDEM ANTERIOR
+O Filippe acordou e cobrou: em ~9 h saíram 2 episódios (ep.38 e 39) ambos REPROVADOS pela própria régua (7,36 e 6,57), nada foi pro Drive, o painel multi-conta e os bots (lives/clipes) NÃO foram tocados, o ep.38 levou ~2 h (meta 13 min) e muito esforço foi para portões mecânicos/testes (47) em vez de entrega. Corrigir já:
+1. **PRIMEIRO: Fase 3 — painel** (entregável visível): seletor de conta (topo direito), sidebar com hambúrguer animado, engrenagem (chaves + saúde com GPU), contas Six Stars e Aventuras do Tião, revisão por conta com legenda editável, status por bot, visual preto/dourado/branco com o emblema. Delegar o mecânico ao Codex (`codex exec`). Versão feia mas funcionando primeiro; abrir no navegador embutido e conferir de verdade; commit por etapa.
+2. **SEGUNDO: bot de lives/clipes** (calibrar nota mínima, gate de áudio, teste real curto) e produzir clipes bons.
+3. **TIÃO daqui pra frente, sem gold-plating:** NÃO criar mais portões/checagens novas. Por episódio: no máximo 2 revisões do revisor (a 1ª e a conferência após as ordens) e orçamento ≤ ~60 min de relógio; se ainda < 8, ENTREGAR a melhor versão no Drive com a nota no nome (`NN - Título (nota 7,4).mp4`) e registrar o que falta, em vez de ficar refinando. Ep.38 e 39 existentes: subir ao Drive agora com a nota no nome (cópia local mantida); não re-renderizar de novo.
+4. Tempo: cronometrar e cortar o que mais pesa (storyboard em código + correção); meta realista de curto prazo ≤ 30 min por episódio, descendo.
+5. Semanal já em ~47% (corte 75%): ao passar de 60% só modo econômico.
+6. Relatório da manhã deve listar o que foi ENTREGUE (vídeos no Drive, painel, bots), não só processos.

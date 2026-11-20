@@ -35,6 +35,7 @@ Dicas operacionais: render_leve.sh exige TOTAL numérico → passar intervalo '0
 - S1 parou ~06:20
 
 ## PONTO DE RETOMADA (sobrescrever)
+**URGENTE 20/11 14:45: ler "REPRIORIZAÇÃO URGENTE" no fim de MISSAO-NOITE.md e seguir ELA primeiro: (1) painel Fase 3, (2) bots lives/clipes, (3) Tião sem gold-plating, subir ep.38/39 ao Drive com a nota no nome.**
 20/11 ~14:30 (vigia retomou; lock era inexistente, sessão anterior parou ~12:35). Uso ao começar 5h=58% sem=44%.
 FEITO: portão ganhou `checar_prop_virada` (props_virada em plano_beats.json) + 2 testes, 47 testes ok; KIT atualizado.
 ep.39 ENTREGUE (PARA-APROVAR, local, não subiu ao Drive: só 1 revisão 6,57 + ordens aplicadas sem 2ª passada). Nada em produção.
