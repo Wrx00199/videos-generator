@@ -18,7 +18,7 @@ Decidir sozinho, SEM perguntar. Escolher, anotar a escolha no estado e seguir. E
 - Disco: não baixar mídia grande sem necessidade; apagar só o próprio `_tmp` ao fim da etapa.
 
 ## Orçamento do limite (Pro). Medir com `mcp__ccd_session_mgmt__get_usage` (carregar via ToolSearch) no início e a cada etapa
-- PARAR em ≥ 95% do limite de 5 h **ou** ≥ 70% do semanal (semanal já estava em 27% em 20/11). Parar = terminar a etapa mínima, salvar estado, commit+push, liberar lock, encerrar.
+- PARAR em ≥ 95% do limite de 5 h **ou** ≥ 75% do semanal (semanal já estava em 27% em 20/11). Parar = terminar a etapa mínima, salvar estado, commit+push, liberar lock, encerrar.
 - Economia: grep antes de ler; não reler após editar; imagem só em recorte, print inteiro só na revisão final; subagente só p/ saída volumosa (haiku busca/log, sonnet edição mecânica, opus lógica); 1 subagente por tarefa; não delegar o pequeno. Preferir código/JSON/ffmpeg a IA. Opus advisor 1–2 vezes por sessão (antes de fechar arquitetura, antes de entregar).
 - Registrar no estado: % de uso ao começar e ao parar cada sessão.
 
@@ -68,7 +68,7 @@ Decidir sozinho, SEM perguntar. Escolher, anotar a escolha no estado e seguir. E
 - **Repo:** `Wrx00199/videos-generator` já existe (PRIVADO, push feito). Continue commitando por etapa.
 - **Integrar ferramentas:** tem autonomia TOTAL para integrar app, skill, pacote ou repo que melhore a operação (o tweet do flxrnc lista 18: blender-skills, librosa, Openverse, reanimate, WhisperX etc.). Regras: fonte oficial/reconhecida (npm, pip, GitHub conhecido, flatpak), ler README e código antes, instalar em venv/projeto (nunca global sem necessidade), sem chave em lugar errado, medir RAM/tempo; se pesar no PC, descartar e registrar.
 - **Pré-mortem:** antes de cada etapa, listar 3 riscos prováveis (RAM, voz sem cota, render que trava, arquivo grande, git com segredo, lock órfão) e já prevenir; todo erro novo vira regra em `serie-tiao-kit/KIT.md` + `docs/`.
-- **Velocidade do Tião:** meta de um episódio com portão aprovado em tempo razoável (cronometrar roteiro→voz→render→revisão; alvo ≤ ~25 min de relógio por episódio quando o PC estiver livre; não prometer 1 min). Cortar etapa só se não perder qualidade; cachear voz/cenário repetidos; medir onde o tempo vai e atacar o maior pedaço.
+- **Velocidade do Tião:** meta de um episódio com portão aprovado em tempo razoável (cronometrar roteiro→voz→render→revisão; **TETO 12–13 min de relógio por episódio (roteiro→voz→render→revisão→acabamento) com o PC livre; ideal bem menos; NUNCA 30 min**. Atualizado pelo Filippe 20/11; não prometer 1 min). Cortar etapa só se não perder qualidade; cachear voz/cenário repetidos; medir onde o tempo vai e atacar o maior pedaço.
 - **Pastas:** NÃO criar pastas novas à toa. Organizar o estúdio com poucos níveis (`prontos/`, `referencias/`, `projetos/`, `_estado/`, `marca/`, `docs/`); documentar o mapa em `docs/PASTAS.md`. Mover só dentro do estúdio, com `docs/MOVIMENTOS.log` (origem→destino) para desfazer; NUNCA apagar. Os vídeos vão para o Drive do Filippe: deixe a saída padronizada por conta/série (`prontos/<conta>/<série>/`) e um campo "pasta de saída" configurável (rclone/Drive só quando ele fizer login).
 - **Pasta Gon antiga** (`/media/wr/HDD/Gon`, 8,5 GB; tem `CLAUDE.md`, `BRIEF_FABLE_V6.md`, `PROMPT_MESTRE_V5.md`, `analise-videos-instagram.md`, `Estilo de video`, `projeto-gta6`, `recuperado`, `backups`): SOMENTE LEITURA. Garimpar com subagente haiku (grep/ls, sem ler tudo) o que for útil e ainda não está no estúdio (ideias, estilos, roteiros, prompts, análises). Resumir em `docs/GARIMPO_GON.md` (o que serve, onde está, como aplicar). Implementar o que for barato e valioso. Não apagar nada; o Filippe decide depois.
 - **Ideias contínuas:** a cada fase, gerar 3–5 ideias novas (roteiros, estilos, formatos, ganchos, séries) para Tião e cortes/memes, registrar em `docs/IDEIAS.md` com nota de impacto×custo, e implementar as de maior retorno e menor custo.
@@ -100,3 +100,46 @@ Todo vídeo renderizado passa por um **filtro de acabamento** para ficar mais bo
 - Checar com recorte antes/depois (não print inteiro) e deixar o revisor julgar se ficou mais bonito sem perder legibilidade. Usar a skill `media-use` (color grades/looks) se ajudar.
 - Aplicar em TODO render daqui pra frente (episódios Tião e clipes) e registrar no KIT.
 - Postagem continua com o Filippe (não tentar postar).
+
+## QUALIDADE DO TIÃO + TEMPO (Filippe, 20/11)
+- Qualidade final MUITO boa em vários aspectos (cenário rico e trocando por beat, personagens, luz, roteiro/gancho, voz, legenda, ritmo, acabamento). Nada de entregar na pressa: o revisor rígido lê código E imagem (recortes) e reprova o que estiver fraco.
+- Tempo: teto 12–13 min por episódio, ideal menos. Cronometre cada etapa e registre em `docs/TEMPO_EPISODIO.md`. Se estourar: atacar o maior pedaço (render: resolução/quadros/cache de cena, voz em lote, pular passos redundantes do portão que o código já checa mecanicamente), SEM tirar revisão nem baixar a qualidade; se não der pra caber nos 13 min com qualidade, registrar o gargalo exato e a proposta, e mesmo assim entregar o episódio bom.
+- Revisão: portão mecânico (código) primeiro, depois UMA passada do revisor com imagem em recorte; correções vão pro produtor.
+
+## ENTREGA FINAL (Filippe, 20/11 — SUBSTITUI "para-aprovar/não postar" do Tião e dos clipes)
+- **Tião: NÃO postar.** Ao terminar cada episódio (portão final + revisor rígido ok): `rclone copyto <proj>/final.mp4 "Drive1:Estudio de Video/3D/Aventuras do Tião/<nome-da-pasta-do-ep>.mp4"` (remote `Drive1` testado e funcionando em 20/11; pasta já existe). Manter cópia local em `prontos/3D/Aventuras do Tião/`. Conferir upload com `rclone lsl`/`size`. Registrar no estado "no Drive". Só vídeos finais, nada de intermediário. Falha de rclone: tentar 1 vez, depois registrar e seguir (não parar a missão). Nunca mostrar segredo.
+- **Clipes de GTA 6:** se realmente forem bons (passam no portão de impacto/nota alta e no revisor), pode seguir o procedimento já autorizado pelo Filippe (`lives-postagem-procedimento-chrome`, legenda fixa do Meta `marca/legenda-meta.txt`): no máx. 3 por dia, só Instagram/Facebook @six_starsbr, nunca digitar senha, sem login = parar e salvar no Drive 1 (`Drive1:Estudio de Video/Gta 6/`). Não mexer em janela do Chrome do xCloud (se não der pra evitar, só salvar no Drive). Clipe fraco ou duvidoso: não posta, só guarda.
+- Rede social do Tião (YouTube/TikTok): sempre manual pelo Filippe.
+
+## PENSAR E OTIMIZAR (Filippe, 20/11)
+- O teto de tempo do episódio (12–13 min de produção) é LIMITE MÁXIMO, não obrigação de gastar tudo. Se enxergar como otimizar ou melhorar qualquer parte (roteiro, cenário, render, voz, revisão, ordem das etapas), FAÇA, sem pedir licença: pense antes de executar (o que pode ser mais rápido, mais bonito ou mais forte?), teste, meça e registre o ganho em `docs/IDEIAS.md`/KIT. Nunca otimize cortando qualidade ou revisão.
+- (Nota: o Filippe falou "3 minutos é o prazo máximo" por voz, provável "13 min" mal ouvido ou duração do vídeo. Mantenha: produção ≤12–13 min e duração do vídeo conforme memórias do Tião, 60–120 s. Se for duração, o limite é 3 min de vídeo final, nunca maior.)
+
+## ESTILO ACEITO NO OLHEIRO — correção do Filippe (20/11, vale sobre o filtro rígido)
+- ACEITAR só personagens **estilizados**: bonequinho de massinha/claymation, stickman, boneco 2D/3D cartoon simples (olhos grandes, formas básicas), no estilo do Tião/ricksclips.
+- REJEITAR 3D **realista** (humano realista, proporção/pele/rosto realistas, "parece pessoa", estilo Pixar-realista, unreal/cinematic humano, personagem de jogo fotorrealista), mesmo que seja animado e viral. Cenário bonito 3D pode ser realista; o PERSONAGEM tem que ser estilizado.
+- Reavaliar a lista aceita (`referencias/` + `PENDENTES_BONECOS_20-11.md`) com essa regra e remover o que for realista. Se um storyboard/ficha citar vídeo de 3D realista como referência, trocar por um estilizado.
+
+## ESCOPO DA REVISÃO (Filippe, 20/11)
+Revisar/diagnosticar SOMENTE o ÚLTIMO episódio pronto (e o que estiver em produção), nunca todos os antigos: apontar sem dó o que está fraco/errado/feio e como melhorar, comparando com vídeos de criadores maiores e famosos do mesmo estilo (referências salvas ou do olheiro). Episódios antigos só entram se o Filippe pedir. Não gastar limite revisando o acervo.
+
+## PONTO DE RETOMADA E CONTEXTO (Filippe, 20/11) — obrigatório
+- Mantenha em `_estado/MISSAO-ESTADO.md` a seção **"PONTO DE RETOMADA"** (sobrescrever, não acumular): fase e item, episódio/projeto em andamento, **etapa exata** (ex.: "ep.38: falas ok, voz ok, FALTA render → comando `...`"), artefatos já prontos (não refazer), próximo comando e riscos. Atualize ao fim de CADA etapa e ANTES de qualquer render longo, comando demorado ou subagente.
+- Ao retomar (sessão nova ou vigia): leia o PONTO DE RETOMADA primeiro e continue dali; confira os artefatos no disco (falas.json, voz, legenda, plano, mp4) e NÃO refaça o que existe e passou no portão.
+- **Contexto:** não deixe a sessão inchar. Quando o contexto passar de ~55–60% (confira `get_usage` com `session: self`) e uma etapa acabar: grave o PONTO DE RETOMADA, faça commit/push, apague o lock, abra uma sessão NOVA (`start_session`, fresh, mesmo brief: "leia `_estado/MISSAO-NOITE.md` e continue do PONTO DE RETOMADA") e encerre a atual. A sessão nova cria o lock. Nunca duas ativas.
+- Ao parar por limite (95% de 5h / 75% semanal): grave o PONTO DE RETOMADA com a etapa exata, commit/push, apague o lock, atualize RELATORIO-MANHA e encerre. O vigia (a cada 2 h, minuto 10) abre a próxima sessão após o reset.
+
+## LIMITE SEMANAL = 75% (Filippe, 20/11) e NÃO PARAR
+- Substitui todo "70%": parar só em 95% do limite de 5h ou 75% do semanal.
+- **Não termine e pare.** Ao concluir a última fase, entre em **modo melhoria contínua**: revisar tudo de novo, achar furos, ideias novas (docs/IDEIAS.md), testar, produzir mais episódios/clipes bons, otimizar tempo/PC/tokens, atualizar README. Só pare por limite (95% 5h / 75% semanal) ou `"ativo": false`.
+- Ao parar por limite, o PONTO DE RETOMADA diz o próximo passo de melhoria; o vigia retoma.
+
+## REVISOR ESPECIALISTA (prioridade ALTA — fazer logo depois da Fase 1b, antes de mais episódios)
+O revisor precisa ser RICO e especialista em vídeo curto vertical e em vídeo com personagens estilizados 2D/3D. Criar/atualizar:
+1. **Skill `estudio-revisor-shorts`** (em `.claude/skills/`): rubrica com NOTAS 0–10 por aspecto: gancho (3 s), retenção/ritmo (mediana de plano, eventos por segundo), roteiro/virada/payoff, cenário (riqueza, troca por beat, props), personagem (design, expressão, atuação), câmera/enquadramento, luz/cor/acabamento, motion/infográfico/HUD, voz/mixagem, legenda, sound design/música, originalidade/autenticidade, legibilidade no celular, comparação com criadores maiores. Cada aspecto com critérios observáveis, exemplos de bom/ruim tirados das referências salvas e erros que o Filippe já pegou (KIT). Aprova só com média ≥ 8 e nenhum aspecto < 7; explica o PORQUÊ e dá ordens de correção específicas.
+2. **Calibrar** a rubrica: pontuar 2–3 referências fortes (devem dar ≥ 8) e o ep.37 (deve dar baixo); ajustar até a régua separar bem. Registrar a calibração em `docs/tiao/CALIBRACAO_REVISOR.md`.
+3. Atualizar `revisor-bonecos` (e `diretor-arte-bonecos`/`critico-roteiro` se couber) para usar a skill. Revisor continua com 1 passada por episódio, imagens só em recorte.
+4. Criar OUTRAS skills que melhorem estrutura/funções (ex.: `estudio-olheiro-animado` com o filtro rígido, `estudio-acabamento` para o filtro de cor, `estudio-retomada` com o procedimento de ponto de retomada) se reduzirem gasto de contexto ou erro. Skill curta, com gatilho claro; não duplicar o que já existe.
+
+## OTIMIZAÇÃO EM TUDO, O TEMPO TODO (Filippe, 20/11) — não só na Fase 5
+Em toda etapa pergunte: dá pra ficar mais RÁPIDO, mais SIMPLES, mais LEVE pro PC e mais BARATO em tokens, sem perder qualidade? Se sim, faça, meça antes/depois e registre (`docs/IDEIAS.md`, KIT). Exemplos: cache (voz, cenário, frames), resolução/quadros do render só onde importa, ffmpeg em vez de IA, código em vez de subagente, ler com grep em vez de abrir arquivo grande, lote em vez de uma chamada por item, perfis leve/equilibrado/qualidade, nice/ionice, limpar intermediários (com simulação), UI do painel sem polling pesado. Cada otimização precisa ter número (tempo, RAM, tokens) e não pode cortar revisão nem qualidade.
