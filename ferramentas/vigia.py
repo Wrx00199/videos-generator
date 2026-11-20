@@ -19,7 +19,7 @@ for d in glob.glob(os.path.join(R, 'projetos/bonecos/*-tiao-*-[0-9][0-9]')):
 for n, ds in g.items():
     if len(ds) > 1: al.append(f'EPISÓDIO DUPLICADO {n}: {", ".join(ds)}. Use um só; marque o outro como abandonado.')
 # 3) mais de um render pesado
-n = len(sh("pgrep -f '[r]ender.mjs'").split())
+n = len(sh("pgrep -f '^(node|/.*node).* [^ ]*render.mjs'").split())
 if n > 1: al.append(f'{n} renders ao mesmo tempo: só 1 por vez.')
 # 4) PC
 l = shutil.disk_usage(R).free / 1e9
