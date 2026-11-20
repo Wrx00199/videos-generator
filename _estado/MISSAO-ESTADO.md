@@ -33,3 +33,7 @@ Criado 20/11/2026 ~04:55 BRT. Uso ao criar: 5h=3%, semanal=27%.
 5. Blender: pendente de OK do Filippe (flatpak org.blender.Blender ~1 GB).
 Dicas operacionais: render_leve.sh exige TOTAL numérico → passar intervalo '0-<DUR*30>'; portao novo trava (ep.37 sem APROVADO_FILIPPE) → criar projeto à mão; cenas.json = [[ini,fim,'pNN']] derivado de plano.json; palavras para o mix = {'palavras': lista}; `find -newermt` não funciona neste ambiente (usar stat).
 - S1 parou ~06:20
+
+## PONTO DE RETOMADA (sobrescrever)
+Fase 1b2 EM CURSO (sessão s1b ~06:40). Ep.38 PRONTO (portão ok; rev2 7,75; ordens aplicadas) em prontos/3D/Aventuras do Tião/38 - ... (PARA-APROVAR).mp4 — NÃO está no Drive (só sobe se revisor aprovar ≥8 com a nova skill). Feito: skill .claude/skills/estudio-revisor-shorts/SKILL.md (v1). FALTA: calibrar (2–3 refs fortes + ep.37 → docs/tiao/CALIBRACAO_REVISOR.md), atualizar revisor-bonecos p/ usar a skill, reavaliar refs aceitas (estilo estilizado, sem 3D realista; Nico DyJ3L6YI2oA parece estilizado ok), filtro de acabamento (config/filtros.json + ffmpeg), ep.39 (Nico, pacote PREDIOS), doc TEMPO_EPISODIO. Blender: autorização só chegou por mensagem de outra sessão, não instalado (pendência).
+Próximo comando: spawnar 1 revisor (opus) com a skill para pontuar refs ricksclips (nzbkkEZFM8g, 7xS87iActkU), ep.37 e ep.38 e gravar calibração.
