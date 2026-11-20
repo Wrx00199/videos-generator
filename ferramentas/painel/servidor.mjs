@@ -1,19 +1,21 @@
-// Painel GTA 6 — cortes de lives. Porta 7777. Sem dependências (Node puro).
+// Painel WR multi-conta. Porta 7777. Sem dependências (Node puro).
 // Abas: Ao vivo (Twitch/Kick/YouTube), Revisão (fila/aprovados/recusados em tempo real), Meta (IG/FB), Features.
 import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFile, spawn } from 'node:child_process';
 import os from 'node:os';
+import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 
 const AQUI = path.dirname(fileURLToPath(import.meta.url));
-const RAIZ = path.resolve(AQUI, '..', '..');
+const RAIZ = process.env.PAINEL_RAIZ_DADOS ? path.resolve(process.env.PAINEL_RAIZ_DADOS) : path.resolve(AQUI, '..', '..');
+const DADOS = process.env.PAINEL_RAIZ_DADOS ? path.join(RAIZ, 'painel-dados') : path.join(AQUI, 'dados');
 const LIVES = path.join(RAIZ, 'projetos', 'lives');
 const CLIPPER = path.join(LIVES, 'clipper');
 const PRONTOS = path.join(RAIZ, 'prontos', 'Gta 6');
 const ESTADO = path.join(RAIZ, '_estado');
-const DECISOES = path.join(ESTADO, 'painel-decisoes.json');
+const DECISOES = path.join(DADOS, 'decisoes.json');
 const CONFIG = path.join(RAIZ, 'config');
 const HIST = path.join(ESTADO, 'historico-viewers.json');
 const FILA_META = path.join(ESTADO, 'fila-meta.json');
@@ -22,9 +24,9 @@ const PY = path.join(CLIPPER, 'ambiente', WIN ? 'Scripts' : 'bin', WIN ? 'python
 const PORTA = Number(process.env.PORTA_PAINEL || 7777);
 // config de quem usa: contas.json (dados da página, legenda, horários) e streamers.json (favoritos). Sem senhas.
 const CONTAS_PAD = { dono: '', meta: { pagina: '', instagram: '', business_suite: 'https://business.facebook.com/latest/home', legenda_modelo: 'Olha o que rolou na live do {streamer} no GTA 6 😳 #gta6 #gtavi #gta #cortes #streamer', horarios: ['12:00', '15:00', '19:00', '21:30'] }, tiktok: { ativo: false, legenda_modelo: 'Olha o que rolou na live do {streamer} no GTA 6 😳 #gta6 #gtavi #fyp' } };
-const contas = () => { const c = lerJson(path.join(CONFIG, 'contas.json'), {}); return { ...CONTAS_PAD, ...c, meta: { ...CONTAS_PAD.meta, ...(c.meta || {}) }, tiktok: { ...CONTAS_PAD.tiktok, ...(c.tiktok || {}) } }; };
+const contas = () => { const c = contasCfg().find(c=>c.id==='six_stars') || contasCfg()[0]; return {...CONTAS_PAD, meta:{...CONTAS_PAD.meta, pagina:c?.nome||'', instagram:c?.plataformas.find(p=>p.rede==='instagram')?.handle||'', legenda_modelo:c?.legenda_modelo||'',horarios:c?.horarios||[]},tiktok:{...CONTAS_PAD.tiktok,ativo:!!c?.plataformas.find(p=>p.rede==='tiktok')?.ligado}}; };
 const streamersCfg = () => ({ favoritos: [], alertar_ao_entrar: true, ...lerJson(path.join(CONFIG, 'streamers.json'), {}) });
-function gravarJson(f, obj) { fs.mkdirSync(path.dirname(f), { recursive: true }); const t = f + '.tmp'; fs.writeFileSync(t, JSON.stringify(obj, null, 2)); fs.renameSync(t, f); }
+function gravarJson(f, obj) { if (!f.startsWith(DADOS + path.sep) && f !== path.join(CONFIG,'contas.json')) throw new Error('Gravação fora do escopo do painel bloqueada'); fs.mkdirSync(path.dirname(f), { recursive: true }); const t = f + '.tmp'; fs.writeFileSync(t, JSON.stringify(obj, null, 2)); fs.renameSync(t, f); }
 const UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36';
 const TWITCH_CLIENT = 'kimne78kx3ncx6brgo4mv6wki5h1ko'; // Client-ID público do site da Twitch (o mesmo do ronda.py)
 
@@ -36,7 +38,7 @@ const ls = (d) => { try { return fs.readdirSync(d, { withFileTypes: true }); } c
 const mtime = (f) => { try { return fs.statSync(f).mtimeMs; } catch { return 0; } };
 const b64 = (s) => Buffer.from(s).toString('base64url');
 const deb64 = (s) => Buffer.from(s, 'base64url').toString();
-const corpo = (req) => new Promise((ok, no) => { let b = ''; req.on('data', (c) => { b += c; if (b.length > 1e5) { no(new Error('grande')); req.destroy(); } }); req.on('end', () => { try { ok(b ? JSON.parse(b) : {}); } catch (e) { no(e); } }); });
+const corpo = (req) => new Promise((ok, no) => { let b = ''; req.on('data', (c) => { b += c; if (b.length > 1e5) { no(new Error('grande')); req.destroy(); } }); req.on('end', () => { try { const valor=b ? JSON.parse(b) : {}; if(!valor || typeof valor!=='object' || Array.isArray(valor)) throw new SyntaxError('Envie um objeto JSON'); ok(valor); } catch (e) { no(e); } }); });
 async function buscar(url, opts = {}) {
   const c = new AbortController(); const t = setTimeout(() => c.abort(), opts.timeout || 20000);
   try { const r = await fetch(url, { ...opts, signal: c.signal, headers: { 'User-Agent': UA, ...(opts.headers || {}) } }); return await r.text(); } finally { clearTimeout(t); }
@@ -180,10 +182,10 @@ async function aoVivo(forcar = false) {
 }
 
 // ---------- REVISÃO ----------
-const decisoes = () => lerJson(DECISOES, {});
+const decisoes = () => ({...lerJson(path.join(ESTADO,'painel-decisoes.json'),{}),...lerJson(DECISOES,{})});
 function salvarDecisao(id, d) {
-  _rv.t = 0; const todas = decisoes(); if (d === null) delete todas[id]; else todas[id] = d;
-  fs.mkdirSync(ESTADO, { recursive: true });
+  _rv.t = 0; const todas = decisoes(); if (d === null) todas[id] = null; else todas[id] = d;
+  fs.mkdirSync(DADOS, { recursive: true });
   const tmp = DECISOES + '.tmp'; fs.writeFileSync(tmp, JSON.stringify(todas, null, 1)); fs.renameSync(tmp, DECISOES);
 }
 function primeiraLinha(f) { return lerTexto(f).split('\n').map((s) => s.trim()).find(Boolean) || ''; }
@@ -240,10 +242,10 @@ function listaProcessos() {
     });
   });
 }
-const REGEX_ROBO = /ao_vivo\.py|vod\.py|clipador\.py|achar\.py|ferramentas[\/]lives|whisper|streamlink|ffmpeg.*(seg_|\.ts|1080x1920|libx264)/;
+const REGEX_ROBO = /render\.mjs|hyperframes.*render|ao_vivo\.py|vod\.py|clipador\.py|achar\.py|ferramentas[\/]lives|whisper|streamlink|ffmpeg.*(seg_|\.ts|1080x1920|libx264)/;
 async function processos() {
   const l = (await listaProcessos()).filter((p) => REGEX_ROBO.test(p.args) && !/ps -eo|servidor\.mjs|Get-CimInstance/.test(p.args));
-  return l.slice(0, 14).map((p) => { const a = p.args; const tipo = /ao_vivo/.test(a) ? 'gravando+clipando' : /vod\.py/.test(a) ? 'cortando vídeo offline' : /clipador/.test(a) ? 'clipando' : /achar/.test(a) ? 'achando picos' : /whisper/.test(a) ? 'transcrevendo' : /ffmpeg/.test(a) ? 'ffmpeg' : 'outro';
+  return l.slice(0, 14).map((p) => { const a = p.args; const tipo = /render\.mjs|hyperframes.*render/.test(a) ? 'render' : /ao_vivo/.test(a) ? 'gravando+clipando' : /vod\.py/.test(a) ? 'cortando vídeo offline' : /clipador/.test(a) ? 'clipando' : /achar/.test(a) ? 'achando picos' : /whisper/.test(a) ? 'transcrevendo' : /ffmpeg/.test(a) ? 'ffmpeg' : 'outro';
     return { pid: p.pid, seg: p.seg, cpu: p.cpu, tipo, cmd: a.slice(0, 110).replace(/https?:\/\/\S+/g, (u) => u.slice(0, 40)) }; });
 }
 // gravações em andamento = processos ao_vivo.py de verdade (sobrevive a reinício do painel)
@@ -258,13 +260,18 @@ function atividade() {
 
 // vídeo com Range (preview no navegador)
 function servirVideo(req, res, rel) {
-  const f = path.resolve(RAIZ, rel);
-  if (!f.startsWith(RAIZ + path.sep) || !f.endsWith('.mp4') || !fs.existsSync(f)) { res.writeHead(404); return res.end('nao'); }
-  const { size } = fs.statSync(f); const r = req.headers.range;
-  if (r) { const m = /bytes=(\d*)-(\d*)/.exec(r); const ini = m[1] ? +m[1] : 0; const fim = m[2] ? Math.min(+m[2], size - 1) : size - 1;
-    res.writeHead(206, { 'Content-Range': `bytes ${ini}-${fim}/${size}`, 'Accept-Ranges': 'bytes', 'Content-Length': fim - ini + 1, 'Content-Type': 'video/mp4' });
-    return fs.createReadStream(f, { start: ini, end: fim }).pipe(res); }
-  res.writeHead(200, { 'Content-Length': size, 'Content-Type': 'video/mp4', 'Accept-Ranges': 'bytes' }); fs.createReadStream(f).pipe(res);
+  const f=path.resolve(RAIZ,rel);
+  let real;try{real=fs.realpathSync(f);}catch{res.writeHead(404);return res.end('Vídeo não encontrado');}
+  if(!real.startsWith(fs.realpathSync(RAIZ)+path.sep)||! /\.mp4$/i.test(real)||!fs.statSync(real).isFile()){res.writeHead(404);return res.end('Vídeo não encontrado');}
+  const {size}=fs.statSync(real),range=req.headers.range;
+  const invalido=()=>{res.writeHead(416,{'Content-Range':`bytes */${size}`});res.end();};
+  if(range){const m=/^bytes=(\d*)-(\d*)$/.exec(range);if(!m||(!m[1]&&!m[2])||!size)return invalido();
+    let ini=m[1]?Number(m[1]):Math.max(0,size-Number(m[2])),fim=m[1]?(m[2]?Math.min(Number(m[2]),size-1):size-1):size-1;
+    if(!Number.isSafeInteger(ini)||!Number.isSafeInteger(fim)||ini>fim||ini>=size||ini<0)return invalido();
+    res.writeHead(206,{'Content-Range':`bytes ${ini}-${fim}/${size}`,'Accept-Ranges':'bytes','Content-Length':fim-ini+1,'Content-Type':'video/mp4'});
+    const stream=fs.createReadStream(real,{start:ini,end:fim});stream.on('error',()=>res.destroy());return stream.pipe(res);
+  }
+  res.writeHead(200,{'Content-Length':size,'Content-Type':'video/mp4','Accept-Ranges':'bytes'});const stream=fs.createReadStream(real);stream.on('error',()=>res.destroy());stream.pipe(res);
 }
 
 // ---------- FILA DO META: aprovado vira post pendente com legenda do modelo e próximo horário livre ----------
@@ -303,7 +310,7 @@ async function saude() {
   const checks = { node: true, python_venv: fs.existsSync(PY), ffmpeg: await existeComando('ffmpeg'), 'yt-dlp': fs.existsSync(path.join(CLIPPER, 'ambiente', WIN ? 'Scripts' : 'bin', WIN ? 'yt-dlp.exe' : 'yt-dlp')) || await existeComando('yt-dlp'),
     identidade: fs.existsSync(path.join(RAIZ, 'marca', 'identidade.json')), logo: fs.existsSync(path.join(RAIZ, 'marca', 'logo.png')), contas: fs.existsSync(path.join(CONFIG, 'contas.json')) };
   const c = contas();
-  return { checks, pc: { nucleos: cpus, carga: cpuPct, disco_livre_gb: discoLivreGb(), ram_livre_gb: +(os.freemem() / 1e9).toFixed(1), ram_total_gb: +(os.totalmem() / 1e9).toFixed(1), so: `${os.platform()} ${os.release()}` },
+  return { checks, chaves: chaves(), bots: statusBots(), pc: { nucleos: cpus, carga: cpuPct, disco_livre_gb: discoLivreGb(), gpus: gpus(), ram_livre_gb: +(os.freemem() / 1e9).toFixed(1), ram_total_gb: +(os.totalmem() / 1e9).toFixed(1), so: `${os.platform()} ${os.release()}` },
     contas_preenchidas: !!(c.meta.pagina && c.meta.instagram) };
 }
 
@@ -345,18 +352,8 @@ function detectarLink(url) {
   });
 }
 async function iniciarTrabalho(url, opts = {}) {
-  const d = await detectarLink(url); if (!d.ok) return [400, { erro: d.erro }];
-  if (!fs.existsSync(PY)) return [500, { erro: 'ambiente Python não encontrado: rode o instalador (instalar.sh / instalar.ps1)' }];
-  const ativas = await gravacoesAtivas();
-  if (ativas.some((p) => p.args.includes(url))) return [200, { ok: true, ja: true, modo: d.modo }];
-  if (ativas.length >= 2) return [409, { erro: 'já tem 2 trabalhos rodando (limite do PC: 4 núcleos, 8 GB)' }];
-  const nome = url.replace(/[^a-z0-9]+/gi, '_').slice(-40);
-  const log = fs.openSync(path.join(CLIPPER, `painel_${nome}.log`), 'a');
-  const num = (v, pad) => (Number.isFinite(+v) && +v >= 0 ? String(Math.floor(+v)) : String(pad));
-  const args = d.modo === 'ao_vivo' ? [path.join(RAIZ, 'ferramentas', 'lives', 'ao_vivo.py'), url, '--seg', '300', '--max', '1', '--sempre-melhor']
-    : [path.join(RAIZ, 'ferramentas', 'lives', 'vod.py'), url, '--inicio', num(opts.inicio, 0), ...(opts.fim != null && opts.fim !== '' ? ['--fim', num(opts.fim, 60)] : []), '--max', '1', '--sempre-melhor'];
-  const p = spawn(PY, args, { cwd: RAIZ, detached: true, stdio: ['ignore', log, log] }); p.unref();
-  return [200, { ok: true, pid: p.pid, modo: d.modo }];
+  return [409,{erro:'Produção desativada neste painel; fila de render é apenas visual.'}];
+
 }
 
 // ---------- trabalhos em andamento (listar / parar) ----------
@@ -393,63 +390,121 @@ function servirMarca(res, tipo) {
   const ext = path.extname(f).slice(1).toLowerCase(); res.writeHead(200, { 'Content-Type': ext === 'jpg' ? 'image/jpeg' : `image/${ext}`, 'Cache-Control': 'no-store' }); fs.createReadStream(f).pipe(res);
 }
 
+// Dados novos ficam sob o painel enquanto a exceção para legendas/referências não for autorizada.
+const SEMENTES = [
+  {id:'six_stars',nome:'Six Stars',nicho:'GTA 6',plataformas:[{rede:'instagram',handle:'six_starsbr',ligado:true,modo:'manual'},{rede:'facebook',handle:'six_starsbr',ligado:true,modo:'manual'},{rede:'tiktok',handle:'wrx00_',ligado:false,modo:'manual'}],pasta_saida:'prontos/Gta 6',legenda_modelo:'{titulo} #gta6 #gtavi',horarios:['12:00','15:00','19:00','21:30'],tipo_producao:'cortes',filtro_acabamento:true},
+  {id:'aventuras_do_tiao',nome:'Aventuras do Tião',nicho:'Tião',plataformas:[{rede:'youtube',handle:'aventurasdotiao',ligado:true,modo:'manual'},{rede:'tiktok',handle:'aventurasdotião',ligado:true,modo:'manual'}],pasta_saida:'prontos/3D/Aventuras do Tião',legenda_modelo:'{titulo} #aventurasdotiao',horarios:['12:00','19:00'],tipo_producao:'bonecos',filtro_acabamento:true}
+];
+const contasCfg = () => {const v=lerJson(path.join(CONFIG,'contas.json'),SEMENTES);return Array.isArray(v)?v:SEMENTES;};
+function erro(status,msg){throw Object.assign(new Error(msg),{status});}
+function acharConta(id){const c=contasCfg().find(c=>c.id===id);if(!c)erro(404,'Conta não encontrada');return c;}
+const contaDaUrl=u=>acharConta(u.searchParams.get('conta')||'six_stars');
+function pastaConta(c){const rel=String(c.pasta_saida||'');const f=path.resolve(RAIZ,rel);const base=path.join(RAIZ,'prontos');if(!f.startsWith(base+path.sep))erro(400,'Pasta deve estar dentro de prontos/');
+  let atual=RAIZ;for(const parte of path.relative(RAIZ,f).split(path.sep)){atual=path.join(atual,parte);if(fs.existsSync(atual)&&fs.lstatSync(atual).isSymbolicLink())erro(400,'Pasta com link simbólico não permitida');}return f;}
+function validarConta(c){
+  if(!c||! /^[a-z0-9_]{1,60}$/.test(c.id||'')||typeof c.nome!=='string'||!c.nome.trim()||c.nome.length>100||typeof c.nicho!=='string'||!c.nicho.trim()||c.nicho.length>100)erro(400,'ID, nome e nicho obrigatórios');
+  pastaConta(c);
+  if(!Array.isArray(c.plataformas)||c.plataformas.length>8||c.plataformas.some(p=>!['instagram','facebook','tiktok','youtube'].includes(p.rede)||!['manual','chrome','api'].includes(p.modo)||typeof p.handle!=='string'||p.handle.length>100||typeof p.ligado!=='boolean'))erro(400,'Plataformas inválidas');
+  if(new Set(c.plataformas.map(p=>p.rede)).size!==c.plataformas.length)erro(400,'Rede duplicada');
+  if(!Array.isArray(c.horarios)||c.horarios.length>24||c.horarios.some(h=>! /^([01]\d|2[0-3]):[0-5]\d$/.test(h)))erro(400,'Horários inválidos');
+  if(typeof c.legenda_modelo!=='string'||c.legenda_modelo.length>5000||typeof c.tipo_producao!=='string'||c.tipo_producao.length>100||typeof c.filtro_acabamento!=='boolean')erro(400,'Modelo, tipo ou filtro inválido');
+  return {id:c.id,nome:c.nome.trim(),nicho:c.nicho.trim(),plataformas:c.plataformas.map(({rede,handle,ligado,modo})=>({rede,handle,ligado,modo})),pasta_saida:path.relative(RAIZ,pastaConta(c)),legenda_modelo:c.legenda_modelo,horarios:c.horarios,tipo_producao:c.tipo_producao,filtro_acabamento:c.filtro_acabamento};
+}
+const LEGENDAS=path.join(DADOS,'legendas.json');
+const REFERENCIAS=path.join(DADOS,'_fila_painel.jsonl');
+function revisaoConta(c){
+  const base=pastaConta(c), mapa=new Map();
+  // Reaproveita a revisão de lives apenas para a conta GTA.
+  if(c.id==='six_stars')for(const i of listarRevisao().itens)mapa.set(i.id,{...i,conta:c.id});
+  function andar(dir,n=0){if(n>12)return;for(const e of ls(dir)){const f=path.join(dir,e.name);if(e.isDirectory())andar(f,n+1);else if(e.isFile()&&/\.mp4$/i.test(e.name)){
+    const mp4=path.relative(RAIZ,f),id=b64(mp4),titulo=e.name.replace(/\.mp4$/i,'').replace(/[-_]/g,' ');
+    if(!mapa.has(id))mapa.set(id,{id,id_texto:mp4,mp4,titulo,conta:c.id,streamer:c.nome,criado:mtime(f),estado:'revisao',origem:'prontos',legenda:lerTexto(f.replace(/\.mp4$/i,'.txt')).trim()||c.legenda_modelo.replaceAll('{titulo}',titulo).replaceAll('{streamer}',c.nome)});
+  }}}andar(base);
+  const dec=decisoes(),legs=lerJson(LEGENDAS,{});
+  const itens=[...mapa.values()].map(i=>{const d=dec[i.id];return {...i,...(d?{estado:d.estado,motivo:d.motivo,decidido_em:d.ts}:{}),legenda:legs[i.id]?.legenda??d?.legenda??i.legenda??''};}).sort((a,b)=>b.criado-a.criado);
+  return {itens,contagem:Object.fromEntries(['revisao','aprovado','recusado'].map(k=>[k,itens.filter(i=>i.estado===k).length]))};
+}
+function placarConta(c){const r=revisaoConta(c);const dec=r.contagem.aprovado+r.contagem.recusado;return [{conta:c.id,streamer:c.nome,...r.contagem,auto:0,total:r.itens.length,taxa:dec?Math.round(r.contagem.aprovado/dec*100):null}];}
+const diaSP=t=>new Intl.DateTimeFormat('sv-SE',{timeZone:'America/Sao_Paulo'}).format(new Date(t));
+function calendario(c){const itens=revisaoConta(c).itens, hoje=diaSP(Date.now()),min=c.id==='aventuras_do_tiao'?2:c.id==='six_stars'?3:1,max=c.id==='six_stars'?4:min;
+  const dias={};for(const i of itens){const dia=diaSP(i.criado);dias[dia]=(dias[dia]||0)+1;}return {conta:c.id,hoje,meta_min:min,meta_max:max,produzidos_hoje:dias[hoje]||0,faltam:Math.max(0,min-(dias[hoje]||0)),horarios:c.horarios,dias};}
+function gpus(){return ls('/sys/class/drm').filter(e=>/^card\d+$/.test(e.name)).map(e=>{const base=path.join('/sys/class/drm',e.name,'device');const num=n=>{const t=lerTexto(path.join(base,n)).trim();return t&&Number.isFinite(+t)?+t:null;};return {nome:e.name,uso_percent:num('gpu_busy_percent'),vram_usada_bytes:num('mem_info_vram_used'),vram_total_bytes:num('mem_info_vram_total')};});}
+function chaves(){const texto=lerTexto(path.join(RAIZ,'.env'));return Array.from({length:5},(_,i)=>{const nome=`GEMINI_API_KEY_${i+1}`,m=texto.match(new RegExp(`^\\s*(?:export\\s+)?${nome}\\s*=\\s*(.*)$`,'m'));const valor=String(process.env[nome]||m?.[1]||'').trim().replace(/^(['"])(.*?)\1(?:\s*#.*)?$/,'$2').replace(/\s+#.*$/,'');return {nome,existe:!!valor,formato_valido:/^AIza[\w-]{35}$/.test(valor),validade:'não consultada (sem chamada de IA)'};});}
+let cacheBots={t:0,v:[]};
+function statusBots(){if(Date.now()-cacheBots.t<30000)return cacheBots.v;
+  const arquivos=[];const visitar=(dir,n=0)=>{if(n>2)return;for(const e of ls(dir)){if(e.name.startsWith('.')||['node_modules','ambiente'].includes(e.name))continue;const f=path.join(dir,e.name);if(e.isDirectory())visitar(f,n+1);else if(e.isFile()&&/\.(log|lock)$/.test(e.name))arquivos.push({f,nome:e.name,ts:mtime(f)});}};visitar(ESTADO);visitar(path.join(RAIZ,'ferramentas'));
+  const v=Object.entries({olheiro:/olheiro|ronda/,clipador:/clipador|clipper/,ao_vivo:/ao[_-]vivo/,render:/render/}).map(([bot,re])=>{const a=arquivos.filter(a=>re.test(a.nome)).sort((a,b)=>b.ts-a.ts)[0];return {bot,ativo:!!a&&Date.now()-a.ts<120000,ultimo_sinal:a?.ts||null,criterio:'log/lock atualizado nos últimos 2 min; sinal de atividade, não prova de processo vivo'};});cacheBots={t:Date.now(),v};return v;
+}
+const rede={ligado:false,hash:null,salt:null,ip:null};let servidorLAN=null;
+function ipsLAN(){return [...new Set(Object.values(os.networkInterfaces()).flat().filter(i=>i&&i.family==='IPv4'&&!i.internal).map(i=>i.address))];}
+function autenticado(req){try{const a=String(req.headers.authorization||'');if(!a.startsWith('Basic '))return false;const txt=Buffer.from(a.slice(6),'base64').toString();const senha=txt.slice(txt.indexOf(':')+1);const hash=crypto.scryptSync(senha,rede.salt,32);return crypto.timingSafeEqual(hash,rede.hash);}catch{return false;}}
+async function rotasNovas(req,res,u,local){
+ const rota=u.pathname; if(!['/api/contas-cfg','/api/legendas','/api/referencias','/api/calendario','/api/bots','/api/render-fila','/api/rede'].includes(rota))return false;
+ if(!['GET','POST'].includes(req.method)){json(res,405,{erro:'Método não permitido'});return true;}
+ if(rota==='/api/contas-cfg'){
+  if(req.method==='GET')json(res,200,contasCfg());else{const b=await corpo(req);let lista=contasCfg();if(b.acao==='remover'){acharConta(b.id);lista=lista.filter(c=>c.id!==b.id);}else{const c=validarConta(b.conta||b);lista=lista.filter(x=>x.id!==c.id);lista.push(c);}gravarJson(path.join(CONFIG,'contas.json'),lista);json(res,200,{ok:true,contas:lista});}
+ }else if(rota==='/api/legendas'){
+  if(req.method==='GET'){const c=contaDaUrl(u);json(res,200,revisaoConta(c).itens.map(({id,legenda})=>({id,legenda})));}else{const b=await corpo(req),c=acharConta(b.conta);if(!revisaoConta(c).itens.some(i=>i.id===b.id))erro(404,'Vídeo não pertence à conta');if(typeof b.legenda!=='string'||b.legenda.length>10000)erro(400,'Legenda inválida');const l=lerJson(LEGENDAS,{});l[b.id]={conta:c.id,legenda:b.legenda,atualizado:Date.now()};gravarJson(LEGENDAS,l);json(res,200,{ok:true});}
+ }else if(rota==='/api/referencias'){
+  if(req.method!=='POST')erro(405,'Use POST');const b=await corpo(req);let url;try{url=new URL(b.url);}catch{erro(400,'URL inválida');}if(!['http:','https:'].includes(url.protocol)||url.username||url.password)erro(400,'Somente link HTTP/HTTPS sem senha');if(b.conta)acharConta(b.conta);if(b.nota!==undefined&&typeof b.nota!=='string')erro(400,'Nota inválida');const item={id:crypto.randomUUID(),url:url.href,nota:String(b.nota||'').slice(0,2000),conta:b.conta||null,status:'pendente',criado:Date.now()};fs.mkdirSync(path.dirname(REFERENCIAS),{recursive:true});fs.appendFileSync(REFERENCIAS,JSON.stringify(item)+'\n');json(res,201,item);
+ }else if(rota==='/api/calendario')json(res,200,calendario(contaDaUrl(u)));
+ else if(rota==='/api/bots')json(res,200,statusBots());
+ else if(rota==='/api/render-fila')json(res,200,{limite_pesados:1,somente_visual:true,itens:(await processos()).filter(p=>/ffmpeg|render/.test(p.tipo+' '+p.cmd)).map(p=>({...p,peso:'pesada',estado:'em execução (externa)'})),classes:['leve','média','pesada']});
+ else if(rota==='/api/rede'){
+  if(!local)erro(403,'Configure a rede neste PC');
+  if(req.method==='POST'){const b=await corpo(req);if(typeof b.ligado!=='boolean')erro(400,'Estado inválido');if(b.ligado){if(typeof b.senha!=='string'||b.senha.length<10||b.senha.length>200)erro(400,'Senha deve ter de 10 a 200 caracteres');const ip=ipsLAN()[0];if(!ip)erro(409,'IP de rede local não encontrado');if(!servidorLAN){const srv=http.createServer(atender);await new Promise((ok,no)=>{srv.once('error',no);srv.listen(PORTA,ip,ok);});servidorLAN=srv;}rede.salt=crypto.randomBytes(16);rede.hash=crypto.scryptSync(b.senha,rede.salt,32);rede.ip=ip;rede.ligado=true;}else{rede.ligado=false;rede.ip=null;rede.hash=null;rede.salt=null;servidorLAN?.close();servidorLAN?.closeAllConnections();servidorLAN=null;}}
+  json(res,200,{ligado:rede.ligado,ips:rede.ligado?[rede.ip]:[],urls:rede.ligado?[`http://${rede.ip}:${PORTA}`]:[],aviso:'Desligado ao reiniciar. Na LAN o transporte é HTTP; use apenas rede confiável.'});
+ }
+ return true;
+}
+
 // ---------- servidor ----------
 const HTML = path.join(AQUI, 'index.html');
-http.createServer(async (req, res) => {
+export async function atender(req, res) {
   const u = new URL(req.url, 'http://x');
   // anti-CSRF / DNS rebinding: só aceita Host e Origin do próprio painel (um site aberto no navegador não consegue mandar POST aqui)
-  const hostsOk = [`127.0.0.1:${PORTA}`, `localhost:${PORTA}`]; const origem = req.headers.origin;
-  if (!hostsOk.includes(req.headers.host || '') || (origem && !hostsOk.map((h) => `http://${h}`).includes(origem))) { res.writeHead(403, { 'Content-Type': 'text/plain' }); return res.end('origem não permitida'); }
+  const hostsOk = [`127.0.0.1:${PORTA}`, `localhost:${PORTA}`, ...(rede.ligado ? ipsLAN().map(ip=>`${ip}:${PORTA}`) : [])]; const origem = req.headers.origin;
+  if (!hostsOk.includes(req.headers.host || '') || (origem && origem !== `http://${req.headers.host}`)) { res.writeHead(403, { 'Content-Type': 'text/plain' }); return res.end('origem não permitida'); }
   try {
+    const local = ['127.0.0.1','::1','::ffff:127.0.0.1'].includes(req.socket.remoteAddress);
+    if (!local && (!rede.ligado || !autenticado(req))) { res.writeHead(401, {'WWW-Authenticate':'Basic realm="Painel WR", charset="UTF-8"'}); return res.end('Senha do painel necessária'); }
+    const nova = await rotasNovas(req,res,u,local); if (nova) return;
+    if (req.method === 'POST' && ['/api/marca','/api/contas','/api/streamers','/api/meta/status'].includes(u.pathname)) return json(res,409,{erro:'Configuração antiga somente leitura. Use Configurações de contas.'});
     if (u.pathname === '/') { res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' }); return res.end(fs.readFileSync(HTML)); }
     if (u.pathname === '/api/ao-vivo') return json(res, 200, await aoVivo(u.searchParams.get('forcar') === '1'));
-    if (u.pathname === '/api/revisao') { const r = listarRevisao(); return json(res, 200, { ...r, agora: Date.now(), processos: await processos(), ...atividade() }); }
+    if (u.pathname === '/api/revisao') { const c=contaDaUrl(u); const r = revisaoConta(c); return json(res, 200, { ...r, agora: Date.now(), processos: await processos(), ...atividade() }); }
     if (u.pathname === '/api/meta' && req.method === 'GET') { const c = contas().meta; return json(res, 200, { tiktok: contas().tiktok.ativo, fila: filaMeta(), legado: metaFila(), conta: { pagina: c.pagina, instagram: c.instagram, business_suite: c.business_suite }, horarios: c.horarios }); }
-    if (u.pathname === '/api/meta/status' && req.method === 'POST') { const b = await corpo(req); const f = filaMeta(); const x = f.find((y) => y.id === b.id); if (!x) return json(res, 404, { erro: 'não está na fila' });
-      if (!['pendente', 'agendado', 'postado'].includes(b.status)) return json(res, 400, { erro: 'status' }); x.status = b.status; if (typeof b.horario === 'string') x.horario = b.horario.slice(0, 16); gravarJson(FILA_META, f); return json(res, 200, { ok: true }); }
     if (u.pathname === '/api/ajuda') { res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' }); return res.end(lerTexto(path.join(RAIZ, 'AGENTS.md'))); }
     if (u.pathname === '/api/desempenho' && req.method === 'GET') return json(res, 200, desempenho());
-    if (u.pathname === '/api/desempenho' && req.method === 'POST') { const b = await corpo(req); if (!['auto', ...Object.keys(PERFIS_DESC)].includes(b.perfil)) return json(res, 400, { erro: 'perfil' }); gravarJson(path.join(CONFIG, 'desempenho.json'), { perfil: b.perfil }); return json(res, 200, desempenho()); }
+    if (u.pathname === '/api/desempenho' && req.method === 'POST') { const b = await corpo(req); if (!['auto', ...Object.keys(PERFIS_DESC)].includes(b.perfil)) return json(res, 400, { erro: 'perfil' }); return json(res,409,{erro:'Desempenho somente leitura'}); }
     if (u.pathname === '/api/trabalhos' && req.method === 'GET') return json(res, 200, await trabalhos());
     if (u.pathname === '/api/trabalhos/parar' && req.method === 'POST') { const b = await corpo(req); const [c, o] = await pararTrabalho(Number(b.pid)); return json(res, c, o); }
     if (u.pathname === '/api/marca' && req.method === 'GET') { const id = identidade(); return json(res, 200, { nick: id.nick || '', tem_logo: fs.existsSync(path.resolve(RAIZ, id.logo || 'x')), tem_capa: fs.existsSync(path.resolve(RAIZ, id.capa || 'x')) }); }
-    if (u.pathname === '/api/marca' && req.method === 'POST') { const b = await corpo(req); const f = path.join(MARCA, 'identidade.json'); const id = identidade(); id.nick = String(b.nick ?? '').replace(/^@/, '').replace(/[^\w.]/g, '').slice(0, 40); id.confirmado = true; gravarJson(f, id); return json(res, 200, { ok: true, nick: id.nick }); }
     if (u.pathname === '/api/marca/arquivo' && req.method === 'POST') {
       const tipo = u.searchParams.get('tipo'); if (!['logo', 'capa'].includes(tipo)) return json(res, 400, { erro: 'tipo' });
       let buf; try { buf = await corpoBruto(req); } catch (e) { return json(res, 413, { erro: String(e.message) }); }
       const ext = tipoImagem(buf); if (!ext) return json(res, 400, { erro: 'envie uma imagem PNG, JPG ou WEBP' });
-      fs.mkdirSync(MARCA, { recursive: true }); const rel = `marca/${tipo}.${ext}`; fs.writeFileSync(path.join(RAIZ, rel), buf);
-      const id = identidade(); id[tipo] = rel; gravarJson(path.join(MARCA, 'identidade.json'), id); return json(res, 200, { ok: true, arquivo: rel });
+      return json(res,409,{erro:'Marca somente leitura neste painel'});
+
     }
     if (u.pathname === '/marca/logo' || u.pathname === '/marca/capa') return servirMarca(res, u.pathname.endsWith('capa') ? 'capa' : 'logo');
-    if (u.pathname === '/api/placar') return json(res, 200, placar());
+    if (u.pathname === '/api/placar') return json(res, 200, placarConta(contaDaUrl(u)));
     if (u.pathname === '/api/saude') return json(res, 200, await saude());
     if (u.pathname === '/api/contas' && req.method === 'GET') return json(res, 200, contas());
-    if (u.pathname === '/api/contas' && req.method === 'POST') { const b = await corpo(req); const m = b.meta || {}; const txt = (v, n = 200) => String(v ?? '').slice(0, n);
-      const novo = { dono: txt(b.dono, 80), meta: { pagina: txt(m.pagina, 120), instagram: txt(m.instagram, 60).replace(/^@/, ''), business_suite: /^https:\/\//.test(m.business_suite) ? txt(m.business_suite, 300) : CONTAS_PAD.meta.business_suite,
-        legenda_modelo: txt(m.legenda_modelo, 400), horarios: (Array.isArray(m.horarios) ? m.horarios : []).filter((h) => /^\d\d:\d\d$/.test(h)).slice(0, 8) }, tiktok: { ativo: !!b.tiktok?.ativo, legenda_modelo: txt(b.tiktok?.legenda_modelo, 400) || CONTAS_PAD.tiktok.legenda_modelo } };
-      gravarJson(path.join(CONFIG, 'contas.json'), novo);
-      if (b.nick) { const f = path.join(RAIZ, 'marca', 'identidade.json'); const id = lerJson(f, lerJson(path.join(RAIZ, 'marca', 'identidade.example.json'), {})); id.nick = txt(b.nick, 40).replace(/^@/, ''); id.confirmado = true; gravarJson(f, id); }
-      return json(res, 200, { ok: true }); }
     if (u.pathname === '/api/streamers' && req.method === 'GET') return json(res, 200, streamersCfg());
-    if (u.pathname === '/api/streamers' && req.method === 'POST') { const b = await corpo(req); const c = streamersCfg(); const n = String(b.canal || '').toLowerCase().replace(/[^a-z0-9_ .-]/g, '').slice(0, 40); if (!n) return json(res, 400, { erro: 'canal' });
-      c.favoritos = c.favoritos.includes(n) ? c.favoritos.filter((x) => x !== n) : [...c.favoritos, n]; if (typeof b.alertar === 'boolean') c.alertar_ao_entrar = b.alertar; gravarJson(path.join(CONFIG, 'streamers.json'), c); cacheLive.t = 0; return json(res, 200, c); }
     if (u.pathname === '/video') return servirVideo(req, res, deb64(u.searchParams.get('id') || ''));
     if (u.pathname === '/api/decidir' && req.method === 'POST') {
-      const b = await corpo(req);
-      if (typeof b.id !== 'string') return json(res, 400, { erro: 'id' });
-      if (b.estado === 'desfazer') { salvarDecisao(b.id, null); tirarDaFilaMeta(b.id); return json(res, 200, { ok: true }); }
-      if (!['aprovado', 'recusado'].includes(b.estado)) return json(res, 400, { erro: 'estado' });
-      salvarDecisao(b.id, { estado: b.estado, motivo: String(b.motivo || '').slice(0, 200), ts: Date.now() });
-      if (b.estado === 'aprovado') entrarNaFilaMeta(b.id); else tirarDaFilaMeta(b.id);
-      return json(res, 200, { ok: true });
+      const b=await corpo(req); if(!['aprovado','recusado','desfazer'].includes(b.estado)) return json(res,400,{erro:'estado'});
+      const c=acharConta(b.conta || 'six_stars'); const it=revisaoConta(c).itens.find(i=>i.id===b.id); if(!it) return json(res,404,{erro:'Vídeo não pertence à conta'});
+      salvarDecisao(it.id,b.estado==='desfazer'?null:{estado:b.estado,motivo:String(b.motivo||'').slice(0,200),legenda:it.legenda,conta:c.id,ts:Date.now()});
+      return json(res,200,{ok:true,legenda:it.legenda});
     }
-    if (u.pathname === '/api/gravar' && req.method === 'POST') { const b = await corpo(req); const [c, o] = await iniciarTrabalho(String(b.url || '')); return json(res, c, o); }
+    if (u.pathname === '/api/gravar' && req.method === 'POST') { const b = await corpo(req); if(!LINK_RE.test(String(b.url||''))) return json(res,400,{erro:'URL inválida'}); const [c, o] = await iniciarTrabalho(String(b.url || '')); return json(res, c, o); }
     if (u.pathname === '/api/link/detectar' && req.method === 'POST') { const b = await corpo(req); return json(res, 200, await detectarLink(b.url)); }
-    if (u.pathname === '/api/link/cortar' && req.method === 'POST') { const b = await corpo(req); const [c, o] = await iniciarTrabalho(String(b.url || '').trim(), { inicio: b.inicio, fim: b.fim }); return json(res, c, o); }
+    if (u.pathname === '/api/link/cortar' && req.method === 'POST') { const b = await corpo(req); if(!LINK_RE.test(String(b.url||''))) return json(res,400,{erro:'URL inválida'}); const [c, o] = await iniciarTrabalho(String(b.url || '').trim(), { inicio: b.inicio, fim: b.fim }); return json(res, c, o); }
     res.writeHead(404); res.end('nao');
-  } catch (e) { json(res, 500, { erro: String(e.message || e) }); }
-}).listen(PORTA, '127.0.0.1', () => {
-  console.log(`painel GTA 6 em http://127.0.0.1:${PORTA} (pid ${process.pid})`);
-  const varrer = () => aoVivo(true).catch(() => {}); setTimeout(varrer, 2000); setInterval(varrer, 60000); // amostra viewers sozinho: o radar de calor funciona com a aba fechada
-});
+  } catch (e) { json(res, e.status || (e instanceof SyntaxError ? 400 : 500), { erro: e.status || e instanceof SyntaxError ? e.message : 'Falha interna do painel' }); }
+}
+if (process.env.PAINEL_SEM_LISTEN !== '1') {
+  http.createServer(atender).listen(PORTA, '127.0.0.1', () => console.log(`Painel WR em http://127.0.0.1:${PORTA} — manual, sem IA e sem postagem automática`));
+}

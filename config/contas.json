@@ -1,0 +1,64 @@
+[
+  {
+    "id": "six_stars",
+    "nome": "Six Stars",
+    "nicho": "GTA 6",
+    "plataformas": [
+      {
+        "rede": "instagram",
+        "handle": "six_starsbr",
+        "ligado": true,
+        "modo": "manual"
+      },
+      {
+        "rede": "facebook",
+        "handle": "six_starsbr",
+        "ligado": true,
+        "modo": "manual"
+      },
+      {
+        "rede": "tiktok",
+        "handle": "wrx00_",
+        "ligado": false,
+        "modo": "manual"
+      }
+    ],
+    "pasta_saida": "prontos/Gta 6",
+    "legenda_modelo": "{titulo} #gta6 #gtavi",
+    "horarios": [
+      "12:00",
+      "15:00",
+      "19:00",
+      "21:30"
+    ],
+    "tipo_producao": "cortes",
+    "filtro_acabamento": true
+  },
+  {
+    "id": "aventuras_do_tiao",
+    "nome": "Aventuras do Tião",
+    "nicho": "Tião",
+    "plataformas": [
+      {
+        "rede": "youtube",
+        "handle": "aventurasdotiao",
+        "ligado": true,
+        "modo": "manual"
+      },
+      {
+        "rede": "tiktok",
+        "handle": "aventurasdotião",
+        "ligado": true,
+        "modo": "manual"
+      }
+    ],
+    "pasta_saida": "prontos/3D/Aventuras do Tião",
+    "legenda_modelo": "{titulo} #aventurasdotiao",
+    "horarios": [
+      "12:00",
+      "19:00"
+    ],
+    "tipo_producao": "bonecos",
+    "filtro_acabamento": true
+  }
+]
