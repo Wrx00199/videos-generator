@@ -42,3 +42,4 @@ Antes de criar vídeo: ler este arquivo inteiro. Regra nova só entra se evitar 
 
 ## Regras aprendidas (acrescentar abaixo, mais nova primeiro)
 - 20/11 — ep.38 (7,4) e ep.39 (6,6) caíram por roteiro "slide". Regra: modelar um vídeo de referência e exigir impacto em ação em cada beat.
+- 20/11 — Molde de estrutura/câmera/legenda do estilo ricksclips (gancho→setup→zombador→método→"you see"→payoff; câmera sempre em movimento; número falado vira objeto): ver `referencias/base/MOLDE_RICKSCLIPS.md`. Roteiro e storyboard seguem essa tabela de tempos.
