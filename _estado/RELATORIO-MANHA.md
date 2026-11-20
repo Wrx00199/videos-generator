@@ -20,3 +20,5 @@
 - 20/11 08:50 (vigia): portão ganhou 4 checagens mecânicas (43 testes ok). Ep.38 segue PARA-APROVAR (7,36 < 8, não subiu ao Drive). Próximo: ep.39 Nico. Uso 5h=76%, sem=37%.
 
 **Atualização ~12:40 (vigia)**: ep.39 "Prédio Mais Alto" (Tião vs Barão, ref Nico) pronto: `prontos/3D/Aventuras do Tião/39 - Prédio Mais Alto (PARA-APROVAR).mp4` (75 s). Pacote de cenários PREDIOS criado. Revisor 6,57 → apliquei 7 ordens → portão final passou; sem 3ª revisão (esperado ~7,7, abaixo de 8) → NÃO subiu ao Drive. Tempo ~2h15 (docs/TEMPO_EPISODIO.md). Você decide: quer assistir o 38 e o 39 e dizer se o 7,5 já serve? Uso: 5h≈50%, sem≈45%.
+
+- 20/11 14:3x vigia: portão ganhou checagem prop_virada (47 testes ok), commit/push feitos. ep.39 segue PARA-APROVAR local. Uso 5h~60% sem~44%. Lock apagado.
