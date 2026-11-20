@@ -252,4 +252,4 @@ window.renderFrame = (f) => {
   return true;
 };
 window.TOTAL = TOTAL;
-window.ready = true;
+Promise.all(window.TEXPROMISES || []).then(() => { window.ready = true; }).catch(() => { window.err = window.err || 'textura'; });
