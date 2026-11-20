@@ -73,3 +73,30 @@ Decidir sozinho, SEM perguntar. Escolher, anotar a escolha no estado e seguir. E
 - **Pasta Gon antiga** (`/media/wr/HDD/Gon`, 8,5 GB; tem `CLAUDE.md`, `BRIEF_FABLE_V6.md`, `PROMPT_MESTRE_V5.md`, `analise-videos-instagram.md`, `Estilo de video`, `projeto-gta6`, `recuperado`, `backups`): SOMENTE LEITURA. Garimpar com subagente haiku (grep/ls, sem ler tudo) o que for útil e ainda não está no estúdio (ideias, estilos, roteiros, prompts, análises). Resumir em `docs/GARIMPO_GON.md` (o que serve, onde está, como aplicar). Implementar o que for barato e valioso. Não apagar nada; o Filippe decide depois.
 - **Ideias contínuas:** a cada fase, gerar 3–5 ideias novas (roteiros, estilos, formatos, ganchos, séries) para Tião e cortes/memes, registrar em `docs/IDEIAS.md` com nota de impacto×custo, e implementar as de maior retorno e menor custo.
 - **Clonagem de outros tipos** (modelar vídeos de outros formatos): só depois de Tião e painel prontos e se sobrar orçamento; reaproveitar `estudio-clone`.
+
+## REGRAS DE SUBAGENTES (nunca violar)
+1. Só use subagente para isolar saída volumosa (busca ampla, logs, pesquisa) ou revisão independente. Tarefa pequena ou que depende do contexto da conversa: faça você mesmo.
+2. Máximo 2 subagentes simultâneos. Um por tarefa. Nunca subagente dentro de subagente. Nunca em loop automático.
+3. Modelo explícito em toda chamada: `haiku` busca/leitura/log/resumo; `sonnet` edição mecânica/teste/docs; `opus` lógica de projeto; `fable` só em arquitetura ou bug travado 2 vezes.
+4. Brief curto: arquivos, objetivo, critério de pronto, e o que NÃO fazer. Peça resposta curta (resumo, não dump).
+5. Subagente NÃO posta, NÃO apaga, NÃO instala nada, NÃO mexe em git/push, NÃO roda render pesado, NÃO toca em `.env`/chaves, NÃO abre o Chrome do xCloud, NÃO muda lock/estado/agendamentos. Só você faz commit, push, estado e lock.
+6. Nunca dois processos pesados ao mesmo tempo (render, whisper, ffmpeg longo): subagente que precise de render pede a você e espera.
+7. Relatório de subagente não é prova: confira o resultado (teste, trecho do arquivo, imagem em recorte) antes de marcar `[x]`.
+8. Subagente que falha: não repita igual. Reduza o escopo, troque o modelo ou faça você mesmo. Máx. 1 retentativa.
+9. Revisor de vídeo (`revisor-bonecos`) e crítico de roteiro: uma passada por episódio; correções novas vão para o produtor, não para nova rodada de revisor, salvo reprovação.
+10. Antes de spawnar: confira `get_usage`; acima de 85% do limite de 5h, não spawne subagente novo.
+
+## FILTRO RÍGIDO DO OLHEIRO (Filippe, 20/11) — vale p/ toda busca de referência
+Aceitar SOMENTE vídeo **animado 2D ou 3D** (bonecos, personagens, cenário desenhado/renderizado), de **qualquer nicho/idioma**, que seja **viral** (views muito acima da média do canal ou surto recente; registrar views, idade, canal) e **modelável** por nós (motor 2D em mundo 3D + cenário; dá pra refazer o esqueleto: gancho, beats, cenário, ritmo).
+REJEITAR sem exceção: live-action, pessoa real (streamer, IShowSpeed, reação, vlog, dança, "tipo Índia"), meme com rosto real, compilado de clipes, jogo gravado, slideshow/imagem estática, anime ripado, infantil comercial/canção de ninar (CoComelon-like), IA genérica sem personagem, vídeo sem narrativa.
+Checar de verdade: baixar 1 folha de ~6 quadros pequenos (recorte) por candidato ANTES de aceitar (título/miniatura não bastam; a coleta de 20/11 foi frouxa: "quadros não conferidos"). Reavaliar `referencias/PENDENTES_BONECOS_20-11.md` com esse filtro: descartar o que for stickman fraco/pessoa real/meme; manter só o que passar.
+Cada aceito vira ficha curta com: viralidade, tipo (2D/3D), por que é modelável, custo no nosso motor, e como adaptar pro Tião (cenário, gancho, o que muda). Meta: lista curta e forte (5–10), não longa e frouxa.
+
+## FILTRO DE ACABAMENTO (qualidade visual) — pedido do Filippe, 20/11
+Todo vídeo renderizado passa por um **filtro de acabamento** para ficar mais bonito: primeiro o **Tião** (prioridade, entra na Fase 1 antes do episódio 1e), depois os **clipes de GTA 6**. Regras:
+- Ajuste sutil e rápido: leve contraste/saturação e curva de cor (look "cinema" quente), nitidez leve, vinheta suave, grão fino opcional; sem estragar legenda, HUD ou cor da marca.
+- Custo barato: preferir `ffmpeg` (um passe final, `nice -n 15`, sem render extra) ou o próprio estágio final do render; medir o tempo extra por vídeo e registrar; se passar de ~10% do tempo do episódio, simplificar.
+- Look separado por série/conta (Tião; GTA clipes) em arquivo de config (`config/filtros.json` ou equivalente), com opção ligar/desligar por conta no painel (Fase 3). Padrão: ligado.
+- Checar com recorte antes/depois (não print inteiro) e deixar o revisor julgar se ficou mais bonito sem perder legibilidade. Usar a skill `media-use` (color grades/looks) se ajudar.
+- Aplicar em TODO render daqui pra frente (episódios Tião e clipes) e registrar no KIT.
+- Postagem continua com o Filippe (não tentar postar).
