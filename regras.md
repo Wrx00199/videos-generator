@@ -47,3 +47,4 @@ Antes de criar vídeo: ler este arquivo inteiro. Regra nova só entra se evitar 
 - 20/11 — Render de teste de cenário: 1 processo só, vários quadros na mesma chamada (`portao_trem.sh "1,2,3"`), contact sheet reduzida (`ffmpeg xstack` a 270 px) em vez de ler stills grandes.
 - 20/11 — Story de teste precisa exportar `shotAt`, `LIGHTS`, `lightFor` (main.js importa); copiar o modelo de `story_cenarios.js`.
 - 20/11 — Crítico reprovou (5,8) roteiro copiado da ficha: a ficha dá estrutura, não texto final. Quando a fala só explica (física), cortar a resposta em duas e pôr piada a cada ≤8 s; paga a promessa do apostador na última fala com as mesmas palavras.
+- 20/11 — Voz do apostador bloqueada (PROHIBITED_CONTENT) com estilo 'rouca de bar + gargalhada de zombaria'. Estilo de voz: tom neutro 'convencido, provocador, voz grave e clara'; nada de rouco/risada maligna. Falta só a fala bloqueada: o script refaz só ela (1 chamada).
