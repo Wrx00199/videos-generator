@@ -1,0 +1,15 @@
+{
+  "nome": "bonecos",
+  "descricao": "Shorts de bonecos 2D/3D (stickman estilo ricksclips, 'what if', aventuras absurdas) modeláveis pelo Tião.",
+  "termos": ["what if stickman animation #shorts", "animated story stickman funny #shorts", "weird thing he did every night animation #shorts", "e se animação bonecos #shorts", "cartoon short story twist animation #shorts"],
+  "hashtags": ["stickmananimation", "animatedstory"],
+  "canais": [],
+  "janela": "mes",
+  "duracao_max_s": 90,
+  "min_views": 300000,
+  "max_dias": 90,
+  "excluir_canais": [],
+  "excluir_titulo": ["trailer", "reaction", "live"],
+  "por_termo": 20,
+  "max_detalhar": 40
+}
