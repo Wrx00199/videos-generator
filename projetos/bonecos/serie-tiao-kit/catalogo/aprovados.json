@@ -380,6 +380,10 @@
   "noite": {
    "ok": true,
    "falhas": []
+  },
+  "predio_topo": {
+   "ok": true,
+   "falhas": []
   }
  }
 }

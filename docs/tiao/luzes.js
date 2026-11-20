@@ -69,6 +69,21 @@ export const LIGHTS = {
   casa_breu: { ondas: 0.2, az: 200, el: 40, sky: '#1a2050', ground: '#05061a', hemi: 0.16, sun: '#8090d0', sunI: 0.08, fog: '#05071a', fogNear: 10, fogFar: 40, skyTop: '#02030f', skyHor: '#05071a', sat: 1.05, gain: '#6a76a8', lift: '#010210', vig: 0.72, shadowExt: 10, tint: '#6a78b0', noite: 1 },
   casa_quarto: { ondas: 0.2, az: 160, el: 50, sky: '#5446a8', ground: '#1c1540', hemi: 0.55, sun: '#a8a0ff', sunI: 0.35, fog: '#1e1850', fogNear: 14, fogFar: 60, skyTop: '#0c0730', skyHor: '#1e1850', sat: 1.15, gain: '#b4ace8', lift: '#070418', vig: 0.55, shadowExt: 10, tint: '#b4aae4', noite: 1 },
   casa_tarde: { ondas: 0.2, az: 80, el: 22, sky: '#ffc08a', ground: '#8a5a3a', hemi: 1.2, sun: '#ffb070', sunI: 2.2, fog: '#ffc79a', fogNear: 25, fogFar: 160, skyTop: '#ff9a62', skyHor: '#ffd2a0', sat: 1.2, gain: '#fff0dc', lift: '#150a04', vig: 0.34, shadowExt: 12, tint: '#ffe0c0' },
+  // PACOTE PRÉDIOS (20/11): 6 paletas próprias. Exteriores com névoa longe (cidade a 60–115 m abaixo, até ~560 m).
+  predio_dia: { ondas: 0.2, az: 130, el: 50, sky: '#cfe2ff', ground: '#8a90b0', hemi: 1.3, sun: '#fff4e0', sunI: 2.4, fog: '#bcd8f6', fogNear: 120, fogFar: 1100,
+    skyTop: '#2f6fe0', skyHor: '#bfe0ff', sat: 1.15, gain: '#f6faff', vig: 0.2, shadowExt: 12, tint: '#ffffff' },
+  predio_dourado: { ondas: 0.2, az: 70, el: 18, sky: '#e8b0c8', ground: '#5a4a6a', hemi: 1.2, sun: '#ffb878', sunI: 2.3, fog: '#f0a888', fogNear: 120, fogFar: 1000,
+    skyTop: '#4a4a9a', skyHor: '#ff9e7a', sunDisc: '#fff0c8', sunSize: 0.004, sat: 1.12, gain: '#fff0e0', lift: '#0c0614', vig: 0.3, shadowExt: 12, tint: '#ffe6d0' },
+  predio_poente: { ondas: 0.2, az: 20, el: 10, sky: '#ffb890', ground: '#5a3a5a', hemi: 1.15, sun: '#ffa060', sunI: 2.4, fog: '#ff9a6a', fogNear: 140, fogFar: 1000,
+    skyTop: '#5a3a8a', skyHor: '#ff8a4a', sunDisc: '#fff2c0', sunSize: 0.006, sat: 1.18, gain: '#fff0dc', lift: '#120614', vig: 0.32, shadowExt: 12, tint: '#ffdcc0' },
+  predio_rua: { ondas: 0.2, az: 110, el: 42, sky: '#fff0d0', ground: '#9a8a7a', hemi: 1.35, sun: '#fff0d0', sunI: 2.3, fog: '#e8ecf0', fogNear: 60, fogFar: 420,
+    skyTop: '#5a9ae8', skyHor: '#f4ecd8', sat: 1.12, gain: '#fff8ee', vig: 0.22, shadowExt: 14, tint: '#fff8ee' },
+  predio_escritorio: { ondas: 0.2, az: 100, el: 50, sky: '#ffe0b0', ground: '#7a4a2a', hemi: 1.25, sun: '#ffd8a0', sunI: 1.1, fog: '#5a3a2a', fogNear: 30, fogFar: 120,
+    skyTop: '#2a1a14', skyHor: '#2a1a14', sat: 1.14, gain: '#fff0dc', lift: '#100804', vig: 0.34, shadowExt: 10, tint: '#ffeedd' },
+  predio_redacao: { ondas: 0.2, az: 160, el: 55, sky: '#ffcf90', ground: '#3a2a1a', hemi: 0.85, sun: '#ffc080', sunI: 0.6, fog: '#2a1a12', fogNear: 25, fogFar: 90,
+    skyTop: '#1a100a', skyHor: '#1a100a', sat: 1.1, gain: '#ffe4c0', lift: '#0e0804', vig: 0.48, shadowExt: 10, tint: '#ffe2c0' },
+  predio_noite: { ondas: 0.2, az: 210, el: 38, sky: '#4a5cc0', ground: '#1a1e4a', hemi: 0.95, sun: '#b8c8ff', sunI: 0.9, fog: '#141a44', fogNear: 160, fogFar: 1100,
+    skyTop: '#040824', skyHor: '#1c2a70', sat: 1.12, gain: '#d4dcff', lift: '#03041a', vig: 0.42, shadowExt: 12, tint: '#c8d0f4', noite: 1 },
 };
 // relâmpago na tempestade: retorna o flash (0..1) do quadro f; somar em C.flash do story
 export const relampago = (f, quadros = []) => { let v = 0; for (const q of quadros) { const d = f - q; if (d >= 0 && d < 8) v = Math.max(v, d < 2 ? 0.75 : d === 3 ? 0.5 : Math.max(0, 0.6 - (d - 2) * 0.12)); } return v; };
@@ -77,3 +92,7 @@ export const luz = (nome, mods = {}) => ({ ...LIGHTS[nome], ...mods });
 export const MAR = { liso: 0.08, calmo: 0.22, brisa: 0.4, tensao: 0.7, agitado: 1.0, tempestade: 1.3 };
 // aliases do pacote casa (o auditor do catálogo chama luz(<id do cenário>))
 LIGHTS.sala = LIGHTS.casa_dia; LIGHTS.quarto = LIGHTS.casa_quarto; LIGHTS.fachada = LIGHTS.casa_dia;
+// aliases do PACOTE PRÉDIOS (luz(<id do cenário>)); 'noite' NÃO tem alias (é a noite genérica do kit): use luz('predio_noite') ou luz('topo_noite').
+LIGHTS.obra_azul = LIGHTS.predio_dia; LIGHTS.obra_vermelha = LIGHTS.predio_dourado; LIGHTS.escritorio = LIGHTS.predio_escritorio; LIGHTS.skyline = LIGHTS.predio_poente; LIGHTS.rua = LIGHTS.predio_rua; LIGHTS.redacao = LIGHTS.predio_redacao; LIGHTS.topo_noite = LIGHTS.predio_noite;
+// 21/11: predio_tarde = pôr do sol quente (mesma paleta do predio_poente); predio_topo de dia por padrão (noite: luz('predio_noite') já liga B.noite pelo L.noite)
+LIGHTS.predio_tarde = LIGHTS.predio_poente; LIGHTS.predio_topo = LIGHTS.predio_dia;

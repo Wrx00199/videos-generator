@@ -35,8 +35,5 @@ Dicas operacionais: render_leve.sh exige TOTAL numérico → passar intervalo '0
 - S1 parou ~06:20
 
 ## PONTO DE RETOMADA (sobrescrever)
-**URGENTE 20/11 14:45: ler "REPRIORIZAÇÃO URGENTE" no fim de MISSAO-NOITE.md e seguir ELA primeiro: (1) painel Fase 3, (2) bots lives/clipes, (3) Tião sem gold-plating, subir ep.38/39 ao Drive com a nota no nome.**
-20/11 ~14:30 (vigia retomou; lock era inexistente, sessão anterior parou ~12:35). Uso ao começar 5h=58% sem=44%.
-FEITO: portão ganhou `checar_prop_virada` (props_virada em plano_beats.json) + 2 testes, 47 testes ok; KIT atualizado.
-ep.39 ENTREGUE (PARA-APROVAR, local, não subiu ao Drive: só 1 revisão 6,57 + ordens aplicadas sem 2ª passada). Nada em produção.
-PRÓXIMO: (a) portão: contato do senta (precisa malha no motor); (b) Fase 2 GTA gringo (Lugan3d 'Los Santos before GTA VI'); (c) Fase 3 painel (logo-b4-preto.svg); (d) ep.40 só se semanal <60% e revisor calibrado. Blender aguarda OK do Filippe.
+20/11 ~14:50 sessão s1c (seguindo REPRIORIZAÇÃO URGENTE). FEITO: ep.38 e ep.39 SUBIDOS ao Drive1 com nota no nome (38 nota 7,4; 39 nota 6,6), cópia local mantida. EM CURSO: painel multi-conta (Fase 3) delegado ao Codex: `codex exec` em background (brief em _tmp/brief_painel.md, log _tmp/codex_painel.log). Ao terminar: conferir de verdade no navegador embutido (7777), rodar `node --test testes-painel/smoke.mjs`, commit. DEPOIS: bot de lives/clipes (calibrar nota mínima, gate áudio, teste real curto) e clipes bons. Tião sem gold-plating (≤60 min/ep, ≤2 revisões, subir ao Drive com nota). Pasta duplicada projetos/bonecos/2026-11-20-tiao-torre-mais-alta-39 (roteiro+voz de ep.39 paralelo que fiz sem saber do outro): descartável/ideia, não renderizar.
+Blender: flatpak org.blender.Blender 5.3 JÁ instalado (system); teste EEVEE/Cycles de 1 quadro ainda não feito.

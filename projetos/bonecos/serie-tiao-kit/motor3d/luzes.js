@@ -94,3 +94,5 @@ export const MAR = { liso: 0.08, calmo: 0.22, brisa: 0.4, tensao: 0.7, agitado: 
 LIGHTS.sala = LIGHTS.casa_dia; LIGHTS.quarto = LIGHTS.casa_quarto; LIGHTS.fachada = LIGHTS.casa_dia;
 // aliases do PACOTE PRÉDIOS (luz(<id do cenário>)); 'noite' NÃO tem alias (é a noite genérica do kit): use luz('predio_noite') ou luz('topo_noite').
 LIGHTS.obra_azul = LIGHTS.predio_dia; LIGHTS.obra_vermelha = LIGHTS.predio_dourado; LIGHTS.escritorio = LIGHTS.predio_escritorio; LIGHTS.skyline = LIGHTS.predio_poente; LIGHTS.rua = LIGHTS.predio_rua; LIGHTS.redacao = LIGHTS.predio_redacao; LIGHTS.topo_noite = LIGHTS.predio_noite;
+// 21/11: predio_tarde = pôr do sol quente (mesma paleta do predio_poente); predio_topo de dia por padrão (noite: luz('predio_noite') já liga B.noite pelo L.noite)
+LIGHTS.predio_tarde = LIGHTS.predio_poente; LIGHTS.predio_topo = LIGHTS.predio_dia;

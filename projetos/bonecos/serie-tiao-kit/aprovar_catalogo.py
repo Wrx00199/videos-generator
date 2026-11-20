@@ -11,7 +11,7 @@ MOTOR = os.path.join(KIT, 'motor3d')
 PARCEIRO = {'cyberpunk': 'robo', 'apocalipse': 'zumbi', 'cemiterio': 'vampiro', 'parque': 'palhaco', 'dojo': 'panda',
             'fundomar': 'peixeman', 'nuvens': 'heroi', 'arena': 'gorila', 'floresta': 'curupira',
             'bermudas': 'barao', 'navioberm': 'tonho', 'maia': 'glorp', 'amazonia': 'curupira', 'sala': 'cap', 'cozinha': 'cap', 'quarto': 'cap', 'fachada': 'cap',
-            'obra_azul': 'barao', 'obra_vermelha': 'barao', 'escritorio': 'barao', 'skyline': 'barao', 'rua': 'barao', 'redacao': 'barao', 'noite': 'barao'}
+            'obra_azul': 'barao', 'obra_vermelha': 'barao', 'escritorio': 'barao', 'skyline': 'barao', 'rua': 'barao', 'redacao': 'barao', 'noite': 'barao', 'predio_topo': 'cap'}
 CEN_TESTE_PERSONAGEM = 'dojo'
 
 

@@ -15,8 +15,11 @@
 //   noite         { tampa: 0..1 (tampa de ferro redonda abre), agulha: 0..N (topo da agulha = 2·N m acima do teto; >3 sai do quadro geral),
 //                   brilho: 0..1 (padrão: min(0,25, agulha·1,5)), brilhoMax, holofote: 1|0,
 //                   agulhaGrossa: 1 (raio x N), plataforma: 0|1 (disco r 0,25 na ponta; topo = 2·agulha + 0,07) }  (alias: S.topo_noite)
+//   predio_topo   { alturaAzul: 0.55, alturaVermelho: 0.5 (0..1: topo dos espigões do fundo vai de 8 m abaixo da laje a 14 m acima; faixa livre entre a borda da laje e as bandeirinhas na câmera geral), telhado: 0..1 (azul: 2 folhas abrem),
+//                 agulha: 0..1 (agulha de prata sobe 26 m pelo telhado do azul), mastro: 0..1 (vermelho: mastro 9 m + bandeira), andares: 100, gancho, bandeiras, nuvens, noite: 0|1 }  (21/11)
+//   skyline/rua/predio_topo também: noite: 0|1 (janelas acesas, lua, estrelas, poste/lampião aceso; sem B.noite segue luz('predio_noite'))
 // Câmeras extras (CAMS5, mescladas em CAMS): noite.agulha (baixo, olhando a agulha subir), skyline.predios (os dois prédios inteiros).
-export const PREDIOS = ['obra_azul', 'obra_vermelha', 'escritorio', 'skyline', 'rua', 'redacao', 'noite'];
+export const PREDIOS = ['obra_azul', 'obra_vermelha', 'escritorio', 'skyline', 'rua', 'redacao', 'noite', 'predio_topo'];
 export const CAMS5 = {
   noite: { agulha: { pos: [1.9, 0.7, -0.5], look: [-0.1, 4.6, -2.4], fov: 64 }, tampa: { pos: [0.9, 2.6, 1.6], look: [0, 0.3, -2.2], fov: 50 } },
   skyline: { predios: { pos: [0.3, 1.8, 6.4], look: [0, 25, -60], fov: 70 } },
@@ -142,14 +145,15 @@ export function construirPredios(X) {
     for (let i = 0; i < FX; i++) for (const s of [-1, 1]) { const f = add(new THREE.BoxGeometry(2.75, 0.06, 7.4 / FX), telM, s * 1.25, 5.25, -4.3 + (i + 0.5) * 7.4 / FX, tel); f.rotation.z = -s * 0.5; f.userData.i = i; faixas.push(f); }
     const cume = add(new THREE.CylinderGeometry(0.09, 0.09, 7.4, 12), mc('#8a2a20'), 0, 5.9, -0.6, tel); cume.rotation.x = PI / 2; tel.visible = false;
     // cidade abaixo + nuvens
-    cidade(g, -95, id.length * 13 + 5, pal.cidade); const nuv = nuvens(g, [[-30, 22, -120, 7], [25, 30, -160, 9], [60, 18, -110, 6], [-70, 35, -200, 10]], pal.nuvem || '#ffffff');
+    const cid = cidade(g, -95, id.length * 13 + 5, pal.cidade, false, pal.evita ? { evita: pal.evita } : {}); const nuv = nuvens(g, [[-30, 22, -120, 7], [25, 30, -160, 9], [60, 18, -110, 6], [-70, 35, -200, 10]], pal.nuvem || '#ffffff');
     lista[id] = { g, chao: () => 0, state(S, f) { const B = S[id] || {}, t = f / 30;
       const nv = (B.nuvens ?? 1) !== 0; nuv.forEach((m) => { m.visible = nv; });
       const n = Math.round(B.andares ?? pal.andares); if (n !== ultAnd) pintaRegua(n);
-      pend.position.set(0.9, 3.55 + (B.gancho ?? 0) * 1.2, -2.7); pend.rotation.y = 0.25 + 0.04 * Math.sin(t * 0.9);
+      pend.position.set(0.9, 3.55 + (B.gancho ?? pal.gancho ?? 0) * 1.2, -2.7); pend.rotation.y = 0.25 + 0.04 * Math.sin(t * 0.9);
       const bv = B.bandeiras ?? 1; band.forEach((b, i) => { b.visible = !!bv; b.rotation.y = 0.25 * Math.sin(t * 2.2 + i); }); flag.scale.x = 1 + 0.05 * Math.sin(t * 3);
-      const mt = Math.min(1, Math.max(0, B.mastro ?? 0)), tt = Math.min(1, Math.max(0, B.telhado ?? 0)); mastro.visible = mt > 0.001; if (tt >= 0.5) mastro.position.set(0, 5.95, -2.4); else mastro.position.set(-1.45, 0, -5.55); if (mastro.visible) { const h = 0.6 + (tt >= 0.5 ? 3.4 : 6.4) * mt; haste.scale.y = h; haste.position.y = h / 2; bola.position.y = h + 0.08; bm.position.y = h - 0.42; bm.rotation.y = 0.15 * Math.sin(t * 2.4); }
+      const mt = pal.topo ? 0 : Math.min(1, Math.max(0, B.mastro ?? 0)), tt = pal.topo ? 0 : Math.min(1, Math.max(0, B.telhado ?? 0));   // predio_topo: mastro/telhado são dos prédios do fundo mastro.visible = mt > 0.001; if (tt >= 0.5) mastro.position.set(0, 5.95, -2.4); else mastro.position.set(-1.45, 0, -5.55); if (mastro.visible) { const h = 0.6 + (tt >= 0.5 ? 3.4 : 6.4) * mt; haste.scale.y = h; haste.position.y = h / 2; bola.position.y = h + 0.08; bm.position.y = h - 0.42; bm.rotation.y = 0.15 * Math.sin(t * 2.4); }
       tel.visible = tt > 0.001; if (tel.visible) { const k = tt * FX; for (const fx of faixas) { const v = Math.min(1, Math.max(0, k - fx.userData.i)); fx.visible = v > 0.02; fx.scale.z = Math.max(v, 0.02); } cume.scale.y = tt; cume.position.z = -4.3 + 3.7 * tt; } } };
+    return { g, cid, nuv };
   };
   obra('obra_azul', { viga: '#2f6fd6', vigaEsc: '#163f8a', band: ['#2f78e0', '#ffffff'], grua: '#f2c230', predio: '#4a78c8', vidro: '#a9d6ff', andares: 87,
     cidade: { chao: '#9aa59a', rua: '#7d8478', cores: ['#d9cbb0', '#c9b79a', '#b9c6d3', '#e3d6c0', '#a8b4c8'], jan: '#6d8fb3', teto: '#8a8a8a', longe: '#9fb2d0' } });
@@ -174,6 +178,61 @@ export function construirPredios(X) {
     a.strokeStyle = '#222'; a.lineWidth = 6; a.beginPath(); a.moveTo(64, 64); a.lineTo(64, 26); a.moveTo(64, 64); a.lineTo(92, 74); a.stroke();
     const m = new THREE.Mesh(new THREE.CircleGeometry(r, 32), toon({ map: T(c) })); m.position.set(x, y, z + 0.03); g.add(m); const t = add(new THREE.TorusGeometry(r, 0.035, 8, 32), mc(aro), x, y, z + 0.03, g); return m; };
 
+  // ================= NOITE dos exteriores (predio_topo, skyline, rua): troca material dia/noite + lua + estrelas =================
+  // B.noite (0|1); sem B.noite, segue a luz (L.noite, ex.: luz('predio_noite')). Nada alocado por quadro.
+  const DN = {}; const dn = (id, mesh, matN) => { mesh.userData.mD = mesh.material; mesh.userData.mN = matN; (DN[id] ||= []).push(mesh); return mesh; };
+  const aplicaDN = (id, nt) => { for (const m of DN[id] || []) { const t = nt ? m.userData.mN : m.userData.mD; if (m.material !== t) m.material = t; } };
+  const escuro = (c, k = 0.42) => '#' + new THREE.Color(c).multiplyScalar(k).getHexString();
+  const facN = (cor, cols, rows, seed, lit = 0.55) => bas({ map: T(facTex(escuro(cor), '#1a2048', cols, rows, seed, { lit })), fog: true });
+  const ceuDeNoite = (g, lx, ly, lz, lr) => { const G = new THREE.Group(); g.add(G); G.visible = false;
+    const lua = semTinta(add(new THREE.CircleGeometry(lr, 32), bas({ color: '#fff3c0' }), lx, ly, lz, G, { cast: false })); const sombra = semTinta(add(new THREE.CircleGeometry(lr * 0.86, 32), bas({ color: '#1c2a70' }), lx + lr * 0.45, ly + lr * 0.3, lz + 0.5, G, { cast: false })); lua.renderOrder = 1; sombra.renderOrder = 2;
+    const r = P.rng(lx * 7 + 3), pos = []; for (let i = 0; i < 160; i++) { const a = -PI / 2 + (r() - 0.5) * 1.6, d = 420, e = 0.06 + r() * 0.7; pos.push(Math.cos(a) * d * Math.cos(e), d * Math.sin(e), Math.sin(a) * d * Math.cos(e)); }
+    const geo = new THREE.BufferGeometry(); geo.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); const st = new THREE.Points(geo, new THREE.PointsMaterial({ color: '#ffffff', size: 3, sizeAttenuation: false, fog: false })); st.userData.ndSkip = true; G.add(st);
+    return G; };
+  const noiteDe = (B, L) => (B.noite ?? (L && L.noite ? 1 : 0)) ? 1 : 0;
+
+  // ================= PREDIO_TOPO: topo de obra (laje de concreto + aço laranja) olhando os DOIS espigões ao fundo (AZUL = Tião, esquerda; VERMELHO, direita) =================
+  { const TX = 8.5, TZ = -75, TY = -95;   // prédios do fundo: x = ∓8,5, z = -75, base na cidade (y = -95)
+    const O = obra('predio_topo', { viga: '#e8822e', vigaEsc: '#8a3a10', band: ['#f2c230', '#2f78e0', '#d8302a', '#ffffff'], grua: '#f2c230', predio: '#b9b4aa', vidro: '#8fb8d8', andares: 100, topo: true, gancho: 1.1,   // viga pendurada mais alta: não tapa a coroa do vermelho
+     
+      evita: (x, z) => Math.abs(z - TZ) < 13 && Math.abs(Math.abs(x) - TX) < 13,
+      cidade: { chao: '#9aa59a', rua: '#7d8478', cores: ['#d9cbb0', '#c9b79a', '#b9c6d3', '#e3d6c0', '#a8b4c8'], jan: '#6d8fb3', teto: '#8a8a8a', longe: '#9fb2d0' } }), g = O.g;
+    const cidN = cidade(g, -95, 'predio_topo'.length * 13 + 5, { chao: '#2a3058', rua: '#e8c060', cores: ['#d9cbb0', '#c9b79a', '#b9c6d3', '#e3d6c0', '#a8b4c8'], jan: '#1a2048', teto: '#141a3a', longe: '#1b2250' }, true, { evita: (x, z) => Math.abs(z - TZ) < 13 && Math.abs(Math.abs(x) - TX) < 13 }); cidN.visible = false;
+    // espigão: corpo com UV por andar (3,2 m) + degrau; coroa sobe junto com a altura
+    const espigao = (x, cor, vidro, seed) => { const G = new THREE.Group(); G.position.set(x, TY, TZ); g.add(G);
+      const tx = T(facTex(cor, vidro, 5, 1, seed)), txN = T(facTex(escuro(cor, 0.5), '#1a2048', 5, 1, seed, { lit: 0.6 })), topo = mc(new THREE.Color(cor).multiplyScalar(0.8).getStyle()), topoN = bas({ color: escuro(cor, 0.35), fog: true });
+      const mD = toon({ map: tx }), mN = bas({ map: txN, fog: true }); const corpo = add(new THREE.BoxGeometry(12, 1, 12), [mD, mD, topo, topo, mD, mD], 0, 0.5, 0, G, { cast: false }); dn('predio_topo', corpo, [mN, mN, topoN, topoN, mN, mN]);
+      const coroa = new THREE.Group(); G.add(coroa); caixa(coroa, 9.5, 2, 9.5, cor, 0, 0, 0, 0, { cast: false }); caixa(coroa, 10, 0.4, 10, '#f2f2f2', 0, 2, 0, 0, { cast: false });
+      return { G, corpo, coroa, tx, txN }; };
+    const eA = espigao(-TX, '#3f6fd0', '#bfe0ff', 5), eV = espigao(TX, '#d0423a', '#ffe0c0', 3);
+    // AZUL: telhado de duas folhas (0 fechado .. 1 aberto, folhas abrem como alçapão) + agulha de prata que sobe por ele
+    const folhas = []; for (const s of [-1, 1]) { const piv = new THREE.Group(); piv.position.set(s * 4.6, 2.4, 0); eA.coroa.add(piv); const f0 = caixa(piv, 4.6, 0.7, 9.2, '#2a4a9a', -s * 2.3, 0, 0, 0, { cast: false }); caixa(piv, 0.5, 0.75, 9.2, '#f2c230', -s * 4.35, 0.0, 0, 0, { cast: false }); folhas.push({ piv, s }); }
+    const ag = new THREE.Group(); ag.position.y = 2.4; ag.visible = false; eA.coroa.add(ag); const agH = add(new THREE.CylinderGeometry(1.0, 1.6, 1, 24), mc('#cfd6e2'), 0, 0.5, 0, ag, { cast: false });
+    const agP = new THREE.Group(); ag.add(agP); add(new THREE.ConeGeometry(1.0, 6, 24), mc('#e4e8f0'), 0, 3, 0, agP, { cast: false }); esf(agP, 1.1, '#f6f8fc', 0, 6.3, 0, { cast: false });
+    for (const k of [0.3, 0.6]) { const anel = add(new THREE.TorusGeometry(1.25, 0.18, 8, 24), mc('#8a94a6'), 0, 0, 0, ag, { cast: false }); anel.rotation.x = PI / 2; anel.userData.k = k; }
+    const aneis = ag.children.filter((o) => o.userData.k);
+    // VERMELHO: telhado em pirâmide + mastro (0..1 sobe) com bandeira e bola dourada
+    const pir = add(new THREE.ConeGeometry(7.2, 6, 4), mc('#a8281e'), 0, 5.4, 0, eV.coroa, { cast: false }); pir.rotation.y = PI / 4;
+    const mas = new THREE.Group(); mas.position.y = 8.2; mas.visible = false; eV.coroa.add(mas); const masH = cil(mas, 0.55, 0.7, 1, '#f4f4f4', 0, 0, 0, { cast: false }); const masB = esf(mas, 1.0, '#f0c040', 0, 1, 0, { cast: false });
+    const [mfc, mfa] = cv(128, 80); mfa.fillStyle = '#e03a2a'; mfa.fillRect(0, 0, 128, 80); mfa.fillStyle = '#fff'; mfa.beginPath(); mfa.arc(64, 40, 18, 0, 7); mfa.fill(); const masF = plano(mas, 4.4, 2.6, toon({ map: T(mfc), side: THREE.DoubleSide }), -2.9, 0, 0); masF.scale.setScalar(1.25); masF.castShadow = false;
+    // mesa de planta (centro do fundo) + binóculo no tripé (esquerda, mirando os prédios)
+    const mp = mesa(g, -0.25, -3.35, 1.25, 0.75, 0.92, '#c08a4e', '#5b3a22'); const tp = new THREE.Group(); tp.position.set(0, 0.92, 0); tp.rotation.x = 0.28; mp.add(tp);
+    const plantaT = new THREE.Mesh(new THREE.PlaneGeometry(1.1, 0.66), toon({ map: T(texto(256, 160, (a, w, h) => { a.fillStyle = '#2a5fb0'; a.fillRect(0, 0, w, h); a.strokeStyle = '#e8f2ff'; a.globalAlpha = 0.25; a.lineWidth = 1; for (let x = 0; x < w; x += 16) { a.beginPath(); a.moveTo(x, 0); a.lineTo(x, h); a.stroke(); } for (let y = 0; y < h; y += 16) { a.beginPath(); a.moveTo(0, y); a.lineTo(w, y); a.stroke(); }
+      a.globalAlpha = 1; a.lineWidth = 3; a.strokeRect(60, 40, 40, 110); a.beginPath(); a.moveTo(80, 40); a.lineTo(80, 8); a.stroke(); a.strokeRect(150, 60, 44, 90); a.beginPath(); a.moveTo(146, 60); a.lineTo(172, 34); a.lineTo(198, 60); a.stroke(); escreve(a, 'PROJETO', 128, 18, 120, 20, '#e8f2ff'); })) }));
+    plantaT.rotation.x = -PI / 2; plantaT.position.y = 0.03; tp.add(plantaT); caixa(tp, 1.2, 0.03, 0.72, '#d9c49a', 0, 0, 0); for (const x of [-0.5, 0.5]) cil(tp, 0.03, 0.03, 0.04, '#c0392b', x, 0.03, -0.3);
+    const rl = add(new THREE.CylinderGeometry(0.05, 0.05, 0.8, 14), mc('#e8f0ff'), 0.2, 1.02, 0.45, mp); rl.rotation.z = PI / 2;
+    const tri = new THREE.Group(); tri.position.set(-1.85, 0, -3.7); g.add(tri); for (let k = 0; k < 3; k++) { const a = k * 2.09 + 0.3; tubo(tri, [Math.cos(a) * 0.32, 0, Math.sin(a) * 0.32], [0, 1.25, 0], 0.022, '#3a3a40'); }
+    cil(tri, 0.05, 0.05, 0.1, '#3a3a40', 0, 1.22, 0); binoculo(tri, 0, 1.3, 0, PI - 0.35, 1.6);
+    const ceu = ceuDeNoite(g, 0, 40, -300, 7);
+    const base = lista.predio_topo.state;
+    lista.predio_topo.state = (S, f, L) => { base(S, f); const B = S.predio_topo || {}, t = f / 30, nt = noiteDe(B, L);
+      for (const [k, E] of [[B.alturaAzul ?? 0.55, eA], [B.alturaVermelho ?? 0.5, eV]]) { const H = Math.max(4, (TY * -1) - 8 + 22 * Math.min(1, Math.max(0, k))), n = H / 3.2; E.corpo.scale.y = H; E.corpo.position.y = H / 2; E.tx.repeat.set(1, n); E.txN.repeat.set(1, n); E.coroa.position.y = H; }
+      const te = Math.min(1, Math.max(0, B.telhado ?? 0)); for (const q of folhas) q.piv.rotation.z = -q.s * te * 1.9;
+      const ak = Math.min(1, Math.max(0, B.agulha ?? 0)), L0 = 0.5 + 26 * ak; ag.visible = ak > 0.001; if (ag.visible) { agH.scale.y = L0; agH.position.y = L0 / 2; agP.position.y = L0; for (const a of aneis) a.position.y = L0 * a.userData.k; }
+      const mk = Math.min(1, Math.max(0, B.mastro ?? 0)), mh = 0.5 + 9 * mk; mas.visible = mk > 0.001; if (mas.visible) { masH.scale.y = mh; masH.position.y = mh / 2; masB.position.y = mh + 0.5; masF.position.y = Math.max(1.6, mh * 0.55); masF.rotation.y = 0.18 * Math.sin(t * 2.2); }
+      aplicaDN('predio_topo', nt); O.cid.visible = !nt; cidN.visible = !!nt; ceu.visible = !!nt; if (nt) O.nuv.forEach((m) => { m.visible = false; }); };
+  }
+
   // ---------- ESCRITÓRIO (construtora; quente) ----------
   { const parede = texto(256, 256, (a) => { a.fillStyle = '#2f6d6a'; a.fillRect(0, 0, 256, 256); a.fillStyle = '#2a625f'; for (let x = 0; x < 256; x += 32) a.fillRect(x, 0, 14, 256); });
     const g = interior('escritorio', { parede, piso: tabuas('#c08a4e', '#6a4424', 21), rodape: '#e8dcc4', lambri: '#7a4a2a', luzCor: '#ffd29a', luzI: 2.0 });
@@ -188,6 +247,10 @@ export function construirPredios(X) {
     const jan = plano(g, 4.6, 3.6, bas({ map: T(pintaJanela(false)) }), 0, 2.85, -3.44); jan.userData.ndSkip = true; jan.userData.tD = jan.material.map; jan.userData.tN = T(pintaJanela(true)); jan.userData.tDA = T(pintaJanela(false, true)); jan.userData.tNA = T(pintaJanela(true, true));
     for (const x of [-2.35, -0.78, 0.78, 2.35]) caixa(g, 0.1, 3.8, 0.1, '#e8dcc4', x, 0.95, -3.4); for (const y of [0.95, 2.85, 4.7]) caixa(g, 4.8, 0.1, 0.1, '#e8dcc4', 0, y - 0.05, -3.4); caixa(g, 5.0, 0.12, 0.3, '#e8dcc4', 0, 0.86, -3.3);
     relogioParede(g, 0, 5.45, -3.47, 0.36); const plq = plano(g, 2.6, 0.5, toon({ map: T(texto(512, 96, (a, w, h) => { a.fillStyle = '#7a4a2a'; a.fillRect(0, 0, w, h); a.fillStyle = '#f2c66a'; a.fillRect(6, 6, w - 12, h - 12); escreve(a, 'CONSTRUTORA', w / 2, h / 2 + 2, w - 40, 64, '#5a3418'); })) }), 0, 6.4, -3.45);
+    // quadros acima do janelão (certificado + foto de prédio), ladeando o relógio
+    for (const [x, fundo, arte] of [[-1.35, '#f6efd8', 'cert'], [1.35, '#bfe0ff', 'predio']]) { caixa(g, 0.82, 0.6, 0.05, '#5b3a22', x, 4.92, -3.46); plano(g, 0.7, 0.48, toon({ map: T(texto(128, 96, (a, w, h) => { a.fillStyle = fundo; a.fillRect(0, 0, w, h);
+      if (arte === 'cert') { a.strokeStyle = '#c8a040'; a.lineWidth = 5; a.strokeRect(8, 8, w - 16, h - 16); a.fillStyle = '#5a3418'; for (let k = 0; k < 4; k++) a.fillRect(26, 24 + k * 14, w - 52 - (k % 2) * 20, 4); a.fillStyle = '#d8302a'; a.beginPath(); a.arc(w - 26, h - 24, 10, 0, 7); a.fill(); }
+      else { a.fillStyle = '#7ac070'; a.fillRect(0, h - 18, w, 18); a.fillStyle = '#3f6fd0'; a.fillRect(40, 14, 22, h - 32); a.fillStyle = '#d0423a'; a.fillRect(72, 26, 22, h - 44); a.fillStyle = '#fff3a0'; a.beginPath(); a.arc(108, 20, 9, 0, 7); a.fill(); } })) }), x, 5.22, -3.42); }
     // prancheta de desenho com planta (esquerda)
     const pr = new THREE.Group(); pr.position.set(-1.65, 0, -2.1); pr.rotation.y = 0.35; g.add(pr); for (const s of [-1, 1]) { tubo(pr, [s * 0.55, 0, -0.35], [s * 0.5, 0.95, 0], 0.03, '#3a3a40'); tubo(pr, [s * 0.55, 0, 0.35], [s * 0.5, 0.95, 0], 0.03, '#3a3a40'); }
     const tampo = new THREE.Group(); tampo.position.set(0, 1.0, 0); tampo.rotation.x = 0.75; pr.add(tampo); caixa(tampo, 1.35, 0.05, 0.95, '#d9c49a', 0, -0.025, 0);
@@ -239,10 +302,11 @@ export function construirPredios(X) {
     const pombos = []; for (const [x, z] of [[0.3, -4.75], [0.6, -4.8], [2.6, -4.78]]) { const pg = new THREE.Group(); pg.position.set(x, 0.94, z); g.add(pg); const b = esf(pg, 0.09, '#8a8fa0', 0, 0.08, 0); b.scale.set(1, 0.85, 1.4); esf(pg, 0.055, '#9aa0b0', 0, 0.17, 0.08); const bi = add(new THREE.ConeGeometry(0.02, 0.05, 8), mc('#e0a020'), 0, 0.17, 0.15, pg); bi.rotation.x = PI / 2; pombos.push(pg); }
     cil(g, 0.04, 0.05, 2.2, '#2a2a2a', -3.6, 0, -0.6); const lamp = add(new THREE.SphereGeometry(0.16, 16, 12), bas({ color: '#ffe7a0' }), -3.6, 2.3, -0.6, g); semTinta(lamp);
     // cidade lá embaixo (evita o "corredor" dos dois prédios)
-    cidade(g, -60, 77, { chao: '#a07a6a', rua: '#7a5a52', cores: ['#e8b890', '#d89a7a', '#c8a0a8', '#f0c8a0', '#b88a8a'], jan: '#7a5a8a', teto: '#8a6a60', longe: '#c88a8a' }, false, { n: 120, r0: 30, evita: (x, z) => Math.abs(z + 78) < 14 && Math.abs(Math.abs(x) - 9) < 12 });
+    const cidS = cidade(g, -60, 77, { chao: '#a07a6a', rua: '#7a5a52', cores: ['#e8b890', '#d89a7a', '#c8a0a8', '#f0c8a0', '#b88a8a'], jan: '#7a5a8a', teto: '#8a6a60', longe: '#c88a8a' }, false, { n: 120, r0: 30, evita: (x, z) => Math.abs(z + 78) < 14 && Math.abs(Math.abs(x) - 9) < 12 });
     // os dois prédios: corpo com UV repetida por andar (janelas não esticam), coroa sobe junto
     const torre = (x, cor, vidro, tipo) => { const G = new THREE.Group(); G.position.set(x, -60, -78); g.add(G); const tx = T(facTex(cor, vidro, 5, 1, x > 0 ? 3 : 5)), m = toon({ map: tx }), topo = mc(new THREE.Color(cor).multiplyScalar(0.8).getStyle());
-      const corpo = add(new THREE.BoxGeometry(12, 1, 12), [m, m, topo, topo, m, m], 0, 0.5, 0, G, { cast: false }); const coroa = new THREE.Group(); G.add(coroa);
+      const txN = T(facTex(escuro(cor, 0.5), '#1a2048', 5, 1, x > 0 ? 3 : 5, { lit: 0.6 })), mN = bas({ map: txN, fog: true }), topoN = bas({ color: escuro(cor, 0.35), fog: true });
+      const corpo = add(new THREE.BoxGeometry(12, 1, 12), [m, m, topo, topo, m, m], 0, 0.5, 0, G, { cast: false }); dn('skyline', corpo, [mN, mN, topoN, topoN, mN, mN]); const coroa = new THREE.Group(); G.add(coroa);
       if (tipo === 'agulha') { caixa(coroa, 9, 3, 9, cor, 0, 0, 0, 0, { cast: false }); caixa(coroa, 6, 3, 6, cor, 0, 3, 0, 0, { cast: false });
         // agulha de prata = PAYOFF: desligada por padrão (coroaAgulha 0); sobe da coroa sem o prédio crescer. Grossa p/ ler a 150 px (~85 m da câmera)
         const ag = new THREE.Group(); ag.position.y = 6; ag.visible = false; coroa.add(ag); cil(ag, 2.6, 2.9, 1.2, '#8a94a6', 0, 0, 0, { cast: false }, 24);
@@ -251,18 +315,21 @@ export function construirPredios(X) {
         coroa.userData.ag = { ag, haste, ponta }; }
       else { const tt = add(new THREE.ConeGeometry(9, 6, 4), mc('#a8281e'), 0, 3, 0, coroa, { cast: false }); tt.rotation.y = PI / 4; caixa(coroa, 3, 4, 3, cor, 0, 3, 0, 0, { cast: false }); const tc = add(new THREE.ConeGeometry(2.4, 3, 4), mc('#a8281e'), 0, 8.5, 0, coroa, { cast: false }); tc.rotation.y = PI / 4;
         cil(coroa, 0.12, 0.12, 8, '#eee', 0, 10, 0, { cast: false }); const fb = plano(coroa, 3.4, 2, toon({ color: '#e03a2a', side: THREE.DoubleSide }), 1.8, 17, 0); coroa.userData.flag = fb; }
-      return { G, corpo, coroa, tx }; };
+      return { G, corpo, coroa, tx, txN }; };
     const tA = torre(-9, '#3f6fd0', '#bfe0ff', 'agulha'), tV = torre(9, '#d0423a', '#ffe0c0', 'telhado');
     // régua gigante entre os dois (andares) com setas azul/vermelha
     const rg = new THREE.Group(); rg.position.set(0, -60, -76); g.add(rg); const rtx = texto(128, 2048, (a, w, h) => { a.fillStyle = '#f6f1e4'; a.fillRect(0, 0, w, h); for (let i = 0; i <= 70; i++) { const y = h - i / 70 * h; a.fillStyle = '#222'; a.fillRect(0, y - (i % 10 ? 2 : 5), i % 10 ? 40 : 80, i % 10 ? 4 : 10); if (i % 10 === 0 && i) escreve(a, String(i), 96, y + 22, 60, 40, '#222'); } a.strokeStyle = '#333'; a.lineWidth = 8; a.strokeRect(4, 4, w - 8, h - 8); });
     add(new THREE.BoxGeometry(2.4, 224, 0.3), [mc('#ddd'), mc('#ddd'), mc('#ddd'), mc('#ddd'), toon({ map: T(rtx) }), mc('#ddd')], 0, 112, 0, rg, { cast: false });
     const setaS = new THREE.Shape(); setaS.moveTo(0, 0); setaS.lineTo(3.2, 1.4); setaS.lineTo(3.2, -1.4); setaS.closePath(); const sg = new THREE.ShapeGeometry(setaS);
     const sA = new THREE.Mesh(sg, toon({ color: '#3f8cff', side: THREE.DoubleSide })); sA.rotation.y = PI; rg.add(sA); const sV = new THREE.Mesh(sg, toon({ color: '#ff4a3a', side: THREE.DoubleSide })); rg.add(sV);
+    const cidSN = cidade(g, -60, 77, { chao: '#2a3058', rua: '#e8c060', cores: ['#e8b890', '#d89a7a', '#c8a0a8', '#f0c8a0', '#b88a8a'], jan: '#1a2048', teto: '#141a3a', longe: '#1b2250' }, true, { n: 120, r0: 30, evita: (x, z) => Math.abs(z + 78) < 14 && Math.abs(Math.abs(x) - 9) < 12 }); cidSN.visible = false;
+    const ceuS = ceuDeNoite(g, -22, 95, -300, 10); const luzLamp = new THREE.PointLight('#ffd890', 0, 7, 1.4); luzLamp.position.set(-3.4, 2.2, -0.4); g.add(luzLamp);
     const nuvS = nuvens(g, [[-40, 40, -220, 12], [35, 55, -260, 14], [80, 30, -200, 9], [-90, 60, -300, 16]], '#ffc8a8');
-    lista.skyline = { g, chao: () => 0, state(S, f) { const B = S.skyline || {}, t = f / 30;
-      for (const [h, T0] of [[B.hAzul ?? 24, tA], [B.hVermelho ?? 22, tV]]) { const n = Math.max(1, Math.min(70, h)), H = n * 3.2; T0.corpo.scale.y = H; T0.corpo.position.y = H / 2; T0.tx.repeat.set(1, n); T0.coroa.position.y = H; if (T0.coroa.userData.flag) T0.coroa.userData.flag.rotation.y = 0.2 * Math.sin(t * 2); }
+    lista.skyline = { g, chao: () => 0, state(S, f, L) { const B = S.skyline || {}, t = f / 30, nt = noiteDe(B, L);
+      aplicaDN('skyline', nt); cidS.visible = !nt; cidSN.visible = !!nt; ceuS.visible = !!nt; luzLamp.intensity = nt ? 2.2 : 0;
+      for (const [h, T0] of [[B.hAzul ?? 24, tA], [B.hVermelho ?? 22, tV]]) { const n = Math.max(1, Math.min(70, h)), H = n * 3.2; T0.corpo.scale.y = H; T0.corpo.position.y = H / 2; T0.tx.repeat.set(1, n); T0.txN.repeat.set(1, n); T0.coroa.position.y = H; if (T0.coroa.userData.flag) T0.coroa.userData.flag.rotation.y = 0.2 * Math.sin(t * 2); }
       { const A = tA.coroa.userData.ag, k = Math.max(0, B.coroaAgulha ?? 0), L = 4 + 56 * k; A.ag.visible = k > 0.001; if (A.ag.visible) { A.haste.scale.y = L; A.haste.position.y = L / 2; A.ponta.position.y = L; } }
-      { const nv = (B.nuvens ?? 1) !== 0; nuvS.forEach((m) => { m.visible = nv; }); }
+      { const nv = (B.nuvens ?? 1) !== 0 && !nt; nuvS.forEach((m) => { m.visible = nv; }); }
       rg.visible = (B.regua ?? 1) !== 0; sA.position.set(-1.2, Math.min(70, B.hAzul ?? 24) * 3.2, 0.3); sV.position.set(1.2, Math.min(70, B.hVermelho ?? 22) * 3.2, 0.3);
       pombos.forEach((p, i) => { p.rotation.y = 0.6 * Math.sin(t * 0.8 + i * 2); }); } };
   }
@@ -279,14 +346,14 @@ export function construirPredios(X) {
     // fachadas (fundo z=-9), com vão da rua lateral em x 1..7
     const letreiro = (s, fundo, cor) => toon({ map: T(texto(256, 64, (a, w, h) => { a.fillStyle = fundo; a.fillRect(0, 0, w, h); escreve(a, s, w / 2, h / 2 + 2, w - 24, 42, cor); })) });
     const fach = [[-12.5, 5, '#e8b87a', 'PADARIA', '#c0392b'], [-7.5, 5, '#9fc8d8', 'CAFÉ', '#2a6a8a'], [-2.8, 4.4, '#e8d0a0', 'JORNAIS', '#2a8a4a'], [10, 6, '#d89a9a', 'BANCO', '#2a3a8a'], [16, 6, '#c8d89a', 'LOJA', '#8a4a2a']];
-    fach.forEach(([x, w, cor, nome, cl], i) => { const h = 14 + (i * 7) % 9; add(tbox(w, h, 8, 6), toon({ map: T(facTex(cor, '#7aa8c8', 3, 3, 50 + i)) }), x, h / 2, -13, g, { cast: false });
-      caixa(g, w - 0.2, 2.6, 0.1, '#5a4a3a', x, 0, -8.98); plano(g, w - 1.4, 1.8, bas({ color: '#bfe2f0' }), x, 1.2, -8.92).userData.ndSkip = true; caixa(g, 0.9, 2.2, 0.06, '#7a4a2a', x + w / 2 - 1.0, 0, -8.9);
+    const vitr = []; fach.forEach(([x, w, cor, nome, cl], i) => { const h = 14 + (i * 7) % 9; dn('rua', add(tbox(w, h, 8, 6), toon({ map: T(facTex(cor, '#7aa8c8', 3, 3, 50 + i)) }), x, h / 2, -13, g, { cast: false }), facN(cor, 3, 3, 50 + i));
+      caixa(g, w - 0.2, 2.6, 0.1, '#5a4a3a', x, 0, -8.98); const vt = plano(g, w - 1.4, 1.8, bas({ color: '#bfe2f0' }), x, 1.2, -8.92); vt.userData.ndSkip = true; vitr.push(vt); caixa(g, 0.9, 2.2, 0.06, '#7a4a2a', x + w / 2 - 1.0, 0, -8.9);
       const tol = add(new THREE.BoxGeometry(w - 0.4, 0.06, 1.1), toon({ map: T(texto(64, 8, (a) => { for (let k = 0; k < 8; k++) { a.fillStyle = k % 2 ? '#fff' : cl; a.fillRect(k * 8, 0, 8, 8); } }), (w - 0.4) / 0.8, 1) }), x, 2.75, -8.4, g); tol.rotation.x = 0.35;
       plano(g, Math.min(w - 1, 3.2), 0.65, letreiro(nome, '#fff', cl), x, 3.4, -8.9); });
     // rua lateral ao fundo: prédios dos dois lados até longe + prédio azul alto no fim
     for (let i = 0; i < 9; i++) for (const s of [-1, 1]) { const x = 4 + s * 5.5, z = -14 - i * 13, h = 16 + ((i * 5 + (s > 0 ? 3 : 0)) % 7) * 4, cor = ['#e3c9a0', '#c8b8d8', '#a8c8b8', '#e8b8a0'][(i + (s > 0)) % 4];
-      const m = add(tbox(6, h, 12, 6), toon({ map: T(facTex(cor, '#7a98b8', 3, 3, 60 + i * 2 + (s > 0))) }), x, h / 2, z, g, { cast: false }); if (i > 2) semTinta(m); }
-    const fimT = add(tbox(10, 90, 10, 7), toon({ map: T(facTex('#3f6fd0', '#bfe0ff', 4, 4, 9)) }), 4, 45, -140, g, { cast: false }); semTinta(fimT); semTinta(cil(g, 0.2, 1.5, 14, '#d8dde5', 4, 90, -140, { cast: false }));
+      const m = add(tbox(6, h, 12, 6), toon({ map: T(facTex(cor, '#7a98b8', 3, 3, 60 + i * 2 + (s > 0))) }), x, h / 2, z, g, { cast: false }); if (i > 2) semTinta(m); dn('rua', m, facN(cor, 3, 3, 60 + i * 2 + (s > 0))); }
+    const fimT = add(tbox(10, 90, 10, 7), toon({ map: T(facTex('#3f6fd0', '#bfe0ff', 4, 4, 9)) }), 4, 45, -140, g, { cast: false }); semTinta(fimT); dn('rua', fimT, facN('#3f6fd0', 4, 4, 9, 0.6)); semTinta(cil(g, 0.2, 1.5, 14, '#d8dde5', 4, 90, -140, { cast: false }));
     const asf2 = new THREE.Mesh(new THREE.PlaneGeometry(5, 130), toon({ map: T(ac, 1, 16) })); asf2.rotation.x = -PI / 2; asf2.position.set(4, -0.11, -73); g.add(asf2);
     // relógio de rua (2 faces) — opção hora
     const rel = new THREE.Group(); rel.position.set(-1.75, 0, -1.0); g.add(rel); cil(rel, 0.22, 0.28, 0.35, '#2a5a3a', 0, 0, 0); cil(rel, 0.08, 0.1, 3.0, '#2a5a3a', 0, 0.35, 0); cil(rel, 0.12, 0.12, 0.2, '#d8b030', 0, 2.2, 0);
@@ -312,8 +379,10 @@ export function construirPredios(X) {
     // multidão-pontos (opcional)
     const gente = [], rr = P.rng(88), cores = ['#e74c3c', '#3a8fd8', '#f1c40f', '#9b59b6', '#27ae60', '#ff8a3a', '#2a2a40', '#e8e8e8'];
     for (let i = 0; i < 40; i++) { const side = i < 16, x = side ? -14 + rr() * 13 : 4 + (rr() - 0.5) * 3.6, z = side ? -7.4 - rr() * 1.0 : -10 - rr() * 70; const p = pessoa(g, x, z, cores[i % cores.length], side ? 1 : 1.2); p.userData.f = rr() * 6; gente.push(p); if (!side) p.traverse((o) => { if (o.isMesh) o.userData.ndSkip = z < -25; }); }
-    nuvens(g, [[-30, 40, -150, 10], [30, 50, -190, 12], [-80, 45, -220, 12]]);
-    lista.rua = { g, chao: () => 0, state(S, f) { const B = S.rua || {}, t = f / 30, n = Math.round(Math.min(1, B.multidao ?? 0) * gente.length);
+    const nuvR = nuvens(g, [[-30, 40, -150, 10], [30, 50, -190, 12], [-80, 45, -220, 12]]); const ceuR = ceuDeNoite(g, -14, 70, -300, 9);
+    const luzPoste = new THREE.PointLight('#ffe0a0', 0, 9, 1.3); luzPoste.position.set(-3.2, 4.2, -1.3); g.add(luzPoste); let ultNt = -1;
+    lista.rua = { g, chao: () => 0, state(S, f, L) { const B = S.rua || {}, t = f / 30, n = Math.round(Math.min(1, B.multidao ?? 0) * gente.length), nt = noiteDe(B, L);
+      if (nt !== ultNt) { ultNt = nt; aplicaDN('rua', nt); for (const v of vitr) v.material.color.set(nt ? '#ffd98a' : '#bfe2f0'); nuvR.forEach((m) => { m.visible = !nt; }); ceuR.visible = !!nt; luzPoste.intensity = nt ? 3.0 : 0; }
       gente.forEach((p, i) => { p.visible = i < n; if (p.visible) p.position.y = Math.abs(Math.sin(t * 5 + p.userData.f)) * 0.05; });
       const hr = B.hora ?? 10.1; for (const q of pont) q.pv.rotation.z = -q.s * (q.h ? (hr % 12) / 12 : (hr % 1)) * PI * 2;
       pomb.forEach((p, i) => { p.rotation.y = 0.8 * Math.sin(t * 1.1 + i * 2); }); } };
