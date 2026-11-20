@@ -85,3 +85,12 @@ Chamar: `worldAt → { cenario: '<id>' }` + luz com o mesmo nome (`light:'<id>'`
 Teste: `story_cenarios.js` frames 22–30 (Tião + 1 personagem); auditor sem avisos. Stills em `catalogo/cenarios/novos_*.jpg`.
 
 - **navioberm** (19/11) — Navio do Tião nas Bermudas à noite: deck com relevo, panelão 3D com sopa, névoa em camadas, lua, navio fantasma. Estados em `motor3d/cenarios3.js`. Estreou no ep. 32. Câmera manual para grupos largos.
+
+## PACOTE CASA (20/11/2026) — `motor3d/cenarios4.js`: sala, cozinha, quarto, fachada
+Chamar: `cenario: 'sala'|'cozinha'|'quarto'|'fachada'`, luz `casa_dia | casa_noite | casa_quarto | casa_tarde`, câmeras `camCen(id,'geral'|'medio'|'close')`. Still: `catalogo/cenarios/casa.jpg` (testado 20/11, 0,22 s/quadro).
+- **sala**: papel listrado, 2 janelas com céu, 3 quadros, tapete, sofá (+almofadas), mesa de centro, estante com livros, TV, abajur (luz), vaso com flores, gato. Opções `{abajur:0|1, gato:0|1, moveis:{sofa:dx, mesa:dx, estante:dx, tv:dx}}`.
+- **cozinha**: xadrez turquesa/branco, geladeira, balcão + armários, mesa redonda + 2 cadeiras, janela, relógio, calendário, gato. `moveis:{geladeira, balcao, mesa}`.
+- **quarto**: papel estrelas azul, cama (travesseiros, coberta), criado-mudo + abajur, armário, janela noturna com lua, tapete, urso. `{abajur, teto, moveis:{cama, criado, armario}}`.
+- **fachada** (exterior): casa azul-água com telhado vermelho, porta, 2 janelas com floreiras, cerca, 2 árvores, arbustos, caixa de correio, placa (`placa:1` = placa "VENDE" em branco/vermelho), gato.
+- Gag "mover 1 dedo": `moveis.<item> = 0.03` por plano, acumular.
+- Pendente (melhorar): luz de teto faz mancha no alto do quadro; fachada mostra telhado cortado no geral.

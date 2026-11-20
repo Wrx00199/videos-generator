@@ -7,8 +7,9 @@ import * as THREE from './lib/three.module.js';
 import * as P from './paint.js';
 import { construirMais } from './cenarios2.js';
 import { construirNavioBermudas } from './cenarios3.js';
+import { construirCasa, SALAS } from './cenarios4.js';
 
-export const ORIGEM = { espaco: new THREE.Vector3(3000, 0, 0), brinquedo: new THREE.Vector3(3000, 0, 1200), cidade: new THREE.Vector3(3000, 0, 2400), bermudas: new THREE.Vector3(3000, 0, 3600), maia: new THREE.Vector3(3000, 0, 4800), amazonia: new THREE.Vector3(3000, 0, 6000), cyberpunk: new THREE.Vector3(3000, 0, 7200), apocalipse: new THREE.Vector3(3000, 0, 8400), cemiterio: new THREE.Vector3(3000, 0, 9600), parque: new THREE.Vector3(3000, 0, 10800), dojo: new THREE.Vector3(3000, 0, 12000), fundomar: new THREE.Vector3(3000, 0, 13200), nuvens: new THREE.Vector3(3000, 0, 14400), arena: new THREE.Vector3(3000, 0, 15600), floresta: new THREE.Vector3(3000, 0, 16800), navioberm: new THREE.Vector3(3000, 0, 18000) };
+export const ORIGEM = { espaco: new THREE.Vector3(3000, 0, 0), brinquedo: new THREE.Vector3(3000, 0, 1200), cidade: new THREE.Vector3(3000, 0, 2400), bermudas: new THREE.Vector3(3000, 0, 3600), maia: new THREE.Vector3(3000, 0, 4800), amazonia: new THREE.Vector3(3000, 0, 6000), cyberpunk: new THREE.Vector3(3000, 0, 7200), apocalipse: new THREE.Vector3(3000, 0, 8400), cemiterio: new THREE.Vector3(3000, 0, 9600), parque: new THREE.Vector3(3000, 0, 10800), dojo: new THREE.Vector3(3000, 0, 12000), fundomar: new THREE.Vector3(3000, 0, 13200), nuvens: new THREE.Vector3(3000, 0, 14400), arena: new THREE.Vector3(3000, 0, 15600), floresta: new THREE.Vector3(3000, 0, 16800), navioberm: new THREE.Vector3(3000, 0, 18000), sala: new THREE.Vector3(3000, 0, 19200), cozinha: new THREE.Vector3(3000, 0, 20400), quarto: new THREE.Vector3(3000, 0, 21600), fachada: new THREE.Vector3(3000, 0, 22800) };
 const RAIO = { espaco: 9, brinquedo: 14, cidade: 16, bermudas: 6, maia: 9, amazonia: 5 };   // raio (m) do piso útil de cada cenário
 // câmeras seguras (offsets do centro). tipo: geral = grupo inteiro; medio = 2 bonecos; close = rosto/objeto. fov em graus (vertical, tela 1080x1920)
 export const CAMS = {
@@ -31,7 +32,7 @@ export const CAMS = {
     close: { pos: [0.6, 1.5, 3.0], look: [0, 1.3, 0], fov: 40 },
   },
 };
-for (const id of ['bermudas', 'maia', 'amazonia', 'cyberpunk', 'apocalipse', 'cemiterio', 'parque', 'dojo', 'fundomar', 'nuvens', 'arena', 'floresta', 'navioberm']) CAMS[id] = { ...CAMS.espaco };
+for (const id of ['bermudas', 'maia', 'amazonia', 'cyberpunk', 'apocalipse', 'cemiterio', 'parque', 'dojo', 'fundomar', 'nuvens', 'arena', 'floresta', 'navioberm', 'sala', 'cozinha', 'quarto', 'fachada']) CAMS[id] = { ...CAMS.espaco };
 export const camCen = (id, tipo = 'geral', dx = 0, dz = 0) => { const o = ORIGEM[id], c = CAMS[id][tipo];
   return { pos: [o.x + c.pos[0] + dx, o.y + c.pos[1], o.z + c.pos[2] + dz], look: [o.x + c.look[0] + dx, o.y + c.look[1], o.z + c.look[2] + dz], fov: c.fov }; };
 
@@ -450,6 +451,7 @@ export function construirCenarios(E) {
 
   construirMais({ THREE, P, add, toon, cv, T, novo, lista, pedra, chamaCard, PLUMc });
   construirNavioBermudas({ THREE, P, add, toon, cv, T, novo, lista });
+  construirCasa({ THREE, P, add, toon, cv, T, novo, lista });
   return {
     state(S, f, L) { for (const id in lista) { const c = lista[id], on = S.cenario === id; c.g.visible = on; if (on) c.state(S, f, L); } },
     chao(x, z) { for (const id in lista) { const o = ORIGEM[id]; if (Math.hypot(x - o.x, z - o.z) < 80) return o.y + lista[id].chao(x - o.x, z - o.z); } return null; },
