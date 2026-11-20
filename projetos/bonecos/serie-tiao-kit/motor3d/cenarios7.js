@@ -2,16 +2,16 @@
 // Feito para modelar a referência "ciclista contra o trem" (ficha referencias/base/FICHA_trem-bike_BDhG_VplvzA.md). Mesmo jeito do pacote prédios: toon + tinta, nada facetado.
 // Liga: worldAt -> { cenario: '<id>', <id>: { opções } } + luz('<id>'). Piso y=0; câmera geral = camCen(id,'geral'); bonecos em x≈±0,7, z≈0,4..0,9. Trilho corre no eixo X (visto de lado), eixo da via em z=0.
 // Opções (todas opcionais; nada alocado por quadro):
-//   pradaria_trilho { trem: 1|0 (padrão 1), tremX: 0.6 (x da traseira do último vagão; locomotiva fica à direita), longe: 0|1 (trem pequeno ao fundo, z -22),
+//   pradaria_trilho { velX: -2.2 (x do velocímetro rel. à traseira do vagão), velZ: 0.75, bikeX/bikeY/bikeZ/bikeRz (bike solta/erguida),  trem: 1|0 (padrão 1), tremX: 0.6 (x da traseira do último vagão; locomotiva fica à direita), longe: 0|1 (trem pequeno ao fundo, z -22),
 //                     fumaca: 0..1, vento: 0..1 (linhas de vento na frente do trem), bolha: 0..1 (bolha de ar atrás da caixa), vel: 0..1 (ponteiro do velocímetro, 0=0 / 1=100 km/h; velocimetro: 1|0 liga o objeto, padrão 0),
 //                     pedal: radianos do pedivela (a história passa a mesma fase do Tião), bone: 0..1 (boné vermelho voa em arco; some em 0 e 1), sapato: 0..1 (idem), tabuas: 1|0 (pista de tábua entre os trilhos, padrão 1), bike: 0|1 (bicicleta do Tião atrás da caixa, x = tremX-1,25), nuvens: 1|0 }
 //   estacao_trem    { hora: 10.1 (ponteiros), cartaz: 'APOSTA R$ 1.000' (linha 2 da placa; linha 1 fixa '100 KM/H'), apito: 0..1 (vapor sobe da locomotiva ao fundo), caixa: 1|0 (caixa de madeira na plataforma) }
 //   nevasca         { vento: 0..1 (cachecol/placa balança; pinheiros inclinam), (a neve caindo = worldAt.fx.chuva tipo 'neve') }
 //   cabine_locomotiva { cron: 58 (segundos no cronômetro, 00:SS), vel: 0..1 (paisagem passa na janela), alavanca: 0..1 (alavanca de freio sobe/desce), pressao: 0..1 (ponteiro do manômetro), fogo: 0..1 (brilho da fornalha) }
-//   fim_tarde       { sol: 0..1 (altura do sol; padrão 0,35), ponto: 0..1 (trem vira um pontinho a x=-60 → 0..1 anda pro horizonte; padrão 0,6) }
+//   fim_tarde       { notas: 0..1 (notas de dinheiro voando rumo ao horizonte; o valor anima a posição),  sol: 0..1 (altura do sol; padrão 0,35), ponto: 0..1 (trem vira um pontinho a x=-60 → 0..1 anda pro horizonte; padrão 0,6) }
 export const TREM = ['pradaria_trilho', 'estacao_trem', 'nevasca', 'cabine_locomotiva', 'fim_tarde'];
 export const CAMS7 = {
-  pradaria_trilho: { traseira: { pos: [-2.2, 1.7, 3.6], look: [0.6, 1.2, 0], fov: 50 }, caixa: { pos: [-0.5, 1.15, 2.4], look: [0.15, 0.9, 0], fov: 40 }, mostrador: { pos: [-1.0, 1.5, 3.0], look: [-1.6, 1.3, 0.75], fov: 46 }, bike: { pos: [-0.68, 1.4, 5.6], look: [-0.68, 0.9, 0], fov: 58 }, trem: { pos: [5, 2.0, 9], look: [6, 1.4, 0], fov: 52 } },
+  pradaria_trilho: { traseira: { pos: [-2.2, 1.7, 3.6], look: [0.6, 1.2, 0], fov: 62 }, caixa: { pos: [-0.5, 1.15, 2.4], look: [0.15, 0.9, 0], fov: 40 }, mostrador: { pos: [-1.0, 1.5, 3.0], look: [-1.6, 1.3, 0.75], fov: 46 }, bike: { pos: [-0.68, 1.4, 5.6], look: [-0.68, 0.9, 0], fov: 58 }, trem: { pos: [5, 2.0, 9], look: [6, 1.4, 0], fov: 52 } },
   estacao_trem: { cartaz: { pos: [3.3, 2.1, 2.4], look: [3.7, 2.05, -1.5], fov: 42 } },
   cabine_locomotiva: { janela: { pos: [0.0, 1.5, 1.7], look: [0, 1.6, -2.3], fov: 46 } },
   fim_tarde: { horizonte: { pos: [0.2, 1.3, 4.6], look: [0, 1.5, -40], fov: 40 } },
@@ -117,13 +117,13 @@ export function construirTrem(X) {
     lista.pradaria_trilho = { g, chao: () => 0, state(S, f) { const B = S.pradaria_trilho || {}, t = f / 30, x0 = B.tremX ?? 0.6, longe = !!B.longe;
         trem.visible = (B.trem ?? 1) > 0; trem.position.set(longe ? -4 + x0 : x0, 0, longe ? -22 : 0); trem.scale.setScalar(longe ? 0.8 : 1);
         bk.userData.crank.rotation.z = -(B.pedal ?? 0);
-        tab.visible = (B.tabuas ?? 1) > 0; bk.visible = !!B.bike; bk.position.set(x0 - 2.0, 0.22, 0.0); bk.userData.rodas.forEach((r) => { r.rotation.z = -x0 * 1.2 - t * 6 * (B.bike ? 1 : 0); });
+        tab.visible = (B.tabuas ?? 1) > 0; bk.visible = !!B.bike; bk.position.set(B.bikeX ?? x0 - 2.0, 0.22 + (B.bikeY ?? 0), B.bikeZ ?? 0.0); bk.rotation.z = B.bikeRz ?? 0; bk.userData.rodas.forEach((r) => { r.rotation.z = -x0 * 1.2 - t * 6 * (B.bike ? 1 : 0); });
         nv.forEach((n, i) => { n.position.x += 0; n.visible = (B.nuvens ?? 1) > 0; });
         const fk = B.fumaca ?? 0.7; fumo.forEach((m, i) => { const u = ((t * 0.5 + i / 8) % 1), cx = trem.position.x + 5.6 + 3.7, cz = trem.position.z; m.visible = fk > 0.02 && trem.visible; m.scale.setScalar((0.25 + u * 0.9) * (0.4 + fk)); m.position.set(cx - u * 4.2 * (longe ? 1 : 1.3), 2.3 * trem.scale.y + u * 1.6, cz); m.material.opacity = 0.7 * (1 - u) * Math.min(1, fk + 0.3); });
         const vk = B.vento ?? 0; vento.forEach((m, i) => { const u = ((t * 1.8 + i * 0.37) % 1); m.visible = vk > 0.02; m.position.set(x0 + 1.5 + (i % 4) * 0.5 - u * 2.6, 0.45 + (i % 3) * 0.42 + (i * 0.13 % 0.3), 0.7 + (i % 2) * 0.25); m.scale.x = 0.5 + vk; m.material.opacity = 0.85 * (1 - u); });
         { const k = B.bone ?? 0; bone.visible = k > 0.001 && k < 0.999; bone.position.set(x0 - 1.0 + k * 4.5, 1.6 + 1.4 * Math.sin(k * PI) + k * 0.5, 1.0); bone.rotation.set(0.4 * k, k * 14, k * 9); const q = B.sapato ?? 0; sapato.visible = q > 0.001 && q < 0.999; sapato.position.set(x0 - 1.0 + q * 4.5, 1.4 + 1.6 * Math.sin(q * PI), 1.0); sapato.rotation.set(q * 6, q * 3, q * 10); }
         bh.position.set(x0 - 0.9, 0.82, 0); bh.userData.set(B.bolha ?? 0, t);
-        vm.visible = !!B.velocimetro; vm.position.x = x0 - 2.2; vm.userData.agulha = vm.userData.agulha; vm.children[vm.children.length - 1].rotation.z = PI * 0.75 - (B.vel ?? 0) * PI * 1.5; } };
+        vm.visible = !!B.velocimetro; vm.position.set(x0 + (B.velX ?? -2.2), 0, B.velZ ?? 0.75); vm.userData.agulha = vm.userData.agulha; vm.children[vm.children.length - 1].rotation.z = PI * 0.75 - (B.vel ?? 0) * PI * 1.5; } };
   }
 
   // =====================================================================================
@@ -250,7 +250,8 @@ export function construirTrem(X) {
     const nv = nuvens(g, [[-30, 22, -140, 8], [26, 28, -150, 9], [0, 36, -160, 7]], '#ffc89a');
     const trem = new THREE.Group(); g.add(trem); caixa(trem, 3.0, 1.0, 1.0, '#2a2a30', 0, 0, 0, {}); caixa(trem, 1.4, 1.5, 1.0, '#2a2a30', 1.9, 0, 0, {}); cil(trem, 0.2, 0.2, 0.8, '#1a1a1e', 2.2, 1.5, 0, {}, 12);
     const fum = new THREE.Mesh(new THREE.SphereGeometry(1, 12, 9), bas({ color: '#d8c0b0', transparent: true, opacity: 0.6, depthWrite: false })); semTinta(fum); g.add(fum);
-    lista.fim_tarde = { g, chao: () => 0, state(S, f) { const B = S.fim_tarde || {}, t = f / 30, k = B.sol ?? 0.35, pk = B.ponto ?? 0.6;
+    const notas = []; for (let i = 0; i < 8; i++) { const n = new THREE.Mesh(new THREE.PlaneGeometry(0.34, 0.16), bas({ color: i % 2 ? '#6fcf7a' : '#4fb862', side: THREE.DoubleSide })); semTinta(n); g.add(n); notas.push(n); }
+    lista.fim_tarde = { g, chao: () => 0, state(S, f) { const B = S.fim_tarde || {}, t = f / 30, k = B.sol ?? 0.35, pk = B.ponto ?? 0.6; notas.forEach((n, i) => { const q = ((B.notas ?? 0) * 1.0 + i * 0.09) % 1, on = (B.notas ?? 0) > 0; n.visible = on; n.position.set(-0.5 + Math.sin(i * 2.1 + t * 3) * 0.9, 1.4 + Math.sin(q * 3 + i) * 0.5 + q * 1.2, 0.8 - q * 40); n.rotation.set(t * 4 + i, t * 3, i); });
         const sy = 4 + k * 40; sol.position.set(-12 + k * 4, sy, -170); halo.position.set(-12 + k * 4, sy, -171); nv.forEach((n) => { n.visible = true; });
         const tz = -24 - pk * 120; trem.position.set(0, 0, tz); trem.scale.setScalar(1 + Math.max(0, -tz) * 0.0); fum.position.set(1.9 + 1.0, 2.0, tz + 0.0); fum.scale.setScalar(0.5 + pk * 1.2 + 0.1 * Math.sin(t * 3)); } };
   }
