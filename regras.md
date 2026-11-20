@@ -46,3 +46,4 @@ Antes de criar vídeo: ler este arquivo inteiro. Regra nova só entra se evitar 
 - 20/11 — Bike/objeto que a ficha cita e o motor não tinha: conferir `rg -l` no motor ANTES de aprovar a ficha; faltou `bicicleta` (criada no pacote trem). Ficha lista cenário + personagem + OBJETO.
 - 20/11 — Render de teste de cenário: 1 processo só, vários quadros na mesma chamada (`portao_trem.sh "1,2,3"`), contact sheet reduzida (`ffmpeg xstack` a 270 px) em vez de ler stills grandes.
 - 20/11 — Story de teste precisa exportar `shotAt`, `LIGHTS`, `lightFor` (main.js importa); copiar o modelo de `story_cenarios.js`.
+- 20/11 — Crítico reprovou (5,8) roteiro copiado da ficha: a ficha dá estrutura, não texto final. Quando a fala só explica (física), cortar a resposta em duas e pôr piada a cada ≤8 s; paga a promessa do apostador na última fala com as mesmas palavras.

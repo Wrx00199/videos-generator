@@ -40,3 +40,8 @@ Fazer, em ordem, uma coisa por vez:
 3. Cada erro encontrado → regra curta em `regras.md` (formato Morgs) e KIT.md.
 Limites: PC 8 GB, Firefox pesado (travou ontem): cautela, 1 render por vez, nada de concorrência; sem render pesado se swap/RAM livre < 1 GB (`free -m`). Limite semanal 51% (parar em 75%); medir `get_usage` antes/depois de cada etapa e relatar. Nunca postar. Sem segredos no git. Codex (`codex exec`) para o mecânico.
 Pendências menores: reprocessar os 8 vídeos antigos com o extrator corrigido (legenda rolante); ler tweets restantes só se pedir; conectores MCP a desligar nas sessões de produção (lista em docs/ECONOMIA_AUDITORIA.md).
+
+## ATUALIZAÇÃO 20/11 ~21h — trem-bike (sessão de cenários)
+FEITO: pacote trem no motor (`motor3d/cenarios7.js`, doc em `catalogo/CENARIOS.md`, teste `bash motor3d/portao_trem.sh "0-10"`), personagem `apostador`, bike/velocímetro/bolha/caixa. Ep.40 em `projetos/bonecos/2026-11-20-tiao-trem-bike-40/` (gitignored): falas.json v2 (já com reescritas do crítico), CRITICA.md, MAPA_DOPAMINA.md, NOTAS.md.
+FALTA (ordem): 1) `diretor-retencao` (sonnet, 1 agente) sobre falas+MAPA; 2) storyboard multi-cenário `web/story.js` à mão (modelo ep.39; novo_ep.sh) com Tião na bike (ver quadro 10 de story_trem.js: y 0.5 apoio 'selim', lL/lR em círculo); 3) voz Fenrir/narrador + apostador voz própria; 4) render 1 por vez, blackdetect/silencedetect/freezedetect; 5) revisor-bonecos final.
+Pendências: cabine_locomotiva ainda escura; xadrez do apostador é listrado; PC: Firefox aberto, RAM livre 0,3–1,8 GB.
