@@ -16,7 +16,9 @@ except FileNotFoundError: pass
 g = collections.defaultdict(list)
 for d in glob.glob(os.path.join(R, 'projetos/bonecos/*-tiao-*-[0-9][0-9]')):
     g[re.search(r'-(\d\d)$', d).group(1)].append(os.path.basename(d))
+est0 = open(os.path.join(E, 'MISSAO-ESTADO.md'), encoding='utf-8').read().lower().splitlines()
 for n, ds in g.items():
+    ds = [d for d in ds if not any(d.lower() in ln and 'abandon' in ln for ln in est0)]
     if len(ds) > 1: al.append(f'EPISÓDIO DUPLICADO {n}: {", ".join(ds)}. Use um só; marque o outro como abandonado.')
 # 3) mais de um render pesado
 n = sum(1 for ln in sh('ps -eo args').splitlines() if re.match(r'(\S*/)?node\s', ln) and 'render.mjs' in ln)
