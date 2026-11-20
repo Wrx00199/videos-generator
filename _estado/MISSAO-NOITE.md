@@ -143,3 +143,11 @@ O revisor precisa ser RICO e especialista em vídeo curto vertical e em vídeo c
 
 ## OTIMIZAÇÃO EM TUDO, O TEMPO TODO (Filippe, 20/11) — não só na Fase 5
 Em toda etapa pergunte: dá pra ficar mais RÁPIDO, mais SIMPLES, mais LEVE pro PC e mais BARATO em tokens, sem perder qualidade? Se sim, faça, meça antes/depois e registre (`docs/IDEIAS.md`, KIT). Exemplos: cache (voz, cenário, frames), resolução/quadros do render só onde importa, ffmpeg em vez de IA, código em vez de subagente, ler com grep em vez de abrir arquivo grande, lote em vez de uma chamada por item, perfis leve/equilibrado/qualidade, nice/ionice, limpar intermediários (com simulação), UI do painel sem polling pesado. Cada otimização precisa ter número (tempo, RAM, tokens) e não pode cortar revisão nem qualidade.
+
+## ECONOMIA DO LIMITE SEMANAL (Filippe, 20/11) — pedido final
+Prioridade máxima junto com a qualidade: NÃO estourar o semanal (corte 75%). Medidas:
+- Delegue trabalho MECÂNICO ao Codex (`codex exec "<pedido>"`, CLI em ~/.local/bin): scripts, refatoração isolada, testes, docs, geração de imagem/asset. Brief curto, confira o resultado (teste/trecho) antes de dar como feito. Codex gasta outro limite, não o do Claude.
+- Use skill/script curto quando repetir 2+ vezes o mesmo procedimento (retomada, olheiro, acabamento, portão): menos contexto reaprendido por sessão.
+- Meça `get_usage` ao início e ao fim de cada etapa e registre o custo em % por etapa no estado; etapa que gastar muito, simplifique antes de repetir.
+- Sessão nova quando o contexto passar de ~55%; evite reler arquivos grandes; imagem só em recorte; sem subagente para o que cabe em poucas chamadas.
+- Se o semanal passar de ~65%, entre em modo econômico: só etapas de alto valor (episódio do Tião, revisor), sem exploração nova, sem subagente opus.
