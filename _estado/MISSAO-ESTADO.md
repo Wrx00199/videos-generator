@@ -7,7 +7,7 @@ Criado 20/11/2026 ~04:55 BRT. Uso ao criar: 5h=3%, semanal=27%.
 - [x] Fase 1d: olheiro de bonecos (pendentes de aprovação)
 - [ ] Fase 1b2 (PRIORIDADE, antes de mais episódios): skill `estudio-revisor-shorts` + calibração + atualizar revisor
 - [ ] Fase 1e: até 4 episódios Tião aprovados pelo revisor (para-aprovar, sem postar)
-- [ ] Fase 2: modelar 1–2 vídeos gringos de GTA 6 + gate de impacto
+- [~] Fase 2 (refs escolhidas em referencias/GTA6_GRINGOS_20-11.md; falta modelar/produzir 1–2 + gate de impacto do clipador): modelar 1–2 vídeos gringos de GTA 6 + gate de impacto
 - [ ] Fase 3: painel multi-conta + visual preto/dourado/branco + 3 logos WR
 - [ ] Fase 4: nichos, assets, README final, revisão de skills
 - [ ] Fase 5: REVIEW GERAL (testes, bugs, economia de tokens e de PC, segredos, docs/REVIEW_GERAL.md)
