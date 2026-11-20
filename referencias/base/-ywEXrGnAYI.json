@@ -1,0 +1,441 @@
+{
+ "id": "-ywEXrGnAYI",
+ "url": "https://www.youtube.com/watch?v=-ywEXrGnAYI",
+ "titulo": "How To Make 3D Animated Shorts Like Zack D Films Using AI (100% Free)",
+ "canal": "Fayyaz Ahmed",
+ "views": 103332,
+ "data": "20260823",
+ "duracao_s": 205.7,
+ "idioma_fala": "en",
+ "fonte_fala": "whisper",
+ "n_cortes": 17,
+ "cortes_por_min": 5.0,
+ "palavras_por_s": 2.13,
+ "cortes_s": [
+  8.7,
+  26.27,
+  44.2,
+  75.1,
+  88.97,
+  91.55,
+  91.93,
+  122.07,
+  136.27,
+  145.85,
+  150.77,
+  160.67,
+  172.17,
+  182.67,
+  186.7,
+  190.73,
+  199.2
+ ],
+ "beats": [
+  {
+   "n": 1,
+   "ini": 0.0,
+   "fim": 3.16,
+   "dur": 3.16,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "These 3d shorts are getting millions of views on YouTube."
+  },
+  {
+   "n": 2,
+   "ini": 3.16,
+   "fim": 8.5,
+   "dur": 5.34,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "And today I'll show you how to create videos like these completely for free."
+  },
+  {
+   "n": 3,
+   "ini": 8.7,
+   "fim": 14.86,
+   "dur": 6.16,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Now open cloud and click on the plus icon, then upload this empty file here and just send"
+  },
+  {
+   "n": 4,
+   "ini": 14.86,
+   "fim": 19.66,
+   "dur": 4.8,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "it. Now cloud will give us some killer video topics."
+  },
+  {
+   "n": 5,
+   "ini": 19.66,
+   "fim": 23.16,
+   "dur": 3.5,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "If you want more ideas, simply type more."
+  },
+  {
+   "n": 6,
+   "ini": 23.16,
+   "fim": 26.27,
+   "dur": 3.11,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Now I like this topic so I'll just copy it."
+  },
+  {
+   "n": 7,
+   "ini": 26.27,
+   "fim": 33.74,
+   "dur": 7.47,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Now open this gpt and paste the topic here, then click on send."
+  },
+  {
+   "n": 8,
+   "ini": 33.74,
+   "fim": 41.38,
+   "dur": 7.64,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Now this gpt will first write the entire voice over for us."
+  },
+  {
+   "n": 9,
+   "ini": 41.38,
+   "fim": 44.2,
+   "dur": 2.82,
+   "planos": 1,
+   "por_fala": true,
+   "fala": ""
+  },
+  {
+   "n": 10,
+   "ini": 44.2,
+   "fim": 47.28,
+   "dur": 3.08,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "So just copy it and open 11 labs and go to text to speech."
+  },
+  {
+   "n": 11,
+   "ini": 47.28,
+   "fim": 53.78,
+   "dur": 6.5,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "From here select any voice you like."
+  },
+  {
+   "n": 12,
+   "ini": 53.78,
+   "fim": 64.22,
+   "dur": 10.44,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "I'm going with this one, then paste the entire voice over text here and remove any unnecessary text."
+  },
+  {
+   "n": 13,
+   "ini": 64.22,
+   "fim": 70.36,
+   "dur": 6.14,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Then simply click on generate."
+  },
+  {
+   "n": 14,
+   "ini": 70.36,
+   "fim": 73.52,
+   "dur": 3.16,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Once it's ready, just download the audio."
+  },
+  {
+   "n": 15,
+   "ini": 73.52,
+   "fim": 75.1,
+   "dur": 1.58,
+   "planos": 1,
+   "por_fala": true,
+   "fala": ""
+  },
+  {
+   "n": 16,
+   "ini": 75.1,
+   "fim": 83.44,
+   "dur": 8.34,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Now go back to gpt and type continue and send it. Now gpt will give us image generation prompts."
+  },
+  {
+   "n": 17,
+   "ini": 83.44,
+   "fim": 88.97,
+   "dur": 5.53,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "So just copy the first image prompt and open google flow."
+  },
+  {
+   "n": 18,
+   "ini": 88.97,
+   "fim": 91.55,
+   "dur": 2.58,
+   "planos": 1,
+   "por_fala": false,
+   "fala": ""
+  },
+  {
+   "n": 19,
+   "ini": 91.55,
+   "fim": 100.38,
+   "dur": 8.83,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Then click on new project and select image generation. Select the 9x16 aspect ratio and choose the nano banana pro model."
+  },
+  {
+   "n": 20,
+   "ini": 100.38,
+   "fim": 104.84,
+   "dur": 4.46,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Now simply paste the first image prompt here and click on generate."
+  },
+  {
+   "n": 21,
+   "ini": 104.84,
+   "fim": 108.4,
+   "dur": 3.56,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Do the same with all the prompts and create all the images."
+  },
+  {
+   "n": 22,
+   "ini": 108.4,
+   "fim": 113.14,
+   "dur": 4.74,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Once the images are ready, click on these 3 dots and select animate."
+  },
+  {
+   "n": 23,
+   "ini": 113.14,
+   "fim": 121.94,
+   "dur": 8.8,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Now click on settings and select vio3 fast with the 9x16 aspect ratio."
+  },
+  {
+   "n": 24,
+   "ini": 122.07,
+   "fim": 125.66,
+   "dur": 3.59,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Now go back to gpt and type continue and send it."
+  },
+  {
+   "n": 25,
+   "ini": 125.66,
+   "fim": 131.56,
+   "dur": 5.9,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Gpt will now write an image to video prompt for each image."
+  },
+  {
+   "n": 26,
+   "ini": 131.56,
+   "fim": 136.27,
+   "dur": 4.71,
+   "planos": 1,
+   "por_fala": true,
+   "fala": ""
+  },
+  {
+   "n": 27,
+   "ini": 136.27,
+   "fim": 140.18,
+   "dur": 3.91,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Simply copy the first prompt and paste it into the first image to video prompt box. Then click on generate."
+  },
+  {
+   "n": 28,
+   "ini": 140.18,
+   "fim": 144.62,
+   "dur": 4.44,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Within seconds your video will be ready."
+  },
+  {
+   "n": 29,
+   "ini": 144.62,
+   "fim": 145.85,
+   "dur": 1.23,
+   "planos": 1,
+   "por_fala": true,
+   "fala": ""
+  },
+  {
+   "n": 30,
+   "ini": 145.85,
+   "fim": 150.77,
+   "dur": 4.92,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "Simply download it and do the same with all the other images."
+  },
+  {
+   "n": 31,
+   "ini": 150.77,
+   "fim": 157.98,
+   "dur": 7.21,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "If you run out of credits on google flow, you can use these websites instead and create videos for free using their free credits."
+  },
+  {
+   "n": 32,
+   "ini": 157.98,
+   "fim": 160.67,
+   "dur": 2.69,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "And this is what the final video will look like."
+  },
+  {
+   "n": 33,
+   "ini": 160.67,
+   "fim": 163.72,
+   "dur": 3.05,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "That tiny hole in airplane windows helps keep you safe."
+  },
+  {
+   "n": 34,
+   "ini": 163.72,
+   "fim": 166.96,
+   "dur": 3.24,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Most people think it lets fresh air enter the cabin."
+  },
+  {
+   "n": 35,
+   "ini": 166.96,
+   "fim": 171.44,
+   "dur": 4.48,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Actually, it balances pressure between the windows glass layers."
+  },
+  {
+   "n": 36,
+   "ini": 171.44,
+   "fim": 172.17,
+   "dur": 0.73,
+   "planos": 1,
+   "por_fala": true,
+   "fala": ""
+  },
+  {
+   "n": 37,
+   "ini": 172.17,
+   "fim": 176.82,
+   "dur": 4.65,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Airplane windows contain multiple transparent layers for added protection."
+  },
+  {
+   "n": 38,
+   "ini": 176.82,
+   "fim": 181.98,
+   "dur": 5.16,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "During flight, cabin pressure becomes much higher than outside."
+  },
+  {
+   "n": 39,
+   "ini": 181.98,
+   "fim": 182.67,
+   "dur": 0.69,
+   "planos": 1,
+   "por_fala": true,
+   "fala": ""
+  },
+  {
+   "n": 40,
+   "ini": 182.67,
+   "fim": 186.7,
+   "dur": 4.03,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "The outer window handles most of this dangerous pressure difference."
+  },
+  {
+   "n": 41,
+   "ini": 186.7,
+   "fim": 190.73,
+   "dur": 4.03,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "The tiny hole lets pressure equalize between inner layers."
+  },
+  {
+   "n": 42,
+   "ini": 190.73,
+   "fim": 194.88,
+   "dur": 4.15,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "That prevents excessive pressure from stressing the window unnecessarily."
+  },
+  {
+   "n": 43,
+   "ini": 194.88,
+   "fim": 198.78,
+   "dur": 3.9,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "It also helps control moisture that could cloud the window."
+  },
+  {
+   "n": 44,
+   "ini": 199.2,
+   "fim": 205.66,
+   "dur": 6.46,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "So that tiny hole quietly protects you thousands of feet above."
+  }
+ ],
+ "folha": "-ywEXrGnAYI_folha.jpg",
+ "descricao": "Make 3D Animated Shorts Like Zack D Films Using Edimakor AI:https://reurl.cc/3y6079\nMake 3D AI animated shorts in Filmora with prompts, motion, effects, and epic cuts — start today: https://filmora.go.link/iEie6\n\nWatch Next - https://youtu.be/bURhFiCSmtk?si=dF5SIejdFujanBEV\n\nEver wondered how creators like Zack D make those insanely smooth 3D animated shorts? Turns out you don't need expensive software or animation skills to pull it off. In this video I'm breaking down the exact AI-powered workf",
+ "tempos_s": {
+  "metadados": 6.0,
+  "download": 37.3,
+  "cortes": 8.9,
+  "folha": 7.7,
+  "fala": 23.4,
+  "total": 83.4
+ }
+}

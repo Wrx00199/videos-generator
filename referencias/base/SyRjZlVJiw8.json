@@ -1,0 +1,842 @@
+{
+ "id": "SyRjZlVJiw8",
+ "url": "https://www.youtube.com/watch?v=SyRjZlVJiw8",
+ "titulo": "Como Criar Esses Vídeos 3D Virais Com o Claude (Tutorial Completo)",
+ "canal": "Tutty",
+ "views": 55795,
+ "data": "20261112",
+ "duracao_s": 460.8,
+ "idioma_fala": "pt-orig",
+ "fonte_fala": "legenda",
+ "n_cortes": 58,
+ "cortes_por_min": 7.6,
+ "palavras_por_s": 5.97,
+ "cortes_s": [
+  0.02,
+  1.63,
+  5.77,
+  9.3,
+  17.88,
+  19.97,
+  28.23,
+  28.67,
+  30.88,
+  33.9,
+  39.07,
+  41.55,
+  41.75,
+  44.83,
+  49.23,
+  51.47,
+  57.4,
+  57.42,
+  59.62,
+  62.03,
+  63.75,
+  66.17,
+  68.52,
+  70.5,
+  73.78,
+  76.13,
+  81.37,
+  97.4,
+  156.62,
+  158.13,
+  194.47,
+  194.48,
+  195.75,
+  239.05,
+  239.07,
+  240.42,
+  242.05,
+  244.33,
+  245.6,
+  267.98,
+  290.75,
+  291.92,
+  295.67,
+  299.0,
+  304.45,
+  305.23,
+  309.52,
+  309.53,
+  313.48,
+  317.03,
+  324.45,
+  329.35,
+  397.2,
+  425.4,
+  433.33,
+  436.1,
+  440.28,
+  455.73
+ ],
+ "beats": [
+  {
+   "n": 1,
+   "ini": 0.0,
+   "fim": 5.77,
+   "dur": 5.77,
+   "planos": 3,
+   "por_fala": false,
+   "fala": "Todo mundo já está sabendo que agora o Claude está criando vídeos 100% Claude está criando vídeos 100%"
+  },
+  {
+   "n": 2,
+   "ini": 5.77,
+   "fim": 9.3,
+   "dur": 3.53,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "automáticos. E é claro que eu também automáticos. E é claro que eu também estou aproveitando para criar os meus. estou aproveitando para criar os meus."
+  },
+  {
+   "n": 3,
+   "ini": 9.3,
+   "fim": 16.59,
+   "dur": 7.29,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Esse vídeo eu criei com o Claude há uma Esse vídeo eu criei com o Claude há uma semana atrás, onde eu não precisei me semana atrás, onde eu não precisei me preocupar com a edição e muito menos com"
+  },
+  {
+   "n": 4,
+   "ini": 16.59,
+   "fim": 17.88,
+   "dur": 1.29,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "preocupar com a edição e muito menos com"
+  },
+  {
+   "n": 5,
+   "ini": 17.88,
+   "fim": 24.39,
+   "dur": 6.51,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "a animação 3D, porque isso foi tudo ele a animação 3D, porque isso foi tudo ele que fez. E em poucos dias o vídeo já que fez. E em poucos dias o vídeo já estava com 800.000 visualizações no"
+  },
+  {
+   "n": 6,
+   "ini": 24.39,
+   "fim": 28.23,
+   "dur": 3.84,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "estava com 800.000 visualizações no TikTok e me pagou quase R$ 2.500."
+  },
+  {
+   "n": 7,
+   "ini": 28.23,
+   "fim": 30.88,
+   "dur": 2.65,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "TikTok e me pagou quase R$ 2.500. Cara, um vídeo que eu não precisei Cara, um vídeo que eu não precisei"
+  },
+  {
+   "n": 8,
+   "ini": 30.88,
+   "fim": 33.9,
+   "dur": 3.02,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "editar, não precisei roteirizar, não editar, não precisei roteirizar, não"
+  },
+  {
+   "n": 9,
+   "ini": 33.9,
+   "fim": 39.07,
+   "dur": 5.17,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "precisei aparecer, me pagou quase R$ precisei aparecer, me pagou quase R$ 2.500. Cara, a internet é uma parada 2.500. Cara, a internet é uma parada"
+  },
+  {
+   "n": 10,
+   "ini": 39.07,
+   "fim": 41.75,
+   "dur": 2.68,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "doida. Mas enfim, o que tu vai aprender doida. Mas enfim, o que tu vai aprender"
+  },
+  {
+   "n": 11,
+   "ini": 41.75,
+   "fim": 44.83,
+   "dur": 3.08,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "agora é como criar esses mesmos vídeos agora é como criar esses mesmos vídeos"
+  },
+  {
+   "n": 12,
+   "ini": 44.83,
+   "fim": 49.23,
+   "dur": 4.4,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "de mapas 3D, um dos nichos feitos pelo de mapas 3D, um dos nichos feitos pelo Claude que mais está viralizando na Claude que mais está viralizando na"
+  },
+  {
+   "n": 13,
+   "ini": 49.23,
+   "fim": 55.99,
+   "dur": 6.76,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "internet. Mas então agora bora para o internet. Mas então agora bora para o Claude. Maravilha. Bom, aqui no Claude a Claude. Maravilha. Bom, aqui no Claude a primeira coisa que tu precisaria fazer"
+  },
+  {
+   "n": 14,
+   "ini": 55.99,
+   "fim": 57.4,
+   "dur": 1.41,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "primeira coisa que tu precisaria fazer"
+  },
+  {
+   "n": 15,
+   "ini": 57.4,
+   "fim": 62.03,
+   "dur": 4.63,
+   "planos": 3,
+   "por_fala": false,
+   "fala": "seria treinar ele, só que isso dá muito seria treinar ele, só que isso dá muito trabalho. Tu tem que enviar o mapa do trabalho. Tu tem que enviar o mapa do"
+  },
+  {
+   "n": 16,
+   "ini": 62.03,
+   "fim": 66.17,
+   "dur": 4.14,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "mundo inteiro, tem que enviar o mapa do mundo inteiro, tem que enviar o mapa do Brasil, tem que enviar todas as Brasil, tem que enviar todas as bandeiras do mundo, tem que enviar a"
+  },
+  {
+   "n": 17,
+   "ini": 66.17,
+   "fim": 70.5,
+   "dur": 4.33,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "bandeiras do mundo, tem que enviar a bandeira dos estados do Brasil, tem que bandeira dos estados do Brasil, tem que enviar como tu quer os roteiros. Cara,"
+  },
+  {
+   "n": 18,
+   "ini": 70.5,
+   "fim": 73.78,
+   "dur": 3.28,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "enviar como tu quer os roteiros. Cara, isso dá muito trabalho e demora muito."
+  },
+  {
+   "n": 19,
+   "ini": 73.78,
+   "fim": 81.37,
+   "dur": 7.59,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "isso dá muito trabalho e demora muito. Então para facilitar a vida de vocês, Então para facilitar a vida de vocês, aqui no comentário fixado eu vou deixar aqui no comentário fixado eu vou deixar o link da minha pastinha secreta de o link da minha pastinha secreta de"
+  },
+  {
+   "n": 20,
+   "ini": 81.37,
+   "fim": 87.79,
+   "dur": 6.42,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "criação. E essa pastinha vai poupar criação. E essa pastinha vai poupar muito tempo porque ela já vai deixar o muito tempo porque ela já vai deixar o teu Claude afiado. É a mesma pasta que"
+  },
+  {
+   "n": 21,
+   "ini": 87.79,
+   "fim": 94.19,
+   "dur": 6.4,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "teu Claude afiado. É a mesma pasta que eu estou utilizando para criar os meus eu estou utilizando para criar os meus vídeos que já estão viralizando muito, vídeos que já estão viralizando muito, cara. Então essa pasta aqui ela é muito"
+  },
+  {
+   "n": 22,
+   "ini": 94.19,
+   "fim": 97.4,
+   "dur": 3.21,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "cara. Então essa pasta aqui ela é muito boa e vai poupar muito tempo na tua boa e vai poupar muito tempo na tua"
+  },
+  {
+   "n": 23,
+   "ini": 97.4,
+   "fim": 103.99,
+   "dur": 6.59,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "criação. Beleza, então aqui no Claude eu criação. Beleza, então aqui no Claude eu vou colar a pastinha e eu só vou enviar vou colar a pastinha e eu só vou enviar para ele o seguinte, bora criar o nosso"
+  },
+  {
+   "n": 24,
+   "ini": 103.99,
+   "fim": 110.99,
+   "dur": 7.0,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "para ele o seguinte, bora criar o nosso vídeo. E vou enviar isso aqui para o vídeo. E vou enviar isso aqui para o Claude. Beleza, agora a primeira coisa Claude. Beleza, agora a primeira coisa que ele vai fazer é abrir o kit da"
+  },
+  {
+   "n": 25,
+   "ini": 110.99,
+   "fim": 118.59,
+   "dur": 7.6,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "que ele vai fazer é abrir o kit da pastinha para ele entender como que pastinha para ele entender como que funciona esses vídeos. Ele vai ler ali o funciona esses vídeos. Ele vai ler ali o mapa, as bandeiras, ele vai ler toda a"
+  },
+  {
+   "n": 26,
+   "ini": 118.59,
+   "fim": 124.98,
+   "dur": 6.39,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "mapa, as bandeiras, ele vai ler toda a pastinha para começar a pastinha para começar a Aqui ele já me perguntou, qual é o Aqui ele já me perguntou, qual é o tamanho do seu vídeo? Aí tu pode colocar"
+  },
+  {
+   "n": 27,
+   "ini": 124.98,
+   "fim": 132.78,
+   "dur": 7.8,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "tamanho do seu vídeo? Aí tu pode colocar aqui qual o tamanho tu quer fazer o teu aqui qual o tamanho tu quer fazer o teu vídeo. Tu quer fazer somente para o vídeo. Tu quer fazer somente para o YouTube Shorts? Aí tu coloca aqui 30 YouTube Shorts? Aí tu coloca aqui 30 segundos. Quer fazer para monetizar no"
+  },
+  {
+   "n": 28,
+   "ini": 132.78,
+   "fim": 139.98,
+   "dur": 7.2,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "segundos. Quer fazer para monetizar no TikTok e no YouTube? Aí tu coloca aqui TikTok e no YouTube? Aí tu coloca aqui um minuto, já que para monetizar no um minuto, já que para monetizar no TikTok precisa de mais de um minuto."
+  },
+  {
+   "n": 29,
+   "ini": 139.98,
+   "fim": 147.38,
+   "dur": 7.4,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "TikTok precisa de mais de um minuto. Então eu vou colocar aqui um minuto. Então eu vou colocar aqui um minuto. Beleza, agora ele vai ler o que eu Beleza, agora ele vai ler o que eu respondi e ele vai me perguntar qual é o"
+  },
+  {
+   "n": 30,
+   "ini": 147.38,
+   "fim": 154.78,
+   "dur": 7.4,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "respondi e ele vai me perguntar qual é o arroba do meu canal. Então aqui para mim arroba do meu canal. Então aqui para mim já tá salvo, mas tu pode colocar aqui, já tá salvo, mas tu pode colocar aqui, por exemplo, @ Luquinhas Shorts. Enfim,"
+  },
+  {
+   "n": 31,
+   "ini": 154.78,
+   "fim": 156.62,
+   "dur": 1.84,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "por exemplo, @ Luquinhas Shorts. Enfim, tu vai colocar aqui o arroba do teu tu vai colocar aqui o arroba do teu"
+  },
+  {
+   "n": 32,
+   "ini": 156.62,
+   "fim": 163.18,
+   "dur": 6.56,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "canal. Vamos enviar isso aqui para ele e canal. Vamos enviar isso aqui para ele e agora ele já vai me perguntar qual ideia agora ele já vai me perguntar qual ideia eu quero fazer o meu vídeo. Ele já vai"
+  },
+  {
+   "n": 33,
+   "ini": 163.18,
+   "fim": 169.78,
+   "dur": 6.6,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "eu quero fazer o meu vídeo. Ele já vai te passar aqui algumas ideias prontas, te passar aqui algumas ideias prontas, mas tu pode colocar aqui alguma outra mas tu pode colocar aqui alguma outra ideia que tu queira. Então, por exemplo,"
+  },
+  {
+   "n": 34,
+   "ini": 169.78,
+   "fim": 175.98,
+   "dur": 6.2,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "ideia que tu queira. Então, por exemplo, se eu colocar aqui, o que aconteceria se se eu colocar aqui, o que aconteceria se cada região do Brasil virasse um país?"
+  },
+  {
+   "n": 35,
+   "ini": 175.98,
+   "fim": 183.38,
+   "dur": 7.4,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "cada região do Brasil virasse um país? Cara, essa ideia é muito boa. Vou enviar Cara, essa ideia é muito boa. Vou enviar isso aqui para ele. Inclusive, aqui no isso aqui para ele. Inclusive, aqui no arroba do canal, ele vai te perguntar já"
+  },
+  {
+   "n": 36,
+   "ini": 183.38,
+   "fim": 189.88,
+   "dur": 6.5,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "arroba do canal, ele vai te perguntar já para deixar como marca da água lá dentro para deixar como marca da água lá dentro do teu vídeo. Isso aqui é muito do teu vídeo. Isso aqui é muito importante para ninguém acabar roubando"
+  },
+  {
+   "n": 37,
+   "ini": 189.88,
+   "fim": 194.47,
+   "dur": 4.59,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "importante para ninguém acabar roubando o teu vídeo, cara. Então é muito legal o teu vídeo, cara. Então é muito legal essa funcionalidade aqui também. Beleza,"
+  },
+  {
+   "n": 38,
+   "ini": 194.47,
+   "fim": 202.68,
+   "dur": 8.21,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "essa funcionalidade aqui também. Beleza, vamos aguardar aqui um pouquinho. Olha vamos aguardar aqui um pouquinho. Olha que beleza, cara. Aqui ele já entregou o que beleza, cara. Aqui ele já entregou o roteiro do meu vídeo também para mim roteiro do meu vídeo também para mim colar lá dentro do Eleven Labs. Só que"
+  },
+  {
+   "n": 39,
+   "ini": 202.68,
+   "fim": 210.38,
+   "dur": 7.7,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "colar lá dentro do Eleven Labs. Só que eu vou passar mais uma dica para vocês. eu vou passar mais uma dica para vocês. Se tu vier aqui nas configurações do teu Se tu vier aqui nas configurações do teu Cloud, depois clicar aqui em conectores,"
+  },
+  {
+   "n": 40,
+   "ini": 210.38,
+   "fim": 218.48,
+   "dur": 8.1,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Cloud, depois clicar aqui em conectores, aí tu vai clicar aqui em descobrir e aí tu vai clicar aqui em descobrir e pesquisar aqui Eleven Labs, tu consegue pesquisar aqui Eleven Labs, tu consegue conectar o teu Eleven Labs diretamente"
+  },
+  {
+   "n": 41,
+   "ini": 218.48,
+   "fim": 225.48,
+   "dur": 7.0,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "conectar o teu Eleven Labs diretamente com o Cloud. O meu ele já tá conectado, com o Cloud. O meu ele já tá conectado, então eu posso simplesmente mandar para então eu posso simplesmente mandar para ele aqui, gere a voz no Eleven Labs."
+  },
+  {
+   "n": 42,
+   "ini": 225.48,
+   "fim": 232.28,
+   "dur": 6.8,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "ele aqui, gere a voz no Eleven Labs. Você já tem a permissão. Utilize a voz Você já tem a permissão. Utilize a voz do Will, que é uma voz que eu gosto do Will, que é uma voz que eu gosto bastante. Eu envio isso aqui para o"
+  },
+  {
+   "n": 43,
+   "ini": 232.28,
+   "fim": 239.05,
+   "dur": 6.77,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "bastante. Eu envio isso aqui para o Cloud e agora, automaticamente, ele já Cloud e agora, automaticamente, ele já vai gerar a minha voz. Ó, usando o vai gerar a minha voz. Ó, usando o"
+  },
+  {
+   "n": 44,
+   "ini": 239.05,
+   "fim": 242.05,
+   "dur": 3.0,
+   "planos": 3,
+   "por_fala": false,
+   "fala": "Eleven Labs. Agora é só eu aguardar ele Eleven Labs. Agora é só eu aguardar ele gerar a minha voz aqui e começar a criar"
+  },
+  {
+   "n": 45,
+   "ini": 242.05,
+   "fim": 245.6,
+   "dur": 3.55,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "gerar a minha voz aqui e começar a criar o meu vídeo, cara. Tudo automático. Se"
+  },
+  {
+   "n": 46,
+   "ini": 245.6,
+   "fim": 251.78,
+   "dur": 6.18,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "o meu vídeo, cara. Tudo automático. Se liga que loucura, cara. Já finalizou a liga que loucura, cara. Já finalizou a voz aqui. Vamos ouvir para ver como que voz aqui. Vamos ouvir para ver como que ficou esse resultado."
+  },
+  {
+   "n": 47,
+   "ini": 251.78,
+   "fim": 256.58,
+   "dur": 4.8,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "ficou esse resultado. &gt;&gt; O que aconteceria se cada região do &gt;&gt; O que aconteceria se cada região do Brasil virasse um país?"
+  },
+  {
+   "n": 48,
+   "ini": 256.58,
+   "fim": 263.48,
+   "dur": 6.9,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Brasil virasse um país? &gt;&gt; Beleza, cara. Ficou bem legal. E aí &gt;&gt; Beleza, cara. Ficou bem legal. E aí agora dentro da edição o próprio Claude agora dentro da edição o próprio Claude vai cortar esses pequenos trechinhos em"
+  },
+  {
+   "n": 49,
+   "ini": 263.48,
+   "fim": 267.98,
+   "dur": 4.5,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "vai cortar esses pequenos trechinhos em silêncio para o nosso vídeo ficar ainda silêncio para o nosso vídeo ficar ainda mais dinâmico, gurizada. Vamos embora."
+  },
+  {
+   "n": 50,
+   "ini": 267.98,
+   "fim": 276.18,
+   "dur": 8.2,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "mais dinâmico, gurizada. Vamos embora. Maravilha. Vídeo finalizado e cara, Maravilha. Vídeo finalizado e cara, reparem que agora que ele finalizou o reparem que agora que ele finalizou o meu vídeo, ele já enviou aqui também o"
+  },
+  {
+   "n": 51,
+   "ini": 276.18,
+   "fim": 284.18,
+   "dur": 8.0,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "meu vídeo, ele já enviou aqui também o título do meu vídeo, enviou também uma título do meu vídeo, enviou também uma legenda para post, enviou as hashtags legenda para post, enviou as hashtags que eu posso colocar e também já enviou"
+  },
+  {
+   "n": 52,
+   "ini": 284.18,
+   "fim": 290.75,
+   "dur": 6.57,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "que eu posso colocar e também já enviou uma miniatura. E cara, aqui a gente já uma miniatura. E cara, aqui a gente já pode ver a marca da água, as legendas, pode ver a marca da água, as legendas, aqui algumas bandeiras. Cara, que vídeo"
+  },
+  {
+   "n": 53,
+   "ini": 290.75,
+   "fim": 295.67,
+   "dur": 4.92,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "aqui algumas bandeiras. Cara, que vídeo bom que deve ter ficado e a gente vai bom que deve ter ficado e a gente vai olhar o resultado agora. Mas antes disso"
+  },
+  {
+   "n": 54,
+   "ini": 295.67,
+   "fim": 299.0,
+   "dur": 3.33,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "olhar o resultado agora. Mas antes disso eu preciso dar um recadinho muito rápido eu preciso dar um recadinho muito rápido"
+  },
+  {
+   "n": 55,
+   "ini": 299.0,
+   "fim": 304.45,
+   "dur": 5.45,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "para ti que ainda não ganha dinheiro com para ti que ainda não ganha dinheiro com a internet, com os vídeos do TikTok, do a internet, com os vídeos do TikTok, do"
+  },
+  {
+   "n": 56,
+   "ini": 304.45,
+   "fim": 309.52,
+   "dur": 5.07,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "YouTube, enfim. Eu liberei recentemente YouTube, enfim. Eu liberei recentemente o meu novo minicurso 100% gratuito. Ele"
+  },
+  {
+   "n": 57,
+   "ini": 309.52,
+   "fim": 313.48,
+   "dur": 3.96,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "o meu novo minicurso 100% gratuito. Ele está aqui no primeiro link da descrição está aqui no primeiro link da descrição para ti poder assistir. Então clica ali"
+  },
+  {
+   "n": 58,
+   "ini": 313.48,
+   "fim": 317.03,
+   "dur": 3.55,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "para ti poder assistir. Então clica ali no link, tu vai me chamar lá no meu no link, tu vai me chamar lá no meu WhatsApp pessoal, a gente vai trocar uma"
+  },
+  {
+   "n": 59,
+   "ini": 317.03,
+   "fim": 324.45,
+   "dur": 7.42,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "WhatsApp pessoal, a gente vai trocar uma ideia e aí eu vou te enviar o minicurso. ideia e aí eu vou te enviar o minicurso. Cara, aproveita que eu tenho certeza que Cara, aproveita que eu tenho certeza que tu vai gostar bastante. Então agora bora"
+  },
+  {
+   "n": 60,
+   "ini": 324.45,
+   "fim": 329.35,
+   "dur": 4.9,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "tu vai gostar bastante. Então agora bora dar uma olhada no resultado final dar uma olhada no resultado final juntos."
+  },
+  {
+   "n": 61,
+   "ini": 329.35,
+   "fim": 333.98,
+   "dur": 4.63,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "juntos. &gt;&gt; O que aconteceria &gt;&gt; O que aconteceria se cada região do Brasil virasse um se cada região do Brasil virasse um país?"
+  },
+  {
+   "n": 62,
+   "ini": 333.98,
+   "fim": 341.08,
+   "dur": 7.1,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "país? &gt;&gt; Cara, olha essa qualidade que o vídeo &gt;&gt; Cara, olha essa qualidade que o vídeo tem. Ele já começa aqui colocando a tem. Ele já começa aqui colocando a bandeira de todos os estados do Brasil,"
+  },
+  {
+   "n": 63,
+   "ini": 341.08,
+   "fim": 346.38,
+   "dur": 5.3,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "bandeira de todos os estados do Brasil, cara. Muito bom. cara. Muito bom. &gt;&gt; O Brasil ia acordar dividido em cinco &gt;&gt; O Brasil ia acordar dividido em cinco países diferentes."
+  },
+  {
+   "n": 64,
+   "ini": 346.38,
+   "fim": 353.28,
+   "dur": 6.9,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "países diferentes. &gt;&gt; Ó, aqui ele já colocou as cinco regiões &gt;&gt; Ó, aqui ele já colocou as cinco regiões e outra coisa, como eu havia comentado, e outra coisa, como eu havia comentado, aqui ele colocou também a marca da água"
+  },
+  {
+   "n": 65,
+   "ini": 353.28,
+   "fim": 358.08,
+   "dur": 4.8,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "aqui ele colocou também a marca da água do nosso canal, também já vem com do nosso canal, também já vem com legenda, musiquinha de fundo, efeitos legenda, musiquinha de fundo, efeitos sonoros."
+  },
+  {
+   "n": 66,
+   "ini": 358.08,
+   "fim": 365.88,
+   "dur": 7.8,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "sonoros. &gt;&gt; Diferentes. O Sudeste já nascia rico, &gt;&gt; Diferentes. O Sudeste já nascia rico, mais da metade de tudo [música] que o mais da metade de tudo [música] que o Brasil produz e com quase"
+  },
+  {
+   "n": 67,
+   "ini": 365.88,
+   "fim": 368.99,
+   "dur": 3.11,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Brasil produz e com quase milhões de pessoas, mais que a Alemanha."
+  },
+  {
+   "n": 68,
+   "ini": 368.99,
+   "fim": 375.79,
+   "dur": 6.8,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "milhões de pessoas, mais que a Alemanha. O nordeste ia ter mais gente que a O nordeste ia ter mais gente que a Espanha. E mais de Espanha. E mais de 90% da energia dos ventos do Brasil."
+  },
+  {
+   "n": 69,
+   "ini": 375.79,
+   "fim": 381.79,
+   "dur": 6.0,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "90% da energia dos ventos do Brasil. Férias em Maceió só com passaporte. O Férias em Maceió só com passaporte. O sul ia ficar com a metade brasileira de sul ia ficar com a metade brasileira de Itaipu."
+  },
+  {
+   "n": 70,
+   "ini": 381.79,
+   "fim": 387.79,
+   "dur": 6.0,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Itaipu. &gt;&gt; Olha aí, gurizada, mais uma coisa. Aqui &gt;&gt; Olha aí, gurizada, mais uma coisa. Aqui além das bandeiras do Rio Grande do Sul, além das bandeiras do Rio Grande do Sul, Paraná e Santa Catarina, ele também"
+  },
+  {
+   "n": 71,
+   "ini": 387.79,
+   "fim": 392.28,
+   "dur": 4.49,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Paraná e Santa Catarina, ele também colocou aqui a bandeira do Paraguai. Tem colocou aqui a bandeira do Paraguai. Tem a bandeira de todos os países do mundo."
+  },
+  {
+   "n": 72,
+   "ini": 392.28,
+   "fim": 397.2,
+   "dur": 4.92,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "a bandeira de todos os países do mundo. Cara, esse packzinho que eu liberei para Cara, esse packzinho que eu liberei para vocês, essa skill, tá muito completa. E"
+  },
+  {
+   "n": 73,
+   "ini": 397.2,
+   "fim": 404.28,
+   "dur": 7.08,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "vocês, essa skill, tá muito completa. E mais uma coisa, eu vou enviar aqui para mais uma coisa, eu vou enviar aqui para o Claude agora o seguinte, se eu quiser o Claude agora o seguinte, se eu quiser ir dormir e deixar você produzindo 10"
+  },
+  {
+   "n": 74,
+   "ini": 404.28,
+   "fim": 410.49,
+   "dur": 6.21,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "ir dormir e deixar você produzindo 10 vídeos para mim, eu posso? Vou enviar vídeos para mim, eu posso? Vou enviar isso aqui para ele para vocês verem que, isso aqui para ele para vocês verem que, cara, o Claude, ele simplesmente tá"
+  },
+  {
+   "n": 75,
+   "ini": 410.49,
+   "fim": 416.99,
+   "dur": 6.5,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "cara, o Claude, ele simplesmente tá quebrando as barreiras da inteligência quebrando as barreiras da inteligência artificial, tá indo para outro nível, artificial, tá indo para outro nível, cara. Ó, e aqui ele já falou que pode"
+  },
+  {
+   "n": 76,
+   "ini": 416.99,
+   "fim": 423.88,
+   "dur": 6.89,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "cara. Ó, e aqui ele já falou que pode sim. Eu só preciso liberar o download da sim. Eu só preciso liberar o download da voz para ele direto no Eleven Labs, que voz para ele direto no Eleven Labs, que é o conector que eu já tinha feito com"
+  },
+  {
+   "n": 77,
+   "ini": 423.88,
+   "fim": 425.4,
+   "dur": 1.52,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "é o conector que eu já tinha feito com vocês e deixar ele trabalhando. Então eu"
+  },
+  {
+   "n": 78,
+   "ini": 425.4,
+   "fim": 433.33,
+   "dur": 7.93,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "vocês e deixar ele trabalhando. Então eu posso ir dormir e quando eu acordar o posso ir dormir e quando eu acordar o Claude já tá com todos os vídeos prontos Claude já tá com todos os vídeos prontos para mim postar aí durante a semana. É"
+  },
+  {
+   "n": 79,
+   "ini": 433.33,
+   "fim": 436.1,
+   "dur": 2.77,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "para mim postar aí durante a semana. É literalmente fazer dinheiro dormindo, literalmente fazer dinheiro dormindo,"
+  },
+  {
+   "n": 80,
+   "ini": 436.1,
+   "fim": 440.28,
+   "dur": 4.18,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "cara. Bom, gurizada, espero que vocês cara. Bom, gurizada, espero que vocês tenham gostado da aula de hoje e, claro,"
+  },
+  {
+   "n": 81,
+   "ini": 440.28,
+   "fim": 447.79,
+   "dur": 7.51,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "tenham gostado da aula de hoje e, claro, se vocês puderem me ajudar a chegar na se vocês puderem me ajudar a chegar na meta dos 200.000 inscritos ainda em meta dos 200.000 inscritos ainda em 2026, que tá muito perto, eu ficaria"
+  },
+  {
+   "n": 82,
+   "ini": 447.79,
+   "fim": 453.8,
+   "dur": 6.01,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "2026, que tá muito perto, eu ficaria muito grato. Então se inscreve aí no muito grato. Então se inscreve aí no canal, se tiver pelo celular, hypa o canal, se tiver pelo celular, hypa o vídeo, deixa um comentário que sempre me vídeo, deixa um comentário que sempre me"
+  },
+  {
+   "n": 83,
+   "ini": 453.8,
+   "fim": 455.73,
+   "dur": 1.93,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "apoia demais. E no mais é isso, tamo"
+  },
+  {
+   "n": 84,
+   "ini": 455.73,
+   "fim": 460.76,
+   "dur": 5.03,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "apoia demais. E no mais é isso, tamo junto demais. Um beijão para vocês e até junto demais. Um beijão para vocês e até"
+  }
+ ],
+ "folha": "SyRjZlVJiw8_folha.jpg",
+ "descricao": "Aproveitem ao máximo esse conteúdo, o ouroooo! ❤️\n\n🚀 Ainda não tem um canal monetizado ganhando em DÓLAR?\n\nEntão você tem acesso ao meu mini-curso 100% GRATUITO, onde eu te mostro o passo a passo que me fez sair do zero aos meus primeiros R$10.000 com o YouTube.\n\n🎁 ACESSE AQUI: https://tutty.novarendaemdolar.com.br/yt",
+ "tempos_s": {
+  "metadados": 3.3,
+  "download": 16.1,
+  "cortes": 25.4,
+  "folha": 19.0,
+  "fala": 0.0,
+  "total": 63.8
+ }
+}

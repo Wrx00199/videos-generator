@@ -1,0 +1,2733 @@
+{
+ "id": "Gu9lO8oqGYU",
+ "url": "https://www.youtube.com/watch?v=Gu9lO8oqGYU",
+ "titulo": "I Made VIRAL 3D Animation Videos Using ONLY Claude AI (FREE Plugin)",
+ "canal": "Jacksons AI",
+ "views": 179274,
+ "data": "20261115",
+ "duracao_s": 1519.9,
+ "idioma_fala": "en-orig",
+ "fonte_fala": "legenda",
+ "n_cortes": 293,
+ "cortes_por_min": 11.6,
+ "palavras_por_s": 6.22,
+ "cortes_s": [
+  1.87,
+  1.9,
+  1.93,
+  1.97,
+  6.53,
+  6.57,
+  6.63,
+  6.8,
+  6.83,
+  6.9,
+  9.07,
+  9.13,
+  10.27,
+  10.3,
+  10.37,
+  10.4,
+  10.43,
+  10.53,
+  10.63,
+  16.3,
+  25.77,
+  25.8,
+  30.3,
+  30.33,
+  35.4,
+  42.17,
+  43.53,
+  51.03,
+  51.07,
+  54.1,
+  54.13,
+  63.47,
+  64.53,
+  66.1,
+  66.17,
+  66.23,
+  68.23,
+  70.7,
+  71.9,
+  73.8,
+  75.6,
+  77.83,
+  79.5,
+  80.8,
+  80.83,
+  80.9,
+  80.93,
+  81.0,
+  81.03,
+  81.07,
+  81.1,
+  81.17,
+  86.3,
+  86.33,
+  90.37,
+  90.4,
+  96.53,
+  96.57,
+  102.8,
+  109.4,
+  109.43,
+  116.8,
+  116.83,
+  123.53,
+  123.57,
+  123.6,
+  222.6,
+  237.17,
+  273.9,
+  273.93,
+  273.97,
+  274.0,
+  274.03,
+  274.07,
+  274.1,
+  274.13,
+  274.17,
+  274.2,
+  274.27,
+  333.47,
+  335.73,
+  340.4,
+  402.33,
+  489.2,
+  489.23,
+  489.27,
+  489.3,
+  489.33,
+  489.37,
+  489.4,
+  489.43,
+  489.47,
+  489.5,
+  489.57,
+  548.33,
+  559.13,
+  565.6,
+  571.87,
+  574.67,
+  577.73,
+  583.27,
+  588.0,
+  588.67,
+  588.93,
+  592.67,
+  605.9,
+  605.93,
+  605.97,
+  606.0,
+  606.03,
+  606.1,
+  606.13,
+  606.17,
+  606.2,
+  606.27,
+  610.7,
+  610.73,
+  704.87,
+  715.17,
+  721.83,
+  724.0,
+  726.67,
+  754.77,
+  754.8,
+  760.1,
+  761.53,
+  767.33,
+  774.47,
+  777.33,
+  780.93,
+  784.0,
+  788.83,
+  790.0,
+  793.07,
+  798.6,
+  803.33,
+  804.0,
+  804.27,
+  808.0,
+  812.33,
+  814.6,
+  817.5,
+  821.6,
+  826.57,
+  826.6,
+  831.17,
+  833.5,
+  833.53,
+  837.5,
+  837.53,
+  842.8,
+  842.83,
+  842.87,
+  842.9,
+  842.93,
+  842.97,
+  843.0,
+  858.9,
+  859.37,
+  860.8,
+  1002.1,
+  1002.5,
+  1003.07,
+  1003.5,
+  1006.17,
+  1025.53,
+  1032.93,
+  1045.03,
+  1045.07,
+  1045.1,
+  1045.13,
+  1045.17,
+  1045.2,
+  1045.23,
+  1045.27,
+  1045.3,
+  1045.33,
+  1045.4,
+  1051.03,
+  1051.67,
+  1053.27,
+  1054.3,
+  1055.0,
+  1056.13,
+  1057.0,
+  1057.53,
+  1057.73,
+  1058.07,
+  1058.67,
+  1058.97,
+  1059.5,
+  1087.17,
+  1112.6,
+  1116.43,
+  1121.1,
+  1125.6,
+  1126.53,
+  1126.57,
+  1126.6,
+  1126.63,
+  1126.67,
+  1126.73,
+  1126.77,
+  1126.8,
+  1126.83,
+  1126.9,
+  1127.3,
+  1127.57,
+  1127.77,
+  1127.83,
+  1131.03,
+  1131.8,
+  1136.5,
+  1138.9,
+  1156.93,
+  1198.23,
+  1200.6,
+  1208.8,
+  1219.77,
+  1220.97,
+  1223.0,
+  1223.27,
+  1223.37,
+  1223.9,
+  1224.1,
+  1225.43,
+  1225.7,
+  1225.77,
+  1225.9,
+  1226.0,
+  1226.13,
+  1226.23,
+  1226.43,
+  1226.63,
+  1226.8,
+  1226.83,
+  1226.9,
+  1226.93,
+  1227.0,
+  1227.03,
+  1227.07,
+  1227.1,
+  1227.17,
+  1227.77,
+  1229.23,
+  1230.03,
+  1232.17,
+  1232.87,
+  1235.6,
+  1235.63,
+  1236.07,
+  1237.17,
+  1238.17,
+  1378.2,
+  1391.63,
+  1395.7,
+  1397.37,
+  1399.03,
+  1400.73,
+  1406.97,
+  1410.63,
+  1416.4,
+  1423.17,
+  1428.07,
+  1434.63,
+  1442.23,
+  1445.3,
+  1445.33,
+  1450.73,
+  1450.77,
+  1455.0,
+  1455.03,
+  1460.63,
+  1461.53,
+  1461.57,
+  1464.67,
+  1464.7,
+  1470.73,
+  1470.77,
+  1476.33,
+  1476.37,
+  1483.67,
+  1483.7,
+  1486.67,
+  1486.7,
+  1491.77,
+  1498.23,
+  1501.83,
+  1501.87,
+  1508.93,
+  1508.97,
+  1516.6,
+  1516.63
+ ],
+ "beats": [
+  {
+   "n": 1,
+   "ini": 0.0,
+   "fim": 6.53,
+   "dur": 6.53,
+   "planos": 5,
+   "por_fala": false,
+   "fala": "Now, this channel called Rix Clips has a video sitting at over 33 million views, video sitting at over 33 million views, another one at 27 million, and their another one at 27 million, and their"
+  },
+  {
+   "n": 2,
+   "ini": 6.53,
+   "fim": 9.07,
+   "dur": 2.54,
+   "planos": 6,
+   "por_fala": false,
+   "fala": "newest uploads are pulling millions newest uploads are pulling millions"
+  },
+  {
+   "n": 3,
+   "ini": 9.07,
+   "fim": 16.3,
+   "dur": 7.23,
+   "planos": 9,
+   "por_fala": false,
+   "fala": "overnight, which is actually crazy. And overnight, which is actually crazy. And what's crazy is all they post is what's crazy is all they post is literally just these animated stick man literally just these animated stick man videos built entirely with code. No"
+  },
+  {
+   "n": 4,
+   "ini": 16.3,
+   "fim": 22.39,
+   "dur": 6.09,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "videos built entirely with code. No video generators, no blender, no video generators, no blender, no editing. Now, I went looking to see how editing. Now, I went looking to see how people were actually making these, and"
+  },
+  {
+   "n": 5,
+   "ini": 22.39,
+   "fim": 25.77,
+   "dur": 3.38,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "people were actually making these, and every tutorial I found was way too every tutorial I found was way too"
+  },
+  {
+   "n": 6,
+   "ini": 25.77,
+   "fim": 30.3,
+   "dur": 4.53,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "complicated. Custom skill files, complex complicated. Custom skill files, complex setups, hoops to jump through just to setups, hoops to jump through just to get it running. So, after hours of"
+  },
+  {
+   "n": 7,
+   "ini": 30.3,
+   "fim": 35.4,
+   "dur": 5.1,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "get it running. So, after hours of testing, I figured out a single master testing, I figured out a single master prompt that does the whole thing. You prompt that does the whole thing. You"
+  },
+  {
+   "n": 8,
+   "ini": 35.4,
+   "fim": 42.17,
+   "dur": 6.77,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "paste it in, and the agent installs the paste it in, and the agent installs the tools, builds the 3D world, animates the tools, builds the 3D world, animates the stick man, mixes the audio, and exports stick man, mixes the audio, and exports"
+  },
+  {
+   "n": 9,
+   "ini": 42.17,
+   "fim": 48.89,
+   "dur": 6.72,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "the final MP4. And to make it even the final MP4. And to make it even crazier, I'm putting a 100% free coding crazier, I'm putting a 100% free coding agent head-to-head against Claude code"
+  },
+  {
+   "n": 10,
+   "ini": 48.89,
+   "fim": 51.03,
+   "dur": 2.14,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "agent head-to-head against Claude code using that exact same prompt. [music] using that exact same prompt. [music]"
+  },
+  {
+   "n": 11,
+   "ini": 51.03,
+   "fim": 54.1,
+   "dur": 3.07,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "Same prompt, different agents. May the Same prompt, different agents. May the best one win. Plus, I've got a bonus"
+  },
+  {
+   "n": 12,
+   "ini": 54.1,
+   "fim": 59.89,
+   "dur": 5.79,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "best one win. Plus, I've got a bonus mobile workflow at the end that runs mobile workflow at the end that runs straight from your phone. I mean, check straight from your phone. I mean, check out what I made with this setup."
+  },
+  {
+   "n": 13,
+   "ini": 59.89,
+   "fim": 63.47,
+   "dur": 3.58,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "out what I made with this setup. &gt;&gt; In 1932, the Australian army went to war &gt;&gt; In 1932, the Australian army went to war"
+  },
+  {
+   "n": 14,
+   "ini": 63.47,
+   "fim": 66.1,
+   "dur": 2.63,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "against a bird, and the bird won."
+  },
+  {
+   "n": 15,
+   "ini": 66.1,
+   "fim": 70.7,
+   "dur": 4.6,
+   "planos": 4,
+   "por_fala": false,
+   "fala": "against a bird, and the bird won. After the First World War, Australia After the First World War, Australia gave its soldiers land to farm in the gave its soldiers land to farm in the"
+  },
+  {
+   "n": 16,
+   "ini": 70.7,
+   "fim": 73.8,
+   "dur": 3.1,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "far west. They planted wheat, miles and far west. They planted wheat, miles and miles of it. Then the Great Depression"
+  },
+  {
+   "n": 17,
+   "ini": 73.8,
+   "fim": 77.83,
+   "dur": 4.03,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "miles of it. Then the Great Depression hit, and wheat was suddenly worth almost hit, and wheat was suddenly worth almost nothing."
+  },
+  {
+   "n": 18,
+   "ini": 77.83,
+   "fim": 80.8,
+   "dur": 2.97,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "nothing. That spring, 20,000 emus showed up."
+  },
+  {
+   "n": 19,
+   "ini": 80.8,
+   "fim": 86.3,
+   "dur": 5.5,
+   "planos": 9,
+   "por_fala": false,
+   "fala": "That spring, 20,000 emus showed up. &gt;&gt; All right, guys. Today I'm going to show &gt;&gt; All right, guys. Today I'm going to show you three different ways to create these you three different ways to create these trending 2D stick man animations. And"
+  },
+  {
+   "n": 20,
+   "ini": 86.3,
+   "fim": 90.37,
+   "dur": 4.07,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "trending 2D stick man animations. And we're not just generating random images we're not just generating random images and animating them one after another. and animating them one after another."
+  },
+  {
+   "n": 21,
+   "ini": 90.37,
+   "fim": 96.53,
+   "dur": 6.16,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "We're creating flat 2D marker style We're creating flat 2D marker style characters inside colorful cinematic 3D characters inside colorful cinematic 3D environments. For method one, we're"
+  },
+  {
+   "n": 22,
+   "ini": 96.53,
+   "fim": 102.8,
+   "dur": 6.27,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "environments. For method one, we're using open code with a completely free using open code with a completely free AI coding model to generate our AI coding model to generate our animation through code. Method two is"
+  },
+  {
+   "n": 23,
+   "ini": 102.8,
+   "fim": 109.4,
+   "dur": 6.6,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "animation through code. Method two is Claude code, where we'll test the same Claude code, where we'll test the same animation workflow using a premium AI animation workflow using a premium AI model and compare the results. And model and compare the results. And"
+  },
+  {
+   "n": 24,
+   "ini": 109.4,
+   "fim": 116.8,
+   "dur": 7.4,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "method three is the manual workflow method three is the manual workflow using ChatGPT, Google Flow, and CapCut using ChatGPT, Google Flow, and CapCut for those who prefer complete creative for those who prefer complete creative control. So, whether you want to"
+  },
+  {
+   "n": 25,
+   "ini": 116.8,
+   "fim": 123.53,
+   "dur": 6.73,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "control. So, whether you want to automate the entire process or create automate the entire process or create everything yourself, I 'm show you how everything yourself, I 'm show you how both approaches work. Let's get started."
+  },
+  {
+   "n": 26,
+   "ini": 123.53,
+   "fim": 129.68,
+   "dur": 6.15,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "both approaches work. Let's get started. All right. Now, let's start with method All right. Now, let's start with method one. As you can see on my screen, I've one. As you can see on my screen, I've opened the Open Code website. Now, if"
+  },
+  {
+   "n": 27,
+   "ini": 129.68,
+   "fim": 137.58,
+   "dur": 7.9,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "opened the Open Code website. Now, if you've never heard of Open Code before, you've never heard of Open Code before, it's a free open source alternative to it's a free open source alternative to Claude Code. It allows you to use AI Claude Code. It allows you to use AI coding agents to create project folders,"
+  },
+  {
+   "n": 28,
+   "ini": 137.58,
+   "fim": 143.88,
+   "dur": 6.3,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "coding agents to create project folders, run commands, write animation code, and run commands, write animation code, and render complete videos directly on your render complete videos directly on your computer. And the interesting part is"
+  },
+  {
+   "n": 29,
+   "ini": 143.88,
+   "fim": 151.88,
+   "dur": 8.0,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "computer. And the interesting part is that Open Code supports free AI models. that Open Code supports free AI models. So you don't necessarily need a paid So you don't necessarily need a paid Claude subscription to experiment with Claude subscription to experiment with this workflow. Now, to download it,"
+  },
+  {
+   "n": 30,
+   "ini": 151.88,
+   "fim": 157.98,
+   "dur": 6.1,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "this workflow. Now, to download it, simply select the version that matches simply select the version that matches your operating system. We've got Mac, your operating system. We've got Mac, Windows, and Linux. For me, I'm using a"
+  },
+  {
+   "n": 31,
+   "ini": 157.98,
+   "fim": 164.08,
+   "dur": 6.1,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Windows, and Linux. For me, I'm using a Mac, so I'll download the Mac desktop Mac, so I'll download the Mac desktop version. Once that's done, let's open version. Once that's done, let's open the application. All right. Now that"
+  },
+  {
+   "n": 32,
+   "ini": 164.08,
+   "fim": 171.28,
+   "dur": 7.2,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "the application. All right. Now that we're inside Open Code, the first thing we're inside Open Code, the first thing we need is a project folder. This is we need is a project folder. This is where our AI agent will create the where our AI agent will create the animation files, install the rendering"
+  },
+  {
+   "n": 33,
+   "ini": 171.28,
+   "fim": 177.68,
+   "dur": 6.4,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "animation files, install the rendering tools, and save our final video. I've tools, and save our final video. I've already created my project folder, so already created my project folder, so I'll select it and open it inside Open"
+  },
+  {
+   "n": 34,
+   "ini": 177.68,
+   "fim": 183.88,
+   "dur": 6.2,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "I'll select it and open it inside Open Code. Now our workspace is ready. But Code. Now our workspace is ready. But before we paste in our master prompt, before we paste in our master prompt, there's one important setting we need to"
+  },
+  {
+   "n": 35,
+   "ini": 183.88,
+   "fim": 191.18,
+   "dur": 7.3,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "there's one important setting we need to change. All right. Now I'll click on change. All right. Now I'll click on choose model. And for this workflow, I'm choose model. And for this workflow, I'm going to use GLM 5.3 Flash Free. This is"
+  },
+  {
+   "n": 36,
+   "ini": 191.18,
+   "fim": 197.38,
+   "dur": 6.2,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "going to use GLM 5.3 Flash Free. This is the free model we're testing today. the free model we're testing today. Next, I'll select the higher reasoning Next, I'll select the higher reasoning effort option shown here. The idea is to"
+  },
+  {
+   "n": 37,
+   "ini": 197.38,
+   "fim": 203.48,
+   "dur": 6.1,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "effort option shown here. The idea is to give the model more room to work through give the model more room to work through our animation code, character movements, our animation code, character movements, and camera angles. All right. Now that"
+  },
+  {
+   "n": 38,
+   "ini": 203.48,
+   "fim": 210.98,
+   "dur": 7.5,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "and camera angles. All right. Now that our free model is selected, let's get our free model is selected, let's get our master prompt. Now I'll head back to our master prompt. Now I'll head back to our Google Doc. And as you can see, I've our Google Doc. And as you can see, I've already prepared the complete master"
+  },
+  {
+   "n": 39,
+   "ini": 210.98,
+   "fim": 218.38,
+   "dur": 7.4,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "already prepared the complete master prompt for this workflow. This prompt prompt for this workflow. This prompt instructs the coding agent to set up our instructs the coding agent to set up our animation environment, install the animation environment, install the necessary dependencies, and create the"
+  },
+  {
+   "n": 40,
+   "ini": 218.38,
+   "fim": 222.6,
+   "dur": 4.22,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "necessary dependencies, and create the entire video. Now one thing I want to entire video. Now one thing I want to point out is the animation style. We're"
+  },
+  {
+   "n": 41,
+   "ini": 222.6,
+   "fim": 230.68,
+   "dur": 8.08,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "point out is the animation style. We're using 2D stick man characters with using 2D stick man characters with slightly wobbly white circular heads, slightly wobbly white circular heads, thick black marker outlines, simple thick black marker outlines, simple colored outfits, and thin black limbs."
+  },
+  {
+   "n": 42,
+   "ini": 230.68,
+   "fim": 237.17,
+   "dur": 6.49,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "colored outfits, and thin black limbs. But unlike traditional flat stick man But unlike traditional flat stick man animations, these characters exist animations, these characters exist inside colorful toon-shaded 3D inside colorful toon-shaded 3D"
+  },
+  {
+   "n": 43,
+   "ini": 237.17,
+   "fim": 244.68,
+   "dur": 7.51,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "environments. So we get that combination environments. So we get that combination of simple 2D characters and cinematic 3D of simple 2D characters and cinematic 3D camera movements. And the master prompt camera movements. And the master prompt already contains the instructions for"
+  },
+  {
+   "n": 44,
+   "ini": 244.68,
+   "fim": 251.18,
+   "dur": 6.5,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "already contains the instructions for maintaining that style. Now I'll copy maintaining that style. Now I'll copy everything using command + A and command everything using command + A and command + C. Then I'll head back to OpenCode,"
+  },
+  {
+   "n": 45,
+   "ini": 251.18,
+   "fim": 257.58,
+   "dur": 6.4,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "+ C. Then I'll head back to OpenCode, paste in the prompt, and hit enter. All paste in the prompt, and hit enter. All right, now OpenCode is processing our right, now OpenCode is processing our instructions. And as you can see, it's"
+  },
+  {
+   "n": 46,
+   "ini": 257.58,
+   "fim": 265.08,
+   "dur": 7.5,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "instructions. And as you can see, it's creating the project directories, creating the project directories, preparing the rendering environment, and preparing the rendering environment, and installing the necessary tools. The installing the necessary tools. The workflow uses JavaScript-based animation"
+  },
+  {
+   "n": 47,
+   "ini": 265.08,
+   "fim": 272.38,
+   "dur": 7.3,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "workflow uses JavaScript-based animation tools, including 3.js and browser tools, including 3.js and browser rendering components. So instead of rendering components. So instead of manually installing everything manually installing everything ourselves, we're letting the coding"
+  },
+  {
+   "n": 48,
+   "ini": 272.38,
+   "fim": 273.9,
+   "dur": 1.52,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "ourselves, we're letting the coding agent handle the setup. And once that's"
+  },
+  {
+   "n": 49,
+   "ini": 273.9,
+   "fim": 280.08,
+   "dur": 6.18,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "agent handle the setup. And once that's complete, it starts walking us through complete, it starts walking us through the actual video production process. All the actual video production process. All right, now the first thing it's asking"
+  },
+  {
+   "n": 50,
+   "ini": 280.08,
+   "fim": 288.18,
+   "dur": 8.1,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "right, now the first thing it's asking for is our aspect ratio. We've got 16 to for is our aspect ratio. We've got 16 to 9 for standard YouTube landscape videos, 9 for standard YouTube landscape videos, 9 to 16 for YouTube Shorts, TikTok, and"
+  },
+  {
+   "n": 51,
+   "ini": 288.18,
+   "fim": 295.18,
+   "dur": 7.0,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "9 to 16 for YouTube Shorts, TikTok, and Instagram Reels, and 1 to 1 for square Instagram Reels, and 1 to 1 for square videos. For this demonstration, I'm videos. For this demonstration, I'm going to use 9 to 16. So I'll select"
+  },
+  {
+   "n": 52,
+   "ini": 295.18,
+   "fim": 301.58,
+   "dur": 6.4,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "going to use 9 to 16. So I'll select that and submit. Next, it's asking how that and submit. Next, it's asking how long we want our video to be. As you can long we want our video to be. As you can see, we've got different duration"
+  },
+  {
+   "n": 53,
+   "ini": 301.58,
+   "fim": 307.98,
+   "dur": 6.4,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "see, we've got different duration options from 30 seconds to several options from 30 seconds to several minutes. And we can also enter our own minutes. And we can also enter our own custom duration. But since we're just"
+  },
+  {
+   "n": 54,
+   "ini": 307.98,
+   "fim": 314.08,
+   "dur": 6.1,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "custom duration. But since we're just testing this workflow, I'm going to go testing this workflow, I'm going to go with 1 minute. So I'll select that and with 1 minute. So I'll select that and continue. All right, now OpenCode has"
+  },
+  {
+   "n": 55,
+   "ini": 314.08,
+   "fim": 321.68,
+   "dur": 7.6,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "continue. All right, now OpenCode has generated 10 different historical and generated 10 different historical and engineering story ideas. And what's engineering story ideas. And what's interesting is that these aren't just interesting is that these aren't just random titles. Each idea includes a"
+  },
+  {
+   "n": 56,
+   "ini": 321.68,
+   "fim": 327.88,
+   "dur": 6.2,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "random titles. Each idea includes a hook, an interesting historical event, a hook, an interesting historical event, a twist, and visual moments that could twist, and visual moments that could work well with our animation style."
+  },
+  {
+   "n": 57,
+   "ini": 327.88,
+   "fim": 333.47,
+   "dur": 5.59,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "work well with our animation style. We've got stories like the emperor We've got stories like the emperor defeated by rabbits, the Boston Molasses defeated by rabbits, the Boston Molasses Disaster, Australia's war against emus,"
+  },
+  {
+   "n": 58,
+   "ini": 333.47,
+   "fim": 340.4,
+   "dur": 6.93,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "Disaster, Australia's war against emus, and the underground fire that continues and the underground fire that continues burning. We've also got the story of the burning. We've also got the story of the melted chocolate bar that led to the melted chocolate bar that led to the"
+  },
+  {
+   "n": 59,
+   "ini": 340.4,
+   "fim": 347.28,
+   "dur": 6.88,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "invention of the microwave. And invention of the microwave. And honestly, I think that one's pretty honestly, I think that one's pretty interesting. So for this demonstration, interesting. So for this demonstration, I'm going to choose idea number 6. I'll"
+  },
+  {
+   "n": 60,
+   "ini": 347.28,
+   "fim": 351.68,
+   "dur": 4.4,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "I'm going to choose idea number 6. I'll type 6 and hit enter. All right, now type 6 and hit enter. All right, now OpenCode is generating our narration."
+  },
+  {
+   "n": 61,
+   "ini": 351.68,
+   "fim": 359.78,
+   "dur": 8.1,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "OpenCode is generating our narration. And as you can see, it's following a And as you can see, it's following a storytelling structure that starts with storytelling structure that starts with a strong hook, introduces the historical a strong hook, introduces the historical event, builds the mystery, and ends with"
+  },
+  {
+   "n": 62,
+   "ini": 359.78,
+   "fim": 366.99,
+   "dur": 7.21,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "event, builds the mystery, and ends with an interesting twist. an interesting twist. Now once the script is ready, we can Now once the script is ready, we can read through it and decide whether we read through it and decide whether we want to approve it or make changes. For"
+  },
+  {
+   "n": 63,
+   "ini": 366.99,
+   "fim": 373.69,
+   "dur": 6.7,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "want to approve it or make changes. For me, I want to adjust a few things. So, me, I want to adjust a few things. So, I'll select the editing option, make my I'll select the editing option, make my changes, and submit the revised script."
+  },
+  {
+   "n": 64,
+   "ini": 373.69,
+   "fim": 381.79,
+   "dur": 8.1,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "changes, and submit the revised script. Now Open Code is processing our version, Now Open Code is processing our version, and once that's done, we can move into and once that's done, we can move into voiceover generation. All right. Now the voiceover generation. All right. Now the next thing we need is our voiceover. And"
+  },
+  {
+   "n": 65,
+   "ini": 381.79,
+   "fim": 388.58,
+   "dur": 6.79,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "next thing we need is our voiceover. And because we're trying to keep this because we're trying to keep this workflow free, I'm going to use a free workflow free, I'm going to use a free text-to-speech option. Now you can text-to-speech option. Now you can record the narration yourself if you"
+  },
+  {
+   "n": 66,
+   "ini": 388.58,
+   "fim": 395.69,
+   "dur": 7.11,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "record the narration yourself if you prefer, or you can use tools like CapCut prefer, or you can use tools like CapCut text-to-speech, Google TTS, Edge read text-to-speech, Google TTS, Edge read aloud, or other available free voice"
+  },
+  {
+   "n": 67,
+   "ini": 395.69,
+   "fim": 402.33,
+   "dur": 6.64,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "aloud, or other available free voice generators. But for this demonstration, generators. But for this demonstration, I'm going to use a browser-based I'm going to use a browser-based text-to-speech website. So, I'll open a text-to-speech website. So, I'll open a new tab and head over to the free"
+  },
+  {
+   "n": 68,
+   "ini": 402.33,
+   "fim": 407.49,
+   "dur": 5.16,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "new tab and head over to the free text-to-speech platform. As you can see, text-to-speech platform. As you can see, we've got different voices available."
+  },
+  {
+   "n": 69,
+   "ini": 407.49,
+   "fim": 413.49,
+   "dur": 6.0,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "we've got different voices available. And for this particular tool, I can And for this particular tool, I can start generating without creating an start generating without creating an account. Now I'll paste in our script."
+  },
+  {
+   "n": 70,
+   "ini": 413.49,
+   "fim": 418.38,
+   "dur": 4.89,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "account. Now I'll paste in our script. All right. Now let's listen to a few All right. Now let's listen to a few voices. voices. &gt;&gt; Welcome to freetexttospeech.ai."
+  },
+  {
+   "n": 71,
+   "ini": 418.38,
+   "fim": 422.19,
+   "dur": 3.81,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "&gt;&gt; Welcome to freetexttospeech.ai. If you like the voice you hear, use it If you like the voice you hear, use it to generate your voiceovers."
+  },
+  {
+   "n": 72,
+   "ini": 422.19,
+   "fim": 425.99,
+   "dur": 3.8,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "to generate your voiceovers. &gt;&gt; Okay. This one sounds nice, but let's &gt;&gt; Okay. This one sounds nice, but let's check another."
+  },
+  {
+   "n": 73,
+   "ini": 425.99,
+   "fim": 429.38,
+   "dur": 3.39,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "check another. &gt;&gt; Welcome to freetexttospeech.ai."
+  },
+  {
+   "n": 74,
+   "ini": 429.38,
+   "fim": 437.19,
+   "dur": 7.81,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "&gt;&gt; Welcome to freetexttospeech.ai. &gt;&gt; All right. I think I prefer this one. &gt;&gt; All right. I think I prefer this one. It's got a nice British accent, and I It's got a nice British accent, and I think it works well for our historical think it works well for our historical narration. So, I'll select it and click"
+  },
+  {
+   "n": 75,
+   "ini": 437.19,
+   "fim": 443.19,
+   "dur": 6.0,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "narration. So, I'll select it and click generate speech. generate speech. &gt;&gt; In 1945, &gt;&gt; In 1945, a chocolate bar melted inside a man's"
+  },
+  {
+   "n": 76,
+   "ini": 443.19,
+   "fim": 449.29,
+   "dur": 6.1,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "a chocolate bar melted inside a man's pocket. pocket. &gt;&gt; Okay. This sounds really nice. Now we &gt;&gt; Okay. This sounds really nice. Now we can also generate a few alternatives and"
+  },
+  {
+   "n": 77,
+   "ini": 449.29,
+   "fim": 455.69,
+   "dur": 6.4,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "can also generate a few alternatives and compare them. So, I'm going to test compare them. So, I'm going to test another voice. another voice. &gt;&gt; In 1945, a chocolate bar melted inside a"
+  },
+  {
+   "n": 78,
+   "ini": 455.69,
+   "fim": 461.19,
+   "dur": 5.5,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "&gt;&gt; In 1945, a chocolate bar melted inside a man's pocket and changed every c man's pocket and changed every c &gt;&gt; All right. This one sounds good, too."
+  },
+  {
+   "n": 79,
+   "ini": 461.19,
+   "fim": 467.78,
+   "dur": 6.59,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "&gt;&gt; All right. This one sounds good, too. I'll download the versions I like, then I'll download the versions I like, then choose whichever one fits our animation choose whichever one fits our animation best. All right. Now that we've best. All right. Now that we've generated our narration, let's head back"
+  },
+  {
+   "n": 80,
+   "ini": 467.78,
+   "fim": 474.49,
+   "dur": 6.71,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "generated our narration, let's head back to Open Code. I'll upload our selected to Open Code. I'll upload our selected voiceover into the conversation. And as voiceover into the conversation. And as you can see, Open Code has received the"
+  },
+  {
+   "n": 81,
+   "ini": 474.49,
+   "fim": 480.69,
+   "dur": 6.2,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "you can see, Open Code has received the audio file. Now it's analyzing the audio file. Now it's analyzing the duration, pauses, and sentence timing so duration, pauses, and sentence timing so it can synchronize our visuals with the"
+  },
+  {
+   "n": 82,
+   "ini": 480.69,
+   "fim": 487.08,
+   "dur": 6.39,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "it can synchronize our visuals with the narration. The workflow is designed narration. The workflow is designed around a 30 frames per second timeline, around a 30 frames per second timeline, so the agent can use those timestamps to"
+  },
+  {
+   "n": 83,
+   "ini": 487.08,
+   "fim": 489.2,
+   "dur": 2.12,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "so the agent can use those timestamps to plan when each visual moment should plan when each visual moment should"
+  },
+  {
+   "n": 84,
+   "ini": 489.2,
+   "fim": 495.89,
+   "dur": 6.69,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "appear. Now let's continue. All right, appear. Now let's continue. All right, now we're in step eight, and OpenCode is now we're in step eight, and OpenCode is generating a file called plan.md."
+  },
+  {
+   "n": 85,
+   "ini": 495.89,
+   "fim": 501.89,
+   "dur": 6.0,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "generating a file called plan.md. This contains the complete shot-by-shot This contains the complete shot-by-shot structure for our animation. Now one structure for our animation. Now one thing I really like is that the prompt"
+  },
+  {
+   "n": 86,
+   "ini": 501.89,
+   "fim": 508.19,
+   "dur": 6.3,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "thing I really like is that the prompt limits how long each shot can stay on limits how long each shot can stay on screen. For this workflow, we're aiming screen. For this workflow, we're aiming for no more than 90 frames per shot,"
+  },
+  {
+   "n": 87,
+   "ini": 508.19,
+   "fim": 514.29,
+   "dur": 6.1,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "for no more than 90 frames per shot, which is approximately 3 seconds. So which is approximately 3 seconds. So instead of watching one static scene for instead of watching one static scene for too long, we get frequent camera"
+  },
+  {
+   "n": 88,
+   "ini": 514.29,
+   "fim": 521.59,
+   "dur": 7.3,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "too long, we get frequent camera changes. We've got wide shots, medium changes. We've got wide shots, medium shots, close-ups, and different shots, close-ups, and different cinematic angles. And as you can see, cinematic angles. And as you can see, OpenCode is already preparing that"
+  },
+  {
+   "n": 89,
+   "ini": 521.59,
+   "fim": 527.69,
+   "dur": 6.1,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "OpenCode is already preparing that entire sequence for us. Now we're moving entire sequence for us. Now we're moving into steps nine and 10, and this is into steps nine and 10, and this is where the coding agent starts building"
+  },
+  {
+   "n": 90,
+   "ini": 527.69,
+   "fim": 533.69,
+   "dur": 6.0,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "where the coding agent starts building our actual animation. It's writing the our actual animation. It's writing the JavaScript code for our 2D marker-style JavaScript code for our 2D marker-style characters and the surrounding 3D"
+  },
+  {
+   "n": 91,
+   "ini": 533.69,
+   "fim": 540.29,
+   "dur": 6.6,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "characters and the surrounding 3D environments. Now OpenCode is asking for environments. Now OpenCode is asking for approval before continuing. So I'll approval before continuing. So I'll review the request and click approve."
+  },
+  {
+   "n": 92,
+   "ini": 540.29,
+   "fim": 548.09,
+   "dur": 7.8,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "review the request and click approve. And as you can see, it's checking the And as you can see, it's checking the rendering files and preparing the rendering files and preparing the character animations. Let's give it some character animations. Let's give it some time. All right, now our OpenCode video"
+  },
+  {
+   "n": 93,
+   "ini": 548.33,
+   "fim": 552.09,
+   "dur": 3.76,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "is finally ready. Let's check out what is finally ready. Let's check out what the free model created."
+  },
+  {
+   "n": 94,
+   "ini": 552.09,
+   "fim": 559.13,
+   "dur": 7.04,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "the free model created. &gt;&gt; In 1945, a chocolate bar melted inside a &gt;&gt; In 1945, a chocolate bar melted inside a man's pocket [music] man's pocket [music] and changed every kitchen on Earth."
+  },
+  {
+   "n": 95,
+   "ini": 559.13,
+   "fim": 565.6,
+   "dur": 6.47,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "and changed every kitchen on Earth. Percy Spencer was walking through a Percy Spencer was walking through a radar lab when the candy in his coat radar lab when the candy in his coat [music] quietly turned to liquid. No"
+  },
+  {
+   "n": 96,
+   "ini": 565.6,
+   "fim": 571.87,
+   "dur": 6.27,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "[music] quietly turned to liquid. No stove, no heat. stove, no heat. Most engineers would have wiped their Most engineers would have wiped their pocket and moved on."
+  },
+  {
+   "n": 97,
+   "ini": 571.87,
+   "fim": 574.67,
+   "dur": 2.8,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "pocket and moved on. Percy sent someone to buy popcorn."
+  },
+  {
+   "n": 98,
+   "ini": 574.67,
+   "fim": 577.73,
+   "dur": 3.06,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "Percy sent someone to buy popcorn. He held the bag in front of a humming He held the bag in front of a humming"
+  },
+  {
+   "n": 99,
+   "ini": 577.73,
+   "fim": 583.27,
+   "dur": 5.54,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "radar tube. Within seconds, kernels radar tube. Within seconds, kernels blasting everywhere. The lab sounded blasting everywhere. The lab sounded like a thunderstorm."
+  },
+  {
+   "n": 100,
+   "ini": 583.27,
+   "fim": 588.0,
+   "dur": 4.73,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "like a thunderstorm. Next morning, Next morning, &gt;&gt; All right, honestly, this is pretty &gt;&gt; All right, honestly, this is pretty impressive. I mean, think about it. We"
+  },
+  {
+   "n": 101,
+   "ini": 588.0,
+   "fim": 592.67,
+   "dur": 4.67,
+   "planos": 3,
+   "por_fala": false,
+   "fala": "impressive. I mean, think about it. We used a free AI coding model to generate used a free AI coding model to generate the script, build our animation through"
+  },
+  {
+   "n": 102,
+   "ini": 592.67,
+   "fim": 598.69,
+   "dur": 6.02,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "the script, build our animation through code, synchronize the voiceover, and code, synchronize the voiceover, and render the final video. And the render the final video. And the character style looks pretty consistent,"
+  },
+  {
+   "n": 103,
+   "ini": 598.69,
+   "fim": 605.19,
+   "dur": 6.5,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "character style looks pretty consistent, too. So for a free workflow, I think too. So for a free workflow, I think OpenCode did a really good job. But now OpenCode did a really good job. But now let's see what happens when we use"
+  },
+  {
+   "n": 104,
+   "ini": 605.19,
+   "fim": 605.9,
+   "dur": 0.71,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "let's see what happens when we use"
+  },
+  {
+   "n": 105,
+   "ini": 605.9,
+   "fim": 610.7,
+   "dur": 4.8,
+   "planos": 10,
+   "por_fala": false,
+   "fala": "Claude code. All right, now we're moving Claude code. All right, now we're moving into method two, and this time we're into method two, and this time we're going to use Claude code. But to make"
+  },
+  {
+   "n": 106,
+   "ini": 610.7,
+   "fim": 616.7,
+   "dur": 6.0,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "going to use Claude code. But to make the comparison as consistent as the comparison as consistent as possible, we're using the same animation possible, we're using the same animation master prompt. So, I'll head back to our master prompt. So, I'll head back to our"
+  },
+  {
+   "n": 107,
+   "ini": 616.7,
+   "fim": 623.89,
+   "dur": 7.19,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Google Doc and copy the entire agentic Google Doc and copy the entire agentic prompt again. Then I'll open Claude prompt again. Then I'll open Claude code, paste it in, and hit enter. Now"
+  },
+  {
+   "n": 108,
+   "ini": 623.89,
+   "fim": 631.69,
+   "dur": 7.8,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "code, paste it in, and hit enter. Now Claude is setting up the animation Claude is setting up the animation workflow. All right, now Claude is workflow. All right, now Claude is asking for our aspect ratio. Since we asking for our aspect ratio. Since we used 9 to 16 in open code, I'm going to"
+  },
+  {
+   "n": 109,
+   "ini": 631.69,
+   "fim": 638.59,
+   "dur": 6.9,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "used 9 to 16 in open code, I'm going to select the same format here. select the same format here. For the duration, I'm going to choose 1 For the duration, I'm going to choose 1 minute and 30 seconds. Then I'll submit."
+  },
+  {
+   "n": 110,
+   "ini": 638.59,
+   "fim": 646.09,
+   "dur": 7.5,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "minute and 30 seconds. Then I'll submit. Now Claude is generating our story Now Claude is generating our story ideas. And as you can see, we've got ideas. And as you can see, we've got different historical events to choose different historical events to choose from. We've got the man who sold the"
+  },
+  {
+   "n": 111,
+   "ini": 646.09,
+   "fim": 652.49,
+   "dur": 6.4,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "from. We've got the man who sold the Eiffel Tower, the town that couldn't Eiffel Tower, the town that couldn't stop dancing, the bucket that caused a stop dancing, the bucket that caused a disaster, and Australia's war against"
+  },
+  {
+   "n": 112,
+   "ini": 652.49,
+   "fim": 659.29,
+   "dur": 6.8,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "disaster, and Australia's war against emus. For this demonstration, I'm going emus. For this demonstration, I'm going to choose the emu war story. So, I'll to choose the emu war story. So, I'll select idea number eight and continue."
+  },
+  {
+   "n": 113,
+   "ini": 659.29,
+   "fim": 663.49,
+   "dur": 4.2,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "select idea number eight and continue. All right, now Claude has generated our All right, now Claude has generated our narration. I'll quickly go through it."
+  },
+  {
+   "n": 114,
+   "ini": 663.49,
+   "fim": 671.29,
+   "dur": 7.8,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "narration. I'll quickly go through it. Okay, this actually looks nice. The Okay, this actually looks nice. The story is interesting, and I like the way story is interesting, and I like the way the hook is written. So, I'm going to the hook is written. So, I'm going to approve it. Now let's generate our"
+  },
+  {
+   "n": 115,
+   "ini": 671.29,
+   "fim": 678.99,
+   "dur": 7.7,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "approve it. Now let's generate our voiceover. All right, now I'll copy the voiceover. All right, now I'll copy the script and head back to our free script and head back to our free text-to-speech generator. I'll paste in text-to-speech generator. I'll paste in the narration, and for this one, I'm"
+  },
+  {
+   "n": 116,
+   "ini": 678.99,
+   "fim": 682.89,
+   "dur": 3.9,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "the narration, and for this one, I'm going to use a British voice again. Now going to use a British voice again. Now I'll click generate speech."
+  },
+  {
+   "n": 117,
+   "ini": 682.89,
+   "fim": 687.59,
+   "dur": 4.7,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "I'll click generate speech. &gt;&gt; In 1932 &gt;&gt; In 1932 &gt;&gt; Okay, this sounds good. So, I'll &gt;&gt; Okay, this sounds good. So, I'll download it."
+  },
+  {
+   "n": 118,
+   "ini": 687.59,
+   "fim": 691.89,
+   "dur": 4.3,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "download it. Now Claude has instructed us to save the Now Claude has instructed us to save the file as voice.mp3."
+  },
+  {
+   "n": 119,
+   "ini": 691.89,
+   "fim": 698.59,
+   "dur": 6.7,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "file as voice.mp3. So, I'll rename the audio, head back to So, I'll rename the audio, head back to Claude code, and upload it. Then I'll Claude code, and upload it. Then I'll hit enter. Now Claude can continue"
+  },
+  {
+   "n": 120,
+   "ini": 698.59,
+   "fim": 704.87,
+   "dur": 6.28,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "hit enter. Now Claude can continue building our animation around the building our animation around the narration. All right, now our Claude narration. All right, now our Claude code video is ready. Let's check out code video is ready. Let's check out what it generated."
+  },
+  {
+   "n": 121,
+   "ini": 704.87,
+   "fim": 712.79,
+   "dur": 7.92,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "what it generated. &gt;&gt; In 1932, [music] &gt;&gt; In 1932, [music] the Australian army went to war against the Australian army went to war against a bird, a bird, and the bird won."
+  },
+  {
+   "n": 122,
+   "ini": 712.79,
+   "fim": 715.17,
+   "dur": 2.38,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "and the bird won. After the First World War, Australia After the First World War, Australia"
+  },
+  {
+   "n": 123,
+   "ini": 715.17,
+   "fim": 721.83,
+   "dur": 6.66,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "[music] gave its soldiers land to farm [music] gave its soldiers land to farm in the far west. They planted wheat, in the far west. They planted wheat, miles and miles of it."
+  },
+  {
+   "n": 124,
+   "ini": 721.83,
+   "fim": 726.67,
+   "dur": 4.84,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "miles and miles of it. Then the Great Depression hit, and Then the Great Depression hit, and [music] wheat was suddenly worth almost [music] wheat was suddenly worth almost nothing."
+  },
+  {
+   "n": 125,
+   "ini": 726.67,
+   "fim": 730.79,
+   "dur": 4.12,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "nothing. That spring, 20,000 emus showed up."
+  },
+  {
+   "n": 126,
+   "ini": 730.79,
+   "fim": 736.99,
+   "dur": 6.2,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "That spring, 20,000 emus showed up. Emus are 6 ft tall. [music] They run Emus are 6 ft tall. [music] They run km/h and these ones were very very"
+  },
+  {
+   "n": 127,
+   "ini": 736.99,
+   "fim": 742.99,
+   "dur": 6.0,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "km/h and these ones were very very hungry. hungry. They ate the wheat, [music] they They ate the wheat, [music] they flattened the fences, flattened the fences, and the farmers, old soldiers"
+  },
+  {
+   "n": 128,
+   "ini": 742.99,
+   "fim": 749.19,
+   "dur": 6.2,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "and the farmers, old soldiers themselves, themselves, &gt;&gt; Okay, wow. This actually looks really &gt;&gt; Okay, wow. This actually looks really nice. The environment is detailed, the"
+  },
+  {
+   "n": 129,
+   "ini": 749.19,
+   "fim": 753.49,
+   "dur": 4.3,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "nice. The environment is detailed, the camera movements are smooth, and the camera movements are smooth, and the overall animation feels cinematic."
+  },
+  {
+   "n": 130,
+   "ini": 753.49,
+   "fim": 754.77,
+   "dur": 1.28,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "overall animation feels cinematic. And as you can see, Claude also"
+  },
+  {
+   "n": 131,
+   "ini": 754.77,
+   "fim": 760.1,
+   "dur": 5.33,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "And as you can see, Claude also generated additional publishing generated additional publishing information for our video. We've got information for our video. We've got thumbnail suggestions, different title"
+  },
+  {
+   "n": 132,
+   "ini": 760.1,
+   "fim": 767.33,
+   "dur": 7.23,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "thumbnail suggestions, different title options, a description, and hashtags. So options, a description, and hashtags. So that's another useful part of the that's another useful part of the workflow. Now let's compare both workflow. Now let's compare both results. All right, now that we've seen"
+  },
+  {
+   "n": 133,
+   "ini": 767.33,
+   "fim": 774.47,
+   "dur": 7.14,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "results. All right, now that we've seen both generations, let's put them side by both generations, let's put them side by side. First, we've got open code using side. First, we've got open code using our free model, and then we've got our free model, and then we've got"
+  },
+  {
+   "n": 134,
+   "ini": 774.47,
+   "fim": 777.33,
+   "dur": 2.86,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "Claude code using the premium model. Now Claude code using the premium model. Now"
+  },
+  {
+   "n": 135,
+   "ini": 777.33,
+   "fim": 780.93,
+   "dur": 3.6,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "one thing I noticed is that Claude added one thing I noticed is that Claude added more detail to the 3D environments. The"
+  },
+  {
+   "n": 136,
+   "ini": 780.93,
+   "fim": 784.0,
+   "dur": 3.07,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "more detail to the 3D environments. The backgrounds look a little richer, and backgrounds look a little richer, and the camera movements feel more"
+  },
+  {
+   "n": 137,
+   "ini": 784.0,
+   "fim": 788.83,
+   "dur": 4.83,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "the camera movements feel more cinematic. But when you look at the open cinematic. But when you look at the open code version, the character consistency code version, the character consistency"
+  },
+  {
+   "n": 138,
+   "ini": 788.83,
+   "fim": 793.07,
+   "dur": 4.24,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "is still pretty impressive. We've got is still pretty impressive. We've got those white-headed 2D stick man those white-headed 2D stick man characters, the marker style outlines,"
+  },
+  {
+   "n": 139,
+   "ini": 793.07,
+   "fim": 798.6,
+   "dur": 5.53,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "characters, the marker style outlines, and the same colorful 3D environments. and the same colorful 3D environments. And honestly, considering that we're And honestly, considering that we're"
+  },
+  {
+   "n": 140,
+   "ini": 798.6,
+   "fim": 803.33,
+   "dur": 4.73,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "using a free model, I think open code using a free model, I think open code delivered a really good result. delivered a really good result. For me, Claude code has the edge when it"
+  },
+  {
+   "n": 141,
+   "ini": 803.33,
+   "fim": 808.0,
+   "dur": 4.67,
+   "planos": 3,
+   "por_fala": false,
+   "fala": "For me, Claude code has the edge when it comes to overall polish, but open code comes to overall polish, but open code is definitely worth considering if is definitely worth considering if"
+  },
+  {
+   "n": 142,
+   "ini": 808.0,
+   "fim": 812.33,
+   "dur": 4.33,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "you're working with a limited budget. you're working with a limited budget. Now remember, we use different stories Now remember, we use different stories and durations for these demonstrations,"
+  },
+  {
+   "n": 143,
+   "ini": 812.33,
+   "fim": 817.5,
+   "dur": 5.17,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "and durations for these demonstrations, so this isn't a perfectly controlled so this isn't a perfectly controlled comparison, but it gives us a good idea comparison, but it gives us a good idea"
+  },
+  {
+   "n": 144,
+   "ini": 817.5,
+   "fim": 821.6,
+   "dur": 4.1,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "of what both workflows can produce. All of what both workflows can produce. All right, now let's move into our third right, now let's move into our third"
+  },
+  {
+   "n": 145,
+   "ini": 821.6,
+   "fim": 826.57,
+   "dur": 4.97,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "method. Now what if you don't want to method. Now what if you don't want to use a coding agent or maybe you prefer use a coding agent or maybe you prefer generating your animations manually, so"
+  },
+  {
+   "n": 146,
+   "ini": 826.57,
+   "fim": 831.17,
+   "dur": 4.6,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "generating your animations manually, so you've got complete control over every you've got complete control over every image, character, and video clip? Well,"
+  },
+  {
+   "n": 147,
+   "ini": 831.17,
+   "fim": 837.5,
+   "dur": 6.33,
+   "planos": 3,
+   "por_fala": false,
+   "fala": "image, character, and video clip? Well, that's exactly what we're going to do that's exactly what we're going to do next. For method three, we're using next. For method three, we're using ChatGPT, Google Flow, and CapCut. And ChatGPT, Google Flow, and CapCut. And"
+  },
+  {
+   "n": 148,
+   "ini": 837.5,
+   "fim": 842.8,
+   "dur": 5.3,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "the interesting part is that you can the interesting part is that you can manage most of this workflow directly manage most of this workflow directly from your browser. So let's get started."
+  },
+  {
+   "n": 149,
+   "ini": 842.8,
+   "fim": 849.49,
+   "dur": 6.69,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "from your browser. So let's get started. All right, now I'll head back to our All right, now I'll head back to our Google Doc, and this time I'm going to Google Doc, and this time I'm going to open tab three. This is where I've open tab three. This is where I've prepared the master prompt for our"
+  },
+  {
+   "n": 150,
+   "ini": 849.49,
+   "fim": 856.39,
+   "dur": 6.9,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "prepared the master prompt for our manual animation workflow. So I'll copy manual animation workflow. So I'll copy everything using command plus A and everything using command plus A and command plus C. If you're using Windows,"
+  },
+  {
+   "n": 151,
+   "ini": 856.39,
+   "fim": 858.9,
+   "dur": 2.51,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "command plus C. If you're using Windows, that's control + A and control + C."
+  },
+  {
+   "n": 152,
+   "ini": 858.9,
+   "fim": 866.39,
+   "dur": 7.49,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "that's control + A and control + C. Now I'll open ChatGPT. You can also use Now I'll open ChatGPT. You can also use other chatbots like Claude, Gemini, or other chatbots like Claude, Gemini, or DeepSeek. But for this demonstration,"
+  },
+  {
+   "n": 153,
+   "ini": 866.39,
+   "fim": 872.49,
+   "dur": 6.1,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "DeepSeek. But for this demonstration, I'm going to stick with ChatGPT. So I'll I'm going to stick with ChatGPT. So I'll paste in our master prompt and hit paste in our master prompt and hit enter. All right, now ChatGPT is walking"
+  },
+  {
+   "n": 154,
+   "ini": 872.49,
+   "fim": 878.89,
+   "dur": 6.4,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "enter. All right, now ChatGPT is walking us through the workflow one step at a us through the workflow one step at a time. The first thing it's asking for is time. The first thing it's asking for is our aspect ratio. We've got 16 to 9 for"
+  },
+  {
+   "n": 155,
+   "ini": 878.89,
+   "fim": 886.39,
+   "dur": 7.5,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "our aspect ratio. We've got 16 to 9 for YouTube landscape videos, 9 to 16 for YouTube landscape videos, 9 to 16 for vertical shorts, TikTok, and Reels, and vertical shorts, TikTok, and Reels, and 1 to 1 for square videos. For this"
+  },
+  {
+   "n": 156,
+   "ini": 886.39,
+   "fim": 892.69,
+   "dur": 6.3,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "1 to 1 for square videos. For this demonstration, I'm going to use 9 to 16. demonstration, I'm going to use 9 to 16. So I'll select that and continue. Next, So I'll select that and continue. Next, it's asking how long we want our"
+  },
+  {
+   "n": 157,
+   "ini": 892.69,
+   "fim": 900.79,
+   "dur": 8.1,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "it's asking how long we want our animation to be. Since we're just animation to be. Since we're just testing the workflow, I'm going to go testing the workflow, I'm going to go with 1 minute. So I'll select 60 seconds with 1 minute. So I'll select 60 seconds and continue. Now let's generate our"
+  },
+  {
+   "n": 158,
+   "ini": 900.79,
+   "fim": 907.19,
+   "dur": 6.4,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "and continue. Now let's generate our story ideas. story ideas. All right, now ChatGPT has generated 10 All right, now ChatGPT has generated 10 different historical story ideas. And"
+  },
+  {
+   "n": 159,
+   "ini": 907.19,
+   "fim": 914.09,
+   "dur": 6.9,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "different historical story ideas. And just like our previous workflow, these just like our previous workflow, these are designed around interesting events are designed around interesting events with strong hooks and visual with strong hooks and visual storytelling opportunities. We've got"
+  },
+  {
+   "n": 160,
+   "ini": 914.09,
+   "fim": 920.19,
+   "dur": 6.1,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "storytelling opportunities. We've got the ancient computer found beneath the the ancient computer found beneath the sea, the Boston Molasses Disaster, the sea, the Boston Molasses Disaster, the volcano that changed an entire summer,"
+  },
+  {
+   "n": 161,
+   "ini": 920.19,
+   "fim": 926.39,
+   "dur": 6.2,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "volcano that changed an entire summer, and the ship discovered without a single and the ship discovered without a single sailor aboard. We've also got the story sailor aboard. We've also got the story of London Bridge being moved to Arizona."
+  },
+  {
+   "n": 162,
+   "ini": 926.39,
+   "fim": 934.09,
+   "dur": 7.7,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "of London Bridge being moved to Arizona. Now these are all interesting topics, Now these are all interesting topics, but for this demonstration, I'm going to but for this demonstration, I'm going to choose the story about the mysterious choose the story about the mysterious ship found without its crew. So I'll"
+  },
+  {
+   "n": 163,
+   "ini": 934.09,
+   "fim": 940.49,
+   "dur": 6.4,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "ship found without its crew. So I'll select that idea and continue. All select that idea and continue. All right, now ChatGPT has generated our right, now ChatGPT has generated our narration. And as you can see, we've"
+  },
+  {
+   "n": 164,
+   "ini": 940.49,
+   "fim": 948.29,
+   "dur": 7.8,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "narration. And as you can see, we've also got our character descriptions also got our character descriptions underneath. Now I think the script looks underneath. Now I think the script looks pretty good. I'd probably give it around pretty good. I'd probably give it around 8 out of 10. But one thing I want to"
+  },
+  {
+   "n": 165,
+   "ini": 948.29,
+   "fim": 954.99,
+   "dur": 6.7,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "8 out of 10. But one thing I want to show you is that you don't have to show you is that you don't have to accept the first version. If there's accept the first version. If there's anything you want to change, you can anything you want to change, you can simply click edit [music] and describe"
+  },
+  {
+   "n": 166,
+   "ini": 954.99,
+   "fim": 961.19,
+   "dur": 6.2,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "simply click edit [music] and describe the changes. For this demonstration, I'm the changes. For this demonstration, I'm going to adjust a few lines and add a going to adjust a few lines and add a little more emotion to the narration. So"
+  },
+  {
+   "n": 167,
+   "ini": 961.19,
+   "fim": 968.09,
+   "dur": 6.9,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "little more emotion to the narration. So I'll enter my changes and click submit. I'll enter my changes and click submit. Now ChatGPT is updating our script. All Now ChatGPT is updating our script. All right, this looks better. So let's"
+  },
+  {
+   "n": 168,
+   "ini": 968.09,
+   "fim": 976.69,
+   "dur": 8.6,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "right, this looks better. So let's continue. Now that we've approved our continue. Now that we've approved our story, the next thing we need is our story, the next thing we need is our character references. And as you can character references. And as you can see, ChatGPT has generated a detailed"
+  },
+  {
+   "n": 169,
+   "ini": 976.69,
+   "fim": 980.99,
+   "dur": 4.3,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "see, ChatGPT has generated a detailed character sheet prompt. This designed character sheet prompt. This designed specifically for our animation style."
+  },
+  {
+   "n": 170,
+   "ini": 980.99,
+   "fim": 988.49,
+   "dur": 7.5,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "specifically for our animation style. We've got the white circular marker We've got the white circular marker style heads, thick black outlines, style heads, thick black outlines, colored clothing, and thin stick man colored clothing, and thin stick man limbs. The prompt also includes multiple"
+  },
+  {
+   "n": 171,
+   "ini": 988.49,
+   "fim": 995.69,
+   "dur": 7.2,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "limbs. The prompt also includes multiple character views and expressions. So, character views and expressions. So, instead of generating random characters instead of generating random characters for every scene, we're creating for every scene, we're creating references we can reuse throughout the"
+  },
+  {
+   "n": 172,
+   "ini": 995.69,
+   "fim": 1001.99,
+   "dur": 6.3,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "references we can reuse throughout the video. Now, let's generate them. All video. Now, let's generate them. All right, now I'll copy our first character right, now I'll copy our first character sheet prompt. Then I'll open a new tab"
+  },
+  {
+   "n": 173,
+   "ini": 1002.1,
+   "fim": 1006.17,
+   "dur": 4.07,
+   "planos": 4,
+   "por_fala": false,
+   "fala": "and head over to Google Flow. Once we're and head over to Google Flow. Once we're inside, I'll create a new project. Now"
+  },
+  {
+   "n": 174,
+   "ini": 1006.17,
+   "fim": 1012.89,
+   "dur": 6.72,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "inside, I'll create a new project. Now I'll switch to image mode. For the I'll switch to image mode. For the aspect ratio, I'm going to use 9 to 16 aspect ratio, I'm going to use 9 to 16 since that's the format we selected"
+  },
+  {
+   "n": 175,
+   "ini": 1012.89,
+   "fim": 1021.09,
+   "dur": 8.2,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "since that's the format we selected earlier. And for the number of variants, earlier. And for the number of variants, I'm going to generate four. That way we I'm going to generate four. That way we can compare the results and choose can compare the results and choose whichever one looks best. Now I'll paste"
+  },
+  {
+   "n": 176,
+   "ini": 1021.09,
+   "fim": 1024.89,
+   "dur": 3.8,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "whichever one looks best. Now I'll paste in our prompt and click generate. All in our prompt and click generate. All right, now our character sheet is ready."
+  },
+  {
+   "n": 177,
+   "ini": 1024.89,
+   "fim": 1025.53,
+   "dur": 0.64,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "right, now our character sheet is ready."
+  },
+  {
+   "n": 178,
+   "ini": 1025.53,
+   "fim": 1032.93,
+   "dur": 7.4,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "Let's check it out. Let's check it out. Okay, this looks really nice. The Okay, this looks really nice. The proportions are good and the character proportions are good and the character follows the style we're aiming for. For follows the style we're aiming for. For"
+  },
+  {
+   "n": 179,
+   "ini": 1032.93,
+   "fim": 1040.49,
+   "dur": 7.56,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "me, I think I'll go with the first me, I think I'll go with the first version. So, I'll save it. Now let's version. So, I'll save it. Now let's head back to ChatGPT. I'll upload our head back to ChatGPT. I'll upload our selected character sheet so the engine"
+  },
+  {
+   "n": 180,
+   "ini": 1040.49,
+   "fim": 1045.03,
+   "dur": 4.54,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "selected character sheet so the engine can review it. Once that's approved, we can review it. Once that's approved, we can continue generating the remaining can continue generating the remaining"
+  },
+  {
+   "n": 181,
+   "ini": 1045.03,
+   "fim": 1051.03,
+   "dur": 6.0,
+   "planos": 11,
+   "por_fala": false,
+   "fala": "characters. All right, now I'll copy the characters. All right, now I'll copy the next character prompt. Then I'll return next character prompt. Then I'll return to Google Flow, paste it in, and to Google Flow, paste it in, and"
+  },
+  {
+   "n": 182,
+   "ini": 1051.03,
+   "fim": 1054.3,
+   "dur": 3.27,
+   "planos": 3,
+   "por_fala": false,
+   "fala": "generate. I'll repeat the same process generate. I'll repeat the same process for the remaining characters. And once for the remaining characters. And once"
+  },
+  {
+   "n": 183,
+   "ini": 1054.3,
+   "fim": 1057.0,
+   "dur": 2.7,
+   "planos": 3,
+   "por_fala": false,
+   "fala": "everything is ready, I'll go through the everything is ready, I'll go through the results and select the best version of"
+  },
+  {
+   "n": 184,
+   "ini": 1057.0,
+   "fim": 1059.5,
+   "dur": 2.5,
+   "planos": 6,
+   "por_fala": false,
+   "fala": "results and select the best version of each one. Now we've got our character"
+  },
+  {
+   "n": 185,
+   "ini": 1059.5,
+   "fim": 1066.29,
+   "dur": 6.79,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "each one. Now we've got our character references ready. The next thing we need references ready. The next thing we need is our video prompts. All right, now is our video prompts. All right, now I'll head back to ChatGPT and type next."
+  },
+  {
+   "n": 186,
+   "ini": 1066.29,
+   "fim": 1070.49,
+   "dur": 4.2,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "I'll head back to ChatGPT and type next. And as you can see, the engine has And as you can see, the engine has generated our detailed video prompts."
+  },
+  {
+   "n": 187,
+   "ini": 1070.49,
+   "fim": 1078.09,
+   "dur": 7.6,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "generated our detailed video prompts. These prompts include the characters, These prompts include the characters, camera angles, scene transitions, and camera angles, scene transitions, and the actions happening throughout the the actions happening throughout the story. Now for this particular project,"
+  },
+  {
+   "n": 188,
+   "ini": 1078.09,
+   "fim": 1085.59,
+   "dur": 7.5,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "story. Now for this particular project, we're working with four main video we're working with four main video clips. So, we're going to generate them clips. So, we're going to generate them one after another using Google Flow. All one after another using Google Flow. All right, now I'll copy our first video"
+  },
+  {
+   "n": 189,
+   "ini": 1085.59,
+   "fim": 1087.17,
+   "dur": 1.58,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "right, now I'll copy our first video prompt. Then I'll head back to Google"
+  },
+  {
+   "n": 190,
+   "ini": 1087.17,
+   "fim": 1094.79,
+   "dur": 7.62,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "prompt. Then I'll head back to Google Flow. This time I'll switch from image Flow. This time I'll switch from image to video. For our video model, I'm going to video. For our video model, I'm going to use Omni Flash 1.2. And for the"
+  },
+  {
+   "n": 191,
+   "ini": 1094.79,
+   "fim": 1101.89,
+   "dur": 7.1,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "to use Omni Flash 1.2. And for the duration, we're using 15 seconds per duration, we're using 15 seconds per clip. I'll also select one variant to clip. I'll also select one variant to save credits. Now for this first clip,"
+  },
+  {
+   "n": 192,
+   "ini": 1101.89,
+   "fim": 1108.79,
+   "dur": 6.9,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "save credits. Now for this first clip, we're using our character references for we're using our character references for Captain Briggs, Sarah Briggs, Sophia Captain Briggs, Sarah Briggs, Sophia Briggs, and the Mary Celeste sailor. So,"
+  },
+  {
+   "n": 193,
+   "ini": 1108.79,
+   "fim": 1112.6,
+   "dur": 3.81,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Briggs, and the Mary Celeste sailor. So, I'll attach those references. Then I'll I'll attach those references. Then I'll paste in our clip one prompt and click paste in our clip one prompt and click"
+  },
+  {
+   "n": 194,
+   "ini": 1112.6,
+   "fim": 1116.43,
+   "dur": 3.83,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "generate. While clip one is generating, generate. While clip one is generating, let's move on to clip two. I'll head let's move on to clip two. I'll head"
+  },
+  {
+   "n": 195,
+   "ini": 1116.43,
+   "fim": 1121.1,
+   "dur": 4.67,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "back to ChatGPT and copy the second back to ChatGPT and copy the second video prompt. Then I'll return to Google video prompt. Then I'll return to Google"
+  },
+  {
+   "n": 196,
+   "ini": 1121.1,
+   "fim": 1125.6,
+   "dur": 4.5,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "Flow, attach the required references, Flow, attach the required references, paste in the prompt, and generate. Now paste in the prompt, and generate. Now"
+  },
+  {
+   "n": 197,
+   "ini": 1125.6,
+   "fim": 1131.03,
+   "dur": 5.43,
+   "planos": 15,
+   "por_fala": false,
+   "fala": "let's do the same for clip three. I'll let's do the same for clip three. I'll copy the prompt, upload the copy the prompt, upload the corresponding character references, and corresponding character references, and"
+  },
+  {
+   "n": 198,
+   "ini": 1131.03,
+   "fim": 1136.5,
+   "dur": 5.47,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "generate. And finally, clip four. So generate. And finally, clip four. So we're following the same process until we're following the same process until all four clips are ready. All right, now"
+  },
+  {
+   "n": 199,
+   "ini": 1136.5,
+   "fim": 1144.49,
+   "dur": 7.99,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "all four clips are ready. All right, now let's give them some time to finish. let's give them some time to finish. Okay, our videos are ready. And as you Okay, our videos are ready. And as you can see, we've got all four clips. Now,"
+  },
+  {
+   "n": 200,
+   "ini": 1144.49,
+   "fim": 1151.69,
+   "dur": 7.2,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "can see, we've got all four clips. Now, I think the results look pretty nice. I think the results look pretty nice. The characters are maintaining the The characters are maintaining the marker style appearance and the marker style appearance and the environments have that colorful 3D look."
+  },
+  {
+   "n": 201,
+   "ini": 1151.69,
+   "fim": 1156.93,
+   "dur": 5.24,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "environments have that colorful 3D look. So I'm happy with these generations. Now So I'm happy with these generations. Now let's move on to our voiceover. All let's move on to our voiceover. All right, now I'll head back to ChatGPT and"
+  },
+  {
+   "n": 202,
+   "ini": 1156.93,
+   "fim": 1163.89,
+   "dur": 6.96,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "right, now I'll head back to ChatGPT and type next. And as you can see, we've type next. And as you can see, we've reached the voiceover stage. The engine reached the voiceover stage. The engine is recommending different narration"
+  },
+  {
+   "n": 203,
+   "ini": 1163.89,
+   "fim": 1170.69,
+   "dur": 6.8,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "is recommending different narration tools, including ElevenLabs, CapCut tools, including ElevenLabs, CapCut text-to-speech, and Google TTS. You can text-to-speech, and Google TTS. You can also record your own narration if you"
+  },
+  {
+   "n": 204,
+   "ini": 1170.69,
+   "fim": 1176.69,
+   "dur": 6.0,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "also record your own narration if you prefer. But for this demonstration, I'm prefer. But for this demonstration, I'm going to use ElevenLabs. So I'll open going to use ElevenLabs. So I'll open ElevenLabs and head over to"
+  },
+  {
+   "n": 205,
+   "ini": 1176.69,
+   "fim": 1184.49,
+   "dur": 7.8,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "ElevenLabs and head over to text-to-speech. As you can see, we've text-to-speech. As you can see, we've got different voices available. You can got different voices available. You can preview them and choose whichever one preview them and choose whichever one works best for your story. For me, I'm"
+  },
+  {
+   "n": 206,
+   "ini": 1184.49,
+   "fim": 1189.69,
+   "dur": 5.2,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "works best for your story. For me, I'm going to use this particular narrator. going to use this particular narrator. So I'll select the voice and click So I'll select the voice and click generate speech."
+  },
+  {
+   "n": 207,
+   "ini": 1189.69,
+   "fim": 1194.29,
+   "dur": 4.6,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "generate speech. &gt;&gt; In 1872, &gt;&gt; In 1872, a ship crossed the Atlantic with no one a ship crossed the Atlantic with no one aboard."
+  },
+  {
+   "n": 208,
+   "ini": 1194.29,
+   "fim": 1198.23,
+   "dur": 3.94,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "aboard. &gt;&gt; Okay, this sounds good. So I'll download &gt;&gt; Okay, this sounds good. So I'll download it. Now we've got our narration ready."
+  },
+  {
+   "n": 209,
+   "ini": 1198.23,
+   "fim": 1206.29,
+   "dur": 8.06,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "it. Now we've got our narration ready. All right, now let's head back to All right, now let's head back to ChatGPT and continue to the thumbnail ChatGPT and continue to the thumbnail stage. As you can see, the engine has stage. As you can see, the engine has generated our thumbnail prompts. So I'll"
+  },
+  {
+   "n": 210,
+   "ini": 1206.29,
+   "fim": 1208.8,
+   "dur": 2.51,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "generated our thumbnail prompts. So I'll copy the first one and head back to copy the first one and head back to"
+  },
+  {
+   "n": 211,
+   "ini": 1208.8,
+   "fim": 1214.89,
+   "dur": 6.09,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Google Flow. Now I'll switch to image Google Flow. Now I'll switch to image mode. For the aspect ratio, I'm keeping mode. For the aspect ratio, I'm keeping 9 to 16 for this project. I'll attach"
+  },
+  {
+   "n": 212,
+   "ini": 1214.89,
+   "fim": 1218.89,
+   "dur": 4.0,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "9 to 16 for this project. I'll attach the required character references, paste the required character references, paste in the thumbnail prompt, and generate."
+  },
+  {
+   "n": 213,
+   "ini": 1218.89,
+   "fim": 1219.77,
+   "dur": 0.88,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "in the thumbnail prompt, and generate. Now let's do the same for the other"
+  },
+  {
+   "n": 214,
+   "ini": 1219.77,
+   "fim": 1223.0,
+   "dur": 3.23,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "Now let's do the same for the other thumbnail options. Once they're ready, thumbnail options. Once they're ready,"
+  },
+  {
+   "n": 215,
+   "ini": 1223.0,
+   "fim": 1225.7,
+   "dur": 2.7,
+   "planos": 6,
+   "por_fala": false,
+   "fala": "we can compare the results and choose we can compare the results and choose whichever one we prefer. All right, now"
+  },
+  {
+   "n": 216,
+   "ini": 1225.7,
+   "fim": 1229.23,
+   "dur": 3.53,
+   "planos": 18,
+   "por_fala": false,
+   "fala": "whichever one we prefer. All right, now our thumbnails are ready. Let's check our thumbnails are ready. Let's check them out. Okay, this first one looks"
+  },
+  {
+   "n": 217,
+   "ini": 1229.23,
+   "fim": 1232.17,
+   "dur": 2.94,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "them out. Okay, this first one looks nice. The second one is also pretty"
+  },
+  {
+   "n": 218,
+   "ini": 1232.17,
+   "fim": 1235.6,
+   "dur": 3.43,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "nice. The second one is also pretty good, but honestly, I think I prefer good, but honestly, I think I prefer"
+  },
+  {
+   "n": 219,
+   "ini": 1235.6,
+   "fim": 1238.17,
+   "dur": 2.57,
+   "planos": 4,
+   "por_fala": false,
+   "fala": "this particular version. So I'll this particular version. So I'll download it. Now we've got our video"
+  },
+  {
+   "n": 220,
+   "ini": 1238.17,
+   "fim": 1241.8,
+   "dur": 3.63,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "download it. Now we've got our video clips, voiceover, and thumbnail ready."
+  },
+  {
+   "n": 221,
+   "ini": 1241.8,
+   "fim": 1247.89,
+   "dur": 6.09,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "clips, voiceover, and thumbnail ready. The next thing we need to do is put The next thing we need to do is put everything together. Before editing, everything together. Before editing, let's quickly head back to ChatGPT. And"
+  },
+  {
+   "n": 222,
+   "ini": 1247.89,
+   "fim": 1251.89,
+   "dur": 4.0,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "let's quickly head back to ChatGPT. And as you can see, the engine has also as you can see, the engine has also prepared our YouTube publishing details."
+  },
+  {
+   "n": 223,
+   "ini": 1251.89,
+   "fim": 1258.6,
+   "dur": 6.71,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "prepared our YouTube publishing details. We've got our main title, alternative We've got our main title, alternative titles, description, SEO tags, and titles, description, SEO tags, and hashtags. For this particular story, the"
+  },
+  {
+   "n": 224,
+   "ini": 1258.6,
+   "fim": 1266.19,
+   "dur": 7.59,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "hashtags. For this particular story, the title focuses on the mysterious ship title focuses on the mysterious ship discovered without anyone aboard. Now discovered without anyone aboard. Now you can review these suggestions and you can review these suggestions and choose whichever ones work best for your"
+  },
+  {
+   "n": 225,
+   "ini": 1266.19,
+   "fim": 1272.6,
+   "dur": 6.41,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "choose whichever ones work best for your video. And once you're satisfied, you video. And once you're satisfied, you can finish the project or ask the engine can finish the project or ask the engine to generate more ideas. For me, I'm done"
+  },
+  {
+   "n": 226,
+   "ini": 1272.6,
+   "fim": 1277.69,
+   "dur": 5.09,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "to generate more ideas. For me, I'm done with this story. So I'll select Finish with this story. So I'll select Finish Project. Now let's head over to CapCut."
+  },
+  {
+   "n": 227,
+   "ini": 1277.69,
+   "fim": 1284.8,
+   "dur": 7.11,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Project. Now let's head over to CapCut. All right, now that we've generated All right, now that we've generated everything, let's put our video everything, let's put our video together. For this tutorial, I'm going together. For this tutorial, I'm going to use CapCut, but you can also use"
+  },
+  {
+   "n": 228,
+   "ini": 1284.8,
+   "fim": 1291.1,
+   "dur": 6.3,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "to use CapCut, but you can also use Adobe Premiere Pro, Clipchamp, or Adobe Premiere Pro, Clipchamp, or whichever editing tool you prefer. For whichever editing tool you prefer. For me, CapCut is pretty beginner-friendly,"
+  },
+  {
+   "n": 229,
+   "ini": 1291.1,
+   "fim": 1297.1,
+   "dur": 6.0,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "me, CapCut is pretty beginner-friendly, so that's what I'm going to use. Now so that's what I'm going to use. Now I'll create a new project and import our I'll create a new project and import our four video clips and voiceover. All"
+  },
+  {
+   "n": 230,
+   "ini": 1297.1,
+   "fim": 1305.1,
+   "dur": 8.0,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "four video clips and voiceover. All right, now I'll drag clip one onto the right, now I'll drag clip one onto the timeline, then clip two, clip three, and timeline, then clip two, clip three, and finally clip four. Now we've got our"
+  },
+  {
+   "n": 231,
+   "ini": 1305.1,
+   "fim": 1311.8,
+   "dur": 6.7,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "finally clip four. Now we've got our clips arranged in the correct order. clips arranged in the correct order. Next, I'll drag in our voiceover. And as Next, I'll drag in our voiceover. And as you can see, the narration is slightly"
+  },
+  {
+   "n": 232,
+   "ini": 1311.8,
+   "fim": 1317.99,
+   "dur": 6.19,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "you can see, the narration is slightly longer than our combined video clips. So longer than our combined video clips. So we need to make a few adjustments. All we need to make a few adjustments. All right, now I'll zoom in on the timeline."
+  },
+  {
+   "n": 233,
+   "ini": 1317.99,
+   "fim": 1325.39,
+   "dur": 7.4,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "right, now I'll zoom in on the timeline. And the first thing I'm going to do is And the first thing I'm going to do is check where each part of the narration check where each part of the narration begins. Our first clip starts with the begins. Our first clip starts with the introduction to the Mary Celeste. Then"
+  },
+  {
+   "n": 234,
+   "ini": 1325.39,
+   "fim": 1332.6,
+   "dur": 7.21,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "introduction to the Mary Celeste. Then when the narration moves to the ship when the narration moves to the ship being discovered, our second clip should being discovered, our second clip should begin. The third clip covers the missing begin. The third clip covers the missing crew and the people aboard. And the"
+  },
+  {
+   "n": 235,
+   "ini": 1332.6,
+   "fim": 1340.6,
+   "dur": 8.0,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "crew and the people aboard. And the final clip brings us to the mystery of final clip brings us to the mystery of what happened. So I'll adjust the clip what happened. So I'll adjust the clip timing and speed where necessary to make timing and speed where necessary to make sure everything lines up properly. Now"
+  },
+  {
+   "n": 236,
+   "ini": 1340.6,
+   "fim": 1346.8,
+   "dur": 6.2,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "sure everything lines up properly. Now let's review the synchronization. Okay, let's review the synchronization. Okay, this looks much better. Now that our this looks much better. Now that our visuals and narration are synchronized,"
+  },
+  {
+   "n": 237,
+   "ini": 1346.8,
+   "fim": 1353.1,
+   "dur": 6.3,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "visuals and narration are synchronized, the next thing we need is our background the next thing we need is our background music. So, I'll drag the music onto the music. So, I'll drag the music onto the timeline. Then I'll adjust its length to"
+  },
+  {
+   "n": 238,
+   "ini": 1353.1,
+   "fim": 1359.7,
+   "dur": 6.6,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "timeline. Then I'll adjust its length to match our video. I'll also add a little match our video. I'll also add a little fade in and fade out so the audio starts fade in and fade out so the audio starts and ends smoothly. And remember, we"
+  },
+  {
+   "n": 239,
+   "ini": 1359.7,
+   "fim": 1367.3,
+   "dur": 7.6,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "and ends smoothly. And remember, we don't want the background music don't want the background music overpowering our narration. So, I'll overpowering our narration. So, I'll reduce the volume until the voiceover is reduce the volume until the voiceover is clear. We can also add a few simple"
+  },
+  {
+   "n": 240,
+   "ini": 1367.3,
+   "fim": 1373.5,
+   "dur": 6.2,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "clear. We can also add a few simple transitions wherever necessary, but transitions wherever necessary, but honestly, we don't need any complicated honestly, we don't need any complicated editing here. Our generated clips"
+  },
+  {
+   "n": 241,
+   "ini": 1373.5,
+   "fim": 1378.1,
+   "dur": 4.6,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "editing here. Our generated clips already look good. So, let's export the already look good. So, let's export the video. All right, now I'll click export."
+  },
+  {
+   "n": 242,
+   "ini": 1378.2,
+   "fim": 1384.3,
+   "dur": 6.1,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "For the file name, I'm going to use our For the file name, I'm going to use our ship title. Then I'll select 4K ship title. Then I'll select 4K resolution and higher bit rate. Now"
+  },
+  {
+   "n": 243,
+   "ini": 1384.3,
+   "fim": 1390.7,
+   "dur": 6.4,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "resolution and higher bit rate. Now everything looks good. So, I'll click everything looks good. So, I'll click export. And just like that, our manual export. And just like that, our manual animation is ready. Let's check out the"
+  },
+  {
+   "n": 244,
+   "ini": 1390.7,
+   "fim": 1391.63,
+   "dur": 0.93,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "animation is ready. Let's check out the final result."
+  },
+  {
+   "n": 245,
+   "ini": 1391.63,
+   "fim": 1395.7,
+   "dur": 4.07,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "final result. &gt;&gt; In 1872, a ship crossed the Atlantic &gt;&gt; In 1872, a ship crossed the Atlantic with no one aboard. The wheel was"
+  },
+  {
+   "n": 246,
+   "ini": 1395.7,
+   "fim": 1399.03,
+   "dur": 3.33,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "with no one aboard. The wheel was turning, the sails were set, but every"
+  },
+  {
+   "n": 247,
+   "ini": 1399.03,
+   "fim": 1406.97,
+   "dur": 7.94,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "turning, the sails were set, but every cabin was empty. cabin was empty. Weeks earlier, Captain Benjamin Briggs Weeks earlier, Captain Benjamin Briggs had left New York with his wife, their had left New York with his wife, their two-year-old daughter, and seven crew."
+  },
+  {
+   "n": 248,
+   "ini": 1406.97,
+   "fim": 1410.63,
+   "dur": 3.66,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "two-year-old daughter, and seven crew. Below deck, 1,700 barrels of industrial Below deck, 1,700 barrels of industrial"
+  },
+  {
+   "n": 249,
+   "ini": 1410.63,
+   "fim": 1416.4,
+   "dur": 5.77,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "alcohol. On December 4th, another ship alcohol. On December 4th, another ship spotted it drifting near the Azores. The spotted it drifting near the Azores. The sailors who climbed aboard found sailors who climbed aboard found"
+  },
+  {
+   "n": 250,
+   "ini": 1416.4,
+   "fim": 1423.17,
+   "dur": 6.77,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "breakfast dishes still on the table, breakfast dishes still on the table, drinking water, six months of food, the drinking water, six months of food, the captain's logbook open."
+  },
+  {
+   "n": 251,
+   "ini": 1423.17,
+   "fim": 1428.07,
+   "dur": 4.9,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "captain's logbook open. Then they checked the deck. The lifeboat Then they checked the deck. The lifeboat was gone, not torn away by a storm,"
+  },
+  {
+   "n": 252,
+   "ini": 1428.07,
+   "fim": 1434.63,
+   "dur": 6.56,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "was gone, not torn away by a storm, deliberately lowered. deliberately lowered. &gt;&gt; Okay, wow. This actually looks really &gt;&gt; Okay, wow. This actually looks really nice. We've got those flat 2D nice. We've got those flat 2D"
+  },
+  {
+   "n": 253,
+   "ini": 1434.63,
+   "fim": 1442.23,
+   "dur": 7.6,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "marker-style characters inside colorful marker-style characters inside colorful cinematic environments, and the cinematic environments, and the animation is following our narration animation is following our narration pretty well. So, I'm happy with this pretty well. So, I'm happy with this result."
+  },
+  {
+   "n": 254,
+   "ini": 1442.23,
+   "fim": 1445.3,
+   "dur": 3.07,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "result. All right, now we've tested all three All right, now we've tested all three"
+  },
+  {
+   "n": 255,
+   "ini": 1445.3,
+   "fim": 1450.73,
+   "dur": 5.43,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "workflows. First, we used Open Code with workflows. First, we used Open Code with a free AI coding model to generate our a free AI coding model to generate our animation automatically. Then we tested"
+  },
+  {
+   "n": 256,
+   "ini": 1450.73,
+   "fim": 1455.0,
+   "dur": 4.27,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "animation automatically. Then we tested Claude Code, which gave us a more Claude Code, which gave us a more polished result in this demonstration. polished result in this demonstration."
+  },
+  {
+   "n": 257,
+   "ini": 1455.0,
+   "fim": 1460.63,
+   "dur": 5.63,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "And finally, we used ChatGPT, Google And finally, we used ChatGPT, Google Flow, 11 Labs, and CapCut to create our Flow, 11 Labs, and CapCut to create our"
+  },
+  {
+   "n": 258,
+   "ini": 1460.63,
+   "fim": 1464.67,
+   "dur": 4.04,
+   "planos": 3,
+   "por_fala": false,
+   "fala": "animation manually. Now for me, each animation manually. Now for me, each workflow has its own advantage. If"
+  },
+  {
+   "n": 259,
+   "ini": 1464.67,
+   "fim": 1470.73,
+   "dur": 6.06,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "workflow has its own advantage. If you're working with a limited budget and you're working with a limited budget and want to experiment with automated want to experiment with automated animation, Open Code is a good place to animation, Open Code is a good place to"
+  },
+  {
+   "n": 260,
+   "ini": 1470.73,
+   "fim": 1476.33,
+   "dur": 5.6,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "start. If you want a more polished, start. If you want a more polished, agentic result and have access to Claude agentic result and have access to Claude Code, that's another option worth Code, that's another option worth"
+  },
+  {
+   "n": 261,
+   "ini": 1476.33,
+   "fim": 1483.67,
+   "dur": 7.34,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "exploring. But if you prefer controlling exploring. But if you prefer controlling your characters, camera angles, video your characters, camera angles, video clips, and final edit yourself, the clips, and final edit yourself, the manual workflow gives you that manual workflow gives you that flexibility. So you can choose whichever"
+  },
+  {
+   "n": 262,
+   "ini": 1483.67,
+   "fim": 1486.67,
+   "dur": 3.0,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "flexibility. So you can choose whichever method works best for your production. method works best for your production."
+  },
+  {
+   "n": 263,
+   "ini": 1486.67,
+   "fim": 1491.77,
+   "dur": 5.1,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "And just like that, we've created three And just like that, we've created three different stick man animations using different stick man animations using three different workflows. Now, if you"
+  },
+  {
+   "n": 264,
+   "ini": 1491.77,
+   "fim": 1498.23,
+   "dur": 6.46,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "three different workflows. Now, if you want to try these methods yourself, I've want to try these methods yourself, I've prepared the complete master prompts for prepared the complete master prompts for both the agentic and manual workflows. both the agentic and manual workflows."
+  },
+  {
+   "n": 265,
+   "ini": 1498.23,
+   "fim": 1501.83,
+   "dur": 3.6,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "Simply comment stick man down below and Simply comment stick man down below and I'll send you the Google Doc link. And I'll send you the Google Doc link. And"
+  },
+  {
+   "n": 266,
+   "ini": 1501.83,
+   "fim": 1508.93,
+   "dur": 7.1,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "I'm curious, which method do you prefer? I'm curious, which method do you prefer? OpenCode, Claude Code, or the manual OpenCode, Claude Code, or the manual Google Flow workflow? Let me know in the Google Flow workflow? Let me know in the"
+  },
+  {
+   "n": 267,
+   "ini": 1508.93,
+   "fim": 1516.6,
+   "dur": 7.67,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "comments. And if you enjoyed this video, comments. And if you enjoyed this video, make sure to smash that like button, make sure to smash that like button, subscribe to the channel, and turn on subscribe to the channel, and turn on the notification bell for more AI the notification bell for more AI animation workflows. Keep creating and"
+  },
+  {
+   "n": 268,
+   "ini": 1516.6,
+   "fim": 1519.86,
+   "dur": 3.26,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "animation workflows. Keep creating and I'll catch you in the next one. Peace."
+  }
+ ],
+ "folha": "Gu9lO8oqGYU_folha.jpg",
+ "descricao": "What if you could create viral 3D stickman animations using AI, even with no animation experience?\n\nIn this tutorial, I'll show you how to create trending 3D stickman animation videos using OpenCode, Claude Code, ChatGPT, and Google Flow.\n\nWe'll start by creating animations with OpenCode, then move over to Claude Code to explore another coding-agent workflow.\n\nBut that's not all! I'll also show you a manual method using ChatGPT and Google Flow, so you can create similar animations without relyin",
+ "tempos_s": {
+  "metadados": 4.0,
+  "download": 27.1,
+  "cortes": 39.0,
+  "folha": 34.3,
+  "fala": 0.0,
+  "total": 104.4
+ }
+}

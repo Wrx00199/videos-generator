@@ -1,0 +1,675 @@
+{
+ "id": "6mbjVSaMijw",
+ "url": "https://www.youtube.com/watch?v=6mbjVSaMijw",
+ "titulo": "Como Fazer Shorts Animados de Roblox com IA Usando o Claude (TUTORIAL COMPLETO)",
+ "canal": "Matheus Celtic",
+ "views": 1463,
+ "data": "20261109",
+ "duracao_s": 361.0,
+ "idioma_fala": "pt-orig",
+ "fonte_fala": "legenda",
+ "n_cortes": 53,
+ "cortes_por_min": 8.8,
+ "palavras_por_s": 6.24,
+ "cortes_s": [
+  1.5,
+  3.77,
+  4.53,
+  4.6,
+  6.37,
+  7.6,
+  13.3,
+  14.13,
+  14.17,
+  14.93,
+  24.8,
+  28.17,
+  31.33,
+  33.57,
+  35.93,
+  49.73,
+  56.13,
+  62.47,
+  68.63,
+  68.67,
+  74.1,
+  75.83,
+  97.8,
+  103.1,
+  111.0,
+  117.87,
+  122.63,
+  134.83,
+  148.83,
+  151.1,
+  199.9,
+  199.93,
+  203.13,
+  203.17,
+  209.67,
+  209.7,
+  215.8,
+  219.7,
+  219.73,
+  224.53,
+  230.23,
+  232.53,
+  240.57,
+  244.87,
+  250.07,
+  256.87,
+  261.87,
+  264.87,
+  273.73,
+  292.8,
+  304.6,
+  307.8,
+  346.8
+ ],
+ "beats": [
+  {
+   "n": 1,
+   "ini": 0.0,
+   "fim": 3.77,
+   "dur": 3.77,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "Olha esses dois vídeos. Esse aqui tem"
+  },
+  {
+   "n": 2,
+   "ini": 3.77,
+   "fim": 6.37,
+   "dur": 2.6,
+   "planos": 3,
+   "por_fala": false,
+   "fala": "769.000 views em 9 dias e o canal tem só 769.000 views em 9 dias e o canal tem só"
+  },
+  {
+   "n": 3,
+   "ini": 6.37,
+   "fim": 13.3,
+   "dur": 6.93,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "13 vídeos. O outro é meu. E não, eu não 13 vídeos. O outro é meu. E não, eu não usei gerador de imagem nem de vídeo de usei gerador de imagem nem de vídeo de inteligência artificial. Quem desenhou inteligência artificial. Quem desenhou"
+  },
+  {
+   "n": 4,
+   "ini": 13.3,
+   "fim": 20.39,
+   "dur": 7.09,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "foi o Claude com o código, cada frame, foi o Claude com o código, cada frame, em menos de uma hora. Neste vídeo eu te em menos de uma hora. Neste vídeo eu te mostro o processo inteiro, o prompt que mostro o processo inteiro, o prompt que eu usei, porque essa história prende as"
+  },
+  {
+   "n": 5,
+   "ini": 20.39,
+   "fim": 24.8,
+   "dur": 4.41,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "eu usei, porque essa história prende as pessoas até o fim, como o Claude montou pessoas até o fim, como o Claude montou cada cena e o que eu adaptei para o cada cena e o que eu adaptei para o"
+  },
+  {
+   "n": 6,
+   "ini": 24.8,
+   "fim": 28.17,
+   "dur": 3.37,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "Brasil. Bora. Capítulo um. O formato que Brasil. Bora. Capítulo um. O formato que está explodindo. Esse estilo tem um"
+  },
+  {
+   "n": 7,
+   "ini": 28.17,
+   "fim": 31.33,
+   "dur": 3.16,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "está explodindo. Esse estilo tem um nome, as histórias e si do Roblox. E se"
+  },
+  {
+   "n": 8,
+   "ini": 31.33,
+   "fim": 35.93,
+   "dur": 4.6,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "nome, as histórias e si do Roblox. E se o mundo inteiro virasse Roblox? E se o mundo inteiro virasse Roblox? E se você fosse sugado para dentro do jogo?"
+  },
+  {
+   "n": 9,
+   "ini": 35.93,
+   "fim": 42.79,
+   "dur": 6.86,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "você fosse sugado para dentro do jogo? Olha os números dos Kilocks. 769.000 em Olha os números dos Kilocks. 769.000 em 9 dias, 250.000 em 4 dias, 95.000 em 1"
+  },
+  {
+   "n": 10,
+   "ini": 42.79,
+   "fim": 49.73,
+   "dur": 6.94,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "9 dias, 250.000 em 4 dias, 95.000 em 1 dia. E o canal tem só 13 vídeos e já dia. E o canal tem só 13 vídeos e já passou de 223.000 inscritos. Por que passou de 223.000 inscritos. Por que funciona? Três coisas. Um, os"
+  },
+  {
+   "n": 11,
+   "ini": 49.73,
+   "fim": 56.13,
+   "dur": 6.4,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "funciona? Três coisas. Um, os personagens são bonecos de bloco personagens são bonecos de bloco chapados em 2D, simples de desenhar, chapados em 2D, simples de desenhar, fácil de reconhecer. Dois, quem faz a"
+  },
+  {
+   "n": 12,
+   "ini": 56.13,
+   "fim": 62.47,
+   "dur": 6.34,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "fácil de reconhecer. Dois, quem faz a piada é o rosto. Olho em espiral, olho piada é o rosto. Olho em espiral, olho de estrela, suor, óculos escuros caindo."
+  },
+  {
+   "n": 13,
+   "ini": 62.47,
+   "fim": 68.63,
+   "dur": 6.16,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "de estrela, suor, óculos escuros caindo. Três, a vida real vira um jogo. Tem Três, a vida real vira um jogo. Tem contador na tela, chat do sistema, loja, contador na tela, chat do sistema, loja,"
+  },
+  {
+   "n": 14,
+   "ini": 68.63,
+   "fim": 74.1,
+   "dur": 5.47,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "botão de inscrever. Os vídeos dele têm botão de inscrever. Os vídeos dele têm uns 8 minutos. Eu quis testar o mesmo uns 8 minutos. Eu quis testar o mesmo estilo em short com 40 segundos."
+  },
+  {
+   "n": 15,
+   "ini": 74.1,
+   "fim": 80.89,
+   "dur": 6.79,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "estilo em short com 40 segundos. Capítulo dois. O prompt. Esse vídeo saiu Capítulo dois. O prompt. Esse vídeo saiu de um prompt bem detalhado e eu vou de um prompt bem detalhado e eu vou disponibilizar essa skill para vocês de"
+  },
+  {
+   "n": 16,
+   "ini": 80.89,
+   "fim": 87.79,
+   "dur": 6.9,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "disponibilizar essa skill para vocês de graça depois do vídeo. E o segredo é graça depois do vídeo. E o segredo é esse, não é um pedido, é uma ficha esse, não é um pedido, é uma ficha técnica. Ele tem oito passos. O primeiro"
+  },
+  {
+   "n": 17,
+   "ini": 87.79,
+   "fim": 95.69,
+   "dur": 7.9,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "técnica. Ele tem oito passos. O primeiro manda o Claude te perguntar antes, qual manda o Claude te perguntar antes, qual é a sua ideia, qual voz você quer e é a sua ideia, qual voz você quer e mostrar o roteiro antes de gastar mostrar o roteiro antes de gastar qualquer coisa. Depois vem o roteiro em"
+  },
+  {
+   "n": 18,
+   "ini": 95.69,
+   "fim": 97.8,
+   "dur": 2.11,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "qualquer coisa. Depois vem o roteiro em seis tempos que eu te mostro já já. Aí o"
+  },
+  {
+   "n": 19,
+   "ini": 97.8,
+   "fim": 103.1,
+   "dur": 5.3,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "seis tempos que eu te mostro já já. Aí o estilo, um boneco base para todo o estilo, um boneco base para todo o elenco, contorno grosso e o rosto elenco, contorno grosso e o rosto"
+  },
+  {
+   "n": 20,
+   "ini": 103.1,
+   "fim": 111.0,
+   "dur": 7.9,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "fazendo a piada. E regras de movimento. fazendo a piada. E regras de movimento. Alguma coisa se mexe em toda fala e a Alguma coisa se mexe em toda fala e a imagem muda a cada um a 3 segundos. Nada imagem muda a cada um a 3 segundos. Nada aparece com fade. Entra com um pulo."
+  },
+  {
+   "n": 21,
+   "ini": 111.0,
+   "fim": 117.87,
+   "dur": 6.87,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "aparece com fade. Entra com um pulo. Voz, animação e som, cada um com o seu Voz, animação e som, cada um com o seu passo. E o último passo é o que mais faz passo. E o último passo é o que mais faz diferença, conferir antes de entregar."
+  },
+  {
+   "n": 22,
+   "ini": 117.87,
+   "fim": 122.63,
+   "dur": 4.76,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "diferença, conferir antes de entregar. Coloquei ali os erros que apareceram no Coloquei ali os erros que apareceram no meu vídeo, tipo a legenda em cima da meu vídeo, tipo a legenda em cima da"
+  },
+  {
+   "n": 23,
+   "ini": 122.63,
+   "fim": 125.98,
+   "dur": 3.35,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "boca do personagem. Fica a dica, um bom boca do personagem. Fica a dica, um bom prompt não pede, faça um vídeo legal."
+  },
+  {
+   "n": 24,
+   "ini": 125.98,
+   "fim": 132.38,
+   "dur": 6.4,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "prompt não pede, faça um vídeo legal. Ele dá os números e avisa onde dá Ele dá os números e avisa onde dá errado. Capítulo três, a história que errado. Capítulo três, a história que prende. A fórmula é uma dor real da"
+  },
+  {
+   "n": 25,
+   "ini": 132.38,
+   "fim": 134.83,
+   "dur": 2.45,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "prende. A fórmula é uma dor real da criança cruzada com uma regra do Roblox."
+  },
+  {
+   "n": 26,
+   "ini": 134.83,
+   "fim": 142.58,
+   "dur": 7.75,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "criança cruzada com uma regra do Roblox. Eu pedi para o Claude ideias que Eu pedi para o Claude ideias que encaixam nesse modelo e ele me deu cinco encaixam nesse modelo e ele me deu cinco tipos. Um adulto com poder no jogo, uma tipos. Um adulto com poder no jogo, uma regra do jogo virando vida real, a"
+  },
+  {
+   "n": 27,
+   "ini": 142.58,
+   "fim": 148.83,
+   "dur": 6.25,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "regra do jogo virando vida real, a criança se vingando, datas do ano e as criança se vingando, datas do ano e as dores clássicas, dentista, hora de dores clássicas, dentista, hora de dormir, lição de casa. Eu escolhi e se a"
+  },
+  {
+   "n": 28,
+   "ini": 148.83,
+   "fim": 156.48,
+   "dur": 7.65,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "dormir, lição de casa. Eu escolhi e se a vida tivesse lag. Agora olha a estrutura vida tivesse lag. Agora olha a estrutura segundo por segundo. Nos primeiros dois segundo por segundo. Nos primeiros dois segundos, o narrador lê o título em cima"
+  },
+  {
+   "n": 29,
+   "ini": 156.48,
+   "fim": 164.18,
+   "dur": 7.7,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "segundos, o narrador lê o título em cima da cena mais forte. Depois um personagem da cena mais forte. Depois um personagem prova a regra. Mãe, eu tô travando. Aí prova a regra. Mãe, eu tô travando. Aí vem três dias, cada um pior que o outro."
+  },
+  {
+   "n": 30,
+   "ini": 164.18,
+   "fim": 170.98,
+   "dur": 6.8,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "vem três dias, cada um pior que o outro. Dia um, você corre para o ônibus e volta Dia um, você corre para o ônibus e volta para o hospital. Dia dois, o servidor para o hospital. Dia dois, o servidor apaga a sua prova. Dia três, o chinelo"
+  },
+  {
+   "n": 31,
+   "ini": 170.98,
+   "fim": 177.48,
+   "dur": 6.5,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "apaga a sua prova. Dia três, o chinelo da mãe trava no ar. No meio, o pedido de da mãe trava no ar. No meio, o pedido de inscrição vem dentro da história. Se inscrição vem dentro da história. Se inscreve e o seu ping cai um pouquinho."
+  },
+  {
+   "n": 32,
+   "ini": 177.48,
+   "fim": 183.88,
+   "dur": 6.4,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "inscreve e o seu ping cai um pouquinho. Depois a virada, a criança reage e ganha Depois a virada, a criança reage e ganha Robux, servidor VIP, 1 milhão de FPS. E"
+  },
+  {
+   "n": 33,
+   "ini": 183.88,
+   "fim": 191.08,
+   "dur": 7.2,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Robux, servidor VIP, 1 milhão de FPS. E no final vira de novo, a mãe também no final vira de novo, a mãe também comprou VIP e o vídeo volta sozinho para comprou VIP e o vídeo volta sozinho para o começo com o rewind. Quem chega no fim"
+  },
+  {
+   "n": 34,
+   "ini": 191.08,
+   "fim": 198.28,
+   "dur": 7.2,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "o começo com o rewind. Quem chega no fim assiste de novo. Dois giro, zoom loop. É assiste de novo. Dois giro, zoom loop. É isso que segura as pessoas até o último isso que segura as pessoas até o último segundo. Passo a passo. Antes de fazer,"
+  },
+  {
+   "n": 35,
+   "ini": 198.28,
+   "fim": 199.9,
+   "dur": 1.62,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "segundo. Passo a passo. Antes de fazer, vamos instalar tudo do zero. Um, entra"
+  },
+  {
+   "n": 36,
+   "ini": 199.9,
+   "fim": 203.13,
+   "dur": 3.23,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "vamos instalar tudo do zero. Um, entra no site do Claude e baixa o app para o no site do Claude e baixa o app para o"
+  },
+  {
+   "n": 37,
+   "ini": 203.13,
+   "fim": 209.67,
+   "dur": 6.54,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "seu computador. Dois, instala, abre e seu computador. Dois, instala, abre e entra com a sua conta. Você precisa do entra com a sua conta. Você precisa do plano Pro, porque quem faz o vídeo é o plano Pro, porque quem faz o vídeo é o"
+  },
+  {
+   "n": 38,
+   "ini": 209.67,
+   "fim": 215.8,
+   "dur": 6.13,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "Claude Code. Três, no comentário fixado Claude Code. Três, no comentário fixado pega a skill grátis. No GitHub, clica em pega a skill grátis. No GitHub, clica em Code e depois em Download Zip. Quatro,"
+  },
+  {
+   "n": 39,
+   "ini": 215.8,
+   "fim": 219.7,
+   "dur": 3.9,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "Code e depois em Download Zip. Quatro, descompacta e coloca a pasta dentro da descompacta e coloca a pasta dentro da pasta de skills do Claude. Cinco, no app"
+  },
+  {
+   "n": 40,
+   "ini": 219.7,
+   "fim": 224.53,
+   "dur": 4.83,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "pasta de skills do Claude. Cinco, no app abre a aba Code, escolhe uma pasta vazia abre a aba Code, escolhe uma pasta vazia e escreve a sua ideia e o resto a skill"
+  },
+  {
+   "n": 41,
+   "ini": 224.53,
+   "fim": 230.23,
+   "dur": 5.7,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "e escreve a sua ideia e o resto a skill faz. Ela mesma pede para o Claude faz. Ela mesma pede para o Claude instalar o que falta no seu computador. instalar o que falta no seu computador."
+  },
+  {
+   "n": 42,
+   "ini": 230.23,
+   "fim": 238.08,
+   "dur": 7.85,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Você só aprova. Capítulo quatro, fazendo Você só aprova. Capítulo quatro, fazendo com o Claude. Eu colei o prompt e o com o Claude. Eu colei o prompt e o Claude fez exatamente o que ele manda, Claude fez exatamente o que ele manda, escreveu o roteiro e a lista de cenas"
+  },
+  {
+   "n": 43,
+   "ini": 238.08,
+   "fim": 240.57,
+   "dur": 2.49,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "escreveu o roteiro e a lista de cenas com o tempo de cada uma e parou para eu com o tempo de cada uma e parou para eu"
+  },
+  {
+   "n": 44,
+   "ini": 240.57,
+   "fim": 244.87,
+   "dur": 4.3,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "aprovar. aprovar. Aí ele gerou amostras de voz numeradas e Aí ele gerou amostras de voz numeradas e"
+  },
+  {
+   "n": 45,
+   "ini": 244.87,
+   "fim": 250.07,
+   "dur": 5.2,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "eu escolhi de ouvido. Até a pronúncia eu escolhi de ouvido. Até a pronúncia lag, spol, vip. Cada palavra em inglês lag, spol, vip. Cada palavra em inglês teve três opções. E aqui um toque"
+  },
+  {
+   "n": 46,
+   "ini": 250.07,
+   "fim": 256.87,
+   "dur": 6.8,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "teve três opções. E aqui um toque brasileiro, o chinelo da mãe. Toda brasileiro, o chinelo da mãe. Toda criança no Brasil entende essa piada. criança no Brasil entende essa piada. Por isso ele virou regra na skill."
+  },
+  {
+   "n": 47,
+   "ini": 256.87,
+   "fim": 261.87,
+   "dur": 5.0,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "Por isso ele virou regra na skill. Depois disso, o Claude desenhou tudo Depois disso, o Claude desenhou tudo sozinho. Um boneco base que serve para sozinho. Um boneco base que serve para"
+  },
+  {
+   "n": 48,
+   "ini": 261.87,
+   "fim": 264.87,
+   "dur": 3.0,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "todo o elenco, os cenários, a interface todo o elenco, os cenários, a interface de jogo e as legendas. Ele mesmo"
+  },
+  {
+   "n": 49,
+   "ini": 264.87,
+   "fim": 271.78,
+   "dur": 6.91,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "de jogo e as legendas. Ele mesmo conferiu 56 quadros em folhas de contato conferiu 56 quadros em folhas de contato e achou um erro. A legenda estava e achou um erro. A legenda estava cobrindo a boca dos personagens. Ele"
+  },
+  {
+   "n": 50,
+   "ini": 271.78,
+   "fim": 273.73,
+   "dur": 1.95,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "cobrindo a boca dos personagens. Ele subiu os personagens e refez. A música e"
+  },
+  {
+   "n": 51,
+   "ini": 273.73,
+   "fim": 282.38,
+   "dur": 8.65,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "subiu os personagens e refez. A música e os efeitos também saíram de código. Nada os efeitos também saíram de código. Nada baixado, nada para conferir licença. E a baixado, nada para conferir licença. E a renderização do vídeo levou 37 segundos."
+  },
+  {
+   "n": 52,
+   "ini": 282.38,
+   "fim": 288.68,
+   "dur": 6.3,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "renderização do vídeo levou 37 segundos. Do prompt colado até o vídeo pronto, Do prompt colado até o vídeo pronto, menos de 1 hora. Se isso te economizou menos de 1 hora. Se isso te economizou uma tarde de edição, se inscreve. Eu"
+  },
+  {
+   "n": 53,
+   "ini": 288.68,
+   "fim": 292.8,
+   "dur": 4.12,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "uma tarde de edição, se inscreve. Eu mostro fluxos que você consegue usar de mostro fluxos que você consegue usar de verdade. Agora o resultado. E se a vida"
+  },
+  {
+   "n": 54,
+   "ini": 292.8,
+   "fim": 297.48,
+   "dur": 4.68,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "verdade. Agora o resultado. E se a vida tivesse lag? tivesse lag? &gt;&gt; Mãe, eu tô travando."
+  },
+  {
+   "n": 55,
+   "ini": 297.48,
+   "fim": 302.48,
+   "dur": 5.0,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "&gt;&gt; Mãe, eu tô travando. &gt;&gt; Dia 1 você corre pro ônibus, trava no ar &gt;&gt; Dia 1 você corre pro ônibus, trava no ar e volta pro spol."
+  },
+  {
+   "n": 56,
+   "ini": 302.48,
+   "fim": 304.6,
+   "dur": 2.12,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "e volta pro spol. Dia 2 na prova o servidor apaga suas"
+  },
+  {
+   "n": 57,
+   "ini": 304.6,
+   "fim": 307.8,
+   "dur": 3.2,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "Dia 2 na prova o servidor apaga suas respostas três vezes."
+  },
+  {
+   "n": 58,
+   "ini": 307.8,
+   "fim": 313.74,
+   "dur": 5.94,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "respostas três vezes. Dia 3 sua mãe joga o chinelo e ele trava Dia 3 sua mãe joga o chinelo e ele trava no ar e chegam 10 chinelos de uma vez."
+  },
+  {
+   "n": 59,
+   "ini": 313.74,
+   "fim": 321.08,
+   "dur": 7.34,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "no ar e chegam 10 chinelos de uma vez. [música] Se inscreve e seu ping cai um [música] Se inscreve e seu ping cai um pouquinho. pouquinho. Aí você cansa. Robux na mão."
+  },
+  {
+   "n": 60,
+   "ini": 321.08,
+   "fim": 326.18,
+   "dur": 5.1,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Agora você tem 1 milhão de FPS, o mais rápido do servidor."
+  },
+  {
+   "n": 61,
+   "ini": 326.18,
+   "fim": 333.48,
+   "dur": 7.3,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "rápido do servidor. &gt;&gt; [roncando] &gt;&gt; [roncando] &gt;&gt; Eu também comprei o vip, filho. &gt;&gt; Eu também comprei o vip, filho. &gt;&gt; E o chinelo dela agora também tem 1 &gt;&gt; E o chinelo dela agora também tem 1 milhão de FPS."
+  },
+  {
+   "n": 62,
+   "ini": 333.48,
+   "fim": 339.58,
+   "dur": 6.1,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "É isso. E como eu prometi, essa skill vai ficar de graça para você. O link vai ficar de graça para você. O link está no comentário fixado. Mas se você"
+  },
+  {
+   "n": 63,
+   "ini": 339.58,
+   "fim": 346.8,
+   "dur": 7.22,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "está no comentário fixado. Mas se você quer ir além de um vídeo, eu criei a quer ir além de um vídeo, eu criei a Criadores IA. É uma comunidade para quem Criadores IA. É uma comunidade para quem quer criar vídeos com inteligência quer criar vídeos com inteligência artificial de verdade. Os planos e tudo"
+  },
+  {
+   "n": 64,
+   "ini": 346.8,
+   "fim": 351.78,
+   "dur": 4.98,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "artificial de verdade. Os planos e tudo que tem lá dentro estão na página. O que tem lá dentro estão na página. O link também está no comentário fixado."
+  },
+  {
+   "n": 65,
+   "ini": 351.78,
+   "fim": 357.88,
+   "dur": 6.1,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "link também está no comentário fixado. Se fizer sentido para você, entra lá e Se fizer sentido para você, entra lá e se inscreve no canal porque eu vou se inscreve no canal porque eu vou continuar ensinando outros formatos aqui"
+  },
+  {
+   "n": 66,
+   "ini": 357.88,
+   "fim": 361.0,
+   "dur": 3.12,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "continuar ensinando outros formatos aqui de graça."
+  }
+ ],
+ "folha": "6mbjVSaMijw_folha.jpg",
+ "descricao": "Como fazer Shorts animados de Roblox com IA usando o Claude, passo a passo. Eu fiz o Short “E se a vida tivesse LAG?” do zero, em menos de uma hora, sem gerador de imagem nem de vídeo: o Claude desenhou cada frame com código. Neste vídeo eu te mostro o processo inteiro, e como instalar tudo do zero no seu computador.\n\nO que você vai ver:\n• Por que o formato “E se…” do Roblox está explodindo \n• O prompt, passo a passo: perguntas, roteiro, estilo, voz, animação, som, conferência e capa\n• A fórmula",
+ "tempos_s": {
+  "metadados": 3.5,
+  "download": 10.4,
+  "cortes": 9.4,
+  "folha": 8.1,
+  "fala": 0.0,
+  "total": 31.6
+ }
+}

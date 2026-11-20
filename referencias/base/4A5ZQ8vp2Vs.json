@@ -1,0 +1,621 @@
+{
+ "id": "4A5ZQ8vp2Vs",
+ "url": "https://www.youtube.com/watch?v=4A5ZQ8vp2Vs",
+ "titulo": "Criei Shorts Animados 3D Sem Editar Nada Usando o Claude (Skill Grátis)",
+ "canal": "The Tyrons ",
+ "views": 15526,
+ "data": "20261112",
+ "duracao_s": 412.7,
+ "idioma_fala": "pt-orig",
+ "fonte_fala": "legenda",
+ "n_cortes": 17,
+ "cortes_por_min": 2.5,
+ "palavras_por_s": 6.13,
+ "cortes_s": [
+  44.1,
+  44.13,
+  44.23,
+  44.27,
+  44.3,
+  256.0,
+  280.6,
+  290.83,
+  291.83,
+  327.0,
+  329.97,
+  331.97,
+  334.83,
+  337.07,
+  338.77,
+  345.4,
+  346.3
+ ],
+ "beats": [
+  {
+   "n": 1,
+   "ini": 0.0,
+   "fim": 7.89,
+   "dur": 7.89,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Esse novo canal já ultrapassou 160.000 inscritos e impressionantes 420 milhões inscritos e impressionantes 420 milhões de visualizações publicando shorts nesse"
+  },
+  {
+   "n": 2,
+   "ini": 7.89,
+   "fim": 15.89,
+   "dur": 8.0,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "de visualizações publicando shorts nesse estilo de animação 3D. E olha só o que estilo de animação 3D. E olha só o que eu consegui criar com o Cloud sem eu consegui criar com o Cloud sem precisar editar absolutamente nada. Eu"
+  },
+  {
+   "n": 3,
+   "ini": 15.89,
+   "fim": 22.19,
+   "dur": 6.3,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "precisar editar absolutamente nada. Eu criei isso através de uma skill que eu criei isso através de uma skill que eu mesmo desenvolvi. E eu poderia mesmo desenvolvi. E eu poderia facilmente cobrar algumas centenas de"
+  },
+  {
+   "n": 4,
+   "ini": 22.19,
+   "fim": 28.99,
+   "dur": 6.8,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "facilmente cobrar algumas centenas de reais para liberar essa skill para reais para liberar essa skill para vocês. Mas em vez disso eu vou vocês. Mas em vez disso eu vou disponibilizar ela para você disponibilizar ela para você gratuitamente para você também conseguir"
+  },
+  {
+   "n": 5,
+   "ini": 28.99,
+   "fim": 35.49,
+   "dur": 6.5,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "gratuitamente para você também conseguir aproveitar essa oportunidade e começar a aproveitar essa oportunidade e começar a criar seus conteúdos e ganhar dinheiro criar seus conteúdos e ganhar dinheiro aqui no YouTube antes do Natal. Então"
+  },
+  {
+   "n": 6,
+   "ini": 35.49,
+   "fim": 41.59,
+   "dur": 6.1,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "aqui no YouTube antes do Natal. Então você deve prestar bastante atenção em você deve prestar bastante atenção em cada etapa desse tutorial porque eu vou cada etapa desse tutorial porque eu vou mostrar exatamente como fazer esse tipo"
+  },
+  {
+   "n": 7,
+   "ini": 41.59,
+   "fim": 44.1,
+   "dur": 2.51,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "mostrar exatamente como fazer esse tipo de conteúdo do início até o final. E"
+  },
+  {
+   "n": 8,
+   "ini": 44.1,
+   "fim": 50.89,
+   "dur": 6.79,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "de conteúdo do início até o final. E para criar esse conteúdo eu vou para criar esse conteúdo eu vou disponibilizar para você a minha skill disponibilizar para você a minha skill que eu utilizei para gerar esse vídeo que eu utilizei para gerar esse vídeo que você acabou de ver na demonstração e"
+  },
+  {
+   "n": 9,
+   "ini": 50.89,
+   "fim": 58.69,
+   "dur": 7.8,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "que você acabou de ver na demonstração e eu vou deixar o link lá do nosso canal eu vou deixar o link lá do nosso canal no Telegram aqui na descrição desse no Telegram aqui na descrição desse vídeo. Basta você entrar lá e já estará vídeo. Basta você entrar lá e já estará disponível para você gratuitamente. E"
+  },
+  {
+   "n": 10,
+   "ini": 58.69,
+   "fim": 65.99,
+   "dur": 7.3,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "disponível para você gratuitamente. E aproveite também esse momento para você aproveite também esse momento para você se inscrever aqui no canal e deixar o se inscrever aqui no canal e deixar o seu like para você fortalecer esse seu like para você fortalecer esse canal. Assim eu consigo trazer mais"
+  },
+  {
+   "n": 11,
+   "ini": 65.99,
+   "fim": 72.09,
+   "dur": 6.1,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "canal. Assim eu consigo trazer mais ideias de nicho e ferramentas gratuitas ideias de nicho e ferramentas gratuitas para você. E para começar você pode para você. E para começar você pode estar utilizando o próprio plano"
+  },
+  {
+   "n": 12,
+   "ini": 72.09,
+   "fim": 79.69,
+   "dur": 7.6,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "estar utilizando o próprio plano gratuito do Cloud. Primeiro acesse as gratuito do Cloud. Primeiro acesse as configurações da plataforma, entra na configurações da plataforma, entra na opção de adicionar uma skill e arraste o"
+  },
+  {
+   "n": 13,
+   "ini": 79.69,
+   "fim": 87.59,
+   "dur": 7.9,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "opção de adicionar uma skill e arraste o arquivo compactado que eu vou arquivo compactado que eu vou disponibilizar para você. Atualmente a disponibilizar para você. Atualmente a minha skill está na versão dois, mas minha skill está na versão dois, mas pretendo continuar aprimorando e"
+  },
+  {
+   "n": 14,
+   "ini": 87.59,
+   "fim": 93.99,
+   "dur": 6.4,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "pretendo continuar aprimorando e adicionando melhorias para facilitar adicionando melhorias para facilitar ainda mais a criação dos vídeos. Depois ainda mais a criação dos vídeos. Depois de fazer o upload confira se a skill"
+  },
+  {
+   "n": 15,
+   "ini": 93.99,
+   "fim": 97.39,
+   "dur": 3.4,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "de fazer o upload confira se a skill está instalada e ativada corretamente."
+  },
+  {
+   "n": 16,
+   "ini": 97.39,
+   "fim": 103.79,
+   "dur": 6.4,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "está instalada e ativada corretamente. Feito isso já podemos começar a criar Feito isso já podemos começar a criar nosso primeiro vídeo. E já com a sua nosso primeiro vídeo. E já com a sua skill instalada vamos começar o nosso"
+  },
+  {
+   "n": 17,
+   "ini": 103.79,
+   "fim": 110.79,
+   "dur": 7.0,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "skill instalada vamos começar o nosso processo. Basta você vir aqui em mais, processo. Basta você vir aqui em mais, skill e aqui o cartoon áudio short e skill e aqui o cartoon áudio short e vamos dar um iniciar. E agora vamos"
+  },
+  {
+   "n": 18,
+   "ini": 110.79,
+   "fim": 118.19,
+   "dur": 7.4,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "vamos dar um iniciar. E agora vamos começar a responder algumas questões começar a responder algumas questões para o Cloud já ir preparando aqui o para o Cloud já ir preparando aqui o nosso conteúdo. Na nossa primeira etapa nosso conteúdo. Na nossa primeira etapa a gente tem, se você já tiver aí um"
+  },
+  {
+   "n": 19,
+   "ini": 118.19,
+   "fim": 124.48,
+   "dur": 6.29,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "a gente tem, se você já tiver aí um roteiro já narrado ou se pretende roteiro já narrado ou se pretende iniciar do zero, então você vai iniciar do zero, então você vai selecionar aqui, ó, preciso de ideia de"
+  },
+  {
+   "n": 20,
+   "ini": 124.48,
+   "fim": 130.58,
+   "dur": 6.1,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "selecionar aqui, ó, preciso de ideia de vídeo e de um roteiro. Aqui ele vai vídeo e de um roteiro. Aqui ele vai gerar completamente do zero. Eu vou gerar completamente do zero. Eu vou nessa opção aqui. A duração desejada tem"
+  },
+  {
+   "n": 21,
+   "ini": 130.58,
+   "fim": 137.88,
+   "dur": 7.3,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "nessa opção aqui. A duração desejada tem cerca de 20, 30, 45 a 60 segundos. No cerca de 20, 30, 45 a 60 segundos. No meu caso, eu vou selecionar 20 segundos, meu caso, eu vou selecionar 20 segundos, mas não se preocupe porque geralmente"
+  },
+  {
+   "n": 22,
+   "ini": 137.88,
+   "fim": 145.48,
+   "dur": 7.6,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "mas não se preocupe porque geralmente ele dá um pouquinho de tempo a mais do ele dá um pouquinho de tempo a mais do que esses 20 segundos. E aqui já começa que esses 20 segundos. E aqui já começa a melhor parte, que é onde ele vai a melhor parte, que é onde ele vai entregar pra gente 10 ideias pra gente"
+  },
+  {
+   "n": 23,
+   "ini": 145.48,
+   "fim": 151.98,
+   "dur": 6.5,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "entregar pra gente 10 ideias pra gente estar criando aqui os nossos shorts. E o estar criando aqui os nossos shorts. E o mais interessante é que essas ideias são mais interessante é que essas ideias são relacionadas a histórias verdadeiras. É"
+  },
+  {
+   "n": 24,
+   "ini": 151.98,
+   "fim": 158.48,
+   "dur": 6.5,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "relacionadas a histórias verdadeiras. É isso que faz esse vídeo ser tão viral. É isso que faz esse vídeo ser tão viral. É só você analisar qualquer uma dessas só você analisar qualquer uma dessas aqui e escolher a sua ideia. E no meu"
+  },
+  {
+   "n": 25,
+   "ini": 158.48,
+   "fim": 165.68,
+   "dur": 7.2,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "aqui e escolher a sua ideia. E no meu caso, eu vou selecionar essa número 10, caso, eu vou selecionar essa número 10, Napoleão contra os coelhos. Aqui ele já Napoleão contra os coelhos. Aqui ele já dá pra gente o gancho, que é muito dá pra gente o gancho, que é muito importante, que é o Napoleão perdeu uma"
+  },
+  {
+   "n": 26,
+   "ini": 165.68,
+   "fim": 172.48,
+   "dur": 6.8,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "importante, que é o Napoleão perdeu uma batalha para os coelhos. Temos a virada, batalha para os coelhos. Temos a virada, temos a animação real ou lenda. Então temos a animação real ou lenda. Então ele traz todas as informações"
+  },
+  {
+   "n": 27,
+   "ini": 172.48,
+   "fim": 180.68,
+   "dur": 8.2,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "ele traz todas as informações necessárias aqui para o nosso conteúdo. necessárias aqui para o nosso conteúdo. No meu caso, é só a gente selecionar o No meu caso, é só a gente selecionar o número da ideia que a gente quer. Eu vou número da ideia que a gente quer. Eu vou colocar aqui o 10 e vou dar um enter e"
+  },
+  {
+   "n": 28,
+   "ini": 180.68,
+   "fim": 188.08,
+   "dur": 7.4,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "colocar aqui o 10 e vou dar um enter e ele vai gerar pra gente todo esse ele vai gerar pra gente todo esse processo pra a gente estar começando a processo pra a gente estar começando a gerar o nosso vídeo. Detalhe importante gerar o nosso vídeo. Detalhe importante que se você não tiver satisfeito com"
+  },
+  {
+   "n": 29,
+   "ini": 188.08,
+   "fim": 194.58,
+   "dur": 6.5,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "que se você não tiver satisfeito com essas 10 opções aqui, você pode pedir essas 10 opções aqui, você pode pedir mais e o Claude vai gerar novas 10 mais e o Claude vai gerar novas 10 ideias pra você. E olha só que legal,"
+  },
+  {
+   "n": 30,
+   "ini": 194.58,
+   "fim": 200.68,
+   "dur": 6.1,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "ideias pra você. E olha só que legal, aqui ele escolheu pra gente o nosso aqui ele escolheu pra gente o nosso roteiro. E aqui é muito importante, você roteiro. E aqui é muito importante, você pode e eu até recomendo fazer algumas"
+  },
+  {
+   "n": 31,
+   "ini": 200.68,
+   "fim": 207.58,
+   "dur": 6.9,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "pode e eu até recomendo fazer algumas edições se não ficar muito interessante edições se não ficar muito interessante aqui o seu roteiro. E toda vez que você aqui o seu roteiro. E toda vez que você fazer alguma edição no seu roteiro, você"
+  },
+  {
+   "n": 32,
+   "ini": 207.58,
+   "fim": 214.48,
+   "dur": 6.9,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "fazer alguma edição no seu roteiro, você deve enviar novamente o roteiro pro deve enviar novamente o roteiro pro Claude junto com a sua narração que você Claude junto com a sua narração que você gerou lá no Eleven Labs ou qualquer"
+  },
+  {
+   "n": 33,
+   "ini": 214.48,
+   "fim": 221.48,
+   "dur": 7.0,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "gerou lá no Eleven Labs ou qualquer gerador de voz que você esteja gerador de voz que você esteja utilizando. Esse detalhe é importante utilizando. Esse detalhe é importante porque ele vai facilitar a vida do porque ele vai facilitar a vida do Claude na hora dele começar a edição,"
+  },
+  {
+   "n": 34,
+   "ini": 221.48,
+   "fim": 227.28,
+   "dur": 5.8,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Claude na hora dele começar a edição, senão vai ficar muito diferente aí a senão vai ficar muito diferente aí a legenda, porque ele sempre vai basear a legenda, porque ele sempre vai basear a legenda no roteiro que ele desenvolveu."
+  },
+  {
+   "n": 35,
+   "ini": 227.28,
+   "fim": 234.08,
+   "dur": 6.8,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "legenda no roteiro que ele desenvolveu. Então basta você enviar o seu roteiro Então basta você enviar o seu roteiro modificado para o Claude e você avisa modificado para o Claude e você avisa ele que modificou o seu roteiro e ele"
+  },
+  {
+   "n": 36,
+   "ini": 234.08,
+   "fim": 241.08,
+   "dur": 7.0,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "ele que modificou o seu roteiro e ele vai gerar o seu vídeo aí sem problema vai gerar o seu vídeo aí sem problema nenhum. Ele deu aqui pra gente cerca de nenhum. Ele deu aqui pra gente cerca de 69 palavras, que vai dar de 21 a 22"
+  },
+  {
+   "n": 37,
+   "ini": 241.08,
+   "fim": 247.08,
+   "dur": 6.0,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "69 palavras, que vai dar de 21 a 22 segundos o nosso vídeo, tá Excelente segundos o nosso vídeo, tá Excelente para YouTube Shorts. Temos aqui o nosso para YouTube Shorts. Temos aqui o nosso plano e agora ele pede aqui para gente"
+  },
+  {
+   "n": 38,
+   "ini": 247.08,
+   "fim": 253.88,
+   "dur": 6.8,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "plano e agora ele pede aqui para gente enviar a nossa narração. E para isso eu enviar a nossa narração. E para isso eu vou estar utilizando o Eleven Labs para vou estar utilizando o Eleven Labs para gerar a nossa narração. Vou copiar aqui"
+  },
+  {
+   "n": 39,
+   "ini": 253.88,
+   "fim": 256.0,
+   "dur": 2.12,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "gerar a nossa narração. Vou copiar aqui o meu roteiro só como título de exemplo. o meu roteiro só como título de exemplo."
+  },
+  {
+   "n": 40,
+   "ini": 256.0,
+   "fim": 262.58,
+   "dur": 6.58,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Com o meu Eleven Labs aberto ainda no Com o meu Eleven Labs aberto ainda no plano gratuito também, eu vou colar o plano gratuito também, eu vou colar o meu roteiro e aqui você vai selecionar a"
+  },
+  {
+   "n": 41,
+   "ini": 262.58,
+   "fim": 268.58,
+   "dur": 6.0,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "meu roteiro e aqui você vai selecionar a sua narração. No meu caso eu vou deixar sua narração. No meu caso eu vou deixar aqui mesmo como exemplo e vou pedir para aqui mesmo como exemplo e vou pedir para gerar. Gerou dois resultados. O que você"
+  },
+  {
+   "n": 42,
+   "ini": 268.58,
+   "fim": 276.58,
+   "dur": 8.0,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "gerar. Gerou dois resultados. O que você deve fazer nesse exato momento é escutar deve fazer nesse exato momento é escutar com calma para ver se não tem nenhum com calma para ver se não tem nenhum erro aí na sua narração. Se tiver algum erro aí na sua narração. Se tiver algum erro você vai pedir para gerar novamente"
+  },
+  {
+   "n": 43,
+   "ini": 276.58,
+   "fim": 280.6,
+   "dur": 4.02,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "erro você vai pedir para gerar novamente porque isso aqui também é muito porque isso aqui também é muito importante, senão vai dar problema lá na importante, senão vai dar problema lá na"
+  },
+  {
+   "n": 44,
+   "ini": 280.6,
+   "fim": 288.28,
+   "dur": 7.68,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "parte de edição. E uma vez que você fez parte de edição. E uma vez que você fez o download lá da sua narração é só o download lá da sua narração é só voltar aqui novamente e enviar a sua voltar aqui novamente e enviar a sua narração para ele fazer o nosso vídeo."
+  },
+  {
+   "n": 45,
+   "ini": 288.28,
+   "fim": 290.83,
+   "dur": 2.55,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "narração para ele fazer o nosso vídeo. Vamos vir aqui no mais, selecionar fazer Vamos vir aqui no mais, selecionar fazer"
+  },
+  {
+   "n": 46,
+   "ini": 290.83,
+   "fim": 296.88,
+   "dur": 6.05,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "upload, escolher arquivos, você vai upload, escolher arquivos, você vai enviar a narração que você acabou de enviar a narração que você acabou de baixar e enviar. Agora você deve esperar"
+  },
+  {
+   "n": 47,
+   "ini": 296.88,
+   "fim": 304.58,
+   "dur": 7.7,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "baixar e enviar. Agora você deve esperar que o Cloud vai fazer todo o processo que o Cloud vai fazer todo o processo para você. Ele vai gerar os vídeos, vai para você. Ele vai gerar os vídeos, vai gerar as imagens, vai fazer a edição, a gerar as imagens, vai fazer a edição, a legenda, todo o processo será feito"
+  },
+  {
+   "n": 48,
+   "ini": 304.58,
+   "fim": 310.68,
+   "dur": 6.1,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "legenda, todo o processo será feito através aqui do Cloud. E aqui é através aqui do Cloud. E aqui é importante, como o Cloud vai fazer essas importante, como o Cloud vai fazer essas edições pode demorar um pouco para"
+  },
+  {
+   "n": 49,
+   "ini": 310.68,
+   "fim": 317.88,
+   "dur": 7.2,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "edições pode demorar um pouco para renderizar aqui o nosso vídeo. Vou renderizar aqui o nosso vídeo. Vou aguardar para a gente ver o resultado aguardar para a gente ver o resultado aqui da nossa edição. E agora chegou a aqui da nossa edição. E agora chegou a melhor parte. Nosso vídeo já está"
+  },
+  {
+   "n": 50,
+   "ini": 317.88,
+   "fim": 324.08,
+   "dur": 6.2,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "melhor parte. Nosso vídeo já está pronto. Vou aumentar a tela para você pronto. Vou aumentar a tela para você ver de perto o resultado que o Cloud ver de perto o resultado que o Cloud conseguiu gerar automaticamente sem"
+  },
+  {
+   "n": 51,
+   "ini": 324.08,
+   "fim": 327.0,
+   "dur": 2.92,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "conseguiu gerar automaticamente sem precisar fazer nenhuma edição precisar fazer nenhuma edição manualmente."
+  },
+  {
+   "n": 52,
+   "ini": 327.0,
+   "fim": 329.97,
+   "dur": 2.97,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "manualmente. &gt;&gt; Napoleão perdeu uma batalha para uns &gt;&gt; Napoleão perdeu uma batalha para uns"
+  },
+  {
+   "n": 53,
+   "ini": 329.97,
+   "fim": 334.83,
+   "dur": 4.86,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "coelhos. Diz a lenda que em 1807 depois coelhos. Diz a lenda que em 1807 depois de assinar a paz, ele quis comemorar com de assinar a paz, ele quis comemorar com"
+  },
+  {
+   "n": 54,
+   "ini": 334.83,
+   "fim": 338.77,
+   "dur": 3.94,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "uma caçada. Seu assessor comprou 3.000 uma caçada. Seu assessor comprou 3.000 coelhos, mas eram coelhos de criação."
+  },
+  {
+   "n": 55,
+   "ini": 338.77,
+   "fim": 345.4,
+   "dur": 6.63,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "coelhos, mas eram coelhos de criação. Soltos, não fugiram. Correram direto Soltos, não fugiram. Correram direto para o imperador atrás de comida. Os para o imperador atrás de comida. Os generais tentaram espantá-los, mas eles generais tentaram espantá-los, mas eles"
+  },
+  {
+   "n": 56,
+   "ini": 345.4,
+   "fim": 349.38,
+   "dur": 3.98,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "só avançavam. O conquistador da Europa só avançavam. O conquistador da Europa fugiu de carruagem, vencido por uma fugiu de carruagem, vencido por uma horda de fofura."
+  },
+  {
+   "n": 57,
+   "ini": 349.38,
+   "fim": 355.68,
+   "dur": 6.3,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "horda de fofura. &gt;&gt; Agora você sabe como criar vídeos &gt;&gt; Agora você sabe como criar vídeos animados nesse estilo utilizando o Cloud animados nesse estilo utilizando o Cloud e a skill que eu disponibilizei"
+  },
+  {
+   "n": 58,
+   "ini": 355.68,
+   "fim": 362.08,
+   "dur": 6.4,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "e a skill que eu disponibilizei gratuitamente. Mas lembre-se, ter as gratuitamente. Mas lembre-se, ter as ferramentas é o primeiro passo. O que ferramentas é o primeiro passo. O que realmente vai fazer a diferença é"
+  },
+  {
+   "n": 59,
+   "ini": 362.08,
+   "fim": 369.58,
+   "dur": 7.5,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "realmente vai fazer a diferença é colocar esse conhecimento em prática, colocar esse conhecimento em prática, testar ideias e manter a consistência testar ideias e manter a consistência nas publicações. Se esse tutorial te"
+  },
+  {
+   "n": 60,
+   "ini": 369.58,
+   "fim": 377.19,
+   "dur": 7.61,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "nas publicações. Se esse tutorial te ajudou, já deixe o seu like, se inscreva ajudou, já deixe o seu like, se inscreva no canal e ative as notificações para no canal e ative as notificações para não perder os próximos conteúdos. E"
+  },
+  {
+   "n": 61,
+   "ini": 377.19,
+   "fim": 383.88,
+   "dur": 6.69,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "não perder os próximos conteúdos. E conte aqui abaixo nos comentários o que conte aqui abaixo nos comentários o que você achou do resultado e se pretende você achou do resultado e se pretende criar seu próprio canal dark usando esse"
+  },
+  {
+   "n": 62,
+   "ini": 383.88,
+   "fim": 391.58,
+   "dur": 7.7,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "criar seu próprio canal dark usando esse método. Eu espero que você consiga método. Eu espero que você consiga aproveitar essa oportunidade e aproveitar essa oportunidade e transformar esse conhecimento em transformar esse conhecimento em resultado. Eu te vejo no próximo vídeo e"
+  },
+  {
+   "n": 63,
+   "ini": 391.58,
+   "fim": 394.96,
+   "dur": 3.38,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "resultado. Eu te vejo no próximo vídeo e tamo juntos."
+  },
+  {
+   "n": 64,
+   "ini": 394.96,
+   "fim": 412.66,
+   "dur": 17.7,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "&gt;&gt; [música]"
+  }
+ ],
+ "folha": "4A5ZQ8vp2Vs_folha.jpg",
+ "descricao": "Aprenda como criar Shorts animados 3D virais usando apenas o plano gratuito do Claude, sem precisar editar nada, e baixe a Skill Grátis no Telegram.\n\n🎁 BAIXE A SKILL GRÁTIS NA COMUNIDADE DO TELEGRAM:\n👉https://t.me/thetyrons\n\nNeste tutorial passo a passo, mostro como canais novos estão ultrapassando 160 mil inscritos e 420 milhões de visualizações com YouTube Shorts e TikToks animados em 3D — e como você pode usar a minha Skill gratuita no Claude para automatizar esse formato e começar a ganhar d",
+ "tempos_s": {
+  "metadados": 3.9,
+  "download": 13.5,
+  "cortes": 9.0,
+  "folha": 7.9,
+  "fala": 0.0,
+  "total": 34.3
+ }
+}

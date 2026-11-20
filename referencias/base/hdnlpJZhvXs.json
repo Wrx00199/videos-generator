@@ -1,0 +1,644 @@
+{
+ "id": "hdnlpJZhvXs",
+ "url": "https://www.youtube.com/watch?v=hdnlpJZhvXs",
+ "titulo": "Como Fazer Shorts Animados Virais com IA Usando o Claude (Passo a Passo)",
+ "canal": "Matheus Celtic",
+ "views": 14328,
+ "data": "20261106",
+ "duracao_s": 300.7,
+ "idioma_fala": "pt-orig",
+ "fonte_fala": "legenda",
+ "n_cortes": 67,
+ "cortes_por_min": 13.4,
+ "palavras_por_s": 6.09,
+ "cortes_s": [
+  1.6,
+  3.63,
+  5.53,
+  6.77,
+  12.5,
+  12.53,
+  13.4,
+  13.43,
+  13.57,
+  13.6,
+  14.13,
+  16.17,
+  17.9,
+  19.27,
+  19.93,
+  21.87,
+  21.93,
+  25.67,
+  29.7,
+  29.73,
+  35.8,
+  37.97,
+  47.53,
+  52.43,
+  73.0,
+  79.13,
+  81.57,
+  87.2,
+  92.1,
+  96.43,
+  98.57,
+  107.2,
+  111.83,
+  129.4,
+  134.37,
+  139.03,
+  139.33,
+  143.37,
+  144.27,
+  150.1,
+  153.03,
+  164.07,
+  179.47,
+  193.63,
+  197.67,
+  203.2,
+  214.47,
+  215.1,
+  216.0,
+  216.7,
+  218.1,
+  220.4,
+  221.87,
+  232.57,
+  235.6,
+  237.23,
+  240.97,
+  244.63,
+  248.67,
+  250.27,
+  253.1,
+  262.53,
+  270.87,
+  275.13,
+  276.3,
+  285.07,
+  292.1
+ ],
+ "beats": [
+  {
+   "n": 1,
+   "ini": 0.0,
+   "fim": 3.63,
+   "dur": 3.63,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "Olha esses dois vídeos. Esse aqui tem 29"
+  },
+  {
+   "n": 2,
+   "ini": 3.63,
+   "fim": 6.77,
+   "dur": 3.14,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "milhões de views e o canal por trás dele milhões de views e o canal por trás dele ainda é novo. O outro é meu e não, eu"
+  },
+  {
+   "n": 3,
+   "ini": 6.77,
+   "fim": 12.5,
+   "dur": 5.73,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "ainda é novo. O outro é meu e não, eu não fiz com gerador de vídeo de não fiz com gerador de vídeo de inteligência artificial. Quem fez foi o inteligência artificial. Quem fez foi o"
+  },
+  {
+   "n": 4,
+   "ini": 12.5,
+   "fim": 16.17,
+   "dur": 3.67,
+   "planos": 7,
+   "por_fala": false,
+   "fala": "Claude, em 3D, com código. Cada frame. Claude, em 3D, com código. Cada frame. Neste vídeo eu te mostro o processo Neste vídeo eu te mostro o processo"
+  },
+  {
+   "n": 5,
+   "ini": 16.17,
+   "fim": 19.27,
+   "dur": 3.1,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "completo, como eu treinei o Claude nesse completo, como eu treinei o Claude nesse estilo, como a gente fez o roteiro e o"
+  },
+  {
+   "n": 6,
+   "ini": 19.27,
+   "fim": 21.87,
+   "dur": 2.6,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "estilo, como a gente fez o roteiro e o visual, o que deu errado e como eu visual, o que deu errado e como eu"
+  },
+  {
+   "n": 7,
+   "ini": 21.87,
+   "fim": 25.67,
+   "dur": 3.8,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "consertei. E mais, um problema que consertei. E mais, um problema que ninguém comenta, a renderização do ninguém comenta, a renderização do"
+  },
+  {
+   "n": 8,
+   "ini": 25.67,
+   "fim": 29.7,
+   "dur": 4.03,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "vídeo. Vou te mostrar como eu deixei vídeo. Vou te mostrar como eu deixei muito mais rápido usando o meu próprio muito mais rápido usando o meu próprio"
+  },
+  {
+   "n": 9,
+   "ini": 29.7,
+   "fim": 35.8,
+   "dur": 6.1,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "computador e eu transformei tudo isso computador e eu transformei tudo isso numa skill que você só instala. No final numa skill que você só instala. No final eu te conto como pegar, de graça."
+  },
+  {
+   "n": 10,
+   "ini": 35.8,
+   "fim": 42.59,
+   "dur": 6.79,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "eu te conto como pegar, de graça. Capítulo 1, treinando o Claude. Se você Capítulo 1, treinando o Claude. Se você nunca viu esse estilo, é isso aqui. O nunca viu esse estilo, é isso aqui. O cenário é 3D de verdade, mas os"
+  },
+  {
+   "n": 11,
+   "ini": 42.59,
+   "fim": 47.53,
+   "dur": 4.94,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "cenário é 3D de verdade, mas os personagens são 2D chapados. É essa personagens são 2D chapados. É essa mistura que deixa o vídeo com cara de mistura que deixa o vídeo com cara de"
+  },
+  {
+   "n": 12,
+   "ini": 47.53,
+   "fim": 52.43,
+   "dur": 4.9,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "premium. Só que o Claude não conhece premium. Só que o Claude não conhece esse estilo. Se você só pede, sai uma esse estilo. Se você só pede, sai uma"
+  },
+  {
+   "n": 13,
+   "ini": 52.43,
+   "fim": 59.03,
+   "dur": 6.6,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "coisa genérica. Então primeiro você coisa genérica. Então primeiro você treina. Eu peguei os 20 shorts mais treina. Eu peguei os 20 shorts mais recentes de um canal nesse estilo e recentes de um canal nesse estilo e mandei o Claude estudar todos, frame a"
+  },
+  {
+   "n": 14,
+   "ini": 59.03,
+   "fim": 66.99,
+   "dur": 7.96,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "mandei o Claude estudar todos, frame a frame. Câmera, cortes, cores, luz, frame. Câmera, cortes, cores, luz, contorno, personagens e até o padrão dos contorno, personagens e até o padrão dos roteiros. E ele voltou com números, não"
+  },
+  {
+   "n": 15,
+   "ini": 66.99,
+   "fim": 73.0,
+   "dur": 6.01,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "roteiros. E ele voltou com números, não com adjetivos. Contorno de três pixels, com adjetivos. Contorno de três pixels, quase preto. Personagem com três e meia quase preto. Personagem com três e meia cabeças de altura. E uma coisa que os 20"
+  },
+  {
+   "n": 16,
+   "ini": 73.0,
+   "fim": 79.13,
+   "dur": 6.13,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "cabeças de altura. E uma coisa que os 20 vídeos fazem, sem exceção, abrem com vídeos fazem, sem exceção, abrem com algo que parece impossível e depois algo que parece impossível e depois"
+  },
+  {
+   "n": 17,
+   "ini": 79.13,
+   "fim": 86.51,
+   "dur": 7.38,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "explicam o porquê. Mandei salvar tudo explicam o porquê. Mandei salvar tudo num livro de regras. Então fica a dica, num livro de regras. Então fica a dica, não deixa o Claude adivinhar como um não deixa o Claude adivinhar como um estilo, ao fazê-lo estudar o real e"
+  },
+  {
+   "n": 18,
+   "ini": 86.51,
+   "fim": 87.2,
+   "dur": 0.69,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "estilo, ao fazê-lo estudar o real e"
+  },
+  {
+   "n": 19,
+   "ini": 87.2,
+   "fim": 92.1,
+   "dur": 4.9,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "escrever. Depois pedi ideias de temas e escrever. Depois pedi ideias de temas e escolhi este, um prisioneiro que salvou escolhi este, um prisioneiro que salvou o Egito da falência. O roteiro segue a"
+  },
+  {
+   "n": 20,
+   "ini": 92.1,
+   "fim": 96.43,
+   "dur": 4.33,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "o Egito da falência. O roteiro segue a mesma fórmula dos virais. Primeira mesma fórmula dos virais. Primeira"
+  },
+  {
+   "n": 21,
+   "ini": 96.43,
+   "fim": 103.87,
+   "dur": 7.44,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "etapa, feita. Capítulo 2, fazendo o etapa, feita. Capítulo 2, fazendo o visual. Primeiro teste, o Claude acertou visual. Primeiro teste, o Claude acertou a ideia. Cenário 3D, personagem 2D. Mas"
+  },
+  {
+   "n": 22,
+   "ini": 103.87,
+   "fim": 107.2,
+   "dur": 3.33,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "a ideia. Cenário 3D, personagem 2D. Mas olha o enquadramento, personagem olha o enquadramento, personagem cortado, cena torta. Na rodada seguinte,"
+  },
+  {
+   "n": 23,
+   "ini": 107.2,
+   "fim": 111.83,
+   "dur": 4.63,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "cortado, cena torta. Na rodada seguinte, pior. A câmera mirou no lugar errado e pior. A câmera mirou no lugar errado e não tinha ninguém na cena. Então eu"
+  },
+  {
+   "n": 24,
+   "ini": 111.83,
+   "fim": 118.47,
+   "dur": 6.64,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "não tinha ninguém na cena. Então eu mudei o método. Em vez de pedir tudo de mudei o método. Em vez de pedir tudo de uma vez, dividi o visual em cinco uma vez, dividi o visual em cinco partes, câmera, mundo, materiais,"
+  },
+  {
+   "n": 25,
+   "ini": 118.47,
+   "fim": 126.56,
+   "dur": 8.09,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "partes, câmera, mundo, materiais, personagens e acabamento. Cada parte com personagens e acabamento. Cada parte com o seu próprio agente, mexendo só nos o seu próprio agente, mexendo só nos próprios arquivos. E no fim de cada próprios arquivos. E no fim de cada rodada, outro agente compara lado a lado"
+  },
+  {
+   "n": 26,
+   "ini": 126.56,
+   "fim": 129.4,
+   "dur": 2.84,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "rodada, outro agente compara lado a lado com a referência e dá nota de zero a 10 com a referência e dá nota de zero a 10"
+  },
+  {
+   "n": 27,
+   "ini": 129.4,
+   "fim": 134.37,
+   "dur": 4.97,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "para cada área. Foram oito rodadas. para cada área. Foram oito rodadas. Rodada um, rodada três, rodada cinco, Rodada um, rodada três, rodada cinco,"
+  },
+  {
+   "n": 28,
+   "ini": 134.37,
+   "fim": 139.03,
+   "dur": 4.66,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "rodada oito. E mesmo no final, ele achou rodada oito. E mesmo no final, ele achou o detalhe. O pôr do sol estava saindo o detalhe. O pôr do sol estava saindo roxo em vez de dourado. Agora sim,"
+  },
+  {
+   "n": 29,
+   "ini": 139.03,
+   "fim": 143.37,
+   "dur": 4.34,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "roxo em vez de dourado. Agora sim, cenário 3D, personagem 2D e o estilo cenário 3D, personagem 2D e o estilo"
+  },
+  {
+   "n": 30,
+   "ini": 143.37,
+   "fim": 150.1,
+   "dur": 6.73,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "bate com a referência. Se a inteligência bate com a referência. Se a inteligência artificial já te fez refazer a mesma artificial já te fez refazer a mesma coisa oito vezes, deixa o like porque eu coisa oito vezes, deixa o like porque eu"
+  },
+  {
+   "n": 31,
+   "ini": 150.1,
+   "fim": 153.03,
+   "dur": 2.93,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "senti essa. O capítulo três. senti essa. O capítulo três. Renderizando o vídeo rápido. Agora, o"
+  },
+  {
+   "n": 32,
+   "ini": 153.03,
+   "fim": 161.12,
+   "dur": 8.09,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "Renderizando o vídeo rápido. Agora, o problema que ninguém comenta. O vídeo problema que ninguém comenta. O vídeo final tem 70 segundos em 2K. São mais de final tem 70 segundos em 2K. São mais de 2.000 frames, cada um desenhado em 3D na"
+  },
+  {
+   "n": 33,
+   "ini": 161.12,
+   "fim": 164.07,
+   "dur": 2.95,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "2.000 frames, cada um desenhado em 3D na nuvem, sem placa de vídeo. Isso levaria nuvem, sem placa de vídeo. Isso levaria"
+  },
+  {
+   "n": 34,
+   "ini": 164.07,
+   "fim": 172.24,
+   "dur": 8.17,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "horas. Então o Claude escreve o código e horas. Então o Claude escreve o código e o meu computador renderiza. Eu uso uma o meu computador renderiza. Eu uso uma AMD Radeon RX 7.900 XT. O setup é"
+  },
+  {
+   "n": 35,
+   "ini": 172.24,
+   "fim": 179.47,
+   "dur": 7.23,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "AMD Radeon RX 7.900 XT. O setup é simples. Um, instala o node.js dois, simples. Um, instala o node.js dois, cria uma pasta para o projeto e abre ela cria uma pasta para o projeto e abre ela no app do Claude no computador. Três,"
+  },
+  {
+   "n": 36,
+   "ini": 179.47,
+   "fim": 182.48,
+   "dur": 3.01,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "no app do Claude no computador. Três, pede para o Claude rodar npm install."
+  },
+  {
+   "n": 37,
+   "ini": 182.48,
+   "fim": 188.72,
+   "dur": 6.24,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "pede para o Claude rodar npm install. Isso baixa o Remotion, a ferramenta que Isso baixa o Remotion, a ferramenta que transforma código em vídeo. Quatro, e é transforma código em vídeo. Quatro, e é aqui que a maioria erra. Nas"
+  },
+  {
+   "n": 38,
+   "ini": 188.72,
+   "fim": 193.63,
+   "dur": 4.91,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "aqui que a maioria erra. Nas configurações de gráficos do Windows, configurações de gráficos do Windows, coloca o navegador do Remotion para usar coloca o navegador do Remotion para usar a placa de vídeo dedicada. Cinco, o"
+  },
+  {
+   "n": 39,
+   "ini": 193.63,
+   "fim": 197.67,
+   "dur": 4.04,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "a placa de vídeo dedicada. Cinco, o Claude te entrega o comando, você roda e Claude te entrega o comando, você roda e"
+  },
+  {
+   "n": 40,
+   "ini": 197.67,
+   "fim": 203.2,
+   "dur": 5.53,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "ele renderiza. Resultado, 2.075 frames ele renderiza. Resultado, 2.075 frames em 2K em uns 12 minutos aqui no meu PC. em 2K em uns 12 minutos aqui no meu PC."
+  },
+  {
+   "n": 41,
+   "ini": 203.2,
+   "fim": 209.8,
+   "dur": 6.6,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "E a produção inteira usou só 2% do meu E a produção inteira usou só 2% do meu plano semanal do Claude. Se isso te plano semanal do Claude. Se isso te economizou horas, se inscreve. Eu mostro"
+  },
+  {
+   "n": 42,
+   "ini": 209.8,
+   "fim": 214.47,
+   "dur": 4.67,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "economizou horas, se inscreve. Eu mostro fluxos assim que você consegue usar de fluxos assim que você consegue usar de verdade. Agora, o resultado final. Um"
+  },
+  {
+   "n": 43,
+   "ini": 214.47,
+   "fim": 218.1,
+   "dur": 3.63,
+   "planos": 4,
+   "por_fala": false,
+   "fala": "verdade. Agora, o resultado final. Um prisioneiro salvou o Egito da falência prisioneiro salvou o Egito da falência usando uma regra financeira que você"
+  },
+  {
+   "n": 44,
+   "ini": 218.1,
+   "fim": 221.87,
+   "dur": 3.77,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "usando uma regra financeira que você provavelmente ignora até hoje. Começou provavelmente ignora até hoje. Começou"
+  },
+  {
+   "n": 45,
+   "ini": 221.87,
+   "fim": 229.92,
+   "dur": 8.05,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "com um pesadelo. O Nilo enche todo o ano com um pesadelo. O Nilo enche todo o ano e ninguém pensa no ano que vem. O faraó e ninguém pensa no ano que vem. O faraó sonha. Sete vacas [música] gordas saem sonha. Sete vacas [música] gordas saem do rio. Sete magras comem todas. Dorme"
+  },
+  {
+   "n": 46,
+   "ini": 229.92,
+   "fim": 232.57,
+   "dur": 2.65,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "do rio. Sete magras comem todas. Dorme de novo. Sonha de novo com espigas. de novo. Sonha de novo com espigas."
+  },
+  {
+   "n": 47,
+   "ini": 232.57,
+   "fim": 235.6,
+   "dur": 3.03,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "Convocam todos os magos [música] e Convocam todos os magos [música] e nenhum explica nada. Aí o servo do faraó"
+  },
+  {
+   "n": 48,
+   "ini": 235.6,
+   "fim": 240.97,
+   "dur": 5.37,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "nenhum explica nada. Aí o servo do faraó lembra de um prisioneiro"
+  },
+  {
+   "n": 49,
+   "ini": 240.97,
+   "fim": 244.63,
+   "dur": 3.66,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "&gt;&gt; Dois anos. José faz a barba e avisa: \"A resposta vem [música] de Deus. As vacas"
+  },
+  {
+   "n": 50,
+   "ini": 244.63,
+   "fim": 248.67,
+   "dur": 4.04,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "resposta vem [música] de Deus. As vacas gordas são sete anos de fartura, as gordas são sete anos de fartura, as magras sete de fome. Guarde um quinto da"
+  },
+  {
+   "n": 51,
+   "ini": 248.67,
+   "fim": 253.1,
+   "dur": 4.43,
+   "planos": 2,
+   "por_fala": false,
+   "fala": "magras sete de fome. Guarde um quinto da colheita\". José vira segundo no comando colheita\". José vira segundo no comando e o grão se acumula [música] até os"
+  },
+  {
+   "n": 52,
+   "ini": 253.1,
+   "fim": 258.36,
+   "dur": 5.26,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "e o grão se acumula [música] até os escribas desistirem de contar. Então o escribas desistirem de contar. Então o rio baixa, a terra racha e vem a fome."
+  },
+  {
+   "n": 53,
+   "ini": 258.36,
+   "fim": 262.53,
+   "dur": 4.17,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "rio baixa, a terra racha e vem a fome. Felizmente, tinha sete anos [música] de Felizmente, tinha sete anos [música] de grão guardado. Infelizmente, o mundo"
+  },
+  {
+   "n": 54,
+   "ini": 262.53,
+   "fim": 269.12,
+   "dur": 6.59,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "grão guardado. Infelizmente, o mundo inteiro descobriu onde tinha comida. Com inteiro descobriu onde tinha comida. Com você é igual. Ganhou o aumento [música] você é igual. Ganhou o aumento [música] e no fim do mês não sobrou nada. Sete"
+  },
+  {
+   "n": 55,
+   "ini": 269.12,
+   "fim": 270.87,
+   "dur": 1.75,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "e no fim do mês não sobrou nada. Sete vacas gordas comidas. O segredo: guardar"
+  },
+  {
+   "n": 56,
+   "ini": 270.87,
+   "fim": 275.13,
+   "dur": 4.26,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "vacas gordas comidas. O segredo: guardar uma parte [música] assim que a colheita uma parte [música] assim que a colheita chegava, antes de gastar. No Egito de"
+  },
+  {
+   "n": 57,
+   "ini": 275.13,
+   "fim": 281.4,
+   "dur": 6.27,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "chegava, antes de gastar. No Egito de verdade, grão era dinheiro e o silo verdade, grão era dinheiro e o silo [música] era o banco. A regra: pague-se [música] era o banco. A regra: pague-se primeiro. Funcionou até para um"
+  },
+  {
+   "n": 58,
+   "ini": 281.4,
+   "fim": 284.96,
+   "dur": 3.56,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "primeiro. Funcionou até para um recém-saído da cadeia, [música] de barba recém-saído da cadeia, [música] de barba feita."
+  },
+  {
+   "n": 59,
+   "ini": 285.07,
+   "fim": 292.1,
+   "dur": 7.03,
+   "planos": 1,
+   "por_fala": false,
+   "fala": "E é isso. A skill completa, com o livro E é isso. A skill completa, com o livro de regras, os prompts e todas as de regras, os prompts e todas as correções deste vídeo, está de graça no correções deste vídeo, está de graça no comentário fixado. E se inscreve no"
+  },
+  {
+   "n": 60,
+   "ini": 292.1,
+   "fim": 298.72,
+   "dur": 6.62,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "comentário fixado. E se inscreve no canal. Eu vou ensinar a criar outros canal. Eu vou ensinar a criar outros formatos de vídeo com o Claude, de formatos de vídeo com o Claude, de graça, aqui no YouTube. Te vejo no"
+  },
+  {
+   "n": 61,
+   "ini": 298.72,
+   "fim": 300.68,
+   "dur": 1.96,
+   "planos": 1,
+   "por_fala": true,
+   "fala": "graça, aqui no YouTube. Te vejo no próximo."
+  }
+ ],
+ "folha": "hdnlpJZhvXs_folha.jpg",
+ "descricao": "Aprenda a criar vídeos animados em 3D com o Claude usando código: cenário 3D de verdade com personagens 2D chapados, o mesmo estilo dos shorts que estão viralizando. Neste tutorial eu mostro o processo completo, do estudo dos vídeos de referência e do roteiro até corrigir os erros da animação e renderizar o vídeo final no meu próprio computador.\n\nVocê vai ver como eu treinei o Claude no estilo (20 shorts estudados frame a frame, com tudo salvo num livro de regras), como dividi o visual em cinco ",
+ "tempos_s": {
+  "metadados": 3.9,
+  "download": 13.0,
+  "cortes": 7.6,
+  "folha": 6.7,
+  "fala": 0.0,
+  "total": 31.2
+ }
+}

@@ -67,6 +67,7 @@ def main():
                 sh(["yt-dlp", "--js-runtimes", "node", "--no-playlist", "--skip-download", "--write-subs", "--write-auto-subs",
                     "--sub-langs", lang, "--sub-format", "vtt", "-o", str(tmp / "v.%(ext)s"), a.url])
                 if list(tmp.glob("v.*.vtt")): break
+                time.sleep(6)  # 429: espera antes da próxima tentativa
         dur = float(sh(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(video)]).stdout)
         with tempo("cortes"):
             e = sh(["ffmpeg", "-hide_banner", "-i", str(video), "-an", "-vf", f"select='gt(scene,{a.limiar})',showinfo", "-f", "null", "-"]).stderr
@@ -81,6 +82,8 @@ def main():
             if legendas:
                 pref = sorted(legendas, key=lambda p: (not p.name.split(".")[-2].startswith("pt"),))[0]
                 idioma = pref.name.split(".")[-2]; fala = ler_vtt(pref)
+            elif dur > 900:  # whisper em CPU fraca: não transcrever tutorial longo sem legenda
+                fonte = "sem_fala"; idioma = None; fala = []
             else:
                 fonte = "whisper"
                 r = sh([sys.executable, str(RAIZ / "ferramentas" / "stt.py"), str(video), "auto"])
