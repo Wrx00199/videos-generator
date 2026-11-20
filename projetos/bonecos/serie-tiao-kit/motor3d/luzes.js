@@ -96,3 +96,8 @@ LIGHTS.sala = LIGHTS.casa_dia; LIGHTS.sala_blender = LIGHTS.casa_dia; LIGHTS.qua
 LIGHTS.obra_azul = LIGHTS.predio_dia; LIGHTS.obra_vermelha = LIGHTS.predio_dourado; LIGHTS.escritorio = LIGHTS.predio_escritorio; LIGHTS.skyline = LIGHTS.predio_poente; LIGHTS.rua = LIGHTS.predio_rua; LIGHTS.redacao = LIGHTS.predio_redacao; LIGHTS.topo_noite = LIGHTS.predio_noite;
 // 21/11: predio_tarde = pôr do sol quente (mesma paleta do predio_poente); predio_topo de dia por padrão (noite: luz('predio_noite') já liga B.noite pelo L.noite)
 LIGHTS.predio_tarde = LIGHTS.predio_poente; LIGHTS.predio_topo = LIGHTS.predio_dia;
+
+// 20/11: PACOTE TREM (cenarios7.js). dia p/ pradaria/estação, nevasca fria, cabine quente, fim_tarde = poente
+LIGHTS.pradaria_trilho = LIGHTS.predio_dia; LIGHTS.estacao_trem = LIGHTS.predio_dourado; LIGHTS.fim_tarde = LIGHTS.predio_poente;
+LIGHTS.nevasca = { ...LIGHTS.dia, sky: '#d8e4f4', ground: '#f0f4fa', hemi: 1.25, sun: '#e8f0ff', sunI: 1.2, fog: '#dfe8f4', fogNear: 14, fogFar: 140, skyTop: '#b8c8de', skyHor: '#e4ecf6', sat: 0.8, vig: 0.3, tint: '#e6eefb' };
+LIGHTS.cabine_locomotiva = { ...LIGHTS.cozinha, sky: '#ffd9a0', hemi: 1.5, sunI: 1.4, fog: '#4a3020', fogNear: 30, fogFar: 120, skyTop: '#79b8ee', skyHor: '#cfe8fa', vig: 0.4, tint: '#ffe8c8' };
