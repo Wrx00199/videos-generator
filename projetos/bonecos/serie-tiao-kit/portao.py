@@ -329,6 +329,11 @@ def checar_variedade(planos):
         if cams[i] == cams[i - 1]:
             falhas.append(f'camera {cams[i]} repetida em seguida (plano {i - 1} e {i})')
             break
+    for i in range(2, len(planos)):
+        t = planos[i - 2:i + 1]
+        if all(isinstance(p, dict) for p in t) and len({(p.get('cenario'), p.get('luz')) for p in t}) == 1:
+            falhas.append(f'3 planos seguidos com mesmo cenario+luz (planos {i - 2} a {i}); trocar cenario ou luz')
+            break
     dist = len(set(cams))
     if dist < CAMERAS_MIN:
         falhas.append(f'so {dist} cameras distintas (min {CAMERAS_MIN})')

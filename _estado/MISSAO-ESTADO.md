@@ -35,5 +35,7 @@ Dicas operacionais: render_leve.sh exige TOTAL numérico → passar intervalo '0
 - S1 parou ~06:20
 
 ## PONTO DE RETOMADA (sobrescrever)
-20/11 ~12:40: ep.39 ENTREGUE (PARA-APROVAR): prontos/3D/Aventuras do Tião/39 - Prédio Mais Alto (PARA-APROVAR).mp4 (NÃO subiu ao Drive: sem revisor ok ≥8, igual ep.38; subi por engano e removi). Rev 6,57 → ordens aplicadas → portão final PASSOU, sem 3ª revisão. Tempo ~2h15 em docs/TEMPO_EPISODIO.md. Uso 5h≈50% sem≈45%.
-PRÓXIMO (melhoria contínua): (a) automatizar portão de plano antes do render (3 planos seguidos mesmo cenário+luz, contato do senta) e ordem 'prop da virada desligado'; (b) Fase 2 GTA gringo (Lugan3d 'Los Santos before GTA VI' modelável); (c) Fase 3 painel (logo marca/propostas-logo/logo-b4-preto.svg); (d) ep.40 só se semanal <60% e com revisor calibrado. Blender aguarda OK do Filippe.
+20/11 ~12:35 (vigia, sessão curta; sessão anterior parou sem lock ~12:00, causa provável: fim de contexto/limite). Uso 5h=56% sem=44%.
+FEITO agora: portão ganhou checagem "3 planos seguidos com mesmo cenário+luz" (portao.py kit + docs/tiao, teste novo, 14 testes ok).
+ep.39 ENTREGUE (PARA-APROVAR) em prontos/3D/Aventuras do Tião/. Nada em produção.
+PRÓXIMO: (a) portão: contato do senta + ordem 'prop da virada desligado'; (b) Fase 2 GTA gringo (Lugan3d 'Los Santos before GTA VI'); (c) Fase 3 painel (logo-b4-preto.svg); (d) ep.40 só se semanal <60% e revisor calibrado. Blender aguarda OK do Filippe.

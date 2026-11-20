@@ -141,5 +141,21 @@ class TestPlanosMecanicos(unittest.TestCase):
         self.assertTrue(all(not r.ok for r in portao.checar_planos_mecanicos(str(self.proj))))
 
 
+
+class TestTresPlanosIguais(unittest.TestCase):
+    def _planos(self, trio):
+        cams = ['abertura_push', 'close_reacao', 'detalhe_objeto', 'corte_transversal', 'abertura_push', 'close_reacao']
+        return [dict(ini=i*10, fim=i*10+10, camera=cams[i % 6], cenario=c, luz=l) for i, (c, l) in enumerate(trio)]
+
+    def test_tres_iguais_reprova(self):
+        r = portao.checar_variedade(self._planos([('a', 'x')] * 3 + [('b', 'y'), ('c', 'z'), ('d', 'w')]))
+        self.assertFalse(r.ok)
+        self.assertIn('3 planos seguidos', r.msg if hasattr(r, 'msg') else str(r))
+
+    def test_dois_iguais_ou_luz_diferente_nao_dispara(self):
+        trio = [('a', 'x'), ('a', 'x'), ('a', 'y'), ('b', 'y'), ('c', 'z'), ('d', 'w')]
+        r = portao.checar_variedade(self._planos(trio))
+        self.assertNotIn('3 planos seguidos', str(r))
+
 if __name__ == '__main__':
     unittest.main()
