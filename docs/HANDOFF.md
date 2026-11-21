@@ -51,3 +51,14 @@ Pendências: cabine_locomotiva ainda escura; xadrez do apostador é listrado; PC
 Ordens do REVISAO_SB.md JÁ aplicadas: 1 (Tião na caixa/traseira), 2 parcial (Tião acena na caixa antes do fim; apostador ainda grande), 3 (NÃO É BOMBA legível), 4 (velocímetro inteiro), 10 (Tião fora da caixa).
 FALTAM (ordens do revisor): 5 boné/sapato voando nos degraus 30/60/100; 6 pé escorregando 2x em close; 7 variar os 3 planos de bolha (close do VIP, lateral baixo); 8 variar pradaria 0-13 s (close na tábua/rosto); 9 pergunta final (muda roteiro+voz, só 1 fala); apostador pequeno/longe no fim; maquinista = boneco `cap` (criar personagem); fumaça preta no apostador do apito; SEM trilha/SFX (só voz normalizada em som/mix.wav → usar som_tiao.py/mix_tiao.py); sem revisor final do vídeo (revisor-bonecos) e sem copiar para `prontos/3D/Aventuras do Tião/` (esperar aprovação do Filippe). Nada postado.
 Código: `serie-tiao-kit/roteiros/ep40_trem_story.js` (cópia versionada de web/story.js).
+
+## 20/11 ~21h30 — FEEDBACK DURO DO FILIPPE (ep.40) → PRIORIDADES DO SISTEMA (ler antes de qualquer vídeo)
+Meta dele: "faz 2 vídeos do Tião hoje" → agente pesquisa viral, modela, gera, REVISA e entrega pronto pra postar (Drive), sem ele apontar erro. Hoje falha porque: (1) revisão olhava miniatura/números, não o vídeo; (2) regras existem em arquivo mas nada força; (3) personagens/arte fracos.
+FEITO agora: `.claude/agents/revisor-bonecos.md` seção V5 (9 itens, PASSA/FALHA/NÃO VISTO, quadros ≥540 px, original×nosso em %, última linha `VEREDITO: APROVADO|REPROVADO`); hook `.claude/hooks/guarda_entrega.py` em settings.json (SendUserFile de final.mp4 em projetos/ só com REVISAO_FINAL.md aprovado e mais novo, ou legenda com RASCUNHO).
+FALTA (ordem de impacto):
+1. PERSONAGENS NOVOS por história, distintos (apostador = cópia do capitão com outra roupa; tripulantes/maquinista reaproveitados). Rig: mais relevo, braços/pernas mais grossos, PÉS/sapatos visíveis (hoje só canela). Referência de beleza: Wobbly Tales/ricksclips (frames em referencias/base/*_folha.jpg).
+2. CONTATO de verdade no rig: mão no objeto (guidão), corpo sentado no assento, pedal girando acoplado à perna, puxar/segurar com 2 personagens (hoje IK por coordenada chutada; não há solver de contato). Sem isso, evitar referências com bike/abraço/puxar.
+3. Cenário mais bonito (Blender/catálogo, ver cenarios_blender/).
+4. Revisor roda sobre o MP4 inteiro antes de qualquer envio; relatório com original×nosso % (≥85% roteiro, estrutura e visual).
+5. Orquestrador "faz N vídeos": olheiro → ficha → roteirista(tradução fiel) → crítico/retenção só sugerem → voz → storyboard → revisor SB → render → revisor final → Drive. Rodar sozinho, sem esperar ele.
+Ep.40: v4 em projetos/bonecos/2026-11-20-tiao-trem-bike-40/final.mp4 = RASCUNHO reprovado pelo Filippe (mão no quadro da bike, flutua, sem pé, crew voando sem animação, apostador=capitão).

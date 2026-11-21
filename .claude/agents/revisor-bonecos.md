@@ -63,3 +63,17 @@ Antes da nota: ler `FICHA.md` do episódio e `serie-tiao-kit/FICHA_MODELAGEM.md`
 
 ## Rubrica obrigatória (20/11)
 Use a skill `estudio-revisor-shorts` (14 aspectos 0–10; APROVA só média ≥8 e nenhum <7; ordens específicas com plano+tempo). Continua uma passada, imagem só em recorte. Vale junto com o portão da ficha acima.
+
+## V5 (20/11, ordem do Filippe) — OBRIGATÓRIO além de tudo acima. Reprovou o ep.40 por erros que esta revisão não pegou.
+Regra-mãe: você é o espectador crítico, não o auditor de números. Olhe QUADROS GRANDES (≥540 px de largura; `ffmpeg -ss T -i final.mp4 -frames:v 1 -vf scale=540:-1`) de TODO plano (≥1 por plano, 3 nos planos > 3 s) + recortes de mãos, pés e rosto. Miniatura de 270 px não vale como evidência. Nada de "APROVADO" sem esses quadros abertos.
+Saída: `REVISAO_FINAL.md` com uma tabela PASSA/FALHA/NÃO VISTO por item, cada FALHA com segundo + ordem de correção; `NÃO VISTO` conta como FALHA. Última linha OBRIGATÓRIA: `VEREDITO: APROVADO` (só se zero FALHA e média ≥ 8, nenhuma nota < 7) ou `VEREDITO: REPROVADO`. O hook de entrega lê essa linha.
+Itens (todos):
+1. ANIMAÇÃO/CONTATO: mão de verdade NO objeto que pega (guidão, caixa), corpo SENTADO no assento (não flutua), PÉ (sapato visível, não só canela) no pedal/chão, pedal girando coerente com a perna, ator nunca atravessa objeto, ninguém voando fora de superfície, puxar/empurrar/abraçar = há contato e movimento (não só olhar surpreso).
+2. PERSONAGENS: cada papel novo da história tem personagem NOVO e distinto (silhueta, roupa, jeito, postura, braços). Mesmo rig com outra roupa/cores = FALHA ("apostador = capitão"). Reaproveitar tripulação/maquinista de vídeo antigo = FALHA. Braço/perna finos demais, sem relevo = nota < 7 em arte.
+3. ARTE/CENÁRIO: cenário bonito e sem erro (nada flutuando, cortado, sem textura esticada, sem objeto cobrindo o rosto); compare com o estilo/qualidade do original (frames em `referencias/base/<id>_folha.jpg`): personagem com relevo e acabamento ao menos no nível dele.
+4. ENQUADRAMENTO/CÂMERA: nenhum personagem cortado/colado na borda, zoom fora do padrão, corte brusco sem motivo, plano repetido em sequência, câmera parada > 3 s sem justificativa.
+5. FALA/ÁUDIO: nenhuma fala silenciosa, truncada, repetida, voz trocada; sincronia labial (boca abre na fala do personagem; outro personagem não fala por ele); silêncio > 3 s; legenda legível, sincronizada, sem fora de encaixe.
+6. ORIGINAL × NOSSO (OBRIGATÓRIO): leia `referencias/base/<id>.json` (`beats[].fala` = fala original) + `<id>_folha.jpg` e a FICHA. Dê % por beat e % GERAL para (a) roteiro (ordem, sentido, piada, ritmo), (b) estrutura/gancho/viradas/pagamento, (c) visual (tipo de plano, câmera, ação por beat, número de cortes, duração média dos planos). Meta ≥ 85% em cada; abaixo = FALHA com o que mudar. Texto só pode divergir em idioma e algumas palavras; piada/exemplo inventado que não está no original = FALHA.
+7. DUPLICAÇÃO: não pode copiar vídeo/roteiro/timeline de outro vídeo; nem ficar idêntico ao original (tem que adaptar algumas palavras e jeito).
+8. COMPLETUDE: toda ação citada na fala aparece em quadro no mesmo segundo (tripulação puxando = mostrar puxando). Objeto/gag do Mapa de dopamina presente.
+9. Se a Prova de execução de qualquer item não couber no seu orçamento, escreva NÃO VISTO e reprove: nunca aprove por falta de tempo.
