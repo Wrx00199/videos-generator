@@ -43,7 +43,7 @@ const clampN = (v, a, b) => (v < a ? a : v > b ? b : v);
 const lmb = (x, y, a, l1, l2) => { const ex = x + Math.sin(a[0]) * l1, ey = y + Math.cos(a[0]) * l1, b = a[0] + a[1]; return [ex, ey, ex + Math.sin(b) * l2, ey + Math.cos(b) * l2]; };
 
 // extensão de cada prop ao longo do eixo do rig (a partir da mão, +y = ponta; unidades do rig, antes da escala s) e meia-largura
-const PROP_BOX = { abridor: [-42, 65, 18], lata: [-25, 45, 26], fuzil: [-35, 125, 24], spoon: [-10, 99, 15], ladle: [-30, 144, 32], sword: [-34, 150, 30], cutlass: [-34, 150, 30],
+const PROP_BOX = { bicorne: [-105, 28, 106], abridor: [-42, 65, 18], lata: [-25, 45, 26], fuzil: [-35, 125, 24], spoon: [-10, 99, 15], ladle: [-30, 144, 32], sword: [-34, 150, 30], cutlass: [-34, 150, 30],
   shovel: [-40, 245, 30], map: [-10, 100, 75], recipe: [-10, 160, 70], lantern: [0, 100, 26], glass: [-20, 142, 17], pavio: [-20, 232, 16], relogio: [-14, 134, 74], knife: [-10, 90, 14], facaTorta: [-10, 90, 14], quill: [-60, 150, 30] };
 const CABECA = { cx: 0, cy: -262, rx: 100, ry: 92 };   // elipse da CARA no espaço do corpo (origem no quadril, sem tilt)
 
@@ -92,6 +92,17 @@ function passo(ph, amp = 0.5, { corre = false } = {}) {
 
 export const Pz = {
   passo, compPasso, maoDe, propNaCara, avisaPropCara, PROP_BOX,
+
+  sentar(progresso) {
+    const u = clampN(progresso, 0, 1);
+    const k = u * u * (3 - 2 * u);
+    return { lL: [1.34 * k, -1.32 * k], lR: [1.43 * k, -1.39 * k], lean: .23 * Math.sin(k * Math.PI) };
+  },
+
+  chapeuNaMao({ lado = 'R' } = {}) {
+    const sinal = lado === 'L' ? -1 : 1;
+    return { hat: false, [`a${lado}`]: { ik: [sinal * 148, -151] }, [`h${lado}`]: { k: 'bicorne', a: .16 * sinal, s: .72 } };
+  },
 
   // ─── apontar ───────────────────────────────────────────────────────────────
   // Estica o braço direito (ou esquerdo) em direção a alvoXYZ.

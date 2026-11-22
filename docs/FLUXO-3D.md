@@ -22,3 +22,7 @@ As integrações acima adaptam práticas e ferramentas ao motor local. A licenç
 4. **Câmera e luz.** Confira abertura, virada e payoff no enquadramento vertical. Verifique se o objeto de interesse continua visível mesmo no plano mais escuro.
 
 O [story da prova](../_estado/prova-elenco-civil/story.js) guarda entrada boa e defeitos deliberados. Ele usa a cópia de trabalho do motor gerada por `novo_ep.sh`. Os quadros 91 e 92 testam interseção com a mesa e giro extremo. Os quadros 93–96 isolam quatro retratos. Compare uma folha antes e depois por lote. A revisão final cobre o arquivo atual na qualidade de entrega.
+
+## Movimento e contato
+
+Use `andarRota` para indicar destino e número de passos de cada trecho. A passada acompanha a distância no cenário. Use `Pz.chapeuNaMao()` para prender o bicorne à mão e desativar o chapéu da cabeça. `Pz.sentar(progresso)` inclina o tronco e dobra joelhos ao longo da transição. Ajuste a cadeira para o quadril tocar o assento e o pé alcançar o chão. Confira o antes, o contato e a posição final. A [prova de movimento](../_estado/prova-movimento-3d/prova.mp4) reúne a rota de dez passos e três à esquerda, o chapéu e a cadeira.

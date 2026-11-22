@@ -363,7 +363,7 @@ function drawChar(n, p, t) {
   const pL = A(-1, o.aL), pR = A(1, o.aR);
   ctx.save(); ctx.translate(0, -190); ctx.rotate(o.tilt); ctx.translate(0, -70); head(S, o, t); ctx.restore();
   if (o.front) o.front();
-  if (S.an) { armAn(pL, o.hL, S, -1); armAn(pR, o.hR, S, 1); } else { arm(pL, o.hL); arm(pR, o.hR); }
+  if (S.an) { armAn(pL, o.hL, S, -1); armAn(pR, o.hR, S, 1); } else { arm(pL, o.hL, S.body, S.pele); arm(pR, o.hR, S.body, S.pele); }
   ctx.restore();
 }
 // ---- auditaPose: checagem automática (texto, sem imagem) de pose quebrada + caixa do boneco ----
@@ -388,8 +388,15 @@ function auditaPose(n, p) {
   const sc = S.s * (o.sc || 1); const xs = pts.map((q) => q[0] * sc), ys = pts.map((q) => q[1] * sc);
   return { avisos: av, bb: [Math.min(...xs) - 15, Math.max(...xs) + 15, Math.min(...ys) - 15, Math.max(...ys)] };
 }
-function leg(g) { line(g, 16); line(g, 4, 'rgba(255,255,255,.18)'); ctx.fillStyle = INK; ell(g[4] + 10, g[5] + 1, 21, 11); ctx.fill(); }
-function arm(g, pr) { line(g, 15); line(g, 4, 'rgba(255,255,255,.18)'); ctx.fillStyle = INK; ell(g[4], g[5], 13, 13); ctx.fill(); if (pr) { prop(pr.k, g[4], g[5], pr.a, pr.s || 1, pr); ctx.fillStyle = INK; ell(g[4], g[5], 12, 12); ctx.fill(); } }
+function leg(g) {
+  line(g, 23); line(g, 13, '#494653'); line(g, 4, 'rgba(255,255,255,.22)');
+  ctx.fillStyle = INK; ell(g[4] + 10, g[5] + 1, 22, 12); ctx.fill();
+}
+function arm(g, pr, manga, pele = '#efe8df') {
+  line(g, 22); line(g, 12, manga); line(g, 4, 'rgba(255,255,255,.22)');
+  if (pr) prop(pr.k, g[4], g[5], pr.a, pr.s || 1, pr);
+  ell(g[4], g[5], 14, 13); fs(pele, 5);
+}
 function body(S, o) {
   const path = () => rr(-60, -204, 120, 214, [60, 60, 36, 36]);
   path(); fs(S.body, 0);
@@ -451,7 +458,7 @@ function head(S, o, t) {
     if (S.pele) { ctx.save(); ell(0, 0, 96, 88); ctx.clip(); ctx.globalCompositeOperation = 'multiply'; ctx.fillStyle = S.pele; ctx.fillRect(-100, -96, 200, 192); ctx.restore(); }
     if (!S.an) { ell(-50, -46, 20, 11, -.6); ctx.fillStyle = 'rgba(255,255,255,.95)'; ctx.fill(); } else { ell(-50, -46, 16, 8, -.6); ctx.fillStyle = 'rgba(255,255,255,.55)'; ctx.fill(); } }
   if (S.hair && cabeloSolto && !o.back) for (const s of [-1, 1]) { ell(s * 86, -34, 20, 32, s * 0.35); fs(S.hair, 6); }
-  if (S.hair && S.penteado && !o.back) cabeloFrente(S.hair, S.penteado);
+  if (S.hair && (S.penteado || S.feminina) && !o.back) cabeloFrente(S.hair, S.penteado || 'longo');
   if (S.chamusco && !o.back) { ctx.save(); ell(0, 0, 96, 88); ctx.clip(); fuligem([[-60, 30, 30], [62, -20, 26], [10, 70, 34], [-30, -60, 18]], 0.42); ctx.restore(); }
   if (!o.back) face(S, o, t);
   // vento (grito na cara, ventania): chapéu levanta e inclina pra trás tremendo; vento>0.85 = chapéu quase saindo
@@ -616,7 +623,8 @@ function hatAt(k, x, y, r, s, t) { HC = null; ctx.save(); ctx.translate(x, y); c
 // ---------- objetos ----------
 function prop(k, x, y, a, s = 1, pr = {}) {
   ctx.save(); ctx.translate(x, y); ctx.rotate(-a); ctx.scale(s, s);
-  if (k === 'ladle') { rr(-6, -30, 12, 140, 6); fs('#c9c9d2', 5); ctx.beginPath(); ctx.arc(0, 112, 32, 0, PI); ctx.closePath(); fs('#c9c9d2', 6); if (pr.full) { ell(0, 113, 28, 6); ctx.fillStyle = '#e8b04a'; ctx.fill(); } }
+  if (k === 'bicorne') { hatAt('bicorne', 0, -9, 0, .78, 0); }
+  else if (k === 'ladle') { rr(-6, -30, 12, 140, 6); fs('#c9c9d2', 5); ctx.beginPath(); ctx.arc(0, 112, 32, 0, PI); ctx.closePath(); fs('#c9c9d2', 6); if (pr.full) { ell(0, 113, 28, 6); ctx.fillStyle = '#e8b04a'; ctx.fill(); } }
   else if (k === 'map') { rr(-75, -10, 150, 110, 6); fs('#f1dfae', 6); ctx.setLineDash([10, 10]); line([-50, 75, -10, 40, 25, 60], 5, '#8a5a2b'); ctx.setLineDash([]); line([30, 20, 50, 40], 6, '#d8322a'); line([50, 20, 30, 40], 6, '#d8322a'); }
   else if (k === 'lantern') { line([0, 0, 0, 30], 5); rr(-26, 30, 52, 70, 10); fs('#ffd36e', 6); line([-26, 52, 26, 52], 4); }
   else if (k === 'glass') { rr(-12, -20, 24, 90, 6); fs('#c99a3a', 5); rr(-17, 60, 34, 80, 6); fs('#8a5530', 5); ell(0, 142, 17, 6); fs('#bfe6ff', 4); }

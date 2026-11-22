@@ -74,6 +74,28 @@ export function andar(n, de, ate, o = {}) {
   } };
 }
 
+// Uma rota mantém destino, contagem de passos e cadência acoplados em cada trecho.
+export function andarRota(n, origem, trechos, o = {}) {
+  const { pps = 2.7, t0 = 0, abs = false, ...pose } = o;
+  if (!trechos.length || !Number.isFinite(pps) || pps <= 0) throw new RangeError('Rota sem trechos ou cadência inválida');
+  let de = origem, fim = t0;
+  const passoMaximo = Pz.compPasso(Math.PI / 2) * escalaM(n, {}, pose);
+  const etapas = trechos.map(({ ate, passos }) => {
+    const distancia = Math.hypot(ate[0] - de[0], ate[1] - de[1]);
+    if (!Number.isInteger(passos) || passos < 1 || !Number.isFinite(distancia) || distancia <= 0 || distancia / passos >= passoMaximo) {
+      throw new RangeError('O trecho precisa de passos inteiros alcançáveis');
+    }
+    const segundos = passos / pps;
+    const amp = Math.asin(distancia / passos / passoMaximo);
+    const ator = andar(n, de, ate, { ...pose, t0: fim, abs, amp, vel: distancia / segundos });
+    fim += segundos;
+    de = ate;
+    return { ator, fim };
+  });
+  const etapa = c => (etapas.find(e => (abs ? c.t : c.d / 30) < e.fim) || etapas.at(-1)).ator;
+  return { ...etapas[0].ator, x: c => etapa(c).x(c), z: c => etapa(c).z(c), p: c => etapa(c).p(c) };
+}
+
 // ---- fila: n atores parados em fila (horda esperando), virados para `mira` [x,z]; devolve lista pronta p/ actors: [...fila(8, -3, -7.2, 0.9, { mira: [0, 0] })] ----
 // passo = espaçamento em x (número) ou [dx, dz]; tipos = nomes alternados (padrão ['zumbi','zumbi','zumbi','vampiro']); jit = bagunça (m); p(c, i) = pose extra.
 export function fila(n, x0, z0, passo = 0.9, o = {}) {
