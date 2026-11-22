@@ -1,4 +1,4 @@
-# Videos Generator
+# Estudio de videos
 
 Estúdio local de vídeos curtos verticais PT-BR (nichos: GTA 6 / Six Stars, série "Aventuras do Tião", outros no futuro). Roda em PC fraco (Ryzen 3 3200G, RX550, 8 GB, Linux): **um render pesado por vez**.
 
