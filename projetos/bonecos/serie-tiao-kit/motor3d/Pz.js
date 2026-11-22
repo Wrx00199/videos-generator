@@ -96,7 +96,7 @@ export const Pz = {
   sentar(progresso) {
     const u = clampN(progresso, 0, 1);
     const k = u * u * (3 - 2 * u);
-    return { lL: [1.34 * k, -1.32 * k], lR: [1.43 * k, -1.39 * k], lean: .23 * Math.sin(k * Math.PI) };
+    return { lL: [1.29 * k, -1.55 * k], lR: [1.43 * k, -1.39 * k], lean: .23 * Math.sin(k * Math.PI) };
   },
 
   chapeuNaMao({ lado = 'R' } = {}) {
@@ -111,23 +111,19 @@ export const Pz = {
   // { mao:'R'|'L' }
   //
   // Retorna f (direção) + aR ou aL com ângulo calculado.
-  apontar(alvoXYZ, bonecoXZ, { mao = 'R' } = {}) {
+  apontar(alvoXYZ, bonecoXZ, { mao = 'R', progresso = 1 } = {}) {
     const dx = alvoXYZ[0] - bonecoXZ[0];
     const dz = alvoXYZ[2] - bonecoXZ[1];  // bonecoXZ[1] é o z
     const dist = Math.hypot(dx, dz) || 0.001;
-    // Ângulo vertical do braço em relação ao horizonte (pivô de ombro ≈ 1.2 m)
-    const angV = Math.atan2(alvoXYZ[1] - 1.2, dist);
-    // Comprimento: esticado (1.0 = comprimento total do braço)
-    const len = 1.0;
-    // Direção do boneco: vira para o alvo
+    const angV = clampN(Math.atan2(alvoXYZ[1] - 1.2, dist), -.95, .95);
+    const lado = mao === 'L' ? 'L' : 'R';
+    const ombroX = lado === 'L' ? -SHX : SHX;
+    const alcance = REACH - 3;
     const f = dx >= 0 ? 1 : -1;
-    // ângulo horizontal → ajusta angV para dentro do espaço do rig
-    // (rig usa ângulo polar 2D: 0 = horizontal para o lado f; PI/2 = para cima)
-    const angRig = -angV;  // rig: positivo gira braço para baixo; negativo para cima
-    if (mao === 'L') {
-      return { f, aL: [angRig, len], aR: [0.15, 0.3] };
-    }
-    return { f, aR: [angRig, len], aL: [-0.15, 0.3] };
+    const u = clampN(progresso, 0, 1);
+    const arco = -Math.PI / 2 + (angV + Math.PI / 2) * u * u * (3 - 2 * u);
+    return { f, aponta: u >= .8 ? lado : null, aL: [-.15, .3], aR: [.15, .3],
+      [`a${lado}`]: { ik: [ombroX + Math.cos(arco) * alcance, SHY - Math.sin(arco) * alcance] } };
   },
 
   // ─── olhar ─────────────────────────────────────────────────────────────────
@@ -233,7 +229,7 @@ export const Pz = {
   // Uso: { ...Pz.segurar('abridor', { mostra: true, s: 1.4 }), eye: 'wide' }   (aR/hR ou aL/hL já vêm montados)
   segurar(item, { lado = 'R', mostra = false, s = 1, subir = true } = {}) {
     const side = lado === 'L' ? -1 : 1, kA = lado === 'L' ? 'aL' : 'aR', kH = lado === 'L' ? 'hL' : 'hR';
-    if (!mostra) return { [kA]: { ik: [side * 60, -90] }, [kH]: { k: item, a: 0, s, fl: 0 } };
+    if (!mostra) return { [kA]: { ik: [side * 132, -111] }, [kH]: { k: item, a: 0, s, fl: 0 } };
     let melhor = null;
     for (let x = 105; x <= 178; x += 8) for (let y = -205; y <= -95; y += 10) for (const inc of [0.25, 0.45, 0.7, 1.0]) {
       const mao = [side * x, y], ang = subir ? Math.PI - side * inc : side * inc;

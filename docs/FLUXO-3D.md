@@ -26,3 +26,5 @@ O [story da prova](../_estado/prova-elenco-civil/story.js) guarda entrada boa e 
 ## Movimento e contato
 
 Use `andarRota` para indicar destino e número de passos de cada trecho. A passada acompanha a distância no cenário. Use `Pz.chapeuNaMao()` para prender o bicorne à mão e desativar o chapéu da cabeça. `Pz.sentar(progresso)` inclina o tronco e dobra joelhos ao longo da transição. Ajuste a cadeira para o quadril tocar o assento e o pé alcançar o chão. Confira o antes, o contato e a posição final. A [prova de movimento](../_estado/prova-movimento-3d/prova.mp4) reúne a rota de dez passos e três à esquerda, o chapéu e a cadeira.
+
+Para outros objetos, `Pz.segurar` parte de uma pega afastada do tronco. Para apontar, passe `progresso` de 0 a 1 para levantar a mão em arco na direção do alvo. A cozinha fornece a posição e a direção da cadeira por `w.cen.lista.cozinha.assento(lado)`. Use essa direção ao chamar `Pz.sentar`. A [prova de contatos](../_estado/prova-contatos-3d/prova.mp4) mostra duas pegas, o gesto e a nova posição de sentar. O teste também verifica um mapa e as duas mãos.

@@ -352,7 +352,7 @@ function drawChar(n, p, t) {
   ctx.lineCap = 'round'; ctx.lineJoin = 'round';
   const gL = limb(-20, 0, o.lL, TH, SH), gR = limb(20, 0, o.lR, TH, SH);
   ctx.translate(0, hipOf(o));
-  if (o.legs) { if (S.an) { if (!S.an.semPernas) { legAn(gL, S, -1); legAn(gR, S, 1); } } else { leg(gL); leg(gR); } }
+  if (o.legs) { if (S.an) { if (!S.an.semPernas) { legAn(gL, S, -1); legAn(gR, S, 1); } } else { leg(gL, 1.04 / S.s); leg(gR, 1.04 / S.s); } }
   ctx.rotate(o.lean);
   if (o.behind) o.behind();
   if (S.capa) capaDe(S, o, t);
@@ -361,7 +361,7 @@ function drawChar(n, p, t) {
   const pL = A(-1, o.aL), pR = A(1, o.aR);
   ctx.save(); ctx.translate(0, -190); ctx.rotate(o.tilt); ctx.translate(0, -70); head(S, o, t); ctx.restore();
   if (o.front) o.front();
-  if (S.an) { armAn(pL, o.hL, S, -1); armAn(pR, o.hR, S, 1); } else { arm(pL, o.hL, S.body, S.pele); arm(pR, o.hR, S.body, S.pele); }
+  if (S.an) { armAn(pL, o.hL, S, -1); armAn(pR, o.hR, S, 1); } else { arm(pL, o.hL, S.body, S.pele, 1.04 / S.s, o.aponta === "L"); arm(pR, o.hR, S.body, S.pele, 1.04 / S.s, o.aponta === "R"); }
   ctx.restore();
 }
 // ---- auditaPose: checagem automática (texto, sem imagem) de pose quebrada + caixa do boneco ----
@@ -381,19 +381,29 @@ function auditaPose(n, p) {
     if (cotY < topo + 40 && maoY > cotY + 20) av.push(`cotovelo ${nome} espetado acima da cabeça com a mão abaixo dele`);
     if (cotY < -260 && Math.abs(g[2]) < 95 && Math.abs(g[4]) < 95 && !o.hR && !o.hL) av.push(`braço ${nome} todo atrás/na frente da cabeça (lê como palito saindo do chapéu)`);
     pts.push([g[2], g[3] + hip], [g[4], g[5] + hip]);
+    if (o.aponta === (side < 0 ? 'L' : 'R') && !o[side < 0 ? 'hL' : 'hR']) {
+      const ang = Math.atan2(g[5] - g[3], g[4] - g[2]);
+      const ponta = 27 * 1.04 / S.s;
+      pts.push([g[4] + Math.cos(ang) * ponta, g[5] + hip + Math.sin(ang) * ponta]);
+    }
   }
   pts.push([-110, topo + hip], [110, topo + hip], [-70, 0], [70, 0]);
   const sc = S.s * (o.sc || 1); const xs = pts.map((q) => q[0] * sc), ys = pts.map((q) => q[1] * sc);
   return { avisos: av, bb: [Math.min(...xs) - 15, Math.max(...xs) + 15, Math.min(...ys) - 15, Math.max(...ys)] };
 }
-function leg(g) {
-  line(g, 23); line(g, 13, '#494653'); line(g, 4, 'rgba(255,255,255,.22)');
-  ctx.fillStyle = INK; ell(g[4] + 10, g[5] + 1, 22, 12); ctx.fill();
+function leg(g, traço) {
+  line(g, 23 * traço); line(g, 13 * traço, '#494653'); line(g, 4 * traço, 'rgba(255,255,255,.22)');
+  ell(g[4] + 12 * traço, g[5], 28 * traço, 13 * traço); fs('#332b3b', 4 * traço);
 }
-function arm(g, pr, manga, pele = '#efe8df') {
-  line(g, 22); line(g, 12, manga); line(g, 4, 'rgba(255,255,255,.22)');
+function arm(g, pr, manga, pele = '#efe8df', traço = 1, aponta = false) {
+  line(g, 22 * traço); line(g, 12 * traço, manga); line(g, 4 * traço, 'rgba(255,255,255,.22)');
   if (pr) prop(pr.k, g[4], g[5], pr.a, pr.s || 1, pr);
-  ell(g[4], g[5], 14, 13); fs(pele, 5);
+  if (aponta && !pr) {
+    const direcao = Math.atan2(g[5] - g[3], g[4] - g[2]);
+    const dedo = [g[4], g[5], g[4] + Math.cos(direcao) * 27 * traço, g[5] + Math.sin(direcao) * 27 * traço];
+    line(dedo, 13 * traço); line(dedo, 7 * traço, pele);
+  }
+  ell(g[4], g[5], 14 * traço, 13 * traço); fs(pele, 5 * traço);
 }
 function body(S, o) {
   const path = () => rr(-60, -204, 120, 214, [60, 60, 36, 36]);
@@ -610,11 +620,29 @@ function cabeloFrente(cor, penteado) {
   fs(null, 3, 'rgba(255,222,194,.19)');
   ctx.restore();
 }
-function hair(c, t) { // cabelo comprido e solto ATRÁS dos ombros (borda interna longe do queixo, senão vira barba)
-  const w = Math.sin(t * 3) * 5;
-  for (const s of [-1, 1]) { ctx.beginPath(); ctx.moveTo(s * 60, -84); ctx.quadraticCurveTo(s * 156, -66, s * (152 + w), 40); ctx.quadraticCurveTo(s * (168 + w), 128, s * (134 + w), 196);
-    ctx.quadraticCurveTo(s * (112 + w), 214, s * (100 + w), 186); ctx.quadraticCurveTo(s * 118, 120, s * 100, 56); ctx.quadraticCurveTo(s * 108, -8, s * 60, -84); ctx.closePath(); fs(c, 8);
-    line([s * 128, -30, s * (140 + w), 60, s * (126 + w), 150], 5, 'rgba(120,30,10,.4)'); line([s * 112, 20, s * (118 + w), 110], 4, 'rgba(255,220,180,.35)'); }
+function hair(c, t) {
+  const balanço = Math.sin(t * 2.6) * 4;
+  for (const lado of [-1, 1]) {
+    ctx.save(); ctx.scale(lado, 1);
+    const contorno = () => {
+      ctx.beginPath(); ctx.moveTo(59, -88);
+      ctx.bezierCurveTo(107, -105, 148, -70, 145, -4);
+      ctx.bezierCurveTo(140, 39, 162 + balanço, 72, 151 + balanço, 118);
+      ctx.quadraticCurveTo(132, 149, 90, 142);
+      ctx.quadraticCurveTo(107, 117, 93, 91);
+      ctx.bezierCurveTo(80, 60, 112, 30, 92, -7);
+      ctx.quadraticCurveTo(75, -46, 59, -88); ctx.closePath();
+    };
+    const mechas = ctx.createLinearGradient(83, -70, 151, 120);
+    mechas.addColorStop(0, claro(c, .24)); mechas.addColorStop(.5, c); mechas.addColorStop(1, escuro(c, .38));
+    contorno(); fs(mechas, 7); ctx.save(); contorno(); ctx.clip();
+    for (const x of [103, 119, 132]) {
+      ctx.beginPath(); ctx.moveTo(x - 13, -72); ctx.bezierCurveTo(x + 13, -42, x - 12, 18, x + 2, 58);
+      ctx.quadraticCurveTo(x + 18 + balanço, 100, x - 6, 129);
+      fs(null, 3, 'rgba(255,218,189,.23)');
+    }
+    ctx.restore(); ctx.restore();
+  }
 }
 function hatAt(k, x, y, r, s, t) { HC = null; ctx.save(); ctx.translate(x, y); ctx.rotate(r); ctx.scale(s, s); ctx.translate(0, 80); hat(k, t); ctx.restore(); }
 

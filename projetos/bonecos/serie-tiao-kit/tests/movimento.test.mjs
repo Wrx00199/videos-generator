@@ -35,3 +35,28 @@ test('sentar interpola o joelho e não gira as pernas esticadas', () => {
   assert.ok(meio.lL[0] > 0 && meio.lL[0] < fim.lL[0]);
   assert.ok(fim.lL[0] > 1 && fim.lL[1] < -1);
 });
+
+test('padrão de pega fica fora do tronco com copo, mapa e concha', () => {
+  for (const item of ['glass', 'map', 'ladle']) for (const lado of ['L', 'R']) {
+    const sinal = lado === 'R' ? 1 : -1;
+    const p = Pz.segurar(item, { lado });
+    const [x] = Pz.maoDe(p[`a${lado}`], sinal);
+    assert.ok(sinal * x >= 115, `${item} entra no tronco pelo lado ${lado}`);
+    assert.deepEqual(auditaPose('vizinha', p).avisos, []);
+    assert.deepEqual(Pz.avisaPropCara(p), []);
+  }
+});
+
+test('apontar para um alvo nivelado estende a mão horizontalmente nos dois sentidos', () => {
+  for (const direcao of [-1, 1]) {
+    const p = Pz.apontar([2 * direcao, 1.2, 0], [0, 0]);
+    const [x, y] = Pz.maoDe(p.aR, 1);
+    assert.ok(x > 165);
+    assert.equal(y, -150);
+    assert.equal(p.f, direcao);
+    assert.equal(p.aponta, 'R');
+    const inicio = Pz.apontar([2 * direcao, 1.2, 0], [0, 0], { progresso: 0 });
+    const meio = Pz.apontar([2 * direcao, 1.2, 0], [0, 0], { progresso: .5 });
+    assert.ok(inicio.aR.ik[0] < meio.aR.ik[0] && meio.aR.ik[0] < x);
+  }
+});

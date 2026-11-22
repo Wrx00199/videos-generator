@@ -125,13 +125,18 @@ export function construirCasa(X) {
     caixa(bal, 0.5, 0.04, 0.36, '#555', -0.3, 0.97, 0); cil(bal, 0.12, 0.12, 0.2, '#c0392b', 0.7, 0.97, 0); cil(bal, 0.06, 0.06, 0.28, '#f1c40f', 0.95, 0.97, 0.05); movel(M, 'balcao', bal);
     const mesa = new THREE.Group(); mesa.position.set(1.3, 0, -0.6); g.add(mesa); cil(mesa, 0.6, 0.6, 0.05, '#f4efe6', 0, 0.72, 0); cil(mesa, 0.06, 0.06, 0.72, '#7e8a90', 0, 0, 0); cil(mesa, 0.25, 0.25, 0.03, '#7e8a90', 0, 0, 0);
     const cadeiras = [];
-    for (const [x, z] of [[-0.85, 0], [0.85, 0]]) { const cd = new THREE.Group(); cd.position.set(x, 0, z); mesa.add(cd); cadeiras.push(cd); caixa(cd, 0.42, 0.06, 0.42, '#e74c3c', 0, 0.42, 0); caixa(cd, 0.42, 0.45, 0.06, '#e74c3c', 0, 0.48, x < 0 ? -0.2 : 0.2); for (const [a, b] of [[-.17, -.17], [.17, -.17], [-.17, .17], [.17, .17]]) caixa(cd, 0.04, 0.42, 0.04, '#7e8a90', a, 0, b); }
+    for (const [x, z] of [[-0.85, 0], [0.85, 0]]) { const cd = new THREE.Group(); cd.position.set(x, 0, z); cd.rotation.y = x < 0 ? PI / 2 : -PI / 2; mesa.add(cd); cadeiras.push(cd); caixa(cd, 0.42, 0.06, 0.42, '#e74c3c', 0, 0.42, 0); caixa(cd, 0.42, 0.45, 0.06, '#e74c3c', 0, 0.48, -0.2); for (const [a, b] of [[-.17, -.17], [.17, -.17], [-.17, .17], [.17, .17]]) caixa(cd, 0.04, 0.42, 0.04, '#aab5bc', a, 0, b); }
     cil(mesa, 0.2, 0.2, 0.02, '#fff', 0.2, 0.77, 0.1); add(new THREE.SphereGeometry(0.09, 10, 8), toon({ color: '#e74c3c' }), 0.2, 0.84, 0.1, mesa); movel(M, 'mesa', mesa);
     const rel = add(new THREE.CircleGeometry(0.22, 24), toon({ color: '#fff' }), -1.2, 2.2, -3.44, g); rel.userData.ndSkip = true; add(new THREE.TorusGeometry(0.22, 0.03, 8, 24), toon({ color: '#c0392b' }), -1.2, 2.2, -3.43, g);
     const calend = new THREE.Mesh(new THREE.PlaneGeometry(0.42, 0.55), toon({ color: '#fff' })); calend.position.set(2.6, 1.8, -3.44); g.add(calend); caixa(g, 0.42, 0.14, 0.02, '#e74c3c', 2.6, 2.2, -3.43);
     const gato = gatoMesh(g, 0.2, 1.4, '#e8892e'); gato.rotation.y = 0.3;
-    registra('cozinha', g, M, (B) => { gato.visible = B.gato !== 0; gato.position.x = B.gatoX ?? .2; cadeiras.forEach(c => { c.scale.y = B.escalaCadeiras ?? 1; }); }, {
+    registra('cozinha', g, M, (B) => { gato.visible = B.gato !== 0; gato.position.x = B.gatoX ?? .2; cadeiras.forEach((c, i) => { c.scale.y = B.escalaCadeiras ?? 1; c.position.x = (i ? 1 : -1) * (.85 + (B.afastamentoCadeiras ?? 0)); }); }, {
       ocupaMesa: (x, y, z) => g.visible && y < .73 && Math.hypot(x - g.position.x - mesa.position.x, z - g.position.z - mesa.position.z) < .78,
+      assento: (lado = 'esquerda') => {
+        const cadeira = cadeiras[lado === 'direita' ? 1 : 0];
+        return { x: g.position.x + mesa.position.x + cadeira.position.x, z: g.position.z + mesa.position.z + cadeira.position.z,
+          f: Math.sign(Math.sin(cadeira.rotation.y)), altura: .48 * cadeira.scale.y };
+      },
     }); }
 
   // ---------- QUARTO ----------
