@@ -1,0 +1,117 @@
+{
+ "molde": "v5",
+ "formato": "tiao_foi",
+ "ref": "U9GsR_Mphpo",
+ "ficha": "projetos/bonecos/2026-11-21-tiao-atirador-trincheira-41/FICHA.md",
+ "cenarios": [
+  "sala_noite",
+  "trincheira_lama",
+  "mira_circulo",
+  "cartaz_alvo",
+  "floresta_noite",
+  "rua_noite",
+  "fachada_noite"
+ ],
+ "personagens": [
+  "tiao",
+  "soldado_quepe",
+  "atirador"
+ ],
+ "pista": 3,
+ "pista_palavra": "tampa",
+ "virada": 12,
+ "fidelidade": "tradução adaptada da ref U9GsR_Mphpo: mesma ordem de beats (gancho, 2 problemas, chapéu na vara, boneco, espelho, distração, apoio aéreo, piada do imposto); meta >=85% de semelhança",
+ "falas": [
+  {
+   "quem": "narrador",
+   "texto": "O Tião tem vinte passos pra cruzar a rua, e um atirador vigia cada um.",
+   "pausa": 0.04
+  },
+  {
+   "quem": "narrador",
+   "texto": "É a Primeira Guerra Mundial, e o Capitão mandou levar a panela de feijoada pro outro lado.",
+   "pausa": 0.04
+  },
+  {
+   "quem": "narrador",
+   "texto": "Fácil, é só correr. Errado. O atirador prendeu o Tião atrás do barril, e quem corre ganha um furo no chapéu.",
+   "pausa": 0.04
+  },
+  {
+   "quem": "narrador",
+   "texto": "Pior: a tampa da panela brilha tanto que vira alvo.",
+   "pausa": 0.04
+  },
+  {
+   "quem": "tiao",
+   "texto": "Eu só queria entregar o almoço!",
+   "pausa": 0.04
+  },
+  {
+   "quem": "narrador",
+   "texto": "Todo soldado das guerras mundiais já passou por isso.",
+   "pausa": 0.04
+  },
+  {
+   "quem": "narrador",
+   "texto": "Problema 1: onde ele está? Problema 2: como tirar ele de lá?",
+   "pausa": 0.04
+  },
+  {
+   "quem": "narrador",
+   "texto": "Vamos de Problema 1. Atirador não aparece, mas o tiro faz barulho. Então é fazer ele atirar.",
+   "pausa": 0.04
+  },
+  {
+   "quem": "narrador",
+   "texto": "Passo 1: o soldado levanta o quepe numa vara, e o atirador acerta na hora.",
+   "pausa": 0.04
+  },
+  {
+   "quem": "narrador",
+   "texto": "Passo 2: se ele ficar esperto, um boneco de palha com quepe, e o atirador fura de novo.",
+   "pausa": 0.04
+  },
+  {
+   "quem": "narrador",
+   "texto": "Passo 3: pra ver o clarão do cano, falta um espelho.",
+   "pausa": 0.04
+  },
+  {
+   "quem": "narrador",
+   "texto": "Na ponta da vara.",
+   "pausa": 0.04
+  },
+  {
+   "quem": "narrador",
+   "texto": "O Tião tem um: a tampa polida entrega o atirador, na janela de cima, em um clarão.",
+   "pausa": 0.04
+  },
+  {
+   "quem": "narrador",
+   "texto": "Agora o Problema 2: um soldado espia pelo muro, e o Tião distrai batendo a colher na panela.",
+   "pausa": 0.04
+  },
+  {
+   "quem": "narrador",
+   "texto": "Meio segundo basta: o parceiro aparece de lado, e o atirador levanta as mãos.",
+   "pausa": 0.04
+  },
+  {
+   "quem": "tiao",
+   "texto": "Cruzei! A feijoada tá quente!",
+   "pausa": 0.04
+  },
+  {
+   "quem": "narrador",
+   "texto": "Ou dava pra chamar apoio aéreo: um avião inteiro pra atravessar uma rua.",
+   "pausa": 0.04
+  },
+  {
+   "quem": "narrador",
+   "texto": "E a conta vai pro bolso de quem paga imposto. Você mandaria o avião ou a feijoada?",
+   "pausa": 0.04
+  }
+ ],
+ "cenario": "rua"
+}

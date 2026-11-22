@@ -29,5 +29,28 @@
         ]
       }
     ]
+  },
+  "enabledPlugins": {
+    "codex@openai-codex": false
+  },
+  "permissions": {
+    "deny": [
+      "Skill(graphify)",
+      "Skill(style-sampling)",
+      "Skill(anthropic-skills:docx)",
+      "Skill(anthropic-skills:pdf)",
+      "Skill(anthropic-skills:xlsx)",
+      "Skill(anthropic-skills:pptx)",
+      "Skill(anthropic-skills:docs)",
+      "Skill(anthropic-skills:deep-research)",
+      "Skill(anthropic-skills:morning)",
+      "Skill(anthropic-skills:setup-claude)",
+      "Skill(anthropic-skills:setup-writing-style)",
+      "Skill(anthropic-skills:skill-creator)",
+      "Skill(anthropic-skills:import-memory)",
+      "Skill(anthropic-skills:consolidate-memory)",
+      "Skill(anthropic-skills:explain-usage)",
+      "Skill(anthropic-skills:computer-use)"
+    ]
   }
 }

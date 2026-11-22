@@ -1,0 +1,15 @@
+# Etapa 2 — revisor limpo (início 04:56, teto 06:26)
+- 04:57 orientação feita; trabalhando no worktree krill (mesmo commit a587f3f do trumpetfish).
+- Plano: (1) script ferramentas/comparar_planos.py (cortes por scene score, igual extrair_ref.py) (2) agente revisor novo fino, Sonnet, + rubrica estudio-revisor-shorts como checklist (3) teste ep.40 deve REPROVAR (4) episódio novo de referencias/base.
+- 04:59 FEITO: krill/ferramentas/comparar_planos.py (testado no ep.40: geral 63%, 6/6 critérios FALHA, quadros 540px por plano em _estado/revisor-v6/ep40/quadros_planos). krill/.claude/agents/revisor-shorts.md (Sonnet, novo, fino). Checklist PASSA/FALHA v2 acrescentado em skills/estudio-revisor-shorts/SKILL.md.
+- Agente novo só é registrado em sessão nova → teste rodou via general-purpose/sonnet lendo revisor-shorts.md. Saída: _estado/revisor-v6/ep40/REVISAO_TESTE.md.
+- Referência do episódio novo: U9GsR_Mphpo (livre; VS1Z tem só 2 cortes detectados, script não mede).
+- NADA apagado/aposentado: revisor-bonecos.md e revisor.md seguem no lugar, aguardando ok.
+- 05:03 teste 1 ok (REPROVADO). Parado antes do teste 2: roteiro exige aprovação do Filippe. Ver RELATORIO.md
+- 05:10 furos 2/3 corrigidos (revisao_lote.py), revisor-bonecos aposentado, skill trocada, commit 171b62b. Agora: ficha+roteiro U9GsR_Mphpo p/ aprovação (sem voz/render).
+- 05:13 FEITO: ep.41 roteiro + ficha (projetos/bonecos/2026-11-21-tiao-atirador-trincheira-41/{falas.json,FICHA.md}). Portão roteiro: tudo OK exceto `elenco` (soldado_quepe e atirador ainda não existem; esperado). Pasta criada à mão: `portao.py novo` recusaria (trava_lote: ep.40 tem final.mp4 sem APROVADO_FILIPPE). SEM voz, SEM render. Aguardando aprovação do Filippe.
+- 05:23 ep.40 rejeitado (REJEITADO_FILIPPE + portao.py respeita). 9 eps 31-39 ainda travam o novo: decisão do Filippe. Ep.41 manual movido p/ _estado/revisor-v6/ep41-rascunho-manual. Ref U9G baixada 608x1080 em _estado/revisor-v6/ref-U9G; só 17 planos reais (+9 flashes em 82.7-83.8s).
+- 05:24 FICHA_v2 (ref U9G, 16 planos reais + 8 flashes) em ep41-rascunho-manual/. Aguardando Filippe: gancho (A/B/C), ritmo, violência, 9 eps 31-39 travando o novo, medida comparar_planos. Nada de voz/render/desenho feito.
+- 05:45 Extra A feito (15 quadros conferidos; erro do subagente: SUBSCRIBE no p22-23, não p21). Mensagem de orquestração (Gon/Filippe) recebida: itens que mexem no portão (rejeitar eps 31-39, script, personagens) NÃO executados até o Filippe confirmar aqui.
+- 06:02 personagens soldado_quepe/atirador aprovados (commit bf14210), portão roteiro PASSOU; ERROS_GERADOR.md; parado antes de prop/overlays/storyboard/controle positivo.
+- 06:09 storyboard ep.41 composto (21 quadros, 17 planos, animatic 81.4s); comparar_planos PASSA 95% (por construção: tempos copiados do original); revisor-shorts rodando em storyboard/REVISAO_SB.md. Filippe (chat, banho): aprovados pelo revisor sobem p/ Drive via rclone copy+check, sem apagar. Voz/render só se storyboard APROVADO.

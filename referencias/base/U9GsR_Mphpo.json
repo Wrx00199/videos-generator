@@ -6,6 +6,8 @@
  "views": 15979406,
  "data": "20260226",
  "duracao_s": 83.8,
+ "virada_s": 78.2,
+ "virada_pct": 0.933,
  "idioma_fala": "en-orig",
  "fonte_fala": "legenda",
  "n_cortes": 25,

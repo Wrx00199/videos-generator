@@ -1,0 +1,135 @@
+{
+ "video": "/media/wr/HDD/Estudio de video/projetos/bonecos/2026-11-20-tiao-trem-bike-40/final.mp4",
+ "ref": "BDhG_VplvzA",
+ "dur_orig": 68.2,
+ "dur_nosso": 72.869002,
+ "limiar": 0.15,
+ "tol": 0.75,
+ "cortes_orig": [
+  3.67,
+  6.3,
+  8.63,
+  12.1,
+  13.6,
+  15.03,
+  15.7,
+  17.43,
+  19.53,
+  21.9,
+  25.27,
+  26.57,
+  28.23,
+  31.1,
+  32.33,
+  33.63,
+  36.67,
+  40.93,
+  43.87,
+  45.83,
+  49.57,
+  51.97,
+  53.97,
+  56.97,
+  58.2,
+  58.8,
+  59.43,
+  60.9,
+  60.93,
+  64.47
+ ],
+ "cortes_nosso": [
+  3.0,
+  9.8,
+  12.5,
+  15.63,
+  17.63,
+  20.17,
+  23.17,
+  27.33,
+  30.73,
+  33.4,
+  37.53,
+  43.1,
+  46.7,
+  51.33,
+  54.53,
+  58.83,
+  62.43,
+  64.27,
+  66.67,
+  68.47,
+  69.87
+ ],
+ "sem_par_no_nosso_s": [
+  3.67,
+  6.3,
+  13.6,
+  15.7,
+  17.43,
+  26.57,
+  32.33,
+  33.63,
+  36.67,
+  45.83,
+  49.57,
+  51.97,
+  53.97,
+  56.97,
+  58.8,
+  59.43,
+  60.9,
+  60.93
+ ],
+ "extras_nossos_s": [
+  3.0,
+  17.63,
+  37.53,
+  51.33,
+  54.53,
+  58.83,
+  64.27,
+  66.67,
+  69.87
+ ],
+ "criterios": {
+  "n_planos": {
+   "pct": 73.3,
+   "detalhe": "orig 30 x nosso 22",
+   "passa": false
+  },
+  "duracao_media": {
+   "pct": 68.6,
+   "detalhe": "orig 2.27s x nosso 3.31s",
+   "passa": false
+  },
+  "duracao_mediana": {
+   "pct": 72.3,
+   "detalhe": "orig 2.21s x nosso 3.06s",
+   "passa": false
+  },
+  "plano_mais_longo": {
+   "pct": 62.6,
+   "detalhe": "orig 4.26s x nosso 6.80s",
+   "passa": false
+  },
+  "alinhamento_cortes": {
+   "pct": 40.0,
+   "detalhe": "12 de 30 cortes do original têm corte nosso a ±0.75s",
+   "passa": false
+  },
+  "ritmo_por_terco": {
+   "pct": 62.4,
+   "detalhe": "orig 26/24/29 x nosso 17/15/20 planos/min",
+   "passa": false
+  }
+ },
+ "geral_pct": 63.2,
+ "falhas": [
+  "n_planos",
+  "duracao_media",
+  "duracao_mediana",
+  "plano_mais_longo",
+  "alinhamento_cortes",
+  "ritmo_por_terco"
+ ]
+}
