@@ -2,12 +2,12 @@
 """portao.py — juiz em codigo de cada etapa do Tiao V4. Exit code 0 so se tudo ok.
 Uso: python3 portao.py <projeto> <roteiro|final>  |  python3 portao.py novo <slug>
 Exit: 0 ok · 1 reprovou · 2 arquivo faltando/entrada invalida.
-Limiares [C] (chamadas minhas, ver DESIGN_V4 item 2): duracao 50-75 s, >=2,8 pal/s,
+Limiares [C] (chamadas minhas, ver DESIGN_V4 item 2): duracao 60-90 s, >=2,8 pal/s,
 >=25 planos/min, plano maximo 3 s, LUFS -14 +-1, pico <= -1 dBTP, silencio no meio <= 0,4 s."""
 import datetime, math, glob, json, os, re, subprocess, sys
 from dataclasses import dataclass
 
-DUR_MIN, DUR_MAX = 50.0, 90.0   # 18/11: reels BR de milhoes de views medem 56-91 s
+DUR_MIN, DUR_MAX = 60.0, 90.0
 PAL_S_MIN = 2.5
 PLANOS_MIN = 15.0
 PLANO_MAX_S = 5.0                # hits BR: 9-51 cortes/min, imagem ~4-6 s com camera/HUD/legenda mexendo
@@ -45,19 +45,28 @@ def checar_ritmo(palavras, seg):
 
 
 def checar_planos(cortes, seg):
-    if seg <= 0 or not cortes:
-        return Resultado('planos', False, '0', f'>={PLANOS_MIN:.0f}/min', 'sem planos ou duracao zero')
-    c = sorted(cortes)
-    durs = [b - a for a, b in zip(c, c[1:] + [seg])]
+    limite = f'>={PLANOS_MIN:.0f}/min, maior <={PLANO_MAX_S:.0f}s'
+    if not _numero(seg) or seg <= 0 or not cortes:
+        return Resultado('planos', False, '0', limite, 'sem planos ou duracao invalida')
+    anterior = -1
+    for i, corte in enumerate(cortes):
+        if not _numero(corte) or not 0 <= corte < seg:
+            return Resultado('planos', False, 'invalido', limite, f'plano {i}: inicio fora de [0, {seg}) ou nao finito')
+        if i == 0 and corte != 0:
+            return Resultado('planos', False, 'invalido', limite, 'primeiro plano precisa comecar em 0s')
+        if corte <= anterior:
+            return Resultado('planos', False, 'invalido', limite, f'plano {i}: inicio repetido ou fora de ordem')
+        anterior = corte
+    durs = [b - a for a, b in zip(cortes, [*cortes[1:], seg])]
     maior = max(durs)
-    pm = len(c) / seg * 60
+    pm = len(cortes) / seg * 60
     falhas = []
     if pm < PLANOS_MIN:
         falhas.append(f'{pm:.1f} planos/min < {PLANOS_MIN:.0f}')
     if maior > PLANO_MAX_S:
         falhas.append(f'plano de {maior:.1f}s > {PLANO_MAX_S:.0f}s (plano {durs.index(maior)})')
     return Resultado('planos', not falhas, f'{pm:.1f}/min, maior {maior:.1f}s',
-                     f'>={PLANOS_MIN:.0f}/min, maior <={PLANO_MAX_S:.0f}s', '; '.join(falhas))
+                     limite, '; '.join(falhas))
 
 
 def _ffprobe(mp4, entries, stream=None):
@@ -164,7 +173,7 @@ def checar_roteiro(palavras):
     lo, hi = ROTEIRO_PAL
     ok = lo <= palavras <= hi
     return Resultado('roteiro_palavras', ok, str(palavras), f'{lo}-{hi}',
-                     '' if ok else f'{palavras} palavras fora de {lo}-{hi} (cabe em 50-75 s a >=2,8 pal/s)')
+                     '' if ok else f'{palavras} palavras fora de {lo}-{hi} (cabe em 60–90 s)')
 
 
 # --- HUD -------------------------------------------------------------------
@@ -416,10 +425,23 @@ def trava_lote(raiz, corte=None):
         nome = os.path.basename(d)
         if not re.match(r'\d{4}-\d{2}-\d{2}-', nome) or nome[:10] < corte:
             continue
-        if os.path.isfile(os.path.join(d, 'final.mp4')) and not os.path.isfile(os.path.join(d, 'APROVADO_FILIPPE')):
+        decidido = any(os.path.isfile(os.path.join(d, nome)) for nome in ('APROVADO_FILIPPE', 'REJEITADO_FILIPPE'))
+        if os.path.isfile(os.path.join(d, 'final.mp4')) and not decidido:
             pend.append(nome)
     return Resultado('trava_lote', not pend, ', '.join(pend) or 'nenhum', 'sem episodio pendente',
-                     '' if not pend else f'episodio sem APROVADO_FILIPPE: {", ".join(pend)}')
+                     '' if not pend else f'episodio sem decisao do Filippe: {", ".join(pend)}')
+
+
+def raiz_dados(env=None, kit=None):
+    """Resolve a raiz dos episódios. Um checkout só com código precisa de ESTUDIO_RAIZ."""
+    env = os.environ.get('ESTUDIO_RAIZ') if env is None else env
+    raiz = os.path.abspath(env or os.path.join(kit or KIT, '..', '..', '..'))
+    base = os.path.join(raiz, 'projetos', 'bonecos')
+    if not os.path.isdir(base):
+        return None, f'{base} nao existe. Defina ESTUDIO_RAIZ com a pasta dos episodios.'
+    if not env and not any(re.match(r'\d{4}-\d{2}-\d{2}-', n) for n in os.listdir(base)):
+        return None, f'Sem episodios em {base}. Defina ESTUDIO_RAIZ com a pasta dos episodios.'
+    return raiz, ''
 
 
 def criar_projeto(raiz, slug, hoje=None, corte=None):
@@ -673,7 +695,10 @@ def checar_cobertura(proj):
 
 def main(argv):
     if len(argv) == 3 and argv[1] == 'novo':
-        raiz = os.path.abspath(os.path.join(KIT, '..', '..', '..'))
+        raiz, erro = raiz_dados()
+        if erro:
+            print('ERRO:', erro)
+            return 2
         print(criar_projeto(raiz, argv[2]))
         return 0
     if len(argv) != 3 or argv[2] not in ('roteiro', 'final'):

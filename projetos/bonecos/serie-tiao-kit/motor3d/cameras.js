@@ -1,4 +1,4 @@
-// cameras.js — banco de 8 composicoes de camera nomeadas (V4, 18/11/2026).
+// cameras.js — banco de 9 composicoes de camera nomeadas.
 // Cada camera: (alvo, t) => { pos, look, fov }.  alvo = caixa que PRECISA caber: {x, y, z, w, h}
 // (x,y,z = centro da caixa em metros do mundo; w = largura/profundidade; h = altura). t = 0..1 dentro do plano.
 // Convencao igual a epi.js camBase: { pos, look, fov } com fov vertical em graus, tela 1080x1920.
@@ -33,7 +33,7 @@ export const CAMERAS = {
   // 6. plongee: de cima, olhando para baixo (~45-55 graus)
   plongee(al, t) { const fov = 50, d = enquadra(al, fov) * 1.3; return { pos: P(al, 0.2, d * 0.72, d * L(0.72, 0.62, sm(t))), look: L3(al), fov }; },
   // 9. contra-plongee (V5, ep. 37): camera baixa olhando para cima; faz o objeto enorme parecer ainda maior (gancho de escala)
-  contra_plongee(al, t) { const fov = 56, d = enquadra(al, fov) * 1.1; return { pos: P(al, L(-0.15, 0.2, sm(t)), -al.y * 0.7, d * L(1, 0.85, sm(t))), look: [al.x, al.y + (al.h || 1) * 0.25, al.z], fov }; },
+  contra_plongee(al, t) { const fov = 56, d = enquadra(al, fov) * 1.1; return { pos: P(al, L(-0.15, 0.2, sm(t)), -al.y * 0.7, d * L(1, 0.9, sm(t))), look: [al.x, al.y + (al.h || 1) * 0.25, al.z], fov }; },
   // 7. orbita: gira em torno do alvo (~70 graus)
   orbita(al, t) { const fov = 50, d = enquadra(al, fov) * 1.15, a = L(-0.6, 0.6, sm(t)); return { pos: P(al, Math.sin(a) * d, 0.3, Math.cos(a) * d), look: L3(al), fov }; },
   // 8. whip-pan: varre rapido para o lado (t<0.28) e assenta enquadrado (corte de entrada de plano)

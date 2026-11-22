@@ -60,6 +60,21 @@ test('revisão tem a forma esperada', async () => {
   const j = JSON.parse((await pedir('/api/revisao')).corpo);
   assert.ok(Array.isArray(j.itens) && Array.isArray(j.processos)); assert.ok('revisao' in j.contagem);
 });
+test('Tião preserva pendente para revisão e mostra reprovação editorial separada', async t => {
+  const pasta = path.join(FIXTURE, 'prontos', '3D', 'Aventuras do Tião');
+  const arquivos = ['rascunho_NAO-APROVADO-PELO-REVISOR.mp4', 'piloto (PARA-APROVAR).mp4'].map(nome => path.join(pasta, nome));
+  fs.mkdirSync(pasta, { recursive: true });
+  t.after(() => arquivos.forEach(arquivo => fs.rmSync(arquivo, { force: true })));
+  arquivos.forEach(arquivo => fs.writeFileSync(arquivo, 'fixture'));
+  const resposta = await pedir('/api/revisao?conta=aventuras_do_tiao');
+  assert.equal(resposta.status, 200);
+  const { itens, contagem } = JSON.parse(resposta.corpo);
+  assert.equal(itens.find(i => i.titulo.startsWith('rascunho')).estado, 'recusado');
+  assert.equal(itens.find(i => i.titulo.startsWith('piloto')).estado, 'revisao');
+  assert.equal(contagem.revisao, 1);
+  const calendario = JSON.parse((await pedir('/api/calendario?conta=aventuras_do_tiao')).corpo);
+  assert.equal(calendario.produzidos_hoje, 1);
+});
 test('TikTok é opcional e vem desligado por padrão', async () => {
   const j = JSON.parse((await pedir('/api/contas')).corpo);
   assert.equal(typeof j.tiktok.ativo, 'boolean');
@@ -119,7 +134,11 @@ test('legenda salva por vídeo, aprovação usa edição e contas não se mistur
 });
 test('referências ficam pendentes sem baixar e recusam URL inválida', async () => {
   assert.equal((await api('/api/referencias',{url:'file:///etc/passwd'})).status,400);
-  const r=await api('/api/referencias',{url:'https://example.com/ref',nota:'Estudar gancho'}); assert.equal(r.status,201); assert.equal(r.j.status,'pendente');
+  const r=await api('/api/referencias',{url:'https://example.com/ref',nota:'Estudar gancho',conta:'aventuras_do_tiao'}); assert.equal(r.status,201); assert.equal(r.j.status,'pendente');
+  const tiao=await api('/api/referencias?conta=aventuras_do_tiao');
+  assert.equal(tiao.status,200);
+  assert.deepEqual(tiao.j,[r.j]);
+  assert.deepEqual((await api('/api/referencias?conta=six_stars')).j,[]);
 });
 test('saúde: GPU opcional, chaves sem valor e LAN desligada', async () => {
   const r=await api('/api/saude'); assert.ok(Array.isArray(r.j.pc.gpus)); assert.equal(r.j.chaves.length,5);
@@ -140,8 +159,7 @@ test('cadastro rejeita horários impossíveis e plataformas inválidas',async()=
  assert.equal((await api('/api/contas-cfg',{...c,plataformas:[{rede:'x',handle:'x',ligado:true,modo:'api'}]})).status,400);
  assert.equal((await api('/api/revisao?conta=inexistente')).status,404);
 });
-test('aprovação não lança produção nem altera marca',async()=>{
- assert.equal((await api('/api/gravar',{url:'https://youtube.com/watch?v=x'})).status,409);
+test('aprovação e configuração de conta preservam marca e estado do estúdio',async()=>{
  assert.equal((await api('/api/marca',{nick:'nao_mudar'})).status,409);
  assert.equal(fs.existsSync(path.join(FIXTURE,'_estado')),false);
  assert.equal(fs.existsSync(path.join(FIXTURE,'marca')),false);

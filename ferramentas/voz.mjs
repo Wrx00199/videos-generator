@@ -2,7 +2,7 @@
 // Voz Fenrir — texto consolidado -> MP3. V4: gira GEMINI_API_KEY_1..5 (mesma voz); sem cota em nenhuma = exit 3.
 // Uso: node ferramentas/voz.mjs --texto "fala" | --arquivo fala.txt  --saida voz.mp3
 // Chaves: lidas de $ESTUDIO_ENV (padrão: .env do próprio estúdio). Nunca imprime chave.
-// Saída no stdout: JSON {saida, duracao_s, chave: "...<4 últimos>"}.
+// Saída no stdout: JSON {saida, duracao_s, tempos_s}.
 import fs from 'node:fs';
 import { chavesTts, girarChaves } from './tts_config.mjs';
 import { spawnSync } from 'node:child_process';
@@ -27,7 +27,7 @@ if (!chaves.length) { console.error(`sem chave Gemini (procurei em ${ENV})`); pr
 if (fs.existsSync(saida)) { console.error('saída já existe; preserve o arquivo e use uma execução nova'); process.exit(2); }
 const inicioTotal = performance.now();
 const erros = [];
-const chamar = async (k) => {
+const chamar = async (k, indice) => {
   const inicioApi = performance.now();
   const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${modelo}:generateContent`, {
     method: 'POST', signal: AbortSignal.timeout(120000),
@@ -40,8 +40,8 @@ const chamar = async (k) => {
   const j = await r.json().catch(() => ({}));
   const b64 = j.candidates?.[0]?.content?.parts?.find((p) => p.inlineData)?.inlineData?.data;
   if (!r.ok || !b64) {
-    const msg = String(j.error?.message ?? JSON.stringify(j)).slice(0, 100).replaceAll(k, '…');
-    erros.push(`…${k.slice(-4)}: ${r.status} ${msg}`);
+    const msg = String(j.error?.message ?? JSON.stringify(j)).replaceAll(k, '[oculto]').slice(0, 300);
+    erros.push(`credencial ${indice + 1}: HTTP ${r.status} ${msg}`);
     throw Object.assign(new Error(msg), { status: r.status });
   }
   return { b64, api_s: (performance.now() - inicioApi) / 1000 };
@@ -52,7 +52,6 @@ try { g = await girarChaves(chaves, chamar); }
 catch { console.error('a chave falhou:\n' + erros.join('\n')); if (erros.some((e) => e.includes('PROHIBITED_CONTENT'))) console.error('dica: bloqueio do filtro do Gemini (falso positivo comum em frase curta/estranha). Reescreva a frase ou junte com a próxima.'); process.exit(1); }
 if (!g.ok) { console.log(JSON.stringify({ erro: 'cota_esgotada' })); console.error('todas as chaves sem cota:\n' + erros.join('\n')); process.exit(3); }
 const { b64, api_s } = g.valor;
-const k = chaves[g.usada];
 const inicioConversao = performance.now();
 const pcm = `${saida}.pcm`;
 const parcial = `${saida}.partial.mp3`;
@@ -62,4 +61,4 @@ fs.rmSync(pcm, { force: true });
 if (c.status !== 0) { fs.rmSync(parcial, { force: true }); console.error('ffmpeg falhou: ' + (c.stderr || '').slice(0, 200)); process.exit(1); }
 fs.renameSync(parcial, saida);
 const d = spawnSync('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', saida], { encoding: 'utf8' });
-console.log(JSON.stringify({ saida, duracao_s: +(+d.stdout.trim()).toFixed(2), tempos_s: { api: +api_s.toFixed(2), conversao: +((performance.now() - inicioConversao) / 1000).toFixed(2), total: +((performance.now() - inicioTotal) / 1000).toFixed(2) }, chave: '…' + k.slice(-4) }));
+console.log(JSON.stringify({ saida, duracao_s: +(+d.stdout.trim()).toFixed(2), tempos_s: { api: +api_s.toFixed(2), conversao: +((performance.now() - inicioConversao) / 1000).toFixed(2), total: +((performance.now() - inicioTotal) / 1000).toFixed(2) } }));

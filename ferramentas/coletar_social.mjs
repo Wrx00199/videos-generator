@@ -53,7 +53,7 @@ export function itensInstagram(json) {
         id: String(o.code), autor: o.user?.username || o.owner?.username || '', seg: num(o.user?.follower_count),
         views: num(o.play_count ?? o.ig_play_count ?? o.view_count), likes: Math.max(0, num(o.like_count)), coms: num(o.comment_count),
         shares: 0, salvos: 0, criado: num(o.taken_at), dur: num(o.video_duration), leg: o.caption?.text || '',
-        capa: o.image_versions2?.candidates?.[0]?.url || o.thumbnail_url || '', ad: !!(o.is_paid_partnership && false) || !!o.ad_id,
+        capa: o.image_versions2?.candidates?.[0]?.url || o.thumbnail_url || '', ad: o.is_paid_partnership === true || !!o.ad_id,
       });
       return true;
     }
@@ -155,18 +155,19 @@ export async function coletar(ctx, rede, tipo, termo) {
     const prev = todos.get(it.id);
     if (!prev || it.views > prev.views) todos.set(it.id, it);
   }
-  const agora = Date.now() / 1000;
-  const bons = [...todos.values()].filter((it) => {
-    const views = it.views || (rede === 'instagram' ? it.likes * 20 : 0); // importador faz a mesma estimativa
-    return !it.ad && views >= MIN_VIEWS && (!it.dur || it.dur <= MAX_DUR) && (agora - it.criado) / 86400 <= MAX_DIAS;
-  });
-  const nota = (l) => Math.log10((l.views || l.likes * 20) / Math.max(1, (agora - l.criado) / 86400) + 1) * (1 + Math.min(l.seg ? l.views / l.seg : 0, 5));
-  bons.sort((a, b) => nota(b) - nota(a));
-  const linhas = bons.slice(0, TOP).map((i) => [i.id, i.autor, i.seg, i.views, i.likes, i.coms, i.shares, i.salvos, i.criado, i.dur,
-    Array.from((i.leg || '').replace(/\s+/g, ' ')).slice(0, 50).join(''), i.capa]);
+  const linhas = selecionarCapturas(todos.values(), Date.now() / 1000);
   const seg = ((Date.now() - t0) / 1000).toFixed(1);
   console.log(`${rede} | ${tipo}:${termo} | brutos ${todos.size} | passaram ${linhas.length} | ${seg}s${bloq ? ' | BLOQUEIO: ' + bloq : ''}`);
   return { bloq, brutos: todos.size, linhas: bloq ? [] : linhas };
+}
+
+export function selecionarCapturas(itens, agora) {
+  const recentes = [...itens].filter(it => !it.ad && (!it.dur || it.dur <= MAX_DUR) && (agora - it.criado) / 86400 <= MAX_DIAS);
+  const nota = i => Math.log10(i.views / Math.max(1, (agora - i.criado) / 86400) + 1) * (1 + Math.min(i.seg ? i.views / i.seg : 0, 5));
+  const medidas = recentes.filter(i => i.views >= MIN_VIEWS).sort((a, b) => nota(b) - nota(a));
+  const semContagem = recentes.filter(i => i.views === 0).sort((a, b) => b.criado - a.criado);
+  return [...medidas, ...semContagem].slice(0, TOP).map(i => [i.id, i.autor, i.seg, i.views, i.likes, i.coms, i.shares, i.salvos, i.criado, i.dur,
+    (i.leg || '').replace(/\s+/g, ' '), i.capa]);
 }
 
 // ---- CLI e estado durável ----
@@ -196,6 +197,7 @@ export function parseArgs(args) {
   } else {
     const [rede, tipo, ...termo] = out.pos;
     if (!['tiktok','instagram'].includes(rede) || !['tag','busca'].includes(tipo) || !termo.join(' ').trim()) throw new Error('uso: coletar_social.mjs <tiktok|instagram> <tag|busca> <termo> | --nicho <nome> [--completo]');
+    if (rede === 'instagram' && tipo !== 'tag') throw new Error('Instagram aceita só hashtag nesta rota; use instagram tag <hashtag>');
     if (rede === 'instagram' && tipo !== 'tag') throw new Error('instagram: só tag');
   }
   return out;
@@ -241,8 +243,12 @@ export async function executar(tarefas, deps = {}) {
       const arquivo = path.join(dir, `${manifesto.arquivos.length + 1}-${rede}-${slug(termo)}.json`);
       const dado = {execucao, plataforma:rede, termo:`${tipo}:${termo}`, coletado_em:new Date().toISOString(), status,
         motivo:r.bloq || r.erro || '', brutos:r.brutos || 0, linhas:status === 'ok' ? r.linhas : []};
+      const camposObservados = {
+        views: dado.linhas.filter(l => l[3] > 0).length,
+        duracao: dado.linhas.filter(l => l[9] > 0).length,
+      };
       gravarJson(arquivo, dado);
-      manifesto.arquivos.push({arquivo,status,plataforma:rede,termo:dado.termo,passaram:dado.linhas.length,motivo:dado.motivo});
+      manifesto.arquivos.push({arquivo,status,plataforma:rede,termo:dado.termo,passaram:dado.linhas.length,campos_observados:camposObservados,motivo:dado.motivo});
       gravarJson(manifestoPath, manifesto);
     };
     try {

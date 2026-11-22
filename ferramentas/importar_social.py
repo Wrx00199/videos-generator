@@ -6,7 +6,7 @@ Fluxo atual:
 Arquivos legados podem ser passados explicitamente, sem --manifesto.
 
 Linha da coleta: [id, @, seguidores, views, likes, coments, shares, salvos, criado_unix, dur_s, legenda]
-Instagram às vezes não dá views (só likes): aí views = likes * 20 (estimativa marcada no motivo).
+Instagram às vezes só retorna likes. Sem contagem de views, a referência fica no catálogo sem recomendação.
 Miniatura: oEmbed público (1 requisição por vídeo, só dos que passaram no filtro) -> rosto (YuNet) + mosaico.
 """
 from __future__ import annotations
@@ -26,6 +26,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import pesquisar as P  # noqa: E402  (CAMPOS, RAIZ, mosaico, modelo YuNet)
 
 UA = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36"}
+SEM_CONTAGEM = "visualizações sem contagem confirmada"
+ROSTO_DETECTADO = "rosto detectado na miniatura"
+ESTIMATIVA_LEGADA = "views estimadas (likes x20)"
+MOTIVOS_AUTOMATICOS = {SEM_CONTAGEM, ROSTO_DETECTADO, ESTIMATIVA_LEGADA}
 
 
 def link(rede: str, uid: str, autor: str) -> str:
@@ -61,6 +65,29 @@ def tem_rosto(url: str | None) -> bool | None:
     h, w = img.shape[:2]
     _, fs = cv2.FaceDetectorYN.create(str(modelo), "", (w, h), 0.8).detect(img)
     return fs is not None and any(f[3] >= h * .08 for f in fs)
+
+
+def rosto_detectado(valor: str) -> bool:
+    quantidade = (valor or "").partition("/")[0]
+    return quantidade.isdecimal() and int(quantidade) > 0
+
+
+def classificar(linha: dict, anterior: dict) -> None:
+    partes = (anterior.get("motivo") or "").split("; ")
+    manuais = [parte for parte in partes if parte and parte not in MOTIVOS_AUTOMATICOS]
+    veto_manual = anterior.get("candidato") not in (None, "", "sim") and (
+        bool(manuais) or not any(parte in MOTIVOS_AUTOMATICOS for parte in partes)
+    )
+    if veto_manual:
+        linha.update(candidato=anterior["candidato"], motivo=anterior.get("motivo") or "")
+        return
+    automaticos = []
+    if not linha["views"]:
+        automaticos.append(SEM_CONTAGEM)
+    if rosto_detectado(linha.get("rosto", "")):
+        automaticos.append(ROSTO_DETECTADO)
+    linha["candidato"] = "não" if automaticos else "sim"
+    linha["motivo"] = "; ".join(manuais + automaticos)
 
 
 def carregar_coletas(coletas: list[str], manifesto: str | None = None) -> list[dict]:
@@ -129,10 +156,9 @@ def main() -> None:
             uid, autor, segs, views, likes, coms, shares, salvos, criado, dur, leg = l[:11]
             if (autor or "").strip().lower() in excl or any(t in (leg or "").lower() for t in excl_t):
                 continue
-            motivos = []
-            if not views:
-                views = likes * 20
-                motivos.append("views estimadas (likes x20)")
+            views = views or 0
+            if uid in novas and novas[uid]["views"] > views:
+                continue
             data = dt.datetime.fromtimestamp(criado).date()
             dias = max(1, (hoje - data).days)
             vdia, surto = views / dias, (views / segs if segs else 0)
@@ -143,32 +169,55 @@ def main() -> None:
                 "views_dia": round(vdia), "surto": round(surto, 2),
                 "engaj_%": round(100 * (likes + coms + shares + salvos) / views, 2) if views else 0,
                 "nota": round(math.log10(vdia + 1) * (1 + min(surto, 5)), 2), "termo": f"{rede}:{c.get('termo', '')}",
-                "candidato": "sim", "motivo": "; ".join(motivos), "rosto": "", "visto_em": hoje.isoformat(),
+                "rosto": "", "visto_em": hoje.isoformat(),
                 "_capa": l[11] if len(l) > 11 else None,
             }
-    cands = sorted(novas.values(), key=lambda r: r["nota"], reverse=True)
-    if not cands:
+    if not novas:
         print("Nenhum vídeo válido nesta execução; referencias.csv preservado.")
         return
-    # rosto + miniatura só para o topo (poucas requisições, com pausa)
-    for r in cands[: max(a.top, a.mosaico)]:
-        r["_capa"] = r["_capa"] or miniatura(r["plataforma"], r["link"])
-        f = tem_rosto(r["_capa"])
-        r["rosto"] = "" if f is None else ("1/1" if f else "0/1")
-        r["_thumbs"] = [r["_capa"]] if r["_capa"] else None
-        time.sleep(0.5)
 
     csv_p = P.RAIZ / "projetos" / "referencias.csv"
     antigos: dict[str, dict] = {}
     if csv_p.exists():
         with csv_p.open(encoding="utf-8") as f:
             antigos = {r["id"]: r for r in csv.DictReader(f)}
-    for r in cands:
+    ordenadas = sorted(novas.values(), key=lambda r: r["nota"], reverse=True)
+    for r in ordenadas:
+        anterior = antigos.get(r["id"], {})
+        r["rosto"] = anterior.get("rosto") or ""
+        classificar(r, anterior)
+
+    # Miniaturas apenas para os primeiros registros ainda elegíveis para triagem.
+    pendentes = [r for r in ordenadas if r["candidato"] == "sim"]
+    for r in pendentes[: max(a.top, a.mosaico)]:
+        r["_capa"] = r["_capa"] or miniatura(r["plataforma"], r["link"])
+        f = tem_rosto(r["_capa"])
+        if f is True:
+            r["rosto"] = "1/1"
+        elif f is False and not r["rosto"]:
+            r["rosto"] = "0/1"
+        r["_thumbs"] = [r["_capa"]] if r["_capa"] else None
+        classificar(r, antigos.get(r["id"], {}))
+        time.sleep(0.5)
+
+    for r in ordenadas:
         if r["id"] in antigos:
-            antigos[r["id"]].update({k: r[k] for k in ("views", "views_dia", "surto", "engaj_%", "nota", "dias", "visto_em", "rosto")})
+            campos = ("views", "views_dia", "surto", "engaj_%", "nota", "dias", "visto_em", "rosto", "candidato", "motivo")
+            antigos[r["id"]].update({k: r[k] for k in campos})
         else:
             antigos[r["id"]] = r
-    todos = sorted(antigos.values(), key=lambda r: float(r.get("nota") or 0), reverse=True)
+    for uid, r in antigos.items():
+        if uid in novas or r.get("plataforma") not in ("tiktok", "instagram"):
+            continue
+        motivos = (r.get("motivo") or "").split("; ")
+        estimada = ESTIMATIVA_LEGADA in motivos
+        if estimada:
+            r["nota"] = "0"
+        if r.get("candidato") == "sim" and (estimada or rosto_detectado(r.get("rosto", ""))):
+            r["candidato"] = "não"
+            if rosto_detectado(r.get("rosto", "")) and ROSTO_DETECTADO not in motivos:
+                r["motivo"] = "; ".join([motivo for motivo in motivos if motivo] + [ROSTO_DETECTADO])
+    todos = sorted(antigos.values(), key=lambda r: (r.get("candidato") == "sim", float(r.get("nota") or 0)), reverse=True)
     # grava em arquivo temporário e troca no fim: erro no meio não trunca a planilha
     tmp = csv_p.with_suffix(".csv.tmp")
     with tmp.open("w", encoding="utf-8", errors="replace", newline="") as f:
@@ -176,7 +225,8 @@ def main() -> None:
         w.writeheader()
         w.writerows(todos)
     tmp.replace(csv_p)
-    print(f"{len(cands)} vídeos importados de {len(coletas)} coletas | planilha {len(todos)} linhas")
+    cands = [r for r in ordenadas if r["candidato"] == "sim"]
+    print(f"{len(ordenadas)} vídeos importados de {len(coletas)} coletas | {len(cands)} candidatos | planilha {len(todos)} linhas")
     print(f"  # {'nota':>5} {'views':>9} {'v/dia':>8} {'surto':>6} {'rosto':>5} {'dur':>4}  rede  @ | legenda")
     for i, r in enumerate(cands[: a.top], 1):
         print(f"{i:>3} {r['nota']:>5} {r['views']:>9} {r['views_dia']:>8} {r['surto']:>6} {r['rosto']:>5} {r['duracao_s']:>4}  "

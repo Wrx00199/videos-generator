@@ -12,9 +12,10 @@
 // Cota: 1 chamada por personagem (todas as falas dele juntas, pausa longa entre elas, corte por silêncio).
 // Se o corte não bater com o nº de falas, refaz SÓ aquele personagem fala a fala. 429 = cota acabou: para e avisa.
 import fs from 'node:fs'; import path from 'node:path'; import { spawnSync } from 'node:child_process'; import { fileURLToPath } from 'node:url';
-const R = '/media/wr/HDD/Estudio de video', KIT = path.dirname(fileURLToPath(import.meta.url));
-process.loadEnvFile(R + '/.env');
-const { chavesTts } = await import(R + '/ferramentas/tts_config.mjs');
+import { chavesTts } from '../../../ferramentas/tts_config.mjs';
+const KIT = path.dirname(fileURLToPath(import.meta.url));
+const envFile = process.env.ESTUDIO_ENV || path.resolve(KIT, '../../../.env');
+try { process.loadEnvFile(envFile); } catch (e) { if (e.code !== 'ENOENT') throw e; }
 const KEYS = chavesTts(process.env); let ki = 0;   // V4 18/11: rotacao 1->5; so para (exit 3) quando TODAS acabarem
 const MONTAR = process.argv.includes('--montar');   // --montar: só monta dialogo.wav com os <quem>_<i>.wav que já existem (cortes corrigidos à mão pelo STT), sem chamar o Gemini nem recortar
 const POR_FALA = process.argv.includes('--por-fala');   // 18/11 ep.31: o corte por silencio casou a CONTAGEM mas errou os limites (fala 3 com 11 s); --por-fala gera 1 chamada por fala
@@ -29,6 +30,7 @@ const pp = path.join(out, '_por_personagem'); fs.mkdirSync(pp, { recursive: true
 const SR = 24000; let chamadas = 0;
 const sh = (c, a) => spawnSync(c, a, { encoding: 'utf8', maxBuffer: 1 << 26 });
 const dur = (f) => +sh('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', f]).stdout.trim();
+if (!MONTAR && !KEYS.length) { console.error('Sem credencial Gemini configurada para gerar as falas.'); process.exit(2); }
 
 async function tts(voz, texto, dst) {
   chamadas++;
@@ -39,12 +41,24 @@ async function tts(voz, texto, dst) {
       r = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-tts-preview:generateContent', { method: 'POST', signal: AbortSignal.timeout(180000),
         headers: { 'x-goog-api-key': KEYS[ki], 'Content-Type': 'application/json' },
         body: JSON.stringify({ contents: [{ parts: [{ text: texto }] }], generationConfig: { responseModalities: ['AUDIO'], speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: voz } } } } }) });
-      j = await r.json();
-      if (r.status === 429) { console.error(`chave ${ki + 1} sem cota (…${KEYS[ki].slice(-4)}), girando`); ki++; continue; }
+      j = await r.json().catch(() => ({}));
+      const detalhe = String(j.error?.message ?? '').replaceAll(KEYS[ki], '[oculto]').slice(0, 250);
+      if (r.status === 429) { console.error(`credencial ${ki + 1}: HTTP 429 ${detalhe}`); ki++; continue; }
+      if (!r.ok) { console.error(`Gemini TTS falhou: HTTP ${r.status} ${detalhe}`); process.exit(1); }
       break;
     }
     const b = j.candidates?.[0]?.content?.parts?.find((p) => p.inlineData)?.inlineData?.data;
-    if (b) { fs.writeFileSync(dst + '.pcm', Buffer.from(b, 'base64')); sh('ffmpeg', ['-y', '-loglevel', 'error', '-f', 's16le', '-ar', String(SR), '-ac', '1', '-i', dst + '.pcm', dst]); fs.rmSync(dst + '.pcm'); return; }
+    if (b) {
+      const parcial = dst + '.partial.wav';
+      const conversao = spawnSync('ffmpeg', ['-y', '-loglevel', 'error', '-f', 's16le', '-ar', String(SR), '-ac', '1', '-i', 'pipe:0', parcial], { input: Buffer.from(b, 'base64') });
+      if (conversao.status !== 0) {
+        fs.rmSync(parcial, { force: true });
+        console.error('Conversão da fala falhou: ' + String(conversao.stderr || conversao.error || 'ffmpeg').slice(0, 250));
+        process.exit(1);
+      }
+      fs.renameSync(parcial, dst);
+      return;
+    }
     console.error('tts falhou', r.status, JSON.stringify(j.error?.message ?? j).slice(0, 160), tent ? '' : '— tentando 1x de novo');
   }
   return false;   // bloqueio (ex.: PROHIBITED_CONTENT): não derruba os outros personagens; a fala fica na lista de faltantes

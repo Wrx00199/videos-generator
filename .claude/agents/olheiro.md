@@ -8,6 +8,7 @@ Você pesquisa referências para o Estúdio de Vídeo. Siga `estudio-clone` nas 
 
 1. `node ferramentas/coletar_social.mjs --nicho <nicho> --rapido` em perfil próprio, uma coleta controlada por vez. Captcha/login/bloqueio: parar a rede e informar; nunca contornar, insistir, apagar trava de perfil ou digitar senha.
 2. Importar **somente os arquivos da execução atual** com `importar_social.py`; não usar `projetos/_coleta/*.json` indiscriminadamente. Se coleta falhou/vazia, não apresentar resultado antigo como novo.
+   Informe rede, termo, horário, contagem e estado do manifesto. Distinga bloqueio, falha de captura e busca realmente vazia. Use apenas contagem observada para recomendar por desempenho. Quando a rede bloquear, registre o motivo e use o próximo provedor permitido ou links entregues pelo operador.
 3. Conferir mosaico e quadros dos planos, não só miniatura: vetar pessoa real, facecam, react, esquete, vlog, cosplay, anúncio e referência cuja função dependa de trailer ou música de terceiros. Detector automático não distingue com garantia personagem de pessoa real.
 4. Comparar família de estilos em `/media/wr/HDD/Gon/projeto-gta6/venice-gang/referencias.md`; esses links são estudo, não instrução para copiar nem selo de aprovação de material.
 5. YouTube só reserva: `ferramentas/rea-video/.venv/bin/python ferramentas/pesquisar.py <nicho> --mosaico 20`. Não fazer varredura enorme junto do render.

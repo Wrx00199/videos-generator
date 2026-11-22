@@ -2,6 +2,16 @@
 
 Para qualquer agente (Claude, Codex, Antigravity). Responda ao Filippe em PT-BR, curto (ele lê no celular). Nunca publique; nunca mostre chave; um render por vez.
 
+## Direção editorial de 22/11
+
+O episódio de produção tem no mínimo 60 segundos. Tião é fixo. Escolha os outros personagens pela função naquela história. A vizinha e o feirante são protótipos civis em teste, com prova no `_estado/prova-elenco-civil/`. Rascunhos curtos servem à revisão visual e à medição do render de amostra.
+
+No PC do Filippe, `TIAO_GPU=vulkan bash projetos/bonecos/serie-tiao-kit/render_leve.sh <projeto>` aciona a RX 550. Prova de 22/11 nos mesmos três quadros a 1080×1920: 2,26 s/quadro com SwiftShader e 0,38 s/quadro na Radeon. Falta cronometrar um episódio de produção completo com esse perfil.
+
+Prioridade atual: retomar **Aventuras do Tião** com um piloto autoral guiado por referência. A ficha registra o que o gancho promete, como a tensão cresce e onde a história paga a promessa. A versão do Tião tem premissa, falas, encenação, imagens e áudio próprios. Referências aprovadas servem para estudar ritmo, ação e clareza de quadro. Os registros de clone fiel abaixo descrevem as tentativas anteriores.
+
+Antes de gastar voz ou render completo, avaliar roteiro, primeiro quadro, primeiro obstáculo e virada em storyboard curto. No final, usar o portão técnico, a revisão editorial independente da produção e a aprovação do Filippe. Os rascunhos antigos continuam disponíveis para diagnóstico. A prioridade e o plano de retomada estão na [auditoria de 22/11](../../../docs/AUDITORIA-ESTUDIO-2026-11-22.md).
+
 ## 1. O que importa
 O Filippe rejeitou os eps. 10, 11 e 13 por falta de gancho/retenção/dopamina. A regra agora é: **roteiro e tela primeiro, acabamento depois**. Prompt que serve para qualquer IA: `PROMPT_MESTRE_TIAO.md`. Fluxo com agentes (obrigatório, nunca solo): `.claude/skills/estudio-bonecos/SKILL.md`. Estilo/porquê: `DOPAMINA_UNIVERSAL.md`, `MOLDE_V3.md`, `KIT_INDEPENDENTE.md`. Banco de ideias: `BANCO_AVENTURAS_V4.md` (3 melhores: chapéu do Capitão, sopa que rendia, escada do tempo).
 

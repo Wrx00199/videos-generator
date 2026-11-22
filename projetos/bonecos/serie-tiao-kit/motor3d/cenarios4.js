@@ -50,12 +50,31 @@ export function construirCasa(X) {
   };
   const gatoMesh = (g, x, z, cor = '#e8892e') => {
     const G = new THREE.Group(); G.position.set(x, 0, z); g.add(G);
-    const corpo = add(new THREE.SphereGeometry(0.28, 16, 12), toon({ color: cor }), 0, 0.28, 0, G); corpo.scale.set(1, 0.9, 1.35);
-    const cab = add(new THREE.SphereGeometry(0.2, 16, 12), toon({ color: cor }), 0, 0.56, 0.3, G);
-    for (const s of [-1, 1]) { const o = add(new THREE.ConeGeometry(0.07, 0.14, 4), toon({ color: cor }), s * 0.11, 0.74, 0.3, G); o.rotation.z = -s * 0.2;
-      add(new THREE.SphereGeometry(0.03, 8, 6), new THREE.MeshBasicMaterial({ color: '#2a2a10' }), s * 0.075, 0.6, 0.48, G, { cast: false }); }
-    const rabo = add(new THREE.TorusGeometry(0.2, 0.045, 6, 14, 4.2), toon({ color: cor }), -0.18, 0.3, -0.34, G); rabo.rotation.set(0.4, 1.2, 0);
-    for (const s of [-1, 1]) caixa(G, 0.07, 0.07, 0.4, '#fff3dd', s * 0.1, 0.0, 0.2);
+    const oval = (parent, color, x, y, z, sx, sy, sz) => {
+      const m = add(new THREE.SphereGeometry(1, 16, 12), toon({ color }), x, y, z, parent);
+      m.scale.set(sx, sy, sz); return m;
+    };
+    oval(G, cor, 0, .27, -.12, .23, .25, .33);
+    for (const a of [-1, 1]) for (const z of [-.25, .19]) oval(G, '#fff0da', a * .125, .09, z, .071, .09, .09);
+    const cab = new THREE.Group(); cab.position.set(0, .56, .27); G.add(cab);
+    oval(cab, cor, 0, 0, 0, .227, .18, .184);
+    for (const a of [-1, 1]) {
+      const orelha = add(new THREE.ConeGeometry(.105, .24, 3), toon({ color: cor }), a * .155, .19, -.015, cab);
+      orelha.rotation.set(.04, Math.PI, -a * .22);
+      const interior = add(new THREE.ConeGeometry(.057, .127, 3), toon({ color: '#d67b77' }), a * .162, .203, .054, cab);
+      interior.rotation.copy(orelha.rotation);
+      oval(cab, '#f5cc77', a * .086, .032, .16, .056, .045, .032);
+      oval(cab, '#251b25', a * .086, .032, .187, .017, .034, .008);
+      oval(cab, '#ffe9cc', a * .045, -.064, .171, .072, .046, .047);
+      for (const abertura of [-.19, 0, .19]) {
+        const bigode = add(new THREE.CylinderGeometry(.006, .006, .155, 6), toon({ color: '#533045' }), a * .15, -.073 + abertura / 11, .177, cab, { cast: false });
+        bigode.rotation.z = Math.PI / 2 + a * abertura;
+      }
+    }
+    oval(cab, '#a24e5e', 0, -.043, .211, .032, .019, .015);
+    const cauda = new THREE.CatmullRomCurve3([[0,.32,-.38],[-.17,.51,-.49],[-.28,.72,-.39],[-.24,.79,-.28]].map(v => new THREE.Vector3(...v)));
+    add(new THREE.TubeGeometry(cauda, 12, .044, 8, false), toon({ color: cor }), 0, 0, 0, G);
+    oval(G, cor, -.24, .79, -.28, .045, .045, .045);
     G.userData.cab = cab; return G;
   };
 
@@ -110,7 +129,9 @@ export function construirCasa(X) {
     const rel = add(new THREE.CircleGeometry(0.22, 24), toon({ color: '#fff' }), -1.2, 2.2, -3.44, g); rel.userData.ndSkip = true; add(new THREE.TorusGeometry(0.22, 0.03, 8, 24), toon({ color: '#c0392b' }), -1.2, 2.2, -3.43, g);
     const calend = new THREE.Mesh(new THREE.PlaneGeometry(0.42, 0.55), toon({ color: '#fff' })); calend.position.set(2.6, 1.8, -3.44); g.add(calend); caixa(g, 0.42, 0.14, 0.02, '#e74c3c', 2.6, 2.2, -3.43);
     const gato = gatoMesh(g, 0.2, 1.4, '#e8892e'); gato.rotation.y = 0.3;
-    registra('cozinha', g, M, (B) => { gato.visible = B.gato !== 0; }); }
+    registra('cozinha', g, M, (B) => { gato.visible = B.gato !== 0; gato.position.x = B.gatoX ?? .2; }, {
+      ocupaMesa: (x, y, z) => g.visible && y < .73 && Math.hypot(x - g.position.x - mesa.position.x, z - g.position.z - mesa.position.z) < .78,
+    }); }
 
   // ---------- QUARTO ----------
   { const C = comodo('quarto', { p1: '#6a7fd6', p2: '#f3d36a', tipo: 'estrelas', piso: 'tabua', f1: '#c89868', f2: '#7a5430', luzCor: '#8aa0ff', luzI: 1.2, rodape: '#e8e0f4' }), g = C.g, M = C.M;

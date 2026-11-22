@@ -45,7 +45,7 @@ function tripulacao(id, base, membros) { let k = 10 + Object.keys(SPEC).length; 
   for (const [n, m] of Object.entries(membros)) SPEC[n] = { n, seed: k++, s: 1, ...base, ...m, trip: id }; }
 // Capitã Ruiva (navio preto, velas roxas): vilã + 2 piratas
 tripulacao('ruiva', {}, {
-  ruiva: { body: '#f4efe4', hat: 'tricorne', patch: 1, hair: '#e0602a', vestido: ['#8a1c2b', '#4b2a6a'], makeup: '#d81e3a', earring: 1 },
+  ruiva: { feminina: true, body: '#f4efe4', hat: 'tricorne', patch: 1, hair: '#e0602a', vestido: ['#8a1c2b', '#4b2a6a'], makeup: '#d81e3a', earring: 1 },
   riv1:  { body: '#ece6f4', hat: 'bandana', hatCol: ['#6b3fa0', '#5a3290'], s: .96, stripes: '#6b3fa0' },
   riv2:  { body: '#4b3d63', hat: 'beanie', hatCol: ['#4b3a6a', '#3a2d55', null], s: 1.06, beard: 1, vest: 1 },
 });
@@ -60,7 +60,7 @@ tripulacao('coral', { stripes: '#1f4f6b' }, {
 tripulacao('bermu', {}, {
   tonho:     { body: '#efe3c6', hat: 'beanie', hatCol: ['#2c3e5c', '#233049', null], s: 1.12, stripes: '#b0302a', stache: 1 },
   dede:      { body: '#dfe9cf', hat: 'bandana', hatCol: ['#d06a2a', '#b85a20'], s: .88, stripes: '#4a7a3a' },
-  chiquinha: { body: '#f4efe4', hat: 'bandana', hatCol: ['#2a8a7a', '#1f7064'], s: .94, hair: '#5a3a2a', vestido: ['#2a6a8a', '#1f4f6b'], makeup: '#d8506a' },
+  chiquinha: { feminina: true, body: '#f4efe4', hat: 'bandana', hatCol: ['#2a8a7a', '#1f7064'], s: .94, hair: '#5a3a2a', vestido: ['#2a6a8a', '#1f4f6b'], makeup: '#d8506a' },
 });
 
 // ---------- ELENCO EXTRA (16/11): traços novos p/ super-heróis, vilões, alienígenas, gigantes, mutantes, monstros ----------
@@ -105,13 +105,13 @@ const NOVOS = {
   apostador: { body: '#8a5a30', hat: 'chapelao', hatCol: ['#6b4a2a', '#3a2414', '#6b4a2a'], s: 1.1, stache: 1, stripes: '#4a2f1a', coat: 1 },
   // super-heróis (anatomia de herói: ombro largo, cintura fina, luvas e botas)
   heroi:   { s: 1.12, hat: null, capa: '#ffd21f', mascara: '#2b62d9', emblema: ['raio', '#ffd21f'], an: { t: 'v', cab: 'queixo', cabS: .95, pele: '#f0b88c', roupa: '#e0392d', manga: '#e0392d', luva: '#ffd21f', bota: '#ffd21f', calca: '#2b62d9', br: [36, 30], pr: [36, 30], mao: 24, pe: 36, cabelo: '#2a1a12', deco: ['peitoral', 'cinto'] } },                  // Capitão Pamonha
-  lucia:   { s: 1.05, hat: null, capa: '#7c3aed', mascara: '#ffe44f', emblema: ['estrela', '#ffe44f'], hair: '#ffe44f', makeup: '#ff4d8d', an: { t: 'v', w: .78, cab: 'queixo', cabS: .86, cabelo: '#ffe44f', franja: 30, pele: '#f6c4a2', roupa: '#3b82f6', manga: '#3b82f6', luva: '#7c3aed', bota: '#7c3aed', calca: '#3b82f6', br: [24, 20], pr: [28, 24], mao: 18, pe: 30, deco: ['cinto'] } }, // Relâmpago Lúcia
+  lucia:   { feminina: true, s: 1.05, hat: null, capa: '#7c3aed', mascara: '#ffe44f', emblema: ['estrela', '#ffe44f'], hair: '#ffe44f', makeup: '#ff4d8d', an: { t: 'v', w: .78, cab: 'queixo', cabS: .86, cabelo: '#ffe44f', franja: 30, pele: '#f6c4a2', roupa: '#3b82f6', manga: '#3b82f6', luva: '#7c3aed', bota: '#7c3aed', calca: '#3b82f6', br: [24, 20], pr: [28, 24], mao: 18, pe: 30, deco: ['cinto'] } }, // Relâmpago Lúcia
   zegelo:  { s: 1.12, hat: null, capa: '#4fa8ff', an: { t: 'bruto', w: .85, cab: 'queixo', cabS: .95, pele: '#cfeaff', roupa: '#8cc8f5', manga: '#8cc8f5', luva: '#e8faff', bota: '#e8faff', calca: '#5aa0d8', br: [38, 32], pr: [38, 32], mao: 26, pe: 38, ombro: '#cfefff', cabelo: '#e8faff', deco: ['peitoral'] } },    // Zé Gelo
   tiaosuper: { base: 'tiao', body: '#fbfbf8', hat: 'chef', s: .86, capa: '#d8322a', emblema: ['estrela', '#ffd21f'] },
   // vilões
   barao:   { s: 1.18, hat: 'cartola', hatCol: ['#1d1a24', '#8a2be2'], capa: '#6d28d9', stache: 1, presas: 1, an: { t: 'fino', cab: 'pontuda', cabS: .85, pele: '#e6dcf0', roupa: '#2a1f3a', manga: '#2a1f3a', luva: '#1d1a24', bota: '#1d1a24', calca: '#2a1f3a', sobre: '#2a1f3a', br: [18, 15], pr: [20, 16], mao: 14, pe: 30, deco: ['sobretudo'] } },                  // Barão Sombra
   drgambi: { s: .98, hat: null, oculos: '#e0392d', an: { t: 'pera', w: .8, cab: 'oval', cabS: 1.18, pele: '#f1cdb0', roupa: '#d9d4c4', manga: '#ffffff', luva: '#f1cdb0', bota: '#4a3a2a', calca: '#5a5a6a', br: [22, 18], pr: [20, 17], mao: 17, pe: 28, tufos: '#cfcfd6', deco: ['jaleco'] } },   // Dr. Gambiarra
-  bruxa:   { s: 1.0, hat: 'bruxa', hatCol: ['#3a2a5a', '#f2b233'], hair: '#7bd36a', an: { t: 'fino', cab: 'pontuda', cabS: .85, pele: '#9fdc8a', roupa: '#2f2740', manga: '#2f2740', luva: '#9fdc8a', bota: '#1d1a24', calca: '#2f2740', br: [15, 12], pr: [14, 12], mao: 15, pe: 28, feio: ['nariz', 'verrugas'], deco: ['vestidoLongo'] } }, // Dona Cacilda
+  bruxa:   { feminina: true, s: 1.0, hat: 'bruxa', hatCol: ['#3a2a5a', '#f2b233'], hair: '#7bd36a', an: { t: 'fino', cab: 'pontuda', cabS: .85, pele: '#9fdc8a', roupa: '#2f2740', manga: '#2f2740', luva: '#9fdc8a', bota: '#1d1a24', calca: '#2f2740', br: [15, 12], pr: [14, 12], mao: 15, pe: 28, feio: ['nariz', 'verrugas'], deco: ['vestidoLongo'] } }, // Dona Cacilda
   // alienígenas
   glorp:   { s: .9, hat: null, antenas: ['#ff5ca8', 2], olho3: 1, an: { sobr: false, t: 'pera', w: .7, cab: 'alongada', cabS: .95, pele: '#79d65a', olhos: 'alien', olhoCor: '#1a0f26', br: [12, 10], pr: [14, 12], mao: 14, dedos: 3, pe: 22, deco: ['manchas'] } },   // Glorp
   zorbina: { s: 1.1, hat: null, antenas: ['#ffe44f', 2], makeup: '#ff4d8d', an: { sobr: false, t: 'fino', w: .8, cab: 'alongada', cabS: .9, pele: '#b794ff', roupa: '#5b2fb0', manga: '#b794ff', luva: '#b794ff', bota: '#2a0a4a', calca: '#5b2fb0', olhos: 'alien', olhoCor: '#1a0f26', br: [13, 11], pr: [14, 12], mao: 13, dedos: 3, pe: 22 } },   // Zorbina
@@ -142,16 +142,22 @@ const NOVOS = {
   sapao:   { s: 1.35, hat: null, an: { sobr: false, t: 'pera', w: 1.2, cab: 'croc', cabS: 1.0, pele: '#8a9a3a', roupa: null, manga: '#8a9a3a', luva: '#8a9a3a', bota: null, calca: '#7a8a30', br: [34, 28], pr: [34, 28], mao: 24, pe: 46, olhos: 'croc', deco: ['barrigaClara', 'manchas'], claro: '#e6e29a', feio: ['verrugas'] } },   // Seu Sapão
   // ---- BICHOS LUTADORES (16/11): animais com anatomia própria ----
   panda:   { s: 1.3, hat: null, an: { sobr: false, t: 'pera', w: 1.18, cab: 'oval', cabS: 1.15, pele: '#f6f6f2', roupa: '#f4f4f8', manga: '#f4f4f8', luva: '#1d1a24', bota: '#1d1a24', calca: '#f4f4f8', br: [40, 34], pr: [40, 34], mao: 26, pe: 40, orelhas: { f: 'redonda', c: '#1d1a24' }, manchaOlho: '#1d1a24', olhos: 'bicho', focinho: { c: '#ffffff', w: 44, h: 32, nariz: '#1d1a24' }, faixa: null, deco: ['quimono'] } },        // Mestre Pancadão (panda karateca)
-  tigresa: { s: 1.15, hat: null, an: { sobr: false, t: 'v', w: .8, cab: 'oval', cabS: 1.0, pele: '#f2872a', roupa: '#e0392d', manga: '#f2872a', luva: '#f2872a', bota: '#2b1a14', calca: '#2b1a14', br: [29, 25], pr: [28, 24], mao: 20, pe: 32, orelhas: { f: 'pontuda', c: '#f2872a', i: '#fff4de' }, focinho: { c: '#fff4de', w: 48, h: 34, nariz: '#ff7a9a', bigodes: 1 }, rajasCara: 1, cauda: { c: '#f2872a', ponta: '#2b1a14' }, deco: ['listras'] } },       // Tigresa Rajada
+  tigresa: { feminina: true, s: 1.15, hat: null, an: { sobr: false, t: 'v', w: .8, cab: 'oval', cabS: 1.0, pele: '#f2872a', roupa: '#e0392d', manga: '#f2872a', luva: '#f2872a', bota: '#2b1a14', calca: '#2b1a14', br: [29, 25], pr: [28, 24], mao: 20, pe: 32, orelhas: { f: 'pontuda', c: '#f2872a', i: '#fff4de' }, focinho: { c: '#fff4de', w: 48, h: 34, nariz: '#ff7a9a', bigodes: 1 }, rajasCara: 1, cauda: { c: '#f2872a', ponta: '#2b1a14' }, deco: ['listras'] } },       // Tigresa Rajada
   coelho:  { s: 1.0, hat: null, an: { sobr: false, t: 'fino', w: .95, cab: 'oval', cabS: .95, pele: '#e6e2ea', roupa: '#33333f', manga: '#33333f', luva: '#e6e2ea', bota: '#33333f', calca: '#33333f', br: [20, 17], pr: [22, 18], mao: 17, pe: 36, orelhas: { f: 'longa', c: '#e6e2ea', i: '#ffb3c8' }, focinho: { c: '#ffffff', w: 40, h: 28, nariz: '#ff7a9a', bigodes: 1 }, faixa: '#e0392d', cauda: { c: '#ffffff', ponta: '#ffffff', f: 'fofa' }, deco: [] } }, // Coelho Ninja Zé Pulo
   tartaruga: { s: 1.0, hat: null, an: { sobr: false, t: 'pera', w: .9, cab: 'oval', cabS: .85, pele: '#6cc06a', roupa: '#f2e2a8', manga: '#6cc06a', luva: '#6cc06a', bota: '#6cc06a', calca: '#6cc06a', br: [22, 19], pr: [26, 22], mao: 18, pe: 32, casco: '#4f8a3a', focinho: { f: 'bico', c: '#d9b24a' }, deco: ['barrigaClara'], claro: '#f2e2a8' } },   // Vovó Tartaruga Sábia
   jacare:  { s: 1.4, hat: null, an: { sobr: false, t: 'bruto', w: .95, cab: 'croc', cabS: .95, pele: '#4fae5a', roupa: null, manga: '#4fae5a', luva: '#4fae5a', bota: null, calca: '#3f8a4a', br: [36, 30], pr: [38, 32], mao: 26, pe: 48, garras: 1, olhos: 'croc', focinho: { f: 'longo', c: '#6cc872' }, cauda: { c: '#3f8a4a', ponta: '#3f8a4a' }, deco: ['barrigaClara', 'listras'], claro: '#e8f2a8' } },   // Jacaré Dentão
   gorila:  { s: 1.3, hat: null, an: { sobr: false, t: 'bruto', w: 1.15, cab: 'bruta', cabS: .8, pele: '#3a3340', roupa: null, manga: '#3a3340', luva: '#26212c', bota: null, calca: '#3a3340', br: [54, 48], pr: [46, 40], mao: 40, pe: 50, coque: '#3a3340', orelhas: { f: 'pequena', c: '#3a3340' }, deco: ['barriga'], feio: ['sobrancelha'], focinho: { c: '#6a5d74', w: 62, h: 44, chato: 1, nariz: '#1d1a24' } } },   // Gorilão Zen
-  raposa:  { s: 1.05, hat: null, an: { sobr: false, t: 'fino', w: .95, cab: 'pontuda', cabS: .9, pele: '#f2692a', roupa: '#3a2a5a', manga: '#f2692a', luva: '#2b1a14', bota: '#2b1a14', calca: '#3a2a5a', br: [20, 17], pr: [22, 18], mao: 16, pe: 32, orelhas: { f: 'pontuda', c: '#f2692a', i: '#2b1a14' }, focinho: { c: '#ffffff', w: 36, h: 26, nariz: '#1d1a24', bigodes: 1 }, cauda: { c: '#f2692a', ponta: '#ffffff', f: 'fofa' }, deco: [] } },   // Raposa Ladina
+  raposa:  { feminina: true, s: 1.05, hat: null, an: { sobr: false, t: 'fino', w: .95, cab: 'pontuda', cabS: .9, pele: '#f2692a', roupa: '#3a2a5a', manga: '#f2692a', luva: '#2b1a14', bota: '#2b1a14', calca: '#3a2a5a', br: [20, 17], pr: [22, 18], mao: 16, pe: 32, orelhas: { f: 'pontuda', c: '#f2692a', i: '#2b1a14' }, focinho: { c: '#ffffff', w: 36, h: 26, nariz: '#1d1a24', bigodes: 1 }, cauda: { c: '#f2692a', ponta: '#ffffff', f: 'fofa' }, deco: [] } },   // Raposa Ladina
   galo:    { s: .95, hat: null, an: { sobr: false, t: 'pera', w: .85, cab: 'oval', cabS: .9, pele: '#f4f0e6', roupa: '#f4f0e6', manga: '#e0392d', luva: '#e0392d', bota: '#f2b233', calca: '#f4f0e6', br: [24, 20], pr: [18, 15], mao: 22, pe: 34, crista: '#e0392d', focinho: { f: 'bico', c: '#f2b233' }, cauda: { c: '#2b62d9', ponta: '#e0392d' }, deco: ['barrigaClara'], claro: '#ffffff' } },   // Galo Garnizé (boxeador)
   curupira: { s: .9, hat: 'fogo', an: { t: 'fino', w: 1.1, cab: 'oval', cabS: .95, pele: '#c98a52', roupa: '#c98a52', manga: '#c98a52', luva: '#c98a52', calca: '#c98a52', br: [18, 15], pr: [22, 19], mao: 17, pe: 34, deco: ['folhas'] } },   // Curupira
 };
 for (const [n, m] of Object.entries(NOVOS)) SPEC[n] = { n, seed: 40 + Object.keys(SPEC).length, s: 1, ...m, novo: 1 };
+Object.assign(SPEC, {
+  vizinha: { n: "vizinha", body: "#a94f71", pele: "#c68c68", feminina: true, hair: "#332127", penteado: "longo", s: .94, seed: 901 },
+  feirante: { n: "feirante", body: "#41796f", pele: "#ead0ad", oculos: "#373241", stache: 1, s: 1.01, seed: 902 },
+  balconista: { n: "balconista", body: "#718cbd", pele: "#dfab89", feminina: true, hair: "#793f2e", penteado: "curto", s: .91, seed: 903 },
+  carteiro: { n: "carteiro", body: "#c68338", pele: "#9f6947", hair: "#44302b", penteado: "topete", s: 1.03, seed: 904 },
+});
 
 // ---------- ANATOMIA PRÓPRIA (16/11, pedido do Filippe): personagens que NÃO são o boneco de palito ----------
 // SPEC.an = { t: tronco ('v'|'bruto'|'pera'|'fino'|'caixa'|'astro'), w: largura x, cab: cabeça ('queixo'|'bruta'|'alongada'|'pontuda'|'caixa'|'oval'),
@@ -433,15 +439,17 @@ function body(S, o) {
     for (const s of [-1, 1]) { ell(s * 58, -190, 22, 16); fs('#ffffff', 5); } }
 }
 function head(S, o, t) {
-  if (S.hair && !o.back) hair(S.hair, t);
+  const cabeloSolto = !S.penteado || S.penteado === "longo";
+  if (S.hair && cabeloSolto && !o.back) hair(S.hair, t);
   extraAtras(S, o, t);
-  { const g = ctx.createRadialGradient(-34, -38, 8, -10, -8, 128); const fem = !!S.makeup || !!S.semRelevoQueixo; /* V4: semRelevoQueixo:1 = rosto quente sem o cinza do queixo (lia como barba) */ g.addColorStop(0, '#ffffff'); g.addColorStop(.45, fem ? '#fdf8f6' : '#f1f4f8'); g.addColorStop(1, fem ? '#ead6d0' : '#a9b7c9'); if (S.an) { const A = S.an; g.addColorStop(0, '#ffffff'); }
+  { const g = ctx.createRadialGradient(-34, -38, 8, -10, -8, 128); const fem = S.feminina || S.makeup || S.semRelevoQueixo; g.addColorStop(0, '#ffffff'); g.addColorStop(.45, fem ? '#fdf8f6' : '#f1f4f8'); g.addColorStop(1, fem ? '#ead6d0' : '#a9b7c9'); if (S.an) { const A = S.an; g.addColorStop(0, '#ffffff'); }
     if (S.an) { cabAn(S.an.cab, S.an.cabS || 1); const A = S.an, g2 = ctx.createRadialGradient(-34, -38, 8, -10, -8, 128); g2.addColorStop(0, claro(A.pele, .45)); g2.addColorStop(.45, A.pele); g2.addColorStop(1, escuro(A.pele, .32)); fs(g2, 8); } else { ell(0, 0, 100, 92); fs(g, 8); }
-    ctx.save(); if (S.an) cabAn(S.an.cab, (S.an.cabS || 1) * .96); else ell(0, 0, 96, 88); ctx.clip(); ctx.beginPath(); ctx.arc(14, 10, 96, PI * .05, PI * .55); ctx.lineWidth = 10; ctx.strokeStyle = 'rgba(255,255,255,.55)'; ctx.stroke(); ctx.restore();
+    if (!fem) { ctx.save(); if (S.an) cabAn(S.an.cab, (S.an.cabS || 1) * .96); else ell(0, 0, 96, 88); ctx.clip(); ctx.beginPath(); ctx.arc(14, 10, 96, PI * .05, PI * .55); ctx.lineWidth = 10; ctx.strokeStyle = 'rgba(255,255,255,.55)'; ctx.stroke(); ctx.restore(); }
     if (!fem && !S.an) { ctx.save(); ell(0, 0, 96, 88); ctx.clip(); ell(18, 64, 92, 40); ctx.fillStyle = 'rgba(30,40,70,.10)'; ctx.fill(); ctx.restore(); }
     if (S.pele) { ctx.save(); ell(0, 0, 96, 88); ctx.clip(); ctx.globalCompositeOperation = 'multiply'; ctx.fillStyle = S.pele; ctx.fillRect(-100, -96, 200, 192); ctx.restore(); }
     if (!S.an) { ell(-50, -46, 20, 11, -.6); ctx.fillStyle = 'rgba(255,255,255,.95)'; ctx.fill(); } else { ell(-50, -46, 16, 8, -.6); ctx.fillStyle = 'rgba(255,255,255,.55)'; ctx.fill(); } }
-  if (S.hair && !o.back) for (const s of [-1, 1]) { ell(s * 86, -34, 20, 32, s * 0.35); fs(S.hair, 6); }
+  if (S.hair && cabeloSolto && !o.back) for (const s of [-1, 1]) { ell(s * 86, -34, 20, 32, s * 0.35); fs(S.hair, 6); }
+  if (S.hair && S.penteado && !o.back) cabeloFrente(S.hair, S.penteado);
   if (S.chamusco && !o.back) { ctx.save(); ell(0, 0, 96, 88); ctx.clip(); fuligem([[-60, 30, 30], [62, -20, 26], [10, 70, 34], [-30, -60, 18]], 0.42); ctx.restore(); }
   if (!o.back) face(S, o, t);
   // vento (grito na cara, ventania): chapéu levanta e inclina pra trás tremendo; vento>0.85 = chapéu quase saindo
@@ -572,6 +580,28 @@ function hat(k, t, wind = 0) {
     ctx.save(); pth(); ctx.clip(); ctx.beginPath(); ctx.moveTo(-120, -150); ctx.quadraticCurveTo(-60, -112, 0, -116); fs(null, 6, 'rgba(255,255,255,.28)'); ctx.restore();
     ell(0, -92, 15, 13); fs('#f4efe4', 5); ell(-5, -94, 3, 3); ctx.fillStyle = INK; ctx.fill(); ell(5, -94, 3, 3); ctx.fill();
   }
+}
+function cabeloFrente(cor, penteado) {
+  const longo = penteado === 'longo';
+  const topo = penteado === 'topete' ? -141 : -117;
+  const curva = () => {
+    ctx.beginPath(); ctx.moveTo(-96, -20);
+    ctx.bezierCurveTo(-113, -82, -60, topo, 0, -110);
+    ctx.bezierCurveTo(54, -119, 105, -90, 98, -27);
+    ctx.quadraticCurveTo(80, -76, 39, -74);
+    ctx.quadraticCurveTo(12, -75, -4, longo ? -51 : -57);
+    ctx.quadraticCurveTo(-47, -50, -63, -67);
+    ctx.quadraticCurveTo(-82, -53, -96, -20); ctx.closePath();
+  };
+  const g = ctx.createLinearGradient(-75, -120, 65, -42);
+  g.addColorStop(0, claro(cor, .32)); g.addColorStop(.46, cor); g.addColorStop(1, escuro(cor, .25));
+  curva(); fs(g, 7);
+  ctx.save(); curva(); ctx.clip();
+  ctx.beginPath(); ctx.moveTo(-83, -59); ctx.quadraticCurveTo(-41, -114, 44, -98);
+  fs(null, 5, 'rgba(255,222,194,.27)');
+  ctx.beginPath(); ctx.moveTo(-75, -47); ctx.quadraticCurveTo(-35, -98, 18, -89);
+  fs(null, 3, 'rgba(255,222,194,.19)');
+  ctx.restore();
 }
 function hair(c, t) { // cabelo comprido e solto ATRÁS dos ombros (borda interna longe do queixo, senão vira barba)
   const w = Math.sin(t * 3) * 5;

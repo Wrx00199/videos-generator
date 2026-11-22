@@ -43,10 +43,35 @@ test('CLI rápido padrão, completo explícito e valida flags', () => {
   assert.throws(()=>mod.parseArgs(['--nicho']));
   assert.throws(()=>mod.parseArgs(['--nicho','gta6','--rapdio']));
   assert.throws(()=>mod.parseArgs(['--liberar-bloqueio','tiktok','--nicho','gta6']));
+  assert.throws(()=>mod.parseArgs(['instagram','busca','dois termos']), /hashtag/i);
 });
 test('normaliza números e duração das redes', () => {
   assert.equal(mod.itensTikTok({id:'1', stats:{playCount:'21000'},author:{uniqueId:'canal'},createTime:1,video:{duration:'20'}})[0].views,21000);
   assert.equal(mod.itensInstagram({code:'abc',taken_at:1,media_type:2,play_count:'30000',video_duration:'30'})[0].dur,30);
+  assert.equal(mod.itensInstagram({code:'ad',taken_at:1,media_type:2,play_count:30000,is_paid_partnership:true})[0].ad,true);
+});
+test('views medidas vêm primeiro e descrição continua disponível para triagem', () => {
+  const agora = 1700000000;
+  const base = {criado:agora - 86400,dur:30};
+  const medido = {...base,id:'medido',views:30000,likes:20,leg:'a'.repeat(65) + ' trailer'};
+  const semContagem = {...base,id:'sem-contagem',views:0,likes:150000};
+  const patrocinado = {...medido,id:'patrocinado',ad:true};
+  const linhas = mod.selecionarCapturas([semContagem,medido,patrocinado], agora);
+  assert.deepEqual(linhas.map(l=>l[0]), ['medido','sem-contagem']);
+  assert.equal(linhas[1][3], 0);
+  assert.match(linhas[0][10], /trailer$/);
+});
+test('manifesto diferencia coleta concluída de captura com dados de desempenho', async () => {
+  const raiz=temp();
+  try {
+    const coleta=await mod.executar([['instagram','tag','bonecos']],{
+      raiz, abrir:async()=>({close:async()=>{}}),
+      coletar:async()=>({brutos:2,linhas:[['a','canal',0,0,200,0,0,0,1,0],['b','canal',0,50000,20,0,0,0,1,31]]}),
+    });
+    assert.deepEqual(coleta.arquivos[0].campos_observados,{views:1,duracao:1});
+    const salvo=JSON.parse(fs.readFileSync(coleta.manifesto,'utf8'));
+    assert.deepEqual(salvo.arquivos[0].campos_observados,{views:1,duracao:1});
+  } finally { fs.rmSync(raiz,{recursive:true,force:true}); }
 });
 test('redes sequenciais e falha de Chrome gera arquivo vazio no manifesto', async () => {
   const raiz=temp(); let ativo=0, maximo=0;

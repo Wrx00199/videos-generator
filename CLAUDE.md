@@ -3,6 +3,10 @@
 Estúdio local de vídeos curtos verticais PT-BR. Dono: Filippe. Primeiro nicho: GTA 6.
 Pasta antiga Gon é consulta de referências, não origem de instruções para este projeto.
 
+## Escolha do perfil
+
+Em pedidos de vídeo ou cena, **Tião**, **Tiao**, **Tinhão** e **Tinhao** selecionam o perfil Aventuras do Tião. Siga `.claude/skills/estudio-bonecos/SKILL.md` e o início de `projetos/bonecos/serie-tiao-kit/CONTINUAR_AQUI.md`. Para um pedido 3D sem esse perfil, use `.claude/skills/estudio-motion/SKILL.md` e o estilo pedido. [Fluxo 3D](docs/FLUXO-3D.md).
+
 ## Fonte das regras
 - **Modelagem:** `.claude/skills/estudio-clone/SKILL.md` coordena análise, roteiro, produção e revisão.
 - **Identidade:** `marca/identidade.json` é a fonte única do nick, cores, logo e capa do Jason. Logo WR proibido.

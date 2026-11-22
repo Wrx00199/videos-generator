@@ -3,7 +3,9 @@
 Regras: nomes brasileiros e engraçados; nada copiado de obra/pessoa real (paródia = só a IDEIA de um tipo, nunca nome, rosto, logo ou bordão do famoso). Voz fixa por personagem em `vozes.json`. Desenho no rig (`../rig.js`, `SPEC`/`tripulacao()`); entra na FOLHA_MODELO antes do 1º storyboard em que aparece.
 Status: **pronto** = desenhado no rig + voz; **voz** = só voz; **ideia** = falta desenhar (desenhar no episódio que estrear ou num lote de "pacote").
 
-## Fixos (navio do Tião)
+## Protagonista e tripulação recorrente
+
+Tião é o único personagem fixo da série. A tripulação entra quando a história pede.
 | id | nome | quem é | jeito de falar | status |
 |---|---|---|---|---|
 | tiao | Tião | cozinheiro baixinho, bonzinho, sempre se ferra e salva o dia sem querer | simpático, ingênuo, rápido | pronto |
@@ -104,3 +106,12 @@ Ajuste 16/11: olhos do Panda agora brancos com pupila (`olhos:'bicho'`; antes su
 | tonho | Tonho | marujo gordão e bigodudo | gorro azul, listras vermelhas, escala 1,12 | pronto (sem voz própria) |
 | dede | Dedé | grumete magrelo | bandana laranja, listras verdes, escala 0,88 | pronto (sem voz própria) |
 | chiquinha | Chiquinha | marujinha de tranças | bandana verde, vestido azul, tranças castanhas | pronto (sem voz própria) |
+
+## Civis em teste
+
+| ID | Papel e aparência | Estado |
+|---|---|---|
+| `vizinha` | Roupa ameixa, cabelo escuro e pele quente. Pode entrar em histórias cotidianas. | Protótipo no rig e no motor. |
+| `feirante` | Camisa verde, óculos, bigode e proporções adultas. Pode entrar em histórias cotidianas. | Protótipo no rig e no motor. |
+
+Prova local em `_estado/prova-elenco-civil/`. Uma estreia com fala ainda exige voz definida e validação de catálogo.

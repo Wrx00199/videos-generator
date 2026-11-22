@@ -1,3 +1,4 @@
+import csv
 import importlib.util
 import json
 from pathlib import Path
@@ -55,5 +56,76 @@ class ImportacaoTest(unittest.TestCase):
         p=self.write('legado.json',json.dumps({'plataforma':'instagram','linhas':[['novo','autor',100,30000,100,2,0,0,1700000000,20,'teste']]}))
         self.run_main([p,'--top','0'])
         self.assertIn('novo',self.csv.read_text())
+
+    def read_rows(self):
+        with self.csv.open() as f:
+            return {row['id']: row for row in csv.DictReader(f)}
+
+    def test_visualizacoes_desconhecidas_nao_viram_medida(self):
+        coleta = self.write('coleta.json', {'plataforma': 'instagram', 'linhas': [
+            ['estimativa', 'autor', 100, 0, 500000, 0, 0, 0, 1700000000, 20, 'viral?'],
+            ['medido', 'autor', 100, 30000, 100, 0, 0, 0, 1700000000, 20, 'viral'],
+        ]})
+        self.run_main([coleta, '--top', '0'])
+        rows = self.read_rows()
+        self.assertEqual(list(rows)[:2], ['medido', 'antigo'])
+        self.assertEqual(float(rows['estimativa']['views']), 0)
+        self.assertEqual(float(rows['estimativa']['nota']), 0)
+        self.assertEqual(rows['estimativa']['candidato'], 'não')
+        self.assertIn('sem contagem confirmada', rows['estimativa']['motivo'])
+
+    def test_rosto_detectado_nao_entra_nas_recomendacoes(self):
+        coleta = self.write('coleta.json', {'plataforma': 'instagram', 'linhas': [
+            ['com-rosto', 'autor', 100, 30000, 100, 0, 0, 0, 1700000000, 20, 'teste', 'capa'],
+        ]})
+        with patch.object(M, 'tem_rosto', return_value=True), patch.object(M.time, 'sleep'):
+            self.run_main([coleta, '--top', '1'])
+        row = self.read_rows()['com-rosto']
+        self.assertEqual(row['rosto'], '1/1')
+        self.assertEqual(row['candidato'], 'não')
+        self.assertIn('rosto detectado', row['motivo'])
+
+    def test_recoleta_sem_triagem_preserva_rosto_e_veto_manual(self):
+        self.csv.write_text('id,titulo,candidato,motivo,rosto\nrevisado,meu título,não,trailer de evento,1/3\n')
+        coleta = self.write('coleta.json', {'plataforma': 'instagram', 'linhas': [
+            ['revisado', 'autor', 100, 30000, 100, 0, 0, 0, 1700000000, 20, 'novo título'],
+        ]})
+        self.run_main([coleta, '--top', '0'])
+        row = self.read_rows()['revisado']
+        self.assertEqual(row['titulo'], 'meu título')
+        self.assertEqual(row['rosto'], '1/3')
+        self.assertEqual(row['candidato'], 'não')
+        self.assertIn('trailer de evento', row['motivo'])
+        self.assertEqual(row['views'], '30000')
+
+    def test_nova_medicao_substitui_estimativa_legada(self):
+        self.csv.write_text('id,titulo,candidato,motivo,rosto,views\nrevisado,meu título,sim,views estimadas (likes x20),0/1,30000\n')
+        coleta = self.write('coleta.json', {'plataforma': 'instagram', 'linhas': [
+            ['revisado', 'autor', 100, 45000, 100, 0, 0, 0, 1700000000, 20, 'novo título'],
+        ]})
+        self.run_main([coleta, '--top', '0'])
+        row = self.read_rows()['revisado']
+        self.assertEqual(row['views'], '45000')
+        self.assertEqual(row['candidato'], 'sim')
+        self.assertEqual(row['motivo'], '')
+
+    def test_estatistica_legada_fica_no_catalogo_sem_prioridade(self):
+        self.csv.write_text(
+            'id,plataforma,titulo,candidato,motivo,rosto,views,nota\n'
+            'legado,instagram,título,sim,views estimadas (likes x20),0/1,900000,35\n'
+            'com-rosto,instagram,título,sim,,1/1,500000,32\n'
+            'manual,instagram,título,não,trailer,1/1,80000,15\n'
+        )
+        coleta = self.write('coleta.json', {'plataforma': 'instagram', 'linhas': [
+            ['novo', 'autor', 100, 30000, 100, 0, 0, 0, 1700000000, 20, 'novo título'],
+        ]})
+        self.run_main([coleta, '--top', '0'])
+        rows = self.read_rows()
+        self.assertEqual(next(iter(rows)), 'novo')
+        self.assertEqual(rows['legado']['views'], '900000')
+        self.assertEqual(rows['legado']['nota'], '0')
+        self.assertEqual(rows['legado']['candidato'], 'não')
+        self.assertEqual(rows['com-rosto']['candidato'], 'não')
+        self.assertEqual(rows['manual']['motivo'], 'trailer')
 
 if __name__=='__main__': unittest.main()

@@ -7,7 +7,8 @@ def ff(*a):
 class TestMidia(unittest.TestCase):
     def test_duracao(self):
         import portao
-        self.assertTrue(portao.checar_duracao(57.2).ok)
+        self.assertFalse(portao.checar_duracao(59.99).ok)
+        self.assertTrue(portao.checar_duracao(60).ok)
         self.assertFalse(portao.checar_duracao(127.8).ok)
         self.assertTrue(portao.checar_duracao(82).ok)   # reels BR de milhoes: 56-91 s
         self.assertFalse(portao.checar_duracao(49.9).ok)
@@ -21,9 +22,26 @@ class TestMidia(unittest.TestCase):
 
     def test_planos(self):
         import portao
-        r = portao.checar_planos([0, 2, 7.5, 9], 9)
+        r = portao.checar_planos([0, 2, 7.5, 9], 9.1)
         self.assertFalse(r.ok)
         self.assertIn('5.5', r.motivo)
+
+    def test_planos_exigem_inicios_validos_e_ordenados(self):
+        import portao
+        validos = list(range(0, 60, 3))
+        self.assertTrue(portao.checar_planos(validos, 60).ok)
+        for cortes, duracao in (
+            ([float('nan')] * 25, 60),
+            ([70] * 25, 60),
+            ([-1, *validos], 60),
+            ([*validos, 60], 60),
+            ([0, 0, *validos[1:]], 60),
+            ([0, 6, 3, *validos[3:]], 60),
+            (validos[1:], 60),
+            (validos, float('inf')),
+        ):
+            with self.subTest(cortes=cortes, duracao=duracao):
+                self.assertFalse(portao.checar_planos(cortes, duracao).ok)
 
     def test_audio(self):
         import portao
@@ -114,6 +132,25 @@ class TestTrava(unittest.TestCase):
             open(os.path.join(p, 'final.mp4'), 'w').close()
             with self.assertRaises(SystemExit):
                 portao.criar_projeto(d, 'outro', '2026-11-19', '2026-11-18')
+
+    def test_rejeitado_pelo_filippe_encerra_pendencia(self):
+        import portao
+        with tempfile.TemporaryDirectory() as d:
+            nome = '2026-11-19-tiao-novo-31'
+            self.mk(d, nome)
+            rejeitado = os.path.join(d, 'projetos', 'bonecos', nome, 'REJEITADO_FILIPPE')
+            open(rejeitado, 'w').close()
+            self.assertTrue(portao.trava_lote(d, '2026-11-18').ok)
+
+    def test_raiz_dados_explicita_e_checkout_sem_episodios(self):
+        import portao
+        with tempfile.TemporaryDirectory() as d:
+            kit = os.path.join(d, 'projetos', 'bonecos', 'serie-tiao-kit')
+            os.makedirs(kit)
+            self.assertEqual(portao.raiz_dados(env=d), (d, ''))
+            self.assertIsNone(portao.raiz_dados(env='', kit=kit)[0])
+            self.mk(d, '2026-11-19-tiao-novo-31')
+            self.assertEqual(portao.raiz_dados(env='', kit=kit), (d, ''))
 
 
 class TestRoteiroV4(unittest.TestCase):

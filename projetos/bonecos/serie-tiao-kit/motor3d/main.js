@@ -175,7 +175,10 @@ function drawActors(list, cam) {
     c.draw(a.key, a.draw);
     c.mesh.visible = true; c.mesh.position.set(a.x, a.y, a.z);
     const s = a.s || 1; c.mesh.scale.set(s * (a.flip ? -1 : 1), s, s);
-    c.mesh.rotation.set(0, Math.atan2(cam.position.x - a.x, cam.position.z - a.z) + (a.yaw || 0), a.roll || 0);
+    const yaw = a.yaw || 0;
+    const maxCartao = Math.PI / 5;
+    const giro = a.quem ? Math.max(-maxCartao, Math.min(maxCartao, yaw)) : yaw;
+    c.mesh.rotation.set(0, Math.atan2(cam.position.x - a.x, cam.position.z - a.z) + giro, a.roll || 0);
     c.mat.color.set(a.tint || '#ffffff'); c.mat.opacity = a.alpha ?? 1;
     c.mesh.castShadow = a.shadow !== false;
     c.mesh.renderOrder = a.order || 2;
@@ -204,6 +207,8 @@ const RIG_M = 0.0030375, SOLA = -0.05625, _v = new THREE.Vector3();
 function auditaAtor(a, mesh, cam) {
   const f = window.AUD_F, out = (msg) => window.AUD.push({ f, quem: a.quem, msg });
   (a.avisos || []).forEach(out);
+  if (Math.abs(a.yaw || 0) > Math.PI / 5) out('giro fora da pose 3/4; use outra pose ou corte');
+  if (WORLD.cen.lista.cozinha?.ocupaMesa?.(a.x, a.y, a.z)) out('ator invade a mesa da cozinha');
   if (!a.bb || a.roll) return;
   mesh.updateMatrixWorld(true); let x0 = 9, x1 = -9, y0 = 9, y1 = -9, atras = 0;
   for (const bx of [a.bb[0], a.bb[1]]) for (const by of [a.bb[2], a.bb[3]]) {

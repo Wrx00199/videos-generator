@@ -19,8 +19,8 @@ function maxNdc(c, al) {
 }
 const ALVOS = [{ x: 0, y: 0.6, z: 0, w: 0.9, h: 1.2 }, { x: 3, y: 1.6, z: -2, w: 2.2, h: 3.2 }, { x: 0, y: 0.35, z: 0, w: 0.4, h: 0.5 }];
 
-test('banco tem as 8 cameras', () => {
-  assert.deepEqual([...NOMES].sort(), ['abertura_push', 'close_reacao', 'corte_transversal', 'detalhe_objeto', 'orbita', 'plongee', 'travelling_lateral', 'whip_pan']);
+test('banco tem as 9 cameras', () => {
+  assert.deepEqual([...NOMES].sort(), ['abertura_push', 'close_reacao', 'contra_plongee', 'corte_transversal', 'detalhe_objeto', 'orbita', 'plongee', 'travelling_lateral', 'whip_pan']);
   for (const n of NOMES) assert.equal(typeof CAMERAS[n], 'function');
 });
 

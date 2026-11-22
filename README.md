@@ -1,11 +1,11 @@
-# Estudio de videos
+# Estúdio de Vídeo 3D
 
-Estúdio local de vídeos curtos verticais PT-BR (nichos: GTA 6 / Six Stars, série "Aventuras do Tião", outros no futuro). Roda em PC fraco (Ryzen 3 3200G, RX550, 8 GB, Linux): **um render pesado por vez**.
+Estúdio local de vídeos verticais em PT-BR. Suporta animação 2D em cenários 3D, motion graphics e edição de material existente. Os perfis dos projetos definem estilo, elenco e critérios de revisão. No computador do estúdio roda um render pesado por vez.
 
 ## Para qualquer IA / aparelho (Claude Code, Codex, celular)
 1. Leia `CLAUDE.md` (regras do projeto) e `AGENTS.md`.
 2. Skills em `.claude/skills/` (`estudio-clone`, `estudio-bonecos`, `estudio-lives`, `estudio-motion`, `estudio-brolls`), agentes em `.claude/agents/`.
-3. Missão autônoma em andamento: `_estado/MISSAO-NOITE.md` (regras) e `_estado/MISSAO-ESTADO.md` (checklist; continuar do primeiro `[ ]`). Lock: `_estado/missao.lock`; parada: `_estado/missao.json` com `"ativo": false`.
+3. Veja [ferramentas, provas e integrações 3D](docs/FLUXO-3D.md) para escolher o caminho do trabalho atual.
 
 ## Painel
 ```bash
@@ -16,7 +16,7 @@ node testes-painel/smoke.mjs
 ## Estrutura
 - `ferramentas/` scripts (clone.py, voz.mjs, render.mjs, painel, lives...)
 - `marca/` identidade (json/txt); `nichos/`, `estilos/`, `config/`, `docs/`
-- Não versionados (só locais): `projetos/`, `prontos/`, `referencias/`, `banco/`, mídia, `.env`
+- Os kits e as provas pequenas selecionadas são versionados. O acervo integral de `projetos/`, `prontos/`, `referencias/`, `banco/` e os arquivos `.env` ficam locais.
 
 ## Segredos
 Chaves ficam em `.env` local (nunca no git). Voz: `GEMINI_API_KEY_1` (`_2`/`_3` quando a cota acabar).

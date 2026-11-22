@@ -1,0 +1,37 @@
+[
+  {
+    "id": "barulho-na-cozinha",
+    "ini": 0.0,
+    "fim": 3.5,
+    "camera": "medio",
+    "cenario": "cozinha"
+  },
+  {
+    "id": "aproximacao",
+    "ini": 3.5,
+    "fim": 7.5,
+    "camera": "geral",
+    "cenario": "cozinha"
+  },
+  {
+    "id": "cap-reage",
+    "ini": 7.5,
+    "fim": 11.0,
+    "camera": "medio",
+    "cenario": "cozinha"
+  },
+  {
+    "id": "confere-o-fogao",
+    "ini": 11.0,
+    "fim": 12.7,
+    "camera": "medio",
+    "cenario": "cozinha"
+  },
+  {
+    "id": "gato-revelado",
+    "ini": 12.7,
+    "fim": 15.0,
+    "camera": "geral",
+    "cenario": "cozinha"
+  }
+]

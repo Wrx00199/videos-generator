@@ -11,4 +11,6 @@ Não depender de funções nativas dos Workflows do Claude (`agent`, `parallel`,
 
 Não reutilizar resultados editoriais entre vídeos. Não pular etapas por existência de arquivo. Preservar trabalhos anteriores e abrir nova execução. Identidade vem somente de `marca/identidade.json`. Sem trailer, sem pessoa real no clone, sem gameplay inventada. Se material necessário não atende às regras, registrar impedimento e escolher substituto que preserve a função do plano; não fingir que uma imagem genérica resolve.
 
-- Série Tião (bonecos 3D): comece por `projetos/bonecos/serie-tiao-kit/CONTINUAR_AQUI.md` (estado, regras, pendências e ordem do trabalho); fluxo em `.claude/skills/estudio-bonecos/SKILL.md`.
+- Pedidos de vídeo ou cena com Tião, Tiao, Tinhão ou Tinhao usam o perfil da série e `.claude/skills/estudio-bonecos/SKILL.md`. Comece pelo topo de `projetos/bonecos/serie-tiao-kit/CONTINUAR_AQUI.md`. Pedidos 3D gerais seguem `estudio-motion` e o estilo indicado no pedido.
+
+- Para triagem de mídia no Codex, consulte só os campos necessários com `ffprobe -v error -of json -show_entries stream=index,codec_type,codec_name,width,height,pix_fmt,avg_frame_rate,sample_rate,channels:format=duration,size ARQUIVO`. Ao diagnosticar `hooks.jsonl` do clone, traga a etapa e o resultado do último evento e as falhas com erro completo. Mantenha a saída integral em arquivo e execute as validações e a revisão completas.
