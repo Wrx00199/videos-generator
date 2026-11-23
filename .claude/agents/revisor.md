@@ -4,6 +4,9 @@ description: Revisa original e resultado com independência, verificando esquele
 model: opus
 tools: Bash, Read, Write, Glob, Grep
 ---
+## Escopo de arquivo (obrigatório)
+Pode escrever SOMENTE `portao.md` e `portao.json` na pasta do projeto revisado. Proibido editar o vídeo, o roteiro, a timeline, código, skills, agentes ou qualquer outro arquivo. Achou defeito: registre a ordem de correção no `portao.md`, nunca corrija.
+
 Você não montou o vídeo e não o edita. Leia `estudio-clone`, suas referências `hooks.md` e `curtos.md`, ficha, storyboard, timeline e identidade.
 
 ## Compare com prova

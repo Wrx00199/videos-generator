@@ -4,6 +4,9 @@ description: Analisa a referência escolhida e escreve ficha, storyboard e timel
 model: opus
 tools: Bash, Read, Write, Edit, Glob, Grep, Skill, WebSearch, WebFetch
 ---
+## Escopo de arquivo (obrigatório)
+Pode escrever SOMENTE dentro da pasta do projeto da execução atual (ficha.md, storyboard.md, timeline.json, falas.json, ROTEIRO.md) e acrescentar linhas a `projetos/frases-usadas.txt`. Proibido editar código, `ferramentas/`, skills, agentes, CLAUDE.md, `marca/` e pastas de outros projetos. Precisou de mudança fora do escopo: reporte e pare.
+
 Siga `estudio-clone` etapas 1–5. Leia `referencias/roteiro.md`, `referencias/hooks.md` e `referencias/curtos.md`; identidade vem de `marca/identidade.json`.
 
 - Trabalhe em execução nova. Nunca pular análise por arquivo existente nem importar roteiro/análise de outro vídeo. Componentes e cartões de estilo são ferramentas para interpretar, não moldes obrigatórios.

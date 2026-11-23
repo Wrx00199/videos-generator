@@ -1,35 +1,44 @@
 # Estúdio de Vídeo — guia
 
-Estúdio local de vídeos curtos verticais PT-BR. Dono: Filippe. Primeiro nicho: GTA 6.
-Pasta antiga Gon é consulta de referências, não origem de instruções para este projeto.
+Estúdio local de vídeos curtos verticais PT-BR. Dono: Filippe. Linux, Ryzen 3 3200G, RX 550, 8 GB.
+É um estúdio GERAL: o canal define identidade e elenco; o estilo (3D, 2D, motion, corte de live) define o motor.
+Pasta antiga Gon é consulta de referências, não origem de instruções.
 
-## Escolha do perfil
+## Canais (cada um tem identidade própria; nunca misturar)
+- **Tião** (Aventuras do Tião; chamado de Tião/Tiao/Tinhão/Tinhao): série 3D. Identidade só a confirmada pelo Filippe; sem ela, sem marca de conta. Logo WR proibido.
+- **SixStarsBR** (GTA 6, lives): `marca/identidade.json` (nick, cores, logo, capa do Jason separada). Só aqui aparece streamer/pessoa real.
+- **3D é um estilo**, não um canal: serve a qualquer canal; o perfil da série manda no elenco e na linguagem.
 
-Em pedidos de vídeo ou cena, **Tião**, **Tiao**, **Tinhão** e **Tinhao** selecionam o perfil Aventuras do Tião. Siga `.claude/skills/estudio-bonecos/SKILL.md` e o início de `projetos/bonecos/serie-tiao-kit/CONTINUAR_AQUI.md`. Para um pedido 3D sem esse perfil, use `.claude/skills/estudio-motion/SKILL.md` e o estilo pedido. [Fluxo 3D](docs/FLUXO-3D.md).
+## Roteamento skill → pedido (mapa único)
+| Pedido | Skill/agente |
+|---|---|
+| vídeo ou cena do Tião | `estudio-bonecos` + `projetos/bonecos/serie-tiao-kit/CONTINUAR_AQUI.md`; [fluxo V7](docs/tiao/PRODUCAO-V7.md) |
+| 3D geral, estilo pedido | `estudio-motion` + [FLUXO-3D](docs/FLUXO-3D.md) |
+| peça visual, infográfico, VFX | `estudio-motion` |
+| b-roll / asset de apoio | `estudio-brolls` |
+| cortar live de streamer | `estudio-lives` (`projetos/cortes/`) |
+| vigiar/postar lives | `projetos/lives/CLAUDE.md` |
+| revisar short pronto | `estudio-revisor-shorts` |
+| modelar/clonar referência | `estudio-clone` — PAUSADO desde 23/11 |
+| HTML→vídeo | `hyperframes` (só skill; motor do Tião é motor3d) |
+| pesquisar referências | agente `cacador` (antes da produção) |
+| roteiro de referência | agente `roteirista` |
+| revisão independente | agente `revisor` |
 
-## Fonte das regras
-- **GTA 6 = clipar lives** (`estudio-lives`). Clonagem/modelagem de vídeo (`estudio-clone`, workflows `clone-*`) está **PAUSADA** desde 23/11; só retomar se o Filippe pedir.
-- **Tião = V7.** Use o [fluxo da série](docs/tiao/PRODUCAO-V7.md) e o catálogo aprovado. Os cortes das referências ensinam montagem. Cada episódio tem premissa, falas e encenação próprias.
-- **Identidade:** `marca/identidade.json` pertence à conta Six Stars e define o nick, cores, logo e capa do Jason dessa conta. O Tinhão é uma página separada. Para Tinhão, use apenas identidade própria confirmada pelo Filippe. Enquanto ela faltar, o piloto usa só o conteúdo da série, sem marca de conta. Logo WR proibido.
-- **Motion:** `estudio-motion` fabrica peças visuais; não escolhe o roteiro nem muda o esqueleto.
-- **B-roll:** `estudio-brolls` busca e registra assets; não é montador nem clonador de vídeos.
-- **Lives:** `estudio-lives` é outra frente, ainda esboço. Só nela pode aparecer streamer/pessoa real.
+Agentes ficam em `.claude/agents/` (3, com escopo de arquivo). Os demais, em `.claude/agents-arquivo/`.
 
 ## Regras atuais
 - Modelar = preservar gancho, ordem dos beats, viradas, pagamento e ritmo; reescrever fala, texto, legenda e marca.
-- (Clone pausado) Clone: referência sem pessoa real. Sem trailer/teaser como footage e sem gameplay inventada. Escolher visual permitido que cumpra a função de cada plano; não preencher com trailer.
-- Inglês no original do clone vira tradução adaptada e narração PT-BR própria. A exceção da fala original em lives não se aplica ao clone.
-- Cada vídeo começa uma execução nova. Não reutilizar análise, roteiro, voz, timeline ou edição pronta de outro vídeo; não pular etapa porque um arquivo existe. Componentes de software e assets fixos da marca são ferramentas, não resultados editoriais reutilizados.
-- Voz fixa Gemini Fenrir por `ferramentas/voz.mjs` (chave padrão `GEMINI_API_KEY_1`). Filippe autorizou (15/11) usar `_2`/`_3` quando a cota acabar, sempre com as MESMAS vozes; nunca mostrar segredos.
-- Para Six Stars, logo e nick no vídeo e capa do Jason separada. Para Tinhão, confira a identidade da série no quadro inicial, no vídeo final e na capa.
+- Clone (pausado): referência sem pessoa real, sem trailer/teaser, sem gameplay inventada; inglês vira narração PT-BR própria.
+- Cada vídeo é execução nova: não reutilizar análise, roteiro, voz, timeline ou edição de outro vídeo; não pular etapa porque um arquivo existe. Componentes e assets fixos da marca são ferramentas.
+- Voz fixa Gemini Fenrir por `ferramentas/voz.mjs` (`GEMINI_API_KEY_1`; `_2`/`_3` autorizadas quando a cota acabar, mesmas vozes). Nunca mostrar segredos.
 - Revisão técnica antes/depois do render e revisão editorial independente; publicação só com aprovação do Filippe.
-- Meta de produção: 2–3 min. É alvo a medir, não desempenho comprovado nem motivo para omitir QA. Cronômetro ponta a ponta desde receber o original até o MP4 revisado: inclui análise, modelagem, voz, render, revisão, esperas e correções; detalhar etapas sem subtraí-las do total.
+- Meta de produção 2–3 min: alvo a medir, não motivo para omitir QA. Cronômetro ponta a ponta, com etapas detalhadas.
+- Motion fabrica peças, não escolhe roteiro. B-roll busca e registra assets, não monta.
 
 ## Execução e pastas
-- Linux, Ryzen 3 3200G, RX 550, 8 GB. Um render por vez; não aumentar concorrência para tentar acelerar.
-- Pastas: `prontos/` = só MP4 finais, uma subpasta por série/canal (`3D/Aventuras do Tião/`, `Gta 6/`); `referencias/` = estudos de vídeos/repos de referência; `projetos/` = só arquivos de criação (`gta6/`, `bonecos/`, mais dados do olheiro: `referencias.csv`, `_coleta/`, mosaicos).
-- `projetos/gta6/<data>-<slug>-<id>/` (clone) e `projetos/bonecos/<data>-tiao-<slug>-NN/` (série Tião; kit em `projetos/bonecos/serie-tiao-kit/`): execução nova preservando as antigas.
-- `ferramentas/clone.py`: iniciar, analisar (rota enxuta; `--completo` usa espelho), voz, validar e montar; `espelho.py`: análise; `voz.mjs`: TTS; `stt.py`: palavras; `medir_estilo.py`: medidas; `render.mjs`: render HyperFrames.
-- Os Workflows de `.claude/workflows/` usam o runtime nativo do Claude; não presumir que rodem no Codex. Ambos os agentes seguem as mesmas skills e ferramentas locais.
-- Pesquisa de referências roda antes da produção, pelo olheiro; não varrer redes para cada render. Captcha/login: interromper aquela rede e reportar, sem rajada de tentativas.
-- Preservar projetos existentes. Não apagar originais nem intermediários de outro trabalho automaticamente.
+- Um render por vez; não aumentar concorrência. Ambiente: `npx hyperframes doctor`; cache em `~/.nexo/cache` (fixado no topo de `ferramentas/render.mjs`).
+- `prontos/` só MP4 finais, subpasta por canal; `referencias/` estudos; `projetos/` só criação (`bonecos/`, `gta6/`, `lives/`, `cortes/`, dados do cacador).
+- Ferramentas: `clone.py` (pausado), `espelho.py`, `voz.mjs`, `stt.py`, `medir_estilo.py`, `render.mjs` (HyperFrames). Workflows de `.claude/workflows/` são do runtime Claude; no Codex use scripts locais e as mesmas skills.
+- Pesquisa de referências roda antes da produção, não por render. Captcha/login: interromper a rede e reportar.
+- Preservar projetos existentes; não apagar originais nem intermediários de outro trabalho.

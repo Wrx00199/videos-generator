@@ -4,6 +4,8 @@
 // Uso: node ferramentas/render.mjs <pasta> --saida final.mp4 [--res 720|1080] [--qualidade draft|looks|delivery] [--vaapi]
 // --vaapi: re-encoda o vídeo pela GPU (h264_vaapi, via /usr/bin/ffmpeg) depois do render; cai em libx264 se falhar.
 import {spawnSync} from 'node:child_process'; import fs from 'node:fs'; import path from 'node:path';
+process.env.HYPERFRAMES_CACHE_DIR ||= `${process.env.HOME}/.nexo/cache`;
+process.env.PUPPETEER_CACHE_DIR ||= `${process.env.HOME}/.nexo/cache`;
 const a = process.argv.slice(2); const pasta = a.find(x => !x.startsWith('--') && a[a.indexOf(x)-1] !== '--saida' && a[a.indexOf(x)-1] !== '--res' && a[a.indexOf(x)-1] !== '--qualidade');
 const opt = (n, d) => { const i = a.indexOf('--' + n); return i >= 0 ? a[i+1] : d; };
 const saida = path.resolve(opt('saida', 'final.mp4')), res = opt('res', '720'), q = opt('qualidade', 'draft'), vaapi = a.includes('--vaapi');

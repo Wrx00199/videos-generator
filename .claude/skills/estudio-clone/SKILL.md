@@ -1,6 +1,6 @@
 ---
 name: estudio-clone
-description: (PAUSADO desde 23/11 — só usar se o Filippe pedir explicitamente; GTA agora é clipar lives em estudio-lives.) Modela uma referência de vídeo curto em versão própria PT-BR preservando o esqueleto, os beats e o ritmo; coordena análise, roteiro, narração, edição, identidade e revisão. Usar para “clona esse”, “modela esse vídeo” ou preparar a produção de uma referência escolhida. Pesquisa é tarefa do olheiro; streamer pertence a estudio-lives.
+description: (PAUSADO desde 23/11 — só usar se o Filippe pedir explicitamente; GTA agora é clipar lives em estudio-lives.) Modela uma referência de vídeo curto em versão própria PT-BR preservando o esqueleto, os beats e o ritmo. Usar para “clona esse”, “modela esse vídeo” ou preparar a produção de uma referência escolhida. Pesquisa é tarefa do cacador; streamer pertence a estudio-lives.
 ---
 # Estúdio · Modelagem de vídeo
 
@@ -13,7 +13,6 @@ Cada execução é nova. Não reutilizar análise, roteiro, voz, timeline ou edi
 - **Olheiro:** pesquisa e filtra referências, fora da produção. Referências de Gon são família de estilos, não padrão obrigatório.
 - **rea-video / espelho:** extraem evidências; não escrevem o novo vídeo nem decidem o que é verdade.
 - **Roteirista:** interpreta evidências, preserva o esqueleto e escreve a versão própria.
-- **Motion:** fabrica peças que a timeline pede. **B-roll:** encontra material de apoio com procedência. Nenhum substitui esta coordenação.
 - **Produtor:** executa timeline e valida técnica. **Revisor independente:** compara original × resultado e julga a modelagem.
 
 ## Material permitido

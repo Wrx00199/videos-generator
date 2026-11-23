@@ -5,7 +5,7 @@ description: Motion graphics, infográficos animados, VFX e cenas desenhadas par
 
 # Estúdio · Motion
 
-Fabrica peças visuais solicitadas pela timeline; o clone coordena roteiro e montagem, o rea-video analisa e o b-roll encontra assets. Não repetir essas funções.
+Fabrica peças visuais solicitadas pela timeline.
 
 Medições históricas em CPU de 2026-11-14; não são promessa de tempo de produção.
 
