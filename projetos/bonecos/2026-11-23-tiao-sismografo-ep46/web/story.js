@@ -12,7 +12,7 @@ const sm = (x) => { x = Math.max(0, Math.min(1, x)); return x * x * (3 - 2 * x);
 const ramp = (t, a, b) => sm((t - a) / (b - a));
 const B = FT;
 // câmeras do pátio (relativas à origem do dojo). duo = Tião inteiro + jarro; trio = Tião + jarro + imperador/guarda. Tião nunca cortado.
-const CUSTOM = { duo: { pos: [0.0, 1.5, 5.0], look: [-0.2, 1.0, 0], fov: 46 }, trio: { pos: [0.1, 1.8, 6.8], look: [0.0, 1.15, 0], fov: 50 } };
+const CUSTOM = { duo: { pos: [0.0, 1.5, 5.0], look: [-0.2, 1.0, 0], fov: 46 }, trio: { pos: [0.1, 1.8, 6.8], look: [0.0, 1.15, 0], fov: 50 }, pote: { pos: [0.1, 1.3, 3.5], look: [-0.1, 0.85, 0], fov: 48 } };
 const jxAt = (t) => 0.2 - 1.3 * ramp(t, 24.6, 31) * (t < B[4][0] ? 1 : 0);
 const S = (t0, cen, cam, extra = {}) => ({ t0, cen, cam, push: 0.16, ...extra });
 const LISTA = [
@@ -28,7 +28,7 @@ const LISTA = [
   S(B[6][0], 'dojo', 'trio', { id: 'b7a', beat: 7 }),
   S(47.5, 'dojo', 'duo', { id: 'b7b', beat: 7 }),
   S(B[7][0], 'dojo', 'duo', { id: 'b8', beat: 8, push: 0.25 }),
-  S(B[8][0], 'dojo', 'duo', { id: 'b9', beat: 9, push: 0.2 }),
+  S(B[8][0], 'dojo', 'pote', { id: 'b9', beat: 9, push: 0.2 }),
 ];
 export const SHOTS = LISTA.map((s, i) => ({ ...s, a: F(s.t0), b: i + 1 < LISTA.length ? F(LISTA[i + 1].t0) : TOTAL }));
 export const shotAt = (f) => SHOTS.find((s) => f >= s.a && f < s.b) || SHOTS.at(-1);
@@ -59,7 +59,7 @@ export const worldAt = (f) => {
   const S_ = shotAt(f), t = f / FPS;
   const q = queda(t), tr = tranco(t);
   const o = { jarro: 1, queda: q, tranco: tr, velocimetro: 1, vel: Math.min(1, q / 8) + 0.04 * tr * Math.sin(t * 17), jx: jxAt(t) };
-  const fx = S_.beat >= 8 ? { terremoto: { pos: [ORIGEM.dojo.x + 1.5, ORIGEM.dojo.z - 1], k: S_.beat === 9 ? 1 : 0.5 * ramp(t, 57, 64) } } : undefined;
+  const fx = S_.beat >= 8 ? { terremoto: { pos: [ORIGEM.dojo.x + 2.6, ORIGEM.dojo.z - 4.0], k: S_.beat === 9 ? 1 : 0.5 * ramp(t, 57, 64) } } : undefined;
   return { cenario: 'dojo', dojo: o, fx };
 };
 const wide = { eye: 'wide', mouth: 'o' };
@@ -78,7 +78,7 @@ export const actorsAt = (f, T, W) => {
   else if (b === 6) { const u = Math.min(1, (t - B[5][0]) / (B[5][1] - B[5][0])); out.push(X(anda(W, 'tiao', { ...wide, aR: [2.6, -0.2], aL: [2.6, -0.2] }, [O.x - 1.2, O.z + 0.6], [O.x + 0.3, O.z + 1.1], u, t))); P('carteiro', { eye: 'happy', mouth: 'grin', f: -1 }, 1.1, 0.4); }
   else if (b === 7) { P('tiao', { ...wide, aL: [-0.35, 0.25] }, TX, TZ); if (!duo) P('carteiro', { eye: 'happy', mouth: 'grin', f: -1 }, 1.1, 0.4); }
   else if (b === 8) P('tiao', { ...wide, aR: [2.4, -0.2] }, TX, TZ);
-  else if (b === 9) P('tiao', { ...wide, aR: [2.5, -0.2], aL: [2.5, -0.2] }, TX, TZ);
+  else if (b === 9) P('tiao', { ...wide, aR: [2.5, -0.2], aL: [2.5, -0.2] }, -0.85, -0.2);
   return out;
 };
 export const fxAt = () => [];
