@@ -15,18 +15,17 @@ const S = (t0, cen, cam, extra = {}) => ({ t0, cen, cam, push: 0.16, ...extra })
 const LISTA = [
   S(0, 'dojo', 'medio', { id: 'b1', beat: 1 }),
   S(B[1][0], 'dojo', 'geral', { id: 'b2a', beat: 2 }),
-  S(9.6, 'pradaria_trilho', 'mostrador', { id: 'b2b', beat: 2 }),
+  S(9.6, 'dojo', 'close', { id: 'b2b', beat: 2 }),
   S(B[2][0], 'dojo', 'medio', { id: 'b3a', beat: 3 }),
-  S(18.2, 'pradaria_trilho', 'mostrador', { id: 'b3b', beat: 3 }),
+  S(18.2, 'dojo', 'close', { id: 'b3b', beat: 3 }),
   S(B[3][0], 'dojo', 'geral', { id: 'b4a', beat: 4 }),
-  S(24.6, 'pradaria_trilho', 'geral', { id: 'b4b', beat: 4 }),
-  S(B[4][0], 'noite', 'medio', { id: 'b5', beat: 5 }),
+  S(24.6, 'dojo', 'medio', { id: 'b4b', beat: 4 }),
+  S(B[4][0], 'dojo', 'close', { id: 'b5', beat: 5 }),
   S(B[5][0], 'dojo', 'geral', { id: 'b6', beat: 6 }),
   S(B[6][0], 'dojo', 'medio', { id: 'b7a', beat: 7 }),
-  S(47.5, 'cidade', 'ruina', { id: 'b7b', beat: 7 }),
-  S(50.6, 'pradaria_trilho', 'mostrador', { id: 'b7c', beat: 7 }),
-  S(B[7][0], 'pradaria_trilho', 'mostrador', { id: 'b8', beat: 8, push: 0.25 }),
-  S(B[8][0], 'cidade', 'ruina', { id: 'b9', beat: 9, push: 0.2 }),
+  S(47.5, 'dojo', 'close', { id: 'b7b', beat: 7 }),
+  S(B[7][0], 'dojo', 'close', { id: 'b8', beat: 8, push: 0.25 }),
+  S(B[8][0], 'dojo', 'close', { id: 'b9', beat: 9, push: 0.2 }),
 ];
 export const SHOTS = LISTA.map((s, i) => ({ ...s, a: F(s.t0), b: i + 1 < LISTA.length ? F(LISTA[i + 1].t0) : TOTAL }));
 export const shotAt = (f) => SHOTS.find((s) => f >= s.a && f < s.b) || SHOTS.at(-1);
@@ -41,19 +40,21 @@ export const camAt = (f) => {
   return { pos, look: c.look, fov: c.fov };
 };
 export const dofAt = (f) => { const c = camAt(f); return { focus: Math.hypot(c.pos[0] - c.look[0], c.pos[1] - c.look[1], c.pos[2] - c.look[2]), cinf: 0 }; };
-// ponteiro do "jarro": 0..1 (bolas caindo). b3: 1 bola cai e nada; b8: tranco -> bolas, 8 no fim
-const agulha = (t) => {
-  if (t < 18.2) return 0;
-  if (t < 21.3) return 0.1 * Math.sin(Math.PI * ramp(t, 19.0, 19.8)) * (1 - ramp(t, 19.8, 20.4));
-  if (t >= 50.6 && t < B[7][0]) return 0.12 * Math.sin(t * 7);
-  if (t >= B[7][0] && t < B[8][0]) { const u = (t - B[7][0]) / (B[7][1] - B[7][0]); return Math.min(1, 0.15 + 0.85 * sm((u - 0.45) / 0.5)) + 0.05 * Math.sin(t * 12); }
+// bolas caídas no jarro (0..8). Beat 3: 1 bola cai e nada. Beat 5: noite, 1 e depois 2. Beat 6: as oito. Beat 8: uma por uma; a 1ª cai na boca do sapo.
+const queda = (t) => {
+  if (t >= 19.0 && t < 24) return ramp(t, 19.0, 19.9);
+  if (t >= B[4][0] && t < B[5][0]) return ramp(t, 32.6, 33.4) + ramp(t, 34.4, 35.2);
+  if (t >= B[5][0] && t < B[6][0]) return 2 + 6 * ramp(t, 36.4, 38.4);
+  if (t >= B[7][0] && t < B[8][0]) return 8 * ramp(t, 57.4, 62.6);
+  if (t >= B[8][0]) return 8;
   return 0;
 };
+const tranco = (t) => (t >= B[7][0] && t < B[8][0] ? ramp(t, 55.5, 57.4) * (0.5 + 0.5 * Math.sin(t * 9) ** 2) : t >= B[8][0] ? 1 : 0);
 export const worldAt = (f) => {
-  const S_ = shotAt(f), t = f / FPS, o = {};
-  if (S_.cen === 'pradaria_trilho') Object.assign(o, { trem: 0, bike: 0, tabuas: 0, velocimetro: 1, vel: agulha(t), nuvens: 1 });
-  const fx = (S_.beat >= 8 && (S_.cen === 'cidade')) ? { terremoto: { pos: [ORIGEM.cidade.x + 4, ORIGEM.cidade.z], k: S_.beat === 9 ? 1 : 0.5 } } : (S_.beat === 8 && S_.cen === 'pradaria_trilho' ? { terremoto: { pos: [ORIGEM.pradaria_trilho.x, ORIGEM.pradaria_trilho.z], k: ramp(t, 58, 64) } } : undefined);
-  return { cenario: S_.cen, [S_.cen]: o, fx };
+  const S_ = shotAt(f), t = f / FPS;
+  const o = { jarro: 1, queda: queda(t), tranco: tranco(t), jx: S_.beat === 4 && t > 24.6 ? -1.6 * ramp(t, 24.6, 31) : 0 };
+  const fx = S_.beat >= 8 ? { terremoto: { pos: [ORIGEM.dojo.x + 1.5, ORIGEM.dojo.z - 1], k: S_.beat === 9 ? 1 : 0.5 * ramp(t, 57, 64) } } : undefined;
+  return { cenario: 'dojo', dojo: o, fx };
 };
 const wide = { eye: 'wide', mouth: 'o' };
 export const actorsAt = (f, T, W) => {
@@ -65,17 +66,10 @@ export const actorsAt = (f, T, W) => {
     if (b === 6) { const u = Math.min(1, (t - B[5][0]) / (B[5][1] - B[5][0])); out.push(X(anda(W, 'tiao', { ...wide, aR: [2.6, -0.2], aL: [2.6, -0.2] }, [O.x - 1.6, O.z + 0.3], [O.x + 0.6, O.z + 1.1], u, t))); P('carteiro', { eye: 'happy', mouth: 'grin', f: -1 }, 1.3, 0.5); return out; }
     if (b === 3) { P('tiao', { ...wide }, -0.7, 0.9); P('rei', { eye: 'normal', mouth: 'flat', f: -1, aL: [1.2, -0.2], aR: [1.2, -0.2] }, 0.7, 0.5); return out; }
     if (b === 2) { P('rei', { eye: 'happy', mouth: 'grin', f: -1, aL: [-0.3, 0.3] }, 0.2, 0.2); P('vizinha', { eye: 'happy', mouth: 'grin', f: -1 }, 1.0, 0.9); P('feirante', { eye: 'happy', mouth: 'grin', f: 1 }, -1.0, 0.7); P('tiao', { ...wide, aR: [2.5, -0.2] }, -0.1, 1.2); return out; }
+    if (b === 4 && t > 24.6) { const u = ramp(t, 24.6, 31); out.push(X(anda(W, 'tiao', { eye: 'normal', mouth: 'flat', aR: [1.0, -0.2], aL: [1.0, -0.2] }, [O.x + 0.5, O.z + 0.9], [O.x - 1.1, O.z + 0.9], u, t))); return out; }
     if (b === 4) { P('tiao', { ...wide }, -0.8, 0.9); P('rei', { eye: 'happy', mouth: 'grin', f: -1, aR: [2.5, -0.2] }, 0.7, 0.5); P('balconista', { eye: 'happy', mouth: 'grin', f: -1 }, 1.4, 0.9); return out; }
     if (b === 7) { P('carteiro', { eye: 'happy', mouth: 'grin', f: -1 }, 0.6, 0.6); P('tiao', { ...wide, aL: [-0.35, 0.25] }, -0.8, 0.9); return out; }
   }
-  if (S_.cen === 'pradaria_trilho') {
-    if (b === 2) { P('tiao', { ...wide, aR: [2.5, -0.2] }, -1.9, 1.7); return out; }
-    if (b === 3) { P('tiao', { ...wide }, -1.9, 1.7); return out; }
-    if (b === 4) { const u = Math.min(1, (t - 24.6) / (B[3][1] - 24.6)); out.push(X(anda(W, 'tiao', { eye: 'normal', mouth: 'flat' }, [O.x - 3.0, O.z + 1.2], [O.x + 0.6, O.z + 1.2], u, t))); return out; }
-    if (b === 7 || b === 8) { P('tiao', { ...wide, aR: [2.4, -0.2], aL: [-0.3, 0.3] }, -1.9, 1.7); return out; }
-  }
-  if (S_.cen === 'noite') { P('tiao', { ...wide, aR: [2.0, -0.2] }, 0, 0.9); return out; }
-  if (S_.cen === 'cidade') { P('tiao', { ...wide, aR: [2.5, -0.2], aL: [2.5, -0.2] }, 3.6, 0.2); return out; }
   return out;
 };
 export const fxAt = () => [];
