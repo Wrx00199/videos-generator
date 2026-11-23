@@ -3,6 +3,7 @@
 Para qualquer agente (Claude, Codex). Responda ao Filippe em PT-BR, curto (ele lê no celular). Nunca publique; nunca mostre chave; um render por vez.
 
 ## Como funciona agora
+- **Identidade do Tinhão:** Six Stars e os assets de `marca/identidade.json` são de outra página. Use somente logo, arroba e capa próprios do Tinhão confirmados pelo Filippe. Na falta de assets confirmados, gere o piloto sem marca de conta.
 - **Produção:** [contrato V6 e diagnóstico do ep. 43](../../../docs/tiao/PRODUCAO-V6.md). Roteiro e prova de tela antes da voz. STT do diálogo e plano conferidos antes do render completo.
 - **Kit fixo:** `KIT.md` (cenários, personagens, gestos, NÃO PODE). O roteiro se adapta ao kit.
 - **Originalidade e elenco:** antes de escrever, compare premissa, mecanismo da piada e virada com os episódios do acervo. Se o núcleo já saiu, escolha outra história. Escolha personagens pelo papel que fazem na cena e use também os civis aprovados. A tripulação volta quando a história pede o navio ou a relação entre os tripulantes.

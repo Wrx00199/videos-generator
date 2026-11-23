@@ -57,6 +57,8 @@ No celular, conferir pés enterrados ou virados, braço/contato, chapéu ou rost
 
 ## Revisão editorial V6
 
+Verifique no MP4 a identidade da página. Tinhão usa exclusivamente a própria marca confirmada. Se um close contém a pista, abra também o quadro da entrada e o da saída do plano. O objeto precisa continuar legível e com limites claros para quem vê no celular.
+
 O revisor trabalha com a versão atual e registra o que observou. A revisão é independente quando outra pessoa ou agente produziu aquela versão. Para aprender com referências, use a função dos beats e da montagem. Uma cozinha, o elenco recorrente, cortes secos e acabamento simples são válidos se a ação fica legível.
 
 ### Antes da voz

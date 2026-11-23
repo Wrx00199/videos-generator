@@ -10,7 +10,7 @@ Em pedidos de vídeo ou cena, **Tião**, **Tiao**, **Tinhão** e **Tinhao** sele
 ## Fonte das regras
 - **GTA 6 = clipar lives** (`estudio-lives`). Clonagem/modelagem de vídeo (`estudio-clone`, workflows `clone-*`) está **PAUSADA** desde 23/11; só retomar se o Filippe pedir.
 - **Tião = kit fixo V6:** não clona vídeo; referências só viram moldes de roteiro (`serie-tiao-kit/MOLDES_ROTEIRO.md`); o roteiro se adapta ao kit (`serie-tiao-kit/KIT.md`).
-- **Identidade:** `marca/identidade.json` é a fonte única do nick, cores, logo e capa do Jason. Logo WR proibido.
+- **Identidade:** `marca/identidade.json` pertence à conta Six Stars e define o nick, cores, logo e capa do Jason dessa conta. O Tinhão é uma página separada. Para Tinhão, use apenas identidade própria confirmada pelo Filippe. Enquanto ela faltar, o piloto usa só o conteúdo da série, sem marca de conta. Logo WR proibido.
 - **Motion:** `estudio-motion` fabrica peças visuais; não escolhe o roteiro nem muda o esqueleto.
 - **B-roll:** `estudio-brolls` busca e registra assets; não é montador nem clonador de vídeos.
 - **Lives:** `estudio-lives` é outra frente, ainda esboço. Só nela pode aparecer streamer/pessoa real.
@@ -21,7 +21,7 @@ Em pedidos de vídeo ou cena, **Tião**, **Tiao**, **Tinhão** e **Tinhao** sele
 - Inglês no original do clone vira tradução adaptada e narração PT-BR própria. A exceção da fala original em lives não se aplica ao clone.
 - Cada vídeo começa uma execução nova. Não reutilizar análise, roteiro, voz, timeline ou edição pronta de outro vídeo; não pular etapa porque um arquivo existe. Componentes de software e assets fixos da marca são ferramentas, não resultados editoriais reutilizados.
 - Voz fixa Gemini Fenrir por `ferramentas/voz.mjs` (chave padrão `GEMINI_API_KEY_1`). Filippe autorizou (15/11) usar `_2`/`_3` quando a cota acabar, sempre com as MESMAS vozes; nunca mostrar segredos.
-- Logo e nick no vídeo; capa do Jason entregue como capa separada, sem intro que prejudique o gancho.
+- Para Six Stars, logo e nick no vídeo e capa do Jason separada. Para Tinhão, confira a identidade da série no quadro inicial, no vídeo final e na capa.
 - Revisão técnica antes/depois do render e revisão editorial independente; publicação só com aprovação do Filippe.
 - Meta de produção: 2–3 min. É alvo a medir, não desempenho comprovado nem motivo para omitir QA. Cronômetro ponta a ponta desde receber o original até o MP4 revisado: inclui análise, modelagem, voz, render, revisão, esperas e correções; detalhar etapas sem subtraí-las do total.
 

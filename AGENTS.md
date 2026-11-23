@@ -9,7 +9,7 @@ Siga o `CLAUDE.md` desta pasta como guia do projeto. As skills locais em `.claud
 
 Não depender de funções nativas dos Workflows do Claude (`agent`, `parallel`, `phase`): usar os scripts locais e ferramentas disponíveis no runtime atual. A revisão editorial é de alguém que não produziu o vídeo; não declarar independência se foi autorrevisão.
 
-Não reutilizar resultados editoriais entre vídeos. Não pular etapas por existência de arquivo. Preservar trabalhos anteriores e abrir nova execução. Identidade vem somente de `marca/identidade.json`. Sem trailer, sem pessoa real no clone, sem gameplay inventada. Se material necessário não atende às regras, registrar impedimento e escolher substituto que preserve a função do plano; não fingir que uma imagem genérica resolve.
+Não reutilizar resultados editoriais entre vídeos. Não pular etapas por existência de arquivo. Preservar trabalhos anteriores e abrir nova execução. Identidade vem do perfil da série. `marca/identidade.json` é da conta Six Stars. Tinhão usa exclusivamente a própria identidade confirmada pelo Filippe. Sem trailer, sem pessoa real no clone, sem gameplay inventada. Se material necessário não atende às regras, registrar impedimento e escolher substituto que preserve a função do plano; não fingir que uma imagem genérica resolve.
 
 - Pedidos de vídeo ou cena com Tião, Tiao, Tinhão ou Tinhao usam o perfil da série e `.claude/skills/estudio-bonecos/SKILL.md`. Comece pelo topo de `projetos/bonecos/serie-tiao-kit/CONTINUAR_AQUI.md`. Pedidos 3D gerais seguem `estudio-motion` e o estilo indicado no pedido.
 
