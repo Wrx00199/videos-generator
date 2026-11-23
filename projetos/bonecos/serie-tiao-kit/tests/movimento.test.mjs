@@ -29,11 +29,14 @@ test('chapéu sai da cabeça para a mão e braço e objeto passam na auditoria',
   assert.deepEqual(Pz.avisaPropCara(p), []);
 });
 
-test('sentar interpola o joelho e não gira as pernas esticadas', () => {
-  assert.equal(Pz.sentar(0).lL[0], 0);
+test('sentar de frente abre os joelhos e mantém canela vertical; perfil mantém a versão antiga', () => {
+  assert.equal(Math.abs(Pz.sentar(0).lL[0]), 0);
   const meio = Pz.sentar(.5), fim = Pz.sentar(1);
-  assert.ok(meio.lL[0] > 0 && meio.lL[0] < fim.lL[0]);
-  assert.ok(fim.lL[0] > 1 && fim.lL[1] < -1);
+  assert.ok(Math.abs(meio.lL[0]) > 0 && Math.abs(meio.lL[0]) < Math.abs(fim.lL[0]));
+  assert.ok(Math.abs(fim.lL[0] + fim.lL[1]) < 1e-9 && Math.abs(fim.lR[0] + fim.lR[1]) < 1e-9);   // coxa+canela = vertical
+  assert.ok(fim.lL[0] < 0 && fim.lR[0] > 0);                                                       // joelhos pra fora
+  const perfil = Pz.sentar(1, { perfil: true });
+  assert.ok(perfil.lL[0] > 1 && perfil.lL[1] < -1);
 });
 
 test('padrão de pega fica fora do tronco com copo, mapa e concha', () => {

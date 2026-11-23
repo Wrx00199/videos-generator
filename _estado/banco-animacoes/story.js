@@ -12,8 +12,8 @@ export const LIGHTS = {};
 export const lightFor = ()=>luz('casa_dia');
 export const fxAt = ()=>[];
 export const dofAt = ()=>({focus:4,cinf:0});
-export const worldAt = ()=>({cenario:'cozinha',cozinha:{gato:0,escalaCadeiras:.45,afastamentoCadeiras:.75}});
-export const camAt = f => ({pos:[c.x,1.5,c.z+4.6],look:[c.x,1.0,c.z+.3],fov:44});
+export const worldAt = ()=>({cenario:'cozinha',cozinha:{gato:0,escalaCadeiras:.45,afastamentoCadeiras:.75,cadeirasDeFrente:true}});
+export const camAt = f => { const dx = Math.floor(f/30)===1 ? 2.9 : (Math.floor(f/30)===0 ? -0.3 : 0); return {pos:[c.x+dx,1.5,c.z+4.6],look:[c.x+dx,1.0,c.z+.3],fov:44}; };
 export const actorsAt = (f,_t,w) => {
   const t=f/30, g=Math.floor(f/30), l=f%30, p=Math.min(1,l/24);
   const at=(n,pose,x=0,z=.4)=>[boneco(w,n,{eye:'dot',mouth:'flat',...pose},c.x+x,c.z+z,t)];

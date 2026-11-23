@@ -93,10 +93,14 @@ function passo(ph, amp = 0.5, { corre = false } = {}) {
 export const Pz = {
   passo, compPasso, maoDe, propNaCara, avisaPropCara, PROP_BOX,
 
-  sentar(progresso) {
+  // Sentar DE FRENTE (padrão, 22/11): o rig só desenha de frente; então coxas abrem pra fora (joelhos afastados) e canelas descem
+  // verticais. O quadril desce sozinho (hipOf usa o pé mais baixo). Cadeira deve estar virada pra câmera (cozinha: cadeirasDeFrente).
+  // { perfil:true } = versão antiga (pernas horizontais), só serve com corpo de perfil, que o rig ainda não tem.
+  sentar(progresso, { perfil = false } = {}) {
     const u = clampN(progresso, 0, 1);
     const k = u * u * (3 - 2 * u);
-    return { lL: [1.29 * k, -1.55 * k], lR: [1.43 * k, -1.39 * k], lean: .23 * Math.sin(k * Math.PI) };
+    if (perfil) return { lL: [1.29 * k, -1.55 * k], lR: [1.43 * k, -1.39 * k], lean: .23 * Math.sin(k * Math.PI) };
+    return { lL: [-.5 * k, .5 * k], lR: [.5 * k, -.5 * k], lean: .05 * Math.sin(k * Math.PI), aL: [-.22 - .06 * k, .15 + .3 * k], aR: [.22 + .06 * k, .15 + .3 * k] };
   },
 
   chapeuNaMao({ lado = 'R' } = {}) {

@@ -133,12 +133,12 @@ export function construirCasa(X) {
     const rel = add(new THREE.CircleGeometry(0.22, 24), toon({ color: '#fff' }), -1.2, 2.2, -3.44, g); rel.userData.ndSkip = true; add(new THREE.TorusGeometry(0.22, 0.03, 8, 24), toon({ color: '#c0392b' }), -1.2, 2.2, -3.43, g);
     const calend = new THREE.Mesh(new THREE.PlaneGeometry(0.42, 0.55), toon({ color: '#fff' })); calend.position.set(2.6, 1.8, -3.44); g.add(calend); caixa(g, 0.42, 0.14, 0.02, '#e74c3c', 2.6, 2.2, -3.43);
     const gato = gatoMesh(g, 0.2, 1.4, '#e8892e'); gato.rotation.y = 0.3;
-    registra('cozinha', g, M, (B) => { gato.visible = B.gato !== 0; gato.position.x = B.gatoX ?? .2; cadeiras.forEach((c, i) => { c.scale.y = B.escalaCadeiras ?? 1; c.position.x = (i ? 1 : -1) * (.85 + (B.afastamentoCadeiras ?? 0)); }); }, {
+    registra('cozinha', g, M, (B) => { gato.visible = B.gato !== 0; gato.position.x = B.gatoX ?? .2; cadeiras.forEach((c, i) => { c.scale.y = B.escalaCadeiras ?? 1; c.rotation.y = B.cadeirasDeFrente ? 0 : (i ? -PI / 2 : PI / 2); c.position.x = (i ? 1 : -1) * (.85 + (B.afastamentoCadeiras ?? 0)); }); }, {
       ocupaMesa: (x, y, z) => g.visible && y < .73 && Math.hypot(x - g.position.x - mesa.position.x, z - g.position.z - mesa.position.z) < .78,
       assento: (lado = 'esquerda') => {
         const cadeira = cadeiras[lado === 'direita' ? 1 : 0];
         return { x: g.position.x + mesa.position.x + cadeira.position.x, z: g.position.z + mesa.position.z + cadeira.position.z,
-          f: Math.sign(Math.sin(cadeira.rotation.y)), altura: .48 * cadeira.scale.y };
+          f: Math.sign(Math.sin(cadeira.rotation.y)) || 1, altura: .48 * cadeira.scale.y };
       },
     }); }
 
