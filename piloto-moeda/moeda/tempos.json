@@ -1,0 +1,120 @@
+{
+ "total": 54.01,
+ "palavras_reais": false,
+ "beats": [
+  {
+   "id": "b01",
+   "secao": "gancho",
+   "ini": 0,
+   "fim": 3.525
+  },
+  {
+   "id": "b02",
+   "secao": "setup",
+   "ini": 3.525,
+   "fim": 5.13
+  },
+  {
+   "id": "b03",
+   "secao": "setup",
+   "ini": 5.13,
+   "fim": 7.23
+  },
+  {
+   "id": "b04",
+   "secao": "setup",
+   "ini": 7.23,
+   "fim": 9.24
+  },
+  {
+   "id": "b05",
+   "secao": "zombador",
+   "ini": 9.24,
+   "fim": 11.835
+  },
+  {
+   "id": "b06",
+   "secao": "zombador",
+   "ini": 11.835,
+   "fim": 14.625
+  },
+  {
+   "id": "b07",
+   "secao": "metodo",
+   "ini": 14.625,
+   "fim": 17.07
+  },
+  {
+   "id": "b08",
+   "secao": "metodo",
+   "ini": 17.07,
+   "fim": 20.49
+  },
+  {
+   "id": "b09",
+   "secao": "metodo",
+   "ini": 20.49,
+   "fim": 23.79
+  },
+  {
+   "id": "b10",
+   "secao": "metodo",
+   "ini": 23.79,
+   "fim": 27.345
+  },
+  {
+   "id": "b11",
+   "secao": "metodo",
+   "ini": 27.345,
+   "fim": 30.33
+  },
+  {
+   "id": "b12",
+   "secao": "metodo",
+   "ini": 30.33,
+   "fim": 33.765
+  },
+  {
+   "id": "b13",
+   "secao": "voce_sabe",
+   "ini": 33.765,
+   "fim": 36.3
+  },
+  {
+   "id": "b14",
+   "secao": "voce_sabe",
+   "ini": 36.3,
+   "fim": 39.465
+  },
+  {
+   "id": "b15",
+   "secao": "voce_sabe",
+   "ini": 39.465,
+   "fim": 42.195
+  },
+  {
+   "id": "b16",
+   "secao": "payoff",
+   "ini": 42.195,
+   "fim": 45.78
+  },
+  {
+   "id": "b17",
+   "secao": "payoff",
+   "ini": 45.78,
+   "fim": 48.195
+  },
+  {
+   "id": "b18",
+   "secao": "payoff",
+   "ini": 48.195,
+   "fim": 50.475
+  },
+  {
+   "id": "b19",
+   "secao": "payoff",
+   "ini": 50.475,
+   "fim": 54.01
+  }
+ ]
+}
