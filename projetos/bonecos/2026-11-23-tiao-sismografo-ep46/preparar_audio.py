@@ -73,27 +73,29 @@ def inv(y):
 E_ = []
 add = lambda t, tipo, nivel=0, **k: E_.append({'t': round(t, 3), 'tipo': tipo, 'nivel': nivel, **k})
 add(0.15, 'pop', -2)                       # beat 1: Tião encaixa a bola
-cortes = [B[1][0], 9.6, B[2][0], 18.2, B[3][0], 24.6, B[4][0], B[5][0], B[6][0], 47.5, B[7][0], B[8][0]]
+cortes = [B[1][0], 9.6, B[2][0], 18.2, B[3][0], 24.6, B[4][0], B[5][0], 40.2, B[6][0], 50.0, B[7][0], 57.4, B[8][0]]   # mesmos cortes de web/story.js
 for t in cortes: add(t - 0.05, 'whoosh', -6)
 add(B[1][0] + 0.4, 'nhac', -4); add(B[1][0] + 1.3, 'nhac', -5)     # corte gargalha
 add(B[2][0] + 0.6, 'batida', -4)                                    # imperador cruza os braços
-add(19.9, 'tim', -2, pan=-0.2)                                      # beat 3: 1 bola cai e nada
+def queda_som(ini, fim, pan=0.0, forte=False):
+    """queda = assobio curto (whoosh baixo) do começo ao fim da queda + 'tim' quando a bola entra na boca do sapo"""
+    add(ini, 'whoosh', -10, pan=pan); add(fim, 'tim', 0 if forte else -2, pan=pan)
+queda_som(19.0, 19.9)                                               # beat 3: 1 bola cai e nada
 add(B[3][0] + 0.9, 'nhac', -4); add(B[3][0] + 1.8, 'nhac', -5)      # riram mais
-for k in range(6): add(24.8 + k * 1.05, 'passos', -6, n=2, dt=0.3)   # Tião arrasta o pote
-add(24.6, 'rangido', -4)
-add(33.4, 'tim', -2); add(35.2, 'tim', -2, pan=0.2)                 # beat 5: uma bola, depois outra
+for k in range(6): add(24.8 + k * 1.05, 'passos', -6, n=2, dt=0.3)   # beat 4: Tião arrasta o pote morro acima
+for k in range(4): add(24.6 + k * 1.7, 'rangido', -5)                # ARRASTO do pote no chão
+queda_som(32.6, 33.4, -0.2); queda_som(34.4, 35.2, 0.2)             # beat 5: uma bola, depois outra
 add(B[5][0] + 0.1, 'passos', -4, n=6, dt=0.25)                      # corre pros portões
-for mm in range(2, 8): add(36.4 + 2.0 * inv((mm - 1) / 6), 'tim', -3, pan=(-1) ** mm * 0.3)   # as oito de uma vez
-add(B[5][0] + 3.0, 'nhac', -4)                                      # guarda ri
-add(B[6][0] + 0.6, 'nhac', -5)
+for mm in range(2, 8): queda_som(36.4 + 2.0 * inv((mm - 1) / 6) - 0.35, 36.4 + 2.0 * inv((mm - 1) / 6), (-1) ** mm * 0.3)   # as oito de uma vez
+add(40.6, 'nhac', -4); add(B[6][0] + 0.6, 'nhac', -5)               # guardas riem
 add(55.5, 'tremor', -4)                                             # tranco
-for mm in range(8):
-    t = 57.4 + 5.2 * mm / 8 + 0.0
-    add(t + 5.2 / 8 * 0.78, 'tim', -2 if mm else 0, pan=(-1) ** mm * 0.3)   # cada bola na boca do sapo
-    if mm in (0, 3, 7): add(t, 'estalo', -4)
+for mm in range(8):                                                 # beat 8: uma bola por vez, cada uma na boca do sapo
+    ini = 57.4 + (5.2 * inv(mm / 8) if mm else 0.0); fim = 57.4 + 5.2 * inv((mm + 1) / 8)
+    queda_som(ini, fim, (-1) ** mm * 0.3, forte=(mm == 0))
+    if mm in (0, 3, 7): add(ini, 'estalo', -4)
 add(61.6, 'tremor', 0)
 add(62.6, 'boom', 0); add(64.7, 'boom', -2)                         # RONCO do payoff: terremoto
-add(64.6, 'tremor', 0)
+add(64.6, 'tremor', 0); add(66.2, 'tremor', -3)
 E_.sort(key=lambda e: e['t'])
 cfg = dict(duracao=DUR, seed=4646, mar=dict(nivel_db=-100), eventos=E_,
            trilha=dict(bpm=104, secoes=[dict(ini=0, fim=DUR, tipo='esparso')], rebaixes=[[61.4, 64.6, -5]]))
