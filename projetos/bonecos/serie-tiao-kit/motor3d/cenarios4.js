@@ -122,6 +122,9 @@ export function construirCasa(X) {
     caixa(ger, 0.3, 0.3, 0.02, '#e74c3c', -0.2, 1.4, 0.39, 0.1); movel(M, 'geladeira', ger);
     const bal = new THREE.Group(); bal.position.set(-0.4, 0, -3.1); g.add(bal); caixa(bal, 2.2, 0.9, 0.7, '#2ab3b0', 0, 0, 0); caixa(bal, 2.3, 0.07, 0.78, '#e8e0c8', 0, 0.9, 0);
     for (const x of [-0.5, 0.5, 1.0]) caixa(bal, 0.4, 0.5, 0.03, '#239c99', x - 0.25, 0.2, 0.36); for (const x of [-0.8, 0, 0.8]) caixa(bal, 0.6, 0.7, 0.34, '#2ab3b0', x, 1.75, -0.18);
+    // puxadores (corrigido 22/11): armários não podem parecer caixa lisa
+    for (const x of [-0.8, 0, 0.8]) { caixa(bal, 0.03, 0.2, 0.05, '#f2ead0', x + 0.22, 1.82, -0.0); caixa(bal, 0.58, 0.012, 0.012, '#1f7d7a', x, 2.0, -0.005); }
+    for (const x of [-0.5, 0.5, 1.0]) caixa(bal, 0.14, 0.03, 0.05, '#f2ead0', x - 0.25 + 0.0, 0.62, 0.385);
     caixa(bal, 0.5, 0.04, 0.36, '#555', -0.3, 0.97, 0); cil(bal, 0.12, 0.12, 0.2, '#c0392b', 0.7, 0.97, 0); cil(bal, 0.06, 0.06, 0.28, '#f1c40f', 0.95, 0.97, 0.05); movel(M, 'balcao', bal);
     const mesa = new THREE.Group(); mesa.position.set(1.3, 0, -0.6); g.add(mesa); cil(mesa, 0.6, 0.6, 0.05, '#f4efe6', 0, 0.72, 0); cil(mesa, 0.06, 0.06, 0.72, '#7e8a90', 0, 0, 0); cil(mesa, 0.25, 0.25, 0.03, '#7e8a90', 0, 0, 0);
     const cadeiras = [];
