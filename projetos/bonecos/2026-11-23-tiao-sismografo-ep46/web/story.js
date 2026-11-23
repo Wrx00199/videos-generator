@@ -25,7 +25,7 @@ const LISTA = [
   S(24.6, MORRO, 4, 'b4b', { az: 28, dist: 4.4, h: 1.3, ly: 1.0, fov: 50, off: 0.0, D: 3.4 }),
   S(B[4][0], MORRO, 5, 'b5', { az: -32, dist: 4.0, h: 1.2, ly: 1.0, fov: 50, off: 0.0, D: 3.2 }),
   S(B[5][0], MORRO, 6, 'b6a', { az: 4, dist: 5.6, h: 1.7, ly: 1.1, fov: 52, off: 0.0, D: 4.8, D2: 2.6 }),
-  S(40.2, 'dojo', 6, 'b6b', { az: 0, dist: 4.6, h: 1.5, ly: 1.1, fov: 50, off: 0.0, D: 3.4, c: [0.0, -2.0] }),
+  S(40.2, 'dojo', 6, 'b6b', { az: 0, dist: 7.4, h: 1.3, ly: 1.0, fov: 62, off: 0.0, lt: -0.55, c: [0.0, -4.4] }),
   S(B[6][0], 'cidade', 7, 'b7a', { az: -22, dist: 5.6, h: 1.4, ly: 1.0, fov: 58, off: 0.4 }),
   S(50.0, 'cidade', 7, 'b7b', { az: 32, dist: 4.4, h: 1.3, ly: 1.3, fov: 54, off: 0.3 }),
   S(B[7][0], MORRO, 8, 'b8a', { az: 0, dist: 4.0, h: 1.0, ly: 0.9, fov: 50, off: 0.0, push: 0.12 }),
@@ -35,7 +35,9 @@ const LISTA = [
 export const SHOTS = LISTA.map((s, i) => ({ ...s, a: F(s.t0), b: i + 1 < LISTA.length ? F(LISTA[i + 1].t0) : TOTAL }));
 export const shotAt = (f) => SHOTS.find((s) => f >= s.a && f < s.b) || SHOTS.at(-1);
 export const LIGHTS = {};
-export const lightFor = (S_) => luz(S_.cen);
+// noite no morro (beats 5 e 8): luz rua_noite (exterior à noite, bonecos legíveis)
+const lz = (S_) => (S_.cen === MORRO && (S_.beat === 5 || S_.beat === 8) ? luz('rua_noite', { hemi: 1.2 }) : luz(S_.cen));
+export const lightFor = (S_) => lz(S_);
 
 // jarro: posição no chão (relativa à origem do cenário), por plano
 const arrasto = (t) => ramp(t, 24.6, 31.0);
@@ -76,15 +78,15 @@ const queda = (t) => {
 const tranco = (t) => (t >= B[7][0] && t < B[8][0] ? ramp(t, 55.5, 57.4) * (0.5 + 0.5 * Math.sin(t * 9) ** 2) : t >= B[8][0] ? 1 : 0);
 export const worldAt = (f) => {
   const S_ = shotAt(f), t = f / FPS, jp = jarroPos(S_, t);
-  const o = { jarro: S_.id === 'b6b' ? 0 : 1, queda: queda(t), tranco: tranco(t), corte: S_.id === 'b7b' || S_.beat === 8 ? 1 : 0, ...jp };
-  if (S_.cen === MORRO) Object.assign(o, { trem: 0, bike: 0, tabuas: 0, trilho: 0, velocimetro: 0 });
+  const o = { jarro: S_.id === 'b6b' ? 0 : 1, queda: queda(t), tranco: tranco(t), corte: S_.id === 'b7b' || S_.beat === 8 ? 1 : 0, muralha: S_.id === 'b6b' ? 1 : 0, ...jp };
+  if (S_.cen === MORRO) Object.assign(o, { trem: 0, bike: 0, tabuas: 0, trilho: 0, velocimetro: 0, nuvens: S_.beat === 5 || S_.beat === 8 ? 0 : 1 });
   const O = ORIGEM[S_.cen];
   const fx = S_.beat >= 8 ? { terremoto: { pos: [O.x + 2.6, O.z - 4.0], k: S_.beat === 9 ? 1 : 0.5 * ramp(t, 57, 64) } } : undefined;
   return { cenario: S_.cen, [S_.cen]: o, fx };
 };
 const wide = { eye: 'wide', mouth: 'o' };
 export const actorsAt = (f, T, W) => {
-  const S_ = shotAt(f), t = f / FPS, O = ORIGEM[S_.cen], tint = luz(S_.cen).tint, X = (a) => ({ tint, ...a }), out = [], b = S_.beat, c0 = S_.cam;
+  const S_ = shotAt(f), t = f / FPS, O = ORIGEM[S_.cen], tint = lz(S_).tint, X = (a) => ({ tint, ...a }), out = [], b = S_.beat, c0 = S_.cam;
   const kk = 1 - S_.push * sm(Math.max(0, Math.min(1, (f - S_.a) / Math.max(1, S_.b - S_.a)))), tg = Math.tan(c0.fov * Math.PI / 360);
   // Tião ~45% da altura do quadro, borda esquerda dentro do quadro; na frente do jarro (exceto b9, onde fica atrás e o jarro é o maior objeto)
   const DT = b === 9 ? c0.dist * kk - 0.7 : Math.min(1.44 / tg, c0.dist * kk - 0.8), wf = 1.23 * 1.3 / (2 * DT * tg), LT = c0.lt ?? (b === 9 ? -0.5 : -Math.max(0.1, Math.min(0.75, 0.84 - wf)));
@@ -98,7 +100,7 @@ export const actorsAt = (f, T, W) => {
   else if (b === 4) { const A = at(DT + 1.2, -0.5), Bp = at(DT, LT); out.push(X(anda(W, 'tiao', { eye: 'normal', mouth: 'flat', aR: [1.0, -0.2], aL: [1.0, -0.2] }, [O.x + A[0], O.z + A[1]], [O.x + Bp[0], O.z + Bp[1]], Math.min(1, arrasto(t) * 4), t))); }
   else if (b === 5) TIAO({ ...wide, aR: [2.0, -0.2] });
   else if (b === 6 && S_.cen === MORRO) { const u = Math.min(1, (t - B[5][0]) / (S_.b / FPS - B[5][0])), A = at(DT, LT), Bp = at(DT * 0.85, LT + 0.15); out.push(X(anda(W, 'tiao', { ...wide, aR: [2.6, -0.2], aL: [2.6, -0.2] }, [O.x + A[0], O.z + A[1]], [O.x + Bp[0], O.z + Bp[1]], u, t))); }
-  else if (b === 6) { TIAO({ ...wide, aR: [2.6, -0.2], aL: [2.6, -0.2] }); RIGHT('carteiro', { eye: 'happy', mouth: 'grin', f: -1 }); }
+  else if (b === 6) { TIAO({ ...wide, aR: [2.6, -0.2], aL: [2.6, -0.2] }); const gd = { eye: 'happy', mouth: 'grin', hR: { k: 'lanca', a: 0, s: 1 }, aR: [-0.1, 0.1] }; P('mar1', { ...gd, f: -1 }, [-1.7, -3.9]); P('mar2', { ...gd, f: -1 }, [1.7, -3.9]); }
   else if (b === 7) { TIAO({ ...wide, aL: [-0.35, 0.25] }); if (S_.id === 'b7a') { RIGHT('carteiro', { eye: 'happy', mouth: 'grin', f: -1 }); P('imperador', { eye: 'wide', mouth: 'o', f: -1, aL: [-0.3, 0.3] }, at(DT + 1.3, 0.1)); } }
   else if (b === 8) TIAO({ ...wide, aR: [2.4, -0.2] });
   else if (b === 9) TIAO({ ...wide, aR: [2.5, -0.2], aL: [2.5, -0.2] });

@@ -305,4 +305,21 @@ export function construirTrem(X) {
       if (vm) { vm.visible = !!B.velocimetro; vm.userData.set(B.vel ?? 0); } };
   };
   for (const id of ['dojo', 'pradaria_trilho', 'cidade']) ligaJarro(id);
+
+  // 7) MURALHA COM PORTÃO (ep46, 23/11) — dojo { muralha: 1|0 }: muralha de pedra com ameias, duas torres e portão de 3,4 m com portas abertas, em z = -5,6 (na frente do torii).
+  if (lista.dojo) {
+    const g = lista.dojo.g, M = new THREE.Group(); g.add(M); M.visible = false;
+    const pedra = texto(256, 128, (a, w, h) => { a.fillStyle = '#9a9488'; a.fillRect(0, 0, w, h); a.strokeStyle = '#5a564e'; a.lineWidth = 4;
+      for (let r = 0; r < 4; r++) { const y = r * 32; a.beginPath(); a.moveTo(0, y); a.lineTo(w, y); a.stroke(); for (let k = 0; k < 4; k++) { const x = (k * 64 + (r % 2 ? 32 : 0)) % w; a.beginPath(); a.moveTo(x, y); a.lineTo(x, y + 32); a.stroke(); } } });
+    const mp = toon({ map: T(pedra, 5, 1) });
+    const madeira = toon({ color: '#6b4423' });
+    for (const sd of [-1, 1]) {
+      add(new THREE.BoxGeometry(10.7, 3.4, 0.9), mp, sd * 8.65, 1.7, -5.6, M);
+      for (let i = 0; i < 9; i++) add(new THREE.BoxGeometry(0.7, 0.55, 0.9), mp, sd * (3.6 + i * 1.2), 3.68, -5.6, M);
+      add(new THREE.BoxGeometry(1.6, 4.8, 1.6), mp, sd * 2.5, 2.4, -5.6, M); add(new THREE.ConeGeometry(1.25, 1.1, 4), mc('#3a4a5e'), sd * 2.5, 5.35, -5.6, M).rotation.y = PI / 4;
+      const porta = add(new THREE.BoxGeometry(0.12, 3.0, 1.5), madeira, sd * 1.75, 1.5, -5.0, M); porta.rotation.y = sd * 1.1;    // porta aberta
+    }
+    add(new THREE.BoxGeometry(3.4, 1.1, 1.0), mp, 0, 4.1, -5.6, M);   // verga do portão
+    const st1 = lista.dojo.state; lista.dojo.state = (S, f) => { st1 && st1(S, f); M.visible = !!(S.dojo || {}).muralha; };
+  }
 }
