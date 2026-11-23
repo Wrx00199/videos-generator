@@ -5,6 +5,7 @@ Para qualquer agente (Claude, Codex). Responda ao Filippe em PT-BR, curto (ele l
 ## Como funciona agora
 - **Produção:** [contrato V6 e diagnóstico do ep. 43](../../../docs/tiao/PRODUCAO-V6.md). Roteiro e prova de tela antes da voz. STT do diálogo e plano conferidos antes do render completo.
 - **Kit fixo:** `KIT.md` (cenários, personagens, gestos, NÃO PODE). O roteiro se adapta ao kit.
+- **Originalidade e elenco:** antes de escrever, compare premissa, mecanismo da piada e virada com os episódios do acervo. Se o núcleo já saiu, escolha outra história. Escolha personagens pelo papel que fazem na cena e use também os civis aprovados. A tripulação volta quando a história pede o navio ou a relação entre os tripulantes.
 - **Moldes de roteiro:** `MOLDES_ROTEIRO.md` (+ `referencias_moldes.csv`). Não clonar vídeo.
 - **Gestos aprovados:** banco em `_estado/banco-animacoes/` (`folha_v6.jpg`). Gesto novo só por rodada de kit + OK do Filippe.
 - **Erros proibidos com print:** `docs/tiao/nao-pode/`.

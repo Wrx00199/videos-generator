@@ -17,6 +17,8 @@ A edição de que o Filippe está falando é **montagem, timing e enquadramento*
 
 Um vídeo barato pode ter desenho tosco e ainda deixar claras a ação, a ameaça e a piada. Cabeça ou pista cortadas, boca mexendo durante pensamento e voz duplicada atingem a compreensão. A comparação com vídeos virais não permite estimar o tempo de bastidor ou a probabilidade de viralizar. A hipótese a testar é que usar a mesma linguagem de edição reduz decisões por episódio e deixa o tempo disponível para reescrever o que enfraquece a história.
 
+Antes de escolher uma premissa, confira os títulos, resumos e roteiros do acervo. Compare a situação inicial, o mecanismo da piada e a virada. Quando o núcleo já tiver aparecido, escolha outro. Considere os civis do catálogo e escale cada papel pela função na história. Use a tripulação quando essa relação fizer parte da cena.
+
 ## Quem passa o quê
 
 | Etapa | Entrada e decisão | Saída para a próxima etapa |
