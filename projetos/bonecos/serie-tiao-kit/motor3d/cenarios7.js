@@ -3,7 +3,7 @@
 // Liga: worldAt -> { cenario: '<id>', <id>: { opções } } + luz('<id>'). Piso y=0; câmera geral = camCen(id,'geral'); bonecos em x≈±0,7, z≈0,4..0,9. Trilho corre no eixo X (visto de lado), eixo da via em z=0.
 // Opções (todas opcionais; nada alocado por quadro):
 //   pradaria_trilho { velX: -2.2 (x do velocímetro rel. à traseira do vagão), velZ: 0.75, bikeX/bikeY/bikeZ/bikeRz (bike solta/erguida),  trem: 1|0 (padrão 1), tremX: 0.6 (x da traseira do último vagão; locomotiva fica à direita), longe: 0|1 (trem pequeno ao fundo, z -22),
-//                     fumaca: 0..1, vento: 0..1 (linhas de vento na frente do trem), bolha: 0..1 (bolha de ar atrás da caixa), vel: 0..1 (ponteiro do velocímetro, 0=0 / 1=100 km/h; velocimetro: 1|0 liga o objeto, padrão 0),
+//                     trilho: 1|0 (0 = campo sem lastro/dormentes/trilhos, vira morro), fumaca: 0..1, vento: 0..1 (linhas de vento na frente do trem), bolha: 0..1 (bolha de ar atrás da caixa), vel: 0..1 (ponteiro do velocímetro, 0=0 / 1=100 km/h; velocimetro: 1|0 liga o objeto, padrão 0),
 //                     pedal: radianos do pedivela (a história passa a mesma fase do Tião), bone: 0..1 (boné vermelho voa em arco; some em 0 e 1), sapato: 0..1 (idem), tabuas: 1|0 (pista de tábua entre os trilhos, padrão 1), bike: 0|1 (bicicleta do Tião atrás da caixa, x = tremX-1,25), nuvens: 1|0 }
 //   estacao_trem    { hora: 10.1 (ponteiros), cartaz: 'APOSTA R$ 1.000' (linha 2 da placa; linha 1 fixa '100 KM/H'), apito: 0..1 (vapor sobe da locomotiva ao fundo), caixa: 1|0 (caixa de madeira na plataforma) }
 //   nevasca         { vento: 0..1 (cachecol/placa balança; pinheiros inclinam), (a neve caindo = worldAt.fx.chuva tipo 'neve') }
@@ -100,8 +100,8 @@ export function construirTrem(X) {
     morros(g, [[-40, -70, 38, 10, '#5f9a52'], [20, -90, 50, 14, '#4f8a4a'], [75, -80, 40, 9, '#6aa85a'], [-90, -100, 55, 16, '#478045']]);
     const bal = caixa(g, 400, 0.14, 2.2, '#b8a888', 0, 0, 0, { cast: false }); semTinta(bal);                       // lastro
     const dorm = texTabua('#6b4a2a', '#4a3220', 3); const mdorm = toon({ map: T(dorm, 1, 1) });
-    for (let x = -60; x < 80; x += 0.8) caixa(g, 0.22, 0.12, 1.9, mdorm, x, 0.07, 0, { cast: false });                 // dormentes
-    for (const z of [0.42, -0.42]) caixa(g, 400, 0.1, 0.07, '#7a7a86', 0, 0.2, z, { cast: false });                    // trilhos
+    const via = [bal]; for (let x = -60; x < 80; x += 0.8) via.push(caixa(g, 0.22, 0.12, 1.9, mdorm, x, 0.07, 0, { cast: false }));                 // dormentes
+    for (const z of [0.42, -0.42]) via.push(caixa(g, 400, 0.1, 0.07, '#7a7a86', 0, 0.2, z, { cast: false }));                    // trilhos
     const tab = caixa(g, 400, 0.04, 0.6, '#c89a5a', 0, 0.2, 0, { cast: false }); const tabM = toon({ map: T(texTabua('#c89a5a', '#8a6232', 9), 200, 1) }); tab.material = tabM; tab.scale.x = 1;
     for (let x = -30; x < 40; x += 12) poste(g, x, -4);
     const nv = nuvens(g, [[-12, 14, -45, 4], [8, 18, -60, 5], [30, 12, -50, 4], [-30, 20, -70, 6]], '#ffffff');
@@ -117,7 +117,7 @@ export function construirTrem(X) {
     lista.pradaria_trilho = { g, chao: () => 0, state(S, f) { const B = S.pradaria_trilho || {}, t = f / 30, x0 = B.tremX ?? 0.6, longe = !!B.longe;
         trem.visible = (B.trem ?? 1) > 0; trem.position.set(longe ? -4 + x0 : x0, 0, longe ? -22 : 0); trem.scale.setScalar(longe ? 0.8 : 1);
         bk.userData.crank.rotation.z = -(B.pedal ?? 0);
-        tab.visible = (B.tabuas ?? 1) > 0; bk.visible = !!B.bike; bk.position.set(B.bikeX ?? x0 - 2.0, 0.22 + (B.bikeY ?? 0), B.bikeZ ?? 0.0); bk.rotation.z = B.bikeRz ?? 0; bk.userData.rodas.forEach((r) => { r.rotation.z = -x0 * 1.2 - t * 6 * (B.bike ? 1 : 0); });
+        via.forEach((m) => { m.visible = (B.trilho ?? 1) > 0; }); tab.visible = (B.tabuas ?? 1) > 0 && (B.trilho ?? 1) > 0; bk.visible = !!B.bike; bk.position.set(B.bikeX ?? x0 - 2.0, 0.22 + (B.bikeY ?? 0), B.bikeZ ?? 0.0); bk.rotation.z = B.bikeRz ?? 0; bk.userData.rodas.forEach((r) => { r.rotation.z = -x0 * 1.2 - t * 6 * (B.bike ? 1 : 0); });
         nv.forEach((n, i) => { n.position.x += 0; n.visible = (B.nuvens ?? 1) > 0; });
         const fk = B.fumaca ?? 0.7; fumo.forEach((m, i) => { const u = ((t * 0.5 + i / 8) % 1), cx = trem.position.x + 5.6 + 3.7, cz = trem.position.z; m.visible = fk > 0.02 && trem.visible; m.scale.setScalar((0.25 + u * 0.9) * (0.4 + fk)); m.position.set(cx - u * 4.2 * (longe ? 1 : 1.3), 2.3 * trem.scale.y + u * 1.6, cz); m.material.opacity = 0.7 * (1 - u) * Math.min(1, fk + 0.3); });
         const vk = B.vento ?? 0; vento.forEach((m, i) => { const u = ((t * 1.8 + i * 0.37) % 1); m.visible = vk > 0.02; m.position.set(x0 + 1.5 + (i % 4) * 0.5 - u * 2.6, 0.45 + (i % 3) * 0.42 + (i * 0.13 % 0.3), 0.7 + (i % 2) * 0.25); m.scale.x = 0.5 + vk; m.material.opacity = 0.85 * (1 - u); });
@@ -256,33 +256,38 @@ export function construirTrem(X) {
         const tz = -24 - pk * 120; trem.position.set(0, 0, tz); trem.scale.setScalar(1 + Math.max(0, -tz) * 0.0); fum.position.set(1.9 + 1.0, 2.0, tz + 0.0); fum.scale.setScalar(0.5 + pk * 1.2 + 0.1 * Math.sin(t * 3)); } };
   }
 
-  // 6) JARRO DOS DRAGÕES (ep46, 23/11) — prop no pátio do DOJO (sem rig): jarro de bronze, 8 dragões (cone com boca) no aro, 8 sapos no chão, 8 bolas. Entra em lista.dojo (cenarios2.js roda antes).
-  //   dojo { jarro: 1|0, queda: 0..8 (bolas caídas; a parte fracionária é a bola caindo agora; ordem 0,4,2,6,1,5,3,7), tranco: 0..1 (jarro treme),
-  //          velocimetro: 1|0 (mostrador de ponteiro apoiado no chão do pátio, x=1,6 z=0,1), vel: 0..1 (ponteiro) }  Frente do jarro = +z (câmera).
-  if (lista.dojo) {
-    const dg = lista.dojo.g, J = new THREE.Group(); J.position.set(0, 0, -0.5); dg.add(J);
+  // 6) JARRO DOS DRAGÕES (ep46, 23/11) — prop sem rig: jarro de bronze, 8 dragões (cabeça de boca aberta com a bola dentro) separados no aro, 8 sapos de boca aberta no chão, cada um embaixo do seu dragão.
+  // Liga em dojo, pradaria_trilho e cidade:  <cenario> { jarro: 1|0, queda: 0..8 (bolas caídas; a fração é a bola caindo agora; ordem 0,4,2,6,1,5,3,7), tranco: 0..1 (jarro treme), jx, jz (deslocamento no chão, m),
+  //   velocimetro: 1|0 (só dojo; mostrador no chão), vel: 0..1 }. Frente do jarro = +z. A bola cai da boca do dragão até a boca do sapo.
+  const ligaJarro = (id) => {
+    if (!lista[id]) return;
+    const host = lista[id].g, J = new THREE.Group(); host.add(J); J.scale.setScalar(1.15);
     cil(J, 0.52, 0.58, 0.1, '#5a3d1e', 0, 0, 0, {}, 28);                                   // base
     cil(J, 0.42, 0.5, 0.95, '#a8743a', 0, 0.1, 0, {}, 28);                                   // corpo de bronze
     for (const y of [0.42, 1.0]) { const a = add(new THREE.TorusGeometry(0.47, 0.035, 8, 32), mc('#6b4620'), 0, y, 0, J); a.rotation.x = PI / 2; }
-    add(new THREE.ConeGeometry(0.46, 0.3, 28), mc('#8a5a28'), 0, 1.2, 0, J); add(new THREE.SphereGeometry(0.06, 12, 8), mc('#d8b04a'), 0, 1.38, 0, J);   // tampa
-    const ORD = [0, 4, 2, 6, 1, 5, 3, 7], bolas = [], RM = 0.76, Y0 = 0.98, Y1 = 0.24;
+    add(new THREE.ConeGeometry(0.4, 0.22, 28), mc('#8a5a28'), 0, 1.16, 0, J); add(new THREE.SphereGeometry(0.05, 12, 8), mc('#d8b04a'), 0, 1.3, 0, J);   // tampa baixa (não tapa os dragões)
+    const ORD = [0, 4, 2, 6, 1, 5, 3, 7], bolas = [], RB = 0.5, RM = 0.86, YB = 0.82, Y0 = YB + 0.12, Y1 = 0.27;
     for (let j = 0; j < 8; j++) {
-      const a = PI / 2 + j * PI / 4, cx = Math.cos(a), cz = Math.sin(a), D = new THREE.Group(); D.position.set(cx * 0.46, 0.92, cz * 0.46); D.rotation.y = PI / 2 - a; J.add(D);
-      const cab = add(new THREE.ConeGeometry(0.12, 0.34, 12), mc('#7a4f22'), 0, 0.03, 0.16, D); cab.rotation.x = PI / 2 - 0.45;      // cabeça de dragão apontando para fora
-      add(new THREE.SphereGeometry(0.065, 10, 8), mc('#1a0d08'), 0, -0.02, 0.3, D).scale.set(1.1, 0.6, 1.3);                           // boca aberta
-      for (const s of [-1, 1]) { const h = add(new THREE.ConeGeometry(0.025, 0.12, 6), mc('#e8d8a8'), s * 0.06, 0.13, 0.05, D); h.rotation.x = -0.5; add(new THREE.SphereGeometry(0.03, 8, 6), mc('#ffffff'), s * 0.055, 0.07, 0.17, D); }   // chifres e olhos
+      const a = PI / 2 + j * PI / 4, cx = Math.cos(a), cz = Math.sin(a), D = new THREE.Group(); D.position.set(cx * RB, YB, cz * RB); D.rotation.y = PI / 2 - a; J.add(D);
+      const pescoco = add(new THREE.CylinderGeometry(0.05, 0.06, 0.2, 10), mc('#7a4f22'), 0, 0.03, 0.08, D); pescoco.rotation.x = PI / 2 - 0.25;
+      const sup = add(new THREE.ConeGeometry(0.085, 0.3, 12), mc('#7a4f22'), 0, 0.17, 0.27, D); sup.rotation.x = PI / 2 - 0.3;      // mandíbula de cima
+      const inf = add(new THREE.ConeGeometry(0.065, 0.24, 12), mc('#6a4318'), 0, 0.02, 0.25, D); inf.rotation.x = PI / 2 + 0.35;     // mandíbula de baixo: boca aberta entre as duas
+      add(new THREE.SphereGeometry(0.055, 10, 8), mc('#1a0d08'), 0, 0.1, 0.27, D).scale.set(1.2, 0.9, 1.3);                           // interior da boca
+      for (const sd of [-1, 1]) { const h = add(new THREE.ConeGeometry(0.022, 0.11, 6), mc('#e8d8a8'), sd * 0.06, 0.26, 0.12, D); h.rotation.x = -0.6; add(new THREE.SphereGeometry(0.028, 8, 6), mc('#ffffff'), sd * 0.06, 0.2, 0.2, D); add(new THREE.SphereGeometry(0.014, 8, 6), mc('#111111'), sd * 0.06, 0.2, 0.225, D); }
       for (let k = 0; k < 3; k++) add(new THREE.ConeGeometry(0.03, 0.1, 5), mc('#3a8a4a'), 0, 0.1 - k * 0.05, -0.02 - k * 0.07, D);   // crista
-      const fx = cx * RM, fz = cz * RM;
-      const sp = add(new THREE.SphereGeometry(0.14, 14, 10), mc('#4a9a3a'), fx, 0.1, fz, J); sp.scale.set(1, 0.7, 1.1); sp.rotation.y = PI / 2 - a;      // sapo
-      const bo = add(new THREE.CircleGeometry(0.075, 14), mc('#2a0c10'), fx, 0.205, fz, J); bo.rotation.x = -PI / 2;                                   // boca aberta para cima
-      for (const s of [-1, 1]) { const ex = fx - cz * s * 0.07, ez = fz + cx * s * 0.07; add(new THREE.SphereGeometry(0.04, 8, 6), mc('#ffffff'), ex, 0.2, ez, J); add(new THREE.SphereGeometry(0.02, 8, 6), mc('#111111'), ex, 0.215, ez, J); }
-      const ball = add(new THREE.SphereGeometry(0.065, 12, 10), mc('#f3c63a'), cx * RM, Y0, cz * RM, J); ball.userData = { j, cx: cx * RM, cz: cz * RM }; bolas.push(ball);
+      const fx = cx * RM, fz = cz * RM, F = new THREE.Group(); F.position.set(fx, 0, fz); F.rotation.y = PI / 2 - a; J.add(F);          // sapo de boca aberta embaixo do dragão
+      add(new THREE.SphereGeometry(0.17, 16, 12), mc('#4a9a3a'), 0, 0.12, 0, F).scale.set(1, 0.72, 1.1);
+      const lab = add(new THREE.TorusGeometry(0.085, 0.022, 8, 18), mc('#c0483a'), 0, 0.235, 0.0, F); lab.rotation.x = -PI / 2;          // lábios
+      add(new THREE.CircleGeometry(0.085, 18), mc('#2a0c10'), 0, 0.232, 0.0, F).rotation.x = -PI / 2;                                    // boca aberta
+      for (const sd of [-1, 1]) { add(new THREE.SphereGeometry(0.05, 10, 8), mc('#ffffff'), sd * 0.1, 0.26, -0.1, F); add(new THREE.SphereGeometry(0.025, 8, 6), mc('#111111'), sd * 0.1, 0.275, -0.085, F); }
+      const ball = add(new THREE.SphereGeometry(0.062, 12, 10), mc('#f3c63a'), cx * RM, Y0, cz * RM, J); ball.userData = { j, cx: cx * RM, cz: cz * RM }; bolas.push(ball);
     }
-    const vm = velocimetro(dg); vm.position.set(-1.4, 0, 0.1); vm.scale.setScalar(0.75);
-    const st0 = lista.dojo.state;
-    lista.dojo.state = (S, f) => { st0 && st0(S, f); const B = S.dojo || {}, t = f / 30, q = B.queda ?? 0, tr = B.tranco ?? 0;
-      J.visible = !!B.jarro; J.position.x = (B.jx ?? 0) + Math.sin(t * 47) * 0.014 * tr; J.rotation.z = Math.sin(t * 31) * 0.012 * tr;
+    const vm = id === 'dojo' ? velocimetro(host) : null; if (vm) { vm.position.set(-1.4, 0, 0.1); vm.scale.setScalar(0.75); }
+    const st0 = lista[id].state;
+    lista[id].state = (S, f) => { st0 && st0(S, f); const B = S[id] || {}, t = f / 30, q = B.queda ?? 0, tr = B.tranco ?? 0;
+      J.visible = !!B.jarro; J.position.set((B.jx ?? 0) + Math.sin(t * 47) * 0.014 * tr, 0, -0.5 + (B.jz ?? 0)); J.rotation.z = Math.sin(t * 31) * 0.012 * tr;
       bolas.forEach((b) => { const m = ORD.indexOf(b.userData.j), u = Math.max(0, Math.min(1, q - m)); b.position.set(b.userData.cx, Y0 - (Y0 - Y1) * u * u, b.userData.cz); });
-      vm.visible = !!B.velocimetro; vm.userData.set(B.vel ?? 0); };
-  }
+      if (vm) { vm.visible = !!B.velocimetro; vm.userData.set(B.vel ?? 0); } };
+  };
+  for (const id of ['dojo', 'pradaria_trilho', 'cidade']) ligaJarro(id);
 }
