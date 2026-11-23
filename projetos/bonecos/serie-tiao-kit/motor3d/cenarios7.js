@@ -278,7 +278,7 @@ export function construirTrem(X) {
       for (const s of [-1, 1]) { const ex = fx - cz * s * 0.07, ez = fz + cx * s * 0.07; add(new THREE.SphereGeometry(0.04, 8, 6), mc('#ffffff'), ex, 0.2, ez, J); add(new THREE.SphereGeometry(0.02, 8, 6), mc('#111111'), ex, 0.215, ez, J); }
       const ball = add(new THREE.SphereGeometry(0.065, 12, 10), mc('#f3c63a'), cx * RM, Y0, cz * RM, J); ball.userData = { j, cx: cx * RM, cz: cz * RM }; bolas.push(ball);
     }
-    const vm = velocimetro(dg); vm.position.set(1.6, 0, 0.1); vm.scale.setScalar(0.9);
+    const vm = velocimetro(dg); vm.position.set(-1.4, 0, 0.1); vm.scale.setScalar(0.75);
     const st0 = lista.dojo.state;
     lista.dojo.state = (S, f) => { st0 && st0(S, f); const B = S.dojo || {}, t = f / 30, q = B.queda ?? 0, tr = B.tranco ?? 0;
       J.visible = !!B.jarro; J.position.x = (B.jx ?? 0) + Math.sin(t * 47) * 0.014 * tr; J.rotation.z = Math.sin(t * 31) * 0.012 * tr;

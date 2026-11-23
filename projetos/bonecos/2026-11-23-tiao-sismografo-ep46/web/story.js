@@ -52,7 +52,8 @@ const queda = (t) => {
 const tranco = (t) => (t >= B[7][0] && t < B[8][0] ? ramp(t, 55.5, 57.4) * (0.5 + 0.5 * Math.sin(t * 9) ** 2) : t >= B[8][0] ? 1 : 0);
 export const worldAt = (f) => {
   const S_ = shotAt(f), t = f / FPS;
-  const o = { jarro: 1, queda: queda(t), tranco: tranco(t), jx: S_.beat === 4 && t > 24.6 ? -1.6 * ramp(t, 24.6, 31) : 0 };
+  const q = queda(t), tr = tranco(t);
+  const o = { jarro: 1, queda: q, tranco: tr, velocimetro: 1, vel: Math.min(1, q / 8) + 0.04 * tr * Math.sin(t * 17), jx: S_.beat === 4 && t > 24.6 ? -1.6 * ramp(t, 24.6, 31) : 0 };
   const fx = S_.beat >= 8 ? { terremoto: { pos: [ORIGEM.dojo.x + 1.5, ORIGEM.dojo.z - 1], k: S_.beat === 9 ? 1 : 0.5 * ramp(t, 57, 64) } } : undefined;
   return { cenario: 'dojo', dojo: o, fx };
 };
