@@ -258,13 +258,25 @@ export function construirTrem(X) {
 
   // 6) JARRO DOS DRAGÕES (ep46, 23/11) — prop sem rig: jarro de bronze, 8 dragões (cabeça de boca aberta com a bola dentro) separados no aro, 8 sapos de boca aberta no chão, cada um embaixo do seu dragão.
   // Liga em dojo, pradaria_trilho e cidade:  <cenario> { jarro: 1|0, queda: 0..8 (bolas caídas; a fração é a bola caindo agora; ordem 0,4,2,6,1,5,3,7), tranco: 0..1 (jarro treme), jx, jz (deslocamento no chão, m),
-  //   velocimetro: 1|0 (só dojo; mostrador no chão), vel: 0..1 }. Frente do jarro = +z. A bola cai da boca do dragão até a boca do sapo.
+  //   corte: 1|0 (abre o jarro na frente: pêndulo e 8 hastes à vista), velocimetro: 1|0 (só dojo; mostrador no chão), vel: 0..1 }. Frente do jarro = +z. A bola cai da boca do dragão até a boca do sapo.
   const ligaJarro = (id) => {
     if (!lista[id]) return;
     const host = lista[id].g, J = new THREE.Group(); host.add(J); J.scale.setScalar(1.15);
     cil(J, 0.52, 0.58, 0.1, '#5a3d1e', 0, 0, 0, {}, 28);                                   // base
-    cil(J, 0.42, 0.5, 0.95, '#a8743a', 0, 0.1, 0, {}, 28);                                   // corpo de bronze
-    for (const y of [0.42, 1.0]) { const a = add(new THREE.TorusGeometry(0.47, 0.035, 8, 32), mc('#6b4620'), 0, y, 0, J); a.rotation.x = PI / 2; }
+    // corpo de bronze com pátina (azinhavre) escorrendo dos aros, aros reforçados e rebites; versão inteira e versão com corte frontal (mostra pêndulo e hastes)
+    const bronze = texto(512, 256, (a, w, h) => { const g = a.createLinearGradient(0, 0, 0, h); g.addColorStop(0, '#b98340'); g.addColorStop(1, '#8f5f2c'); a.fillStyle = g; a.fillRect(0, 0, w, h);
+      const r = P.rng(46); for (let i = 0; i < 70; i++) { const x = r() * w, y0 = r() < 0.6 ? r() * h * 0.25 : h * (0.4 + r() * 0.1), L = 20 + r() * 80; a.fillStyle = `rgba(${60 + r() * 30},${140 + r() * 40},${120 + r() * 30},${0.25 + r() * 0.3})`; a.beginPath(); a.ellipse(x, y0 + L / 2, 3 + r() * 7, L / 2, 0, 0, 7); a.fill(); }
+      for (let i = 0; i < 30; i++) { a.fillStyle = `rgba(40,25,10,${0.08 + r() * 0.12})`; a.fillRect(r() * w, r() * h, 2 + r() * 6, 2 + r() * 30); } });
+    const mBronze = toon({ map: T(bronze, 1, 1) }); mBronze.side = THREE.DoubleSide;
+    const corpoA = add(new THREE.CylinderGeometry(0.42, 0.5, 0.95, 40), mBronze, 0, 0.575, 0, J);
+    const corpoB = add(new THREE.CylinderGeometry(0.42, 0.5, 0.95, 40, 1, true, PI / 4, PI * 1.5), mBronze, 0, 0.575, 0, J); corpoB.visible = false;
+    for (const [y, r] of [[0.16, 0.52], [0.5, 0.465], [1.0, 0.43]]) { const a = add(new THREE.TorusGeometry(r, 0.04, 8, 40), mc('#5a3a1a'), 0, y, 0, J); a.rotation.x = PI / 2;
+      for (let i = 0; i < 24; i++) { const th = i * PI / 12; add(new THREE.SphereGeometry(0.022, 6, 5), mc('#d8b04a'), Math.sin(th) * (r + 0.02), y + 0.045, Math.cos(th) * (r + 0.02), J); } }    // rebites
+    // pêndulo pesado + 8 hastes (uma para cada dragão), visíveis quando corte > 0
+    const PD = new THREE.Group(); PD.position.set(0, 1.0, 0); J.add(PD); PD.visible = false;
+    add(new THREE.CylinderGeometry(0.012, 0.012, 0.62, 8), mc('#3a2a1a'), 0, -0.31, 0, PD); add(new THREE.SphereGeometry(0.1, 14, 10), mc('#2e2218'), 0, -0.66, 0, PD);
+    const hastes = [], HS = new THREE.Group(); HS.position.set(0, 0.52, 0); J.add(HS); HS.visible = false;
+    for (let j = 0; j < 8; j++) { const a = PI / 2 + j * PI / 4, hg = new THREE.Group(); hg.rotation.y = PI / 2 - a; HS.add(hg); const hm = add(new THREE.CylinderGeometry(0.014, 0.014, 0.36, 6), mc('#c8a050'), 0, 0, 0.18, hg); hm.rotation.x = PI / 2; add(new THREE.SphereGeometry(0.03, 8, 6), mc('#d8b04a'), 0, 0, 0.36, hg); hastes.push(hg); }
     add(new THREE.ConeGeometry(0.4, 0.22, 28), mc('#8a5a28'), 0, 1.16, 0, J); add(new THREE.SphereGeometry(0.05, 12, 8), mc('#d8b04a'), 0, 1.3, 0, J);   // tampa baixa (não tapa os dragões)
     const ORD = [0, 4, 2, 6, 1, 5, 3, 7], bolas = [], RB = 0.5, RM = 0.86, YB = 0.82, Y0 = YB + 0.12, Y1 = 0.27;
     for (let j = 0; j < 8; j++) {
@@ -287,6 +299,9 @@ export function construirTrem(X) {
     lista[id].state = (S, f) => { st0 && st0(S, f); const B = S[id] || {}, t = f / 30, q = B.queda ?? 0, tr = B.tranco ?? 0;
       J.visible = !!B.jarro; J.position.set((B.jx ?? 0) + Math.sin(t * 47) * 0.014 * tr, 0, -0.5 + (B.jz ?? 0)); J.rotation.z = Math.sin(t * 31) * 0.012 * tr;
       bolas.forEach((b) => { const m = ORD.indexOf(b.userData.j), u = Math.max(0, Math.min(1, q - m)); b.position.set(b.userData.cx, Y0 - (Y0 - Y1) * u * u, b.userData.cz); });
+      const cor = (B.corte ?? 0) > 0; corpoA.visible = !cor; corpoB.visible = cor; PD.visible = HS.visible = cor;
+      PD.rotation.z = Math.sin(t * 9) * 0.5 * tr + Math.sin(t * 2) * 0.03; PD.rotation.x = Math.cos(t * 7) * 0.3 * tr;
+      hastes.forEach((h, jj) => { const m = ORD.indexOf(jj), u = Math.max(0, Math.min(1, q - m)); h.rotation.x = -0.7 * Math.sin(Math.PI * Math.min(1, u * 1.6)) * (u > 0 && u < 1 ? 1 : 0); });
       if (vm) { vm.visible = !!B.velocimetro; vm.userData.set(B.vel ?? 0); } };
   };
   for (const id of ['dojo', 'pradaria_trilho', 'cidade']) ligaJarro(id);

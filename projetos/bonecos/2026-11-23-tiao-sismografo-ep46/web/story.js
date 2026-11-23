@@ -28,7 +28,8 @@ const LISTA = [
   S(40.2, 'dojo', 6, 'b6b', { az: 0, dist: 4.6, h: 1.5, ly: 1.1, fov: 50, off: 0.0, D: 3.4, c: [0.0, -2.0] }),
   S(B[6][0], 'cidade', 7, 'b7a', { az: -22, dist: 5.2, h: 1.6, ly: 1.5, fov: 56, off: 0.4, D: 3.9 }),
   S(50.0, 'cidade', 7, 'b7b', { az: 32, dist: 4.4, h: 1.3, ly: 1.3, fov: 54, off: 0.3 }),
-  S(B[7][0], MORRO, 8, 'b8', { az: 0, dist: 4.0, h: 1.0, ly: 0.9, fov: 50, off: 0.0, push: 0.2 }),
+  S(B[7][0], MORRO, 8, 'b8a', { az: 0, dist: 4.0, h: 1.0, ly: 0.9, fov: 50, off: 0.0, push: 0.12 }),
+  S(57.4, MORRO, 8, 'b8b', { az: 0, dist: 4.6, h: 1.0, ly: 0.8, fov: 40, off: -0.12, lt: -0.55, push: 0.1 }),
   S(B[8][0], 'dojo', 9, 'b9', { az: -22, dist: 5.2, h: 1.9, ly: 0.95, fov: 50, off: 0.0, push: 0.18 }),
 ];
 export const SHOTS = LISTA.map((s, i) => ({ ...s, a: F(s.t0), b: i + 1 < LISTA.length ? F(LISTA[i + 1].t0) : TOTAL }));
@@ -75,7 +76,7 @@ const queda = (t) => {
 const tranco = (t) => (t >= B[7][0] && t < B[8][0] ? ramp(t, 55.5, 57.4) * (0.5 + 0.5 * Math.sin(t * 9) ** 2) : t >= B[8][0] ? 1 : 0);
 export const worldAt = (f) => {
   const S_ = shotAt(f), t = f / FPS, jp = jarroPos(S_, t);
-  const o = { jarro: S_.id === 'b6b' ? 0 : 1, queda: queda(t), tranco: tranco(t), ...jp };
+  const o = { jarro: S_.id === 'b6b' ? 0 : 1, queda: queda(t), tranco: tranco(t), corte: S_.id === 'b7b' || S_.beat === 8 ? 1 : 0, ...jp };
   if (S_.cen === MORRO) Object.assign(o, { trem: 0, bike: 0, tabuas: 0, trilho: 0, velocimetro: 0 });
   const O = ORIGEM[S_.cen];
   const fx = S_.beat >= 8 ? { terremoto: { pos: [O.x + 2.6, O.z - 4.0], k: S_.beat === 9 ? 1 : 0.5 * ramp(t, 57, 64) } } : undefined;
@@ -86,7 +87,7 @@ export const actorsAt = (f, T, W) => {
   const S_ = shotAt(f), t = f / FPS, O = ORIGEM[S_.cen], tint = luz(S_.cen).tint, X = (a) => ({ tint, ...a }), out = [], b = S_.beat, c0 = S_.cam;
   const kk = 1 - S_.push * sm(Math.max(0, Math.min(1, (f - S_.a) / Math.max(1, S_.b - S_.a)))), tg = Math.tan(c0.fov * Math.PI / 360);
   // Tião ~45% da altura do quadro, borda esquerda dentro do quadro; na frente do jarro (exceto b9, onde fica atrás e o jarro é o maior objeto)
-  const DT = b === 9 ? c0.dist * kk - 0.7 : Math.min(1.44 / tg, c0.dist * kk - 0.8), wf = 1.23 * 1.3 / (2 * DT * tg), LT = b === 9 ? -0.62 : -Math.max(0.1, Math.min(0.75, 0.97 - wf));
+  const DT = b === 9 ? c0.dist * kk - 0.7 : Math.min(1.44 / tg, c0.dist * kk - 0.8), wf = 1.23 * 1.3 / (2 * DT * tg), LT = c0.lt ?? (b === 9 ? -0.62 : -Math.max(0.1, Math.min(0.75, 0.97 - wf)));
   const at = (D, lat) => noPlano(S_, t, D, lat, kk);
   const P = (n, pose, [x, z]) => out.push(X(boneco(W, n, pose, O.x + x, O.z + z, t)));
   const TIAO = (pose) => P('tiao', pose, at(DT, LT)), RIGHT = (n, pose, d = 0.3) => P(n, pose, at(DT + d, 0.5));
