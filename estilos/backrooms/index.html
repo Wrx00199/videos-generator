@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR" data-composition-variables='[{"id":"cam","type":"string","label":"Tag da câmera","default":"REC ● NÍVEL 0"},{"id":"headline","type":"string","label":"Manchete","default":"A SALA SEM SAÍDA"},{"id":"sub","type":"string","label":"Relato","default":"O som das lâmpadas nunca para aqui."},{"id":"accent","type":"color","label":"Cor do REC","default":"#ef4444"},{"id":"name","type":"string","label":"Nome do arquivo (lote)","default":"clip"}]'>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #1a180d; }
+      #root { position: relative; width: 1080px; height: 1920px; background: radial-gradient(ellipse at 50% 25%, #3a3418 0%, #17150a 75%); font-family: "JetBrains Mono", "Courier New", monospace; }
+      #scanlines { position: absolute; z-index: 1; inset: 0; background: repeating-linear-gradient(0deg, rgba(0,0,0,0.22) 0px, rgba(0,0,0,0.22) 3px, transparent 3px, transparent 8px); }
+      #cam { position: absolute; z-index: 3; left: 150px; top: 380px; padding: 10px 22px; background: rgba(0,0,0,0.65); border: 2px solid var(--accent); color: #fef08a; font-size: 32px; font-weight: 700; letter-spacing: 0.14em; }
+      #headline { position: absolute; z-index: 3; left: 150px; top: 620px; width: 690px; font-size: 92px; font-weight: 900; line-height: 1.06; color: #fef9c3; text-shadow: 0 0 28px rgba(254,240,138,0.35); }
+      #sub { position: absolute; z-index: 3; left: 150px; top: 1080px; width: 690px; padding: 24px 28px; background: rgba(12,11,5,0.82); border-left: 8px solid var(--accent); font-size: 40px; font-weight: 500; line-height: 1.35; color: #e7e5c8; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="5" data-width="1080" data-height="1920">
+      <div id="scanlines"></div>
+      <div id="cam" class="clip" data-start="0" data-duration="5" data-track-index="0" data-var-text="cam"></div>
+      <div id="headline" class="clip" data-start="0" data-duration="5" data-track-index="1" data-var-text="headline"></div>
+      <div id="sub" class="clip" data-start="0" data-duration="5" data-track-index="2" data-var-text="sub"></div>
+    </div>
+    <script>
+      gsap.set("#sub", { opacity: 0 });
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#headline", { filter: "blur(8px)", y: 14 }, { filter: "blur(0px)", y: 0, duration: 0.9, ease: "power2.out" }, 0);
+      tl.fromTo("#sub", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, 1.2);
+      tl.to("#cam", { opacity: 0.45, duration: 0.4, ease: "steps(1)", yoyo: true, repeat: 5 }, 0.6);
+      tl.to("#headline", { x: 4, duration: 0.08, ease: "steps(1)", yoyo: true, repeat: 3 }, 2.6);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

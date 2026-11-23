@@ -1,0 +1,24 @@
+{
+  "id": "backrooms",
+  "nome": "Backrooms VHS",
+  "descricao": "Estética found footage / liminal space com luz fluorescente amarelada, código de câmera REC e suspense.",
+  "nota_catalogo": "Catálogo sem bloco nativo de backrooms/VHS; aproximação usando soft-blur-in e per-word-crossfade.",
+  "catalogo": [
+    {"tipo": "component", "nome": "soft-blur-in"},
+    {"tipo": "component", "nome": "per-word-crossfade"}
+  ],
+  "formato": {"largura": 1080, "altura": 1920, "duracao": 5, "fps": 24},
+  "render": {"resolucao": "720p", "fps": 24, "qualidade": "draft", "workers": 1, "variables": true},
+  "slots": [
+    {"id": "camera", "variavel": "cam", "max_chars": 18, "obrigatorio": true},
+    {"id": "manchete", "variavel": "headline", "max_chars": 26, "obrigatorio": true},
+    {"id": "relato", "variavel": "sub", "max_chars": 40, "obrigatorio": true}
+  ],
+  "variables": [
+    {"id": "cam", "type": "string", "label": "Tag da câmera", "default": "REC ● NÍVEL 0"},
+    {"id": "headline", "type": "string", "label": "Manchete", "default": "A SALA SEM SAÍDA"},
+    {"id": "sub", "type": "string", "label": "Relato", "default": "O som das lâmpadas nunca para aqui."},
+    {"id": "accent", "type": "color", "label": "Cor do REC", "default": "#ef4444"},
+    {"id": "name", "type": "string", "label": "Nome do arquivo (lote)", "default": "clip"}
+  ]
+}

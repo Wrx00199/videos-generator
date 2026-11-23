@@ -495,6 +495,200 @@ async function rotasNovas(req,res,u,local){
  return true;
 }
 
+// ---------- NEXO (multi-estilo, outliers, produção e lote) ----------
+let nexoRenderProc = null;
+let nexoCacarProc = null;
+const NEXO_JOBS = path.join(ESTADO, 'nexo-jobs.json');
+
+function nexoEstilos() {
+  const dir = path.join(RAIZ, 'estilos');
+  const out = [];
+  for (const e of ls(dir)) {
+    if (!e.isDirectory()) continue;
+    const stFile = path.join(dir, e.name, 'style.json');
+    if (!fs.existsSync(stFile)) continue;
+    const st = lerJson(stFile, null);
+    if (!st) continue;
+    const id = st.id || e.name;
+    const prev = path.join(RAIZ, 'videos', 'estilos', `${id}.mp4`);
+    const lote = lerJson(path.join(dir, e.name, 'lote.json'), { rows: [] });
+    out.push({
+      id,
+      nome: st.nome || id,
+      motor: 'hyperframes',
+      descricao: st.descricao || '',
+      formato: st.formato || {},
+      slots: st.slots || [],
+      variables: st.variables || [],
+      tem_preview: fs.existsSync(prev),
+      preview_rel: fs.existsSync(prev) ? `videos/estilos/${id}.mp4` : null,
+      lote_exemplo: Array.isArray(lote.rows) ? lote.rows : [],
+    });
+  }
+  const ep46 = path.join(RAIZ, 'videos', 'ep46', 'ep46-720p.mp4');
+  out.push({
+    id: 'tiao_3d',
+    nome: 'Tião 3D (Motor3D)',
+    motor: 'motor3d',
+    descricao: 'Série 3D estilizada do Tião (Three.js Toon, 40 personagens, 28 cenários).',
+    formato: { largura: 1080, altura: 1920, duracao: 55, fps: 30 },
+    slots: [],
+    variables: [],
+    tem_preview: fs.existsSync(ep46),
+    preview_rel: fs.existsSync(ep46) ? 'videos/ep46/ep46-720p.mp4' : null,
+    lote_exemplo: [],
+  });
+  return out;
+}
+
+function parseCsvLinha(linha) {
+  const cols = [];
+  let cur = '', emAspas = false;
+  for (let i = 0; i < linha.length; i++) {
+    const ch = linha[i];
+    if (emAspas) {
+      if (ch === '"' && linha[i + 1] === '"') { cur += '"'; i++; }
+      else if (ch === '"') emAspas = false;
+      else cur += ch;
+    } else if (ch === '"') emAspas = true;
+    else if (ch === ',') { cols.push(cur); cur = ''; }
+    else cur += ch;
+  }
+  cols.push(cur);
+  return cols;
+}
+
+function nexoOutliers(nicho, limit = 50) {
+  const nichosDir = path.join(RAIZ, 'nichos');
+  const nichos = ls(nichosDir)
+    .filter((e) => e.isFile() && e.name.endsWith('.json') && !e.name.startsWith('_'))
+    .map((e) => e.name.replace(/\.json$/, ''))
+    .sort();
+  const csvPath = path.join(RAIZ, 'projetos', 'referencias.csv');
+  const txt = lerTexto(csvPath);
+  const itens = [];
+  if (txt.trim()) {
+    const linhas = txt.split(/\r?\n/).filter(Boolean);
+    const hdr = parseCsvLinha(linhas[0]);
+    for (let i = 1; i < linhas.length; i++) {
+      const vals = parseCsvLinha(linhas[i]);
+      const row = {};
+      hdr.forEach((k, idx) => { row[k] = vals[idx] ?? ''; });
+      if (nicho && row.nicho !== nicho) continue;
+      itens.push(row);
+    }
+  }
+  itens.sort((a, b) => (parseFloat(b.nota) || 0) - (parseFloat(a.nota) || 0));
+  return { nichos, total: itens.length, cacando: !!nexoCacarProc, itens: itens.slice(0, limit) };
+}
+
+async function rotasNexo(req, res, u) {
+  const rota = u.pathname;
+  if (!rota.startsWith('/api/nexo/')) return false;
+  if (rota === '/api/nexo/estilos' && req.method === 'GET') {
+    json(res, 200, nexoEstilos());
+    return true;
+  }
+  if (rota === '/api/nexo/outliers' && req.method === 'GET') {
+    const nicho = u.searchParams.get('nicho') || '';
+    const limit = Math.min(100, Math.max(1, Number(u.searchParams.get('limit') || 50)));
+    json(res, 200, nexoOutliers(nicho || null, limit));
+    return true;
+  }
+  if (rota === '/api/nexo/jobs' && req.method === 'GET') {
+    json(res, 200, { ocupado: !!nexoRenderProc, cacando: !!nexoCacarProc, jobs: lerJson(NEXO_JOBS, []) });
+    return true;
+  }
+  if (rota === '/api/nexo/video' && req.method === 'GET') {
+    const rel = String(u.searchParams.get('arquivo') || '').replace(/^\/+/, '');
+    if (!rel.startsWith('videos/') || rel.includes('..') || !/\.mp4$/i.test(rel)) {
+      json(res, 400, { erro: 'Caminho de vídeo inválido' });
+      return true;
+    }
+    servirVideo(req, res, rel);
+    return true;
+  }
+  if (rota === '/api/nexo/cacar' && req.method === 'POST') {
+    if (nexoCacarProc) { json(res, 409, { erro: 'Já existe uma busca de outliers rodando.' }); return true; }
+    const b = await corpo(req);
+    const nicho = String(b.nicho || '').trim();
+    const janela = ['hora', 'hoje', 'semana', 'mes', 'ano'].includes(b.janela) ? b.janela : 'semana';
+    if (!/^[a-z0-9_-]{1,40}$/.test(nicho)) { json(res, 400, { erro: 'Nicho inválido' }); return true; }
+    const p = spawn('python3', [path.join(RAIZ, 'ferramentas', 'nexo.py'), 'cacar', nicho, '--janela', janela, '--top', '15'], { cwd: RAIZ, stdio: 'ignore' });
+    nexoCacarProc = p;
+    p.on('exit', () => { if (nexoCacarProc === p) nexoCacarProc = null; });
+    p.on('error', () => { if (nexoCacarProc === p) nexoCacarProc = null; });
+    json(res, 202, { ok: true, nicho, janela });
+    return true;
+  }
+  if (rota === '/api/nexo/produzir' && req.method === 'POST') {
+    if (nexoRenderProc) { json(res, 409, { erro: 'Já existe um render em andamento (limite: 1 por vez para proteger seu PC).' }); return true; }
+    const b = await corpo(req);
+    const estilo = String(b.estilo || '').trim();
+    if (!/^[a-z0-9_-]{1,40}$/.test(estilo) || estilo === 'tiao_3d') {
+      json(res, 400, { erro: 'Estilo HyperFrames inválido para produção direta.' });
+      return true;
+    }
+    const resolucao = b.resolucao === '1080p' ? '1080p' : '720p';
+    const qualidade = b.qualidade === 'standard' ? 'standard' : 'draft';
+    const canal = /^[a-z0-9_-]{1,40}$/.test(String(b.canal || '')) ? String(b.canal) : 'nexo';
+    const voz = /^[A-Za-z0-9_-]{2,30}$/.test(String(b.voz || '')) ? String(b.voz) : 'Fenrir';
+    const texto = typeof b.texto === 'string' ? b.texto.trim().slice(0, 1200) : '';
+    const vars = (b.vars && typeof b.vars === 'object' && !Array.isArray(b.vars)) ? b.vars : {};
+    const jobId = `nexo-${Date.now()}-${estilo}`;
+    const args = [
+      path.join(RAIZ, 'ferramentas', 'nexo.py'), 'produzir',
+      '--estilo', estilo,
+      '--vars', JSON.stringify(vars),
+      '--canal', canal,
+      '--voz', voz,
+      '--resolucao', resolucao,
+      '--qualidade', qualidade,
+      '--job-id', jobId,
+    ];
+    if (texto) args.push('--texto', texto);
+    const p = spawn('python3', args, { cwd: RAIZ, stdio: 'ignore' });
+    nexoRenderProc = p;
+    p.on('exit', () => { if (nexoRenderProc === p) nexoRenderProc = null; });
+    p.on('error', () => { if (nexoRenderProc === p) nexoRenderProc = null; });
+    json(res, 202, { ok: true, job_id: jobId });
+    return true;
+  }
+  if (rota === '/api/nexo/lote' && req.method === 'POST') {
+    if (nexoRenderProc) { json(res, 409, { erro: 'Já existe um render em andamento (limite: 1 por vez).' }); return true; }
+    const b = await corpo(req);
+    const estilo = String(b.estilo || '').trim();
+    if (!/^[a-z0-9_-]{1,40}$/.test(estilo) || estilo === 'tiao_3d') {
+      json(res, 400, { erro: 'Estilo inválido para lote.' });
+      return true;
+    }
+    if (!Array.isArray(b.rows) || !b.rows.length || b.rows.length > 20) {
+      json(res, 400, { erro: 'Envie de 1 a 20 linhas no lote.' });
+      return true;
+    }
+    const canal = /^[a-z0-9_-]{1,40}$/.test(String(b.canal || '')) ? String(b.canal) : 'nexo';
+    const jobId = `nexo-lote-${Date.now()}-${estilo}`;
+    const loteDir = path.join(RAIZ, 'videos', 'nexo', '_lotes');
+    fs.mkdirSync(loteDir, { recursive: true });
+    const lotePath = path.join(loteDir, `${jobId}.json`);
+    fs.writeFileSync(lotePath, JSON.stringify({ rows: b.rows }, null, 2));
+    const p = spawn('python3', [
+      path.join(RAIZ, 'ferramentas', 'nexo.py'), 'lote',
+      '--estilo', estilo,
+      '--arquivo', lotePath,
+      '--canal', canal,
+      '--job-id', jobId,
+    ], { cwd: RAIZ, stdio: 'ignore' });
+    nexoRenderProc = p;
+    p.on('exit', () => { if (nexoRenderProc === p) nexoRenderProc = null; });
+    p.on('error', () => { if (nexoRenderProc === p) nexoRenderProc = null; });
+    json(res, 202, { ok: true, job_id: jobId });
+    return true;
+  }
+  json(res, 404, { erro: 'Rota Nexo não encontrada' });
+  return true;
+}
+
 // ---------- servidor ----------
 const HTML = path.join(AQUI, 'index.html');
 export async function atender(req, res) {
@@ -508,6 +702,7 @@ export async function atender(req, res) {
     if (u.pathname === '/api/modo') return json(res, 200, { espelho: ESPELHO });
     if (ESPELHO && req.method !== 'GET' && req.method !== 'HEAD') return json(res, 403, { erro: 'Espelho do celular: só leitura. Decida no PC.' });
     const nova = await rotasNovas(req,res,u,local); if (nova) return;
+    const nexo = await rotasNexo(req,res,u); if (nexo) return;
     if (req.method === 'POST' && ['/api/marca','/api/contas','/api/streamers','/api/meta/status'].includes(u.pathname)) return json(res,409,{erro:'Configuração antiga somente leitura. Use Configurações de contas.'});
     if (u.pathname === '/') { res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' }); return res.end(fs.readFileSync(HTML)); }
     if (u.pathname === '/api/ao-vivo') return json(res, 200, await aoVivo(u.searchParams.get('forcar') === '1'));

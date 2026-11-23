@@ -1,0 +1,5 @@
+{"rows": [
+  {"name": "a-chefe", "stage": "FASE 01 • LVL 99", "headline": "CHEFE SECRETO ACHADO", "dialog": "Você encontrou o item mais raro do mapa.", "accent": "#a855f7"},
+  {"name": "b-glitch", "stage": "BUG • PATCH 1.0", "headline": "GLITCH DE DINHEIRO", "dialog": "Os jogadores quebraram a economia hoje.", "accent": "#22c55e"},
+  {"name": "c-final", "stage": "FINAL VERDADEIRO", "headline": "NINGUÉM ZEROU ASSIM", "dialog": "Um único detalhe muda o final inteiro.", "accent": "#f97316"}
+]}

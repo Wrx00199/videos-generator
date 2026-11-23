@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0c0f">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjRkZDNDAwIi8+PHN0b3Agb2Zmc2V0PSIuMzUiIHN0b3AtY29sb3I9IiNGRkQ4NEQiLz48c3RvcCBvZmZzZXQ9Ii43IiBzdG9wLWNvbG9yPSIjRkZGM0M0Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRkZGRkZGIi8+PC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJnMiIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI0ZGRTA2NiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0ZGOUUwMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgo8cG9seWdvbiBwb2ludHM9IjI1NiwyMiA0NjAsMTM5IDQ2MCwzNzMgMjU2LDQ5MCA1MiwzNzMgNTIsMTM5IiBmaWxsPSJub25lIiBzdHJva2U9InVybCgjZzIpIiBzdHJva2Utd2lkdGg9IjE2IiBzdHJva2UtbGluZWpvaW49Im1pdGVyIi8+Cjxwb2x5Z29uIHBvaW50cz0iMjU2LDYyIDQyNiwxNjAgNDI2LDM1MiAyNTYsNDUwIDg2LDM1MiA4NiwxNjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNnMikiIHN0cm9rZS13aWR0aD0iNCIgb3BhY2l0eT0iLjc1Ii8+CjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEyMy41LDM1MS4wKSI+PGcgZmlsbD0iIzAwMCIgZmlsbC1vcGFjaXR5PSIuNTUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQsNSkiPjxwYXRoIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMCwwKSBzY2FsZSgwLjEwODAsLTAuMTA4MCkiIGQ9Ik0yMTYgMCAyNyAxNzYwSDM3MUw0NjggNjQ5TDU2NyAxNzYwSDg5NUw5ODkgNjQ5TDEwODMgMTc2MEgxNDMxTDEyMzkgMEg4MTdMNzI5IDg0N0w2NDUgMFoiLz48cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNTkuNiwwKSBzY2FsZSgwLjEwODAsLTAuMTA4MCkiIGQ9Ik03OCAwVjE3NjBINjE4UTc1MyAxNzYwIDgyMi4wIDE2OTguNVE4OTEgMTYzNyA5MTQuNSAxNTI2LjVROTM4IDE0MTYgOTM4IDEyNjdROTM4IDExMjMgOTAxLjUgMTAzNy4wUTg2NSA5NTEgNzY0IDkxOFE4NDcgOTAxIDg4MC41IDgzNS41UTkxNCA3NzAgOTE0IDY2NlYwSDU2N1Y2ODlRNTY3IDc2NiA1MzUuNSA3ODQuNVE1MDQgODAzIDQzNCA4MDNWMFpNNDM2IDExMDhINTIxUTU5NCAxMTA4IDU5NCAxMjY3UTU5NCAxMzcwIDU3OC4wIDE0MDIuMFE1NjIgMTQzNCA1MTggMTQzNEg0MzZaIi8+PC9nPjxnIGZpbGw9InVybCgjZykiPjxwYXRoIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMCwwKSBzY2FsZSgwLjEwODAsLTAuMTA4MCkiIGQ9Ik0yMTYgMCAyNyAxNzYwSDM3MUw0NjggNjQ5TDU2NyAxNzYwSDg5NUw5ODkgNjQ5TDEwODMgMTc2MEgxNDMxTDEyMzkgMEg4MTdMNzI5IDg0N0w2NDUgMFoiLz48cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNTkuNiwwKSBzY2FsZSgwLjEwODAsLTAuMTA4MCkiIGQ9Ik03OCAwVjE3NjBINjE4UTc1MyAxNzYwIDgyMi4wIDE2OTguNVE4OTEgMTYzNyA5MTQuNSAxNTI2LjVROTM4IDE0MTYgOTM4IDEyNjdROTM4IDExMjMgOTAxLjUgMTAzNy4wUTg2NSA5NTEgNzY0IDkxOFE4NDcgOTAxIDg4MC41IDgzNS41UTkxNCA3NzAgOTE0IDY2NlYwSDU2N1Y2ODlRNTY3IDc2NiA1MzUuNSA3ODQuNVE1MDQgODAzIDQzNCA4MDNWMFpNNDM2IDExMDhINTIxUTU5NCAxMTA4IDU5NCAxMjY3UTU5NCAxMzcwIDU3OC4wIDE0MDIuMFE1NjIgMTQzNCA1MTggMTQzNEg0MzZaIi8+PC9nPjwvZz48L3N2Zz4="><title>Painel GTA 6 — Cortes</title>
+<style>
+/* ===== WR Painel — tema único (tokens + shell + componentes). Um só sistema de layout para todas as abas. ===== */
+:root{
+  --bg:#0b0c0f;--card:#13151a;--card2:#1b1e25;--bd:rgba(255,255,255,.09);--bd2:rgba(255,255,255,.18);
+  --tx:#f5f5f7;--mut:#a7abb8;--mut2:#8a8f9d;
+  --ac:#ffc400;--ac-ink:#1a1300;--ok:#35d07f;--no:#ff6166;--wa:#ffb21e;--live:#ff3b47;
+  --tw:#9146ff;--ki:#53fc18;--yt:#ff3030;
+  --sb:248px;--sbr:72px;--nav-h:68px;--top-h:60px;--r:12px;--r-sm:8px;
+  --font:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{color-scheme:dark}
+body{--w:var(--sb);margin:0;background:var(--bg);color:var(--tx);font:14px/1.5 var(--font);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body.nav-recolhida{--w:var(--sbr)}
+
+/* ---- menu lateral (PC) / barra inferior (celular) ---- */
+#sb{position:fixed;inset:0 auto 0 0;width:var(--w);background:#0f1115;border-right:1px solid var(--bd);display:flex;flex-direction:column;padding:16px 12px;z-index:30;transition:width .18s ease;overflow:hidden}
+#fechar-menu{display:none}
+#sb h1{display:flex;align-items:center;gap:12px;margin:0 4px 20px;height:44px;font-size:15px;font-weight:800;letter-spacing:.08em;color:var(--tx);white-space:nowrap}
+#sb h1 img{width:38px!important;height:38px!important;flex:none}
+#sb nav{display:flex;flex-direction:column;gap:2px}
+#sb nav button{position:relative;display:flex;align-items:center;gap:12px;height:42px;padding:0 12px;background:none;border:0;border-radius:10px;color:var(--mut);cursor:pointer;font:600 14px var(--font);text-align:left;white-space:nowrap}
+#sb nav button:hover{background:rgba(255,255,255,.06);color:var(--tx)}
+#sb nav button.on{background:rgba(255,196,0,.13);color:var(--ac)}
+#sb nav button.on::before{content:"";position:absolute;left:-12px;top:9px;bottom:9px;width:3px;border-radius:0 3px 3px 0;background:var(--ac)}
+#sb nav .i{width:20px;height:20px;flex:none;display:grid;place-items:center}
+#sb nav .i svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#sb nav .n{margin-left:auto;min-width:24px;text-align:center;background:rgba(255,255,255,.09);border-radius:999px;padding:1px 8px;font:700 11px var(--font);color:var(--tx)}
+#sb nav button.on .n{background:var(--ac);color:var(--ac-ink)}
+#sb .sep{height:1px;background:var(--bd);margin:12px 4px}
+#saude{margin-top:auto;font-size:12px;color:var(--mut);padding:12px 8px 4px;white-space:nowrap}
+#saude .barra{height:6px;background:var(--card2);border-radius:4px;margin:4px 0 10px;overflow:hidden}#saude .barra i{display:block;height:100%;background:var(--ok)}
+
+/* ---- topo ---- */
+#top{position:sticky;top:0;z-index:20;margin-left:var(--w);height:var(--top-h);display:flex;align-items:center;gap:12px;padding:0 24px;background:rgba(11,12,15,.88);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--bd);transition:margin-left .18s ease}
+#top>img,#top>b,#top #stat{display:none}
+#pagina{flex:1;min-width:0;font:700 17px var(--font);letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#top button{display:grid;place-items:center;width:40px;height:40px;padding:0;background:var(--card);border:1px solid var(--bd);color:var(--tx);border-radius:10px;font-size:16px;cursor:pointer;flex:none}
+#top button:hover{border-color:var(--bd2)}
+#menu{flex-direction:column;gap:4px}
+#menu span{display:block;height:2px;width:18px;background:var(--mut);border-radius:2px}
+#seletor-conta{margin-left:auto;max-width:46vw;height:40px}
+.selo{display:none;align-items:center;gap:6px;height:28px;padding:0 10px;border:1px solid rgba(255,196,0,.4);border-radius:999px;color:var(--ac);font:700 11px var(--font);letter-spacing:.05em;white-space:nowrap}
+body.espelho .selo{display:inline-flex}
+
+main{margin-left:var(--w);padding:24px;max-width:1560px;transition:margin-left .18s ease}
+#aviso-global{color:var(--ac);position:sticky;top:var(--top-h);background:var(--bg);z-index:10;padding:8px 0;min-height:0;overflow-wrap:anywhere}#aviso-global:empty{padding:0}
+.tab{display:none}.tab.on{display:block}
+.tab>h2:first-child{display:none}
+h2{margin:0 0 14px;font-size:18px;font-weight:700;letter-spacing:-.01em}
+
+/* ---- componentes ---- */
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:16px;color:var(--mut)}
+.chip{display:inline-flex;align-items:center;gap:6px;height:34px;background:var(--card);border:1px solid var(--bd);border-radius:999px;padding:0 14px;cursor:pointer;color:var(--tx);font:600 13px var(--font)}
+.chip:hover{border-color:var(--bd2)}
+.chip.on{background:rgba(255,196,0,.14);border-color:rgba(255,196,0,.55);color:var(--ac)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:border-color .15s}
+.card:hover{border-color:var(--bd2)}
+.th{position:relative;aspect-ratio:16/9;background:#000 center/cover no-repeat}
+.th .v{position:absolute;right:8px;bottom:8px;background:rgba(0,0,0,.75);padding:2px 8px;border-radius:6px;font:700 12px var(--font)}
+.th .p{position:absolute;left:8px;top:8px;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;color:#000}
+.th .q{position:absolute;left:8px;bottom:8px;background:var(--live);color:#fff;padding:2px 8px;border-radius:6px;font-size:12px;font-weight:800}
+.th .f{position:absolute;right:8px;top:8px;background:rgba(0,0,0,.65);border:0;border-radius:50%;width:32px;height:32px;font-size:16px;cursor:pointer;color:#fff}
+.th .f.on{color:var(--wa)}
+.p.twitch{background:var(--tw);color:#fff!important}.p.kick{background:var(--ki)}.p.youtube{background:var(--yt);color:#fff!important}
+.cb{padding:14px;display:flex;flex-direction:column;gap:8px;flex:1}
+.nm{font-weight:700;font-size:15px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.tt{color:var(--mut);font-size:13px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tag{font-size:11px;font-weight:600;padding:2px 8px;border-radius:6px;background:var(--card2);border:1px solid var(--bd);color:var(--mut)}
+.tag.br{color:var(--ok);border-color:rgba(53,208,127,.4)}.tag.en{color:#6cb8ff;border-color:rgba(108,184,255,.4)}.tag.vip{color:var(--wa);border-color:rgba(255,178,30,.4)}.tag.rec{color:var(--no);border-color:rgba(255,97,102,.45)}
+.acts{display:flex;gap:8px;margin-top:auto;flex-wrap:wrap}
+button.b,a.b{flex:1;display:inline-flex;align-items:center;justify-content:center;min-height:38px;text-align:center;text-decoration:none;background:var(--card2);color:var(--tx);border:1px solid var(--bd2);border-radius:10px;padding:0 14px;cursor:pointer;font:600 13px var(--font)}
+button.b:hover,a.b:hover{border-color:var(--tx)}
+button.b.ok{background:var(--ok);border-color:var(--ok);color:#04210f;font-weight:700}
+button.b.no{background:transparent;border-color:var(--bd2);color:var(--mut)}button.b.no:hover{border-color:var(--no);color:var(--no)}
+button.b.go{background:var(--ac);color:var(--ac-ink);border-color:var(--ac);font-weight:700}
+button.b:disabled{opacity:.4;cursor:not-allowed}
+video{width:100%;aspect-ratio:9/16;max-height:520px;background:#000;display:block;object-fit:contain}
+.rev{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.estado{position:absolute;left:8px;top:8px;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:800;z-index:2}
+.e-revisao{background:var(--wa);color:#000}.e-aprovado{background:var(--ok);color:#000}.e-recusado{background:var(--no);color:#000}
+.novo{animation:pisca 2s 2}@keyframes pisca{50%{box-shadow:0 0 0 3px var(--ac)}}
+.pipe{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:12px 14px;margin-bottom:16px;font-size:13px}
+.pipe b{color:var(--ac)}.pipe pre{margin:8px 0 0;color:var(--mut);white-space:pre-wrap;word-break:break-word;font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;max-height:120px;overflow:auto}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--live);margin-right:6px;animation:p 1.2s infinite}@keyframes p{50%{opacity:.25}}
+.fonte{display:inline-block;margin-right:14px;color:var(--mut)}.fonte.err{color:var(--no)}
+table{width:100%;border-collapse:collapse}td,th{padding:10px 8px;border-bottom:1px solid var(--bd);text-align:left;vertical-align:top;font-size:13px}th{color:var(--mut2);font:600 11px var(--font);text-transform:uppercase;letter-spacing:.06em}
+.feat{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:20px;margin-bottom:16px}
+.feat h3{margin:0 0 8px;font-size:15px;font-weight:700;color:var(--tx)}.feat h4{margin:14px 0 4px;font-size:13px}.feat li{margin:4px 0}.mut{color:var(--mut)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px}.cols>*{min-width:0}
+label{display:block;margin:12px 0 4px;color:var(--mut);font-size:12px;font-weight:600}
+input[type=text],input[type=url],input[type=password],select,textarea{background:var(--card2);color:var(--tx);border:1px solid var(--bd);border-radius:10px;padding:0 12px;min-height:40px;font:inherit}
+input[type=text],input[type=url],input[type=password],textarea{width:100%}
+textarea{min-height:84px;padding:10px 12px}
+.ck{display:flex;gap:8px;align-items:center;padding:4px 0}.ck i{font-style:normal}.sim{color:var(--ok)}.nao{color:var(--no)}
+button,a,input,select,textarea{touch-action:manipulation}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.uploads{display:flex;gap:8px;margin:8px 0;flex-wrap:wrap}
+.calendario{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}
+.dia{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:14px;display:flex;flex-direction:column}.dia b{font-size:26px;font-weight:800;color:var(--ac)}.dia.atingida{border-color:rgba(53,208,127,.55)}.dia small{color:var(--mut)}
+.sinal{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}.verde{background:var(--ok)}.vermelho{background:var(--no)}
+#bots{display:flex;flex-wrap:wrap;gap:20px}
+.plataforma{display:flex;align-items:center;gap:10px;margin:12px 0}.plataforma label{min-width:100px;margin:0}.plataforma input[type=text]{max-width:380px}.plataforma select{width:auto}
+
+/* ---- PC: menu recolhido vira trilho de ícones ---- */
+@media(min-width:821px){
+  body.nav-recolhida #sb h1{font-size:0;gap:0;justify-content:center;margin-left:0;margin-right:0}
+  body.nav-recolhida #sb nav button{font-size:0;gap:0;justify-content:center;padding:0}
+  body.nav-recolhida #sb nav .n,body.nav-recolhida #saude{display:none}
+  body.nav-recolhida #sb nav button.on::before{left:-12px}
+}
+
+/* ---- celular: barra inferior com rolagem lateral, conteúdo em coluna única ---- */
+@media(max-width:820px){
+  body{--w:0px}
+  #sb{inset:auto 0 0 0;width:auto;height:var(--nav-h);flex-direction:row;padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px));border-right:0;border-top:1px solid var(--bd);overflow-x:auto;overflow-y:hidden;transition:none;scrollbar-width:none;background:rgba(15,17,21,.97)}
+  #sb::-webkit-scrollbar{display:none}
+  #sb h1{display:none!important}
+  #saude,#sb .sep{display:none}
+  #sb nav{flex-direction:row;gap:4px;min-width:max-content}
+  #sb nav button{flex-direction:column;justify-content:center;gap:2px;height:54px;min-width:72px;padding:0 6px;font-size:11px;text-align:center}
+  #sb nav button.on::before{left:16px;right:16px;top:0;bottom:auto;width:auto;height:3px;border-radius:0 0 3px 3px}
+  #sb nav .n{position:absolute;top:1px;right:10px;min-width:18px;padding:0 5px;font-size:10px;margin:0}
+  #top{margin-left:0;padding:0 14px;gap:10px}
+  #top>img{display:block;width:30px;height:30px;flex:none}
+  #top #menu{display:none}
+  #seletor-conta{font-size:13px;max-width:42vw;min-width:0}
+  #top #configurar{width:40px}
+  main{margin-left:0;padding:16px 14px calc(var(--nav-h) + 28px)}
+  .grid,.rev{grid-template-columns:1fr}
+  .calendario{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .plataforma{flex-wrap:wrap}
+  .feat{padding:16px;overflow-wrap:anywhere}
+}
+@media(min-width:561px) and (max-width:820px){.grid{grid-template-columns:1fr 1fr}.rev{grid-template-columns:1fr 1fr}}
+
+.cb a.p{background:var(--card2)!important;color:var(--tx)!important;border:1px solid var(--bd);border-left:3px solid var(--mut);padding:3px 9px!important;border-radius:6px;font:600 12px var(--font)}
+.cb a.p.twitch{border-left-color:var(--tw)}.cb a.p.kick{border-left-color:var(--ki)}.cb a.p.youtube{border-left-color:var(--yt)}
+/* ---- modo espelho (celular): só leitura, decisões são no PC ---- */
+body.espelho button.b.ok,body.espelho button.b.no,body.espelho button.b.go,body.espelho [data-g],body.espelho .th .f,body.espelho #salvarContas,body.espelho input[type=file]{display:none!important}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+</style>
+</head>
+<body>
+<aside id="sb">  <h1 style="display:flex;align-items:center;gap:10px"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjRkZDNDAwIi8+PHN0b3Agb2Zmc2V0PSIuMzUiIHN0b3AtY29sb3I9IiNGRkQ4NEQiLz48c3RvcCBvZmZzZXQ9Ii43IiBzdG9wLWNvbG9yPSIjRkZGM0M0Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRkZGRkZGIi8+PC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJnMiIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI0ZGRTA2NiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0ZGOUUwMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgo8cG9seWdvbiBwb2ludHM9IjI1NiwyMiA0NjAsMTM5IDQ2MCwzNzMgMjU2LDQ5MCA1MiwzNzMgNTIsMTM5IiBmaWxsPSJub25lIiBzdHJva2U9InVybCgjZzIpIiBzdHJva2Utd2lkdGg9IjE2IiBzdHJva2UtbGluZWpvaW49Im1pdGVyIi8+Cjxwb2x5Z29uIHBvaW50cz0iMjU2LDYyIDQyNiwxNjAgNDI2LDM1MiAyNTYsNDUwIDg2LDM1MiA4NiwxNjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNnMikiIHN0cm9rZS13aWR0aD0iNCIgb3BhY2l0eT0iLjc1Ii8+CjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEyMy41LDM1MS4wKSI+PGcgZmlsbD0iIzAwMCIgZmlsbC1vcGFjaXR5PSIuNTUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQsNSkiPjxwYXRoIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMCwwKSBzY2FsZSgwLjEwODAsLTAuMTA4MCkiIGQ9Ik0yMTYgMCAyNyAxNzYwSDM3MUw0NjggNjQ5TDU2NyAxNzYwSDg5NUw5ODkgNjQ5TDEwODMgMTc2MEgxNDMxTDEyMzkgMEg4MTdMNzI5IDg0N0w2NDUgMFoiLz48cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNTkuNiwwKSBzY2FsZSgwLjEwODAsLTAuMTA4MCkiIGQ9Ik03OCAwVjE3NjBINjE4UTc1MyAxNzYwIDgyMi4wIDE2OTguNVE4OTEgMTYzNyA5MTQuNSAxNTI2LjVROTM4IDE0MTYgOTM4IDEyNjdROTM4IDExMjMgOTAxLjUgMTAzNy4wUTg2NSA5NTEgNzY0IDkxOFE4NDcgOTAxIDg4MC41IDgzNS41UTkxNCA3NzAgOTE0IDY2NlYwSDU2N1Y2ODlRNTY3IDc2NiA1MzUuNSA3ODQuNVE1MDQgODAzIDQzNCA4MDNWMFpNNDM2IDExMDhINTIxUTU5NCAxMTA4IDU5NCAxMjY3UTU5NCAxMzcwIDU3OC4wIDE0MDIuMFE1NjIgMTQzNCA1MTggMTQzNEg0MzZaIi8+PC9nPjxnIGZpbGw9InVybCgjZykiPjxwYXRoIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMCwwKSBzY2FsZSgwLjEwODAsLTAuMTA4MCkiIGQ9Ik0yMTYgMCAyNyAxNzYwSDM3MUw0NjggNjQ5TDU2NyAxNzYwSDg5NUw5ODkgNjQ5TDEwODMgMTc2MEgxNDMxTDEyMzkgMEg4MTdMNzI5IDg0N0w2NDUgMFoiLz48cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNTkuNiwwKSBzY2FsZSgwLjEwODAsLTAuMTA4MCkiIGQ9Ik03OCAwVjE3NjBINjE4UTc1MyAxNzYwIDgyMi4wIDE2OTguNVE4OTEgMTYzNyA5MTQuNSAxNTI2LjVROTM4IDE0MTYgOTM4IDEyNjdROTM4IDExMjMgOTAxLjUgMTAzNy4wUTg2NSA5NTEgNzY0IDkxOFE4NDcgOTAxIDg4MC41IDgzNS41UTkxNCA3NzAgOTE0IDY2NlYwSDU2N1Y2ODlRNTY3IDc2NiA1MzUuNSA3ODQuNVE1MDQgODAzIDQzNCA4MDNWMFpNNDM2IDExMDhINTIxUTU5NCAxMTA4IDU5NCAxMjY3UTU5NCAxMzcwIDU3OC4wIDE0MDIuMFE1NjIgMTQzNCA1MTggMTQzNEg0MzZaIi8+PC9nPjwvZz48L3N2Zz4=" alt="WR" style="width:44px;height:44px"> ESTÚDIO WR</h1>
+  <nav id="nav"><button data-t="calendario"><span class="i"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>Calendário</button><button data-t="operacao"><span class="i"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>Bots / Referências</button><button data-t="config"><span class="i"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></span>Configurações</button>
+    <button data-t="link"><span class="i"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></span>Cortar por link</button>
+    <button data-t="vivo"><span class="i"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8a6 6 0 0 1 0 8.4M7.8 16.2a6 6 0 0 1 0-8.4M19 5a10 10 0 0 1 0 14M5 19a10 10 0 0 1 0-14"/></svg></span>Ao vivo<span class="n" id="n-vivo">–</span></button>
+    <button data-t="rev"><span class="i"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9.5v5l4.5-2.5z"/></svg></span>Revisão<span class="n" id="n-rev">–</span></button>
+    <button data-t="meta" hidden style="display:none"><span class="i"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></span>Fila do Meta<span class="n" id="n-meta">–</span></button>
+    <button data-t="placar"><span class="i"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0zM17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg></span>Placar</button>
+    <div class="sep"></div>
+    <button data-t="contas" hidden style="display:none"><span class="i"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="m11 12 9-9M16 7l3 3"/></svg></span>Contas (postar)</button>
+    <button data-t="marca" hidden style="display:none"><span class="i"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="8" cy="10" r="1"/><circle cx="12" cy="7.5" r="1"/><circle cx="16" cy="10" r="1"/></svg></span>Marca (logo e @)</button>
+    <button data-t="ajuda"><span class="i"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 1-1 1.7M12 17h.01"/></svg></span>Ajuda / IA</button>
+  </nav>
+  <div id="saude">carregando…</div>
+</aside>
+<div id="top"><button id="menu" aria-label="Abrir ou fechar menu" aria-expanded="false" aria-controls="sb"><span></span><span></span><span></span></button><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjRkZDNDAwIi8+PHN0b3Agb2Zmc2V0PSIuMzUiIHN0b3AtY29sb3I9IiNGRkQ4NEQiLz48c3RvcCBvZmZzZXQ9Ii43IiBzdG9wLWNvbG9yPSIjRkZGM0M0Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRkZGRkZGIi8+PC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJnMiIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI0ZGRTA2NiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0ZGOUUwMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPgo8cG9seWdvbiBwb2ludHM9IjI1NiwyMiA0NjAsMTM5IDQ2MCwzNzMgMjU2LDQ5MCA1MiwzNzMgNTIsMTM5IiBmaWxsPSJub25lIiBzdHJva2U9InVybCgjZzIpIiBzdHJva2Utd2lkdGg9IjE2IiBzdHJva2UtbGluZWpvaW49Im1pdGVyIi8+Cjxwb2x5Z29uIHBvaW50cz0iMjU2LDYyIDQyNiwxNjAgNDI2LDM1MiAyNTYsNDUwIDg2LDM1MiA4NiwxNjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0idXJsKCNnMikiIHN0cm9rZS13aWR0aD0iNCIgb3BhY2l0eT0iLjc1Ii8+CjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEyMy41LDM1MS4wKSI+PGcgZmlsbD0iIzAwMCIgZmlsbC1vcGFjaXR5PSIuNTUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQsNSkiPjxwYXRoIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMCwwKSBzY2FsZSgwLjEwODAsLTAuMTA4MCkiIGQ9Ik0yMTYgMCAyNyAxNzYwSDM3MUw0NjggNjQ5TDU2NyAxNzYwSDg5NUw5ODkgNjQ5TDEwODMgMTc2MEgxNDMxTDEyMzkgMEg4MTdMNzI5IDg0N0w2NDUgMFoiLz48cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNTkuNiwwKSBzY2FsZSgwLjEwODAsLTAuMTA4MCkiIGQ9Ik03OCAwVjE3NjBINjE4UTc1MyAxNzYwIDgyMi4wIDE2OTguNVE4OTEgMTYzNyA5MTQuNSAxNTI2LjVROTM4IDE0MTYgOTM4IDEyNjdROTM4IDExMjMgOTAxLjUgMTAzNy4wUTg2NSA5NTEgNzY0IDkxOFE4NDcgOTAxIDg4MC41IDgzNS41UTkxNCA3NzAgOTE0IDY2NlYwSDU2N1Y2ODlRNTY3IDc2NiA1MzUuNSA3ODQuNVE1MDQgODAzIDQzNCA4MDNWMFpNNDM2IDExMDhINTIxUTU5NCAxMTA4IDU5NCAxMjY3UTU5NCAxMzcwIDU3OC4wIDE0MDIuMFE1NjIgMTQzNCA1MTggMTQzNEg0MzZaIi8+PC9nPjxnIGZpbGw9InVybCgjZykiPjxwYXRoIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMCwwKSBzY2FsZSgwLjEwODAsLTAuMTA4MCkiIGQ9Ik0yMTYgMCAyNyAxNzYwSDM3MUw0NjggNjQ5TDU2NyAxNzYwSDg5NUw5ODkgNjQ5TDEwODMgMTc2MEgxNDMxTDEyMzkgMEg4MTdMNzI5IDg0N0w2NDUgMFoiLz48cGF0aCB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNTkuNiwwKSBzY2FsZSgwLjEwODAsLTAuMTA4MCkiIGQ9Ik03OCAwVjE3NjBINjE4UTc1MyAxNzYwIDgyMi4wIDE2OTguNVE4OTEgMTYzNyA5MTQuNSAxNTI2LjVROTM4IDE0MTYgOTM4IDEyNjdROTM4IDExMjMgOTAxLjUgMTAzNy4wUTg2NSA5NTEgNzY0IDkxOFE4NDcgOTAxIDg4MC41IDgzNS41UTkxNCA3NzAgOTE0IDY2NlYwSDU2N1Y2ODlRNTY3IDc2NiA1MzUuNSA3ODQuNVE1MDQgODAzIDQzNCA4MDNWMFpNNDM2IDExMDhINTIxUTU5NCAxMTA4IDU5NCAxMjY3UTU5NCAxMzcwIDU3OC4wIDE0MDIuMFE1NjIgMTQzNCA1MTggMTQzNEg0MzZaIi8+PC9nPjwvZz48L3N2Zz4=" alt="WR" style="width:30px;height:30px;margin:0 8px 0 4px;vertical-align:middle"><b style="color:var(--ac)">ESTÚDIO WR</b><span id="pagina"></span><span class="selo" id="selo-espelho" title="Este painel só mostra. Aprovar e recusar é no PC.">ESPELHO · SÓ LEITURA</span><span class="mut" id="stat" style="margin-left:auto"></span><select id="seletor-conta" aria-label="Conta selecionada"></select><button id="configurar" aria-label="Configurações">⚙</button></div>
+<main><div id="aviso-global" role="status" aria-live="polite"></div>
+
+<section class="tab on" id="t-link">
+  <h2>Cortar por link</h2>
+  <div class="cols">
+    <div class="feat"><h3>🔗 Colar um link</h3>
+      <p class="mut">Cole o link de uma live <b>ao vivo</b> ou de um vídeo/replay <b>offline</b>. O painel descobre sozinho a plataforma e o tipo.</p>
+      <input type="text" id="l-url" placeholder="https://kick.com/…  ·  https://twitch.tv/…  ·  https://youtube.com/watch?v=…" autocomplete="off">
+      <p style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><button class="b go" id="l-det" style="flex:none;padding:8px 18px">Detectar</button><span class="mut">Suportado por enquanto: Twitch · Kick · YouTube</span></p>
+      <div id="l-res"></div>
+    </div>
+    <div class="feat"><h3>As duas formas de gerar cortes</h3>
+      <h4>🤖 Modo robô (automático)</h4>
+      <p class="mut" style="margin:0">Na aba <b>Ao vivo</b> o radar mostra quem está no ar. Clique em <b>Clipar</b> (ou favorite o streamer) e o robô grava, escolhe os melhores momentos e manda pra <b>Revisão</b>.</p>
+      <h4>🔗 Por link (esta aba)</h4>
+      <p class="mut" style="margin:0"><b>Ao vivo:</b> grava a partir de agora, em pedaços de 5 min.<br><b>Offline/replay:</b> baixa só o trecho que você escolher (minutos de/até) e analisa. Os cortes caem na <b>Revisão</b> com nota e legenda.</p>
+    </div>
+  </div>
+  <div id="l-jobs" class="feat" style="display:none"></div>
+  <div id="l-clipes-box" style="display:none"><h3 style="margin:6px 0">🎬 Cortes deste trabalho <span class="mut" style="font-size:12px">(os melhores primeiro; os de nota baixa vêm marcados)</span></h3><div class="grid rev" id="l-clipes"></div></div>
+</section>
+
+<section class="tab" id="t-vivo"><p class="mut">Radar de quem está no ar. Clique em Clipar para o PC gravar e cortar os melhores momentos.</p>
+  <div class="bar" id="fontes"></div>
+  <div class="bar">
+    <span class="chip on" data-f="todos">Todos</span><span class="chip" data-f="br">🇧🇷 BR</span><span class="chip" data-f="en">🇺🇸 Gringos (EN)</span><span class="chip" data-f="outro">🌍 Outros</span>
+    <span style="width:8px"></span>
+    <span class="chip on" data-p="todas">Todas</span><span class="chip" data-p="twitch">Twitch</span><span class="chip" data-p="kick">Kick</span><span class="chip" data-p="youtube">YouTube</span>
+    <span style="width:8px"></span>
+    <span class="chip" id="soVip">⭐ VIPs</span><span class="chip" id="soFav">❤ Favoritos</span><span class="chip" id="ordCalor">🔥 Mais quentes</span>
+    <button class="chip" id="atualizar">↻ varrer</button><span class="chip" id="alertas">🔔 Alertas: off</span><span class="mut" id="statv"></span>
+  </div>
+  <div class="grid" id="lives"></div>
+</section>
+
+<section class="tab" id="t-rev">
+  <div class="pipe" id="pipe"></div>
+  <div class="bar">
+    <span class="chip on" data-s="revisao">⏳ Em revisão <b id="c-revisao">0</b></span>
+    <span class="chip" data-s="aprovado">✅ Aprovados <b id="c-aprovado">0</b></span>
+    <span class="chip" data-s="recusado">❌ Recusados <b id="c-recusado">0</b></span>
+    <span class="mut">atualiza a cada 30 s · atalhos: A aprova, R recusa, espaço toca</span>
+  </div>
+  <div class="grid rev" id="clipes"></div>
+</section>
+
+<section class="tab" id="t-meta">
+  <h2>Fila de postagem <span class="mut" id="metaTitulo" style="font-size:13px">(Instagram / Facebook)</span></h2>
+  <div class="bar"><span id="metaInfo"></span><a class="chip" id="abrirBS" target="_blank" rel="noopener" style="text-decoration:none">Abrir Meta Business Suite ↗</a></div>
+  <p class="mut">Tudo que você aprova na Revisão cai aqui com a legenda pronta e o próximo horário livre. Copie a legenda, agende no Business Suite e marque como agendado.</p>
+  <div class="feat" style="padding:0;overflow:auto"><table id="metaTab"></table></div>
+</section>
+
+<section class="tab" id="t-placar">
+  <h2>Placar da conta</h2>
+  <p class="mut">Decisões de revisão da conta selecionada. Aprovação não significa postagem.</p>
+  <div class="feat" style="padding:0;overflow:auto"><table id="placarTab"></table></div>
+</section>
+
+<section class="tab" id="t-contas">
+  <h2>Contas para postar</h2>
+  <div class="cols">
+    <div class="feat"><h3>Onde você posta</h3>
+      <label>Seu nome</label><input type="text" id="c-dono">
+      <label>Nome da página no Facebook</label><input type="text" id="c-pagina">
+      <label>Instagram (sem @)</label><input type="text" id="c-ig">
+      <label>Link do Meta Business Suite</label><input type="text" id="c-bs">
+      <label>Modelo de legenda — use {streamer} e {titulo}</label><textarea id="c-leg"></textarea>
+      <label>Horários de postagem (separe por vírgula, formato 19:00)</label><input type="text" id="c-hor">
+      <label style="display:flex;gap:8px;align-items:center;color:var(--tx);margin-top:16px"><input type="checkbox" id="c-tt"> Gerar também a versão para TikTok (sem logo e sem @)</label>
+      <div id="c-tt-box" style="display:none"><label>Modelo de legenda do TikTok — {streamer} e {titulo}</label><textarea id="c-ttleg"></textarea></div>
+      <p><button class="b go" id="salvarContas" style="width:auto;padding:8px 18px">Salvar</button> <span id="c-msg" class="mut"></span></p>
+      <p class="mut">Nenhuma senha fica salva aqui. O painel não posta sozinho: ele monta a fila (vídeo, legenda e horário) e você agenda no Meta Business Suite logado no seu navegador. O <b>logo e o @ que aparecem no vídeo</b> ficam na aba <b>Marca</b>.</p>
+    </div>
+    <div class="feat"><h3>Ambiente deste computador</h3><div id="checks"></div>
+      <h4 style="margin-top:14px">Desempenho do robô</h4><select id="d-perfil" style="background:var(--card2);color:var(--tx);border:1px solid var(--bd);border-radius:8px;padding:7px"><option value="auto">Automático (pelo hardware)</option><option value="qualidade">Qualidade (PC forte)</option><option value="equilibrado">Equilibrado (PC médio)</option><option value="leve">Leve (PC fraco)</option></select>
+      <p class="mut" id="d-desc" style="margin:6px 0 0"></p><p class="mut">Faltou algo? Rode o instalador de novo (<code>instalar.sh</code> ou <code>instalar.ps1</code>) ou peça pra sua IA corrigir (aba Ajuda / IA).</p></div>
+  </div>
+</section>
+
+<section class="tab" id="t-marca">
+  <h2>Marca: logo e @ no vídeo</h2>
+  <div class="cols">
+    <div class="feat"><h3>@ do vídeo</h3>
+      <label>@ que aparece no canto do vídeo (sem o @)</label><input type="text" id="m-nick" placeholder="meucanal">
+      <p><button class="b go" id="m-salvar" style="width:auto;padding:8px 18px">Salvar @</button> <span id="m-msg" class="mut"></span></p></div>
+    <div class="feat"><h3>Logo</h3><p class="mut">PNG, JPG ou WEBP, quadrado/redondo, até 4 MB. Aparece no canto do vídeo.</p>
+      <div id="m-logo-prev" style="margin:8px 0"></div><input type="file" id="m-logo" accept="image/png,image/jpeg,image/webp"></div>
+    <div class="feat"><h3>Capa</h3><p class="mut">Imagem 1080×1920 (Reels). Entregue separada do vídeo, na hora de postar.</p>
+      <div id="m-capa-prev" style="margin:8px 0"></div><input type="file" id="m-capa" accept="image/png,image/jpeg,image/webp"></div>
+  </div>
+</section>
+
+<section class="tab" id="t-ajuda">
+  <h2>Ajuda / IA</h2>
+  <p>Qualquer IA (ChatGPT, Claude, Gemini, Codex…) consegue instalar e conectar suas contas lendo o guia abaixo. Copie e cole no chat dela, ou deixe ela abrir o arquivo <code>AGENTS.md</code> da pasta do projeto.</p>
+  <p><button class="b go" id="copiarGuia" style="width:auto;padding:8px 18px">Copiar guia para a minha IA</button> <span id="g-msg" class="mut"></span></p>
+  <div class="feat"><pre id="guia" style="white-space:pre-wrap;margin:0;font:12px/1.5 ui-monospace,monospace;color:var(--mut);max-height:60vh;overflow:auto"></pre></div>
+</section>
+
+<section class="tab" id="t-calendario"><h2>Calendário da conta</h2><div class="feat"><h3 id="cal-aviso"></h3><p id="cal-meta"></p><p id="cal-horarios"></p></div><div id="cal-dias" class="calendario"></div></section>
+<section class="tab" id="t-operacao"><h2>Operação</h2><div class="feat"><h3>Bots · sinal a cada 30 s</h3><div id="bots"></div><p class="mut">Verde = log/lock recente (2 min). Vermelho = sem sinal recente; não confirma se o processo está vivo.</p></div><div class="feat"><h3>Fila única de render</h3><div id="render-fila"></div></div><div class="feat"><h3>Colar link de referência</h3><form id="referencia-form"><label for="ref-url">URL</label><input id="ref-url" type="url" required placeholder="https://…"><label for="ref-nota">Nota</label><textarea id="ref-nota" maxlength="2000"></textarea><button class="b go">Salvar como pendente</button></form><p class="mut">Os links ficam pendentes para análise.</p><div id="referencias-salvas"></div></div></section>
+<section class="tab" id="t-config"><h2>⚙ Configurações</h2><div class="cols"><div class="feat"><h3>Cofre · somente status</h3><div id="cofre"></div></div><div class="feat"><h3>Saúde do PC</h3><div id="pc-config"></div><h4>Acesso pelo celular</h4><p id="rede-status"></p><label for="rede-senha">Senha para ligar (mínimo 10 caracteres)</label><input type="password" id="rede-senha" autocomplete="new-password"><div class="acts"><button class="b go" id="rede-on">Ligar na LAN</button><button class="b" id="rede-off">Desligar</button></div><p id="rede-aviso" class="mut"></p><p class="mut">No celular, use o IP exibido e qualquer usuário com a senha definida. Nenhuma senha é salva em disco.</p></div></div>
+<div class="feat"><h3>Cadastro de contas</h3><label for="editor-selecao">Editar ou criar</label><select id="editor-selecao"></select><form id="conta-form"><div class="cols"><div><label for="ed-id">ID (letras minúsculas, números e _)</label><input type="text" id="ed-id" required pattern="[a-z0-9_]{1,60}"><label for="ed-nome">Nome</label><input type="text" id="ed-nome" required maxlength="100"><label for="ed-nicho">Nicho</label><input type="text" id="ed-nicho" required maxlength="100"><label for="ed-pasta_saida">Pasta de saída (prontos/…)</label><input type="text" id="ed-pasta_saida" required placeholder="prontos/Meu canal"><label for="ed-tipo_producao">Tipo de produção</label><input type="text" id="ed-tipo_producao" maxlength="100" placeholder="bonecos, cortes…"></div><div><label for="ed-legenda_modelo">Modelo de legenda · {titulo}, {streamer}</label><textarea id="ed-legenda_modelo" maxlength="5000"></textarea><label for="ed-horarios">Horários separados por vírgula</label><input type="text" id="ed-horarios" placeholder="12:00, 19:00"><label><input id="ed-filtro" type="checkbox" checked> Filtro de acabamento</label><p class="mut">Modo e filtro são configuração; não executam produção ou postagem.</p></div></div><h4>Plataformas</h4><div id="ed-plataformas"></div><div class="acts"><button class="b go" type="submit">Salvar conta</button><button class="b no" id="conta-remover" type="button">Remover cadastro</button></div></form></div></section>
+
+</main>
+<script>
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const fmt=n=>n>=1e3?(n/1e3).toFixed(n>=1e4?0:1).replace('.',',')+' mil':String(n);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const post=(u,b)=>fetch(u,{method:'POST',body:JSON.stringify(b)}).then(async r=>({ok:r.ok,j:await r.json().catch(()=>({}))}));
+let tab='link', fReg='todos', fPlat='todas', soVip=false, soFav=false, ordCalor=false, fEst='revisao', lives=null, rev=null, vistos=null, noAr=null;
+let alertas=false; try{alertas=localStorage.getItem('alertas')==='1'}catch{}
+const PLAT={twitch:'TWITCH',kick:'KICK',youtube:'YOUTUBE'}, REG={br:'🇧🇷 BR',en:'🇺🇸 EN',outro:'🌍'};
+const carga={marca:carregarMarca,link:()=>{},vivo:()=>carregarLives(),rev:()=>carregarRev(),meta:carregarMeta,placar:carregarPlacar,contas:carregarContas,ajuda:carregarAjuda};
+
+function ir(t){tab=t;titulo(t);$$('#nav button').forEach(x=>x.classList.toggle('on',x.dataset.t===t));$$('.tab').forEach(x=>x.classList.toggle('on',x.id==='t-'+t));if(matchMedia('(max-width:820px)').matches)sidebar(false);const r=carga[t]?.();if(r?.catch)r.catch(e=>mensagem(e.message));}
+$('#nav').onclick=e=>{const b=e.target.closest('button');if(b)ir(b.dataset.t)};
+const grupo=(sel,attr,fn)=>$$(sel).forEach(c=>c.onclick=()=>{$$(sel).forEach(x=>x.classList.remove('on'));c.classList.add('on');fn(c.dataset[attr]);});
+grupo('[data-f]','f',v=>{fReg=v;desenharLives()});grupo('[data-p]','p',v=>{fPlat=v;desenharLives()});grupo('[data-s]','s',v=>{fEst=v;desenharRev()});
+const alterna=(id,fn)=>$(id).onclick=e=>{const on=fn();e.currentTarget.classList.toggle('on',on);desenharLives()};
+alterna('#soVip',()=>soVip=!soVip);alterna('#soFav',()=>soFav=!soFav);alterna('#ordCalor',()=>ordCalor=!ordCalor);
+$('#atualizar').onclick=()=>carregarLives(true);
+function pintaAlertas(){const a=$('#alertas');a.textContent='🔔 Alertas: '+(alertas?'on':'off');a.classList.toggle('on',alertas)}
+$('#alertas').onclick=async()=>{if(!alertas){if(!('Notification' in window)){alert('Este navegador não suporta notificações.');return}const p=await Notification.requestPermission();if(p!=='granted'){alert('Libere as notificações do site no navegador.');return}}alertas=!alertas;try{localStorage.setItem('alertas',alertas?'1':'0')}catch{}pintaAlertas()};pintaAlertas();
+
+/* ---------- ao vivo ---------- */
+async function carregarLives(forcar){
+  try{$('#stat').textContent='varrendo…';lives=await (await fetch('/api/ao-vivo'+(forcar?'?forcar=1':''))).json();avisarFavoritos();desenharLives();$('#stat').textContent=`${(lives.varredura_ms/1000).toFixed(1)} s · ${new Date(lives.atualizado).toLocaleTimeString('pt-BR')}`}
+  catch(e){$('#stat').textContent='erro ao varrer'}
+}
+function avisarFavoritos(){ // favorito que acabou de entrar no ar
+  const agora=new Set(lives.itens.filter(i=>i.fav).map(i=>i.plat+':'+i.canal));
+  if(alertas&&noAr&&Notification.permission==='granted')for(const i of lives.itens)if(i.fav&&!noAr.has(i.plat+':'+i.canal)){new Notification(`${i.nome} entrou ao vivo`,{body:`${i.titulo} · ${fmt(i.viewers)} assistindo`});beep()}
+  noAr=agora;
+}
+function beep(){try{const c=new AudioContext(),o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.frequency.value=880;g.gain.value=.08;o.start();setTimeout(()=>{o.stop();c.close()},220)}catch{}}
+function desenharLives(){
+  if(!lives)return;
+  $('#fontes').innerHTML=Object.entries(lives.fontes).map(([k,v])=>`<span class="fonte ${v.ok?'':'err'}">${v.ok?'●':'✕'} ${k} ${v.ok?v.vistos+' lives':esc(v.erro)}</span>`).join('')+(lives.total_twitch_gta6?`<span class="fonte">👀 ${fmt(lives.total_twitch_gta6)} assistindo GTA VI na Twitch</span>`:'');
+  let l=lives.itens.filter(i=>(fReg==='todos'||i.regiao===fReg)&&(fPlat==='todas'||(i.fontes||[i]).some(f=>(f.plat)===fPlat))&&(!soVip||i.vip)&&(!soFav||i.fav));
+  if(ordCalor)l=[...l].sort((a,b)=>(b.calor??-999)-(a.calor??-999));
+  $('#n-vivo').textContent=lives.itens.length;
+  const q=l.filter(i=>i.calor!=null).length;$('#statv').textContent=ordCalor&&!q?'radar de calor ainda juntando amostras (precisa de ~2 min)':'';
+  const plats=i=>(i.fontes||[i]).map(f=>`<a class="p ${f.plat}" style="position:static;display:inline-block;text-decoration:none" href="${esc(f.url)}" target="_blank" rel="noopener" title="${esc(f.titulo)}">${PLAT[f.plat]} · ${fmt(f.viewers)}</a>`).join(' ');
+  $('#lives').innerHTML=l.map(i=>`<div class="card"><div class="th" style="background-image:url('${esc(i.thumb)}')"><span class="p ${i.plat}">${PLAT[i.plat]}${i.fontes&&i.fontes.length>1?` +${i.fontes.length-1}`:''}</span><button class="f ${i.fav?'on':''}" data-fav="${esc(i.canal)}" title="favoritar">${i.fav?'❤':'♡'}</button><span class="v">👁 ${fmt(i.viewers_total??i.viewers)}</span>${i.calor>=3?`<span class="q">🔥 +${i.calor}%/min</span>`:''}</div>
+  <div class="cb"><div class="nm">${esc(i.nome)} ${i.vip?'<span class="tag vip">⭐ VIP</span>':''}<span class="tag ${i.regiao}">${REG[i.regiao]}${i.regiao==='outro'?' '+esc(i.idioma):''}</span>${i.gravando?'<span class="tag rec">● gravando</span>':''}${i.com_corte?'<span class="tag">tem corte</span>':''}</div>
+  <div style="display:flex;gap:4px;flex-wrap:wrap">${plats(i)}</div>
+  <div class="tt">${esc(i.titulo)}</div>
+  <div class="acts"><button class="b go" ${i.gravando||i.regiao!=='br'?'disabled':''} title="${i.regiao!=='br'?'o detector de reação só entende PT por enquanto':'grava e clipa'}" data-g="${esc(i.url_clipar||i.url)}">Clipar</button></div></div></div>`).join('')||'<p class="mut">Nada passou pelo filtro agora.</p>';
+}
+$('#lives').onclick=async e=>{
+  const f=e.target.closest('[data-fav]');if(f){await post('/api/streamers',{canal:f.dataset.fav});carregarLives(true);return}
+  const b=e.target.closest('[data-g]');if(!b)return;b.disabled=true;const r=await post('/api/gravar',{url:b.dataset.g});b.textContent=r.ok?'● gravando':'⚠ erro';if(!r.ok)alert(r.j.erro||'erro');else{marcaDesde();ir('link');carregarJobs()}};
+
+/* ---------- revisão ---------- */
+async function carregarRev(){
+  try{const r=await (await fetch('/api/revisao')).json();
+    const ids=new Set(r.itens.map(i=>i.id)); const novos=vistos?r.itens.filter(i=>!vistos.has(i.id)).map(i=>i.id):[]; vistos=ids;
+    const mudou=!rev||JSON.stringify(r.itens.map(i=>[i.id,i.estado]))!==JSON.stringify(rev.itens.map(i=>[i.id,i.estado]));
+    rev=r;$('#n-rev').textContent=r.contagem.revisao;for(const k in r.contagem)$('#c-'+k).textContent=r.contagem[k];
+    desenharPipe(r); if(mudou)desenharRev(novos);
+  }catch(e){}
+}
+function desenharPipe(r){
+  window._procs=r.processos;
+  const p=r.processos;
+  $('#pipe').innerHTML=(p.length?`<span class="dot"></span><b>${p.length} processo(s) trabalhando</b> — `+p.map(x=>`${x.tipo} (${x.seg}s, ${x.cpu}% CPU)${/gravando|offline/.test(x.tipo)?` <button class="chip" data-parar="${x.pid}">■ Parar</button>`:''}`).join(' · '):'<b>Robô parado</b> — nenhum processo de clipe rodando. Clique em “Clipar” numa live BR na aba Ao vivo.')
+   +(r.picos.length?`<pre>PICOS RECENTES\n${r.picos.map(x=>`${esc(x.canal)} · score ${x.score} · ${esc(x.texto)}`).join('\n')}</pre>`:'')+(r.log.length?`<pre>${r.log.map(esc).join('\n')}</pre>`:'');
+}
+function idade(ms){if(!ms)return '';const h=(Date.now()-ms)/36e5;return h<1?`gravado há ${Math.max(1,Math.round(h*60))} min`:h<24?`gravado há ${Math.round(h)} h`:`⚠ gravado há ${Math.round(h/24)} dia(s)`}
+function cardClipe(i,novos=[]){return `<div class="card ${novos.includes(i.id)?'novo':''}" data-id="${i.id}"><div style="position:relative"><span class="estado e-${i.estado}">${i.estado==='revisao'?'EM REVISÃO':i.estado==='aprovado'?'APROVADO':(i.auto?'RECUSADO (robô)':'RECUSADO')}</span>
+   <video controls preload="none" playsinline src="/video?id=${i.id}#t=0.1"></video></div>
+   <div class="cb"><div class="nm">${esc(i.titulo)}</div><div class="tt">${esc(i.legenda)}</div>
+   <div><span class="tag">${esc(i.streamer)}</span> <span class="tag">${new Date(i.criado).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})}</span> ${i.dur?`<span class="tag">${Math.round(i.dur)}s</span>`:''}${i.nota!=null?` <span class="tag" style="color:${i.nota>=70?'var(--ok)':i.nota>=45?'var(--wa)':'var(--no)'}" title="relevância 0-100: reação + assunto de jogo + ação na tela − fim de live/anúncio">⭐ nota ${i.nota}</span>`:''}${i.abaixo_min?' <span class="tag" style="color:var(--wa)" title="nada passou da nota mínima: este é o melhor candidato">abaixo do mínimo</span>':''}${i.gravado_em?` <span class="tag" style="${(Date.now()-i.gravado_em)>864e5?'color:var(--no)':''}">${idade(i.gravado_em)}</span>`:''}</div>
+   ${i.motivo?`<div class="tt">motivo: ${esc(i.motivo)}</div>`:''}
+   <div class="acts">${i.estado!=='aprovado'?`<button class="b ok" data-d="aprovado">✔ Aprovar</button>`:''}${i.estado!=='recusado'?`<button class="b no" data-d="recusado">✖ Recusar</button>`:''}${i.decidido_em?`<button class="b" data-d="desfazer">↩</button>`:''}${i.tiktok_id?`<a class="b" href="/video?id=${i.tiktok_id}" target="_blank" rel="noopener" title="versão limpa para TikTok">TikTok ↗</a>`:''}</div></div></div>`}
+function desenharRev(novos=[]){
+  if(!rev)return; const l=rev.itens.filter(i=>i.estado===fEst);
+  if(fEst==='revisao')l.sort((a,b)=>(b.nota??-1)-(a.nota??-1)||b.criado-a.criado);
+  $('#clipes').innerHTML=l.map(i=>cardClipe(i,novos)).join('')||'<p class="mut">Nada aqui ainda.</p>';
+  desenharLinkClipes();
+}
+async function decidirClique(e){const b=e.target.closest('[data-d]');if(!b)return;const id=b.closest('.card').dataset.id;let motivo='';
+  if(b.dataset.d==='recusado'){motivo=prompt('Motivo da recusa (opcional): sem reação, áudio ruim, legenda errada, fraco…')??null;if(motivo===null)return;}
+  await post('/api/decidir',{id,estado:b.dataset.d,motivo});rev=null;carregarRev();}
+$('#pipe').onclick=e=>{const b=e.target.closest('[data-parar]');if(b)pararJob(+b.dataset.parar,b)};
+$('#clipes').onclick=decidirClique;$('#l-clipes').onclick=decidirClique;
+document.addEventListener('keydown',e=>{if(tab!=='rev'||['INPUT','TEXTAREA'].includes(e.target.tagName))return;const c=$('#clipes .card');if(!c)return;
+  const k=e.key.toLowerCase();if(k==='a')c.querySelector('[data-d=aprovado]')?.click();if(k==='r')c.querySelector('[data-d=recusado]')?.click();if(k===' '){e.preventDefault();const v=c.querySelector('video');v.paused?v.play():v.pause();}});
+
+/* ---------- cortar por link ---------- */
+const fmtDur=s=>{if(!s)return '';const m=Math.round(s/60);return m>=60?`${Math.floor(m/60)} h ${m%60} min`:`${m} min`};
+async function detectarLink(){
+  const url=$('#l-url').value.trim();if(!url)return;const out=$('#l-res');out.innerHTML='<p class="mut">detectando…</p>';
+  const r=await post('/api/link/detectar',{url});const d=r.j;
+  if(!d.ok){out.innerHTML=`<p style="color:var(--no)">${esc(d.erro||'erro')}</p>`;return}
+  const vivo=d.modo==='ao_vivo';
+  out.innerHTML=`<div class="card"><div class="th" style="background-image:url('${esc(d.thumb)}')"><span class="p ${d.plataforma}">${PLAT[d.plataforma]}</span><span class="v">${vivo?'🔴 AO VIVO':'⏺ OFFLINE · '+fmtDur(d.duracao_s)}</span></div>
+  <div class="cb"><div class="nm">${esc(d.canal)}</div><div class="tt">${esc(d.titulo)}</div>
+  ${vivo?'<p class="mut" style="margin:4px 0">Vai gravar a partir de agora em pedaços de 5 min e cortar os melhores momentos.</p>':`<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><label style="margin:0">do minuto</label><input type="text" id="l-ini" value="0" style="width:70px"><label style="margin:0">até</label><input type="text" id="l-fim" value="${d.duracao_s?Math.min(60,Math.floor(d.duracao_s/60)):60}" style="width:70px"><span class="mut">(até 60 min por vez)</span></div>`}
+  ${vivo?'':'<div style="display:flex;gap:8px;align-items:center;margin:10px 0"><label style="margin:0">quantos clipes</label><input type="text" id="l-qtd" value="6" inputmode="numeric" style="width:70px"><span class="mut">1 a 10 · só os melhores de cada trecho</span></div>'}
+  <div class="acts"><button class="b go" id="l-go">${vivo?'Gravar e cortar':'Cortar este trecho'}</button></div><div id="l-msg" class="mut"></div></div></div>`;
+  $('#l-go').onclick=async()=>{const b=$('#l-go');b.disabled=true;const body={url};if(!vivo){body.inicio=$('#l-ini').value;body.fim=$('#l-fim').value;body.quantos=$('#l-qtd').value}
+    marcaDesde();const r2=await post('/api/link/cortar',body);$('#l-msg').innerHTML=r2.ok?`✔ ${r2.j.ja?'já está rodando':'começou'}. Acompanhe na aba <a href="#" id="l-ir" style="color:var(--ac)">Revisão</a>.`:`<span style="color:var(--no)">${esc(r2.j.erro||'erro')}</span>`;
+    if(r2.ok){$('#l-ir').onclick=e=>{e.preventDefault();ir('rev')};carregarJobs()}else b.disabled=false};
+}
+$('#l-det').onclick=detectarLink;$('#l-url').addEventListener('keydown',e=>{if(e.key==='Enter')detectarLink()});
+
+/* ---------- trabalhos em andamento + cortes ---------- */
+let linkDesde=0; try{linkDesde=+sessionStorage.getItem('linkDesde')||0}catch{}
+function marcaDesde(){linkDesde=Date.now();try{sessionStorage.setItem('linkDesde',linkDesde)}catch{}}
+async function pararJob(pid,btn){if(btn){btn.disabled=true;btn.textContent='parando…'}const r=await post('/api/trabalhos/parar',{pid});if(!r.ok)alert(r.j.erro||'erro');setTimeout(carregarJobs,800);setTimeout(carregarRev,1200)}
+async function carregarJobs(){
+  let l=[];try{l=await (await fetch('/api/trabalhos')).json()}catch{}
+  const box=$('#l-jobs');box.style.display=l.length?'block':'none';
+  box.innerHTML=l.length?`<h3>⚙ Trabalhos rodando</h3>`+l.map(j=>`<div style="border-top:1px solid var(--bd);padding:8px 0"><div class="nm"><span class="dot"></span>${j.modo==='ao_vivo'?'🔴 ao vivo':'⏺ offline'} <span class="mut" style="font-weight:400;word-break:break-all">${esc(j.url.replace('https://',''))}</span> <button class="chip" data-parar="${j.pid}" style="margin-left:auto">■ Parar</button></div>
+   <div class="mut" style="font-size:12px">há ${Math.round(j.seg/60)} min · ${j.cpu}% CPU</div><pre class="mut" style="margin:4px 0 0;font:11px/1.4 ui-monospace,monospace;white-space:pre-wrap;word-break:break-word">${j.log.map(esc).join('\n')}</pre></div>`).join(''):'';
+  desenharLinkClipes();
+}
+$('#l-jobs').onclick=e=>{const b=e.target.closest('[data-parar]');if(b)pararJob(+b.dataset.parar,b)};
+function desenharLinkClipes(){
+  if(!rev)return;const box=$('#l-clipes-box');
+  const l=rev.itens.filter(i=>i.criado>=linkDesde&&i.estado==='revisao'&&linkDesde).sort((a,b)=>(b.nota??-1)-(a.nota??-1)).slice(0,8);
+  box.style.display=l.length?'block':'none';$('#l-clipes').innerHTML=l.map(i=>cardClipe(i)).join('');
+}
+
+
+/* ---------- marca ---------- */
+async function carregarMarca(){
+  const m=await (await fetch('/api/marca')).json();$('#m-nick').value=m.nick||'';
+  const t=Date.now();$('#m-logo-prev').innerHTML=m.tem_logo?`<img src="/marca/logo?t=${t}" style="max-height:90px;border-radius:50%;background:#fff1">`:'<span class="mut">sem logo ainda</span>';
+  $('#m-capa-prev').innerHTML=m.tem_capa?`<img src="/marca/capa?t=${t}" style="max-height:160px;border-radius:8px">`:'<span class="mut">sem capa ainda</span>';
+}
+$('#m-salvar').onclick=async()=>{const r=await post('/api/marca',{nick:$('#m-nick').value});$('#m-msg').textContent=r.ok?`salvo ✓ (@${r.j.nick})`:'erro'};
+for(const tipo of ['logo','capa'])$('#m-'+tipo).onchange=async e=>{const f=e.target.files[0];if(!f)return;const r=await fetch('/api/marca/arquivo?tipo='+tipo,{method:'POST',body:f});const j=await r.json();if(!r.ok)alert(j.erro||'erro');carregarMarca()};
+
+/* ---------- fila do meta ---------- */
+async function carregarMeta(){
+  const j=await (await fetch('/api/meta')).json();const pend=j.fila.filter(p=>p.status==='pendente').length;$('#n-meta').textContent=pend;
+  $('#metaInfo').textContent=j.conta.pagina||j.conta.instagram?`Página: ${j.conta.pagina||'?'} · Instagram: @${j.conta.instagram||'?'}`:'⚠ preencha a aba Contas';
+  $('#abrirBS').href=j.conta.business_suite;$('#metaTitulo').textContent=j.tiktok?'(Instagram / Facebook + TikTok)':'(Instagram / Facebook)';
+  const linhas=[...j.fila.map(p=>({...p,fonte:'fila'})),...j.legado.map(p=>({clipe:p.clipe,legenda:p.legenda,horario:p.data_hora_sugerida,status:p.status,fonte:'legado'}))];
+  $('#metaTab').innerHTML='<tr><th>Clipe</th><th>Horário</th><th>Status</th><th>Legenda</th><th></th></tr>'+linhas.map(p=>`<tr><td>${esc(p.clipe)}</td><td>${esc(p.horario||'')}</td><td>${esc(p.status)}</td><td class="mut">${esc((p.legenda||'').slice(0,140))}</td>
+   <td style="white-space:nowrap">${p.fonte==='fila'?`<button class="chip" data-cp="${esc(p.id)}">Copiar legenda</button> ${p.legenda_tiktok?`<button class="chip" data-cptt="${esc(p.id)}">Legenda TikTok</button> `:''}${p.status==='pendente'?`<button class="chip" data-st="agendado" data-id="${esc(p.id)}">Agendado ✓</button>`:p.status==='agendado'?`<button class="chip" data-st="postado" data-id="${esc(p.id)}">Postado ✓</button>`:''}`:''}</td></tr>`).join('')||'<tr><td colspan=5 class="mut">Nada na fila. Aprove clipes na Revisão.</td></tr>';
+  window._fila=j.fila;
+}
+$('#metaTab').onclick=async e=>{const c=e.target.closest('[data-cp]');if(c){const p=_fila.find(x=>x.id===c.dataset.cp);try{await navigator.clipboard.writeText(p.legenda);c.textContent='Copiado ✓'}catch{prompt('Copie:',p.legenda)}return}
+  const t=e.target.closest('[data-cptt]');if(t){const p=_fila.find(x=>x.id===t.dataset.cptt);try{await navigator.clipboard.writeText(p.legenda_tiktok);t.textContent='Copiado ✓'}catch{prompt('Copie:',p.legenda_tiktok)}return}
+  const s=e.target.closest('[data-st]');if(s){await post('/api/meta/status',{id:s.dataset.id,status:s.dataset.st});carregarMeta()}};
+
+/* ---------- placar ---------- */
+async function carregarPlacar(){
+  const l=await (await fetch('/api/placar')).json();
+  $('#placarTab').innerHTML='<tr><th>Streamer</th><th>✅ Aprovados</th><th>❌ Recusados</th><th>⏳ Em revisão</th><th>Taxa de aprovação</th></tr>'+l.map(o=>`<tr><td><b>${esc(o.streamer)}</b></td><td>${o.aprovado}</td><td>${o.recusado}${o.auto?` <span class="mut">(${o.auto} do robô)</span>`:''}</td><td>${o.revisao}</td><td>${o.taxa==null?'–':`<div class="barra" style="height:8px;background:var(--card2);border-radius:4px;width:120px;display:inline-block;vertical-align:middle"><i style="display:block;height:100%;width:${o.taxa}%;background:${o.taxa>=60?'var(--ok)':o.taxa>=30?'var(--wa)':'var(--no)'};border-radius:4px"></i></div> ${o.taxa}%`}</td></tr>`).join('')||'<tr><td colspan=5 class="mut">Ainda sem cortes.</td></tr>';
+}
+
+/* ---------- contas ---------- */
+async function carregarContas(){
+  const c=await (await fetch('/api/contas')).json(); const id=await (await fetch('/api/saude')).json();
+  $('#c-dono').value=c.dono||'';$('#c-pagina').value=c.meta.pagina||'';$('#c-ig').value=c.meta.instagram||'';$('#c-bs').value=c.meta.business_suite||'';$('#c-leg').value=c.meta.legenda_modelo||'';$('#c-hor').value=(c.meta.horarios||[]).join(', ');$('#c-tt').checked=!!c.tiktok.ativo;$('#c-ttleg').value=c.tiktok.legenda_modelo||'';$('#c-tt-box').style.display=c.tiktok.ativo?'block':'none';
+  desenharSaude(id,true);carregarDesempenho();
+}
+async function carregarDesempenho(){const d=await (await fetch('/api/desempenho')).json();$('#d-perfil').value=d.escolhido;$('#d-desc').innerHTML=`<b>${d.efetivo}</b> — ${esc(d.descricao)} <span class="mut">(${d.nucleos} núcleos, ${d.ram_gb} GB)</span>`}
+$('#d-perfil').onchange=async e=>{const r=await post('/api/desempenho',{perfil:e.target.value});if(r.ok)carregarDesempenho()};
+$('#c-tt').onchange=e=>{$('#c-tt-box').style.display=e.target.checked?'block':'none'};
+$('#salvarContas').onclick=async()=>{
+  const r=await post('/api/contas',{dono:$('#c-dono').value,meta:{pagina:$('#c-pagina').value,instagram:$('#c-ig').value,business_suite:$('#c-bs').value,legenda_modelo:$('#c-leg').value,horarios:$('#c-hor').value.split(',').map(x=>x.trim()).filter(Boolean)},tiktok:{ativo:$('#c-tt').checked,legenda_modelo:$('#c-ttleg').value}});
+  $('#c-msg').textContent=r.ok?'salvo ✓':'erro ao salvar';carregarSaude()};
+const NOMES={node:'Node',python_venv:'Python (ambiente do clipador)',ffmpeg:'ffmpeg','yt-dlp':'yt-dlp',identidade:'marca/identidade.json',logo:'marca/logo.png',contas:'config/contas.json'};
+async function carregarSaude(){try{desenharSaude(await (await fetch('/api/saude')).json())}catch{}}
+function desenharSaude(s,lista){
+  const p=s.pc;$('#saude').innerHTML=`CPU ${p.carga==null?'–':p.carga+'%'}<div class="barra"><i style="width:${p.carga||0}%;background:${p.carga>85?'var(--no)':p.carga>60?'var(--wa)':'var(--ok)'}"></i></div>RAM livre ${p.ram_livre_gb}/${p.ram_total_gb} GB${p.disco_livre_gb!=null?`<br>Disco livre ${p.disco_livre_gb} GB`:''}${s.contas_preenchidas?'':'<br><span style="color:var(--wa)">⚠ preencha Contas</span>'}`;
+  if(lista)$('#checks').innerHTML=Object.entries(s.checks).map(([k,v])=>`<div class="ck"><i class="${v?'sim':'nao'}">${v?'✔':'✖'}</i>${NOMES[k]||k}</div>`).join('')+`<div class="ck mut">${esc(p.so)} · ${p.nucleos} núcleos</div>`;
+}
+async function carregarAjuda(){if($('#guia').textContent)return;$('#guia').textContent=await (await fetch('/api/ajuda')).text()}
+$('#copiarGuia').onclick=async()=>{await carregarAjuda();try{await navigator.clipboard.writeText($('#guia').textContent);$('#g-msg').textContent='copiado ✓ — cole no chat da sua IA'}catch{$('#g-msg').textContent='não consegui copiar: selecione o texto abaixo'}};
+
+
+setInterval(()=>{if(tab==='vivo'&&!document.hidden)carregarLives()},60000);
+
+/* Multi-conta: só ações manuais. */
+let contasLista=[],contaAtual='six_stars',trocaVersao=0;
+try{contaAtual=localStorage.getItem('painel-conta')||contaAtual}catch{}
+const urlConta=p=>`${p}?conta=${encodeURIComponent(contaAtual)}`;
+const atualConta=()=>contasLista.find(c=>c.id===contaAtual);
+const uploads={youtube:'https://studio.youtube.com/',tiktok:'https://www.tiktok.com/tiktokstudio/upload',instagram:'https://business.facebook.com/latest/content_calendar',facebook:'https://business.facebook.com/latest/content_calendar'};
+async function requisitar(url,body){const r=await fetch(url,body===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const j=await r.json();if(!r.ok)throw new Error(j.erro||'Erro ao carregar');return j;}
+function mensagem(s){$('#aviso-global').textContent=s;}
+function acao(fn){return async e=>{try{await fn(e)}catch(err){mensagem(err.message)}};}
+const MOB=()=>matchMedia('(max-width:820px)').matches;
+function sidebar(aberta){if(MOB())return;document.body.classList.toggle('nav-recolhida',!aberta);$('#menu').setAttribute('aria-expanded',String(aberta));try{localStorage.setItem('wr-nav',aberta?'1':'0')}catch(e){}}
+$('#menu').onclick=()=>sidebar(document.body.classList.contains('nav-recolhida'));
+sidebar((()=>{try{return localStorage.getItem('wr-nav')!=='0'}catch(e){return true}})());
+function titulo(t){const b=document.querySelector('#nav button[data-t="'+t+'"]');if(!b)return;const c=b.cloneNode(true);c.querySelectorAll('.i,.n').forEach(x=>x.remove());$('#pagina').textContent=c.textContent.trim()}
+$('#configurar').onclick=()=>ir('config');
+async function carregarLista(){contasLista=await requisitar('/api/contas-cfg');if(!contasLista.some(c=>c.id===contaAtual))contaAtual=contasLista[0]?.id||'';$('#seletor-conta').innerHTML=contasLista.map(c=>`<option value="${esc(c.id)}">${esc(c.nome)} · ${esc(c.nicho)}</option>`).join('');$('#seletor-conta').value=contaAtual;$('#editor-selecao').innerHTML='<option value="">Nova conta</option>'+contasLista.map(c=>`<option value="${esc(c.id)}">${esc(c.nome)}</option>`).join('');}
+async function trocarConta(){trocaVersao++;rev=null;vistos=null;try{localStorage.setItem('painel-conta',contaAtual)}catch{}if(!contaAtual){$('#clipes').innerHTML='Cadastre uma conta em ⚙ Configurações.';return;}await Promise.all([carregarRev(),carregarPlacar(),carregarCalendario(),...(tab==='operacao'?[carregarReferencias()]:[])]);}
+$('#seletor-conta').onchange=acao(async e=>{contaAtual=e.target.value;await trocarConta()});
+// Substitui os leitores antigos, preservando cards, player e atalhos.
+carregarRev=async function(){if(!contaAtual)return;const c=contaAtual,v=trocaVersao;try{const r=await requisitar(urlConta('/api/revisao'));if(c!==contaAtual||v!==trocaVersao)return;const mudou=!rev||JSON.stringify(r.itens)!==JSON.stringify(rev.itens);rev=r;$('#n-rev').textContent=r.contagem.revisao;for(const k in r.contagem)$('#c-'+k).textContent=r.contagem[k];desenharPipe(r);if(mudou&&!document.activeElement.matches('.legenda-video'))desenharRev();}catch(e){mensagem(e.message)}};
+const cardAntigo=cardClipe;
+cardClipe=function(i,novos=[]){let html=cardAntigo(i,novos);const links=(atualConta()?.plataformas||[]).filter(p=>p.ligado).map(p=>`<a class="chip" target="_blank" rel="noopener noreferrer" href="${uploads[p.rede]}">Upload ${esc(p.rede)} ↗</a>`).join(' ');return html.replace(`<div class="tt">${esc(i.legenda)}</div>`,`<label for="leg-${i.id}">Legenda editável</label><textarea class="legenda-video" id="leg-${i.id}" data-original="${esc(i.legenda)}">${esc(i.legenda)}</textarea><div class="acts"><button class="chip" data-leg="salvar">Salvar legenda</button><button class="chip" data-leg="copiar">Copiar</button></div><div class="uploads">${links||'<span class="mut">Nenhuma rede ligada</span>'}</div>`);};
+async function salvarLegenda(card,conta=contaAtual){const t=card.querySelector('textarea');await requisitar('/api/legendas',{conta,id:card.dataset.id,legenda:t.value});t.dataset.original=t.value;const item=rev?.itens.find(i=>i.id===card.dataset.id);if(item)item.legenda=t.value;}
+async function cliqueRevisao(e){const card=e.target.closest('.card');if(!card)return;const l=e.target.closest('[data-leg]');if(l){if(l.dataset.leg==='salvar'){await salvarLegenda(card);mensagem('Legenda salva ✓')}else{const texto=card.querySelector('textarea').value;try{await navigator.clipboard.writeText(texto);mensagem('Legenda copiada ✓')}catch{card.querySelector('textarea').select();mensagem('Selecione e copie a legenda.')}}return;}
+ const b=e.target.closest('[data-d]');if(!b)return;const contaDaDecisao=contaAtual;let motivo='';if(b.dataset.d==='recusado'){motivo=prompt('Motivo da recusa (opcional)');if(motivo===null)return;}
+ b.disabled=true;try{await salvarLegenda(card,contaDaDecisao);await requisitar('/api/decidir',{conta:contaDaDecisao,id:card.dataset.id,estado:b.dataset.d,motivo});rev=null;await carregarRev();await carregarCalendario();await carregarPlacar();mensagem('Decisão salva. Publicação continua manual.')}finally{b.disabled=false;}
+}
+$('#clipes').onclick=acao(cliqueRevisao);$('#l-clipes').onclick=acao(cliqueRevisao);
+carregarPlacar=async function(){if(!contaAtual)return;const c=contaAtual;try{const l=await requisitar(urlConta('/api/placar'));if(c!==contaAtual)return;$('#placarTab').innerHTML='<tr><th>Conta</th><th>Aprovados</th><th>Recusados</th><th>Revisão</th><th>Taxa</th></tr>'+l.map(x=>`<tr><td>${esc(x.streamer)}</td><td>${x.aprovado}</td><td>${x.recusado}</td><td>${x.revisao}</td><td>${x.taxa??'–'}%</td></tr>`).join('');}catch(e){mensagem(e.message)}};
+async function carregarCalendario(){if(!contaAtual)return;const c=contaAtual;const j=await requisitar(urlConta('/api/calendario'));if(c!==contaAtual)return;$('#cal-aviso').textContent=j.faltam?`⚠ Faltou vídeo hoje: ${j.produzidos_hoje}/${j.meta_min} · faltam ${j.faltam}`:`✓ Meta mínima do dia atingida: ${j.produzidos_hoje}`;$('#cal-meta').textContent=`${atualConta()?.nome||''} · meta ${j.meta_min}${j.meta_max!==j.meta_min?'–'+j.meta_max:''}/dia · horário de Brasília · vídeos prontos por data do arquivo`;$('#cal-horarios').textContent='Horários sugeridos: '+(j.horarios.join(' · ')||'nenhum');$('#cal-dias').innerHTML=Array.from({length:14},(_,i)=>{const d=new Date(j.hoje+'T12:00:00Z');d.setUTCDate(d.getUTCDate()-13+i);const k=d.toISOString().slice(0,10),n=j.dias[k]||0;return `<div class="dia ${n>=j.meta_min?'atingida':''}"><span>${k.slice(8)}/${k.slice(5,7)}</span><b>${n}</b><small>de ${j.meta_min} vídeos</small></div>`}).join('');}
+async function carregarReferencias(){
+  const conta=contaAtual;
+  const lista=await requisitar(conta?urlConta('/api/referencias'):'/api/referencias');
+  if(conta!==contaAtual)return;
+  $('#referencias-salvas').innerHTML=lista.map(item=>`<p><a href="${/^https?:\/\//i.test(item.url)?esc(item.url):'#'}" target="_blank" rel="noopener noreferrer">${esc(item.url)}</a>${item.nota?`<br>${esc(item.nota)}`:''}</p>`).join('')||'<p class="mut">Nenhuma referência salva nesta conta.</p>';
+}
+async function carregarOperacao(){const [bots,fila]=await Promise.all([requisitar('/api/bots'),requisitar('/api/render-fila'),carregarReferencias()]);$('#bots').innerHTML=bots.map(b=>`<span title="${esc(b.criterio)}"><i class="sinal ${b.ativo?'verde':'vermelho'}"></i>${esc(b.bot)} · ${b.ultimo_sinal?new Date(b.ultimo_sinal).toLocaleTimeString('pt-BR'):'sem sinal'}</span>`).join('');$('#render-fila').innerHTML='<p>Leve · média · pesada — limite: 1 render pesado por vez. Lista informativa, sem iniciar trabalhos.</p>'+(fila.itens.length?fila.itens.map(x=>`<p>${esc(x.tipo)} · ${esc(x.peso)} · PID ${x.pid}</p>`).join(''):'<p class="mut">Nenhum render externo detectado.</p>');}
+async function carregarConfig(){await carregarLista();const s=await requisitar('/api/saude');$('#cofre').innerHTML=s.chaves.map(c=>`<p><b>${esc(c.nome)}</b> · ${c.existe?(c.formato_valido?'presente · formato compatível':'presente · formato não reconhecido'):'ausente'}</p>`).join('')+'<p class="mut">Validade no provedor não consultada. Nenhuma chamada de IA.</p>';$('#pc-config').innerHTML=`CPU ${s.pc.carga}% · ${s.pc.nucleos} núcleos<br>RAM livre ${s.pc.ram_livre_gb}/${s.pc.ram_total_gb} GB<br>Disco livre ${s.pc.disco_livre_gb??'indisponível'} GB<br>`+(s.pc.gpus.length?s.pc.gpus.map(g=>`${esc(g.nome)}: ${g.uso_percent??'indisponível'}% · VRAM ${g.vram_usada_bytes==null?'indisponível':Math.round(g.vram_usada_bytes/1048576)+' MB'}/${g.vram_total_bytes==null?'?':Math.round(g.vram_total_bytes/1048576)+' MB'}`).join('<br>'):'GPU: sensores indisponíveis');await carregarRede();}
+async function carregarRede(){try{const r=await requisitar('/api/rede');$('#rede-status').textContent=r.ligado?'Ligado · '+r.urls.join(' · '):'Desligado · só neste PC';$('#rede-aviso').textContent=r.aviso;}catch(e){$('#rede-status').textContent=e.message;}}
+$('#rede-on').onclick=acao(async()=>{await requisitar('/api/rede',{ligado:true,senha:$('#rede-senha').value});$('#rede-senha').value='';await carregarRede()});
+$('#rede-off').onclick=acao(async()=>{await requisitar('/api/rede',{ligado:false});await carregarRede()});
+function editor(c){$('#ed-id').value=c?.id||'';$('#ed-id').readOnly=!!c;for(const k of ['nome','nicho','pasta_saida','legenda_modelo','tipo_producao'])$('#ed-'+k).value=c?.[k]||'';$('#ed-horarios').value=c?.horarios.join(', ')||'';$('#ed-filtro').checked=c?.filtro_acabamento??true;$('#ed-plataformas').innerHTML=['instagram','facebook','tiktok','youtube'].map(rede=>{const p=c?.plataformas.find(p=>p.rede===rede);return `<div class="plataforma" data-rede="${rede}"><label><input type="checkbox" class="p-ligado" ${p?.ligado?'checked':''}> ${rede}</label><input aria-label="Handle ${rede}" type="text" class="p-handle" placeholder="handle" value="${esc(p?.handle||'')}"><select class="p-modo" aria-label="Modo ${rede}">${['manual','chrome','api'].map(m=>`<option ${m===(p?.modo||'manual')?'selected':''}>${m}</option>`).join('')}</select></div>`}).join('');}
+$('#editor-selecao').onchange=e=>editor(contasLista.find(c=>c.id===e.target.value));
+$('#conta-form').onsubmit=acao(async e=>{e.preventDefault();const c={id:$('#ed-id').value.trim(),horarios:$('#ed-horarios').value.split(',').map(x=>x.trim()).filter(Boolean),filtro_acabamento:$('#ed-filtro').checked,plataformas:$$('#ed-plataformas .plataforma').filter(el=>el.querySelector('.p-handle').value.trim()||el.querySelector('.p-ligado').checked).map(el=>({rede:el.dataset.rede,handle:el.querySelector('.p-handle').value.trim().replace(/^@/,''),ligado:el.querySelector('.p-ligado').checked,modo:el.querySelector('.p-modo').value}))};for(const k of ['nome','nicho','pasta_saida','legenda_modelo','tipo_producao'])c[k]=$('#ed-'+k).value;await requisitar('/api/contas-cfg',c);contaAtual=c.id;await carregarLista();$('#editor-selecao').value=c.id;editor(c);await trocarConta();mensagem('Conta salva ✓')});
+$('#conta-remover').onclick=acao(async()=>{const id=$('#editor-selecao').value;if(!id)throw new Error('Selecione uma conta existente');if(!confirm('Remover a conta do cadastro? Os vídeos serão preservados.'))return;await requisitar('/api/contas-cfg',{acao:'remover',id});await carregarLista();editor();await trocarConta();mensagem('Conta removida do cadastro; arquivos preservados.')});
+$('#referencia-form').onsubmit=acao(async e=>{e.preventDefault();await requisitar('/api/referencias',{url:$('#ref-url').value,nota:$('#ref-nota').value,conta:contaAtual});$('#ref-url').value='';$('#ref-nota').value='';await carregarReferencias();mensagem('Referência pendente salva.')});
+carga.config=carregarConfig;carga.calendario=carregarCalendario;carga.operacao=carregarOperacao;
+editor();
+fetch('/api/modo').then(r=>r.json()).then(m=>{if(m&&m.espelho)document.body.classList.add('espelho')}).catch(()=>{});
+setInterval(()=>{if(!document.hidden&&tab==='rev')carregarRev().catch(()=>{})},8000);setInterval(()=>{if(!document.hidden&&tab==='calendario')carregarCalendario().catch(()=>{})},15000);
+(async()=>{try{await carregarLista();await trocarConta();await carregarOperacao();await carregarSaude();if(tab==='link')ir('rev');}catch(e){mensagem(e.message)}})();
+setInterval(()=>{if(document.hidden)return;carregarOperacao().catch(e=>mensagem(e.message));carregarSaude();if(tab==='rev')carregarRev();if(tab==='calendario')carregarCalendario().catch(e=>mensagem(e.message));if(tab==='placar')carregarPlacar();},30000);
+
+</script>
+</body>
+</html>

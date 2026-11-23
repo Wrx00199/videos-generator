@@ -1,0 +1,24 @@
+{
+  "id": "pixel",
+  "nome": "Pixel RPG",
+  "descricao": "Caixa de diálogo 8-bit com borda dupla, barra de status e tipografia arcade para fatos e curiosidades.",
+  "nota_catalogo": "Catálogo sem bloco nativo de pixel art; aproximação usando terminal-simulator e code-typing.",
+  "catalogo": [
+    {"tipo": "component", "nome": "terminal-simulator"},
+    {"tipo": "block", "nome": "code-typing"}
+  ],
+  "formato": {"largura": 1080, "altura": 1920, "duracao": 5, "fps": 24},
+  "render": {"resolucao": "720p", "fps": 24, "qualidade": "draft", "workers": 1, "variables": true},
+  "slots": [
+    {"id": "fase", "variavel": "stage", "max_chars": 16, "obrigatorio": true},
+    {"id": "manchete", "variavel": "headline", "max_chars": 24, "obrigatorio": true},
+    {"id": "dialogo", "variavel": "dialog", "max_chars": 42, "obrigatorio": true}
+  ],
+  "variables": [
+    {"id": "stage", "type": "string", "label": "Fase / Nível", "default": "FASE 01 • LVL 99"},
+    {"id": "headline", "type": "string", "label": "Manchete", "default": "CHEFE SECRETO ACHADO"},
+    {"id": "dialog", "type": "string", "label": "Diálogo RPG", "default": "Você encontrou o item mais raro do mapa."},
+    {"id": "accent", "type": "color", "label": "Cor arcade", "default": "#a855f7"},
+    {"id": "name", "type": "string", "label": "Nome do arquivo (lote)", "default": "clip"}
+  ]
+}

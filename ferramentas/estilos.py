@@ -36,7 +36,7 @@ def contrato(id_):
     d, st = carregar(id_)
     erros = []
     html = (d / 'index.html').read_text(encoding='utf-8')
-    if re.search(r'3d|three', json.dumps(st).lower()) or re.search(r'three\.js|webgl', html.lower()):
+    if re.search(r'\b(3d|three)\b', json.dumps(st, ensure_ascii=False).lower()) or re.search(r'three\.js|webgl', html.lower()):
         erros.append('estilo 3D não é permitido aqui')
     m = re.search(r"data-composition-variables='(\[.*?\])'", html, re.S)
     if not m:

@@ -1,0 +1,24 @@
+{
+  "id": "sticker",
+  "nome": "Sticker",
+  "descricao": "Adesivos pop-art com borda branca grossa, sombra dura e entrada com quique elástico sobre fundo vibrante.",
+  "nota_catalogo": "Catálogo sem bloco nativo de sticker; aproximação usando paper-collage-reveal e kinetic-center-build.",
+  "catalogo": [
+    {"tipo": "component", "nome": "paper-collage-reveal"},
+    {"tipo": "component", "nome": "kinetic-center-build"}
+  ],
+  "formato": {"largura": 1080, "altura": 1920, "duracao": 5, "fps": 24},
+  "render": {"resolucao": "720p", "fps": 24, "qualidade": "draft", "workers": 1, "variables": true},
+  "slots": [
+    {"id": "selo", "variavel": "badge", "max_chars": 14, "obrigatorio": true},
+    {"id": "manchete", "variavel": "headline", "max_chars": 22, "obrigatorio": true},
+    {"id": "apoio", "variavel": "sub", "max_chars": 34, "obrigatorio": true}
+  ],
+  "variables": [
+    {"id": "badge", "type": "string", "label": "Selo", "default": "NOVO RECORDE"},
+    {"id": "headline", "type": "string", "label": "Manchete", "default": "QUEBROU A INTERNET"},
+    {"id": "sub", "type": "string", "label": "Frase de apoio", "default": "em menos de 24 horas no ar"},
+    {"id": "accent", "type": "color", "label": "Cor do adesivo", "default": "#ff3b81"},
+    {"id": "name", "type": "string", "label": "Nome do arquivo (lote)", "default": "clip"}
+  ]
+}

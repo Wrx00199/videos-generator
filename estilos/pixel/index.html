@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR" data-composition-variables='[{"id":"stage","type":"string","label":"Fase / Nível","default":"FASE 01 • LVL 99"},{"id":"headline","type":"string","label":"Manchete","default":"CHEFE SECRETO ACHADO"},{"id":"dialog","type":"string","label":"Diálogo RPG","default":"Você encontrou o item mais raro do mapa."},{"id":"accent","type":"color","label":"Cor arcade","default":"#a855f7"},{"id":"name","type":"string","label":"Nome do arquivo (lote)","default":"clip"}]'>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0c0a1d; }
+      #root { position: relative; width: 1080px; height: 1920px; background-color: #0c0a1d; background-image: linear-gradient(rgba(255,255,255,0.04) 2px, transparent 2px), linear-gradient(90deg, rgba(255,255,255,0.04) 2px, transparent 2px); background-size: 32px 32px; font-family: "JetBrains Mono", "Courier New", monospace; }
+      #barra-bg { position: absolute; z-index: 1; left: 150px; top: 470px; width: 680px; height: 26px; background: #1e1b38; border: 4px solid #ffffff; }
+      #barra-fill { position: absolute; z-index: 2; left: 156px; top: 476px; width: 120px; height: 14px; background: var(--accent); }
+      #stage { position: absolute; z-index: 3; left: 150px; top: 400px; font-size: 34px; font-weight: 800; letter-spacing: 0.12em; color: #facc15; }
+      #headline { position: absolute; z-index: 3; left: 150px; top: 560px; width: 690px; font-size: 82px; font-weight: 900; line-height: 1.08; color: #ffffff; text-shadow: 6px 6px 0 var(--accent); }
+      #dialog { position: absolute; z-index: 3; left: 150px; top: 1020px; width: 690px; padding: 34px 36px; background: #14112e; border: 8px solid #ffffff; box-shadow: 0 0 0 8px #0c0a1d, 0 0 0 14px var(--accent); font-size: 40px; font-weight: 700; line-height: 1.35; color: #f8fafc; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="5" data-width="1080" data-height="1920">
+      <div id="barra-bg"></div>
+      <div id="barra-fill"></div>
+      <div id="stage" class="clip" data-start="0" data-duration="5" data-track-index="0" data-var-text="stage"></div>
+      <div id="headline" class="clip" data-start="0" data-duration="5" data-track-index="1" data-var-text="headline"></div>
+      <div id="dialog" class="clip" data-start="0" data-duration="5" data-track-index="2" data-var-text="dialog"></div>
+    </div>
+    <script>
+      gsap.set("#dialog", { opacity: 0, y: 24 });
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#barra-fill", { width: 120 }, { width: 668, duration: 1.6, ease: "steps(16)" }, 0);
+      tl.fromTo("#headline", { y: 16 }, { y: 0, duration: 0.5, ease: "steps(5)" }, 0);
+      tl.fromTo("#dialog", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.4, ease: "steps(4)" }, 1.1);
+      tl.to("#stage", { opacity: 0.55, duration: 0.25, ease: "steps(1)", yoyo: true, repeat: 3 }, 2.2);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

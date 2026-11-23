@@ -1,0 +1,24 @@
+{
+  "id": "keynote",
+  "nome": "Keynote",
+  "descricao": "Palco escuro, manchete grande que respira, linha de destaque e frase de apoio no ritmo calmo de apresentação.",
+  "catalogo": [
+    {"tipo": "component", "nome": "per-word-crossfade"},
+    {"tipo": "component", "nome": "kinetic-center-build"},
+    {"tipo": "component", "nome": "soft-blur-in"}
+  ],
+  "formato": {"largura": 1080, "altura": 1920, "duracao": 5, "fps": 24},
+  "render": {"resolucao": "720p", "fps": 24, "qualidade": "draft", "workers": 1, "variables": true},
+  "slots": [
+    {"id": "antetitulo", "variavel": "kicker", "max_chars": 14, "obrigatorio": true},
+    {"id": "manchete", "variavel": "headline", "max_chars": 34, "obrigatorio": true},
+    {"id": "apoio", "variavel": "sub", "max_chars": 36, "obrigatorio": true}
+  ],
+  "variables": [
+    {"id": "kicker", "type": "string", "label": "Antetítulo", "default": "ANÚNCIO"},
+    {"id": "headline", "type": "string", "label": "Manchete", "default": "O maior lançamento da década"},
+    {"id": "sub", "type": "string", "label": "Frase de apoio", "default": "GTA 6 muda tudo em 2026"},
+    {"id": "accent", "type": "color", "label": "Cor de destaque", "default": "#ff9f0a"},
+    {"id": "name", "type": "string", "label": "Nome do arquivo (lote)", "default": "clip"}
+  ]
+}
