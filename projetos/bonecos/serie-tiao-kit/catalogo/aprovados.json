@@ -269,6 +269,36 @@
    "ok": true,
    "falhas": [],
    "escala": 0.9
+  },
+  "vizinha": {
+   "ok": true,
+   "falhas": [],
+   "escala": 0.94,
+   "nota": "civil kit V6 (23/11)"
+  },
+  "feirante": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.01,
+   "nota": "civil kit V6 (23/11)"
+  },
+  "balconista": {
+   "ok": true,
+   "falhas": [],
+   "escala": 0.91,
+   "nota": "civil kit V6 (23/11)"
+  },
+  "carteiro": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.03,
+   "nota": "civil kit V6 (23/11)"
+  },
+  "apostador": {
+   "ok": true,
+   "falhas": [],
+   "escala": 1.1,
+   "nota": "civil kit V6 (23/11)"
   }
  },
  "cenarios": {

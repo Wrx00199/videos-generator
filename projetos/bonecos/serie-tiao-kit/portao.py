@@ -289,7 +289,7 @@ def checar_roteiro_v4(d):
 
 # --- molde V5 (19/11): gancho que nao parece gancho, pista plantada que paga ----------
 # Ativa com "molde": "v5" em falas.json. Exige tambem "pista" (indice da fala que planta) e
-# "pista_palavra" (palavra que aparece na fala da pista E na da virada). Ver MOLDE_V5_HISTORIA.md.
+# "pista_palavra" (palavra que aparece na fala da pista E na da virada). Ver MOLDES_ROTEIRO.md.
 NUM_PAL = r'(\d+|um|uma|dois|duas|tr[eê]s|quatro|cinco|seis|sete|oito|nove|dez|cem|mil|meia|[uú]ltim[oa]|[uú]nic[oa]|nunca|zero)'
 ENCHIMENTO = ('tudo certo', 'no final das contas', 'como todo mundo sabe', 'e assim', 'sem perceber', 'de repente',
               'muita coisa', 'um monte', 'incr[ií]vel', 'inacredit[aá]vel', 'chocante')

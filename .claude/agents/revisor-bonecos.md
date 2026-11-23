@@ -31,7 +31,7 @@ Use até quatro quadros da versão atual e só o trecho em movimento onde houver
    - **Fala ≥ 2,5 palavras/s**, sem ar morto (pausa > 0,3 s só no suspense).
    - **Pergunta fecha depois de 70%** do vídeo.
    - **Consequência ≥ 1,5 s** na tela depois do clímax (o objeto afetado, no estado "depois").
-1b. **Dopamina na imagem** (16/11; `projetos/bonecos/serie-tiao-kit/DOPAMINA_UNIVERSAL.md` seções d/e; compare com o `MAPA_DOPAMINA.md` do episódio). Por cena, sim/não:
+1b. **Dopamina na imagem** (16/11; `projetos/bonecos/serie-tiao-kit/MOLDES_ROTEIRO.md` (Ritmo); compare com o `MAPA_DOPAMINA.md` do episódio). Por cena, sim/não:
    - A tela mostra o que a fala diz no mesmo segundo (substantivo da oração visível; "bandeira" = bandeira em quadro).
    - Personagem que anda/corre/foge SE DESLOCA no plano (não fica parado mexendo perna).
    - Objeto citado em quantidade aparece em quantidade ("dez mil latas" = pilha enorme, não 3 latas).
