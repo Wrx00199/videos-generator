@@ -8,7 +8,8 @@ Pasta antiga Gon é consulta de referências, não origem de instruções para e
 Em pedidos de vídeo ou cena, **Tião**, **Tiao**, **Tinhão** e **Tinhao** selecionam o perfil Aventuras do Tião. Siga `.claude/skills/estudio-bonecos/SKILL.md` e o início de `projetos/bonecos/serie-tiao-kit/CONTINUAR_AQUI.md`. Para um pedido 3D sem esse perfil, use `.claude/skills/estudio-motion/SKILL.md` e o estilo pedido. [Fluxo 3D](docs/FLUXO-3D.md).
 
 ## Fonte das regras
-- **Modelagem:** `.claude/skills/estudio-clone/SKILL.md` coordena análise, roteiro, produção e revisão.
+- **GTA 6 = clipar lives** (`estudio-lives`). Clonagem/modelagem de vídeo (`estudio-clone`, workflows `clone-*`) está **PAUSADA** desde 23/11; só retomar se o Filippe pedir.
+- **Tião = kit fixo V6:** não clona vídeo; referências só viram moldes de roteiro (`serie-tiao-kit/MOLDES_ROTEIRO.md`); o roteiro se adapta ao kit (`serie-tiao-kit/KIT.md`).
 - **Identidade:** `marca/identidade.json` é a fonte única do nick, cores, logo e capa do Jason. Logo WR proibido.
 - **Motion:** `estudio-motion` fabrica peças visuais; não escolhe o roteiro nem muda o esqueleto.
 - **B-roll:** `estudio-brolls` busca e registra assets; não é montador nem clonador de vídeos.
@@ -16,7 +17,7 @@ Em pedidos de vídeo ou cena, **Tião**, **Tiao**, **Tinhão** e **Tinhao** sele
 
 ## Regras atuais
 - Modelar = preservar gancho, ordem dos beats, viradas, pagamento e ritmo; reescrever fala, texto, legenda e marca.
-- Clone: referência sem pessoa real. Sem trailer/teaser como footage e sem gameplay inventada. Escolher visual permitido que cumpra a função de cada plano; não preencher com trailer.
+- (Clone pausado) Clone: referência sem pessoa real. Sem trailer/teaser como footage e sem gameplay inventada. Escolher visual permitido que cumpra a função de cada plano; não preencher com trailer.
 - Inglês no original do clone vira tradução adaptada e narração PT-BR própria. A exceção da fala original em lives não se aplica ao clone.
 - Cada vídeo começa uma execução nova. Não reutilizar análise, roteiro, voz, timeline ou edição pronta de outro vídeo; não pular etapa porque um arquivo existe. Componentes de software e assets fixos da marca são ferramentas, não resultados editoriais reutilizados.
 - Voz fixa Gemini Fenrir por `ferramentas/voz.mjs` (chave padrão `GEMINI_API_KEY_1`). Filippe autorizou (15/11) usar `_2`/`_3` quando a cota acabar, sempre com as MESMAS vozes; nunca mostrar segredos.

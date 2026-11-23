@@ -1,8 +1,8 @@
 import json
-"""Casos sinteticos contra docs/tiao/portao.py (o kit tem uma copia propria)."""
+"""Casos sinteticos contra o portao.py do kit."""
 import copy, importlib.util, json, pathlib, tempfile, unittest
 
-ARQUIVO = pathlib.Path(__file__).resolve().parents[4] / 'docs/tiao/portao.py'
+ARQUIVO = pathlib.Path(__file__).resolve().parents[1] / 'portao.py'
 spec = importlib.util.spec_from_file_location('portao_mecanico', ARQUIVO)
 portao = importlib.util.module_from_spec(spec)
 import sys
@@ -173,6 +173,18 @@ class TestPropVirada(unittest.TestCase):
     def test_prop_na_virada_ou_sem_declaracao_passa(self):
         self.assertTrue(portao.checar_prop_virada(self._proj([{'beat': '4', 'props_virada': [{'nome': 'a', 'visivel_desde': 60, 'virada_em': 60}]}])).ok)
         self.assertTrue(portao.checar_prop_virada(self._proj([{'beat': '1'}])).ok)
+
+
+class TestKitV6(unittest.TestCase):
+    def test_sem_ficha_usa_checagem_do_kit(self):
+        with tempfile.TemporaryDirectory() as d:
+            p = pathlib.Path(d)
+            (p / 'plano.json').write_text(json.dumps([{'cenario': 'cozinha', 'luz': 'dia', 'ini': 0, 'fim': 5}]))
+            r = portao.checar_ficha(d)
+            self.assertEqual(r.nome, 'kit')
+            self.assertTrue(r.ok, r)
+            (p / 'plano.json').write_text(json.dumps([{'cenario': 'cozinha', 'ini': 0, 'fim': 5}]))
+            self.assertFalse(portao.checar_ficha(d).ok)
 
 if __name__ == '__main__':
     unittest.main()

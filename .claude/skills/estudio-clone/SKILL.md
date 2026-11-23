@@ -1,6 +1,6 @@
 ---
 name: estudio-clone
-description: Modela uma referência de vídeo curto em versão própria PT-BR preservando o esqueleto, os beats e o ritmo; coordena análise, roteiro, narração, edição, identidade e revisão. Usar para “clona esse”, “modela esse vídeo” ou preparar a produção de uma referência escolhida. Pesquisa é tarefa do olheiro; streamer pertence a estudio-lives.
+description: (PAUSADO desde 23/11 — só usar se o Filippe pedir explicitamente; GTA agora é clipar lives em estudio-lives.) Modela uma referência de vídeo curto em versão própria PT-BR preservando o esqueleto, os beats e o ritmo; coordena análise, roteiro, narração, edição, identidade e revisão. Usar para “clona esse”, “modela esse vídeo” ou preparar a produção de uma referência escolhida. Pesquisa é tarefa do olheiro; streamer pertence a estudio-lives.
 ---
 # Estúdio · Modelagem de vídeo
 

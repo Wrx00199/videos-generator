@@ -619,7 +619,7 @@ def checar_ficha(proj):
     lim = 'FICHA completa; cenarios>=max(3,0.8*ref); >=3 luzes; HUD<90% do tempo; oclusao/props/verbos/FICHA-story por beat'
     fp = os.path.join(proj, 'FICHA.md')
     if not os.path.isfile(fp):
-        return Resultado('ficha', False, 'sem FICHA.md', lim, 'falta FICHA.md (serie-tiao-kit/FICHA_MODELAGEM.md)')
+        return checar_kit_v6(proj)
     with open(fp, encoding='utf-8') as arq:
         txt = arq.read()
     f = []
@@ -663,6 +663,33 @@ def checar_ficha(proj):
             f.append(f'HUD cobre {tot / seg:.0%} do video (max 90%)')
     f.extend(f'{r.nome}: {r.motivo}' for r in checar_planos_mecanicos(proj) if not r.ok)
     return Resultado('ficha', not f, f'{cen} cenarios, {len(luz)} luzes', lim, '; '.join(f))
+
+
+def checar_kit_v6(proj):
+    """V6 (23/11): sem ficha de clone. Episodio usa so o kit fixo (KIT.md); confere plano.json e HUD."""
+    lim = 'V6: cenario/luz por plano; cenarios do kit; HUD<90% do tempo'
+    f = []
+    try:
+        with open(os.path.join(proj, 'plano.json'), encoding='utf-8') as arq:
+            planos = json.load(arq)
+    except (OSError, ValueError):
+        return Resultado('kit', False, 'sem plano.json', lim, 'falta plano.json valido')
+    if not isinstance(planos, list) or not planos or any(not isinstance(p, dict) for p in planos):
+        return Resultado('kit', False, 'plano.json invalido', lim, 'plano.json precisa ser lista de planos')
+    if any(not isinstance(p.get(k), str) or not p[k].strip() for p in planos for k in ('cenario', 'luz')):
+        f.append('cenario/luz ausente no plano.json')
+    cen = {p.get('cenario') for p in planos}
+    ev = eventos_hud(proj) or []
+    seg = max([p['fim'] for p in planos if _numero(p.get('fim'))] + [0])
+    if ev and seg:
+        ints = sorted((a, b) for a, b, _, _ in ev); tot = 0; ult = 0
+        for a, b in ints:
+            a = max(a, ult)
+            if b > a:
+                tot += b - a; ult = b
+        if tot / seg >= 0.9:
+            f.append(f'HUD cobre {tot / seg:.0%} do video (max 90%)')
+    return Resultado('kit', not f, f'{len(cen)} cenario(s), {len(planos)} plano(s)', lim, '; '.join(f))
 
 
 def etapa_roteiro(proj):
