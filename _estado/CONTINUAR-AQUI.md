@@ -1,2 +1,2 @@
 # CONTINUAR AQUI — ep46
-Próximo item pendente: 15 (render completo em curso) (ver _estado/FILA-EP46.md). Estado: branch ep46; último commit com as correções 3–6 (96b8148); draft2_720.mp4 é o último vídeo completo (não apagar).
+Próximo item pendente: nenhum. Fila 1-16 concluída. Final: projetos/bonecos/2026-11-23-tiao-sismografo-ep46/ep46_1080.mp4 (RASCUNHO, aguarda revisão do Filippe).
