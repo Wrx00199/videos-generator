@@ -78,7 +78,7 @@ export const actorsAt = (f, T, W) => {
   else if (b === 6) { const u = Math.min(1, (t - B[5][0]) / (B[5][1] - B[5][0])); out.push(X(anda(W, 'tiao', { ...wide, aR: [2.6, -0.2], aL: [2.6, -0.2] }, [O.x - 1.2, O.z + 0.6], [O.x + 0.3, O.z + 1.1], u, t))); P('carteiro', { eye: 'happy', mouth: 'grin', f: -1 }, 1.1, 0.4); }
   else if (b === 7) { P('tiao', { ...wide, aL: [-0.35, 0.25] }, TX, TZ); if (!duo) P('carteiro', { eye: 'happy', mouth: 'grin', f: -1 }, 1.1, 0.4); }
   else if (b === 8) P('tiao', { ...wide, aR: [2.4, -0.2] }, TX, TZ);
-  else if (b === 9) P('tiao', { ...wide, aR: [2.5, -0.2], aL: [2.5, -0.2] }, -0.85, -0.2);
+  else if (b === 9) P('tiao', { ...wide, aR: [2.5, -0.2], aL: [2.5, -0.2] }, -0.62, -0.3);
   return out;
 };
 export const fxAt = () => [];
