@@ -1,0 +1,24 @@
+{
+  "id": "colagem",
+  "nome": "Colagem",
+  "descricao": "Recortes de papel rasgado e fita crepe em stop-motion, manchete sobre papel branco e etiqueta carimbada.",
+  "catalogo": [
+    {"tipo": "component", "nome": "paper-collage-reveal"},
+    {"tipo": "block", "nome": "freeze-frame-dressing"},
+    {"tipo": "block", "nome": "hw-frame"}
+  ],
+  "formato": {"largura": 1080, "altura": 1920, "duracao": 5, "fps": 24},
+  "render": {"resolucao": "720p", "fps": 24, "qualidade": "draft", "workers": 1, "variables": true},
+  "slots": [
+    {"id": "manchete", "variavel": "headline", "max_chars": 16, "obrigatorio": true},
+    {"id": "apoio", "variavel": "sub", "max_chars": 34, "obrigatorio": true},
+    {"id": "etiqueta", "variavel": "tag", "max_chars": 12, "obrigatorio": true}
+  ],
+  "variables": [
+    {"id": "headline", "type": "string", "label": "Manchete", "default": "VAZOU O MAPA"},
+    {"id": "sub", "type": "string", "label": "Frase de apoio", "default": "dizem que tem 12 bairros novos"},
+    {"id": "tag", "type": "string", "label": "Etiqueta", "default": "EXCLUSIVO"},
+    {"id": "accent", "type": "color", "label": "Cor da etiqueta", "default": "#ff4d6d"},
+    {"id": "name", "type": "string", "label": "Nome do arquivo (lote)", "default": "clip"}
+  ]
+}

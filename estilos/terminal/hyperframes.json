@@ -8,37 +8,5 @@
   },
   "media": {
     "autoProxy": true
-  },
-  "registryItems": [
-    {
-      "name": "terminal-simulator",
-      "type": "hyperframes:component",
-      "target": "compositions/components/terminal-simulator.html"
-    },
-    {
-      "name": "paper-collage-reveal",
-      "type": "hyperframes:component",
-      "target": "compositions/components/paper-collage-reveal.html"
-    },
-    {
-      "name": "per-word-crossfade",
-      "type": "hyperframes:component",
-      "target": "compositions/components/per-word-crossfade.html"
-    },
-    {
-      "name": "caption-emoji-pop",
-      "type": "hyperframes:component",
-      "target": "compositions/components/caption-emoji-pop.html"
-    },
-    {
-      "name": "grid-pixelate-wipe",
-      "type": "hyperframes:component",
-      "target": "compositions/components/grid-pixelate-wipe.html"
-    },
-    {
-      "name": "caption-glitch-rgb",
-      "type": "hyperframes:component",
-      "target": "compositions/components/caption-glitch-rgb.html"
-    }
-  ]
+  }
 }
