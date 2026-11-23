@@ -322,4 +322,17 @@ export function construirTrem(X) {
     add(new THREE.BoxGeometry(3.4, 1.1, 1.0), mp, 0, 4.1, -5.6, M);   // verga do portão
     const st1 = lista.dojo.state; lista.dojo.state = (S, f) => { st1 && st1(S, f); M.visible = !!(S.dojo || {}).muralha; };
   }
+
+  // 8) PÁTIO EM RUÍNA (ep46) — dojo { ruina: 1|0 }: colunas caídas, verga quebrada, blocos de muralha e entulho espalhados pelo pátio, poeira. Sem mexer no torii/casa.
+  if (lista.dojo) {
+    const g = lista.dojo.g, R = new THREE.Group(); g.add(R); R.visible = false;
+    const r = P.rng(1132), cinza = ['#8f8a80', '#7d786f', '#a29c90'];
+    for (let i = 0; i < 26; i++) { const s = 0.22 + r() * 0.55, a = r() * 6.28, d = 1.6 + r() * 4.4; const m = add(new THREE.DodecahedronGeometry(s, 0), mc(cinza[i % 3]), Math.cos(a) * d * 1.3, s * 0.6, -1.0 + Math.sin(a) * d * 0.9, R); m.rotation.set(r() * 3, r() * 3, r() * 3); m.scale.y = 0.7; }
+    for (const [x, z, ry] of [[-2.6, -1.6, 0.5], [2.9, -2.2, -0.35]]) { const col = add(new THREE.CylinderGeometry(0.3, 0.3, 3.2, 12), mc('#c0392b'), x, 0.3, z, R); col.rotation.z = PI / 2; col.rotation.y = ry; }   // colunas vermelhas tombadas
+    const verga = add(new THREE.BoxGeometry(3.4, 0.3, 0.5), mc('#9a2a22'), 0.2, 0.5, -3.4, R); verga.rotation.set(0.1, 0.5, 0.45);                         // verga do portão caída
+    for (const [x, z] of [[-1.4, -2.6], [1.6, -3.0], [-3.2, -0.4]]) add(new THREE.BoxGeometry(0.9, 0.5, 0.6), mc('#8f8a80'), x, 0.25, z, R).rotation.y = x;      // blocos de muralha
+    const pó = []; for (let i = 0; i < 6; i++) { const m = new THREE.Mesh(new THREE.SphereGeometry(1, 10, 8), bas({ color: '#d8cdb8', transparent: true, opacity: 0.35, depthWrite: false })); semTinta(m); R.add(m); pó.push(m); }
+    const st2 = lista.dojo.state; lista.dojo.state = (S, f) => { st2 && st2(S, f); const B = S.dojo || {}, t = f / 30; R.visible = (B.ruina ?? 0) > 0;
+      pó.forEach((m, i) => { m.position.set(-3 + i * 1.2, 0.9 + 0.3 * Math.sin(t * 1.3 + i), -2.2 - (i % 3) * 0.8); m.scale.setScalar(0.9 + 0.25 * Math.sin(t * 0.9 + i * 2)); }); };
+  }
 }
