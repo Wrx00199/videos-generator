@@ -14,7 +14,7 @@ Aceite: 9:16, 55–70 s, 1 voz, 0 tela preta, 0 silêncio >3 s, 0 freeze >3 s, T
 [x] 9. margem de 8%: beat 7 e quadro final
 [x] 10. noite no morro (beats 5 e 8)
 [x] 11. portão de muralha com 2 guardas de lança
-[ ] 12. pátio em ruína no beat 9
+[x] 12. pátio em ruína no beat 9
 [ ] 13. SFX de queda, arrasto e ronco no payoff
 [ ] 14. legenda presa no words.json
 [ ] 15. QA completo: blackdetect, silencedetect, freezedetect, loudnorm, folha de todos os beats
