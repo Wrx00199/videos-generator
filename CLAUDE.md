@@ -9,7 +9,7 @@ Em pedidos de vídeo ou cena, **Tião**, **Tiao**, **Tinhão** e **Tinhao** sele
 
 ## Fonte das regras
 - **GTA 6 = clipar lives** (`estudio-lives`). Clonagem/modelagem de vídeo (`estudio-clone`, workflows `clone-*`) está **PAUSADA** desde 23/11; só retomar se o Filippe pedir.
-- **Tião = kit fixo V6:** não clona vídeo; referências só viram moldes de roteiro (`serie-tiao-kit/MOLDES_ROTEIRO.md`); o roteiro se adapta ao kit (`serie-tiao-kit/KIT.md`).
+- **Tião = V7.** Use o [fluxo da série](docs/tiao/PRODUCAO-V7.md) e o catálogo aprovado. Os cortes das referências ensinam montagem. Cada episódio tem premissa, falas e encenação próprias.
 - **Identidade:** `marca/identidade.json` pertence à conta Six Stars e define o nick, cores, logo e capa do Jason dessa conta. O Tinhão é uma página separada. Para Tinhão, use apenas identidade própria confirmada pelo Filippe. Enquanto ela faltar, o piloto usa só o conteúdo da série, sem marca de conta. Logo WR proibido.
 - **Motion:** `estudio-motion` fabrica peças visuais; não escolhe o roteiro nem muda o esqueleto.
 - **B-roll:** `estudio-brolls` busca e registra assets; não é montador nem clonador de vídeos.

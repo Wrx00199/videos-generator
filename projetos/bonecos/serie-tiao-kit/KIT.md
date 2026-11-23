@@ -1,11 +1,10 @@
-# KIT V6 — Aventuras do Tião (fixo desde 23/11/2026)
+# Kit de atuação — Aventuras do Tião
 
-**Regra-mãe:** o roteiro se adapta ao kit. Episódio NÃO cria cenário, personagem, roupa nem gesto novo. O kit só cresce numa rodada separada, testada no banco de animações e aprovada pelo Filippe olhando a folha. Não se clona vídeo: referências viram só moldes de roteiro (`MOLDES_ROTEIRO.md`).
+**Regra-mãe:** o roteiro se adapta ao kit. Episódio NÃO cria cenário, personagem, roupa nem gesto novo. O kit só cresce numa rodada separada, testada no banco de animações e aprovada pelo Filippe olhando a folha. Use o [fluxo V7](../../../docs/tiao/PRODUCAO-V7.md) para modelar a função da montagem com material próprio.
 
 ## Universo
 - Tião: cozinheiro baixinho do navio, chapéu de chef, **único personagem branco**. Bonzinho, se ferra e salva o dia sem querer.
 - Gancho no 0 s com ação já acontecendo e uma pergunta concreta. “Tião foi…” e “E se o Tião…” funcionam quando a primeira imagem sustenta a frase.
-- Duração: 60–90 s. Narrador único (voz `narrador`) + falas curtas dos personagens.
 - Séries: A = "E se o Tião tivesse o poder X"; B = aventura histórica/ficcional. Sem guerra atual, sem pessoa real, sem marca/obra de terceiros.
 
 ## Catálogo FIXO
@@ -27,16 +26,6 @@ Gesto fora da lista = vira corte, close de objeto ou reação. Nunca pose digita
 
 **Props de mão:** os de `prop()` em `motor3d/elenco.js` (glass, ladle, map, lantern, sword, shovel, recipe, quill, bicorne, chapeuChef, abridorLata, latinha…).
 
-## Produção (tempo padrão; não pode crescer)
-O [contrato V6](../../../docs/tiao/PRODUCAO-V6.md) detalha campos e passagem de etapa.
-
-1. Escolher molde e itens do catálogo → `falas.json` com beats e prova visual por fala. Rodar `python3 portao.py <proj> roteiro`.
-2. Com `tempos_ft.js` provisório, rodar `bash novo_ep.sh <proj>` e colocar o story em `<proj>/web/`. Provar as cenas essenciais em quadros 9:16 e passar pela revisão editorial pré-voz do contrato V6. Auditoria sem imagem: `cd <proj>/web && node render.mjs --auditar "0-N" 2`.
-3. Voz: `voz_fala.py` (WAV conferido por fala) + `montar_dialogo.py` + STT do diálogo. Ajustar plano e story aos tempos reais, exportar cortes para `cenas.json` e rodar `python3 portao.py <proj> prova`.
-4. Render: `TIAO_GPU=vulkan bash render_leve.sh <proj>` (um por vez) → `montar_final.sh`.
-5. `python3 portao.py <proj> final` + `revisor-bonecos` com os critérios V6 → Filippe aprova → só então `prontos/3D/Aventuras do Tião/` e Drive1.
-Cronometrar do início ao MP4 revisado, com esperas.
-
 ## NÃO PODE (prints em `docs/tiao/nao-pode/`)
 1. Bola/objeto preto ou qualquer coisa tampando a cena ou o rosto.
 2. Cena escura demais (ilegível no celular).
@@ -48,5 +37,6 @@ Cronometrar do início ao MP4 revisado, com esperas.
 8. Comida nojenta/cabeça em panela no terror; HUD genérico sem tema.
 9. Boca falando durante narração ou pensamento. Só o personagem que fala em voz alta anima a boca.
 10. Corte que perde a ação, a pista ou a ligação entre planos. Efeito de transição entra quando ajuda a orientar.
-11. Fala repetida por erro de voz ou edição, ruído que atrapalha a fala, legenda fora de sincronia ou composição cortada no 9:16.
+11. Marca, arroba ou capa de outra página.
+12. Fala repetida por erro de voz ou edição, ruído que atrapalha a fala, legenda fora de sincronia ou composição cortada no 9:16.
 Bug de motor se corrige no kit (`motor3d/`), com teste em `tests/`, nunca só no episódio.

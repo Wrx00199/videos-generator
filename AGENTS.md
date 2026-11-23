@@ -2,7 +2,7 @@
 
 Siga o `CLAUDE.md` desta pasta como guia do projeto. As skills locais em `.claude/skills/` também são instruções do projeto para Codex: leia a skill relevante antes de atuar.
 
-- Modelar/clonar vídeo: PAUSADO desde 23/11 (`estudio-clone`). GTA 6 = clipar lives (`estudio-lives`). Tião = kit fixo V6 (`estudio-bonecos`).
+- Modelar/clonar vídeo: PAUSADO desde 23/11 (`estudio-clone`). GTA 6 = clipar lives (`estudio-lives`). Tião = produção V7 (`estudio-bonecos`).
 - Fabricar peça visual/motion: `.claude/skills/estudio-motion/SKILL.md`.
 - Achar asset de apoio: `.claude/skills/estudio-brolls/SKILL.md`.
 - Recortar streamer/live: `.claude/skills/estudio-lives/SKILL.md` (esboço separado).

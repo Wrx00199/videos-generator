@@ -3,13 +3,10 @@ name: estudio-bonecos
 description: Produz e verifica Aventuras do Tião. Em pedidos de vídeo ou cena, Tião, Tiao, Tinhão e Tinhao acionam este perfil. Use para roteiro, personagem, animação, render e entrega da série.
 ---
 
-# Aventuras do Tião (kit V6)
+# Aventuras do Tião V7
 
-Leia `projetos/bonecos/serie-tiao-kit/CONTINUAR_AQUI.md`, `KIT.md` e `docs/tiao/PRODUCAO-V6.md`. Use o kit fixo e modele a função dos beats com referências conferidas. Cada episódio tem história, falas e encenação próprias.
+Leia primeiro `projetos/bonecos/serie-tiao-kit/CONTINUAR_AQUI.md`. O guia de produção é `docs/tiao/PRODUCAO-V7.md`. Use a curadoria conferida para decidir que informação cada corte revela. Crie premissa própria e escolha o elenco pela função.
 
-1. **Roteiro.** Escolha um molde e itens do catálogo. 60–90 s com ação e pergunta concreta desde a abertura. Declare os beats e a prova visual de cada fala conforme o contrato V6. Rode `portao.py <proj> roteiro` antes da voz. Confira se os degraus pioram a situação, se a pista aparece e se o pagamento resolve a promessa.
-2. **Prova.** Com tempos provisórios, confira abertura, pista, virada, pagamento e o gesto de maior risco. O plano contém o motivo de cada enquadre/corte. Rode a auditoria sem imagem e confira os quadros de risco e a lista NÃO PODE do KIT. Peça a revisão editorial antes da voz conforme o guia V6. Se reprovar, ajuste o trecho e mostre a prova corrigida.
-3. **Voz e render.** `voz_fala.py` + `montar_dialogo.py` + STT bruto do diálogo em `voz/stt.json`. Ajuste o plano aos tempos reais, exporte `cenas.json` e valide com `portao.py <proj> prova`. Renderize com `TIAO_GPU=vulkan bash render_leve.sh <proj>` e monte com `montar_final.sh`. Um render por vez.
-4. **Aceite.** `portao.py <proj> final` + `revisor-bonecos` com os critérios V6. Filippe aprova antes de `prontos/` e Drive1.
+Submeta a prévia em movimento a um revisor independente que receba só a mídia sem sinopse, título revelador ou resposta. Registre a leitura fria antes de mostrar a intenção ao revisor. Trate atuação e montagem em parecer próprio. Devolva para correção ou descarte quando a cena não se sustentar. Antes de preparar voz e render, confira os pareceres da versão no portão.
 
-Cronometre do início ao MP4 revisado, com esperas. Bug de motor se corrige no kit com teste.
+O QA técnico mede o arquivo. A revisão final confere a história, imagem em movimento, áudio e identidade da versão entregue. Apresente o primeiro piloto completo ao Filippe quando ele passar nessas etapas. A série usa apenas identidade própria confirmada.

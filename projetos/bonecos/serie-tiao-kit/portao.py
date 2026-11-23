@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""portao.py — juiz em codigo de cada etapa do Tiao V4. Exit code 0 so se tudo ok.
-Uso: python3 portao.py <projeto> <roteiro|prova|final>  |  python3 portao.py novo <slug>
-Exit: 0 ok · 1 reprovou · 2 arquivo faltando/entrada invalida.
-Limiares [C] (chamadas minhas, ver DESIGN_V4 item 2): duracao 60-90 s, >=2,8 pal/s,
->=25 planos/min, plano maximo 3 s, LUFS -14 +-1, pico <= -1 dBTP, silencio no meio <= 0,4 s."""
+"""Valida as etapas do Tião.
+Uso: python3 portao.py <projeto> <roteiro|voz|prova|final|entrega>
+     python3 portao.py novo <slug>
+Exit: 0 ok · 1 reprovou · 2 arquivo faltando ou entrada inválida."""
 import datetime, math, glob, json, os, re, subprocess, sys
 from dataclasses import dataclass
+from pathlib import Path
 
 DUR_MIN, DUR_MAX = 60.0, 90.0
 PAL_S_MIN = 2.5
@@ -445,11 +445,12 @@ def raiz_dados(env=None, kit=None):
     return raiz, ''
 
 
-def criar_projeto(raiz, slug, hoje=None, corte=None):
-    r = trava_lote(raiz, corte)
-    if not r.ok:
-        print('TRAVADO:', r.motivo)
-        sys.exit(1)
+def criar_projeto(raiz, slug, hoje=None, corte=None, fluxo='legado'):
+    if fluxo == 'legado':
+        r = trava_lote(raiz, corte)
+        if not r.ok:
+            print('TRAVADO:', r.motivo)
+            sys.exit(1)
     base = os.path.join(raiz, 'projetos', 'bonecos')
     nums = [int(m.group(1)) for d in glob.glob(os.path.join(base, '*'))
             if (m := re.search(r'-(\d+)$', os.path.basename(d)))]
@@ -458,7 +459,8 @@ def criar_projeto(raiz, slug, hoje=None, corte=None):
     slug = re.sub(r'[^a-z0-9-]+', '-', slug.lower()).strip('-') or 'sem-nome'
     p = os.path.join(base, f'{hoje}-tiao-{slug}-{nn:02d}')
     os.makedirs(os.path.join(p, 'portao'))
-    json.dump({'criado': hoje, 'etapas': {}}, open(os.path.join(p, 'portao', 'estado.json'), 'w'))
+    with open(os.path.join(p, 'portao', 'estado.json'), 'w', encoding='utf-8') as arquivo:
+        json.dump({'criado': hoje, 'fluxo': fluxo, 'etapas': {}}, arquivo)
     return p
 
 
@@ -695,8 +697,12 @@ def checar_kit_v6(proj):
 
 def etapa_roteiro(proj):
     fj = _carregar(proj, 'falas.json')
-    if fj.get('molde') == 'v6':
-        return [checar_roteiro_v6(fj)]
+    if eh_v7(proj, fj):
+        if not isinstance(fj, dict) or fj.get('molde') != 'v7':
+            return [Resultado('roteiro_v7', False, '', 'molde v7', 'a execução foi aberta em V7')]
+        return [checar_roteiro_kit(fj)]
+    if isinstance(fj, dict) and fj.get('molde') == 'v6':
+        return [checar_roteiro_kit(fj)]
     return [checar_roteiro(contar_palavras(fj)), checar_elenco_proj(proj)] + checar_roteiro_v4(fj)
 
 
@@ -706,12 +712,25 @@ GESTOS_V6 = frozenset((
 ))
 
 
-def checar_roteiro_v6(d):
+def eh_v7(proj, roteiro=None):
+    """Reconhece o perfil declarado ou a execução aberta pelo novo scaffold."""
+    if isinstance(roteiro, dict) and roteiro.get('molde') == 'v7':
+        return True
+    estado = os.path.join(proj, 'portao', 'estado.json')
+    if not os.path.isfile(estado):
+        return False
+    with open(estado, encoding='utf-8') as arquivo:
+        return json.load(arquivo).get('fluxo') == 'v7'
+
+
+def checar_roteiro_kit(d):
     """Confere a estrutura declarada e a compatibilidade com o kit antes da voz."""
+    v7 = d.get('molde') == 'v7'
+    nome = 'roteiro_v7' if v7 else 'roteiro_v6'
     limite = 'beats em ordem; cada fala tem tipo e prova visual do kit'
     falas = d.get('falas')
     if not isinstance(falas, list) or not falas or any(not isinstance(f, dict) for f in falas):
-        return Resultado('roteiro_v6', False, 'falas inválidas', limite, 'falas precisa ser lista de objetos')
+        return Resultado(nome, False, 'falas inválidas', limite, 'falas precisa ser lista de objetos')
     with open(os.path.join(KIT, 'catalogo', 'aprovados.json'), encoding='utf-8') as arquivo:
         catalogo = json.load(arquivo)
     with open(os.path.join(KIT, 'catalogo', 'vozes.json'), encoding='utf-8') as arquivo:
@@ -760,7 +779,14 @@ def checar_roteiro_v6(d):
             falhas.append(f'fala {i}: descreva o que o espectador vai ver em visual.prova')
 
     beats = d.get('beats')
-    if not isinstance(beats, dict):
+    if v7:
+        campos = ('gancho', 'pista', 'virada', 'pagamento')
+        marcos = [beats.get(k) for k in campos] if isinstance(beats, dict) else []
+        if (len(marcos) != len(campos)
+                or any(type(i) is not int or not 0 <= i < len(falas) for i in marcos)
+                or not 0 == marcos[0] <= marcos[1] < marcos[2] <= marcos[3]):
+            falhas.append('marque gancho em 0 e ordene pista, virada e pagamento')
+    elif not isinstance(beats, dict):
         falhas.append('beats: declare gancho, promessa, escada, pista, virada e pagamento')
     else:
         marcos = [beats.get('gancho'), beats.get('promessa')]
@@ -776,13 +802,17 @@ def checar_roteiro_v6(d):
         pista = beats.get('pista')
         if type(pista) is not int or not validos or not 0 <= pista < marcos[-2]:
             falhas.append('pista: marque a fala que planta a pista antes da virada')
-    return Resultado('roteiro_v6', not falhas, f'{len(falas)} fala(s)', limite, '; '.join(falhas))
+    return Resultado(nome, not falhas, f'{len(falas)} fala(s)', limite, '; '.join(falhas))
+
+
+def checar_roteiro_v6(d):
+    return checar_roteiro_kit(d)
 
 
 def checar_prova_v6(proj, roteiro, duracao=None, cenas=None):
     from conferir_fala import MINIMO, repeticoes, similaridade
 
-    resultado = checar_roteiro_v6(roteiro)
+    resultado = checar_roteiro_kit(roteiro)
     if not resultado.ok:
         return [resultado]
     falas = roteiro['falas']
@@ -846,10 +876,51 @@ def checar_prova_v6(proj, roteiro, duracao=None, cenas=None):
         erro_voz = f'trechos repetidos: {repetidos[:3]}'
     elif score < MINIMO:
         erro_voz = 'similaridade baixa com a sequência do diálogo'
+    versao = 'v7' if roteiro.get('molde') == 'v7' else 'v6'
     return [
-        Resultado('plano_v6', not falhas, f'{len(planos)} plano(s)', 'planos ligados às falas e com motivo', '; '.join(falhas)),
-        Resultado('voz_v6', not erro_voz, f'similaridade {score:.0%}', f'>={MINIMO:.0%}, sem bloco excedente', erro_voz),
+        Resultado(f'plano_{versao}', not falhas, f'{len(planos)} plano(s)', 'planos ligados às falas e com motivo', '; '.join(falhas)),
+        Resultado(f'voz_{versao}', not erro_voz, f'similaridade {score:.0%}', f'>={MINIMO:.0%}, sem bloco excedente', erro_voz),
     ]
+
+
+def etapa_voz(proj):
+    from editorial import revisao
+
+    rs = etapa_roteiro(proj)
+    if all(r.ok for r in rs):
+        rs.extend(revisao(proj, etapa) for etapa in ('frio', 'montagem'))
+    return rs
+
+
+def checar_voz_final(proj, mp4, roteiro):
+    from conferir_fala import MINIMO, repeticoes, similaridade
+    from editorial import gravar_json, ler_json, versao
+
+    limite = f'STT do MP4, >= {MINIMO:.0%}, sem repetição excedente'
+    try:
+        digest = versao(proj, 'final')
+        cache = Path(proj) / 'stt-final.json'
+        dados = ler_json(cache) if cache.is_file() else {}
+        if dados.get('versao') != digest:
+            cli = Path(KIT).parents[2] / 'ferramentas' / 'stt.py'
+            resultado = subprocess.run([sys.executable, str(cli), mp4, 'pt', 'small'],
+                                       capture_output=True, text=True)
+            if resultado.returncode:
+                raise ValueError('o STT local do MP4 falhou: ' + resultado.stderr.strip())
+            if versao(proj, 'final') != digest:
+                raise ValueError('a versão mudou durante o STT')
+            dados = {'versao': digest, 'transcricao': json.loads(resultado.stdout)}
+            gravar_json(cache, dados)
+        texto = dados['transcricao']['texto']
+        esperado = ' '.join(f['texto'] for f in roteiro['falas'])
+        score = similaridade(esperado, texto)
+        repetidos = repeticoes(esperado, texto)
+        motivo = f'trechos repetidos: {repetidos[:3]}' if repetidos else ''
+        if score < MINIMO and not motivo:
+            motivo = 'o áudio do MP4 diverge da sequência pretendida'
+        return Resultado('voz_mp4', not motivo, f'{score:.0%}', limite, motivo)
+    except (OSError, ValueError, KeyError, TypeError) as erro:
+        return Resultado('voz_mp4', False, '', limite, str(erro))
 
 
 def etapa_final(proj):
@@ -860,6 +931,18 @@ def etapa_final(proj):
     roteiro = _carregar(proj, 'falas.json')
     cenas = _carregar(proj, 'cenas.json')
     seg = duracao_video(mp4)
+    if eh_v7(proj, roteiro):
+        rs = etapa_roteiro(proj)
+        if not all(r.ok for r in rs):
+            return rs
+        audio = medir_audio(mp4)
+        # O silêncio deliberado pertence à revisão de montagem e som.
+        audio['silencios_meio'] = []
+        tecnicos = [checar_formato(mp4), checar_audio(audio), checar_hud(proj), checar_olhos(proj)]
+        tecnicos.extend(checar_prova_v6(proj, roteiro, duracao=seg, cenas=cenas))
+        if all(r.ok for r in tecnicos):
+            tecnicos.append(checar_voz_final(proj, mp4, roteiro))
+        return tecnicos
     tecnicos = [checar_duracao(seg), checar_formato(mp4), checar_audio(medir_audio(mp4)),
                 checar_hud(proj), checar_olhos(proj)]
     if isinstance(roteiro, dict) and roteiro.get('molde') == 'v6':
@@ -886,20 +969,45 @@ def main(argv):
         if erro:
             print('ERRO:', erro)
             return 2
-        print(criar_projeto(raiz, argv[2]))
+        print(criar_projeto(raiz, argv[2], fluxo='v7'))
         return 0
-    if len(argv) != 3 or argv[2] not in ('roteiro', 'prova', 'final'):
+    if len(argv) != 3 or argv[2] not in ('roteiro', 'voz', 'prova', 'final', 'entrega', 'perfil', 'quadros'):
         print(__doc__)
         return 2
     proj = argv[1]
     if not os.path.isdir(proj):
         print(f'ERRO: projeto {proj} nao existe')
         return 2
-    if argv[2] == 'prova':
+    if argv[2] == 'perfil':
+        roteiro = _carregar(proj, 'falas.json') if os.path.isfile(os.path.join(proj, 'falas.json')) else None
+        print('v7' if eh_v7(proj, roteiro) else 'legado')
+        return 0
+    if argv[2] == 'quadros':
+        planos = _carregar(proj, 'plano.json')
+        if not isinstance(planos, list) or not planos or not isinstance(planos[-1], dict) or not _intervalo(planos[-1]):
+            print('ERRO: falta duração válida no plano', file=sys.stderr)
+            return 2
+        print(f"0-{round(planos[-1]['fim'] * 30) - 1}")
+        return 0
+    if argv[2] == 'voz':
+        rs = etapa_voz(proj)
+    elif argv[2] == 'prova':
         roteiro = _carregar(proj, 'falas.json')
-        if not isinstance(roteiro, dict) or roteiro.get('molde') != 'v6':
+        if eh_v7(proj, roteiro):
+            rs = etapa_voz(proj)
+            if all(r.ok for r in rs):
+                rs.extend(checar_prova_v6(proj, roteiro))
+        elif isinstance(roteiro, dict) and roteiro.get('molde') == 'v6':
+            rs = checar_prova_v6(proj, roteiro)
+        else:
             return 0
-        rs = checar_prova_v6(proj, roteiro)
+    elif argv[2] == 'entrega':
+        from editorial import revisao
+
+        rs = etapa_voz(proj)
+        if all(r.ok for r in rs):
+            rs.extend(etapa_final(proj))
+            rs.append(revisao(proj, 'final'))
     else:
         rs = etapa_roteiro(proj) if argv[2] == 'roteiro' else etapa_final(proj)
     return 0 if imprimir(rs) else 1

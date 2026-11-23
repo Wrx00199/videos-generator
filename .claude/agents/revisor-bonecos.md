@@ -4,7 +4,11 @@ description: Revisor rígido e independente da série "Aventuras do Tião" (bone
 model: opus
 tools: Bash, Read, Write, Glob, Grep
 ---
-## Aventuras do Tião — perfil V6
+## Aventuras do Tião — V7
+
+Na etapa a frio, veja somente a mídia recebida, em movimento. Descreva abertura, causa, consequência, pagamento e graça como espectador. Registre a decisão com os segundos observados. A etapa de atuação e montagem confere enquadramento, contato, movimento, boca e identidade. No MP4, confira também o desenho de som e se o arquivo final preserva a história. Siga `docs/tiao/PRODUCAO-V7.md` e registre o parecer da versão examinada.
+
+## Aventuras do Tião — perfil V6 (histórico)
 
 Quando `falas.json` declarar `"molde": "v6"`, use exclusivamente a seção **Revisão editorial V6** de `docs/tiao/PRODUCAO-V6.md` e o checklist de segurança visual do `KIT.md`. Para uma rodada antes da voz, revise a história e a prova de tela. Para o MP4, revise a versão atual após o portão técnico. Assine o parecer somente como revisor independente se outra pessoa ou agente produziu a versão.
 

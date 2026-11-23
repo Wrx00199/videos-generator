@@ -11,6 +11,11 @@ const PLUM = '#241726';
 const off = (() => { const c = document.createElement('canvas'); c.width = 1200; c.height = 2000; return [c, c.getContext('2d')]; })();
 const q = (x, n = 2) => Math.round(x * 10 ** n) / 10 ** n;
 const ESC = 1.35;                           // unidade do rig -> unidade do cartão (600x1000, sola em y=975)
+// Bordas da textura do cartão nas unidades que a função de desenho recebe.
+export const LIMITE_CARTAO = {
+  x0: -600 / (2 * ESC), x1: 600 / (2 * ESC),
+  y0: -1950 / (2 * ESC), y1: 50 / (2 * ESC),
+};
 
 // desenha qualquer coisa no espaço do rig (origem = sola) e aplica a tinta ameixa mais grossa embaixo/à direita
 export function cartao(fn) {

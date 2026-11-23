@@ -1,5 +1,7 @@
 # Tião V6 — roteiro, edição e prova
 
+> Histórico. A produção atual segue o [V7](PRODUCAO-V7.md).
+
 ## O que aconteceu no ep. 43
 
 O arquivo final tem 65,23 s e 1080×1920. A revisão anterior registrou cerca de 14,5 min de ponta a ponta. Os logs disponíveis não permitem atribuir esse total a cada etapa.

@@ -5,11 +5,20 @@ Uso: python3 voz_fala.py <falas.json> <indice> <saida.wav> [--chaves 4,5,2,3,1]
 - confere com ferramentas/stt.py (modelo small), tenta novamente uma vez se reprovar."""
 import json, sys, os, subprocess, base64, urllib.request, urllib.error, tempfile
 from conferir_fala import MINIMO, repeticoes, similaridade
-from portao import checar_roteiro_v6
+from editorial import versao
+from portao import checar_roteiro_v6, eh_v7, etapa_voz, imprimir
 KIT = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.abspath(os.path.join(KIT, '..', '..', '..'))
 with open(sys.argv[1], encoding='utf-8') as arquivo:
     roteiro = json.load(arquivo)
-if roteiro.get('molde') == 'v6':
+projeto = os.path.dirname(os.path.abspath(sys.argv[1]))
+versao_voz = None
+if eh_v7(projeto, roteiro):
+    if os.path.basename(sys.argv[1]) != 'falas.json':
+        sys.exit('V7: gere a voz a partir de falas.json, da versão revisada.')
+    if not imprimir(etapa_voz(projeto)):
+        sys.exit(1)
+    versao_voz = versao(projeto, 'frio')
+elif roteiro.get('molde') == 'v6':
     resultado = checar_roteiro_v6(roteiro)
     if not resultado.ok:
         sys.exit(f'{resultado.nome}: {resultado.motivo}')
@@ -51,6 +60,13 @@ with tempfile.TemporaryDirectory(dir=os.path.dirname(os.path.abspath(dst))) as p
         print(f'fala {i} ({f["quem"]}): chave {n}, STT {r:.0%}: "{ouv}"')
         repetida = repeticoes(f['texto'], ouv)
         if r >= MINIMO and not repetida:
+            if versao_voz is not None:
+                try:
+                    vigente = versao(projeto, 'frio')
+                except (OSError, ValueError) as erro:
+                    sys.exit(f'V7: origem da voz mudou durante a geração: {erro}')
+                if vigente != versao_voz:
+                    sys.exit('V7: versão alterada durante a geração da voz.')
             os.replace(candidato, dst)
             break
     else:

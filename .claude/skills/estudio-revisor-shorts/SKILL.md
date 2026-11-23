@@ -4,6 +4,8 @@ description: Rubrica de revisão rígida de short vertical com personagens estil
 ---
 # Revisor de shorts
 
+Para Aventuras do Tião em V7 siga `docs/tiao/PRODUCAO-V7.md`. Na leitura a frio, receba só a mídia sem título revelador. A rodada de montagem pode consultar cenas, roteiro e referências.
+
 Para Aventuras do Tião com `"molde": "v6"` em `falas.json`, aplique a seção **Revisão editorial V6** de `docs/tiao/PRODUCAO-V6.md`. A rubrica abaixo se aplica à revisão legada e à calibração contra referência.
 
 ## Rubrica legada (v1, 20/11)

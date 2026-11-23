@@ -1,5 +1,7 @@
 # Histórias, estilos e formatos — banco vivo
 
+> Histórico. A produção atual segue o [V7](../../../../docs/tiao/PRODUCAO-V7.md).
+
 Fixos de todo episódio (molde v3, `KIT.md` seção "Roteiro e ritmo"): abre com "Tião foi…" (ou "Eu fui…") + ato/regra estranha com aposta, objeto-chave em movimento no quadro 0; fecha em corte seco ou callback da 1ª frase, sem CTA. Tema: viagem (cada episódio = 1 cenário do catálogo).
 Cada episódio tem roteiro PRÓPRIO. Só herda contexto quando é **continuação** (Parte 2, minissérie) — aí o roteiro novo começa com 1 frase de "no episódio anterior".
 Público: crianças e família. Humor de meme, bobo e rápido; **sem palavrão**, sem humilhação, sem violência real.

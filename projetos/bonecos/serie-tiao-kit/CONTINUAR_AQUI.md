@@ -1,21 +1,9 @@
-# Série Tião — CONTINUAR AQUI (V6, 23/11/2026)
+# Aventuras do Tião V7
 
-Para qualquer agente (Claude, Codex). Responda ao Filippe em PT-BR, curto (ele lê no celular). Nunca publique; nunca mostre chave; um render por vez.
+Siga [produção e revisão V7](../../../docs/tiao/PRODUCAO-V7.md). Comece pela referência conferida e pela comparação com o acervo. Escolha o elenco pela função. Faça a prévia em movimento, peça leitura a frio, depois revise atuação e montagem. Só avance para voz com os dois pareceres vinculados à prévia atual.
 
-## Como funciona agora
-- **Identidade do Tinhão:** Six Stars e os assets de `marca/identidade.json` são de outra página. Use somente logo, arroba e capa próprios do Tinhão confirmados pelo Filippe. Na falta de assets confirmados, gere o piloto sem marca de conta.
-- **Produção:** [contrato V6 e diagnóstico do ep. 43](../../../docs/tiao/PRODUCAO-V6.md). Roteiro e prova de tela antes da voz. STT do diálogo e plano conferidos antes do render completo.
-- **Kit fixo:** `KIT.md` (cenários, personagens, gestos, NÃO PODE). O roteiro se adapta ao kit.
-- **Originalidade e elenco:** antes de escrever, compare premissa, mecanismo da piada e virada com os episódios do acervo. Se o núcleo já saiu, escolha outra história. Escolha personagens pelo papel que fazem na cena e use também os civis aprovados. A tripulação volta quando a história pede o navio ou a relação entre os tripulantes.
-- **Moldes de roteiro:** `MOLDES_ROTEIRO.md` (+ `referencias_moldes.csv`). Não clonar vídeo.
-- **Gestos aprovados:** banco em `_estado/banco-animacoes/` (`folha_v6.jpg`). Gesto novo só por rodada de kit + OK do Filippe.
-- **Erros proibidos com print:** `docs/tiao/nao-pode/`.
-- **Testes:** `python3 -m unittest discover -s tests -p 'test_*.py'` e `node --test tests/*.mjs` (aqui no kit).
-
-## Estado
-- 23/11: faxina (docs velhos, .bak → `Drive1:Estudio de Video/Arquivo/`), banco V6 (sentar de frente, chapéu animado, apontar sem cruzar).
-- Vídeos antigos (eps. 1–41) foram apagados do Drive; as pastas de projeto antigas em `projetos/bonecos/20*` ficam só como consulta.
-- Piloto V6: ver seção "Piloto" abaixo quando existir.
-
-## Regras que não mudam
-Tião único branco, chapéu de chef; vozes fixas `catalogo/vozes.json`; um render por vez (Ryzen 3 3200G, RX 550, 8 GB; `TIAO_GPU=vulkan`); correção vai no kit com teste; entrega só com OK do Filippe.
+- [Kit de atuação e catálogo](KIT.md) · [Erros com prova](../../../docs/tiao/nao-pode/) · [Curadoria do Filippe](../../../referencias/2026-11-23-curadoria-tinhao.md)
+- Tinhão é uma página própria. Use só a identidade que Filippe confirmou para a série. Até lá, finalize sem marca de conta.
+- Um render por vez. Use `TIAO_GPU=vulkan`. Envie o primeiro piloto completo ao Filippe após QA e revisão. Publicação só com autorização.
+- Testes do kit na própria pasta: `python3 -m unittest discover -s tests -p 'test_*.py'` e `node --test tests/*.mjs`.
+- Histórico: [contrato V6 e diagnóstico do episódio 43](../../../docs/tiao/PRODUCAO-V6.md) · [moldes V6](MOLDES_ROTEIRO.md). Episódios anteriores ficam em `projetos/bonecos/20*`.

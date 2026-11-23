@@ -3,6 +3,7 @@ import * as T from './toon.js';
 import * as P from './paint.js';
 import * as MUNDO from './mundo.js';
 import { SHOTS, TOTAL, shotAt, camAt, dofAt, LIGHTS, lightFor, actorsAt, worldAt, fxAt } from './story.js';
+import { LIMITE_CARTAO } from './acoes.js';
 
 const W = 1080, H = 1920;
 const canvas = document.getElementById('c');
@@ -182,7 +183,7 @@ function drawActors(list, cam) {
     c.mat.color.set(a.tint || '#ffffff'); c.mat.opacity = a.alpha ?? 1;
     c.mesh.castShadow = a.shadow !== false;
     c.mesh.renderOrder = a.order || 2;
-    if (window.AUD && a.quem) auditaAtor(a, c.mesh, cam);
+    if (window.AUD && (a.quem || a.objetoProva)) auditaCartao(a, c.mesh, cam);
     if (a.blob !== false) { c.blob.visible = true; c.blob.position.set(a.x + (a.blobDx || 0), (a.ground ?? a.y) + 0.02, a.z); c.blob.scale.set(1.05 * s * (a.blobW || 1), 0.62 * s, 1); }
   });
 }
@@ -204,18 +205,43 @@ const swapForNd = (on) => {
 // ---- auditoria automática (texto): pose quebrada + boneco cortado/colado na borda ----
 // window.AUD = [] liga; cada item {f, quem, msg}. Unidade do rig -> metro do cartão: 0,0030375; sola em -0,05625.
 const RIG_M = 0.0030375, SOLA = -0.05625, _v = new THREE.Vector3();
-function auditaAtor(a, mesh, cam) {
-  const f = window.AUD_F, out = (msg) => window.AUD.push({ f, quem: a.quem, msg });
-  (a.avisos || []).forEach(out);
-  if (Math.abs(a.yaw || 0) > Math.PI / 5) out('giro fora da pose 3/4; use outra pose ou corte');
-  if (WORLD.cen.lista.cozinha?.ocupaMesa?.(a.x, a.y, a.z)) out('ator invade a mesa da cozinha');
-  if (!a.bb || a.roll) return;
+function auditaCartao(a, mesh, cam) {
+  const f = window.AUD_F, quem = a.objetoProva || a.quem;
+  const out = (msg) => window.AUD.push({ f, quem, msg });
+  if (!a.objetoProva) {
+    (a.avisos || []).forEach(out);
+    if (Math.abs(a.yaw || 0) > Math.PI / 5) out('giro fora da pose 3/4; use outra pose ou corte');
+    if (WORLD.cen.lista.cozinha?.ocupaMesa?.(a.x, a.y, a.z)) out('ator invade a mesa da cozinha');
+    if (a.roll) return;
+  } else if (!Array.isArray(a.bb) || a.bb.length !== 4 || !a.bb.every(Number.isFinite)
+             || a.bb[0] >= a.bb[1] || a.bb[2] >= a.bb[3]) {
+    out('objeto de prova sem caixa válida [x0,x1,y0,y1]');
+    return;
+  }
+  if (!a.bb) return;
+  if (a.objetoProva) {
+    const [xMin, xMax, yMin, yMax] = a.bb;
+    if (xMin < LIMITE_CARTAO.x0 || xMax > LIMITE_CARTAO.x1 ||
+        yMin < LIMITE_CARTAO.y0 || yMax > LIMITE_CARTAO.y1) {
+      out('objeto de prova cortado pela textura do cartão');
+    }
+  }
   mesh.updateMatrixWorld(true); let x0 = 9, x1 = -9, y0 = 9, y1 = -9, atras = 0;
+  const origem = a.objetoProva ? 0 : SOLA;
   for (const bx of [a.bb[0], a.bb[1]]) for (const by of [a.bb[2], a.bb[3]]) {
-    _v.set(bx * RIG_M, -by * RIG_M + SOLA, 0).applyMatrix4(mesh.matrixWorld).project(cam);
-    if (_v.z > 1) atras++; x0 = Math.min(x0, _v.x); x1 = Math.max(x1, _v.x); y0 = Math.min(y0, _v.y); y1 = Math.max(y1, _v.y); }
-  if (atras || x1 < -1 || x0 > 1 || y1 < -1 || y0 > 1) return;           // fora de quadro de propósito
-  (window.AUDN ||= []).push({ f, quem: a.quem, x0: +x0.toFixed(2), x1: +x1.toFixed(2), y0: +y0.toFixed(2), y1: +y1.toFixed(2) });   // medidas (tela -1..1) p/ acertar câmera por número
+    _v.set(bx * RIG_M, -by * RIG_M + origem, 0).applyMatrix4(mesh.matrixWorld).project(cam);
+    if (_v.z > 1 || (a.objetoProva && _v.z < -1)) atras++;
+    x0 = Math.min(x0, _v.x); x1 = Math.max(x1, _v.x); y0 = Math.min(y0, _v.y); y1 = Math.max(y1, _v.y);
+  }
+  if (atras || x1 < -1 || x0 > 1 || y1 < -1 || y0 > 1) {
+    if (a.objetoProva) out('objeto de prova fora do enquadre');
+    return;
+  }
+  (window.AUDN ||= []).push({ f, quem, x0: +x0.toFixed(2), x1: +x1.toFixed(2), y0: +y0.toFixed(2), y1: +y1.toFixed(2) });   // medidas (tela -1..1) p/ acertar câmera por número
+  if (a.objetoProva) {
+    if (x0 < -1 || x1 > 1 || y0 < -1 || y1 > 1) out('objeto de prova cortado no enquadre');
+    return;
+  }
   const vis = (Math.min(x1, 1) - Math.max(x0, -1)) / (x1 - x0);
   if (x0 < -1 || x1 > 1) out(`cortado na borda ${x0 < -1 ? 'esquerda' : 'direita'} (${(vis * 100) | 0}% visível na largura)`);
   else if (x0 < -0.84 || x1 > 0.84) out(`colado na borda ${x0 < -0.84 ? 'esquerda' : 'direita'} (folga < 8%)`);

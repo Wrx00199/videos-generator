@@ -1,5 +1,7 @@
 # Moldes de roteiro: série Aventuras do Tião (23/11/2026)
 
+> Histórico. A produção atual segue o [V7](../../../docs/tiao/PRODUCAO-V7.md).
+
 Regra: estudamos as referências uma vez e extraímos MOLDE (ordem de beats, ritmo, câmera). Não clonamos vídeo. Cada roteiro se adapta ao kit fixo (cenários e elenco do KIT.md), nunca o contrário.
 
 ## Base e limites

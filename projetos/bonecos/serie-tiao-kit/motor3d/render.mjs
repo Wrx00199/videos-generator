@@ -36,6 +36,13 @@ pg.on('console', m => console.log('PAGE', m.text())); pg.on('pageerror', e => co
 await pg.goto(`http://localhost:${srv.address().port}/index.html${process.env.HASH||""}`);
 await pg.waitForFunction(() => window.ready || window.err, null, { timeout: 180000 });
 if (await pg.evaluate(() => window.err)) { console.log('page error'); process.exit(1); }
+if (process.env.TIAO_TOTAL) {
+  const total = await pg.evaluate(() => window.TOTAL);
+  if (total !== Number(process.env.TIAO_TOTAL)) {
+    console.error(`Story com ${total} quadros diverge do plano com ${process.env.TIAO_TOTAL}.`);
+    await b.close(); srv.close(); process.exit(1);
+  }
+}
 // modo auditoria: node render.mjs --auditar "0-1214" [passo]  -> auditoria.json + resumo (sem gerar imagem)
 if (outdir === '--auditar') {
   const [res, med] = await pg.evaluate((fr) => { window.AUD = []; window.AUDN = []; for (const f of fr) window.auditFrame(f); return [window.AUD, window.AUDN]; }, frames);

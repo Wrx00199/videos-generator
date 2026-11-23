@@ -23,6 +23,16 @@ const [arq, out0] = process.argv.slice(2).filter((a) => a !== '--montar' && a !=
 const out = out0 && path.resolve(out0);   // absoluto: o concat do ffmpeg resolve caminho relativo à pasta da lista (bug: dialogo.wav não saía com pasta relativa)
 if (!arq || !out) { console.error('uso: node vozes_elenco.mjs <falas.json> <pasta_saida>'); process.exit(2); }
 const cfg = JSON.parse(fs.readFileSync(arq, 'utf8'));
+const projeto = path.dirname(path.resolve(arq));
+const perfil = spawnSync('python3', [path.join(KIT, 'portao.py'), projeto, 'perfil'], { encoding: 'utf8' });
+if (perfil.status !== 0) {
+  console.error(perfil.stderr || perfil.stdout || 'Não foi possível checar o perfil do episódio.');
+  process.exit(2);
+}
+if (cfg.molde === 'v7' || perfil.stdout.trim() === 'v7') {
+  console.error('V7 usa voz_fala.py com pareceres vigentes e montar_dialogo.py.');
+  process.exit(2);
+}
 const cat = JSON.parse(fs.readFileSync(path.join(KIT, 'catalogo/vozes.json'), 'utf8'));
 const elenco = { ...cat.personagens, ...(cfg.elenco || {}) };
 const falas = cfg.falas.map((f, i) => ({ ...f, i }));
