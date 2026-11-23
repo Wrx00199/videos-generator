@@ -29,6 +29,14 @@ test('chapéu sai da cabeça para a mão e braço e objeto passam na auditoria',
   assert.deepEqual(Pz.avisaPropCara(p), []);
 });
 
+test('chapéu sai da cabeça em etapas e o do Tião é o de chef', () => {
+  assert.equal(Pz.chapeuNaMao({ progresso: 0 }).hat, undefined);
+  assert.equal(Pz.chapeuNaMao({ progresso: .45 }).hat, false);
+  const p = Pz.chapeuNaMao({ chapeu: 'chapeuChef' });
+  assert.equal(p.hR.k, 'chapeuChef');
+  for (const u of [0, .2, .4, .45, .7, 1]) assert.deepEqual(auditaPose('tiao', Pz.chapeuNaMao({ progresso: u, chapeu: 'chapeuChef' })).avisos, [], String(u));
+});
+
 test('sentar de frente abre os joelhos e mantém canela vertical; perfil mantém a versão antiga', () => {
   assert.equal(Math.abs(Pz.sentar(0).lL[0]), 0);
   const meio = Pz.sentar(.5), fim = Pz.sentar(1);

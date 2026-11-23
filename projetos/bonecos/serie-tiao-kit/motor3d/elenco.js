@@ -650,6 +650,7 @@ function hatAt(k, x, y, r, s, t) { HC = null; ctx.save(); ctx.translate(x, y); c
 function prop(k, x, y, a, s = 1, pr = {}) {
   ctx.save(); ctx.translate(x, y); ctx.rotate(-a); ctx.scale(s, s);
   if (k === 'bicorne') { hatAt('bicorne', 0, -9, 0, .78, 0); }
+  else if (k === 'chapeuChef') { hatAt('chef', 0, -9, 0, .78, 0); }
   else if (k === 'ladle') { rr(-6, -30, 12, 140, 6); fs('#c9c9d2', 5); ctx.beginPath(); ctx.arc(0, 112, 32, 0, PI); ctx.closePath(); fs('#c9c9d2', 6); if (pr.full) { ell(0, 113, 28, 6); ctx.fillStyle = '#e8b04a'; ctx.fill(); } }
   else if (k === 'map') { rr(-75, -10, 150, 110, 6); fs('#f1dfae', 6); ctx.setLineDash([10, 10]); line([-50, 75, -10, 40, 25, 60], 5, '#8a5a2b'); ctx.setLineDash([]); line([30, 20, 50, 40], 6, '#d8322a'); line([50, 20, 30, 40], 6, '#d8322a'); }
   else if (k === 'lantern') { line([0, 0, 0, 30], 5); rr(-26, 30, 52, 70, 10); fs('#ffd36e', 6); line([-26, 52, 26, 52], 4); }

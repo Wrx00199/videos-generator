@@ -103,9 +103,16 @@ export const Pz = {
     return { lL: [-.5 * k, .5 * k], lR: [.5 * k, -.5 * k], lean: .05 * Math.sin(k * Math.PI), aL: [-.22 - .06 * k, .15 + .3 * k], aR: [.22 + .06 * k, .15 + .3 * k] };
   },
 
-  chapeuNaMao({ lado = 'R' } = {}) {
-    const sinal = lado === 'L' ? -1 : 1;
-    return { hat: false, [`a${lado}`]: { ik: [sinal * 148, -151] }, [`h${lado}`]: { k: 'bicorne', a: .16 * sinal, s: .72 } };
+  // Tira o chapéu da cabeça e leva pra mão. progresso 0→1: mão sobe até a aba (0–.4), pega (.4–.5),
+  // desce com o chapéu até o lado do peito (.5–1). chapeu: 'bicorne' (Capitão) | 'chapeuChef' (Tião).
+  chapeuNaMao({ lado = 'R', progresso = 1, chapeu = 'bicorne' } = {}) {
+    const sinal = lado === 'L' ? -1 : 1, u = clampN(progresso, 0, 1);
+    const ease = v => v * v * (3 - 2 * v), mix = (a, b, k) => [a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k];
+    const REPOUSO = [sinal * 80, -30], ABA = [sinal * 38, -276], MAO = [sinal * 148, -151];
+    if (u < .4) return { [`a${lado}`]: { ik: mix(REPOUSO, ABA, ease(u / .4)) } };
+    if (u < .5) return { hat: false, [`a${lado}`]: { ik: ABA }, [`h${lado}`]: { k: chapeu, a: 0, s: .72 } };
+    const k = ease((u - .5) / .5);
+    return { hat: false, [`a${lado}`]: { ik: mix(ABA, MAO, k) }, [`h${lado}`]: { k: chapeu, a: .16 * sinal * k, s: .72 } };
   },
 
   // ─── apontar ───────────────────────────────────────────────────────────────
@@ -121,13 +128,14 @@ export const Pz = {
     const dist = Math.hypot(dx, dz) || 0.001;
     const angV = clampN(Math.atan2(alvoXYZ[1] - 1.2, dist), -.95, .95);
     const lado = mao === 'L' ? 'L' : 'R';
-    const ombroX = lado === 'L' ? -SHX : SHX;
+    const sx = lado === 'L' ? -1 : 1, ombroX = sx * SHX;
     const alcance = REACH - 3;
-    const f = dx >= 0 ? 1 : -1;
+    // mão do lado do alvo: o braço nunca cruza o peito (L aponta pra -x do rig; f espelha o corpo)
+    const f = (dx >= 0 ? 1 : -1) * sx;
     const u = clampN(progresso, 0, 1);
     const arco = -Math.PI / 2 + (angV + Math.PI / 2) * u * u * (3 - 2 * u);
     return { f, aponta: u >= .8 ? lado : null, aL: [-.15, .3], aR: [.15, .3],
-      [`a${lado}`]: { ik: [ombroX + Math.cos(arco) * alcance, SHY - Math.sin(arco) * alcance] } };
+      [`a${lado}`]: { ik: [ombroX + sx * Math.cos(arco) * alcance, SHY - Math.sin(arco) * alcance] } };
   },
 
   // ─── olhar ─────────────────────────────────────────────────────────────────
