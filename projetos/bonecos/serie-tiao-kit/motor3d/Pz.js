@@ -100,7 +100,8 @@ export const Pz = {
     const u = clampN(progresso, 0, 1);
     const k = u * u * (3 - 2 * u);
     if (perfil) return { lL: [1.29 * k, -1.55 * k], lR: [1.43 * k, -1.39 * k], lean: .23 * Math.sin(k * Math.PI) };
-    return { lL: [-.5 * k, .5 * k], lR: [.5 * k, -.5 * k], lean: .05 * Math.sin(k * Math.PI), aL: [-.22 - .06 * k, .15 + .3 * k], aR: [.22 + .06 * k, .15 + .3 * k] };
+    // de frente: coxa vem pra câmera (escorço, coxa curta), canela vertical na frente do assento
+    return { coxa: 1 - .72 * k, lL: [-.28 * k, .28 * k], lR: [.28 * k, -.28 * k], lean: .05 * Math.sin(k * Math.PI), aL: [-.22 - .06 * k, .15 + .3 * k], aR: [.22 + .06 * k, .15 + .3 * k] };
   },
 
   // Tira o chapéu da cabeça e leva pra mão. progresso 0→1: mão sobe até a aba (0–.4), pega (.4–.5),

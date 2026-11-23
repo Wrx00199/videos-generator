@@ -137,7 +137,7 @@ export function construirCasa(X) {
       ocupaMesa: (x, y, z) => g.visible && y < .73 && Math.hypot(x - g.position.x - mesa.position.x, z - g.position.z - mesa.position.z) < .78,
       assento: (lado = 'esquerda') => {
         const cadeira = cadeiras[lado === 'direita' ? 1 : 0];
-        return { x: g.position.x + mesa.position.x + cadeira.position.x, z: g.position.z + mesa.position.z + cadeira.position.z,
+        return { x: g.position.x + mesa.position.x + cadeira.position.x, z: g.position.z + mesa.position.z + cadeira.position.z + (cadeira.rotation.y === 0 ? .3 * cadeira.scale.y + .08 : 0), // de frente: boneco na borda da frente do assento, perna na frente da cadeira
           f: Math.sign(Math.sin(cadeira.rotation.y)) || 1, altura: .48 * cadeira.scale.y };
       },
     }); }

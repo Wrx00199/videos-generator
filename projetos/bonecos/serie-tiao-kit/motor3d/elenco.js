@@ -340,7 +340,7 @@ function armG(side, a) {
   return limb(sx, SHY, [a[0], Math.max(-1.92, Math.min(1.92, a[1]))], UA, LA);
 }
 function blink(t, seed) { const per = 2.6 + seed * .37; return ((t + seed * .71) % per) < .1; }
-function hipOf(o) { const gL = limb(-20, 0, o.lL || DEF.lL, TH, SH), gR = limb(20, 0, o.lR || DEF.lR, TH, SH); return (o.hipY != null ? o.hipY : -Math.max(gL[5], gR[5])) + (o.bob || 0); }
+function hipOf(o) { const tc = TH * (o.coxa ?? 1), gL = limb(-20, 0, o.lL || DEF.lL, tc, SH), gR = limb(20, 0, o.lR || DEF.lR, tc, SH); return (o.hipY != null ? o.hipY : -Math.max(gL[5], gR[5])) + (o.bob || 0); }
 // ponto do mundo -> coordenadas do corpo (origem no quadril, já com inclinação)
 function toBody(n, o, wx, wy) { const sc = SPEC[n].s * (o.sc || 1), f = o.f || 1; const dx = (wx - o.x) / (sc * f), dy = (wy - o.y) / sc - hipOf(o); const l = -(o.lean || 0) * 1; return [dx * Math.cos(l) - dy * Math.sin(l), dx * Math.sin(l) + dy * Math.cos(l)]; }
 
@@ -350,7 +350,7 @@ function drawChar(n, p, t) {
   if (o.shadow && !o.rot) { const k = 1 + Math.min(0, o.bob) / 400; ctx.fillStyle = 'rgba(0,0,0,.16)'; ell(0, 3, 92 * sc * k, 17 * sc); ctx.fill(); ctx.fillStyle = 'rgba(0,0,0,.24)'; ell(0, 2, 58 * sc * k, 9 * sc); ctx.fill(); }
   ctx.rotate(o.rot); ctx.scale(sc * o.f, sc); ctx.scale(1 / Math.sqrt(o.sq), o.sq);
   ctx.lineCap = 'round'; ctx.lineJoin = 'round';
-  const gL = limb(-20, 0, o.lL, TH, SH), gR = limb(20, 0, o.lR, TH, SH);
+  const gL = limb(-20, 0, o.lL, TH * (o.coxa ?? 1), SH), gR = limb(20, 0, o.lR, TH * (o.coxa ?? 1), SH); // coxa<1 = escorço (coxa vindo pra câmera)
   ctx.translate(0, hipOf(o));
   if (o.legs) { if (S.an) { if (!S.an.semPernas) { legAn(gL, S, -1); legAn(gR, S, 1); } } else { leg(gL, 1.04 / S.s); leg(gR, 1.04 / S.s); } }
   ctx.rotate(o.lean);
