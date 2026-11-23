@@ -26,7 +26,7 @@ const LISTA = [
   S(B[4][0], MORRO, 5, 'b5', { az: -32, dist: 4.0, h: 1.2, ly: 1.0, fov: 50, off: 0.0, D: 3.2 }),
   S(B[5][0], MORRO, 6, 'b6a', { az: 4, dist: 5.6, h: 1.7, ly: 1.1, fov: 52, off: 0.0, D: 4.8, D2: 2.6 }),
   S(40.2, 'dojo', 6, 'b6b', { az: 0, dist: 4.6, h: 1.5, ly: 1.1, fov: 50, off: 0.0, D: 3.4, c: [0.0, -2.0] }),
-  S(B[6][0], 'cidade', 7, 'b7a', { az: -22, dist: 5.2, h: 1.6, ly: 1.5, fov: 56, off: 0.4, D: 3.9 }),
+  S(B[6][0], 'cidade', 7, 'b7a', { az: -22, dist: 5.6, h: 1.4, ly: 1.0, fov: 58, off: 0.4 }),
   S(50.0, 'cidade', 7, 'b7b', { az: 32, dist: 4.4, h: 1.3, ly: 1.3, fov: 54, off: 0.3 }),
   S(B[7][0], MORRO, 8, 'b8a', { az: 0, dist: 4.0, h: 1.0, ly: 0.9, fov: 50, off: 0.0, push: 0.12 }),
   S(57.4, MORRO, 8, 'b8b', { az: 0, dist: 4.6, h: 1.0, ly: 0.8, fov: 40, off: -0.12, lt: -0.55, push: 0.1 }),
@@ -87,10 +87,10 @@ export const actorsAt = (f, T, W) => {
   const S_ = shotAt(f), t = f / FPS, O = ORIGEM[S_.cen], tint = luz(S_.cen).tint, X = (a) => ({ tint, ...a }), out = [], b = S_.beat, c0 = S_.cam;
   const kk = 1 - S_.push * sm(Math.max(0, Math.min(1, (f - S_.a) / Math.max(1, S_.b - S_.a)))), tg = Math.tan(c0.fov * Math.PI / 360);
   // Tião ~45% da altura do quadro, borda esquerda dentro do quadro; na frente do jarro (exceto b9, onde fica atrás e o jarro é o maior objeto)
-  const DT = b === 9 ? c0.dist * kk - 0.7 : Math.min(1.44 / tg, c0.dist * kk - 0.8), wf = 1.23 * 1.3 / (2 * DT * tg), LT = c0.lt ?? (b === 9 ? -0.62 : -Math.max(0.1, Math.min(0.75, 0.97 - wf)));
+  const DT = b === 9 ? c0.dist * kk - 0.7 : Math.min(1.44 / tg, c0.dist * kk - 0.8), wf = 1.23 * 1.3 / (2 * DT * tg), LT = c0.lt ?? (b === 9 ? -0.5 : -Math.max(0.1, Math.min(0.75, 0.84 - wf)));
   const at = (D, lat) => noPlano(S_, t, D, lat, kk);
   const P = (n, pose, [x, z]) => out.push(X(boneco(W, n, pose, O.x + x, O.z + z, t)));
-  const TIAO = (pose) => P('tiao', pose, at(DT, LT)), RIGHT = (n, pose, d = 0.3) => P(n, pose, at(DT + d, 0.5));
+  const TIAO = (pose) => P('tiao', pose, at(DT, LT)), RIGHT = (n, pose, d = 0.3) => P(n, pose, at(DT + d, 0.42));
   if (b === 1) { TIAO({ ...wide, aR: [2.5, -0.2], aL: [-0.3, 0.3] }); RIGHT('imperador', { eye: 'normal', mouth: 'flat', f: -1, aL: [-0.3, 0.3] }); }
   else if (b === 2) { TIAO({ ...wide, aR: [2.5, -0.2] }); if (S_.id === 'b2a') { RIGHT('imperador', { eye: 'happy', mouth: 'grin', f: -1, aL: [-0.3, 0.3] }); P('vizinha', { eye: 'happy', mouth: 'grin', f: -1 }, at(DT + 1.0, 0.1)); } }
   else if (b === 3) { TIAO({ ...wide }); if (S_.id === 'b3a') RIGHT('imperador', { eye: 'normal', mouth: 'flat', f: -1, aL: [1.2, -0.2], aR: [1.2, -0.2] }); }
@@ -99,7 +99,7 @@ export const actorsAt = (f, T, W) => {
   else if (b === 5) TIAO({ ...wide, aR: [2.0, -0.2] });
   else if (b === 6 && S_.cen === MORRO) { const u = Math.min(1, (t - B[5][0]) / (S_.b / FPS - B[5][0])), A = at(DT, LT), Bp = at(DT * 0.85, LT + 0.15); out.push(X(anda(W, 'tiao', { ...wide, aR: [2.6, -0.2], aL: [2.6, -0.2] }, [O.x + A[0], O.z + A[1]], [O.x + Bp[0], O.z + Bp[1]], u, t))); }
   else if (b === 6) { TIAO({ ...wide, aR: [2.6, -0.2], aL: [2.6, -0.2] }); RIGHT('carteiro', { eye: 'happy', mouth: 'grin', f: -1 }); }
-  else if (b === 7) { TIAO({ ...wide, aL: [-0.35, 0.25] }); if (S_.id === 'b7a') RIGHT('carteiro', { eye: 'happy', mouth: 'grin', f: -1 }); }
+  else if (b === 7) { TIAO({ ...wide, aL: [-0.35, 0.25] }); if (S_.id === 'b7a') { RIGHT('carteiro', { eye: 'happy', mouth: 'grin', f: -1 }); P('imperador', { eye: 'wide', mouth: 'o', f: -1, aL: [-0.3, 0.3] }, at(DT + 1.3, 0.1)); } }
   else if (b === 8) TIAO({ ...wide, aR: [2.4, -0.2] });
   else if (b === 9) TIAO({ ...wide, aR: [2.5, -0.2], aL: [2.5, -0.2] });
   return out;

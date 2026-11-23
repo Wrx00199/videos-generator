@@ -119,7 +119,7 @@ const NOVOS = {
   // gigante / mutante / monstro / robô: bichos de verdade
   gigante: { s: 1.85, hat: null, an: { sobr: false, t: 'bruto', w: 1.05, cab: 'bruta', cabS: .78, pele: '#8fa06a', calca: '#6b4b2a', br: [52, 46], pr: [48, 42], mao: 42, pe: 52, cabelo: null, olhoCor: '#b3201f', deco: ['barriga'], feio: ['verrugas', 'cicatriz', 'tusks', 'sobrancelha', 'olhoGrande', 'dentesTortos'], garras: 0 } },   // Gigante Bolotão
   rei: { s: 1.85, hat: 'coroa', an: { sobr: false, t: 'bruto', w: 1.05, cab: 'bruta', cabS: .78, pele: '#d6a272', roupa: '#7a2f9a', manga: '#7a2f9a', calca: '#5a2478', br: [52, 46], pr: [48, 42], mao: 42, pe: 52, cabelo: null, olhoCor: '#b3201f', deco: ['barriga'], feio: ['verrugas', 'cicatriz', 'tusks', 'sobrancelha', 'olhoGrande', 'dentesTortos'], garras: 0 } },   // Rei Bolotão (gigante com coroa, ep. 37)
-  imperador: { s: 1.12, hat: 'coroa', capa: '#c8962a', an: { sobr: false, t: 'bruto', w: 1.0, cab: 'bruta', cabS: .85, pele: '#d6a272', roupa: '#b3201f', manga: '#b3201f', calca: '#7a1010', br: [40, 34], pr: [38, 32], mao: 34, pe: 44, cabelo: null, olhoCor: '#222222', deco: ['barriga'], feio: ['sobrancelha'], garras: 0 } },   // Imperador (ep46, 23/11): o rei sem presas/verrugas, ~1,3x o Tião, manto dourado
+  imperador: { s: 1.075, hat: 'coroaG', capa: '#c8962a', an: { sobr: false, t: 'bruto', w: 1.0, cab: 'bruta', cabS: .85, pele: '#d6a272', roupa: '#b3201f', manga: '#b3201f', calca: '#7a1010', br: [40, 34], pr: [38, 32], mao: 34, pe: 44, cabelo: null, olhoCor: '#222222', deco: ['barriga'], feio: ['sobrancelha'], garras: 0 } },   // Imperador (ep46, 23/11): o rei sem presas/verrugas, ~1,3x o Tião, manto dourado
   mutante: { s: 1.15, hat: null, espinhos: '#3f8f1f', an: { espinhosCab: 1, t: 'pera', w: 1.0, cab: 'oval', cabS: 1.0, pele: '#6cd13f', garra: 'R', br: [26, 22], pr: [28, 24], mao: 18, pe: 30, garras: 1, deco: ['manchas'], feio: ['olhosExtras', 'dentesTortos', 'olhoGrande'] } },  // Gosmildo
   monstro: { s: 1.6, hat: null, chifres: '#f2e2a8', pelo: '#6d3fd0', presas: 1, an: { sobr: false, t: 'bruto', w: 1.0, cab: 'bruta', cabS: .95, pele: '#8b5cf6', br: [44, 38], pr: [42, 36], mao: 34, pe: 44, garras: 1, deco: ['barriga'], feio: ['sobrancelha'] } },   // Monstro Bolotinha
   robo:    { s: 1.05, hat: null, antenas: ['#ff5c5c', 1], an: { sobr: false, t: 'caixa', cab: 'caixa', cabS: .92, pele: '#9aa3b5', roupa: '#8b93a8', manga: '#7b8499', luva: '#5a6278', bota: '#5a6278', calca: '#7b8499', olhos: 'visor', br: [30, 26], pr: [32, 28], mao: 20, pe: 34, deco: ['placas'] } },   // Robô Lata-Velha
@@ -554,6 +554,13 @@ function hat(k, t, wind = 0) {
     const L = [[-70, 70, -14], [-36, 120, 8], [0, 150, -6], [36, 118, 10], [70, 76, 14]];
     const fm = (e) => { ctx.beginPath(); ctx.moveTo(-84, -70); for (const [x, h, cv] of L) { ctx.quadraticCurveTo(x - 26, -70 - h * e * .5, x + cv * e, -80 - h * e); ctx.quadraticCurveTo(x + 22, -70 - h * e * .4, x + 28, -70); } ctx.lineTo(84, -70); ctx.closePath(); };
     const fl = Math.sin(t * 14) * 5; ctx.save(); ctx.translate(0, fl * .3); fm(1); fs('#ff5a14', 9); fm(.68); fs('#ffa424', 0); fm(.36); fs('#fff0a0', 0); ctx.restore();
+  } else if (k === 'coroaG') { // coroa imperial: 1,35x a coroa comum, com aro, pérolas e gema central (ep46)
+    ctx.save(); ctx.translate(0, -84); ctx.scale(1.35, 1.35); ctx.translate(0, 84);
+    ctx.beginPath(); ctx.moveTo(-62, -84); ctx.lineTo(-66, -150); ctx.lineTo(-34, -118); ctx.lineTo(0, -168); ctx.lineTo(34, -118); ctx.lineTo(66, -150); ctx.lineTo(62, -84); ctx.closePath(); fs('#f2c230', 8);
+    ctx.beginPath(); ctx.rect(-64, -96, 128, 14); fs('#d8a21e', 6);
+    for (const [x, y, c] of [[-66, -154, '#d8322a'], [0, -172, '#3b82f6'], [66, -154, '#d8322a']]) { ell(x, y, 9, 9); fs(c, 4); }
+    for (const x of [-40, -20, 0, 20, 40]) { ell(x, -89, 5, 5); fs('#fff6d8', 3); }
+    ctx.restore();
   } else if (k === 'coroa') { // coroa dourada
     ctx.beginPath(); ctx.moveTo(-62, -84); ctx.lineTo(-66, -150); ctx.lineTo(-34, -118); ctx.lineTo(0, -168); ctx.lineTo(34, -118); ctx.lineTo(66, -150); ctx.lineTo(62, -84); ctx.closePath(); fs('#f2c230', 8);
     for (const [x, y, c] of [[-66, -154, '#d8322a'], [0, -172, '#3b82f6'], [66, -154, '#d8322a']]) { ell(x, y, 9, 9); fs(c, 4); }
