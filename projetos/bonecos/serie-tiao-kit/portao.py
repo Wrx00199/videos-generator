@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """portao.py — juiz em codigo de cada etapa do Tiao V4. Exit code 0 so se tudo ok.
-Uso: python3 portao.py <projeto> <roteiro|final>  |  python3 portao.py novo <slug>
+Uso: python3 portao.py <projeto> <roteiro|prova|final>  |  python3 portao.py novo <slug>
 Exit: 0 ok · 1 reprovou · 2 arquivo faltando/entrada invalida.
 Limiares [C] (chamadas minhas, ver DESIGN_V4 item 2): duracao 60-90 s, >=2,8 pal/s,
 >=25 planos/min, plano maximo 3 s, LUFS -14 +-1, pico <= -1 dBTP, silencio no meio <= 0,4 s."""
@@ -148,7 +148,8 @@ def _carregar(proj, nome):
         print(f'ERRO: falta {nome} em {proj}')
         sys.exit(2)
     try:
-        return json.load(open(p, encoding='utf-8'))
+        with open(p, encoding='utf-8') as arquivo:
+            return json.load(arquivo)
     except ValueError:
         print(f'ERRO: {nome} nao e JSON valido')
         sys.exit(2)
@@ -694,7 +695,161 @@ def checar_kit_v6(proj):
 
 def etapa_roteiro(proj):
     fj = _carregar(proj, 'falas.json')
+    if fj.get('molde') == 'v6':
+        return [checar_roteiro_v6(fj)]
     return [checar_roteiro(contar_palavras(fj)), checar_elenco_proj(proj)] + checar_roteiro_v4(fj)
+
+
+GESTOS_V6 = frozenset((
+    'andarRota', 'correr', 'sentar', 'chapeuNaMao', 'apontar', 'segurar',
+    'falar', 'pensar', 'olhar', 'susto', 'recuar', 'comemorar', 'idle',
+))
+
+
+def checar_roteiro_v6(d):
+    """Confere a estrutura declarada e a compatibilidade com o kit antes da voz."""
+    limite = 'beats em ordem; cada fala tem tipo e prova visual do kit'
+    falas = d.get('falas')
+    if not isinstance(falas, list) or not falas or any(not isinstance(f, dict) for f in falas):
+        return Resultado('roteiro_v6', False, 'falas inválidas', limite, 'falas precisa ser lista de objetos')
+    with open(os.path.join(KIT, 'catalogo', 'aprovados.json'), encoding='utf-8') as arquivo:
+        catalogo = json.load(arquivo)
+    with open(os.path.join(KIT, 'catalogo', 'vozes.json'), encoding='utf-8') as arquivo:
+        vozes = json.load(arquivo)
+    falhas = []
+    aprovados = {}
+    for campo in ('personagens', 'cenarios'):
+        valores = d.get(campo)
+        permitidos = {nome for nome, item in catalogo[campo].items() if item.get('ok') is True}
+        if not isinstance(valores, list) or not valores or any(
+            not isinstance(nome, str) or nome not in permitidos for nome in valores
+        ):
+            falhas.append(f'{campo}: declare apenas itens aprovados')
+            valores = []
+        aprovados[campo] = set(valores)
+    if 'tiao' not in aprovados['personagens']:
+        falhas.append('personagens: falta tiao')
+
+    for i, fala in enumerate(falas):
+        tipo, quem, texto = (fala.get(k) for k in ('tipo', 'quem', 'texto'))
+        if not isinstance(texto, str) or not texto.strip():
+            falhas.append(f'fala {i}: falta texto')
+        if tipo == 'narracao':
+            if quem != 'narrador':
+                falhas.append(f'fala {i}: narração usa a voz narrador')
+        elif tipo in ('dialogo', 'pensamento'):
+            if (not isinstance(quem, str) or quem not in aprovados['personagens']
+                    or quem not in vozes['personagens']):
+                falhas.append(f'fala {i}: voz de personagem fora do elenco fixo')
+        else:
+            falhas.append(f'fala {i}: declare tipo dialogo, narracao ou pensamento')
+        visual = fala.get('visual')
+        if not isinstance(visual, dict):
+            falhas.append(f'fala {i}: falta visual (ator, gesto, cenario, prova)')
+            continue
+        ator, gesto, cenario, prova = (visual.get(k) for k in ('ator', 'gesto', 'cenario', 'prova'))
+        if not isinstance(ator, str) or ator not in aprovados['personagens']:
+            falhas.append(f'fala {i}: ator visual fora do elenco declarado')
+        if not isinstance(cenario, str) or cenario not in aprovados['cenarios']:
+            falhas.append(f'fala {i}: cenário visual fora do kit declarado')
+        if not isinstance(gesto, str) or gesto not in GESTOS_V6:
+            falhas.append(f'fala {i}: gesto fora do kit: {gesto}')
+        if gesto == 'falar' and (tipo != 'dialogo' or quem != ator):
+            falhas.append(f'fala {i}: gesto falar só no diálogo do ator que fala')
+        if not isinstance(prova, str) or not prova.strip():
+            falhas.append(f'fala {i}: descreva o que o espectador vai ver em visual.prova')
+
+    beats = d.get('beats')
+    if not isinstance(beats, dict):
+        falhas.append('beats: declare gancho, promessa, escada, pista, virada e pagamento')
+    else:
+        marcos = [beats.get('gancho'), beats.get('promessa')]
+        escada = beats.get('escada')
+        if isinstance(escada, list) and 3 <= len(escada) <= 4:
+            marcos.extend(escada)
+        else:
+            falhas.append('escada: declare 3 ou 4 índices de falas')
+        marcos.extend((beats.get('virada'), beats.get('pagamento')))
+        validos = all(type(i) is int and 0 <= i < len(falas) for i in marcos)
+        if not validos or marcos[0] != 0 or any(a >= b for a, b in zip(marcos[1:], marcos[2:])):
+            falhas.append('beats: gancho em 0; promessa, escada, virada e pagamento em ordem')
+        pista = beats.get('pista')
+        if type(pista) is not int or not validos or not 0 <= pista < marcos[-2]:
+            falhas.append('pista: marque a fala que planta a pista antes da virada')
+    return Resultado('roteiro_v6', not falhas, f'{len(falas)} fala(s)', limite, '; '.join(falhas))
+
+
+def checar_prova_v6(proj, roteiro, duracao=None, cenas=None):
+    from conferir_fala import MINIMO, repeticoes, similaridade
+
+    resultado = checar_roteiro_v6(roteiro)
+    if not resultado.ok:
+        return [resultado]
+    falas = roteiro['falas']
+    planos = _carregar(proj, 'plano.json')
+    if cenas is None:
+        cenas = _carregar(proj, 'cenas.json')
+    stt_nome = os.path.join('voz', 'stt.json')
+    stt = _carregar(proj, stt_nome)
+    dialogo = os.path.join(proj, 'voz', 'dialogo.wav')
+    falhas = []
+    vistos = set()
+    fim_anterior = 0
+    fala_anterior = -1
+    if not isinstance(planos, list) or not planos:
+        falhas.append('plano.json precisa ser uma lista não vazia')
+        planos = []
+    for i, plano in enumerate(planos):
+        if not isinstance(plano, dict) or not _intervalo(plano):
+            falhas.append(f'plano {i}: intervalo inválido')
+            continue
+        if abs(plano['ini'] - fim_anterior) > .001:
+            falhas.append(f'plano {i}: buraco ou sobreposição na montagem')
+        fim_anterior = plano['fim']
+        fala = plano.get('fala')
+        if type(fala) is not int or not 0 <= fala < len(falas):
+            falhas.append(f'plano {i}: índice de fala inválido')
+        else:
+            if fala < fala_anterior:
+                falhas.append(f'plano {i}: falas fora da ordem do diálogo')
+            fala_anterior = fala
+            if plano.get('cenario') == falas[fala]['visual']['cenario']:
+                vistos.add(fala)
+        if plano.get('cenario') not in roteiro['cenarios']:
+            falhas.append(f'plano {i}: cenário fora da lista declarada')
+        camera = plano.get('camera')
+        if not isinstance(camera, str) or camera not in CAMERAS_VALIDAS:
+            falhas.append(f'plano {i}: câmera fora do banco: {camera}')
+        if any(not isinstance(plano.get(k), str) or not plano[k].strip() for k in ('luz', 'motivo')):
+            falhas.append(f'plano {i}: declare luz e motivo editorial do enquadre ou corte')
+    faltam = sorted(set(range(len(falas))) - vistos)
+    if faltam:
+        falhas.append(f'falas sem plano no cenário declarado: {faltam}')
+    if duracao is not None and abs(fim_anterior - duracao) > .1:
+        falhas.append('duração do MP4 diverge do fim do plano (tolerância 100 ms)')
+    if (not isinstance(cenas, list) or len(cenas) != len(planos)
+            or any(not isinstance(cena, list) or len(cena) < 2 or not _intervalo(plano)
+                   or any(not _numero(t) or abs(t - plano[k]) > 1 / 30 + .001
+                          for t, k in zip(cena, ('ini', 'fim')))
+                   for cena, plano in zip(cenas, planos))):
+        falhas.append('cenas exportadas divergem dos cortes declarados (tolerância de 1 quadro)')
+
+    esperado = ' '.join(f['texto'] for f in falas)
+    transcrito = stt.get('texto', '') if isinstance(stt, dict) else ''
+    transcrito = transcrito if isinstance(transcrito, str) else ''
+    score = similaridade(esperado, transcrito)
+    repetidos = repeticoes(esperado, transcrito)
+    erro_voz = ''
+    if not os.path.isfile(dialogo) or os.path.getmtime(dialogo) > os.path.getmtime(os.path.join(proj, stt_nome)):
+        erro_voz = 'voz/dialogo.wav ausente ou mais recente que o STT; transcreva o diálogo atual'
+    elif repetidos:
+        erro_voz = f'trechos repetidos: {repetidos[:3]}'
+    elif score < MINIMO:
+        erro_voz = 'similaridade baixa com a sequência do diálogo'
+    return [
+        Resultado('plano_v6', not falhas, f'{len(planos)} plano(s)', 'planos ligados às falas e com motivo', '; '.join(falhas)),
+        Resultado('voz_v6', not erro_voz, f'similaridade {score:.0%}', f'>={MINIMO:.0%}, sem bloco excedente', erro_voz),
+    ]
 
 
 def etapa_final(proj):
@@ -702,12 +857,17 @@ def etapa_final(proj):
     if not os.path.isfile(mp4):
         print('ERRO: falta final.mp4')
         sys.exit(2)
-    pal = contar_palavras(_carregar(proj, 'falas.json'))
+    roteiro = _carregar(proj, 'falas.json')
     cenas = _carregar(proj, 'cenas.json')
     seg = duracao_video(mp4)
+    tecnicos = [checar_duracao(seg), checar_formato(mp4), checar_audio(medir_audio(mp4)),
+                checar_hud(proj), checar_olhos(proj)]
+    if isinstance(roteiro, dict) and roteiro.get('molde') == 'v6':
+        return tecnicos + checar_prova_v6(proj, roteiro, duracao=seg, cenas=cenas)
     cortes = [float(c[0]) for c in cenas]
-    return [checar_duracao(seg), checar_ritmo(pal, seg), checar_planos(cortes, seg),
-            checar_formato(mp4), checar_audio(medir_audio(mp4)), checar_hud(proj), checar_olhos(proj), checar_elenco_proj(proj), checar_variedade_proj(proj), checar_prop_virada(proj), checar_ficha(proj), checar_cobertura(proj)]
+    return tecnicos + [checar_ritmo(contar_palavras(roteiro), seg), checar_planos(cortes, seg), checar_elenco_proj(proj),
+                       checar_variedade_proj(proj), checar_prop_virada(proj), checar_ficha(proj),
+                       checar_cobertura(proj)]
 
 
 def checar_cobertura(proj):
@@ -728,14 +888,20 @@ def main(argv):
             return 2
         print(criar_projeto(raiz, argv[2]))
         return 0
-    if len(argv) != 3 or argv[2] not in ('roteiro', 'final'):
+    if len(argv) != 3 or argv[2] not in ('roteiro', 'prova', 'final'):
         print(__doc__)
         return 2
     proj = argv[1]
     if not os.path.isdir(proj):
         print(f'ERRO: projeto {proj} nao existe')
         return 2
-    rs = etapa_roteiro(proj) if argv[2] == 'roteiro' else etapa_final(proj)
+    if argv[2] == 'prova':
+        roteiro = _carregar(proj, 'falas.json')
+        if not isinstance(roteiro, dict) or roteiro.get('molde') != 'v6':
+            return 0
+        rs = checar_prova_v6(proj, roteiro)
+    else:
+        rs = etapa_roteiro(proj) if argv[2] == 'roteiro' else etapa_final(proj)
     return 0 if imprimir(rs) else 1
 
 

@@ -3,6 +3,7 @@
 Imprime {"cobertura": x}; exit 0 se >=0,70, 1 se menor, 2 se entrada/STT invalidos."""
 import json, os, re, subprocess, sys, unicodedata
 from collections import Counter
+from difflib import SequenceMatcher
 
 MINIMO = 0.70
 STT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '..', 'ferramentas', 'stt.py')
@@ -26,6 +27,11 @@ def cobertura(ref, hip):
     return ach / len(r)
 
 
+def similaridade(ref, hip):
+    esperado, ouvido = _norm(ref), _norm(hip)
+    return SequenceMatcher(None, esperado, ouvido, autojunk=False).ratio() if esperado else 0.0
+
+
 def sobras(ref, hip, minimo=5):
     """Palavras OUVIDAS que nao estao no roteiro, na PONTA (inicio/fim) da fala, com >= `minimo` letras.
     Pega o TTS lendo o campo `tom`/rotulo em voz alta ('Sombrio. Dia 6...'). Lista vazia = ok."""
@@ -39,6 +45,23 @@ def sobras(ref, hip, minimo=5):
         if w in r: break
         fim.append(w)
     return [w for w in ini + fim[::-1] if len(w) >= minimo]
+
+
+def repeticoes(ref, hip):
+    """Trechos do roteiro reconhecidos vezes demais, incluindo ecos consecutivos curtos."""
+    esperado, ouvido = _norm(ref), _norm(hip)
+
+    def blocos(palavras, tamanho):
+        return Counter(zip(*(palavras[i:] for i in range(tamanho))))
+
+    ref_longo, hip_longo = blocos(esperado, 5), blocos(ouvido, 5)
+    repetidos = {trecho for trecho in ref_longo if hip_longo[trecho] > ref_longo[trecho]}
+    for tamanho in (2, 3, 4):
+        ref_curto, hip_curto = blocos(esperado, tamanho), blocos(ouvido, tamanho)
+        ecos = blocos(ouvido, tamanho * 2)
+        repetidos.update(trecho for trecho in ref_curto
+                         if hip_curto[trecho] > ref_curto[trecho] and ecos[trecho * 2])
+    return [' '.join(trecho) for trecho in sorted(repetidos, key=lambda t: (-len(t), t))]
 
 
 def main(argv):

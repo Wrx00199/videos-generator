@@ -28,11 +28,9 @@ Regra: estudamos as referências uma vez e extraímos MOLDE (ordem de beats, rit
 4. Virada medida em 67 a 88% do tempo; pista plantada antes do meio (estudo antigo, 19/11).
 5. Antipadrão medido: explicador que entrega o mecanismo cedo (40 a 45% do tempo em 14 s) e golpe contado na 1ª frase (Cavaleiro, 1,7 mi).
 
-## Conflito de gancho (decisão do Filippe)
+## Gancho no kit V6
 
-- KIT.md: abrir com "Tião foi…" ou "E se o Tião…" no 0 s.
-- MOLDE_V5 regra 1: proibido "E se" pelado.
-- Proposta de reconciliação: "E se o Tião…" só com a ação já acontecendo na tela e um número (ex.: "E se o Tião dormisse seis dias…" com ele já dormindo no quadro 0). Sem isso, usar "Tião foi…". Não decidi sozinho; ponto a confirmar.
+- No quadro inicial, mostrar uma ação que dê motivo para a frase e levante uma pergunta concreta. A frase “E se o Tião…” é uma opção quando o quadro estabelece a situação. Acompanhar o resultado nos pilotos.
 
 ## Moldes (5)
 

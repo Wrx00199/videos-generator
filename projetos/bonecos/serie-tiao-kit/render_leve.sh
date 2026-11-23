@@ -13,6 +13,9 @@ if [ "$SPEC" = "auto" ]; then
 fi
 CMD=(nice -n 19 ionice -c3 node render.mjs ../frames "$SPEC" "$STEP" "$Q")
 if [ "$DRY" = 1 ]; then echo "(cd $PROJ/web && ${CMD[*]})"; exit 0; fi
+if [ -f "$PROJ/falas.json" ]; then
+  python3 "$(dirname "$0")/portao.py" "$PROJ" prova || exit $?
+fi
 # regra do Filippe (19/11): outra sessao (clipes) roda no mesmo PC; espera render/ffmpeg/chromium alheios acabarem
 W=0; while pgrep -f "^[n]ode render.mjs|ms-playwright/[c]hromium" >/dev/null; do [ $W -eq 0 ] && echo "aguardando outro render (node/chromium) acabar..."; W=1; sleep 15; done   # ffmpeg leve da sessao de clipes (nice 19) NAO bloqueia
 T0=$(date +%s); echo "[INICIO $(date +%H:%M)] $PROJ quadros $SPEC passo $STEP"

@@ -2,15 +2,22 @@
 """Gera UMA fala por chamada (sem corte por silêncio, que trocou falas de lugar no ep. 10b) e confere com STT.
 Uso: python3 voz_fala.py <falas.json> <indice> <saida.wav> [--chaves 4,5,2,3,1]
 - usa as MESMAS vozes de catalogo/vozes.json; tenta uma chave por vez e só passa para a próxima no 429; nunca imprime chave
-- confere com ferramentas/stt.py (modelo small): se < 70% das palavras do roteiro batem, tenta de novo 1x e avisa."""
-import json, sys, os, re, subprocess, base64, urllib.request, urllib.error, difflib, unicodedata
+- confere com ferramentas/stt.py (modelo small), tenta novamente uma vez se reprovar."""
+import json, sys, os, subprocess, base64, urllib.request, urllib.error, tempfile
+from conferir_fala import MINIMO, repeticoes, similaridade
+from portao import checar_roteiro_v6
 KIT = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.abspath(os.path.join(KIT, '..', '..', '..'))
+with open(sys.argv[1], encoding='utf-8') as arquivo:
+    roteiro = json.load(arquivo)
+if roteiro.get('molde') == 'v6':
+    resultado = checar_roteiro_v6(roteiro)
+    if not resultado.ok:
+        sys.exit(f'{resultado.nome}: {resultado.motivo}')
 env = dict(l.strip().split('=', 1) for l in open(os.path.join(ROOT, '.env')) if '=' in l and not l.startswith('#'))
-falas = json.load(open(sys.argv[1]))['falas']; i = int(sys.argv[2]); dst = sys.argv[3]
+falas = roteiro['falas']; i = int(sys.argv[2]); dst = sys.argv[3]
 chaves = [int(x) for x in (sys.argv[sys.argv.index('--chaves') + 1].split(',') if '--chaves' in sys.argv else '4,5,2,3,1'.split(','))]
 V = json.load(open(os.path.join(KIT, 'catalogo', 'vozes.json'))); f = falas[i]; v = V.get(f['quem']) or V['personagens'][f['quem']]
-norm = lambda w: re.sub(r'[^a-z0-9]', '', unicodedata.normalize('NFD', w.lower()).encode('ascii', 'ignore').decode())
-def gerar():
+def gerar(dst):
     texto = f"Fale em português do Brasil{', ' + f['tom'] if f.get('tom') else ''}: {f['texto']}"
     body = json.dumps({"contents": [{"parts": [{"text": texto}]}], "generationConfig": {"responseModalities": ["AUDIO"], "speechConfig": {"voiceConfig": {"prebuiltVoiceConfig": {"voiceName": v['voz']}}}}}).encode()
     models = ['gemini-2.5-flash-preview-tts', 'gemini-3.1-flash-tts-preview', 'gemini-3.8-flash-tts']
@@ -32,10 +39,19 @@ def gerar():
             except urllib.error.HTTPError as e:
                 print(f'model {m} chave {n}: HTTP {e.code}' + (' (cota) -> próxima' if e.code == 429 else ''), file=sys.stderr)
     sys.exit('COTA: nenhuma chave respondeu')
-def confere():
-    out = subprocess.run(['python3', os.path.join(ROOT, 'ferramentas', 'stt.py'), dst, 'pt', 'small'], capture_output=True, text=True).stdout
-    ouv = [norm(w) for w in json.loads(out)['texto'].split()]; esp = [norm(w) for w in f['texto'].split()]
-    return difflib.SequenceMatcher(None, ouv, esp).ratio(), ' '.join(ouv)
-for tent in range(2):
-    n = gerar(); r, ouv = confere(); print(f'fala {i} ({f["quem"]}): chave {n}, STT {r:.0%}: "{ouv}"')
-    if r >= 0.70: break
+def confere(dst):
+    out = subprocess.run([sys.executable, os.path.join(ROOT, 'ferramentas', 'stt.py'), dst, 'pt', 'small'], capture_output=True, text=True, check=True).stdout
+    ouv = json.loads(out)['texto']
+    return similaridade(f['texto'], ouv), ouv
+with tempfile.TemporaryDirectory(dir=os.path.dirname(os.path.abspath(dst))) as pasta:
+    candidato = os.path.join(pasta, 'fala.wav')
+    for tent in range(2):
+        n = gerar(candidato)
+        r, ouv = confere(candidato)
+        print(f'fala {i} ({f["quem"]}): chave {n}, STT {r:.0%}: "{ouv}"')
+        repetida = repeticoes(f['texto'], ouv)
+        if r >= MINIMO and not repetida:
+            os.replace(candidato, dst)
+            break
+    else:
+        sys.exit(f'fala {i} reprovada após duas tentativas: STT {r:.0%}, trechos repetidos: {repetida[:3]}')
