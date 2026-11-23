@@ -9,9 +9,9 @@ Aceite: 9:16, 55–70 s, 1 voz, 0 tela preta, 0 silêncio >3 s, 0 freeze >3 s, T
 [x] 4. sapos → um embaixo de cada dragão, boca aberta
 [x] 5. pêndulo + 8 hastes dentro do pote
 [x] 6. beat 8 em close: bola cai da boca do dragão para a do sapo
-[ ] 7. imperador único: mesmo boneco no pátio e na cidade
-[ ] 8. coroa maior, manto, escala 1,25×, sem presas
-[ ] 9. margem de 8%: beat 7 e quadro final
+[x] 7. imperador único: mesmo boneco no pátio e na cidade
+[x] 8. coroa maior, manto, escala 1,25×, sem presas
+[x] 9. margem de 8%: beat 7 e quadro final
 [ ] 10. noite no morro (beats 5 e 8)
 [ ] 11. portão de muralha com 2 guardas de lança
 [ ] 12. pátio em ruína no beat 9
