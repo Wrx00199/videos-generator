@@ -14,7 +14,7 @@ SOM_DIR="$EP/som"
 mkdir -p "$SOM_DIR"
 
 echo "[som] iniciando som_tiao.py..."
-python3 "$(dirname "$0")/som_tiao.py" "$EP" > "$SOM_DIR/som.log" 2>&1
+python3 "$(dirname "$0")/audio/som_tiao.py" "$EP" > "$SOM_DIR/som.log" 2>&1
 if [ $? -ne 0 ]; then echo "[som] ERRO em som_tiao.py — ver $SOM_DIR/som.log"; exit 1; fi
 
 echo "[som] iniciando mix_tiao.py..."
