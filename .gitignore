@@ -67,3 +67,5 @@ projetos/bonecos/serie-tiao-kit/perfil/
 projetos/bonecos/serie-tiao-kit/banner/
 ferramentas/painel/dados/
 testes-painel/execucao-*/
+estilos/*/.hyperframes/
+estilos/*/node_modules/

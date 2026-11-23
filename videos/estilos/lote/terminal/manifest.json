@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "batchPath": "/media/wr/HDD/Estudio de video/estilos/terminal/lote.json",
+  "manifestPath": "/media/wr/HDD/Estudio de video/videos/estilos/lote/terminal/manifest.json",
+  "total": 3,
+  "completed": 3,
+  "failed": 0,
+  "skipped": 0,
+  "rows": [
+    {
+      "index": 0,
+      "outputPath": "/media/wr/HDD/Estudio de video/videos/estilos/lote/terminal/a-gta.mp4",
+      "status": "completed",
+      "durationMs": 5000,
+      "renderTimeMs": 9151,
+      "reference_background": {
+        "kind": "solid",
+        "rgb": [
+          11,
+          15,
+          20
+        ]
+      },
+      "error": null,
+      "startedAt": "2026-11-23T22:40:47.602Z",
+      "completedAt": "2026-11-23T22:40:57.196Z",
+      "variables": {
+        "name": "a-gta",
+        "cmd": "curl gta6.lancamento --hoje",
+        "saida": "200 OK: trailer 3 saiu",
+        "headline": "GTA 6 CHEGOU",
+        "accent": "#39ff88"
+      }
+    },
+    {
+      "index": 1,
+      "outputPath": "/media/wr/HDD/Estudio de video/videos/estilos/lote/terminal/b-mapa.mp4",
+      "status": "completed",
+      "durationMs": 5000,
+      "renderTimeMs": 8327,
+      "reference_background": {
+        "kind": "solid",
+        "rgb": [
+          11,
+          15,
+          20
+        ]
+      },
+      "error": null,
+      "startedAt": "2026-11-23T22:40:57.196Z",
+      "completedAt": "2026-11-23T22:41:05.924Z",
+      "variables": {
+        "name": "b-mapa",
+        "cmd": "ls mapa/vice-city",
+        "saida": "12 bairros novos achados",
+        "headline": "MAPA VAZOU",
+        "accent": "#4cc9ff"
+      }
+    },
+    {
+      "index": 2,
+      "outputPath": "/media/wr/HDD/Estudio de video/videos/estilos/lote/terminal/c-preco.mp4",
+      "status": "completed",
+      "durationMs": 5000,
+      "renderTimeMs": 10437,
+      "reference_background": {
+        "kind": "solid",
+        "rgb": [
+          11,
+          15,
+          20
+        ]
+      },
+      "error": null,
+      "startedAt": "2026-11-23T22:41:05.925Z",
+      "completedAt": "2026-11-23T22:41:16.756Z",
+      "variables": {
+        "name": "c-preco",
+        "cmd": "echo $PRECO_DO_JOGO",
+        "saida": "R$ 349,90 na pré-venda",
+        "headline": "TA CARO?",
+        "accent": "#ff9f1c"
+      }
+    }
+  ]
+}

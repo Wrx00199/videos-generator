@@ -1,0 +1,5 @@
+{"rows": [
+  {"name": "a-gta", "cmd": "curl gta6.lancamento --hoje", "saida": "200 OK: trailer 3 saiu", "headline": "GTA 6 CHEGOU", "accent": "#39ff88"},
+  {"name": "b-mapa", "cmd": "ls mapa/vice-city", "saida": "12 bairros novos achados", "headline": "MAPA VAZOU", "accent": "#4cc9ff"},
+  {"name": "c-preco", "cmd": "echo $PRECO_DO_JOGO", "saida": "R$ 349,90 na pré-venda", "headline": "TA CARO?", "accent": "#ff9f1c"}
+]}

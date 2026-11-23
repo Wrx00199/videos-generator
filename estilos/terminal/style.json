@@ -1,0 +1,24 @@
+{
+  "id": "terminal",
+  "nome": "Terminal",
+  "descricao": "Janela de terminal digitando um comando e a saída, com manchete neon embaixo. Tom hacker/dev.",
+  "catalogo": [
+    {"tipo": "component", "nome": "terminal-simulator"},
+    {"tipo": "block", "nome": "code-snippet-apple-terminal-pro"},
+    {"tipo": "block", "nome": "code-typing"}
+  ],
+  "formato": {"largura": 1080, "altura": 1920, "duracao": 5, "fps": 24},
+  "render": {"resolucao": "720p", "fps": 24, "qualidade": "draft", "workers": 1, "variables": true},
+  "slots": [
+    {"id": "comando", "variavel": "cmd", "max_chars": 32, "obrigatorio": true},
+    {"id": "saida", "variavel": "saida", "max_chars": 32, "obrigatorio": true},
+    {"id": "manchete", "variavel": "headline", "max_chars": 16, "obrigatorio": true}
+  ],
+  "variables": [
+    {"id": "cmd", "type": "string", "label": "Comando", "default": "curl gta6.lancamento --hoje"},
+    {"id": "saida", "type": "string", "label": "Saída", "default": "200 OK: trailer 3 saiu"},
+    {"id": "headline", "type": "string", "label": "Manchete", "default": "GTA 6 CHEGOU"},
+    {"id": "accent", "type": "color", "label": "Cor de destaque", "default": "#39ff88"},
+    {"id": "name", "type": "string", "label": "Nome do arquivo (lote)", "default": "clip"}
+  ]
+}
