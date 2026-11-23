@@ -63,12 +63,12 @@ export const actorsAt = (f, T, W) => {
   const P = (n, pose, dx, dz) => out.push(X(boneco(W, n, pose, O.x + dx, O.z + dz, t)));
   if (S_.cen === 'dojo') {
     const riso = b === 2 || (b === 4 && t > 22.5) || (b === 7 && t < 46);
-    if (b === 1) { P('tiao', { ...wide, aR: [2.5, -0.2], aL: [-0.3, 0.3] }, -0.8, 0.9); P('rei', { eye: 'normal', mouth: 'flat', f: -1, aL: [-0.3, 0.3] }, 0.8, 0.5); return out; }
+    if (b === 1) { P('tiao', { ...wide, aR: [2.5, -0.2], aL: [-0.3, 0.3] }, -0.8, 0.9); P('imperador', { eye: 'normal', mouth: 'flat', f: -1, aL: [-0.3, 0.3] }, 0.8, 0.5); return out; }
     if (b === 6) { const u = Math.min(1, (t - B[5][0]) / (B[5][1] - B[5][0])); out.push(X(anda(W, 'tiao', { ...wide, aR: [2.6, -0.2], aL: [2.6, -0.2] }, [O.x - 1.6, O.z + 0.3], [O.x + 0.6, O.z + 1.1], u, t))); P('carteiro', { eye: 'happy', mouth: 'grin', f: -1 }, 1.3, 0.5); return out; }
-    if (b === 3) { P('tiao', { ...wide }, -0.7, 0.9); P('rei', { eye: 'normal', mouth: 'flat', f: -1, aL: [1.2, -0.2], aR: [1.2, -0.2] }, 0.7, 0.5); return out; }
-    if (b === 2) { P('rei', { eye: 'happy', mouth: 'grin', f: -1, aL: [-0.3, 0.3] }, 0.2, 0.2); P('vizinha', { eye: 'happy', mouth: 'grin', f: -1 }, 1.0, 0.9); P('feirante', { eye: 'happy', mouth: 'grin', f: 1 }, -1.0, 0.7); P('tiao', { ...wide, aR: [2.5, -0.2] }, -0.1, 1.2); return out; }
+    if (b === 3) { P('tiao', { ...wide }, -0.7, 0.9); P('imperador', { eye: 'normal', mouth: 'flat', f: -1, aL: [1.2, -0.2], aR: [1.2, -0.2] }, 0.7, 0.5); return out; }
+    if (b === 2) { P('imperador', { eye: 'happy', mouth: 'grin', f: -1, aL: [-0.3, 0.3] }, 0.2, 0.2); P('vizinha', { eye: 'happy', mouth: 'grin', f: -1 }, 1.0, 0.9); P('feirante', { eye: 'happy', mouth: 'grin', f: 1 }, -1.0, 0.7); P('tiao', { ...wide, aR: [2.5, -0.2] }, -0.1, 1.2); return out; }
     if (b === 4 && t > 24.6) { const u = ramp(t, 24.6, 31); out.push(X(anda(W, 'tiao', { eye: 'normal', mouth: 'flat', aR: [1.0, -0.2], aL: [1.0, -0.2] }, [O.x + 0.5, O.z + 0.9], [O.x - 1.1, O.z + 0.9], u, t))); return out; }
-    if (b === 4) { P('tiao', { ...wide }, -0.8, 0.9); P('rei', { eye: 'happy', mouth: 'grin', f: -1, aR: [2.5, -0.2] }, 0.7, 0.5); P('balconista', { eye: 'happy', mouth: 'grin', f: -1 }, 1.4, 0.9); return out; }
+    if (b === 4) { P('tiao', { ...wide }, -0.8, 0.9); P('imperador', { eye: 'happy', mouth: 'grin', f: -1, aR: [2.5, -0.2] }, 0.7, 0.5); P('balconista', { eye: 'happy', mouth: 'grin', f: -1 }, 1.4, 0.9); return out; }
     if (b === 7) { P('carteiro', { eye: 'happy', mouth: 'grin', f: -1 }, 0.6, 0.6); P('tiao', { ...wide, aL: [-0.35, 0.25] }, -0.8, 0.9); return out; }
   }
   return out;
