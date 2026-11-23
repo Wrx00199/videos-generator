@@ -4,7 +4,7 @@
 Uso:
   python3 projetos/bonecos/serie-tiao-kit/checar.py <projeto> storyboard   # motor 3D: começo/meio/fim de cada cena + auditoria
   python3 projetos/bonecos/serie-tiao-kit/checar.py <projeto> final [mp4]  # vídeo pronto: tudo abaixo -> revisao/
-<projeto> = pasta com web/ (motor 3D) ou anim/ (legado), roteiro.txt (ou falas.json), cenas.json [[ini,fim,"rótulo"],...] e final.mp4.
+<projeto> = pasta com web/ (motor 3D) ou anim/ (legado), roteiro.txt (ou falas.json), cenas.json com [ini,fim] ou [ini,fim,"rótulo"] por cena e final.mp4.
 
 O que o modo final entrega (por que: o revisor antigo via 8 quadros de 160 px por cena e não enxergava braço/pedra):
   1. auditoria.txt  — auditor do motor (pose quebrada, boneco cortado/colado na borda, pequeno demais), por quadro, SEM imagem.
@@ -18,7 +18,12 @@ import shutil, difflib, glob, json, os, re, subprocess, sys, unicodedata
 
 R = '/media/wr/HDD/Estudio de video'
 proj, modo = os.path.abspath(sys.argv[1]), sys.argv[2]
-cenas = json.load(open(os.path.join(proj, 'cenas.json')))
+with open(os.path.join(proj, 'cenas.json'), encoding='utf-8') as arquivo:
+    cenas_exportadas = json.load(arquivo)
+cenas = [
+    (cena[0], cena[1], str(cena[2]) if len(cena) > 2 else f'Plano {i}')
+    for i, cena in enumerate(cenas_exportadas, 1)
+]
 run = lambda *a, **k: subprocess.run(list(a), capture_output=True, text=True, **k)
 web = os.path.join(proj, 'web')
 FPS = 30

@@ -2,7 +2,11 @@
 name: estudio-revisor-shorts
 description: Rubrica de revisão rígida de short vertical com personagens estilizados 2D/3D (Tião, ricksclips-like). Notas 0–10 por aspecto, aprova média ≥8 e nenhum <7, com ordens de correção específicas. Usar ao revisar um episódio pronto (1 passada) ou calibrar contra referência.
 ---
-# Revisor de shorts — rubrica (v1, 20/11)
+# Revisor de shorts
+
+Para Aventuras do Tião com `"molde": "v6"` em `falas.json`, aplique a seção **Revisão editorial V6** de `docs/tiao/PRODUCAO-V6.md`. A rubrica abaixo se aplica à revisão legada e à calibração contra referência.
+
+## Rubrica legada (v1, 20/11)
 Uma passada por episódio. Primeiro o portão mecânico (`portao.py final` exit 0); sem ele não há nota. Imagem só em folha reduzida (1 quadro/2 s, ~150 px) + recortes (~300 px) onde houver dúvida. Compare sempre com a referência salva (sheet_*.png da pasta em `referencias/`) e diga se o NOSSO plano é mais pobre.
 Ler: falas.json, FICHA.md, MAPA_DOPAMINA.md, web/story.js, REVISAO anterior (verifique ordem por ordem: plano + tempo em que aparece no render novo; ordem sem prova = não aplicada).
 

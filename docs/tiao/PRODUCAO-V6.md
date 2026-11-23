@@ -53,6 +53,26 @@ O scaffold `novo_ep.sh` exige `tempos_ft.js`. Para prova antes de gerar voz, use
 
 No celular, conferir pés enterrados ou virados, braço/contato, chapéu ou rosto cortado, boca em off, gesto sem intenção, salto de ação, fala repetida, som estranho, legenda adiantada/atrasada ou tapando informação e preenchimento 9:16. Um MP4 vertical pode conter uma composição cortada. Medição técnica do áudio não substitui escuta da edição. A automação desta rodada cobre estrutura declarada, câmera, intervalos, divergência de cortes e repetição reconhecida no STT. A conferência de pixels, atuação e sentido da história depende da prova e da revisão.
 
+## Revisão editorial V6
+
+O revisor trabalha com a versão atual e registra o que observou. A revisão é independente quando outra pessoa ou agente produziu aquela versão. Para aprender com referências, use a função dos beats e da montagem. Uma cozinha, o elenco recorrente, cortes secos e acabamento simples são válidos se a ação fica legível.
+
+### Antes da voz
+
+1. Leia o roteiro até o ponto do gancho e diga, em uma frase, qual pergunta dá vontade de continuar. Diga também o que Tião pode perder ou ganhar. Se for preciso adivinhar a aposta, devolva o gancho para reescrita.
+2. Resuma cada degrau com “por causa disso, acontece aquilo”. Se for só mais uma fala sobre o mesmo problema, peça uma consequência diferente, uma decisão ou uma piora real.
+3. Abra a prova de quadro da abertura, da pista, da virada e do pagamento. Identifique a pista que de fato aparece, como ela muda de sentido e o que a última ação resolve. Onde o gesto ou a relação de causa e efeito estiver em dúvida, peça o trecho em movimento com tempo provisório.
+4. Entregue um parecer curto `REVISAO_ROTEIRO.md` com versão revisada, decisão e correções. Em cada falha diga o beat, o plano ou tempo provisório, o que o público precisaria entender, o que a prova mostra e a menor correção que dá para conferir. Corrija e reapresente a parte afetada antes da voz.
+
+### No MP4
+
+Rode `portao.py <projeto> final`. Se reprovar, registre o motivo técnico e devolva para correção. Se passar, compare a versão atual do MP4 com o roteiro aprovado. Use `checar.py <projeto> final` para obter medidas e quadros. Veja cada plano em tamanho legível e os trechos em movimento nos momentos de dúvida. Medição, STT e posição projetada ajudam a localizar erro. O parecer depende do que aparece e do áudio que foi conferido.
+
+- **História e montagem.** Gancho comprovado no início, degraus com consequência, pista visível, virada demonstrada e fecho que paga a promessa. Veja o que cada corte ou zoom revela. Registre tempo em que a atenção perde motivo para continuar.
+- **Ação e enquadre.** Pé no chão e orientado, braço e mão plausíveis, contato com objeto ou assento, rosto e pista na área útil. Veja se andar tem deslocamento, se a pose continua no corte e se o gesto acompanha a ação. Um arquivo 9:16 pode ter o assunto cortado.
+- **Voz, legenda e som.** Compare o trecho com som e sem som. Pensamento e narração deixam a boca dos atores sem articulação de fala. Confira quem fala, repetição, palavras e legendas no lugar, sons que interferem na fala e sincronia com os cortes. Se uma evidência essencial estiver ausente, o trecho fica pendente até ser visto.
+- **Parecer.** Registre os defeitos que impedem cada parte de funcionar no celular. Julgue a legibilidade primeiro e anote acabamento opcional como ressalva. Na correção, reabra o trecho e os cortes adjacentes na versão nova e rode o portão de novo. Grave o parecer da versão atual em `REVISAO_FINAL.md`, com os identificadores da versão e do revisor e a última linha `VEREDITO: APROVADO` ou `VEREDITO: REPROVADO`. Envio e postagem seguem o aceite do Filippe.
+
 ## Medição e escala
 
 Registrar minutos de pesquisa usada no episódio, roteiro, prova, TTS/STT, render/mix, revisão, espera e retrabalho. O cronômetro termina com MP4 revisado. Comparar custo e taxa de aprovação de pilotos completos do mesmo perfil. O benchmark anterior de 15 s levou 6min11s até o arquivo e serve como medida técnica, com escopo diferente do episódio de 65 s.

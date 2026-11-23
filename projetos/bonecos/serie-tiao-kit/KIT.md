@@ -31,10 +31,10 @@ Gesto fora da lista = vira corte, close de objeto ou reação. Nunca pose digita
 O [contrato V6](../../../docs/tiao/PRODUCAO-V6.md) detalha campos e passagem de etapa.
 
 1. Escolher molde e itens do catálogo → `falas.json` com beats e prova visual por fala. Rodar `python3 portao.py <proj> roteiro`.
-2. Com `tempos_ft.js` provisório, rodar `bash novo_ep.sh <proj>` e colocar o story em `<proj>/web/`. Provar as cenas essenciais em quadros 9:16. Auditoria sem imagem: `cd <proj>/web && node render.mjs --auditar "0-N" 2`.
+2. Com `tempos_ft.js` provisório, rodar `bash novo_ep.sh <proj>` e colocar o story em `<proj>/web/`. Provar as cenas essenciais em quadros 9:16 e passar pela revisão editorial pré-voz do contrato V6. Auditoria sem imagem: `cd <proj>/web && node render.mjs --auditar "0-N" 2`.
 3. Voz: `voz_fala.py` (WAV conferido por fala) + `montar_dialogo.py` + STT do diálogo. Ajustar plano e story aos tempos reais, exportar cortes para `cenas.json` e rodar `python3 portao.py <proj> prova`.
 4. Render: `TIAO_GPU=vulkan bash render_leve.sh <proj>` (um por vez) → `montar_final.sh`.
-5. `python3 portao.py <proj> final` + `revisor-bonecos` (uma passada) → Filippe aprova → só então `prontos/3D/Aventuras do Tião/` e Drive1.
+5. `python3 portao.py <proj> final` + `revisor-bonecos` com os critérios V6 → Filippe aprova → só então `prontos/3D/Aventuras do Tião/` e Drive1.
 Cronometrar do início ao MP4 revisado, com esperas.
 
 ## NÃO PODE (prints em `docs/tiao/nao-pode/`)
