@@ -80,7 +80,7 @@ scene.fog = new THREE.Fog('#ffffff', 40, 600);
 // ---------- world (mundo.js: navio, mar, cozinha, ilha) ----------
 const WORLD = MUNDO.build({ scene, add, tbox, box, toon, M, waterNd });
 const DECK = MUNDO.DECK;
-window.WORLD = WORLD;
+window.WORLD = WORLD; window.SCENE = scene; window.TOON = toon; window.TBOX = tbox;
 // ---------- cards ----------
 const CW = 1200, CH = 2000, CM = 2.25; // canvas px, card height in metres (design 600x1000 -> 2.25 m)
 const cardGeo = new THREE.PlaneGeometry(CM * 0.6, CM); cardGeo.translate(0, CM / 2 - CM * 0.025, 0);
