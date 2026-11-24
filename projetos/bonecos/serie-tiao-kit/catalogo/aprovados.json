@@ -299,6 +299,31 @@
    "falhas": [],
    "escala": 1.1,
    "nota": "civil kit V6 (23/11)"
+  },
+  "tiao_base": {
+   "ok": true,
+   "falhas": [],
+   "escala": 0.9
+  },
+  "tiao_jaqueta": {
+   "ok": true,
+   "falhas": [],
+   "escala": 0.9
+  },
+  "tiao_terno": {
+   "ok": true,
+   "falhas": [],
+   "escala": 0.9
+  },
+  "tiao_soldado": {
+   "ok": true,
+   "falhas": [],
+   "escala": 0.9
+  },
+  "tiao_astro": {
+   "ok": true,
+   "falhas": [],
+   "escala": 0.9
   }
  },
  "cenarios": {

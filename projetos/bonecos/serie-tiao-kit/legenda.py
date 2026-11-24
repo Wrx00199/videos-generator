@@ -18,11 +18,11 @@ def format_ass_time(seconds):
     s = seconds % 60
     return f"{h:d}:{m:02d}:{s:05.2f}"
 
-def gerar_ass(palavras, saida_ass, font_name="DejaVu Sans", font_size=64, cor_destaque="&H0020F0FF"):
+def gerar_ass(palavras, saida_ass, font_name="DejaVu Sans", font_size=56, cor_destaque="&H0020F0FF"):
     header = f"""[Script Info]
 Title: Legenda Tião Shorts
 ScriptType: v4.00+
-WrapStyle: 0
+WrapStyle: 2
 ScaledBorderAndShadow: yes
 YCbCr Matrix: None
 PlayResX: 1080
@@ -30,16 +30,16 @@ PlayResY: 1920
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Default,{font_name},{font_size},&H00FFFFFF,{cor_destaque},&H00000000,&H80000000,-1,0,0,0,100,100,0,0,1,6,2,2,40,40,360,1
+Style: Default,{font_name},{font_size},&H00FFFFFF,{cor_destaque},&H00000000,&H80000000,-1,0,0,0,100,100,0,0,1,6,2,2,90,90,310,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 """
     events = []
     
-    # Agrupar palavras em blocos curtos (3 a 5 palavras por tela para leitura limpa)
+    # Agrupar palavras em blocos curtos (máx 3 palavras por tela para nunca quebrar torto)
     # Mostrando a palavra atual destacada em amarelo/cor de destaque
-    BLOCO_MAX = 4
+    BLOCO_MAX = 3
     i = 0
     while i < len(palavras):
         n_bloco = BLOCO_MAX

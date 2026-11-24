@@ -526,16 +526,18 @@ function nexoEstilos() {
     });
   }
   const ep46 = path.join(RAIZ, 'videos', 'ep46', 'ep46-720p.mp4');
+  const v8 = path.join(RAIZ, 'videos', 'nexo', 'piloto-tiao-v8.mp4');
+  const prevTiao = fs.existsSync(v8) ? 'videos/nexo/piloto-tiao-v8.mp4' : (fs.existsSync(ep46) ? 'videos/ep46/ep46-720p.mp4' : null);
   out.push({
     id: 'tiao_3d',
-    nome: 'Tião 3D (Motor3D)',
+    nome: 'Tião 3D (Nexo V8)',
     motor: 'motor3d',
-    descricao: 'Série 3D estilizada do Tião (Three.js Toon, 40 personagens, 28 cenários).',
-    formato: { largura: 1080, altura: 1920, duracao: 55, fps: 30 },
+    descricao: 'Série 3D do Tião estilo RicksClips (rosto branco + barba cinza, livre de roupa/cenário, ação 1:1 com a narração).',
+    formato: { largura: 1080, altura: 1920, duracao: 25, fps: 24 },
     slots: [],
     variables: [],
-    tem_preview: fs.existsSync(ep46),
-    preview_rel: fs.existsSync(ep46) ? 'videos/ep46/ep46-720p.mp4' : null,
+    tem_preview: !!prevTiao,
+    preview_rel: prevTiao,
     lote_exemplo: [],
   });
   return out;

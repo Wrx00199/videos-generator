@@ -209,5 +209,10 @@
    "voz": "Algenib",
    "estilo": "Você é um apostador de desenho animado, convencido e provocador. Fale em português do Brasil, voz grave e clara, tom de quem tem certeza que vai ganhar, ritmo rápido."
   }
- }
+ },
+ "tiao_base": "Fenrir",
+ "tiao_jaqueta": "Fenrir",
+ "tiao_terno": "Fenrir",
+ "tiao_soldado": "Fenrir",
+ "tiao_astro": "Fenrir"
 }

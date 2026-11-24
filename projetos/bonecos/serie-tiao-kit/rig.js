@@ -34,6 +34,12 @@ const SPEC = {
   cap:  { n: 'cap', body: '#2f57b3', hat: 'bicorne', s: 1.04, seed: 2, stache: 1 },
   mar1: { n: 'mar1', body: '#f08a24', hat: 'bandana', s: .95, seed: 3 },
   mar2: { n: 'mar2', body: '#3f9d5d', hat: 'beanie', s: .97, seed: 4 },
+  // Tião livre de roupa/cenário (Nexo V8 — rosto branco + barba cinza fixa em qualquer história)
+  tiao_base:    { n: 'tiao_base', body: '#fbfbf8', hat: null, s: .90, seed: 1, barbaCinza: 1 },
+  tiao_jaqueta: { n: 'tiao_jaqueta', body: '#23293a', pele: '#fbfbf8', hat: null, s: .90, seed: 1, barbaCinza: 1, vest: 1 },
+  tiao_terno:   { n: 'tiao_terno', body: '#191a26', pele: '#fbfbf8', hat: null, s: .90, seed: 1, barbaCinza: 1, coat: 1 },
+  tiao_soldado: { n: 'tiao_soldado', body: '#455439', pele: '#fbfbf8', hat: 'beanie', hatCol: ['#2f3a27', '#232b1d', null], s: .90, seed: 1, barbaCinza: 1, vest: 1 },
+  tiao_astro:   { n: 'tiao_astro', body: '#f2f2ee', pele: '#fbfbf8', hat: null, s: .92, seed: 1, barbaCinza: 1, capacete: 1 },
   // Tião da volta 4.000 (V5): mesmo desenho do Tião, chamuscado; chapéu de chef rasgado mas PRESENTE (regra fixa)
   tiao4k: { n: 'tiao4k', base: 'tiao', body: '#e6e2da', hat: 'chefRasgado', s: .86, seed: 1, chamusco: 1 },
 };
@@ -495,6 +501,22 @@ function face(S, o, t) {
   }
   if (S.barbona) { const bx = lx * .9, by = 40 + ly * .8; ctx.beginPath(); ctx.moveTo(bx - 78, by - 26); ctx.quadraticCurveTo(bx - 98, by + 60, bx - 40, by + 104); ctx.quadraticCurveTo(bx - 14, by + 88, bx, by + 120); ctx.quadraticCurveTo(bx + 14, by + 88, bx + 40, by + 104); ctx.quadraticCurveTo(bx + 98, by + 60, bx + 78, by - 26); ctx.quadraticCurveTo(bx, by + 24, bx - 78, by - 26); ctx.closePath(); fs(S.barbona, 7);
     for (const s of [-1, 1]) line([bx + s * 44, by + 20, bx + s * 52, by + 70], 4, 'rgba(120,30,30,.35)'); ell(bx, by + 4, 34, 16); fs('#f4efe4', 0); }
+  if (S.barbaCinza) {
+    const bx = lx * .85, by = 30 + ly * .75;
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(bx - 76, by - 4);
+    ctx.quadraticCurveTo(bx - 78, by + 58, bx, by + 64);
+    ctx.quadraticCurveTo(bx + 78, by + 58, bx + 76, by - 4);
+    ctx.quadraticCurveTo(bx, by + 16, bx - 76, by - 4);
+    ctx.closePath();
+    ctx.fillStyle = 'rgba(130, 136, 148, 0.52)';
+    ctx.fill();
+    ctx.lineWidth = 4;
+    ctx.strokeStyle = 'rgba(72, 76, 86, 0.45)';
+    ctx.stroke();
+    ctx.restore();
+  }
   if (S.an) featAn(S, o, lx, ey, ly);
   if (S.an && S.an.boca) bocaAn(S, o, lx * .9, 40 + ly * .8); else if (!(S.an && S.an.semBoca)) mouth(o.mouth, lx * .9, 40 + ly * .8, o.mo);
   if (S.an) fimAn(S, o, lx, ly);
@@ -677,6 +699,12 @@ function prop(k, x, y, a, s = 1, pr = {}) {
     line([0, 60, Math.sin(ah) * 28, 60 - Math.cos(ah) * 28], 8); line([0, 60, Math.sin(am) * 46, 60 - Math.cos(am) * 46], 5, '#c8202a');
     ell(0, 60, 7, 7); ctx.fillStyle = INK; ctx.fill(); ell(-24, 34, 14, 7, -.6); ctx.fillStyle = 'rgba(255,255,255,.7)'; ctx.fill(); ctx.restore(); }
   else if (k === 'spoon') { rr(-5, -10, 10, 80, 5); fs('#c9c9d2', 4); ell(0, 84, 15, 20); fs('#c9c9d2', 4); }
+  else if (k === 'fuzil') { // rifle tático: coronha de madeira + cano escuro + clarão opcional de disparo (pr.flash)
+    rr(-10, -45, 20, 62, 6); fs('#7a4b2a', 5);
+    rr(-12, 10, 24, 34, 4); fs('#3a3e47', 5);
+    rr(-6, 40, 12, 92, 3); fs('#262930', 5);
+    if (pr.flash) { ell(0, 146, 22, 30); fs('#ff9a1f', 4); ell(0, 144, 10, 16); ctx.fillStyle = '#fff7b0'; ctx.fill(); }
+  }
   ctx.restore();
 }
 function mapAt(x, y, r, s) { ctx.save(); ctx.translate(x, y); ctx.rotate(r); ctx.scale(s, s); rr(-75, -55, 150, 110, 6); fs('#f1dfae', 6); ctx.setLineDash([10, 10]); line([-50, 30, -10, -5, 25, 15], 5, '#8a5a2b'); ctx.setLineDash([]); line([30, -25, 50, -5], 6, '#d8322a'); line([50, -25, 30, -5], 6, '#d8322a'); ctx.restore(); }

@@ -32,6 +32,12 @@ const SPEC = {
   cap:  { n: 'cap', body: '#2f57b3', hat: 'bicorne', s: 1.04, seed: 2, stache: 1 },
   mar1: { n: 'mar1', body: '#f08a24', hat: 'bandana', s: .95, seed: 3 },
   mar2: { n: 'mar2', body: '#3f9d5d', hat: 'beanie', s: .97, seed: 4 },
+  // Tião livre de roupa/cenário (Nexo V8 — rosto branco + barba cinza fixa em qualquer história)
+  tiao_base:    { n: 'tiao_base', body: '#fbfbf8', hat: null, s: .90, seed: 1, barbaCinza: 1 },
+  tiao_jaqueta: { n: 'tiao_jaqueta', body: '#23293a', pele: '#fbfbf8', hat: null, s: .90, seed: 1, barbaCinza: 1, vest: 1 },
+  tiao_terno:   { n: 'tiao_terno', body: '#191a26', pele: '#fbfbf8', hat: null, s: .90, seed: 1, barbaCinza: 1, coat: 1 },
+  tiao_soldado: { n: 'tiao_soldado', body: '#455439', pele: '#fbfbf8', hat: 'beanie', hatCol: ['#2f3a27', '#232b1d', null], s: .90, seed: 1, barbaCinza: 1, vest: 1 },
+  tiao_astro:   { n: 'tiao_astro', body: '#f2f2ee', pele: '#fbfbf8', hat: null, s: .92, seed: 1, barbaCinza: 1, capacete: 1 },
   // Tião da volta 4.000 (V5): mesmo desenho do Tião, chamuscado; chapéu de chef rasgado mas PRESENTE (regra fixa)
   tiao4k: { n: 'tiao4k', base: 'tiao', body: '#e6e2da', hat: 'chefRasgado', s: .86, seed: 1, chamusco: 1 },
 };
@@ -119,7 +125,6 @@ const NOVOS = {
   // gigante / mutante / monstro / robô: bichos de verdade
   gigante: { s: 1.85, hat: null, an: { sobr: false, t: 'bruto', w: 1.05, cab: 'bruta', cabS: .78, pele: '#8fa06a', calca: '#6b4b2a', br: [52, 46], pr: [48, 42], mao: 42, pe: 52, cabelo: null, olhoCor: '#b3201f', deco: ['barriga'], feio: ['verrugas', 'cicatriz', 'tusks', 'sobrancelha', 'olhoGrande', 'dentesTortos'], garras: 0 } },   // Gigante Bolotão
   rei: { s: 1.85, hat: 'coroa', an: { sobr: false, t: 'bruto', w: 1.05, cab: 'bruta', cabS: .78, pele: '#d6a272', roupa: '#7a2f9a', manga: '#7a2f9a', calca: '#5a2478', br: [52, 46], pr: [48, 42], mao: 42, pe: 52, cabelo: null, olhoCor: '#b3201f', deco: ['barriga'], feio: ['verrugas', 'cicatriz', 'tusks', 'sobrancelha', 'olhoGrande', 'dentesTortos'], garras: 0 } },   // Rei Bolotão (gigante com coroa, ep. 37)
-  imperador: { s: 1.075, hat: 'coroaG', capa: '#c8962a', an: { sobr: false, t: 'bruto', w: 1.0, cab: 'bruta', cabS: .85, pele: '#d6a272', roupa: '#b3201f', manga: '#b3201f', calca: '#7a1010', br: [40, 34], pr: [38, 32], mao: 34, pe: 44, cabelo: null, olhoCor: '#222222', deco: ['barriga'], feio: ['sobrancelha'], garras: 0 } },   // Imperador (ep46, 23/11): o rei sem presas/verrugas, ~1,3x o Tião, manto dourado
   mutante: { s: 1.15, hat: null, espinhos: '#3f8f1f', an: { espinhosCab: 1, t: 'pera', w: 1.0, cab: 'oval', cabS: 1.0, pele: '#6cd13f', garra: 'R', br: [26, 22], pr: [28, 24], mao: 18, pe: 30, garras: 1, deco: ['manchas'], feio: ['olhosExtras', 'dentesTortos', 'olhoGrande'] } },  // Gosmildo
   monstro: { s: 1.6, hat: null, chifres: '#f2e2a8', pelo: '#6d3fd0', presas: 1, an: { sobr: false, t: 'bruto', w: 1.0, cab: 'bruta', cabS: .95, pele: '#8b5cf6', br: [44, 38], pr: [42, 36], mao: 34, pe: 44, garras: 1, deco: ['barriga'], feio: ['sobrancelha'] } },   // Monstro Bolotinha
   robo:    { s: 1.05, hat: null, antenas: ['#ff5c5c', 1], an: { sobr: false, t: 'caixa', cab: 'caixa', cabS: .92, pele: '#9aa3b5', roupa: '#8b93a8', manga: '#7b8499', luva: '#5a6278', bota: '#5a6278', calca: '#7b8499', olhos: 'visor', br: [30, 26], pr: [32, 28], mao: 20, pe: 34, deco: ['placas'] } },   // Robô Lata-Velha
@@ -341,7 +346,7 @@ function armG(side, a) {
   return limb(sx, SHY, [a[0], Math.max(-1.92, Math.min(1.92, a[1]))], UA, LA);
 }
 function blink(t, seed) { const per = 2.6 + seed * .37; return ((t + seed * .71) % per) < .1; }
-function hipOf(o) { const tc = TH * (o.coxa ?? 1), gL = limb(-20, 0, o.lL || DEF.lL, tc, SH), gR = limb(20, 0, o.lR || DEF.lR, tc, SH); return (o.hipY != null ? o.hipY : -Math.max(gL[5], gR[5])) + (o.bob || 0); }
+function hipOf(o) { const gL = limb(-20, 0, o.lL || DEF.lL, TH, SH), gR = limb(20, 0, o.lR || DEF.lR, TH, SH); return (o.hipY != null ? o.hipY : -Math.max(gL[5], gR[5])) + (o.bob || 0); }
 // ponto do mundo -> coordenadas do corpo (origem no quadril, já com inclinação)
 function toBody(n, o, wx, wy) { const sc = SPEC[n].s * (o.sc || 1), f = o.f || 1; const dx = (wx - o.x) / (sc * f), dy = (wy - o.y) / sc - hipOf(o); const l = -(o.lean || 0) * 1; return [dx * Math.cos(l) - dy * Math.sin(l), dx * Math.sin(l) + dy * Math.cos(l)]; }
 
@@ -351,7 +356,7 @@ function drawChar(n, p, t) {
   if (o.shadow && !o.rot) { const k = 1 + Math.min(0, o.bob) / 400; ctx.fillStyle = 'rgba(0,0,0,.16)'; ell(0, 3, 92 * sc * k, 17 * sc); ctx.fill(); ctx.fillStyle = 'rgba(0,0,0,.24)'; ell(0, 2, 58 * sc * k, 9 * sc); ctx.fill(); }
   ctx.rotate(o.rot); ctx.scale(sc * o.f, sc); ctx.scale(1 / Math.sqrt(o.sq), o.sq);
   ctx.lineCap = 'round'; ctx.lineJoin = 'round';
-  const gL = limb(-20, 0, o.lL, TH * (o.coxa ?? 1), SH), gR = limb(20, 0, o.lR, TH * (o.coxa ?? 1), SH); // coxa<1 = escorço (coxa vindo pra câmera)
+  const gL = limb(-20, 0, o.lL, TH, SH), gR = limb(20, 0, o.lR, TH, SH);
   ctx.translate(0, hipOf(o));
   if (o.legs) { if (S.an) { if (!S.an.semPernas) { legAn(gL, S, -1); legAn(gR, S, 1); } } else { leg(gL, 1.04 / S.s); leg(gR, 1.04 / S.s); } }
   ctx.rotate(o.lean);
@@ -494,6 +499,22 @@ function face(S, o, t) {
   }
   if (S.barbona) { const bx = lx * .9, by = 40 + ly * .8; ctx.beginPath(); ctx.moveTo(bx - 78, by - 26); ctx.quadraticCurveTo(bx - 98, by + 60, bx - 40, by + 104); ctx.quadraticCurveTo(bx - 14, by + 88, bx, by + 120); ctx.quadraticCurveTo(bx + 14, by + 88, bx + 40, by + 104); ctx.quadraticCurveTo(bx + 98, by + 60, bx + 78, by - 26); ctx.quadraticCurveTo(bx, by + 24, bx - 78, by - 26); ctx.closePath(); fs(S.barbona, 7);
     for (const s of [-1, 1]) line([bx + s * 44, by + 20, bx + s * 52, by + 70], 4, 'rgba(120,30,30,.35)'); ell(bx, by + 4, 34, 16); fs('#f4efe4', 0); }
+  if (S.barbaCinza) {
+    const bx = lx * .85, by = 30 + ly * .75;
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(bx - 76, by - 4);
+    ctx.quadraticCurveTo(bx - 78, by + 58, bx, by + 64);
+    ctx.quadraticCurveTo(bx + 78, by + 58, bx + 76, by - 4);
+    ctx.quadraticCurveTo(bx, by + 16, bx - 76, by - 4);
+    ctx.closePath();
+    ctx.fillStyle = 'rgba(130, 136, 148, 0.52)';
+    ctx.fill();
+    ctx.lineWidth = 4;
+    ctx.strokeStyle = 'rgba(72, 76, 86, 0.45)';
+    ctx.stroke();
+    ctx.restore();
+  }
   if (S.an) featAn(S, o, lx, ey, ly);
   if (S.an && S.an.boca) bocaAn(S, o, lx * .9, 40 + ly * .8); else if (!(S.an && S.an.semBoca)) mouth(o.mouth, lx * .9, 40 + ly * .8, o.mo);
   if (S.an) fimAn(S, o, lx, ly);
@@ -554,13 +575,6 @@ function hat(k, t, wind = 0) {
     const L = [[-70, 70, -14], [-36, 120, 8], [0, 150, -6], [36, 118, 10], [70, 76, 14]];
     const fm = (e) => { ctx.beginPath(); ctx.moveTo(-84, -70); for (const [x, h, cv] of L) { ctx.quadraticCurveTo(x - 26, -70 - h * e * .5, x + cv * e, -80 - h * e); ctx.quadraticCurveTo(x + 22, -70 - h * e * .4, x + 28, -70); } ctx.lineTo(84, -70); ctx.closePath(); };
     const fl = Math.sin(t * 14) * 5; ctx.save(); ctx.translate(0, fl * .3); fm(1); fs('#ff5a14', 9); fm(.68); fs('#ffa424', 0); fm(.36); fs('#fff0a0', 0); ctx.restore();
-  } else if (k === 'coroaG') { // coroa imperial: 1,35x a coroa comum, com aro, pérolas e gema central (ep46)
-    ctx.save(); ctx.translate(0, -84); ctx.scale(1.35, 1.35); ctx.translate(0, 84);
-    ctx.beginPath(); ctx.moveTo(-62, -84); ctx.lineTo(-66, -150); ctx.lineTo(-34, -118); ctx.lineTo(0, -168); ctx.lineTo(34, -118); ctx.lineTo(66, -150); ctx.lineTo(62, -84); ctx.closePath(); fs('#f2c230', 8);
-    ctx.beginPath(); ctx.rect(-64, -96, 128, 14); fs('#d8a21e', 6);
-    for (const [x, y, c] of [[-66, -154, '#d8322a'], [0, -172, '#3b82f6'], [66, -154, '#d8322a']]) { ell(x, y, 9, 9); fs(c, 4); }
-    for (const x of [-40, -20, 0, 20, 40]) { ell(x, -89, 5, 5); fs('#fff6d8', 3); }
-    ctx.restore();
   } else if (k === 'coroa') { // coroa dourada
     ctx.beginPath(); ctx.moveTo(-62, -84); ctx.lineTo(-66, -150); ctx.lineTo(-34, -118); ctx.lineTo(0, -168); ctx.lineTo(34, -118); ctx.lineTo(66, -150); ctx.lineTo(62, -84); ctx.closePath(); fs('#f2c230', 8);
     for (const [x, y, c] of [[-66, -154, '#d8322a'], [0, -172, '#3b82f6'], [66, -154, '#d8322a']]) { ell(x, y, 9, 9); fs(c, 4); }
@@ -658,12 +672,10 @@ function hatAt(k, x, y, r, s, t) { HC = null; ctx.save(); ctx.translate(x, y); c
 function prop(k, x, y, a, s = 1, pr = {}) {
   ctx.save(); ctx.translate(x, y); ctx.rotate(-a); ctx.scale(s, s);
   if (k === 'bicorne') { hatAt('bicorne', 0, -9, 0, .78, 0); }
-  else if (k === 'chapeuChef') { hatAt('chef', 0, -9, 0, .78, 0); }
   else if (k === 'ladle') { rr(-6, -30, 12, 140, 6); fs('#c9c9d2', 5); ctx.beginPath(); ctx.arc(0, 112, 32, 0, PI); ctx.closePath(); fs('#c9c9d2', 6); if (pr.full) { ell(0, 113, 28, 6); ctx.fillStyle = '#e8b04a'; ctx.fill(); } }
   else if (k === 'map') { rr(-75, -10, 150, 110, 6); fs('#f1dfae', 6); ctx.setLineDash([10, 10]); line([-50, 75, -10, 40, 25, 60], 5, '#8a5a2b'); ctx.setLineDash([]); line([30, 20, 50, 40], 6, '#d8322a'); line([50, 20, 30, 40], 6, '#d8322a'); }
   else if (k === 'lantern') { line([0, 0, 0, 30], 5); rr(-26, 30, 52, 70, 10); fs('#ffd36e', 6); line([-26, 52, 26, 52], 4); }
   else if (k === 'glass') { rr(-12, -20, 24, 90, 6); fs('#c99a3a', 5); rr(-17, 60, 34, 80, 6); fs('#8a5530', 5); ell(0, 142, 17, 6); fs('#bfe6ff', 4); }
-  else if (k === 'lanca') { rr(-4, -190, 8, 330, 3); fs('#7a5230', 4); ctx.beginPath(); ctx.moveTo(0, -268); ctx.lineTo(-15, -190); ctx.lineTo(15, -190); ctx.closePath(); fs('#dfe4ee', 5); ell(0, -184, 11, 15); fs('#d8322a', 4); line([-2, -255, -2, -196], 3, 'rgba(255,255,255,.9)'); }   // lança de guarda (ep46)
   else if (k === 'sword') { rr(-7, -30, 14, 42, 5); fs('#6b4325', 4); ell(0, -34, 10, 10); fs('#f2c230', 4); rr(-30, 10, 60, 14, 6); fs('#f2c230', 5); ctx.beginPath(); ctx.moveTo(-11, 24); ctx.lineTo(11, 24); ctx.lineTo(8, 190); ctx.lineTo(0, 214); ctx.lineTo(-8, 190); ctx.closePath(); fs('#dfe4ee', 5); line([-3, 34, -2, 196], 4, 'rgba(255,255,255,.9)'); line([5, 34, 4, 190], 3, 'rgba(110,120,140,.6)'); }
   else if (k === 'shovel') { rr(-6, -40, 12, 190, 6); fs('#9a6236', 5); ctx.beginPath(); ctx.moveTo(-30, 150); ctx.lineTo(30, 150); ctx.lineTo(26, 215); ctx.quadraticCurveTo(0, 245, -26, 215); ctx.closePath(); fs('#9aa6b4', 6); line([-14, 160, -12, 210], 4, 'rgba(255,255,255,.7)'); rr(-22, -52, 44, 16, 6); fs('#9a6236', 4); }
   else if (k === 'recipe') { rr(-70, -10, 140, 170, 6); fs('#f4e6bf', 6); line([-48, 20, 48, 20], 4, '#8a5a2b'); line([-48, 120, 30, 120], 3, '#8a5a2b'); line([-48, 138, 40, 138], 3, '#8a5a2b'); fish(-22, 62, 0, .38); bowl(36, 84, .32, 1); steam(36, 58, 0, 2, .3); }
@@ -685,6 +697,12 @@ function prop(k, x, y, a, s = 1, pr = {}) {
     line([0, 60, Math.sin(ah) * 28, 60 - Math.cos(ah) * 28], 8); line([0, 60, Math.sin(am) * 46, 60 - Math.cos(am) * 46], 5, '#c8202a');
     ell(0, 60, 7, 7); ctx.fillStyle = INK; ctx.fill(); ell(-24, 34, 14, 7, -.6); ctx.fillStyle = 'rgba(255,255,255,.7)'; ctx.fill(); ctx.restore(); }
   else if (k === 'spoon') { rr(-5, -10, 10, 80, 5); fs('#c9c9d2', 4); ell(0, 84, 15, 20); fs('#c9c9d2', 4); }
+  else if (k === 'fuzil') { // rifle tático: coronha de madeira + cano escuro + clarão opcional de disparo (pr.flash)
+    rr(-10, -45, 20, 62, 6); fs('#7a4b2a', 5);
+    rr(-12, 10, 24, 34, 4); fs('#3a3e47', 5);
+    rr(-6, 40, 12, 92, 3); fs('#262930', 5);
+    if (pr.flash) { ell(0, 146, 22, 30); fs('#ff9a1f', 4); ell(0, 144, 10, 16); ctx.fillStyle = '#fff7b0'; ctx.fill(); }
+  }
   ctx.restore();
 }
 function mapAt(x, y, r, s) { ctx.save(); ctx.translate(x, y); ctx.rotate(r); ctx.scale(s, s); rr(-75, -55, 150, 110, 6); fs('#f1dfae', 6); ctx.setLineDash([10, 10]); line([-50, 30, -10, -5, 25, 15], 5, '#8a5a2b'); ctx.setLineDash([]); line([30, -25, 50, -5], 6, '#d8322a'); line([50, -25, 30, -5], 6, '#d8322a'); ctx.restore(); }

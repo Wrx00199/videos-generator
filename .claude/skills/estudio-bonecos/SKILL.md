@@ -1,12 +1,24 @@
 ---
 name: estudio-bonecos
-description: Produz e verifica Aventuras do Tião. Em pedidos de vídeo ou cena, Tião, Tiao, Tinhão e Tinhao acionam este perfil. Use para roteiro, personagem, animação, render e entrega da série.
+description: Produz e verifica Aventuras do Tião (Nexo V8). Em pedidos de vídeo ou cena, Tião, Tiao, Tinhão e Tinhao acionam este perfil.
 ---
 
-# Aventuras do Tião V7
+# Aventuras do Tião — Nexo V8 (estilo RicksClips)
 
-Leia primeiro `projetos/bonecos/serie-tiao-kit/CONTINUAR_AQUI.md`. O guia de produção é `docs/tiao/PRODUCAO-V7.md`. Use a curadoria conferida para decidir que informação cada corte revela. Crie premissa própria e escolha o elenco pela função.
+## Identidade fixa (NUNCA violar)
+- **Tião:** rosto branco + **barba cinza característica** (`barbaCinza: 1`), **100% livre de roupa, profissão e cenário**.
+- **Variantes prontas no `rig.js`:** `tiao_base`, `tiao_jaqueta`, `tiao_terno`, `tiao_soldado`, `tiao_astro`.
+- **PROIBIDO:** usar o `tiao` cozinheiro legado ou reciclar tripulação do navio (`cap`, `mar1`, `mar2`, `ruiva`, `barbacoral`, `tonho`, `dede`, `chiquinha`) fora de histórias náuticas.
+- **Tom:** público geral (7 a 70 anos), histórias inteligentes/curiosas estilo `@RicksClips3000`. **Nunca infantil.**
 
-Submeta a prévia em movimento a um revisor independente que receba só a mídia sem sinopse, título revelador ou resposta. Registre a leitura fria antes de mostrar a intenção ao revisor. Trate atuação e montagem em parecer próprio. Devolva para correção ou descarte quando a cena não se sustentar. Antes de preparar voz e render, confira os pareceres da versão no portão.
+## Regra 1:1 (Narração = Ação Física na Tela)
+- Toda frase narrada precisa ter **ação física correspondente na tela** (`andar`, `correr`, `apontar`, `susto`, `recuar`, `comemorar`, `pensar`, `falar`, `segurar`, `disparar`) + **enquadramento/zoom motivado** (`estab`, `medio`, `close`, `punch_in`, `zoom_out`, `dramatico`, `tremor`).
+- Proibido boneco estátua por beat inteiro ou câmera repetida 3x seguidas.
 
-O QA técnico mede o arquivo. A revisão final confere a história, imagem em movimento, áudio e identidade da versão entregue. Apresente o primeiro piloto completo ao Filippe quando ele passar nessas etapas. A série usa apenas identidade própria confirmada.
+## Comando único de produção
+```bash
+python3 projetos/bonecos/serie-tiao-kit/diretor_tiao.py <episodio.json> --rapido
+```
+- Valida o JSON antes de gastar cota ou GPU.
+- Gera vozes limpas no Gemini TTS (`Fenrir`, velocidade natural — sem `atempo` robótico), legenda sincronizada (máx 3 palavras, margem segura), render no `motor3d` (`TIAO_GPU=vulkan`) e MP4 final `-14 LUFS`.
+- Um render por vez. Publicação só com aprovação do Filippe.
