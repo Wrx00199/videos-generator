@@ -103,3 +103,7 @@ Comparação obrigatória: revisor põe 1 quadro nosso lado a lado com 1 do Rick
 - Personagem invisível: opacidade ≥0,3, senão some no fundo.
 - Pós: bloom só em RGB (gbrp); blend em YUV pinta tudo de magenta.
 - Câmera nunca sai do mundo (motor trava); legenda em y 1580, abaixo dos pés.
+- (24/11 Filippe) Roupa limpa e de época/tema; nada de aparência de mendigo (rasgo/sujeira só se o roteiro pedir).
+- (24/11) Ritmo Rick: corte ou punch-zoom a cada ≤1,5 s; plano parado >2,5 s reprova.
+- (24/11) Barba do Tião: curta, aparada, contorno limpo; a atual reprovada.
+- (24/11) Rosto expressivo: sobrancelha, olho (squash) e boca deformam por fala; expressão neutra só em transição.
