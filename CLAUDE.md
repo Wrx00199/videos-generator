@@ -8,7 +8,7 @@ Executar direto; perguntar só em dinheiro, login, postar ou apagar dados do usu
 - **SixStarsBR** (GTA 6, cortes de live): `estudio-lives` + `marca/identidade.json`.
 
 ## Tião: método (decidido 24/11)
-- Motor: **2D cut-out** (personagem em peças que giram como marionete). 3D/three.js suspenso.
+- Motor: **2D cut-out rico** (HyperFrames). Blender e híbrido testados e REPROVADOS em 24/11 (roteiro e personagem pioram). 3D só se o Filippe pedir.
 - **Biblioteca de ações** em `projetos/bonecos/acoes/`: cada ação (parado, andar, correr, apontar, pegar, atirar, levantar mãos, sentar, cair, susto…) tem folha de poses + teste próprio aprovado. Ação sem teste aprovado não entra em vídeo.
 - **Roteiro amarrado**: cada frase da narração = 1 ação da biblioteca + 1 câmera (zoom, afastar, corte). Frase sem ação visível é reprovada pelo validador antes do render.
 - Narração em 3ª pessoa: boca do personagem FECHADA. Boca só abre em fala dele.
