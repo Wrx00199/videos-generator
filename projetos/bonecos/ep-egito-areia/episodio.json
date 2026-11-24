@@ -1,0 +1,1630 @@
+{
+ "titulo": "Tião foi pro Egito com um balde",
+ "elenco": {
+  "tiao": {
+   "pele": "branca",
+   "roupa": [
+    "tunica",
+    "#efe3c4"
+   ],
+   "acessorios": [
+    "barba"
+   ],
+   "segura": {
+    "D": [
+     "jarro"
+    ],
+    "E": []
+   }
+  },
+  "farao": {
+   "pele": "morena",
+   "roupa": [
+    "farao",
+    "#f2e6c8"
+   ],
+   "acessorios": [
+    "nemes"
+   ],
+   "segura": {
+    "D": [],
+    "E": []
+   }
+  },
+  "capataz": {
+   "pele": "parda",
+   "roupa": [
+    "regata",
+    "#8a5a3a"
+   ],
+   "acessorios": [
+    "lenco_cabeca",
+    "bigode"
+   ],
+   "segura": {
+    "D": [
+     "chicote"
+    ],
+    "E": []
+   }
+  },
+  "op1": {
+   "pele": "morena",
+   "roupa": [
+    "regata",
+    "#c9b48a"
+   ],
+   "acessorios": [
+    "lenco_cabeca"
+   ],
+   "segura": {
+    "D": [],
+    "E": []
+   }
+  },
+  "op2": {
+   "pele": "escura",
+   "roupa": [
+    "regata",
+    "#b7a27a"
+   ],
+   "acessorios": [],
+   "segura": {
+    "D": [],
+    "E": []
+   }
+  }
+ },
+ "falas": [
+  {
+   "txt": "O Tião foi parar no Egito e fez vinte blocos de pedra andarem usando só água.",
+   "planos": [
+    {
+     "cena": "egito_obra",
+     "cam": [
+      [
+       900,
+       1250,
+       1.05
+      ],
+      [
+       900,
+       1250,
+       1.2
+      ]
+     ],
+     "objetos": [
+      {
+       "tipo": "treno",
+       "x": -300,
+       "y": 1420,
+       "s": 0.6,
+       "anim": {
+        "dx": 900,
+        "dur": 3,
+        "ease": "none"
+       }
+      },
+      {
+       "tipo": "treno",
+       "x": -900,
+       "y": 1420,
+       "s": 0.6,
+       "anim": {
+        "dx": 900,
+        "dur": 3,
+        "ease": "none"
+       }
+      },
+      {
+       "tipo": "treno",
+       "x": 300,
+       "y": 1560,
+       "anim": {
+        "dx": 500,
+        "dur": 3,
+        "ease": "none"
+       }
+      }
+     ],
+     "atores": [
+      {
+       "id": "tiao",
+       "x": 1100,
+       "flip": -1,
+       "pega": [
+        [
+         "D",
+         "jarro"
+        ]
+       ],
+       "acoes": [
+        [
+         "despejar",
+         null
+        ]
+       ]
+      }
+     ],
+     "texto": [
+      {
+       "txt": "20 BLOCOS",
+       "em": 0.4,
+       "cor": "#ffd84a"
+      }
+     ],
+     "sfx": [
+      [
+       "drip/drop",
+       0.8,
+       0.5,
+       1
+      ]
+     ]
+    },
+    {
+     "cena": "egito_obra",
+     "cam": [
+      [
+       800,
+       1380,
+       1.4
+      ],
+      [
+       1300,
+       1380,
+       1.4
+      ]
+     ],
+     "objetos": [
+      {
+       "tipo": "treno",
+       "x": 700,
+       "y": 1560,
+       "anim": {
+        "dx": 500,
+        "dur": 1.6,
+        "em": 0.2
+       }
+      }
+     ],
+     "atores": [
+      {
+       "id": "op1",
+       "x": 1050,
+       "acoes": [
+        [
+         "puxar",
+         null,
+         {
+          "dx": 500
+         }
+        ]
+       ]
+      }
+     ],
+     "sfx": [
+      [
+       "whoosh_fast/whip",
+       0.2,
+       0.5,
+       0.6
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "Cada bloco pesava duas toneladas. Oitenta homens mal arrastavam um por dia.",
+   "planos": [
+    {
+     "cena": "egito_obra",
+     "cam": [
+      [
+       950,
+       1380,
+       1.35
+      ],
+      [
+       950,
+       1380,
+       1.5
+      ]
+     ],
+     "objetos": [
+      {
+       "tipo": "treno",
+       "x": 600,
+       "y": 1560
+      }
+     ],
+     "atores": [
+      {
+       "id": "op1",
+       "x": 1000,
+       "acoes": [
+        [
+         "puxar",
+         null,
+         {
+          "dx": 40
+         }
+        ]
+       ]
+      },
+      {
+       "id": "op2",
+       "x": 1180,
+       "acoes": [
+        [
+         "puxar",
+         null,
+         {
+          "dx": 40
+         }
+        ]
+       ]
+      }
+     ],
+     "texto": [
+      {
+       "txt": "2 TONELADAS",
+       "y": 990,
+       "em": 0.3
+      }
+     ],
+     "sfx": [
+      [
+       "impact/deep",
+       0.3,
+       0.5,
+       1
+      ]
+     ]
+    },
+    {
+     "cena": "egito_obra",
+     "cam": [
+      [
+       1000,
+       1380,
+       1.7
+      ],
+      [
+       1000,
+       1380,
+       1.8
+      ]
+     ],
+     "atores": [
+      {
+       "id": "op2",
+       "x": 1000,
+       "expr": "sad",
+       "acoes": [
+        [
+         "chorar",
+         null
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "O Tião olhou aquilo, pegou um jarro e começou a molhar a areia.",
+   "planos": [
+    {
+     "cena": "egito_obra",
+     "cam": [
+      [
+       900,
+       1380,
+       1.6
+      ],
+      [
+       900,
+       1380,
+       1.8
+      ]
+     ],
+     "atores": [
+      {
+       "id": "tiao",
+       "x": 900,
+       "acoes": [
+        [
+         "olhar",
+         0.8
+        ],
+        [
+         "expressao",
+         0.4,
+         {
+          "expr": "suspect"
+         }
+        ],
+        [
+         "pegar",
+         1.2,
+         {
+          "prop": "jarro",
+          "lado": "D"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "cena": "egito_obra",
+     "cam": [
+      [
+       950,
+       1380,
+       1.6
+      ],
+      [
+       950,
+       1380,
+       1.7
+      ]
+     ],
+     "objetos": [
+      {
+       "tipo": "treno",
+       "x": 600,
+       "y": 1560
+      },
+      {
+       "tipo": "poca",
+       "x": 1040,
+       "y": 1570,
+       "oculto": 1,
+       "aparece": 0.8
+      }
+     ],
+     "atores": [
+      {
+       "id": "tiao",
+       "x": 1150,
+       "flip": -1,
+       "pega": [
+        [
+         "D",
+         "jarro"
+        ]
+       ],
+       "acoes": [
+        [
+         "despejar",
+         null
+        ]
+       ]
+      }
+     ],
+     "sfx": [
+      [
+       "drip/drop",
+       0.6,
+       0.6,
+       1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "O faraó riu na cara dele: tá regando o deserto, velhote?",
+   "planos": [
+    {
+     "cena": "egito_palacio",
+     "cam": [
+      [
+       900,
+       1380,
+       1.5
+      ],
+      [
+       900,
+       1380,
+       1.75
+      ]
+     ],
+     "atores": [
+      {
+       "id": "farao",
+       "x": 900,
+       "flip": -1,
+       "expr": "cynic",
+       "acoes": [
+        [
+         "apontar",
+         0.9,
+         {
+          "expr": "cynic"
+         }
+        ],
+        [
+         "comemorar",
+         null
+        ]
+       ]
+      }
+     ],
+     "sfx": [
+      [
+       "cut_hit/punch",
+       0.1,
+       0.4,
+       0.6
+      ]
+     ]
+    },
+    {
+     "cena": "egito_obra",
+     "cam": [
+      [
+       900,
+       1380,
+       1.8
+      ],
+      [
+       900,
+       1380,
+       1.9
+      ]
+     ],
+     "atores": [
+      {
+       "id": "tiao",
+       "x": 900,
+       "pega": [
+        [
+         "D",
+         "jarro"
+        ]
+       ],
+       "acoes": [
+        [
+         "expressao",
+         null,
+         {
+          "expr": "suspect"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ],
+   "estilo": "zombeteiro"
+  },
+  {
+   "txt": "Os operários riram junto, e o capataz estalou o chicote no chão.",
+   "planos": [
+    {
+     "cena": "egito_obra",
+     "cam": [
+      [
+       900,
+       1380,
+       1.35
+      ],
+      [
+       900,
+       1380,
+       1.45
+      ]
+     ],
+     "atores": [
+      {
+       "id": "op1",
+       "x": 700,
+       "acoes": [
+        [
+         "comemorar",
+         null
+        ]
+       ]
+      },
+      {
+       "id": "op2",
+       "x": 1100,
+       "flip": -1,
+       "acoes": [
+        [
+         "comemorar",
+         null
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "cena": "egito_obra",
+     "cam": [
+      [
+       900,
+       1380,
+       1.7
+      ],
+      [
+       900,
+       1380,
+       1.8
+      ]
+     ],
+     "atores": [
+      {
+       "id": "capataz",
+       "x": 900,
+       "expr": "rage",
+       "pega": [
+        [
+         "D",
+         "chicote"
+        ]
+       ],
+       "acoes": [
+        [
+         "raiva",
+         null
+        ]
+       ]
+      }
+     ],
+     "fx": [
+      [
+       "shake",
+       0.5,
+       14,
+       6
+      ]
+     ],
+     "sfx": [
+      [
+       "whoosh_fast/whip",
+       0.4,
+       0.7,
+       0.5
+      ],
+      [
+       "impact/punch",
+       0.55,
+       0.6,
+       0.6
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "O Tião nem respondeu. Despejou mais água bem na frente do trenó.",
+   "planos": [
+    {
+     "cena": "egito_obra",
+     "cam": [
+      [
+       1100,
+       1250,
+       2.1
+      ],
+      [
+       1100,
+       1250,
+       2.2
+      ]
+     ],
+     "atores": [
+      {
+       "id": "tiao",
+       "x": 1150,
+       "flip": -1,
+       "expr": "suspect",
+       "acoes": [
+        [
+         "expressao",
+         0.3,
+         {
+          "expr": "suspect"
+         }
+        ],
+        [
+         "olhar",
+         null
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "cena": "egito_obra",
+     "cam": [
+      [
+       960,
+       1380,
+       1.45
+      ],
+      [
+       960,
+       1380,
+       1.6
+      ]
+     ],
+     "objetos": [
+      {
+       "tipo": "treno",
+       "x": 600,
+       "y": 1560
+      },
+      {
+       "tipo": "poca",
+       "x": 1050,
+       "y": 1570
+      }
+     ],
+     "atores": [
+      {
+       "id": "tiao",
+       "x": 1220,
+       "flip": -1,
+       "pega": [
+        [
+         "D",
+         "jarro"
+        ]
+       ],
+       "acoes": [
+        [
+         "despejar",
+         null
+        ]
+       ]
+      }
+     ],
+     "sfx": [
+      [
+       "drip/drop",
+       0.5,
+       0.6,
+       1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "Aí mandou só dez homens puxarem.",
+   "planos": [
+    {
+     "cena": "egito_obra",
+     "cam": [
+      [
+       950,
+       1300,
+       1.15
+      ],
+      [
+       950,
+       1300,
+       1.25
+      ]
+     ],
+     "objetos": [
+      {
+       "tipo": "treno",
+       "x": 160,
+       "y": 1560,
+       "s": 0.8
+      }
+     ],
+     "atores": [
+      {
+       "id": "op1",
+       "x": 480,
+       "s": 0.8,
+       "acoes": [
+        [
+         "puxar",
+         null,
+         {
+          "dx": 20
+         }
+        ]
+       ]
+      },
+      {
+       "id": "op2",
+       "x": 565,
+       "s": 0.8,
+       "acoes": [
+        [
+         "puxar",
+         null,
+         {
+          "dx": 20
+         }
+        ]
+       ]
+      },
+      {
+       "id": "op1",
+       "x": 650,
+       "s": 0.8,
+       "acoes": [
+        [
+         "puxar",
+         null,
+         {
+          "dx": 20
+         }
+        ]
+       ]
+      },
+      {
+       "id": "op2",
+       "x": 735,
+       "s": 0.8,
+       "acoes": [
+        [
+         "puxar",
+         null,
+         {
+          "dx": 20
+         }
+        ]
+       ]
+      },
+      {
+       "id": "op1",
+       "x": 820,
+       "s": 0.8,
+       "acoes": [
+        [
+         "puxar",
+         null,
+         {
+          "dx": 20
+         }
+        ]
+       ]
+      },
+      {
+       "id": "op2",
+       "x": 905,
+       "s": 0.8,
+       "acoes": [
+        [
+         "puxar",
+         null,
+         {
+          "dx": 20
+         }
+        ]
+       ]
+      },
+      {
+       "id": "op1",
+       "x": 990,
+       "s": 0.8,
+       "acoes": [
+        [
+         "puxar",
+         null,
+         {
+          "dx": 20
+         }
+        ]
+       ]
+      },
+      {
+       "id": "op2",
+       "x": 1075,
+       "s": 0.8,
+       "acoes": [
+        [
+         "puxar",
+         null,
+         {
+          "dx": 20
+         }
+        ]
+       ]
+      },
+      {
+       "id": "op1",
+       "x": 1160,
+       "s": 0.8,
+       "acoes": [
+        [
+         "puxar",
+         null,
+         {
+          "dx": 20
+         }
+        ]
+       ]
+      },
+      {
+       "id": "op2",
+       "x": 1245,
+       "s": 0.8,
+       "acoes": [
+        [
+         "puxar",
+         null,
+         {
+          "dx": 20
+         }
+        ]
+       ]
+      }
+     ],
+     "texto": [
+      {
+       "txt": "10 HOMENS",
+       "em": 0.3,
+       "cor": "#ffd84a"
+      }
+     ]
+    },
+    {
+     "cena": "egito_obra",
+     "cam": [
+      [
+       900,
+       1380,
+       1.6
+      ],
+      [
+       900,
+       1380,
+       1.7
+      ]
+     ],
+     "atores": [
+      {
+       "id": "tiao",
+       "x": 900,
+       "acoes": [
+        [
+         "apontar",
+         null,
+         {
+          "alto": 1
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "E o bloco escorregou como se fosse de isopor.",
+   "planos": [
+    {
+     "cena": "egito_obra",
+     "cam": [
+      [
+       600,
+       1380,
+       1.3
+      ],
+      [
+       1100,
+       1380,
+       1.4
+      ]
+     ],
+     "objetos": [
+      {
+       "tipo": "treno",
+       "x": 500,
+       "y": 1560,
+       "anim": {
+        "dx": 700,
+        "dur": 1.9,
+        "em": 0.1,
+        "ease": "power2.in"
+       }
+      }
+     ],
+     "atores": [
+      {
+       "id": "op1",
+       "x": 860,
+       "acoes": [
+        [
+         "correr",
+         null,
+         {
+          "dx": 700
+         }
+        ]
+       ]
+      },
+      {
+       "id": "op2",
+       "x": 1000,
+       "acoes": [
+        [
+         "correr",
+         null,
+         {
+          "dx": 700
+         }
+        ]
+       ]
+      }
+     ],
+     "sfx": [
+      [
+       "whoosh_big/cape",
+       0.2,
+       0.6,
+       1.2
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "No fim do dia: vinte blocos do Tião. Dois do faraó.",
+   "planos": [
+    {
+     "cena": "egito_obra",
+     "cam": [
+      [
+       900,
+       1200,
+       1
+      ],
+      [
+       900,
+       1200,
+       1.1
+      ]
+     ],
+     "objetos": [
+      {
+       "tipo": "treno",
+       "x": 250,
+       "y": 1330,
+       "s": 0.25
+      },
+      {
+       "tipo": "treno",
+       "x": 400,
+       "y": 1330,
+       "s": 0.25
+      },
+      {
+       "tipo": "treno",
+       "x": 550,
+       "y": 1330,
+       "s": 0.25
+      },
+      {
+       "tipo": "treno",
+       "x": 700,
+       "y": 1330,
+       "s": 0.25
+      },
+      {
+       "tipo": "treno",
+       "x": 270,
+       "y": 1285,
+       "s": 0.25
+      },
+      {
+       "tipo": "treno",
+       "x": 420,
+       "y": 1285,
+       "s": 0.25
+      },
+      {
+       "tipo": "treno",
+       "x": 570,
+       "y": 1285,
+       "s": 0.25
+      },
+      {
+       "tipo": "treno",
+       "x": 720,
+       "y": 1285,
+       "s": 0.25
+      },
+      {
+       "tipo": "treno",
+       "x": 290,
+       "y": 1240,
+       "s": 0.25
+      },
+      {
+       "tipo": "treno",
+       "x": 440,
+       "y": 1240,
+       "s": 0.25
+      },
+      {
+       "tipo": "treno",
+       "x": 590,
+       "y": 1240,
+       "s": 0.25
+      },
+      {
+       "tipo": "treno",
+       "x": 740,
+       "y": 1240,
+       "s": 0.25
+      },
+      {
+       "tipo": "treno",
+       "x": 310,
+       "y": 1195,
+       "s": 0.25
+      },
+      {
+       "tipo": "treno",
+       "x": 460,
+       "y": 1195,
+       "s": 0.25
+      },
+      {
+       "tipo": "treno",
+       "x": 610,
+       "y": 1195,
+       "s": 0.25
+      },
+      {
+       "tipo": "treno",
+       "x": 760,
+       "y": 1195,
+       "s": 0.25
+      },
+      {
+       "tipo": "treno",
+       "x": 330,
+       "y": 1150,
+       "s": 0.25
+      },
+      {
+       "tipo": "treno",
+       "x": 480,
+       "y": 1150,
+       "s": 0.25
+      },
+      {
+       "tipo": "treno",
+       "x": 630,
+       "y": 1150,
+       "s": 0.25
+      },
+      {
+       "tipo": "treno",
+       "x": 780,
+       "y": 1150,
+       "s": 0.25
+      },
+      {
+       "tipo": "treno",
+       "x": 1320,
+       "y": 1330,
+       "s": 0.32
+      },
+      {
+       "tipo": "treno",
+       "x": 1320,
+       "y": 1275,
+       "s": 0.32
+      }
+     ],
+     "atores": [
+      {
+       "id": "tiao",
+       "x": 900,
+       "pega": [
+        [
+         "D",
+         "jarro"
+        ]
+       ],
+       "acoes": [
+        [
+         "comemorar",
+         null
+        ]
+       ]
+      }
+     ],
+     "texto": [
+      {
+       "txt": "TIÃO 20 x 2 FARAÓ",
+       "y": 880,
+       "em": 0.2,
+       "cor": "#ffd84a"
+      }
+     ],
+     "sfx": [
+      [
+       "impact/classic",
+       0.2,
+       0.5,
+       1
+      ]
+     ]
+    },
+    {
+     "cena": "egito_palacio",
+     "cam": [
+      [
+       900,
+       1380,
+       1.7
+      ],
+      [
+       900,
+       1380,
+       1.85
+      ]
+     ],
+     "atores": [
+      {
+       "id": "farao",
+       "x": 900,
+       "acoes": [
+        [
+         "susto",
+         null
+        ]
+       ]
+      }
+     ],
+     "texto": [
+      {
+       "txt": "FARAÓ 2",
+       "y": 990,
+       "em": 0.1,
+       "cor": "#ff6a5a"
+      }
+     ],
+     "sfx": [
+      [
+       "pro_sub_drop/low",
+       0.1,
+       0.6,
+       1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "O faraó gritou que aquilo era feitiçaria.",
+   "planos": [
+    {
+     "cena": "egito_palacio",
+     "cam": [
+      [
+       1160,
+       1380,
+       1.4
+      ],
+      [
+       1160,
+       1380,
+       1.5
+      ]
+     ],
+     "atores": [
+      {
+       "id": "farao",
+       "x": 1160,
+       "flip": -1,
+       "acoes": [
+        [
+         "apontar",
+         null,
+         {
+          "expr": "rage"
+         }
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "cena": "egito_palacio",
+     "cam": [
+      [
+       900,
+       1380,
+       1.6
+      ],
+      [
+       900,
+       1380,
+       1.9
+      ]
+     ],
+     "atores": [
+      {
+       "id": "farao",
+       "x": 900,
+       "acoes": [
+        [
+         "raiva",
+         null
+        ]
+       ]
+      }
+     ],
+     "fx": [
+      [
+       "shake",
+       0.3,
+       12,
+       6
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "Não era. Areia seca se amontoa na frente do trenó e trava tudo.",
+   "planos": [
+    {
+     "cena": "egito_obra",
+     "cam": [
+      [
+       1050,
+       1380,
+       1.2
+      ],
+      [
+       1050,
+       1380,
+       1.28
+      ]
+     ],
+     "objetos": [
+      {
+       "tipo": "treno",
+       "x": 650,
+       "y": 1560
+      },
+      {
+       "tipo": "pedra",
+       "x": 1000,
+       "y": 1565,
+       "s": 0.6
+      }
+     ],
+     "atores": [
+      {
+       "id": "op1",
+       "x": 1050,
+       "acoes": [
+        [
+         "puxar",
+         null,
+         {
+          "dx": 10
+         }
+        ]
+       ]
+      }
+     ],
+     "texto": [
+      {
+       "txt": "AREIA SECA = TRAVA",
+       "y": 990,
+       "em": 0.4
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "Molhada na medida certa, ela endurece, e a força cai pela metade.",
+   "planos": [
+    {
+     "cena": "egito_obra",
+     "cam": [
+      [
+       1120,
+       1380,
+       1.2
+      ],
+      [
+       1320,
+       1380,
+       1.25
+      ]
+     ],
+     "objetos": [
+      {
+       "tipo": "poca",
+       "x": 950,
+       "y": 1570
+      },
+      {
+       "tipo": "treno",
+       "x": 650,
+       "y": 1560,
+       "anim": {
+        "dx": 300,
+        "dur": 1.6,
+        "em": 0.4
+       }
+      }
+     ],
+     "atores": [
+      {
+       "id": "op1",
+       "x": 1050,
+       "acoes": [
+        [
+         "puxar",
+         null,
+         {
+          "dx": 300
+         }
+        ]
+       ]
+      }
+     ],
+     "texto": [
+      {
+       "txt": "FORÇA ÷ 2",
+       "y": 990,
+       "em": 0.4,
+       "cor": "#7fd8ff"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "O Tião não ganhou nem um obrigado. Ganhou foi uma chicotada.",
+   "planos": [
+    {
+     "cena": "egito_obra",
+     "cam": [
+      [
+       900,
+       1380,
+       1.5
+      ],
+      [
+       900,
+       1380,
+       1.6
+      ]
+     ],
+     "atores": [
+      {
+       "id": "capataz",
+       "x": 700,
+       "pega": [
+        [
+         "D",
+         "chicote"
+        ]
+       ],
+       "acoes": [
+        [
+         "raiva",
+         null
+        ]
+       ]
+      },
+      {
+       "id": "tiao",
+       "x": 1100,
+       "flip": -1,
+       "acoes": [
+        [
+         "olhar",
+         null
+        ]
+       ]
+      }
+     ],
+     "sfx": [
+      [
+       "whoosh_fast/whip",
+       0.6,
+       0.7,
+       0.5
+      ]
+     ]
+    },
+    {
+     "cena": "egito_obra",
+     "cam": [
+      [
+       900,
+       1380,
+       1.6
+      ],
+      [
+       900,
+       1380,
+       1.7
+      ]
+     ],
+     "atores": [
+      {
+       "id": "tiao",
+       "x": 900,
+       "acoes": [
+        [
+         "susto",
+         null
+        ]
+       ]
+      }
+     ],
+     "fx": [
+      [
+       "shake",
+       0.1,
+       16,
+       7
+      ],
+      [
+       "flash",
+       0.1,
+       "#fff",
+       0.2
+      ]
+     ],
+     "sfx": [
+      [
+       "impact/punch",
+       0.1,
+       0.8,
+       0.6
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "Três mil anos depois, arqueólogos acharam essa cena pintada numa tumba.",
+   "planos": [
+    {
+     "cena": "tumba_parede",
+     "cam": [
+      [
+       1000,
+       800,
+       1
+      ],
+      [
+       1000,
+       800,
+       1.35
+      ]
+     ],
+     "texto": [
+      {
+       "txt": "3.000 ANOS DEPOIS",
+       "y": 420,
+       "em": 0.2
+      }
+     ],
+     "sfx": [
+      [
+       "riser/build",
+       0,
+       0.4,
+       2
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "Um homem jogando água na frente de um trenó gigante.",
+   "planos": [
+    {
+     "cena": "tumba_parede",
+     "cam": [
+      [
+       980,
+       720,
+       1.7
+      ],
+      [
+       980,
+       720,
+       2.1
+      ]
+     ],
+     "texto": [
+      {
+       "txt": "ÁGUA ↓",
+       "y": 560,
+       "em": 0.6,
+       "cor": "#7fd8ff"
+      }
+     ],
+     "fx": [
+      [
+       "flash",
+       0.6,
+       "#fff",
+       0.2
+      ]
+     ],
+     "sfx": [
+      [
+       "cut_hit/punch",
+       0.6,
+       0.5,
+       0.6
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "E por um século, os cientistas acharam que era só decoração.",
+   "planos": [
+    {
+     "cena": "tumba_parede",
+     "cam": [
+      [
+       950,
+       1200,
+       1.25
+      ],
+      [
+       950,
+       1200,
+       1.15
+      ]
+     ],
+     "atores": [
+      {
+       "id": "tiao",
+       "x": 1100,
+       "s": 1,
+       "flip": -1,
+       "acoes": [
+        [
+         "expressao",
+         0.5,
+         {
+          "expr": "cynic"
+         }
+        ],
+        [
+         "apontar",
+         null,
+         {
+          "alto": 1,
+          "expr": "cynic"
+         }
+        ]
+       ]
+      }
+     ],
+     "texto": [
+      {
+       "txt": "\"DECORAÇÃO\"",
+       "y": 990,
+       "em": 0.4,
+       "cor": "#ffd84a"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

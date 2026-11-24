@@ -1,0 +1,1008 @@
+{
+ "titulo": "E se o Tião ficasse invisível",
+ "elenco": {
+  "tiao": {
+   "pele": "branca",
+   "roupa": [
+    "camiseta",
+    "#2c3440"
+   ],
+   "calca": "#1e2228",
+   "acessorios": [
+    "barba"
+   ],
+   "segura": {
+    "D": [
+     "saco"
+    ],
+    "E": []
+   }
+  },
+  "guarda": {
+   "pele": "parda",
+   "roupa": [
+    "uniforme",
+    "#3a4a6a"
+   ],
+   "acessorios": [
+    "quepe",
+    "bigode"
+   ],
+   "segura": {
+    "D": [
+     "lanterna"
+    ],
+    "E": []
+   }
+  },
+  "pm": {
+   "pele": "morena",
+   "roupa": [
+    "uniforme",
+    "#2a3550"
+   ],
+   "acessorios": [
+    "quepe"
+   ],
+   "segura": {
+    "D": [
+     "lanterna"
+    ],
+    "E": []
+   }
+  }
+ },
+ "falas": [
+  {
+   "txt": "O Tião ficou invisível por uma hora e decidiu roubar um banco.",
+   "planos": [
+    {
+     "cena": "cidade_noite",
+     "cam": [
+      [
+       900,
+       1380,
+       1.5
+      ],
+      [
+       900,
+       1380,
+       1.7
+      ]
+     ],
+     "atores": [
+      {
+       "id": "tiao",
+       "x": 900,
+       "expr": "cynic",
+       "acoes": [
+        [
+         "expressao",
+         0.7,
+         {
+          "expr": "cynic"
+         }
+        ],
+        [
+         "sumir",
+         null,
+         {
+          "nivel": 0.3
+         }
+        ]
+       ]
+      }
+     ],
+     "texto": [
+      {
+       "txt": "1 HORA",
+       "em": 0.2,
+       "cor": "#ffd84a"
+      }
+     ],
+     "sfx": [
+      [
+       "riser/snatch",
+       0.6,
+       0.6,
+       0.7
+      ]
+     ]
+    },
+    {
+     "cena": "banco_saguao",
+     "cam": [
+      [
+       820,
+       1380,
+       1.2
+      ],
+      [
+       820,
+       1380,
+       1.35
+      ]
+     ],
+     "atores": [
+      {
+       "id": "guarda",
+       "x": 1020,
+       "flip": -1,
+       "acoes": [
+        [
+         "parado",
+         null
+        ]
+       ]
+      }
+     ],
+     "texto": [
+      {
+       "txt": "BANCO",
+       "em": 0.2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "Entrou pela porta da frente, e o segurança nem piscou.",
+   "planos": [
+    {
+     "cena": "banco_saguao",
+     "cam": [
+      [
+       820,
+       1380,
+       1.35
+      ],
+      [
+       820,
+       1380,
+       1.5
+      ]
+     ],
+     "atores": [
+      {
+       "id": "tiao",
+       "x": 500,
+       "invis": 0.42,
+       "acoes": [
+        [
+         "andar",
+         null,
+         {
+          "dx": 380
+         }
+        ]
+       ]
+      },
+      {
+       "id": "guarda",
+       "x": 1060,
+       "flip": -1,
+       "acoes": [
+        [
+         "olhar",
+         null
+        ]
+       ]
+      }
+     ],
+     "sfx": [
+      [
+       "whoosh_fast/crisp",
+       0.3,
+       0.4,
+       0.5
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "No cofre, ele encheu um saco com trinta quilos de ouro.",
+   "planos": [
+    {
+     "cena": "banco_cofre",
+     "cam": [
+      [
+       900,
+       1350,
+       2
+      ],
+      [
+       900,
+       1350,
+       2.2
+      ]
+     ],
+     "objetos": [
+      {
+       "prop": "saco",
+       "x": 960,
+       "y": 1500,
+       "s": 1.6
+      },
+      {
+       "prop": "ouro",
+       "x": 760,
+       "y": 1380,
+       "s": 1.3,
+       "anim": {
+        "dx": 190,
+        "dy": 110,
+        "r": 40,
+        "dur": 0.5,
+        "em": 0.3,
+        "ease": "power2.in"
+       }
+      },
+      {
+       "prop": "ouro",
+       "x": 760,
+       "y": 1380,
+       "s": 1.3,
+       "oculto": 1,
+       "aparece": 0.9,
+       "anim": {
+        "dx": 190,
+        "dy": 110,
+        "r": -30,
+        "dur": 0.5,
+        "em": 0.9,
+        "ease": "power2.in"
+       }
+      }
+     ],
+     "atores": [
+      {
+       "id": "tiao",
+       "x": 640,
+       "invis": 0.42,
+       "acoes": [
+        [
+         "empurrar",
+         null,
+         {
+          "dx": 30
+         }
+        ]
+       ]
+      }
+     ],
+     "sfx": [
+      [
+       "impact/metal",
+       0.8,
+       0.5,
+       0.6
+      ],
+      [
+       "impact/metal",
+       1.4,
+       0.5,
+       0.6
+      ]
+     ]
+    },
+    {
+     "cena": "banco_cofre",
+     "cam": [
+      [
+       960,
+       1350,
+       1.8
+      ],
+      [
+       960,
+       1350,
+       2
+      ]
+     ],
+     "objetos": [
+      {
+       "prop": "saco",
+       "x": 960,
+       "y": 1500,
+       "s": 1.6,
+       "anim": {
+        "s": 1.5,
+        "dur": 0.8,
+        "em": 0.1,
+        "ease": "back.out(2)"
+       }
+      }
+     ],
+     "texto": [
+      {
+       "txt": "30 KG",
+       "em": 0.3,
+       "cor": "#ffd84a"
+      }
+     ],
+     "sfx": [
+      [
+       "cut_hit/punch",
+       0.3,
+       0.6,
+       0.5
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "Pro guarda, era só um saco de dinheiro flutuando no corredor.",
+   "planos": [
+    {
+     "cena": "banco_saguao",
+     "cam": [
+      [
+       820,
+       1380,
+       1.45
+      ],
+      [
+       820,
+       1380,
+       1.6
+      ]
+     ],
+     "objetos": [
+      {
+       "prop": "saco",
+       "x": 480,
+       "y": 1180,
+       "s": 1.6,
+       "anim": {
+        "dx": 380,
+        "dy": -90,
+        "r": 12,
+        "dur": 2.4,
+        "em": 0,
+        "ease": "sine.inOut"
+       }
+      }
+     ],
+     "atores": [
+      {
+       "id": "tiao",
+       "x": 420,
+       "invis": 0.42,
+       "acoes": [
+        [
+         "andar",
+         null,
+         {
+          "dx": 380
+         }
+        ]
+       ]
+      },
+      {
+       "id": "guarda",
+       "x": 1120,
+       "flip": -1,
+       "acoes": [
+        [
+         "olhar",
+         0.8
+        ],
+        [
+         "susto",
+         null
+        ]
+       ]
+      }
+     ],
+     "texto": [
+      {
+       "txt": "?!",
+       "em": 0.9,
+       "tam": 170
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "Ele esfregou os olhos e achou que era cansaço.",
+   "planos": [
+    {
+     "cena": "banco_saguao",
+     "cam": [
+      [
+       1000,
+       1380,
+       1.8
+      ],
+      [
+       1000,
+       1380,
+       1.9
+      ]
+     ],
+     "atores": [
+      {
+       "id": "guarda",
+       "x": 1020,
+       "flip": -1,
+       "acoes": [
+        [
+         "chorar",
+         null
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "Aí o Tião se virou pra sair, e não enxergou absolutamente nada.",
+   "planos": [
+    {
+     "cena": "banco_cofre",
+     "cam": [
+      [
+       900,
+       1380,
+       1.6
+      ],
+      [
+       900,
+       1380,
+       1.9
+      ]
+     ],
+     "atores": [
+      {
+       "id": "tiao",
+       "x": 900,
+       "invis": 0.42,
+       "acoes": [
+        [
+         "virar",
+         0.4
+        ],
+        [
+         "susto",
+         null
+        ]
+       ]
+      }
+     ],
+     "fx": [
+      [
+       "flash",
+       0.6,
+       "#000",
+       0.5
+      ]
+     ],
+     "sfx": [
+      [
+       "pro_sub_drop/low",
+       0.5,
+       0.6,
+       1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "Bateu de cara na porta do cofre e caiu sentado.",
+   "planos": [
+    {
+     "cena": "banco_cofre",
+     "cam": [
+      [
+       880,
+       1380,
+       1.5
+      ],
+      [
+       880,
+       1380,
+       1.6
+      ]
+     ],
+     "atores": [
+      {
+       "id": "tiao",
+       "x": 820,
+       "invis": 0.42,
+       "acoes": [
+        [
+         "bater",
+         null,
+         {
+          "dx": 160
+         }
+        ]
+       ]
+      }
+     ],
+     "fx": [
+      [
+       "shake",
+       0.55,
+       18,
+       7
+      ]
+     ],
+     "sfx": [
+      [
+       "impact/metal",
+       0.5,
+       0.8,
+       1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "Saiu tateando a parede, igual apagão de madrugada.",
+   "planos": [
+    {
+     "cena": "banco_saguao",
+     "cam": [
+      [
+       800,
+       1380,
+       1.5
+      ],
+      [
+       950,
+       1380,
+       1.6
+      ]
+     ],
+     "atores": [
+      {
+       "id": "tiao",
+       "x": 640,
+       "invis": 0.42,
+       "acoes": [
+        [
+         "tatear",
+         null,
+         {
+          "dx": 260
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "Quarenta minutos depois, ainda estava procurando a saída.",
+   "planos": [
+    {
+     "cena": "banco_saguao",
+     "cam": [
+      [
+       820,
+       1380,
+       1.3
+      ],
+      [
+       820,
+       1380,
+       1.45
+      ]
+     ],
+     "atores": [
+      {
+       "id": "tiao",
+       "x": 1000,
+       "flip": -1,
+       "invis": 0.42,
+       "acoes": [
+        [
+         "tatear",
+         null,
+         {
+          "dx": -260
+         }
+        ]
+       ]
+      }
+     ],
+     "texto": [
+      {
+       "txt": "40 MIN",
+       "em": 0.2,
+       "cor": "#ff6a5a"
+      }
+     ],
+     "sfx": [
+      [
+       "riser/tension",
+       0,
+       0.35,
+       2
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "Sabe por quê? Pra enxergar, o olho precisa segurar a luz.",
+   "planos": [
+    {
+     "cena": "cidade_noite",
+     "cam": [
+      [
+       900,
+       1100,
+       1.6
+      ],
+      [
+       900,
+       1100,
+       1.7
+      ]
+     ],
+     "objetos": [
+      {
+       "tipo": "olho",
+       "x": 1000,
+       "y": 1050,
+       "s": 0.7
+      },
+      {
+       "svg": "<rect x='-160' y='-7' width='160' height='14' rx='7' fill='#ffe680'/><polygon points='0,-22 34,0 0,22' fill='#ffe680'/>",
+       "x": 560,
+       "y": 1050,
+       "anim": {
+        "dx": 260,
+        "dur": 0.9,
+        "em": 0.3,
+        "ease": "none"
+       }
+      },
+      {
+       "svg": "<rect x='-160' y='-7' width='160' height='14' rx='7' fill='#ffe680'/><polygon points='0,-22 34,0 0,22' fill='#ffe680'/>",
+       "x": 560,
+       "y": 960,
+       "anim": {
+        "dx": 260,
+        "dur": 0.9,
+        "em": 0.6,
+        "ease": "none"
+       }
+      }
+     ],
+     "texto": [
+      {
+       "txt": "OLHO NORMAL: PEGA A LUZ",
+       "em": 0.2
+      }
+     ],
+     "fx": [
+      [
+       "flash",
+       1.2,
+       "#ffe680",
+       0.3
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "Um olho invisível deixa a luz passar direto. Não sobra nada pra ver.",
+   "planos": [
+    {
+     "cena": "cidade_noite",
+     "cam": [
+      [
+       900,
+       1100,
+       1.6
+      ],
+      [
+       900,
+       1100,
+       1.7
+      ]
+     ],
+     "objetos": [
+      {
+       "svg": "<g opacity='.5'><ellipse rx=\"210\" ry=\"130\" fill=\"#fff\" stroke=\"#222\" stroke-width=\"8\" stroke-dasharray=\"20 14\"/></g>",
+       "x": 1000,
+       "y": 1050
+      },
+      {
+       "svg": "<rect x='-160' y='-7' width='160' height='14' rx='7' fill='#7fd8ff'/><polygon points='0,-22 34,0 0,22' fill='#7fd8ff'/>",
+       "x": 560,
+       "y": 1050,
+       "anim": {
+        "dx": 760,
+        "dur": 0.9,
+        "em": 0.2,
+        "ease": "none"
+       }
+      },
+      {
+       "svg": "<rect x='-160' y='-7' width='160' height='14' rx='7' fill='#7fd8ff'/><polygon points='0,-22 34,0 0,22' fill='#7fd8ff'/>",
+       "x": 560,
+       "y": 960,
+       "anim": {
+        "dx": 760,
+        "dur": 0.9,
+        "em": 0.5,
+        "ease": "none"
+       }
+      }
+     ],
+     "texto": [
+      {
+       "txt": "INVISÍVEL: A LUZ ATRAVESSA",
+       "em": 0.2,
+       "cor": "#7fd8ff"
+      }
+     ]
+    },
+    {
+     "cena": "banco_saguao",
+     "cam": [
+      [
+       820,
+       1380,
+       1.6
+      ],
+      [
+       820,
+       1380,
+       1.8
+      ]
+     ],
+     "atores": [
+      {
+       "id": "tiao",
+       "x": 700,
+       "invis": 0.42,
+       "acoes": [
+        [
+         "bater",
+         null,
+         {
+          "dx": 120
+         }
+        ]
+       ]
+      }
+     ],
+     "fx": [
+      [
+       "shake",
+       0.5,
+       14,
+       6
+      ]
+     ],
+     "sfx": [
+      [
+       "impact/punch",
+       0.5,
+       0.6,
+       0.6
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "Ou seja: o homem invisível é, na verdade, um homem cego.",
+   "planos": [
+    {
+     "cena": "banco_saguao",
+     "cam": [
+      [
+       820,
+       1380,
+       1.7
+      ],
+      [
+       820,
+       1380,
+       1.9
+      ]
+     ],
+     "atores": [
+      {
+       "id": "tiao",
+       "x": 820,
+       "invis": 0.42,
+       "acoes": [
+        [
+         "tatear",
+         null,
+         {
+          "dx": 40
+         }
+        ]
+       ]
+      }
+     ],
+     "texto": [
+      {
+       "txt": "INVISÍVEL = CEGO",
+       "em": 0.4,
+       "cor": "#ffd84a"
+      }
+     ],
+     "sfx": [
+      [
+       "cut_hit/punch",
+       0.4,
+       0.5,
+       0.5
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "A polícia achou o Tião às três da manhã, abraçado no saco, dentro do cofre.",
+   "planos": [
+    {
+     "cena": "banco_cofre",
+     "cam": [
+      [
+       900,
+       1380,
+       1.5
+      ],
+      [
+       900,
+       1380,
+       1.7
+      ]
+     ],
+     "atores": [
+      {
+       "id": "pm",
+       "x": 600,
+       "pega": [
+        [
+         "D",
+         "lanterna"
+        ]
+       ],
+       "acoes": [
+        [
+         "mostrar",
+         null,
+         {
+          "prop": "lanterna"
+         }
+        ]
+       ]
+      },
+      {
+       "id": "tiao",
+       "x": 1050,
+       "flip": -1,
+       "invis": 0.42,
+       "pega": [
+        [
+         "D",
+         "saco"
+        ]
+       ],
+       "acoes": [
+        [
+         "aparecer",
+         0.5
+        ],
+        [
+         "chorar",
+         null
+        ]
+       ]
+      }
+     ],
+     "fx": [
+      [
+       "flash",
+       0.3,
+       "#fff2a0",
+       0.4
+      ]
+     ],
+     "texto": [
+      {
+       "txt": "3H DA MANHÃ",
+       "em": 0.2
+      }
+     ],
+     "sfx": [
+      [
+       "impact/classic",
+       0.1,
+       0.4,
+       1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "O crime perfeito: ninguém viu. Nem ele.",
+   "planos": [
+    {
+     "cena": "banco_cofre",
+     "cam": [
+      [
+       1000,
+       1380,
+       1.6
+      ],
+      [
+       1000,
+       1380,
+       2
+      ]
+     ],
+     "atores": [
+      {
+       "id": "tiao",
+       "x": 1000,
+       "flip": -1,
+       "pega": [
+        [
+         "D",
+         "saco"
+        ]
+       ],
+       "acoes": [
+        [
+         "expressao",
+         0.6,
+         {
+          "expr": "sad"
+         }
+        ],
+        [
+         "chorar",
+         null
+        ]
+       ]
+      }
+     ],
+     "fx": [
+      [
+       "flash",
+       0.2,
+       "#fff2a0",
+       0.3
+      ]
+     ],
+     "texto": [
+      {
+       "txt": "NEM ELE",
+       "em": 1.4,
+       "cor": "#ff6a5a"
+      }
+     ],
+     "sfx": [
+      [
+       "pro_sub_drop/soft",
+       1.4,
+       0.5,
+       1
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

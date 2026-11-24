@@ -95,3 +95,11 @@ Comparação obrigatória: revisor põe 1 quadro nosso lado a lado com 1 do Rick
 - Objetos com acabamento (relevo, brilho, contraste); "shader" geral no vídeo: grão, gradação, vinheta, bloom leve.
 - Final escala com ação do Tião (ex.: volta armado e expulsa) em vez de cena parada.
 - Tema precisa ser interessante no nível Rick (premissa curiosa/absurda com promessa forte), não cotidiano genérico.
+
+## Catálogo/gerador (24/11, revisor dos eps Egito e banco)
+- Fala que cita número/grupo ("10 homens", "20 x 2") mostra a quantidade em quadro, não só texto.
+- Fala que cita agressor/objeto (chicote, saco flutuando) mostra o agressor/objeto no plano.
+- Explicação ("sabe por quê") = diagrama animado (raios, antes/depois), nunca objeto parado.
+- Personagem invisível: opacidade ≥0,3, senão some no fundo.
+- Pós: bloom só em RGB (gbrp); blend em YUV pinta tudo de magenta.
+- Câmera nunca sai do mundo (motor trava); legenda em y 1580, abaixo dos pés.

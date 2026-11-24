@@ -1,0 +1,19 @@
+*{margin:0;padding:0;box-sizing:border-box}html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
+#root{position:relative;width:1080px;height:1920px;overflow:hidden;background:#000}
+#shake{position:absolute;left:0;top:0;width:1080px;height:1920px}
+.scene{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:hidden;display:none}
+.lay{position:absolute;left:0;top:0;width:1800px;height:1920px;transform-origin:0 0}
+.lay img{position:absolute;left:0;top:0;width:1800px;height:1920px;display:block}
+.chars{position:absolute;left:0;top:0;width:1800px;height:1920px;overflow:visible}
+.ov{position:absolute;inset:0;pointer-events:none}
+#vig{z-index:6;background:radial-gradient(ellipse at 50% 48%,rgba(0,0,0,0) 55%,rgba(0,0,12,.5) 100%)}
+#grade{z-index:7;mix-blend-mode:soft-light;opacity:.8}
+#flash{z-index:9;opacity:0;background:#dff6ff}
+#grain{z-index:8;opacity:.1;mix-blend-mode:overlay;background:url(cen/grain.png) 0 0/540px 960px}
+#cap{position:absolute;left:0;right:0;top:1580px;height:140px;text-align:center;z-index:10;font:900 112px/140px 'Anton','Montserrat','Arial Black',sans-serif;letter-spacing:2px;color:#fff;-webkit-text-stroke:12px #0c0c0c;paint-order:stroke fill}
+#cap span{position:absolute;left:0;right:0;opacity:0;white-space:nowrap}
+#fade{z-index:11;background:#000;opacity:0}
+.hud{position:absolute;z-index:5;font-family:Anton,Impact,sans-serif}
+#tex{z-index:8;opacity:.07;mix-blend-mode:multiply;background:repeating-linear-gradient(37deg,rgba(80,60,40,.5) 0 1px,transparent 1px 3px)}
+
+#hudl{z-index:9}.hudt{position:absolute;left:6%;right:6%;top:110px;text-align:center;line-height:1.05;font-family:Anton,Impact,sans-serif;letter-spacing:2px;opacity:0;paint-order:stroke fill;transform-origin:50% 50%;white-space:nowrap}
