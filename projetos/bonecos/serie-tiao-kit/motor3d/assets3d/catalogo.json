@@ -1,0 +1,34 @@
+{
+  "cidade": [
+    "building-garage",
+    "building-small-a",
+    "building-small-b",
+    "building-small-c",
+    "building-small-d",
+    "grass",
+    "grass-trees",
+    "grass-trees-tall",
+    "pavement",
+    "pavement-fountain",
+    "road-corner",
+    "road-intersection",
+    "road-split",
+    "road-straight",
+    "road-straight-lightposts"
+  ],
+  "veiculos": [
+    "decoration-empty",
+    "decoration-forest",
+    "decoration-tents",
+    "track-bump",
+    "track-corner",
+    "track-finish",
+    "track-straight",
+    "track-tents",
+    "vehicle-motorcycle",
+    "vehicle-truck-green",
+    "vehicle-truck-purple",
+    "vehicle-truck-red",
+    "vehicle-truck-yellow"
+  ]
+}

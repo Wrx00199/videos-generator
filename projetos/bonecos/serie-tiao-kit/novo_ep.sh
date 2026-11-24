@@ -12,7 +12,7 @@ kit=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)
 motor="$kit/motor3d"
 dependencias=$(cd -- "$kit/../../.." && pwd -P)/node_modules
 web="$projeto/web"
-arquivos=(main.js shade.js mundo.js acoes.js elenco.js luzes.js motion.js paint.js toon.js
+arquivos=(main.js shade.js assets3d.js palco_limpo.js mundo.js acoes.js elenco.js luzes.js motion.js paint.js toon.js
           index.html render.mjs sheet.py package.json cenarios.js cenarios2.js cenarios3.js
           cenarios4.js cenarios5.js cenarios6.js cenarios7.js efeitos.js epi.js planos.js Pz.js cameras.js)
 texturas=(sala_fundo.png sala_meio.png sala_frente.png)
@@ -42,5 +42,6 @@ for textura in "${texturas[@]}"; do
   fi
 done
 ln -sfnT -- "$motor/lib" "$web/lib"
+ln -sfnT -- "$motor/assets3d" "$web/assets3d"
 ln -sfnT -- "$dependencias" "$web/node_modules"
 cp -- "$projeto/tempos_ft.js" "$web/tempos.js"
