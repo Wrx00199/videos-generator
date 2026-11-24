@@ -1,5 +1,9 @@
 # Checklist do Tião (críticas do Filippe viram regra aqui)
 
+## Como ler este checklist (25/11)
+- **BLOQUEIO DURO** (só isto trava render/postagem, sem exceção): legenda fora de encaixe ou cobrindo rosto; voz muda, cortada ou sem contexto; tela preta/congelada/silêncio; zoom ou close seco/fora de encaixe; personagem cortado ou fora de tela sem querer; membro esticado/travado (braço que não volta); objeto grudado errado na mão; frase da narração sem imagem que a mostre; ação sem nexo com a história.
+- **Todo o resto é DIREÇÃO**: o jeito padrão de fazer. Pode quebrar quando a cena pede (ex.: segurar objeto virado pra baixo numa ação que exige). O gerador segue a direção; o revisor só reprova direção quebrada SEM motivo na cena.
+
 Referência de nível: @RicksClips3000 (`referencias/2026-11-23-ricks-novos/*.mp4` e `*_sheet.jpg`). Público geral, NÃO infantil.
 
 ## Roteiro
@@ -79,3 +83,15 @@ Comparação obrigatória: revisor põe 1 quadro nosso lado a lado com 1 do Rick
 - Plano 1 = a cena MAIS forte/absurda do episódio (cold open), já mostrando o que a frase promete; explicação vem depois.
 - Fala de personagem dita pelo narrador muda a entonação (estilo de voz por frase no voz.mjs): bravo, medroso, cínico.
 - Paleta de emoção: arregalado, cabisbaixo, raiva (rosto avermelha + veia), medo (suor + tremor), choro (lágrima no olho), cínico (sobrancelha).
+- Elenco usa o MESMO formato de corpo/rig do Tião (cabeça redonda, mesmas proporções); só o Tião é todo branco, os outros têm cor de pele/roupa/acessório próprios.
+
+## Críticas do piloto geladeira (25/11, nota dele 4–4,5)
+- Objeto na mão orientado pelo uso: lata/garrafa em pé com a boca pra cima, controle com botões pra frente, casquinha em pé; punho envolvendo.
+- Braço SEMPRE volta à pose base depois do gesto; nada de braço esticado parado (vendedor, Tião empurrando, braço de trás).
+- Mostrar a transação inteira: Tião pagando ANTES do vendedor aparecer com o dinheiro.
+- Causa antes da consequência: conta de luz só depois de usarem a geladeira.
+- Emoção bate com a situação: invadido → puto (não preocupado); reclamando → cara de reclamação, não vermelho de raiva.
+- Pinguim lê como pinguim em 1 frame (bico, barriga branca, nadadeiras).
+- Objetos com acabamento (relevo, brilho, contraste); "shader" geral no vídeo: grão, gradação, vinheta, bloom leve.
+- Final escala com ação do Tião (ex.: volta armado e expulsa) em vez de cena parada.
+- Tema precisa ser interessante no nível Rick (premissa curiosa/absurda com promessa forte), não cotidiano genérico.
