@@ -525,10 +525,11 @@ function nexoEstilos() {
       lote_exemplo: Array.isArray(lote.rows) ? lote.rows : [],
     });
   }
+  const kenney = path.join(RAIZ, 'videos', 'nexo', 'tiao-piloto-blindado-kenney.mp4');
   const ep46 = path.join(RAIZ, 'videos', 'ep46', 'ep46-720p.mp4');
   const walkie = path.join(RAIZ, 'videos', 'nexo', 'tiao-predio-derrete-carros.mp4');
   const v8 = path.join(RAIZ, 'videos', 'nexo', 'piloto-tiao-v8.mp4');
-  const prevTiao = fs.existsSync(walkie) ? 'videos/nexo/tiao-predio-derrete-carros.mp4' : (fs.existsSync(v8) ? 'videos/nexo/piloto-tiao-v8.mp4' : (fs.existsSync(ep46) ? 'videos/ep46/ep46-720p.mp4' : null));
+  const prevTiao = fs.existsSync(kenney) ? 'videos/nexo/tiao-piloto-blindado-kenney.mp4' : (fs.existsSync(walkie) ? 'videos/nexo/tiao-predio-derrete-carros.mp4' : (fs.existsSync(v8) ? 'videos/nexo/piloto-tiao-v8.mp4' : (fs.existsSync(ep46) ? 'videos/ep46/ep46-720p.mp4' : null)));
   out.push({
     id: 'tiao_3d',
     nome: 'Tião 3D (Nexo V8)',
