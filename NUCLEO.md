@@ -1,6 +1,6 @@
-1. Modelar, não criar: fala frase a frase da referência, estrutura preservada.
-2. Um narrador. Um vídeo. Um render por vez.
-3. Voz antes da cena; cena presa nas palavras.
-4. Todo beat tem ação visível. Beat que só informa é reprovado.
-5. Fato real ou número citado vira objeto na tela.
-6. Só declara pronto com os comandos de QA rodados.
+# Núcleo do Estúdio (Nexo)
+
+Regras oficiais centralizadas em `CLAUDE.md` (não duplicar regras aqui para evitar conflito).
+- Tião 3D: autoral (identidade livre rosto branco + barba cinza), estilo RicksClips (`motor3d` + `claude-animated-shorts`).
+- Clone de vídeo: PAUSADO.
+- 1 render por vez (Linux, Ryzen 3 3200G, RX 550, 8 GB RAM).

@@ -269,12 +269,13 @@ export const worldAt = (f) => {{
   return {{ cenario: S.cen, [S.cen]: {{}} }};
 }};
 
-function poseDaAcao(acao, exp, prop, u, t, falando) {{
+function poseDaAcao(acao, exp, prop, u, t, falaPersonagem) {{
   const base = EXP[exp] || EXP.serio;
-  const boca = falando ? 0.25 + 0.75 * Math.abs(Math.sin(t * 14.5)) : 0;
-  const mouth = falando ? (base.mouth === 'o' ? 'o' : base.mouth === 'shout' ? 'shout' : 'grin') : base.mouth;
-  const wave = Math.sin(t * 6.5);
-  let p = {{ ...base, mouth, mo: boca, tilt: Math.sin(t * 2.8) * 0.05, bob: Math.sin(t * 3.2) * 3 }};
+  // REGRA RICKSCLIPS: narração em 3ª pessoa = boca FECHADA! Só abre boca em fala direta do personagem (fala_personagem: true)
+  const boca = falaPersonagem ? 0.25 + 0.75 * Math.abs(Math.sin(t * 14.5)) : 0;
+  const mouth = falaPersonagem ? (base.mouth === 'o' ? 'o' : base.mouth === 'shout' ? 'shout' : 'grin') : base.mouth;
+  const wave = Math.sin(t * 5.2);
+  let p = {{ ...base, mouth, mo: boca, tilt: 0, bob: 0 }};
 
   if (acao === 'apontar') {{
     const k = sm(Math.min(1, u * 3));
@@ -296,7 +297,7 @@ function poseDaAcao(acao, exp, prop, u, t, falando) {{
   }} else if (acao === 'disparar') {{
     const flash = Math.sin(u * Math.PI * 6) > 0.65 ? 1 : 0;
     const recoil = flash ? 0.22 : 0;
-    p = {{ ...p, lean: -0.08 - recoil * 0.5, aR: [1.35 + recoil, -0.2], aL: [0.95 + recoil, -0.35], hR: {{ k: prop || 'fuzil', a: -0.15, s: 0.85, flash }} }};
+    p = {{ ...p, lean: -0.08 - recoil * 0.5, aR: [1.35 + recoil, -0.2], aL: [0.95 + recoil, -0.35], hR: {{ k: prop || 'fuzil', a: -1.55, s: 0.85, flash }} }};
   }} else if (acao === 'falar') {{
     p = {{ ...p, lean: 0.04 + wave * 0.03, aR: [0.6 + wave * 0.35, -0.8], aL: [-0.45 - wave * 0.25, 0.7] }};
   }}
@@ -314,12 +315,13 @@ export const actorsAt = (f, T, W) => {{
   const temFig = Boolean(S.figurante);
   const pxBase = temFig ? -0.58 : 0.0;
 
+  const falaP = Boolean(S.fala_personagem);
   if (S.acao === 'andar' || S.acao === 'correr') {{
     const dist = S.acao === 'correr' ? 2.2 : 1.35;
-    const pPose = poseDaAcao('falar', S.expressao, S.prop, u, t, true);
+    const pPose = poseDaAcao('falar', S.expressao, S.prop, u, t, falaP);
     out.push({{ tint, ...anda(W, PROTAG, pPose, [O.x + pxBase - dist * 0.5, O.z], [O.x + pxBase + dist * 0.4, O.z], u, t) }});
   }} else {{
-    const pPose = poseDaAcao(S.acao, S.expressao, S.prop, u, t, true);
+    const pPose = poseDaAcao(S.acao, S.expressao, S.prop, u, t, falaP);
     out.push({{ tint, ...boneco(W, PROTAG, pPose, O.x + pxBase, O.z, t) }});
   }}
 

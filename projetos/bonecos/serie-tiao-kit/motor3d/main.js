@@ -2,6 +2,7 @@ import * as THREE from './lib/three.module.js';
 import * as T from './toon.js';
 import * as P from './paint.js';
 import * as MUNDO from './mundo.js';
+import { twoTone, cardShade, syncToneFromLight } from './shade.js';
 import { SHOTS, TOTAL, shotAt, camAt, dofAt, LIGHTS, lightFor, actorsAt, worldAt, fxAt } from './story.js';
 import { LIMITE_CARTAO } from './acoes.js';
 
@@ -17,9 +18,11 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(40, W / H, 0.08, 1500);
 const rx = (a) => a * Math.PI / 180;
 
-// ---------- materials ----------
-const grad = (() => { const d = new Uint8Array([128, 122, 150, 255, 255, 255, 255, 255]); const t = new THREE.DataTexture(d, 2, 1); t.minFilter = t.magFilter = THREE.NearestFilter; t.needsUpdate = true; return t; })();
-const toon = (opts) => new THREE.MeshToonMaterial({ gradientMap: grad, ...opts });
+// ---------- materials (Nexo V8: two-tone estilizado no mundo, estilo RicksClips / Mr omi) ----------
+const toon = (opts = {}) => {
+  const { gradientMap, ...rest } = opts;
+  return twoTone(new THREE.MeshLambertMaterial(rest));
+};
 const texM = (c, rx_ = 1, ry_ = 1, color = '#ffffff') => toon({ map: P.tex(c, rx_, ry_), color });
 const M = {};
 
@@ -86,8 +89,8 @@ class Card {
   constructor(scale = 1) {
     [this.c, this.g] = (() => { const c = document.createElement('canvas'); c.width = CW; c.height = CH; return [c, c.getContext('2d')]; })();
     this.t = new THREE.CanvasTexture(this.c); this.t.colorSpace = THREE.SRGBColorSpace; this.t.anisotropy = 4;
-    this.mat = new THREE.MeshBasicMaterial({ map: this.t, transparent: true, alphaTest: 0.02, side: THREE.DoubleSide, fog: true });
-    this.mesh = new THREE.Mesh(cardGeo, this.mat); this.mesh.userData.nd = cardNd(this.t); this.mesh.castShadow = true;
+    this.mat = cardShade(new THREE.MeshLambertMaterial({ map: this.t, transparent: true, alphaTest: 0.02, side: THREE.DoubleSide, fog: true }));
+    this.mesh = new THREE.Mesh(cardGeo, this.mat); this.mesh.userData.nd = cardNd(this.t); this.mesh.castShadow = true; this.mesh.receiveShadow = true;
     this.mesh.customDepthMaterial = new THREE.MeshDepthMaterial({ depthPacking: THREE.RGBADepthPacking, map: this.t, alphaTest: 0.5 });
     this.blob = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({ map: blobTex, transparent: true, depthWrite: false, fog: true }));
     this.blob.rotation.x = -Math.PI / 2; this.blob.userData.ndSkip = true; this.blob.renderOrder = 1;
@@ -126,16 +129,31 @@ const inkScene = fs(new THREE.ShaderMaterial({ uniforms: inkU, vertexShader: `va
     }
     return e * (1. - smoothstep(140., 520., d)*.8);
   }
+  vec3 pbrNeutral(vec3 color) {
+    float x = min(color.r, min(color.g, color.b));
+    float offset = x < 0.08 ? x - 6.25 * x * x : 0.04;
+    color -= offset;
+    float peak = max(color.r, max(color.g, color.b));
+    if (peak < 0.76) return max(color, 0.0);
+    float d = 1.0 - 0.76;
+    float newPeak = 1.0 - d * d / (peak + d - 0.76);
+    color *= newPeak / peak;
+    float g = 1.0 - 1.0 / (0.15 * (peak - newPeak) + 1.0);
+    return mix(color, vec3(newPeak), g);
+  }
   void main(){
     vec3 c = texture2D(col, vUv).rgb;
     float e = edgeAt(vUv, px);
-    c = mix(c, vec3(.012,.01,.014), e);
+    // Compositing em espaço gamma (outlines.md: evita traço fino/acinzentado em linear)
+    vec3 cGam = pow(max(c, 0.0), vec3(1.0 / 2.2));
+    vec3 inkGam = pow(vec3(0.012, 0.010, 0.014), vec3(1.0 / 2.2));
+    c = pow(mix(cGam, inkGam, e * 0.95), vec3(2.2));
     if (flash < -0.5) c = vec3(e);
-    float l = dot(c, vec3(.299,.587,.114)); c = mix(vec3(l), c, sat);
-    c = c*gain + lift;
-    vec2 q = vUv-.5; c *= 1. - vig*dot(q*vec2(1.,.75), q*vec2(1.,.75))*2.2;
+    c = pbrNeutral(c * gain + lift);
+    float l = dot(c, vec3(.2126,.7152,.0722)); c = mix(vec3(l), c, sat);
+    vec2 q = vUv-.5; c *= 1. - vig*dot(q*vec2(1.,.75), q*vec2(1.,.75))*1.8;
     c = mix(c, vec3(1.), flash);
-    gl_FragColor = vec4(c,1.); }` }));
+    gl_FragColor = vec4(clamp(c, 0.0, 1.0), 1.); }` }));
 const dofU = { src: { value: rtInk.texture }, nd: { value: rtNd.texture }, res: { value: new THREE.Vector2(W, H) }, focus: { value: 5 }, cinf: { value: 0 }, near: { value: 1 } };
 const dofScene = fs(new THREE.ShaderMaterial({ uniforms: dofU, vertexShader: `varying vec2 vUv; void main(){ vUv=uv; gl_Position=vec4(position.xy,0.,1.); }`,
   fragmentShader: `uniform sampler2D src, nd; uniform vec2 res; uniform float focus, cinf, near; varying vec2 vUv;
@@ -155,6 +173,7 @@ dofScene.children[0].material.toneMapped = false;
 // ---------- per-frame state ----------
 const tmpV = new THREE.Vector3();
 function applyLight(L, f) {
+  syncToneFromLight(L);
   hemi.color.set(L.sky); hemi.groundColor.set(L.ground); hemi.intensity = L.hemi;
   sun.color.set(L.sun); sun.intensity = L.sunI;
   scene.fog.color.set(L.fog); scene.fog.near = L.fogNear; scene.fog.far = L.fogFar;
