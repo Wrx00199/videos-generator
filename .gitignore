@@ -27,6 +27,23 @@ projetos/*
 !projetos/bonecos/
 projetos/bonecos/*
 !projetos/bonecos/serie-tiao-kit/
+# kit híbrido (Blender): só código, regras e roteiros; nada de quadro/áudio/data
+!projetos/bonecos/kit-ricks/
+projetos/bonecos/kit-ricks/*
+!projetos/bonecos/kit-ricks/*.md
+!projetos/bonecos/kit-ricks/*.py
+!projetos/bonecos/kit-ricks/*.sh
+!projetos/bonecos/kit-ricks/ref/
+!projetos/bonecos/kit-ricks/ep6*/
+projetos/bonecos/kit-ricks/ep6*/*
+!projetos/bonecos/kit-ricks/ep6*/*.py
+!projetos/bonecos/kit-ricks/ep6*/*.txt
+!projetos/bonecos/kit-ricks/ep6*/bl/
+projetos/bonecos/kit-ricks/ep6*/bl/*
+!projetos/bonecos/kit-ricks/ep6*/bl/*.py
+!projetos/bonecos/kit-ricks/ep6*/bl/*.mjs
+!projetos/bonecos/kit-ricks/ep6*/bl/web/
+!projetos/bonecos/kit-ricks/ep6*/bl/parts/
 # Segredos e temporários
 .env
 .env.*

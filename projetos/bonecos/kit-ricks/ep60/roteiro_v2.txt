@@ -1,0 +1,13 @@
+[storytelling] Tião chega numa cidade onde andar de frente dá multa... [wry] e quem mais multa é o único que enxerga.
+[quick] Sabe, em Rezende do Avesso, desde 1987, todo mundo anda de costas: o padeiro, o barbeiro, até o cachorro.
+[wry] Tião ri na cara do guarda: "Vocês tão andando errado!"
+[building] No mesmo segundo, o prefeito vem de ré e tromba nele. Multa número um: cinquenta reais.
+[quick] No primeiro dia, Tião tenta andar de costas e cai em três barris.
+No segundo dia, entra de ré na padaria e sai com o bolo de casamento de outra pessoa.
+No terceiro dia, já deve trezentos reais.
+[hushed] Peraí... se ninguém vê pra onde anda, como o prefeito sempre acha quem anda de frente?
+[building] Tião sobe na torre do relógio... e vê: um espelhinho no chapéu do prefeito.
+[stunned] Ele é o único que enxerga a cidade inteira, e cada multa vai direto pro bolso dele.
+[wry] Sabe, é tipo o juiz da pelada que também é o dono da bola.
+[building] Na manhã seguinte, Tião cola um espelho no chapéu de cada morador.
+[storytelling] E pela primeira vez em trinta e oito anos... o prefeito anda de costas até o caixa pra pagar a própria multa.

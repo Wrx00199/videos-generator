@@ -1,0 +1,14 @@
+[storytelling] Tião vê o mesmo número sair no sorteio da praça... pela sétima semana seguida.
+[quick] Sabe, em Vila Sorte, todo domingo o seu Odair gira o globo, e o prêmio é um fusca zerado.
+[wry] E todo domingo quem ganha é o sobrinho do seu Odair.
+Tião reclama, e a praça inteira ri: "Vai chorar no fusca, Tião?"
+[building] Na primeira semana, Tião compra dez cartelas. Nada.
+Na segunda, cinquenta. Nada.
+Na terceira, vende a bicicleta e compra cem... e o sobrinho buzina o fusca na cara dele.
+[hushed] Peraí... se é sorteio, por que a bolinha quatro sempre pula primeiro?
+[building] De madrugada, Tião abre o globo com uma lanterna e pesa cada bolinha na balança da padaria.
+[stunned] Todas pesam trinta gramas. Menos a quatro: dez.
+[wry] Seu Odair enche as outras de tinta, e o ventilador do globo só levanta a mais leve.
+Sabe, é tipo pipoca na panela: a mais leve sempre pula primeiro.
+[building] No domingo, Tião esvazia a sete, a da cartela dele, e enche a quatro de tinta.
+[storytelling] O globo gira... a sete sobe... e pela primeira vez, quem buzina o fusca na cara do sobrinho é o Tião.
