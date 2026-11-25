@@ -1,0 +1,1338 @@
+{
+ "titulo": "Tião construiu um castelo de lixo",
+ "molde": "ricks",
+ "elenco": {
+  "tiao": {
+   "pele": "branca",
+   "roupa": [
+    "camiseta",
+    "#e0663a"
+   ],
+   "calca": "#2d3e66",
+   "acessorios": [
+    "barba"
+   ],
+   "segura": {
+    "D": [
+     "lixo"
+    ],
+    "E": []
+   }
+  },
+  "vizinha": {
+   "pele": "morena",
+   "roupa": [
+    "regata",
+    "#3fa37a"
+   ],
+   "calca": "#5a3d6e",
+   "acessorios": [
+    "lenco_cabeca"
+   ],
+   "segura": {
+    "D": [
+     "lixo"
+    ],
+    "E": []
+   }
+  },
+  "vizinho": {
+   "pele": "parda",
+   "roupa": [
+    "camiseta",
+    "#d9c23a"
+   ],
+   "calca": "#333a44",
+   "acessorios": [
+    "bigode"
+   ],
+   "segura": {
+    "D": [
+     "lixo"
+    ],
+    "E": []
+   }
+  },
+  "turista": {
+   "pele": "branca",
+   "roupa": [
+    "social",
+    "#7fb8e8"
+   ],
+   "calca": "#d8c9a0",
+   "acessorios": [
+    "chapeu_explorador",
+    "oculos_escuros"
+   ],
+   "segura": {
+    "D": [
+     "phone"
+    ],
+    "E": []
+   }
+  },
+  "turista2": {
+   "pele": "parda",
+   "roupa": [
+    "camiseta",
+    "#e86fa0"
+   ],
+   "calca": "#2a2a3a",
+   "acessorios": [
+    "oculos_escuros"
+   ],
+   "segura": {
+    "D": [
+     "phone"
+    ],
+    "E": []
+   }
+  },
+  "prefeito": {
+   "pele": "branca",
+   "roupa": [
+    "terno",
+    "#2b2f3a"
+   ],
+   "calca": "#2b2f3a",
+   "acessorios": [
+    "bigode"
+   ],
+   "segura": {
+    "D": [],
+    "E": []
+   }
+  }
+ },
+ "trilha": [
+  {
+   "f": "../../../banco/musica/corporativo_inspiracional_animado.mp3",
+   "de_fala": 0
+  },
+  {
+   "f": "../../../banco/musica/pizzicato_curioso_travesso.mp3",
+   "de_fala": 6
+  },
+  {
+   "f": "../../../banco/musica/hiphop_grave_confiante.mp3",
+   "de_fala": 7
+  },
+  {
+   "f": "../../../banco/musica/tensa_cello_suspense.mp3",
+   "de_fala": 10
+  },
+  {
+   "f": "../../../banco/musica/epica_destruicao_orquestral.mp3",
+   "de_fala": 12,
+   "gain": 0.16
+  },
+  {
+   "f": "../../../banco/musica/marimba_alegre_brincalhona.mp3",
+   "de_fala": 14
+  }
+ ],
+ "falas": [
+  {
+   "txt": "O Tião construiu um castelo de trinta metros só com lixo, e ele soterrou a prefeitura.",
+   "planos": [
+    {
+     "cena": "cl_castelo_medio",
+     "cam": [
+      [
+       900,
+       950,
+       1.45
+      ],
+      [
+       900,
+       890,
+       1.3
+      ]
+     ],
+     "atores": [
+      {
+       "id": "tiao",
+       "x": 900,
+       "y": 1000,
+       "s": 0.8,
+       "acoes": [
+        [
+         "jogar",
+         null,
+         {
+          "prop": "lixo"
+         }
+        ]
+       ]
+      }
+     ],
+     "objetos": [
+      {
+       "img": "geladeira",
+       "x": 980,
+       "y": 1000,
+       "w": 210,
+       "h": 294,
+       "anim": {
+        "dy": -260,
+        "r": 25,
+        "dur": 0.6,
+        "em": 0.15,
+        "ease": "power2.out"
+       }
+      }
+     ],
+     "sfx": [
+      [
+       "real/impacto_metal_pesado",
+       0.75,
+       0.5
+      ]
+     ]
+    },
+    {
+     "cena": "cl_castelo_prefeitura",
+     "cam": [
+      [
+       900,
+       1300,
+       1.15
+      ],
+      [
+       900,
+       1240,
+       1.35
+      ]
+     ],
+     "transicao": "dissolve",
+     "fx": [
+      [
+       "poeira",
+       900,
+       1450
+      ]
+     ],
+     "sfx": [
+      [
+       "pro_sub_drop/low",
+       0.2,
+       0.4,
+       1
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "É que o caminhão do lixo parou de passar na rua dele fazia três meses.",
+   "planos": [
+    {
+     "cena": "cl_cozinha",
+     "cam": [
+      [
+       593,
+       580,
+       2
+      ],
+      [
+       593,
+       580,
+       2.4
+      ]
+     ],
+     "objetos": [
+      {
+       "svg": "<rect x=\"-104\" y=\"-50\" width=\"208\" height=\"50\" fill=\"#d23a2a\"/><text x=\"0\" y=\"-13\" font-size=\"31\" font-weight=\"900\" text-anchor=\"middle\" fill=\"#fff\" font-family=\"Montserrat\">OUTUBRO</text>",
+       "x": 593,
+       "y": 478,
+       "aparece": 0.6
+      }
+     ],
+     "sfx": [
+      [
+       "fit/whoosh.short/bamboo_swish",
+       0.5,
+       0.3,
+       0.35
+      ]
+     ]
+    },
+    {
+     "cena": "cl_rua_lixo",
+     "cam": [
+      [
+       900,
+       1450,
+       1.2
+      ],
+      [
+       820,
+       1450,
+       1.4
+      ]
+     ],
+     "transicao": "dissolve"
+    }
+   ]
+  },
+  {
+   "txt": "No primeiro dia, ele só empilhou os sacos pra liberar a calçada.",
+   "planos": [
+    {
+     "cena": "cl_rua_lixo",
+     "cam": [
+      [
+       760,
+       1400,
+       1.6
+      ],
+      [
+       920,
+       1400,
+       1.7
+      ]
+     ],
+     "atores": [
+      {
+       "id": "tiao",
+       "x": 600,
+       "acoes": [
+        [
+         "empurrar",
+         null,
+         {
+          "dx": 280,
+          "prop": "lixo"
+         }
+        ]
+       ]
+      }
+     ],
+     "objetos": [
+      {
+       "img": "lixo",
+       "x": 900,
+       "y": 1600,
+       "w": 200,
+       "h": 200,
+       "anim": {
+        "dx": 280,
+        "dur": 1.6,
+        "ease": "power1.inOut"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "No décimo, já tinha muralha de geladeira e torre de pneu.",
+   "planos": [
+    {
+     "cena": "cl_castelo_medio",
+     "cam": [
+      [
+       900,
+       1500,
+       1.5
+      ],
+      [
+       900,
+       1300,
+       1.2
+      ]
+     ],
+     "transicao": "dissolve",
+     "sfx": [
+      [
+       "impact/metal",
+       0.3,
+       0.4,
+       0.6
+      ]
+     ]
+    },
+    {
+     "cena": "cl_castelo_medio",
+     "cam": [
+      [
+       1100,
+       1280,
+       1.3
+      ],
+      [
+       1100,
+       1280,
+       1.5
+      ]
+     ],
+     "atores": [
+      {
+       "id": "tiao",
+       "x": 1100,
+       "s": 0.6,
+       "acoes": [
+        [
+         "olhar",
+         0.6
+        ],
+        [
+         "comemorar",
+         null
+        ]
+       ]
+      }
+     ],
+     "objetos": [
+      {
+       "img": "pneu",
+       "x": 700,
+       "y": 1600,
+       "w": 264,
+       "h": 264,
+       "oculto": 1,
+       "aparece": 0.2,
+       "anim": {
+        "dy": -30,
+        "dur": 0.3,
+        "em": 0.2,
+        "ease": "bounce.out"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "Aí os vizinhos acharam lindo, e começaram a jogar lixo de propósito.",
+   "planos": [
+    {
+     "cena": "cl_rua_lixo",
+     "cam": [
+      [
+       900,
+       1400,
+       1.4
+      ],
+      [
+       900,
+       1400,
+       1.55
+      ]
+     ],
+     "atores": [
+      {
+       "id": "vizinha",
+       "x": 700,
+       "acoes": [
+        [
+         "susto",
+         0.4
+        ],
+        [
+         "comemorar",
+         0.7
+        ],
+        [
+         "jogar",
+         null,
+         {
+          "prop": "lixo"
+         }
+        ]
+       ]
+      },
+      {
+       "id": "vizinho",
+       "x": 1080,
+       "flip": -1,
+       "acoes": [
+        [
+         "jogar",
+         0.8,
+         {
+          "prop": "lixo"
+         }
+        ],
+        [
+         "comemorar",
+         null
+        ]
+       ]
+      }
+     ],
+     "sfx": [
+      [
+       "ui_pop/wide",
+       0.8,
+       0.35,
+       0.2
+      ]
+     ]
+    },
+    {
+     "cena": "cl_rua_lixo",
+     "cam": [
+      [
+       900,
+       1100,
+       1.7
+      ],
+      [
+       900,
+       1000,
+       1.5
+      ]
+     ],
+     "angulo": "baixo",
+     "objetos": [
+      {
+       "img": "lixo",
+       "x": 700,
+       "y": 300,
+       "w": 180,
+       "h": 180,
+       "anim": {
+        "dy": 1200,
+        "r": 80,
+        "dur": 1,
+        "ease": "power2.in"
+       }
+      },
+      {
+       "img": "lixo",
+       "x": 1100,
+       "y": 100,
+       "w": 160,
+       "h": 160,
+       "anim": {
+        "dy": 1400,
+        "r": -60,
+        "dur": 1.1,
+        "em": 0.2,
+        "ease": "power2.in"
+       }
+      },
+      {
+       "img": "colchao",
+       "x": 900,
+       "y": 0,
+       "w": 300,
+       "h": 300,
+       "anim": {
+        "dy": 1400,
+        "r": 30,
+        "dur": 1.1,
+        "em": 0.4,
+        "ease": "power2.in"
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "Sofá, colchão, até um fusca.",
+   "planos": [
+    {
+     "cena": "cl_castelo_medio",
+     "cam": [
+      [
+       900,
+       1400,
+       2
+      ],
+      [
+       900,
+       1400,
+       2.1
+      ]
+     ],
+     "transicao": "corte",
+     "objetos": [
+      {
+       "img": "sofa",
+       "x": 900,
+       "y": 400,
+       "w": 520,
+       "h": 300,
+       "anim": {
+        "dy": 1150,
+        "dur": 0.35,
+        "ease": "power3.in"
+       }
+      }
+     ],
+     "fx": [
+      [
+       "shake",
+       0.35,
+       10,
+       4
+      ]
+     ],
+     "sfx": [
+      [
+       "real/queda_objeto_grande",
+       0.35,
+       0.5
+      ]
+     ]
+    },
+    {
+     "cena": "cl_castelo_medio",
+     "cam": [
+      [
+       900,
+       1400,
+       2
+      ],
+      [
+       900,
+       1400,
+       2.1
+      ]
+     ],
+     "transicao": "corte",
+     "objetos": [
+      {
+       "img": "colchao",
+       "x": 900,
+       "y": 400,
+       "w": 420,
+       "h": 380,
+       "anim": {
+        "dy": 1150,
+        "r": -12,
+        "dur": 0.35,
+        "ease": "power3.in"
+       }
+      }
+     ],
+     "fx": [
+      [
+       "shake",
+       0.35,
+       8,
+       4
+      ]
+     ],
+     "sfx": [
+      [
+       "cut_hit/kick",
+       0.35,
+       0.5,
+       0.4
+      ]
+     ]
+    },
+    {
+     "cena": "cl_castelo_noite",
+     "cam": [
+      [
+       900,
+       1450,
+       1.6
+      ],
+      [
+       900,
+       1450,
+       1.9
+      ]
+     ],
+     "transicao": "corte",
+     "objetos": [
+      {
+       "img": "fusca",
+       "x": 900,
+       "y": 200,
+       "w": 560,
+       "h": 360,
+       "anim": {
+        "dy": 1400,
+        "dur": 0.45,
+        "ease": "power3.in"
+       }
+      }
+     ],
+     "fx": [
+      [
+       "shake",
+       0.5,
+       20,
+       6
+      ],
+      [
+       "poeira",
+       900,
+       1600
+      ]
+     ],
+     "sfx": [
+      [
+       "real/queda_geladeira_objeto",
+       0.45,
+       0.7
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "E o segredo tava no peso: cada camada esmagava a de baixo até virar tijolo.",
+   "planos": [
+    {
+     "cena": "cl_corte_castelo",
+     "cam": [
+      [
+       900,
+       1100,
+       1.2
+      ],
+      [
+       900,
+       1100,
+       1.5
+      ]
+     ],
+     "transicao": "dissolve",
+     "objetos": [
+      {
+       "svg": "<defs><linearGradient id=\"pz\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"0\" stop-color=\"#ffe14a\" stop-opacity=\".0\"/><stop offset=\".55\" stop-color=\"#ff9a2a\" stop-opacity=\".55\"/><stop offset=\"1\" stop-color=\"#ff2a2a\" stop-opacity=\".8\"/></linearGradient></defs><rect x=\"-520\" y=\"-900\" width=\"1040\" height=\"900\" fill=\"url(#pz)\"/>",
+       "x": 900,
+       "y": 1700,
+       "oculto": 1,
+       "aparece": 0.8,
+       "anim": {
+        "s": 1.05,
+        "dur": 2,
+        "em": 0.8
+       }
+      }
+     ],
+     "fx": [
+      [
+       "shake",
+       1.6,
+       3,
+       10
+      ]
+     ],
+     "sfx": [
+      [
+       "riser/build",
+       0.4,
+       0.35,
+       2
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "Em um mês, o castelo passou o prédio da prefeitura.",
+   "planos": [
+    {
+     "cena": "cl_castelo_prefeitura",
+     "cam": [
+      [
+       900,
+       1000,
+       1
+      ],
+      [
+       900,
+       1200,
+       1.25
+      ]
+     ],
+     "transicao": "dissolve",
+     "atores": [
+      {
+       "id": "tiao",
+       "x": 700,
+       "y": 560,
+       "s": 0.22,
+       "acoes": [
+        [
+         "comemorar",
+         null
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "cena": "cl_castelo_prefeitura",
+     "cam": [
+      [
+       700,
+       620,
+       2.6
+      ],
+      [
+       700,
+       620,
+       2.8
+      ]
+     ],
+     "atores": [
+      {
+       "id": "tiao",
+       "x": 700,
+       "y": 560,
+       "s": 0.22,
+       "acoes": [
+        [
+         "expressao",
+         null,
+         {
+          "expr": "smug"
+         }
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "Vinha ônibus de turista só pra tirar foto.",
+   "planos": [
+    {
+     "cena": "cl_praca_turistas",
+     "cam": [
+      [
+       900,
+       1450,
+       1.4
+      ],
+      [
+       1020,
+       1450,
+       1.6
+      ]
+     ],
+     "transicao": "dissolve",
+     "atores": [
+      {
+       "id": "turista",
+       "x": 650,
+       "acoes": [
+        [
+         "mostrar",
+         0.7,
+         {
+          "prop": "phone"
+         }
+        ],
+        [
+         "comemorar",
+         null
+        ]
+       ]
+      },
+      {
+       "id": "turista2",
+       "x": 1000,
+       "acoes": [
+        [
+         "olhar",
+         0.4
+        ],
+        [
+         "mostrar",
+         null,
+         {
+          "prop": "phone"
+         }
+        ]
+       ]
+      },
+      {
+       "id": "vizinha",
+       "x": 1300,
+       "flip": -1,
+       "acoes": [
+        [
+         "comemorar",
+         null
+        ]
+       ]
+      }
+     ],
+     "fx": [
+      [
+       "flash",
+       0.6,
+       "#fff",
+       0.25
+      ],
+      [
+       "flash",
+       1.1,
+       "#fff",
+       0.25
+      ]
+     ],
+     "sfx": [
+      [
+       "real/camera_celular_clique",
+       0.6,
+       0.5
+      ],
+      [
+       "real/camera_celular_clique",
+       1.1,
+       0.5
+      ],
+      [
+       "real/multidao_murmurando",
+       0,
+       0.15
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "Aí o prefeito foi na TV dizer que aquilo era ilegal,",
+   "planos": [
+    {
+     "cena": "cl_boteco",
+     "cam": [
+      [
+       900,
+       1350,
+       1.3
+      ],
+      [
+       900,
+       1350,
+       1.55
+      ]
+     ],
+     "transicao": "dissolve",
+     "atores": [
+      {
+       "id": "prefeito",
+       "x": 900,
+       "s": 0.9,
+       "acoes": [
+        [
+         "raiva",
+         0.5
+        ],
+        [
+         "apontar",
+         0.7
+        ],
+        [
+         "reclamar",
+         null
+        ]
+       ]
+      }
+     ],
+     "objetos": [
+      {
+       "svg": "<rect x=\"-200\" y=\"-40\" width=\"400\" height=\"70\" fill=\"#c81e1e\"/><text x=\"0\" y=\"12\" font-size=\"46\" font-weight=\"900\" text-anchor=\"middle\" fill=\"#fff\" font-family=\"Montserrat\">É ILEGAL!</text>",
+       "x": 900,
+       "y": 960,
+       "aparece": 0.5,
+       "frente": 1
+      }
+     ],
+     "sfx": [
+      [
+       "real/sino_noticia_tv",
+       0,
+       0.25
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "e mandou um trator derrubar tudo de madrugada.",
+   "planos": [
+    {
+     "cena": "cl_castelo_noite",
+     "cam": [
+      [
+       1100,
+       1450,
+       1.3
+      ],
+      [
+       900,
+       1450,
+       1.6
+      ]
+     ],
+     "transicao": "dissolve",
+     "objetos": [
+      {
+       "img": "trator",
+       "x": 1700,
+       "y": 1640,
+       "w": 620,
+       "h": 460,
+       "anim": {
+        "dx": -600,
+        "dur": 2.2,
+        "ease": "power1.out"
+       }
+      }
+     ],
+     "fx": [
+      [
+       "shake",
+       0.2,
+       4,
+       20
+      ]
+     ],
+     "sfx": [
+      [
+       "real/motor_trator",
+       0,
+       0.35
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "Só que o trator puxou justo o fusca. O fusca da base.",
+   "planos": [
+    {
+     "cena": "cl_castelo_noite",
+     "cam": [
+      [
+       900,
+       1500,
+       2.1
+      ],
+      [
+       900,
+       1500,
+       2.3
+      ]
+     ],
+     "transicao": "corte",
+     "objetos": [
+      {
+       "img": "fusca",
+       "x": 900,
+       "y": 1620,
+       "w": 560,
+       "h": 360,
+       "anim": {
+        "dx": 160,
+        "dur": 1.2,
+        "em": 0.3,
+        "ease": "power2.in"
+       }
+      }
+     ],
+     "fx": [
+      [
+       "shake",
+       0.4,
+       6,
+       8
+      ]
+     ],
+     "sfx": [
+      [
+       "real/rangido_metal",
+       0.3,
+       0.5
+      ]
+     ]
+    },
+    {
+     "cena": "cl_rua_lixo",
+     "cam": [
+      [
+       900,
+       1250,
+       2.2
+      ],
+      [
+       900,
+       1250,
+       2.4
+      ]
+     ],
+     "transicao": "corte",
+     "atores": [
+      {
+       "id": "tiao",
+       "x": 900,
+       "acoes": [
+        [
+         "susto",
+         0.35
+        ],
+        [
+         "levantar_maos",
+         0.45
+        ],
+        [
+         "chorar",
+         null
+        ]
+       ]
+      }
+     ],
+     "sfx": [
+      [
+       "impact/swell",
+       0.05,
+       0.5,
+       0.6
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "Cinquenta toneladas de lixo desceram a ladeira,",
+   "planos": [
+    {
+     "cena": "cl_ladeira",
+     "cam": [
+      [
+       900,
+       1200,
+       1.2
+      ],
+      [
+       900,
+       1450,
+       1.6
+      ]
+     ],
+     "transicao": "corte",
+     "fx": [
+      [
+       "impacto",
+       0.05
+      ],
+      [
+       "shake",
+       0.1,
+       26,
+       20
+      ],
+      [
+       "poeira",
+       900,
+       900
+      ],
+      [
+       "poeira",
+       700,
+       1300
+      ],
+      [
+       "congela",
+       0.5,
+       0.45
+      ]
+     ],
+     "objetos": [
+      {
+       "img": "geladeira",
+       "x": 800,
+       "y": 700,
+       "w": 180,
+       "h": 252,
+       "anim": {
+        "dy": 900,
+        "r": 120,
+        "dur": 1.6,
+        "ease": "power2.in"
+       }
+      },
+      {
+       "img": "pneu",
+       "x": 1100,
+       "y": 600,
+       "w": 192,
+       "h": 192,
+       "anim": {
+        "dy": 1000,
+        "dx": -200,
+        "r": 540,
+        "dur": 1.5,
+        "ease": "power1.in"
+       }
+      },
+      {
+       "img": "sofa",
+       "x": 700,
+       "y": 500,
+       "w": 360,
+       "h": 220,
+       "anim": {
+        "dy": 1100,
+        "r": -90,
+        "dur": 1.7,
+        "ease": "power2.in"
+       }
+      }
+     ],
+     "sfx": [
+      [
+       "pro_sub_drop/low",
+       0.05,
+       0.9,
+       1.5
+      ],
+      [
+       "real/avalanche_pedras",
+       0.1,
+       0.6
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "e pararam na porta da prefeitura.",
+   "planos": [
+    {
+     "cena": "cl_castelo_prefeitura",
+     "cam": [
+      [
+       1250,
+       1450,
+       1.8
+      ],
+      [
+       1250,
+       1450,
+       2.1
+      ]
+     ],
+     "transicao": "corte",
+     "fx": [
+      [
+       "impacto",
+       0.15
+      ],
+      [
+       "shake",
+       0.15,
+       30,
+       10
+      ],
+      [
+       "poeira",
+       1250,
+       1500
+      ],
+      [
+       "flash",
+       0.15,
+       "#fff",
+       0.4
+      ]
+     ],
+     "objetos": [
+      {
+       "img": "lixo",
+       "x": 1250,
+       "y": 1650,
+       "w": 900,
+       "h": 700,
+       "oculto": 1,
+       "aparece": 0.15
+      }
+     ],
+     "sfx": [
+      [
+       "real/explosao",
+       0.15,
+       0.7
+      ],
+      [
+       "real/desabamento_entulho",
+       0.3,
+       0.5
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "txt": "No dia seguinte, o caminhão do lixo voltou a passar.",
+   "planos": [
+    {
+     "cena": "cl_rua_lixo",
+     "cam": [
+      [
+       900,
+       1420,
+       1.5
+      ],
+      [
+       900,
+       1420,
+       1.65
+      ]
+     ],
+     "transicao": "dissolve",
+     "atores": [
+      {
+       "id": "tiao",
+       "x": 900,
+       "acoes": [
+        [
+         "apontar",
+         0.7
+        ],
+        [
+         "comemorar",
+         null
+        ]
+       ]
+      }
+     ],
+     "objetos": [
+      {
+       "img": "fusca",
+       "x": 500,
+       "y": 1640,
+       "w": 560,
+       "h": 360,
+       "r": 4
+      },
+      {
+       "img": "caminhao",
+       "x": 1900,
+       "y": 1640,
+       "w": 700,
+       "h": 420,
+       "anim": {
+        "dx": -1300,
+        "dur": 2.6,
+        "ease": "none"
+       }
+      }
+     ],
+     "sfx": [
+      [
+       "real/buzina_caminhao",
+       1.2,
+       0.4
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}
